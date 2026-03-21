@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "titulo": "Meditaciones",
+    "autor": "Marco Aurelio Antonino Augusto",
+    "anio": 180,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Reflexiones personales del emperador romano sobre el estoicismo, la virtud y el deber.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Marco_Aurelio_Louvre.jpg/220px-Marco_Aurelio_Louvre.jpg",
+    "pdf": "https://drive.google.com/file/d/1VXuq4suRWXuoVa7nNa8in0R_Qi4GZs1H/preview"
+  },
+  {
+    "id": 2,
+    "titulo": "Cómo ganar amigos e influir sobre las personas",
+    "autor": "Dale Carnegie",
+    "anio": 1936,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Clásico de desarrollo personal sobre relaciones humanas, comunicación y liderazgo.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Dale_Carnegie.jpg/220px-Dale_Carnegie.jpg",
+    "pdf": "https://drive.google.com/file/d/1o3iP_C3rV2-lVKEjLpcE7UnsIwU6QIRr/preview"
+  },
+  {
+    "id": 3,
+    "titulo": "Hábitos Atómicos",
+    "autor": "James Clear",
+    "anio": 2018,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Guía práctica sobre cómo construir buenos hábitos y eliminar los malos mediante cambios pequeños.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/James_Clear_%28Author%29.jpg/220px-James_Clear_%28Author%29.jpg",
+    "pdf": "https://drive.google.com/file/d/1YuHW0HatnnRuNiJxYYTbvXx7xzc0W4p7/preview"
+  },
+  {
+    "id": 4,
+    "titulo": "Don Quijote de la Mancha",
+    "autor": "Miguel de Cervantes Saavedra",
+    "anio": 1605,
+    "genero": "Novela clásica",
+    "descripcion": "La historia del ingenioso hidalgo que confunde la realidad con los libros de caballería.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cervantes_Quijote.jpg/220px-Cervantes_Quijote.jpg",
+    "pdf": "https://drive.google.com/file/d/1n1446kgXeZh2x_ZIHBVCXDB-1ohjs2iU/preview"
+  },
+  {
+    "id": 5,
+    "titulo": "Facundo o civilización y barbarie",
+    "autor": "Domingo Faustino Sarmiento",
+    "anio": 1845,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Ensayo político y literario que analiza la dicotomía civilización y barbarie en Argentina.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Sarmiento.jpg/220px-Sarmiento.jpg",
+    "pdf": "https://drive.google.com/file/d/1wxuoE0S4V3mMZZ8fTpkTGV5vCxOe94B1/preview"
+  },
+  {
+    "id": 6,
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "anio": 1967,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "La saga de la familia Buendía en Macondo, obra cumbre del realismo mágico latinoamericano.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/GabrielGarciaMarquez.jpg/220px-GabrielGarciaMarquez.jpg",
+    "pdf": "https://drive.google.com/file/d/1skV1JTZlqu2XYwW0OjDYQERZT3Um13RL/preview"
+  },
+  {
+    "id": 7,
+    "titulo": "María",
+    "autor": "Jorge Isaacs",
+    "anio": 1867,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "La novela romántica más importante de Colombia y una de las cumbres del romanticismo latinoamericano.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Jorge_Isaacs.jpg/220px-Jorge_Isaacs.jpg",
+    "pdf": "https://drive.google.com/file/d/1SnDZmzjRbsvGNnmRq0rR9yueNyTGrlam/preview"
+  },
+  {
+    "id": 8,
+    "titulo": "Ensayo sobre el entendimiento humano",
+    "autor": "John Locke",
+    "anio": 1689,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Obra fundamental de la epistemología moderna sobre el origen y límites del conocimiento humano.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/JohnLocke.png/220px-JohnLocke.png",
+    "pdf": "https://drive.google.com/file/d/19cQTOQgH_nXa8hmfV2jajJafzs5LE6E_/preview"
+  },
+  {
+    "id": 9,
+    "titulo": "El laberinto de la soledad",
+    "autor": "Octavio Paz",
+    "anio": 1950,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Análisis profundo de la identidad mexicana, su historia y su psicología colectiva.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Octavio_Paz.jpg/220px-Octavio_Paz.jpg",
+    "pdf": "https://drive.google.com/file/d/1M1bNoBoSrxA5pRP2KriDWA5d1I9JOSjK/preview"
+  },
+  {
+    "id": 10,
+    "titulo": "Ariel",
+    "autor": "José Enrique Rodó",
+    "anio": 1900,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Ensayo fundamental del modernismo latinoamericano sobre la identidad y los valores de América.",
+    "portada": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Jos%C3%A9_Enrique_Rod%C3%B3.jpg/220px-Jos%C3%A9_Enrique_Rod%C3%B3.jpg",
+    "pdf": "https://drive.google.com/file/d/1FyXtlnyf6IDsLZK4cvYVQlyP2GmNidh3/preview"
+  }
+]

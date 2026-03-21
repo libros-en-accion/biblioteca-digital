@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biblioteca Digital</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <h1>📚 Biblioteca Digital</h1>
+    <p>Clásicos, ensayos y literatura latinoamericana de libre acceso</p>
+  </header>
+
+  <!-- BARRA DE BÚSQUEDA -->
+  <section class="buscador">
+    <input
+      type="text"
+      id="inputBusqueda"
+      placeholder="Buscar por título o autor..."
+      oninput="filtrar()"
+    />
+  </section>
+
+  <!-- FILTROS POR GÉNERO -->
+  <section class="filtros">
+    <button class="btn-filtro activo" onclick="filtrarGenero('Todos', this)">Todos</button>
+    <button class="btn-filtro" onclick="filtrarGenero('Novela clásica', this)">Novela clásica</button>
+    <button class="btn-filtro" onclick="filtrarGenero('Ensayo filosófico', this)">Ensayo filosófico</button>
+    <button class="btn-filtro" onclick="filtrarGenero('Literatura latinoamericana', this)">Literatura latinoamericana</button>
+  </section>
+
+  <!-- CONTADOR DE RESULTADOS -->
+  <p id="contador" class="contador"></p>
+
+  <!-- GRID DE LIBROS -->
+  <main id="galeria" class="galeria"></main>
+
+  <!-- MENSAJE CUANDO NO HAY RESULTADOS -->
+  <p id="sinResultados" class="sin-resultados" style="display:none">
+    No se encontraron libros con ese criterio.
+  </p>
+
+  <script src="app.js"></script>
+</body>
+</html>
