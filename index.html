@@ -10,9 +10,13 @@
 
   <!-- ENCABEZADO -->
   <header>
-    <h1>📚 Biblioteca Digital</h1>
-    <p>Clásicos, ensayos y literatura latinoamericana de libre acceso</p>
+    <h1>Biblioteca <span>Digital</span></h1>
+    <p>Clásicos, novelas, ensayos y literatura general</p>
   </header>
+
+  <div class="separador">
+  <span class="separador-icono">✦ ✦ ✦</span>
+</div>
 
   <!-- BARRA DE BÚSQUEDA -->
   <section class="buscador">
@@ -26,11 +30,21 @@
 
   <!-- FILTROS POR GÉNERO -->
   <section class="filtros">
-    <button class="btn-filtro activo" onclick="filtrarGenero('Todos', this)">Todos</button>
-    <button class="btn-filtro" onclick="filtrarGenero('Novela clásica', this)">Novela clásica</button>
-    <button class="btn-filtro" onclick="filtrarGenero('Ensayo filosófico', this)">Ensayo filosófico</button>
-    <button class="btn-filtro" onclick="filtrarGenero('Literatura latinoamericana', this)">Literatura latinoamericana</button>
-  </section>
+  <button class="btn-filtro activo" onclick="filtrarGenero('Todos', this)">Todos</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Novela clásica', this)">Novela clásica</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Novela contemporánea', this)">Contemporánea</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Literatura latinoamericana', this)">Latinoamericana</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Thriller y misterio', this)">Thriller</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Fantasía y ciencia ficción', this)">Fantasía y CF</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Ensayo filosófico', this)">Ensayo filosófico</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Ciencia y filosofía natural', this)">Ciencia</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Poesía clásica', this)">Poesía</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Cuento y relato corto', this)">Cuentos</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Desarrollo personal', this)">Desarrollo personal</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Psicología', this)">Psicología</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Economía y finanzas', this)">Economía</button>
+  <button class="btn-filtro" onclick="filtrarGenero('Historia y crónica', this)">Historia</button>
+</section>
 
   <!-- CONTADOR DE RESULTADOS -->
   <p id="contador" class="contador"></p>

@@ -1,110 +1,4151 @@
 [
   {
     "id": 1,
-    "titulo": "Meditaciones",
-    "autor": "Marco Aurelio Antonino Augusto",
-    "anio": 180,
-    "genero": "Ensayo filosófico",
-    "descripcion": "Reflexiones personales del emperador romano sobre el estoicismo, la virtud y el deber.",
-    "pdf": "https://drive.google.com/file/d/19t3RDIqkR0uNIgeZikt7dNTULMyc89E2/preview"
+    "titulo": "Las venas abiertas de America Latina",
+    "autor": "Eduardo Galeano",
+    "anio": 1971,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Análisis histórico y económico de la explotación de América Latina desde la conquista hasta el siglo XX.",
+    "pdf": "https://drive.google.com/file/d/1nSzOuwmoSoGXDG1ajewzmmVMzvKQB8YU/preview"
   },
   {
     "id": 2,
-    "titulo": "Cómo ganar amigos e influir sobre las personas",
-    "autor": "Dale Carnegie",
-    "anio": 1936,
-    "genero": "Ensayo filosófico",
-    "descripcion": "Clásico de desarrollo personal sobre relaciones humanas, comunicación y liderazgo.",
-    "pdf": "https://drive.google.com/file/d/1aERis9iYrB8t833R67TkrXVTuhYBxd9l/preview"
+    "titulo": "La inteligencia emocional",
+    "autor": "Daniel Goleman",
+    "anio": 1995,
+    "genero": "Psicología",
+    "descripcion": "Estudio sobre cómo las emociones influyen en nuestra inteligencia y capacidad de éxito en la vida.",
+    "pdf": "https://drive.google.com/file/d/1BBiZtnPeP5pvvqLxNTGmYiKXFr4omQBM/preview"
   },
   {
     "id": 3,
-    "titulo": "Hábitos Atómicos",
-    "autor": "James Clear",
-    "anio": 2018,
-    "genero": "Ensayo filosófico",
-    "descripcion": "Guía práctica sobre cómo construir buenos hábitos y eliminar los malos mediante cambios pequeños.",
-    "pdf": "https://drive.google.com/file/d/1vSUQcAk2_6ygjCIVNR1klBt8fT82IisG/preview"
+    "titulo": "El inversor inteligente",
+    "autor": "Benjamin Graham",
+    "anio": 1949,
+    "genero": "Economía y finanzas",
+    "descripcion": "La biblia del value investing, con principios para invertir de forma segura y rentable a largo plazo.",
+    "pdf": "https://drive.google.com/file/d/1dWIUHwCLZrXBHY8wMZVjnAgx20gE50HQ/preview"
   },
   {
     "id": 4,
-    "titulo": "Don Quijote de la Mancha",
-    "autor": "Miguel de Cervantes Saavedra",
-    "anio": 1605,
-    "genero": "Novela clásica",
-    "descripcion": "La historia del ingenioso hidalgo que confunde la realidad con los libros de caballería.",
-    "pdf": "https://drive.google.com/file/d/1Ey3_2POx3u41dCEMz_dHmJgk4dFOHZE7/preview"
+    "titulo": "El Madrid de Antonia Scott",
+    "autor": "Juan Gómez-Jurado",
+    "anio": 2022,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1TRrI9lP5zicNer8Zg3DfVgDarZ4W-lXd/preview"
   },
   {
     "id": 5,
-    "titulo": "Facundo o civilización y barbarie",
-    "autor": "Domingo Faustino Sarmiento",
-    "anio": 1845,
-    "genero": "Literatura latinoamericana",
-    "descripcion": "Ensayo político y literario que analiza la dicotomía civilización y barbarie en Argentina.",
-    "pdf": "https://drive.google.com/file/d/139fmoEGRZCrItunc-nrzbuZQxAhE8INV/preview"
+    "titulo": "Rey Blanco",
+    "autor": "Juan Gómez-Jurado",
+    "anio": 2020,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Af7LjE6f75tr9pgRfN5ZcIikMmC05jGn/preview"
   },
   {
     "id": 6,
-    "titulo": "Cien años de soledad",
-    "autor": "Gabriel García Márquez",
-    "anio": 1967,
-    "genero": "Literatura latinoamericana",
-    "descripcion": "La saga de la familia Buendía en Macondo, obra cumbre del realismo mágico latinoamericano.",
-    "pdf": "https://drive.google.com/file/d/1uqEH78cjANRAWTXSq7BcIQRLtbf_4Lf6/preview"
+    "titulo": "Loba Negra",
+    "autor": "Juan Gómez-Jurado",
+    "anio": 2019,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1o32zlnelcopdgmFks_J8WEz7snyAIfVo/preview"
   },
   {
     "id": 7,
-    "titulo": "Historia del tiempo",
-    "autor": "Stephen W. Hawking",
-    "anio": 1988,
-    "genero": "Ciencia y filosofía natural",
-    "descripcion": "Explicación accesible sobre el origen del universo, los agujeros negros y la naturaleza del tiempo.",
-    "pdf": "https://drive.google.com/file/d/1tLq4qK7gkxWdNRomuUTOj1RMQCvDrvtU/preview"
+    "titulo": "Reina Roja",
+    "autor": "Juan Gómez-Jurado",
+    "anio": 2018,
+    "genero": "Thriller y misterio",
+    "descripcion": "Thriller de acción sobre una asesina profesional que debe colaborar con un agente de inteligencia.",
+    "pdf": "https://drive.google.com/file/d/19NTUX_xydbT35YeRIqUUvpzazjHU4qsi/preview"
   },
   {
     "id": 8,
-    "titulo": "Ensayo sobre el entendimiento humano",
-    "autor": "John Locke",
-    "anio": 1689,
-    "genero": "Ensayo filosófico",
-    "descripcion": "Obra fundamental de la epistemología moderna sobre el origen y límites del conocimiento humano.",
-    "pdf": "https://drive.google.com/file/d/1zq9bJ4ffNIkCs6oLIf01M-5SKuZbM3Y8/preview"
+    "titulo": "Ciudades de papel",
+    "autor": "John Green",
+    "anio": 2008,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1cYCQlEot2qbB3aFZdSO-zY2ETmjWG9NX/preview"
   },
   {
     "id": 9,
-    "titulo": "Universos paralelos",
-    "autor": "Michio Kaku",
-    "anio": 2004,
-    "genero": "Ciencia y filosofía natural",
-    "descripcion": "Exploración científica sobre la teoría del multiverso, las dimensiones paralelas y el cosmos.",
-    "pdf": "https://drive.google.com/file/d/1UlHz4nezedYB0nZP2lFHbRajfidthtky/preview"
+    "titulo": "Bajo la misma estrella",
+    "autor": "John Green",
+    "anio": 2012,
+    "genero": "Novela contemporánea",
+    "descripcion": "Historia de amor entre dos adolescentes con cáncer que se conocen en un grupo de apoyo.",
+    "pdf": "https://drive.google.com/file/d/1IuCKkckB0ebuuSpyQCN1Mw3rPv0_iy-I/preview"
   },
   {
     "id": 10,
-    "titulo": "El laberinto de la soledad",
-    "autor": "Octavio Paz",
-    "anio": 1950,
-    "genero": "Literatura latinoamericana",
-    "descripcion": "Análisis profundo de la identidad mexicana, su historia y su psicología colectiva.",
-    "pdf": "https://drive.google.com/file/d/1HJlot6HdYnrBzC0HB9hhjq_cT3j5DCZa/preview"
+    "titulo": "Mil veces hasta siempre",
+    "autor": "John Green",
+    "anio": 2006,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1k9Uv6HdrzyqBTejH8rxrovzEAkVIecdy/preview"
   },
   {
     "id": 11,
-    "titulo": "Ariel",
-    "autor": "José Enrique Rodó",
-    "anio": 1900,
-    "genero": "Literatura latinoamericana",
-    "descripcion": "Ensayo fundamental del modernismo latinoamericano sobre la identidad y los valores de América.",
-    "pdf": "https://drive.google.com/file/d/1AhHB4bIMrvQj66E39w6vp2sYz0SK4xa_/preview"
+    "titulo": "American Gods",
+    "autor": "NEIL Gaiman",
+    "anio": 2001,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Novela fantástica sobre los dioses antiguos que luchan por su supervivencia en la América moderna.",
+    "pdf": "https://drive.google.com/file/d/1l549txQ6oBBZ1LD6qoCmFU4iRwBHB_Q3/preview"
   },
   {
     "id": 12,
+    "titulo": "Coraline",
+    "autor": "NEIL Gaiman",
+    "anio": 2002,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una niña descubre una puerta secreta que lleva a un mundo paralelo aparentemente perfecto pero oscuramente siniestro.",
+    "pdf": "https://drive.google.com/file/d/1pnfj2BhrNpvPL0tlisHoU6KqhaFkcq8N/preview"
+  },
+  {
+    "id": 13,
+    "titulo": "Los tres pelos de oro del diablo",
+    "autor": "Hermanos Grimm",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1paOANsj-IhuHS-6f4YljxcYuZ48fHKWr/preview"
+  },
+  {
+    "id": 14,
+    "titulo": "Fausto",
+    "autor": "Wolfgang Johann Goethe",
+    "anio": 1808,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1a-iaoGalCerEph4OkgM0xmbQzWw_lCtM/preview"
+  },
+  {
+    "id": 15,
+    "titulo": "Relatos de la cacerola",
+    "autor": "Yolanda Garcia",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1AiBOvMIHqJ7dopghwBsS1zsxHzGrIjdR/preview"
+  },
+  {
+    "id": 16,
+    "titulo": "El coronel no tiene quien le escriba",
+    "autor": "GABRIEL Garcia Marquez",
+    "anio": 1961,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Un viejo coronel espera durante años una pensión militar que nunca llega en un pueblo sin memoria.",
+    "pdf": "https://drive.google.com/file/d/1hRVwnFtrsBXxKvrVlK8qjC7K4EyybCEV/preview"
+  },
+  {
+    "id": 17,
+    "titulo": "El amor en los tiempos del colera",
+    "autor": "GABRIEL Garcia Marquez",
+    "anio": 1985,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Historia de amor que dura más de cincuenta años entre Fermina Daza y Florentino Ariza.",
+    "pdf": "https://drive.google.com/file/d/1agsYpo_7W3WtLnX5rpskeJ3Dm96v5z2C/preview"
+  },
+  {
+    "id": 18,
+    "titulo": "Cien anos de soledad",
+    "autor": "GABRIEL Garcia Marquez",
+    "anio": 1967,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "La saga de la familia Buendía a lo largo de siete generaciones en el mítico pueblo de Macondo.",
+    "pdf": "https://drive.google.com/file/d/1uqEH78cjANRAWTXSq7BcIQRLtbf_4Lf6/preview"
+  },
+  {
+    "id": 19,
+    "titulo": "El hombre invisible ilustrado por Luis Scafati",
+    "autor": "H. G. Wells",
+    "anio": 1897,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Un científico descubre la fórmula para volverse invisible, con consecuencias devastadoras para su cordura.",
+    "pdf": "https://drive.google.com/file/d/1erkn0tL2E3KJQgQkHwaIYqjU6_mjcjLy/preview"
+  },
+  {
+    "id": 20,
+    "titulo": "La maquina del tiempo",
+    "autor": "H. G. Wells",
+    "anio": 1895,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Un inventor viaja al año 802701 y descubre una humanidad dividida en dos especies degeneradas.",
+    "pdf": "https://drive.google.com/file/d/1l4yxsdjnttAjJcemSBk9CPnSoxcPowjD/preview"
+  },
+  {
+    "id": 21,
+    "titulo": "La guerra de los mundos",
+    "autor": "H. G. Wells",
+    "anio": 1898,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Los marcianos invaden la Tierra con máquinas de guerra irresistibles que devastan la civilización humana.",
+    "pdf": "https://drive.google.com/file/d/1DNsGquVzSK0rE7YR1iF_3Nky7_uuiTfF/preview"
+  },
+  {
+    "id": 22,
+    "titulo": "Cuentos completos",
+    "autor": "Oscar Wilde",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/14_iR8kzC-yDAxlCvr4cokO2LLQSS1TuA/preview"
+  },
+  {
+    "id": 23,
+    "titulo": "El principe feliz y otros cuentos",
+    "autor": "Oscar Wilde",
+    "anio": 1888,
+    "genero": "Novela clásica",
+    "descripcion": "Tratado político renacentista sobre el ejercicio del poder, la conquista y el mantenimiento del Estado.",
+    "pdf": "https://drive.google.com/file/d/1lbHPGbM6IAp75-mMfWNIznZw81gz2GJU/preview"
+  },
+  {
+    "id": 24,
+    "titulo": "El fantasma de Canterville y otros relatos",
+    "autor": "Oscar Wilde",
+    "anio": 1887,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17Gnc4QySHOppiakN1a9lAmhQ1672JHwV/preview"
+  },
+  {
+    "id": 25,
+    "titulo": "El retrato de Dorian Gray Edicion sin censura",
+    "autor": "Oscar Wilde",
+    "anio": 1890,
+    "genero": "Novela clásica",
+    "descripcion": "Un joven de extraordinaria belleza vende su alma para que un retrato envejezca en su lugar.",
+    "pdf": "https://drive.google.com/file/d/1bK4FR0F-CGfIEJY-kU0WsJnQtWc0fRxY/preview"
+  },
+  {
+    "id": 26,
+    "titulo": "La importancia de llamarse Ernesto",
+    "autor": "Oscar Wilde",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1ZiO1yEF0WPgp-_M0PWtXpHxvsyOhgHuf/preview"
+  },
+  {
+    "id": 27,
+    "titulo": "La comunidad de la sangre",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JK2eW7WiG2Az0-9KOsT16LsCLEmHc8o_/preview"
+  },
+  {
+    "id": 28,
+    "titulo": "El principe Lestat y los reinos de la Atlantida",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Tratado político renacentista sobre el ejercicio del poder, la conquista y el mantenimiento del Estado.",
+    "pdf": "https://drive.google.com/file/d/1eKkwsgHP-AksTsRIW8Ndx3w-zcJBJ4In/preview"
+  },
+  {
+    "id": 29,
+    "titulo": "El principe Lestat",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Tratado político renacentista sobre el ejercicio del poder, la conquista y el mantenimiento del Estado.",
+    "pdf": "https://drive.google.com/file/d/1_tMptFt_FXRc7P-wagNwxvPN_ItnwJJG/preview"
+  },
+  {
+    "id": 30,
+    "titulo": "Cantico de sangre",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1z1jmi6jzWZj3VxGDCXUF9iF45LpbXKXU/preview"
+  },
+  {
+    "id": 31,
+    "titulo": "Memnoch, el diablo",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1u6fc4DmCSdovpwK-dCfxEVQz5o22fI9q/preview"
+  },
+  {
+    "id": 32,
+    "titulo": "Lestat el vampiro",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Aw2ISV13r9RIXqrCrP510-1G2bSVrgN9/preview"
+  },
+  {
+    "id": 33,
+    "titulo": "El santuario",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1HVjH5tFq79-dwDYxGI8CEYchnzn2jy-2/preview"
+  },
+  {
+    "id": 34,
+    "titulo": "Sangre y oro",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Ru_ZXJsgY38gAzwNk6fCnSzYtKNZJ71U/preview"
+  },
+  {
+    "id": 35,
+    "titulo": "Merrick",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/19TKHLUtZapZLa7NrSyrnunkEVUctbx3Y/preview"
+  },
+  {
+    "id": 36,
+    "titulo": "Armand El Vampiro",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1u98DibXnps30GB3XLodDGRMdk1ZJsOB-/preview"
+  },
+  {
+    "id": 37,
+    "titulo": "El ladron de cuerpos",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1aXc6DNPHuM7_lnIyZbYoiuoOyWC3FhgD/preview"
+  },
+  {
+    "id": 38,
+    "titulo": "La reina de los condenados",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1FO4YWNU1_6zmweg5o4lhq70Ya8kubeEg/preview"
+  },
+  {
+    "id": 39,
+    "titulo": "Entrevista con el vampiro",
+    "autor": "Anne Rice",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1SSDyxhRhuPJmgNk4fWUVZdZXXxBVgJmI/preview"
+  },
+  {
+    "id": 40,
+    "titulo": "Pedro Paramo ed Catedra",
+    "autor": "Juan Rulfo",
+    "anio": 1955,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Un hombre viaja a Comala para encontrar a su padre y descubre un pueblo habitado solo por muertos.",
+    "pdf": "https://drive.google.com/file/d/1KxHOMLyRuI-zHuSpmWb0aQvBqwOujWmj/preview"
+  },
+  {
+    "id": 41,
+    "titulo": "El Llano en llamas ed Catedra",
+    "autor": "Juan Rulfo",
+    "anio": 1953,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Cuentos que retratan la vida rural y violenta del México posrevolucionario con un lenguaje lírico único.",
+    "pdf": "https://drive.google.com/file/d/1qF-WoSEX1yT0c-l6Q8NI0D6TxCH8Lw2c/preview"
+  },
+  {
+    "id": 42,
+    "titulo": "El estrecho sendero entre deseos",
+    "autor": "PATRICK Rothfuss",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1__8Sp0HzZ3hgUA9mnz9N6lPjJtEO5hZ6/preview"
+  },
+  {
+    "id": 43,
+    "titulo": "La musica del silencio",
+    "autor": "PATRICK Rothfuss",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1jA4RL9n_kcP2E1JWJgRImHboXPlv44EO/preview"
+  },
+  {
+    "id": 44,
+    "titulo": "El temor de un hombre sabio",
+    "autor": "PATRICK Rothfuss",
+    "anio": 2011,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1lxYP0Ll4h-l27-rDvg3XvvTuk9T4DGsN/preview"
+  },
+  {
+    "id": 45,
+    "titulo": "El nombre del viento",
+    "autor": "PATRICK Rothfuss",
+    "anio": 2007,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Un legendario mago narra su propia historia desde sus humildes orígenes hasta convertirse en leyenda.",
+    "pdf": "https://drive.google.com/file/d/1FCIv1sbKTTxhhtlbgkse_HfBRlVmt6iN/preview"
+  },
+  {
+    "id": 46,
+    "titulo": "Choque de reyes",
+    "autor": "George R. R. Martin",
+    "anio": 1998,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1UFWEPNhBxopOsOu6T8iNIzvu7w7lD_VD/preview"
+  },
+  {
+    "id": 47,
+    "titulo": "Festin de cuervos",
+    "autor": "George R. R. Martin",
+    "anio": 2005,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1xkQmENxXdS8HQQfZ1XKtAaBs344uj2pS/preview"
+  },
+  {
+    "id": 48,
+    "titulo": "Danza de dragones",
+    "autor": "George R. R. Martin",
+    "anio": 2011,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/119Ml7kgwqa6z-xS51gydYAmM_M-bmP-E/preview"
+  },
+  {
+    "id": 49,
+    "titulo": "Tormenta de espadas",
+    "autor": "George R. R. Martin",
+    "anio": 2000,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1kDQ3g7ff-wy_hlg4tYuGDJ3ahXuif6CY/preview"
+  },
+  {
+    "id": 50,
+    "titulo": "Juego de tronos",
+    "autor": "George R. R. Martin",
+    "anio": 1996,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Las grandes familias de Poniente luchan por el control del Trono de Hierro en un mundo de intrigas y dragones.",
+    "pdf": "https://drive.google.com/file/d/1wowXWKNvVSRzPnWpSXw6pUtqamLDWDfY/preview"
+  },
+  {
+    "id": 51,
+    "titulo": "Animales fantasticos y donde encontrarlo",
+    "autor": "J. K. Rowling",
+    "anio": 2001,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/128GskGDZgqVmuUq3HP2NoX1l8ocURQ0Z/preview"
+  },
+  {
+    "id": 52,
+    "titulo": "Harry Potter y las reliquias de la muerte",
+    "autor": "J. K. Rowling",
+    "anio": 2007,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1WHamI3dOx_E5WsMtKUIChI96Zm-uiB85/preview"
+  },
+  {
+    "id": 53,
+    "titulo": "Harry Potter y la orden del fenix",
+    "autor": "J. K. Rowling",
+    "anio": 2003,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1G0fbX0vgusNNDiBJh-C20wqCH6GKiwTl/preview"
+  },
+  {
+    "id": 54,
+    "titulo": "Harry Potter y el misterio del principe",
+    "autor": "J. K. Rowling",
+    "anio": 2005,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Tratado político renacentista sobre el ejercicio del poder, la conquista y el mantenimiento del Estado.",
+    "pdf": "https://drive.google.com/file/d/1eaujzrHCt5sCX5b2pAmtG43cos-3wnsa/preview"
+  },
+  {
+    "id": 55,
+    "titulo": "Harry Potter y el caliz de fuego",
+    "autor": "J. K. Rowling",
+    "anio": 2000,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1X8oCOQrJzrmBUlcibpOu951_gqsVARs0/preview"
+  },
+  {
+    "id": 56,
+    "titulo": "Harry Potter y el prisionero de Azkaban",
+    "autor": "J. K. Rowling",
+    "anio": 1999,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/13ffvvdLvb63xo6QoZE3u0Bru22UsyKcR/preview"
+  },
+  {
+    "id": 57,
+    "titulo": "Harry Potter y la camara secreta",
+    "autor": "J. K. Rowling",
+    "anio": 1998,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/14A7jz1qkuhbF5nKOaaEqDJxEF7Lidni3/preview"
+  },
+  {
+    "id": 58,
+    "titulo": "Harry Potter y la piedra filosofal",
+    "autor": "J. K. Rowling",
+    "anio": 1997,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Un huérfano descubre que es mago y comienza su educación en Hogwarts, la escuela de magia.",
+    "pdf": "https://drive.google.com/file/d/1e3eegfHVpFtq4YyF_2UOH5_SznXnXNH-/preview"
+  },
+  {
+    "id": 59,
+    "titulo": "La desigualdad entre los hombres",
+    "autor": "Jean-Jacques Rousseau",
+    "anio": 1755,
+    "genero": "Ensayo filosófico",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1eecl8YTa71kPyRCiS_uV5OtSpaLGJncv/preview"
+  },
+  {
+    "id": 60,
+    "titulo": "El contrato social",
+    "autor": "Jean-Jacques Rousseau",
+    "anio": 1762,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Tratado político fundamental que explora la legitimidad del poder del Estado y la soberanía popular.",
+    "pdf": "https://drive.google.com/file/d/12dYEwLpKEBe-0Zn0wu2JilU2mTLwpxxh/preview"
+  },
+  {
+    "id": 61,
+    "titulo": "Rompecabezas",
+    "autor": "Laura Rivas Arranz",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1QxJmHCN7poiuUZOWVbghpsZ7XWIKQoAd/preview"
+  },
+  {
+    "id": 62,
+    "titulo": "El viaje",
+    "autor": "Jorge Luis Revilla",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/110nA959vEmESTNNJlYto82zAAu8qTM9T/preview"
+  },
+  {
+    "id": 63,
+    "titulo": "Ariel",
+    "autor": "JOSE ENRIQUE Rodo",
+    "anio": 1900,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Ensayo fundamental del modernismo latinoamericano sobre la identidad espiritual de América frente al pragmatismo anglosajón.",
+    "pdf": "https://drive.google.com/file/d/1AhHB4bIMrvQj66E39w6vp2sYz0SK4xa_/preview"
+  },
+  {
+    "id": 64,
+    "titulo": "Otelo",
+    "autor": "William Shakespeare",
+    "anio": 1603,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1RxsRpJ2qJP6wAlmckXB0mqVo7_gvWAxO/preview"
+  },
+  {
+    "id": 65,
+    "titulo": "El mercader de Venecia",
+    "autor": "William Shakespeare",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1octMoDBGqoVESA5suxdwEFNq2cttGfwV/preview"
+  },
+  {
+    "id": 66,
+    "titulo": "Macbeth",
+    "autor": "William Shakespeare",
+    "anio": 1606,
+    "genero": "Novela clásica",
+    "descripcion": "Un general escocés movido por la ambición y las profecías de tres brujas asesina al rey para tomar el poder.",
+    "pdf": "https://drive.google.com/file/d/15fDfT0ETM7-clP4YWq9f5vpVKcHc3Nl4/preview"
+  },
+  {
+    "id": 67,
+    "titulo": "Hamlet Principe de Dinamarca",
+    "autor": "William Shakespeare",
+    "anio": 1603,
+    "genero": "Novela clásica",
+    "descripcion": "El príncipe de Dinamarca busca venganza por el asesinato de su padre mientras lucha contra sus propias dudas.",
+    "pdf": "https://drive.google.com/file/d/178-vEgVRgO67TfQEBoXB0RRl4ofQ9jqV/preview"
+  },
+  {
+    "id": 68,
+    "titulo": "Romeo y Julieta",
+    "autor": "William Shakespeare",
+    "anio": 1597,
+    "genero": "Novela clásica",
+    "descripcion": "La trágica historia de amor entre dos jóvenes de familias enemigas en la ciudad de Verona.",
+    "pdf": "https://drive.google.com/file/d/1aA6CRB1D6xJbrRUteaGg3Yc_YuTS-WwC/preview"
+  },
+  {
+    "id": 69,
+    "titulo": "El extrano caso del Dr Jekyll y Mr Hyde",
+    "autor": "Robert Louis Stevenson",
+    "anio": 1886,
+    "genero": "Novela clásica",
+    "descripcion": "Un respetable médico crea una poción que desata su lado oscuro en una criatura sin escrúpulos morales.",
+    "pdf": "https://drive.google.com/file/d/1_PFwyqSfAD8noDeIBb5ex7AFF1GVKS0R/preview"
+  },
+  {
+    "id": 70,
+    "titulo": "Todos los nombres",
+    "autor": "José Saramago",
+    "anio": 1997,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/14wKb81zCL6YvgQ9dbx1yA2rn2U4V7J0W/preview"
+  },
+  {
+    "id": 71,
+    "titulo": "Ensayo sobre la lucidez",
+    "autor": "José Saramago",
+    "anio": 2004,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/18jCy-5q4MAjmE1J-WbUACxcqog8tgwzh/preview"
+  },
+  {
+    "id": 72,
+    "titulo": "Ensayo sobre la ceguera",
+    "autor": "José Saramago",
+    "anio": 1995,
+    "genero": "Novela contemporánea",
+    "descripcion": "Una misteriosa epidemia de ceguera blanca arrasa una ciudad y revela la fragilidad de la civilización.",
+    "pdf": "https://drive.google.com/file/d/1XUl33leObTx07xC8hBQMUSNjjBfczBMw/preview"
+  },
+  {
+    "id": 73,
+    "titulo": "El evangelio segun Jesucristo",
+    "autor": "José Saramago",
+    "anio": 1991,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1J7r7Dt2Bi3Cn-PzZzL_lMyPyinIRnabV/preview"
+  },
+  {
+    "id": 74,
+    "titulo": "Frankenstein o el moderno Prometeo",
+    "autor": "Mary Shelley",
+    "anio": 1818,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una criatura creada artificialmente por un joven científico busca su lugar en un mundo que le rechaza.",
+    "pdf": "https://drive.google.com/file/d/1_I2pXaeAXVv_iIfdia2O0lnVGdgS13zz/preview"
+  },
+  {
+    "id": 75,
+    "titulo": "Viento y verdad",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1fRGh7_aVJNLKB-LUAjqfUJ3cC6WgB6ZH/preview"
+  },
+  {
+    "id": 76,
+    "titulo": "El Ritmo de la Guerra",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/10R0lD4wU8mYWAi4EnuTtFF_TbP-a61zT/preview"
+  },
+  {
+    "id": 77,
+    "titulo": "Esquirla del amanecer",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17fAp9VgxVX9wBWe6gzLIYl-ST-_TNVZv/preview"
+  },
+  {
+    "id": 78,
+    "titulo": "Juramentada",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1E8mzKqrjCIytBiXfMggbyVEKgDryRQ5W/preview"
+  },
+  {
+    "id": 79,
+    "titulo": "Danzante del Filo",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1SuvcL9RERvErfO9H92Qb7UbKVRAm2yas/preview"
+  },
+  {
+    "id": 80,
+    "titulo": "Palabras radiantes",
+    "autor": "BRANDON Sanderson",
+    "anio": 2013,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1FK2N91_vCle0DsJgIzFbyuh70ytgK_Ve/preview"
+  },
+  {
+    "id": 81,
+    "titulo": "El camino de los reyes",
+    "autor": "BRANDON Sanderson",
+    "anio": 2010,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "En el mundo de Roshar, tres personas de orígenes distintos se ven envueltas en una guerra cósmica.",
+    "pdf": "https://drive.google.com/file/d/1fxW7G2Cp3vXTtx9hjG3d9WeW3KLG5fCS/preview"
+  },
+  {
+    "id": 82,
+    "titulo": "El metal perdido",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17aiyr-PS36XQIXoN0XP6d8pbXIiLY1Hz/preview"
+  },
+  {
+    "id": 83,
+    "titulo": "Brazales de duelo",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1l0KAZITGvxXbV55UVUEZs2FSxcFn12uX/preview"
+  },
+  {
+    "id": 84,
+    "titulo": "Sombras de identidad",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1KyGbS4R655SrK_pLmzEV48_9RPySB0SO/preview"
+  },
+  {
+    "id": 85,
+    "titulo": "Aleacion de Ley",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1UNAhv3V0ocHikUmoPG23Gs8pkmjhRCvN/preview"
+  },
+  {
+    "id": 86,
+    "titulo": "Nacidos de la bruma Historia secreta",
+    "autor": "BRANDON Sanderson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1XF_MkUIdaLmVzBhjx4omDMmGxyNr_Chj/preview"
+  },
+  {
+    "id": 87,
+    "titulo": "El Heroe de las Eras",
+    "autor": "BRANDON Sanderson",
+    "anio": 2008,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1cC5EKuJtbuApDSW7ARYkSyF-2I56AaLb/preview"
+  },
+  {
+    "id": 88,
+    "titulo": "El Pozo de la Ascension",
+    "autor": "BRANDON Sanderson",
+    "anio": 2007,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1URRdltXuqB-UsLoXSDP07MpwbihwPSTL/preview"
+  },
+  {
+    "id": 89,
+    "titulo": "El Imperio Final Ed revisada",
+    "autor": "BRANDON Sanderson",
+    "anio": 2006,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "En un mundo oscurecido por cenizas, los skaa esclavizados se rebelan contra el inmortal Lord Legislador.",
+    "pdf": "https://drive.google.com/file/d/1Xx4cWKDRECS2jMoVxSGOBEIKyrJNgoHC/preview"
+  },
+  {
+    "id": 90,
+    "titulo": "Vivir éticamente",
+    "autor": "Peter Singer",
+    "anio": 0,
+    "genero": "Ensayo filosófico",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1ssB6HqSMVFim9545aJcmN4HzqsZuSu4H/preview"
+  },
+  {
+    "id": 91,
+    "titulo": "Ética para el mundo real",
+    "autor": "Peter Singer",
+    "anio": 0,
+    "genero": "Ensayo filosófico",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/139cqL6ABTIgn2_Y44SLTPScs3bVOS_YY/preview"
+  },
+  {
+    "id": 92,
+    "titulo": "Ética práctica",
+    "autor": "Peter Singer",
+    "anio": 0,
+    "genero": "Ensayo filosófico",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/11dk4tRZKAXPznTlrzdtHEU_0veit_zxt/preview"
+  },
+  {
+    "id": 93,
+    "titulo": "Repensar la vida y la muerte",
+    "autor": "Peter Singer",
+    "anio": 0,
+    "genero": "Ensayo filosófico",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1yEQP2kgWpB9wNTQYEOjwgrGbGi9v7XoN/preview"
+  },
+  {
+    "id": 94,
+    "titulo": "Una izquierda darwiniana",
+    "autor": "Peter Singer",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Ri3RPFsf1clVNbNDnLRZNYgB5MEvaOFI/preview"
+  },
+  {
+    "id": 95,
+    "titulo": "Compendio de etica",
+    "autor": "Peter Singer",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1yqH-MtmeJEmPiq0RJlbiaHWZIJ_ThOrh/preview"
+  },
+  {
+    "id": 96,
+    "titulo": "Sombras de antepasados olvidados",
+    "autor": "Carl Sagan",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1kEVdXbVBy1jOa0cfxr3DM71RvZYWPRvS/preview"
+  },
+  {
+    "id": 97,
+    "titulo": "El cerebro de roca",
+    "autor": "Carl Sagan",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/16pcQmtMbBkTyxjfyzNZYUImbT5oBLxup/preview"
+  },
+  {
+    "id": 98,
+    "titulo": "Cosmos",
+    "autor": "Carl Sagan",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1kEXJeOqlLY5DhUjH31HeFM-Pr-9LPUZf/preview"
+  },
+  {
+    "id": 99,
+    "titulo": "Un punto azul palido",
+    "autor": "Carl Sagan",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/125FLscrESmoi_U1mCBHY0wFvlZU-Tjt-/preview"
+  },
+  {
+    "id": 100,
+    "titulo": "El mundo y sus demonios",
+    "autor": "Carl Sagan",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Y-kKH7jzZleDCs1cBJcVY49-WKkErF53/preview"
+  },
+  {
+    "id": 101,
+    "titulo": "Edipo Rey-Sofocles",
+    "autor": "Sofocles",
+    "anio": -429,
+    "genero": "Novela clásica",
+    "descripcion": "La trágica historia del rey que mata a su padre y se casa con su madre sin saberlo, cumpliendo la profecía.",
+    "pdf": "https://drive.google.com/file/d/1aSyyGTmlVNxbRcjffveZEKUkHd_XGFXu/preview"
+  },
+  {
+    "id": 102,
+    "titulo": "Frankenstein-Mary Shelley",
+    "autor": "Mary Shelley",
+    "anio": 1818,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una criatura creada artificialmente por un joven científico busca su lugar en un mundo que le rechaza.",
+    "pdf": "https://drive.google.com/file/d/1fSCu4sQfGQ0Tx7Y3KxwxqLo__9CKzB35/preview"
+  },
+  {
+    "id": 103,
+    "titulo": "Dracula",
+    "autor": "Bram Stoker",
+    "anio": 1897,
+    "genero": "Thriller y misterio",
+    "descripcion": "El conde Drácula, un vampiro de Transilvania, intenta mudarse a Inglaterra para encontrar nuevas víctimas.",
+    "pdf": "https://drive.google.com/file/d/1rk80cMMmr-bUjJKgXOVIZvQKvEaPiJ3M/preview"
+  },
+  {
+    "id": 104,
+    "titulo": "El huesped de Dracula-Stoker Bram",
+    "autor": "Bram Stoker",
+    "anio": 1897,
+    "genero": "Thriller y misterio",
+    "descripcion": "El conde Drácula, un vampiro de Transilvania, intenta mudarse a Inglaterra para encontrar nuevas víctimas.",
+    "pdf": "https://drive.google.com/file/d/1jW_PIgKKhNNa65z5FHZ25iL2pEVjtv0d/preview"
+  },
+  {
+    "id": 105,
+    "titulo": "Ubunchu 3",
+    "autor": "Hiroshi Seo",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1xNiX8On-hyv1fJuXNpCG83heY52bjS93/preview"
+  },
+  {
+    "id": 106,
+    "titulo": "La Nausea-Sartre Jean-Paul",
+    "autor": "Jean-Paul Sartre",
+    "anio": 1938,
+    "genero": "Ensayo filosófico",
+    "descripcion": "El personaje de Roquentin experimenta una profunda crisis existencial al sentir el absurdo de la existencia.",
+    "pdf": "https://drive.google.com/file/d/1B7IWbNk_ys6OTx5OSYF-DTrc2Ztgnibq/preview"
+  },
+  {
+    "id": 107,
+    "titulo": "El principito-Antoine De Saint Exupery",
+    "autor": "Antoine De Saint Exupery",
+    "anio": 1943,
+    "genero": "Novela clásica",
+    "descripcion": "Un aviador perdido en el desierto conoce a un pequeño príncipe de otro planeta que busca amigos.",
+    "pdf": "https://drive.google.com/file/d/1XPpyTS3aY3X4ZPB2f88KEDtxD8gVRjlI/preview"
+  },
+  {
+    "id": 108,
+    "titulo": "El capitan tormenta",
+    "autor": "Emilio Salgari",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1u_tAFMQGGdb8Gdc1L0I8QyUmv8qFYiGg/preview"
+  },
+  {
+    "id": 109,
+    "titulo": "Los 120 dias de Sodoma",
+    "autor": "Marques de Sade",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1VAWk7ZUH8CipQr_2-VtsNCi6tjA1VjZR/preview"
+  },
+  {
+    "id": 110,
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "anio": 1949,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "En un Estado totalitario, Winston Smith trabaja para el Ministerio de la Verdad reescribiendo la historia.",
+    "pdf": "https://drive.google.com/file/d/1YT4Inl6S5cYo6LdEZfImbiXX5CNUKTC6/preview"
+  },
+  {
+    "id": 111,
+    "titulo": "Rebelion en la granja trad Maria Jose Martin Pinto",
+    "autor": "George Orwell",
+    "anio": 1945,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Fábula política sobre animales que se rebelan contra sus dueños humanos y establecen su propia tiranía.",
+    "pdf": "https://drive.google.com/file/d/1xH4T3y001d4eK1XKCNhsG3nUx6ROzYbF/preview"
+  },
+  {
+    "id": 112,
+    "titulo": "Los 7 habitos de la gente altamente efectiva",
+    "autor": "Stephen R. Covey",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "Principios fundamentales de efectividad personal y profesional basados en valores universales y atemporales.",
+    "pdf": "https://drive.google.com/file/d/1Sk5VSKc6856yFVM90ONw9eLJrudXA2AL/preview"
+  },
+  {
+    "id": 113,
+    "titulo": "El hombre rebelde",
+    "autor": "Albert Camus",
+    "anio": 1951,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Análisis filosófico de la rebelión humana contra la injusticia y sus consecuencias en la historia moderna.",
+    "pdf": "https://drive.google.com/file/d/1sWJ4PiulnNo_fkmAGWrnb9aXYsvErmeF/preview"
+  },
+  {
+    "id": 114,
+    "titulo": "El extranjero",
+    "autor": "Albert Camus",
+    "anio": 1942,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Meursault, un hombre emocionalmente indiferente, mata a un árabe en Argelia y enfrenta su juicio.",
+    "pdf": "https://drive.google.com/file/d/1E_wIudNQnQ2ia_jlmq20goN4xhSa8xSR/preview"
+  },
+  {
+    "id": 115,
+    "titulo": "El mito de Sisifo",
+    "autor": "Albert Camus",
+    "anio": 1942,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Ensayo filosófico sobre el absurdo de la existencia humana y la posibilidad de encontrar sentido en ella.",
+    "pdf": "https://drive.google.com/file/d/1On29RBUkOub4DAmaRkAgXGjF-asOhs7d/preview"
+  },
+  {
+    "id": 116,
+    "titulo": "Gregor La profecia de la destruccion",
+    "autor": "Suzanne Collins",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1te0DDGwG4F3KI9N92-lwoa3qxGvZVvwI/preview"
+  },
+  {
+    "id": 117,
+    "titulo": "Gregor La profecia del gris",
+    "autor": "Suzanne Collins",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1dd6p0P33omM16MrT2k_4Znq1vuyszRm8/preview"
+  },
+  {
+    "id": 118,
+    "titulo": "Balada de pajaros cantores y serpientes",
+    "autor": "Suzanne Collins",
+    "anio": 2020,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1LRHDoSsPGjKjUpn4QZmodafdRVOnR_-d/preview"
+  },
+  {
+    "id": 119,
+    "titulo": "Sinsajo",
+    "autor": "Suzanne Collins",
+    "anio": 2010,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1_QpNzPuxU3lgXk09k6u9IltiMfGau5fO/preview"
+  },
+  {
+    "id": 120,
+    "titulo": "En llamas",
+    "autor": "Suzanne Collins",
+    "anio": 2009,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Cuentos que retratan la vida rural y violenta del México posrevolucionario con un lenguaje lírico único.",
+    "pdf": "https://drive.google.com/file/d/1UBVFDEW7PUAkJfYCVkOZ5M8MRpIt1bJk/preview"
+  },
+  {
+    "id": 121,
+    "titulo": "Los juegos del hambre",
+    "autor": "Suzanne Collins",
+    "anio": 2008,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "En un futuro distópico, una joven se ofrece voluntaria para participar en un brutal juego televisado de supervivencia.",
+    "pdf": "https://drive.google.com/file/d/13YqhFcuLrdRgTqliq3q3Ro9sC8WKTXkH/preview"
+  },
+  {
+    "id": 122,
+    "titulo": "Bestiario",
+    "autor": "Julio Cortázar",
+    "anio": 1951,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1WNoGH_Nch6Ci2lNQj4FQx2S-zz7rQeKy/preview"
+  },
+  {
+    "id": 123,
+    "titulo": "Juegos",
+    "autor": "Julio Cortázar",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "En un futuro distópico, una joven se ofrece voluntaria para participar en un brutal juego televisado de supervivencia.",
+    "pdf": "https://drive.google.com/file/d/1yTY6DHrPD0uPGN80tFwppdBfJjNJfhNX/preview"
+  },
+  {
+    "id": 124,
+    "titulo": "Rayuela",
+    "autor": "Julio Cortázar",
+    "anio": 1963,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Novela experimental que puede leerse de múltiples formas, siguiendo a Horacio Oliveira en París y Buenos Aires.",
+    "pdf": "https://drive.google.com/file/d/17zeYW9lCHCjFxjDJivJZ463xqXmYnRlA/preview"
+  },
+  {
+    "id": 125,
+    "titulo": "Ritos",
+    "autor": "Julio Cortázar",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Diez personas reunidas en una isla aislada son asesinadas una a una por un misterioso asesino.",
+    "pdf": "https://drive.google.com/file/d/1D60kitjoXRqk650jLBSp-IgaYDrUJaQX/preview"
+  },
+  {
+    "id": 126,
+    "titulo": "Retratos de una isla",
+    "autor": "Manuel Cubero Urbano",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1zEdMkb0kOPlga2h6_Ju5m1cJu1ozHDD5/preview"
+  },
+  {
+    "id": 127,
+    "titulo": "Cronicas de Alburia",
+    "autor": "Andres Cortes Caballero",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1iLTgoWAUWiFrnHdYLYxirJxDkQeeiK0-/preview"
+  },
+  {
+    "id": 128,
+    "titulo": "El corazon de las tinieblas",
+    "autor": "Joseph Conrad",
+    "anio": 1899,
+    "genero": "Novela clásica",
+    "descripcion": "Un marinero remonta el Congo para encontrar a Kurtz, un comerciante de marfil que se ha convertido en un dios oscuro.",
+    "pdf": "https://drive.google.com/file/d/1t-7H0wZnimTItTem-dV0vRhn354x_nhN/preview"
+  },
+  {
+    "id": 129,
+    "titulo": "Diez negritos",
+    "autor": "Agatha Christie",
+    "anio": 1939,
+    "genero": "Thriller y misterio",
+    "descripcion": "Diez personas reunidas en una isla aislada son asesinadas una a una por un misterioso asesino.",
+    "pdf": "https://drive.google.com/file/d/1IdaXTaP9xqkLX4Lb-jJVrmJyM15gXOLI/preview"
+  },
+  {
+    "id": 130,
+    "titulo": "La dama del perrito",
+    "autor": "Anton Chejov",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1qGf-bjIR16VLoiFaKX1okD7oMMnbxapg/preview"
+  },
+  {
+    "id": 131,
+    "titulo": "El Desguace",
+    "autor": "Maria Cera",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1gLEPpthBKY_KJehddJ4PvxcHfNHrrv4I/preview"
+  },
+  {
+    "id": 132,
+    "titulo": "Alicia en el Pais de las Maravillas Al otro lado del espejo",
+    "autor": "Lewis Carroll",
+    "anio": 1865,
+    "genero": "Novela clásica",
+    "descripcion": "Una niña cae por una madriguera de conejo y descubre un mundo fantástico lleno de personajes imposibles.",
+    "pdf": "https://drive.google.com/file/d/1gzkt8aEc-6oxSyN83nKs6z5ve37dkmxb/preview"
+  },
+  {
+    "id": 133,
+    "titulo": "Las aventuras de Alicia",
+    "autor": "Lewis Carroll",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1mRWC9nsifCcWGlZI785GfxEZNpSDnuTR/preview"
+  },
+  {
+    "id": 134,
+    "titulo": "A traves del espejo",
+    "autor": "Lewis Carroll",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/162C4TQl-gqRmzVcwX9Z3Aoucyx3PKmOd/preview"
+  },
+  {
+    "id": 135,
+    "titulo": "Alicia en el pais de las maravillas-Carroll Lewis",
+    "autor": "Lewis Carroll",
+    "anio": 1865,
+    "genero": "Novela clásica",
+    "descripcion": "Una niña cae por una madriguera de conejo y descubre un mundo fantástico lleno de personajes imposibles.",
+    "pdf": "https://drive.google.com/file/d/1VRBKCT24Hgh2YaRX5ZFlcz-LmVkOW4gY/preview"
+  },
+  {
+    "id": 136,
+    "titulo": "Las ciudades Invisibles-Italo Calvino",
+    "autor": "Italo Calvino",
+    "anio": 1972,
+    "genero": "Novela contemporánea",
+    "descripcion": "Marco Polo describe a Kublai Kan ciudades imaginarias que son metáforas sobre la memoria y el deseo humano.",
+    "pdf": "https://drive.google.com/file/d/1xiaWZLeEEaEChkyJDaaK3rCkPNrxSqqQ/preview"
+  },
+  {
+    "id": 137,
+    "titulo": "La vida es sueno-Calderon de la Barca Pedro",
+    "autor": "Pedro Calderon De La Barca",
+    "anio": 1635,
+    "genero": "Novela clásica",
+    "descripcion": "Drama barroco sobre el príncipe Segismundo, encadenado desde su nacimiento por una profecía nefasta.",
+    "pdf": "https://drive.google.com/file/d/17CjPpYf__b0STH9J9F4KKixkzgk4SsqP/preview"
+  },
+  {
+    "id": 138,
+    "titulo": "El mayor encanto amor",
+    "autor": "Pedro Calderon De La Barca",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Kc3zJ_wXVgbk0Gw8Pzy5wa3r9k1-XtPc/preview"
+  },
+  {
+    "id": 139,
+    "titulo": "Cómo ganar amigos e influir sobre las personas",
+    "autor": "DALE Carnegie",
+    "anio": 1936,
+    "genero": "Desarrollo personal",
+    "descripcion": "Clásico de desarrollo personal con técnicas probadas para mejorar las relaciones humanas y el liderazgo.",
+    "pdf": "https://drive.google.com/file/d/1aERis9iYrB8t833R67TkrXVTuhYBxd9l/preview"
+  },
+  {
+    "id": 140,
+    "titulo": "Habitos atomicos",
+    "autor": "JAMES Clear",
+    "anio": 2018,
+    "genero": "Desarrollo personal",
+    "descripcion": "Sistema práctico para construir buenos hábitos y eliminar los malos mediante cambios pequeños y consistentes.",
+    "pdf": "https://drive.google.com/file/d/1vSUQcAk2_6ygjCIVNR1klBt8fT82IisG/preview"
+  },
+  {
+    "id": 141,
     "titulo": "María",
-    "autor": "Jorge Isaacs",
+    "autor": "JORGE Isaacs",
     "anio": 1867,
     "genero": "Literatura latinoamericana",
-    "descripcion": "La novela romántica más importante de Colombia y una de las cumbres del romanticismo latinoamericano.",
+    "descripcion": "La novela romántica más importante de Colombia, historia de amor trágico entre Efraín y María en el Valle del Cauca.",
     "pdf": "https://drive.google.com/file/d/1emk-iwK3QJ9HRsKYJ6QJ911_7fmk2qNP/preview"
+  },
+  {
+    "id": 142,
+    "titulo": "El Principe",
+    "autor": "Nicolas Maquiavelo",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "Tratado político renacentista sobre el ejercicio del poder, la conquista y el mantenimiento del Estado.",
+    "pdf": "https://drive.google.com/file/d/15DCk8YG4yYlveTvkwQvsJxJZAEIxHIk8/preview"
+  },
+  {
+    "id": 143,
+    "titulo": "En la frontera",
+    "autor": "Cormac Mccarthy",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1d929UeXOJ8f26psEJHUPrGk1BVFW9bwp/preview"
+  },
+  {
+    "id": 144,
+    "titulo": "Todos los hermosos caballos",
+    "autor": "Cormac Mccarthy",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1KDchbOhHKMiK0jO3Y0FxEhpaMLm9ti38/preview"
+  },
+  {
+    "id": 145,
+    "titulo": "No es pais para viejos",
+    "autor": "Cormac Mccarthy",
+    "anio": 2005,
+    "genero": "Novela contemporánea",
+    "descripcion": "Un cazador encuentra una maleta con dos millones de dólares y desata una cadena de violencia implacable.",
+    "pdf": "https://drive.google.com/file/d/1jhPg-3pwrI7s18HNqKgxEEDWCneGNMb-/preview"
+  },
+  {
+    "id": 146,
+    "titulo": "Meridiano de sangre",
+    "autor": "Cormac Mccarthy",
+    "anio": 1985,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/12-xUGaGlG3aSTufKsZz8Cg3ZvR3_C_-L/preview"
+  },
+  {
+    "id": 147,
+    "titulo": "La carretera",
+    "autor": "Cormac Mccarthy",
+    "anio": 2006,
+    "genero": "Novela contemporánea",
+    "descripcion": "Un padre y su hijo atraviesan una América postapocalíptica gris y helada en busca de la costa sur.",
+    "pdf": "https://drive.google.com/file/d/17PheHKIfZUZyFmmM9d4J2qWDITz5AGKz/preview"
+  },
+  {
+    "id": 148,
+    "titulo": "El increible hombre menguante",
+    "autor": "Richard Matheson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1aPxs_PN_ZzPAaImtS6rmV8HptlbI2qGp/preview"
+  },
+  {
+    "id": 149,
+    "titulo": "La casa infernal",
+    "autor": "Richard Matheson",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1meq-PXN7rsGpLQ_LGGszyEiAXSHKxFDl/preview"
+  },
+  {
+    "id": 150,
+    "titulo": "Soy leyenda",
+    "autor": "Richard Matheson",
+    "anio": 1954,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "El último hombre en una Tierra dominada por vampiros busca una cura mientras lucha por su supervivencia.",
+    "pdf": "https://drive.google.com/file/d/1XAQxTW0pBkxe_2dnsMS7l2xHhh1QNnGr/preview"
+  },
+  {
+    "id": 151,
+    "titulo": "Perdona si te llamo amor",
+    "autor": "Federico Moccia",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1vPzTNN_wiuUtZd7Y2t_4MZmwylKV6nI_/preview"
+  },
+  {
+    "id": 152,
+    "titulo": "Tengo ganas de ti",
+    "autor": "Federico Moccia",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1T_aeUgKIi-rOgjejooKKBCWho7Ly_Rey/preview"
+  },
+  {
+    "id": 153,
+    "titulo": "A tres metros sobre el cielo",
+    "autor": "Federico Moccia",
+    "anio": 1992,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/123pbUt8sFbnaXT80cfMz_lJpUYte_Z9Y/preview"
+  },
+  {
+    "id": 154,
+    "titulo": "La huesped",
+    "autor": "Stephenie Meyer",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1QUXaJwep-f9u2m7TQKuDGylbiG4tE7Hm/preview"
+  },
+  {
+    "id": 155,
+    "titulo": "Sol de medianoche",
+    "autor": "Stephenie Meyer",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1l2HyJn3Rj7fkJpq_n_TJA4B69tvj7nXB/preview"
+  },
+  {
+    "id": 156,
+    "titulo": "Amanecer",
+    "autor": "Stephenie Meyer",
+    "anio": 2008,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JcdrV9jiJhPCuPSW9NAtLkqG6yPt1gf0/preview"
+  },
+  {
+    "id": 157,
+    "titulo": "La segunda vida de Bree Tanner",
+    "autor": "Stephenie Meyer",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/12JSLp-G7eqqkbFN4iDszINSdFdaOenm8/preview"
+  },
+  {
+    "id": 158,
+    "titulo": "Eclipse",
+    "autor": "Stephenie Meyer",
+    "anio": 2007,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1lDr1eyeaZzaPVeGV08e6pjyICLJNnMlU/preview"
+  },
+  {
+    "id": 159,
+    "titulo": "Luna nueva",
+    "autor": "Stephenie Meyer",
+    "anio": 2006,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/14danzOMle6Ok5sTqaD2rbPt2Gztebr1J/preview"
+  },
+  {
+    "id": 160,
+    "titulo": "Crepusculo",
+    "autor": "Stephenie Meyer",
+    "anio": 2005,
+    "genero": "Novela contemporánea",
+    "descripcion": "Una adolescente se muda a Forks y se enamora de un misterioso compañero de clase que resulta ser vampiro.",
+    "pdf": "https://drive.google.com/file/d/1KXABZleMMbD2q42LCj9jo12s-qzFuwgb/preview"
+  },
+  {
+    "id": 161,
+    "titulo": "Sociedad de la mente",
+    "autor": "Marvin Minsky",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1MjbmsKJr5_UPPil911SNV4A4jCws_QBP/preview"
+  },
+  {
+    "id": 162,
+    "titulo": "La maquina de las emociones",
+    "autor": "Marvin Minsky",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1UsEF8jr4qeTZtIPhZCxMIYZLb_NRH4kh/preview"
+  },
+  {
+    "id": 163,
+    "titulo": "Un lugar para morir, un lugar para nacer",
+    "autor": "Maria Moreno",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1K3uAiDN39eh-0oKVJXcmXNse8R7XnMzw/preview"
+  },
+  {
+    "id": 164,
+    "titulo": "Conciencia de especie",
+    "autor": "Maria Moreno",
+    "anio": 0,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1p9Y1bqgGxjtovdkbi8ZCpmx3zHOaMZuu/preview"
+  },
+  {
+    "id": 165,
+    "titulo": "Paraiso Perdido-Milton John",
+    "autor": "John Milton",
+    "anio": 1667,
+    "genero": "Poesía clásica",
+    "descripcion": "Poema épico sobre la caída de Adán y Eva del Paraíso tras ser tentados por Satanás.",
+    "pdf": "https://drive.google.com/file/d/1_fBf1UHk-RUEDD4JMtI9Asi8ukAhZ44C/preview"
+  },
+  {
+    "id": 166,
+    "titulo": "Moby Dick-Herman Melville",
+    "autor": "Herman Melville",
+    "anio": 1851,
+    "genero": "Novela clásica",
+    "descripcion": "El capitán Ahab conduce su ballenero en una obsesiva persecución de la ballena blanca que le mutiló.",
+    "pdf": "https://drive.google.com/file/d/1k1C1dYBQRXV7vIOT0laZ-F-pDmHTQz6h/preview"
+  },
+  {
+    "id": 167,
+    "titulo": "Suenos de cristal",
+    "autor": "Simone Mascardi",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JmgbCSXYWwhDB_stQucj_lYVxN-MRmRL/preview"
+  },
+  {
+    "id": 168,
+    "titulo": "Mientras escribo",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17Jd8XJKn4VrcEKUAHWNVYGhpYA5ia-MW/preview"
+  },
+  {
+    "id": 169,
+    "titulo": "Mile 81",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1295zqIWpda-SV0xbQ1qp7GwhkD9yIX84/preview"
+  },
+  {
+    "id": 170,
+    "titulo": "Misery",
+    "autor": "Stephen King",
+    "anio": 1987,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1OIhqr29sOhMV-L5IoMqIxmgunm7wZ5Ja/preview"
+  },
+  {
+    "id": 171,
+    "titulo": "Montado en la Bala",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1HcGIOK0jKTuLYLjIWNttuehhOPIve032/preview"
+  },
+  {
+    "id": 172,
+    "titulo": "Mr Mercedes",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1k6Fhhv5RoGHPiTtrLRA1dL5oNlLt1E9a/preview"
+  },
+  {
+    "id": 173,
+    "titulo": "Ojos de fuego",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1T8GoaWJ6_AWyznzLgC-6JX2aWn--RUCu/preview"
+  },
+  {
+    "id": 174,
+    "titulo": "Pesadillas y alucinaciones",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1l_vtm9BvyRc6v70fSGdHT0gg_jxlNpr-/preview"
+  },
+  {
+    "id": 175,
+    "titulo": "Posesion",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Ovr7PQwE-39uSijPwp-D5gLttIH2YTe-/preview"
+  },
+  {
+    "id": 176,
+    "titulo": "Quien Pierde Paga",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1nern9A8NqBX2ZoEZO98exxlIyYGmfc5O/preview"
+  },
+  {
+    "id": 177,
+    "titulo": "Rabia",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1ICFM0pfLEWhPIK-6yu-32946gSY7XrVq/preview"
+  },
+  {
+    "id": 178,
+    "titulo": "Revival",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1nLrxGPhLhG5zjQddb4sLFPs5Hlg7DKzr/preview"
+  },
+  {
+    "id": 179,
+    "titulo": "Salems Lot",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1vi5Qh3cWvzRIfHIzF5KN8QKp6AI4T8pd/preview"
+  },
+  {
+    "id": 180,
+    "titulo": "Todo es Eventual",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1IdcK4F6DCaxGP_Y1eodt3ge7Pthjbr4P/preview"
+  },
+  {
+    "id": 181,
+    "titulo": "Todo oscuro, sin estrellas",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/15LulD-G6Hu3ZN2ikTse3mwe5ruX5Un0n/preview"
+  },
+  {
+    "id": 182,
+    "titulo": "Un rostro en la multitud",
+    "autor": "Stephen King",
+    "anio": 1986,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1s2rWY5KCMJj33BuZ6sNAof7QXnjUxORn/preview"
+  },
+  {
+    "id": 183,
+    "titulo": "Un saco de huesos",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1xPBH8ml3wb9RxRxc52hXPphEpivPhUq6/preview"
+  },
+  {
+    "id": 184,
+    "titulo": "Verano de Corrupcion",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1KzBV_u39O_z9eKvR1n9KN-yh8F4o-FVO/preview"
+  },
+  {
+    "id": 185,
+    "titulo": "La zona muerta",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1VLqQbJRMs2anCzxcwrll3VqaLv9AEwYx/preview"
+  },
+  {
+    "id": 186,
+    "titulo": "Las cuatro despues de la medianoche",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Wd67cUP3YvZV6eXb4mKqsOW6eTmY9LEV/preview"
+  },
+  {
+    "id": 187,
+    "titulo": "Las Cuatro Despues De Medianoche",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1thn7i2_DKkPZZE6nLyrvew9tTXRtg251/preview"
+  },
+  {
+    "id": 188,
+    "titulo": "Las cuatro estaciones",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1_cUWUNUNVnZ8yQqmGXkJlWzy5YlYtw72/preview"
+  },
+  {
+    "id": 189,
+    "titulo": "Las cuatro estaciones",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/11eWR8duXDchs0WltWa3nxQAz8lzMJlL4/preview"
+  },
+  {
+    "id": 190,
+    "titulo": "Las Dos Después De Medianoche",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1AYg1t6BxO-Ks6INulg8OQBFa6oewzCu7/preview"
+  },
+  {
+    "id": 191,
+    "titulo": "Laurie",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/18HGE1eiVNe3OBucp_BgYLQeFZv2ozBpX/preview"
+  },
+  {
+    "id": 192,
+    "titulo": "Los Tommyknockers",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1HENaVgIWh3yOSxPLwsVy5oKig5kDPx7H/preview"
+  },
+  {
+    "id": 193,
+    "titulo": "Los Ojos del Dragon",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1R297XFQdpzCrDVzE1jwpt11Ld16paj4l/preview"
+  },
+  {
+    "id": 194,
+    "titulo": "Maleficio",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/13oOv3_RIG2nW8YB-fHclyAB0KtdK3TTf/preview"
+  },
+  {
+    "id": 195,
+    "titulo": "La Torre Oscura 2: La llegada de los tres",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1qKenbrNJxH6oTr7J1aTfLCNEf1vxfUHa/preview"
+  },
+  {
+    "id": 196,
+    "titulo": "La Torre Oscura 1: El pistolero",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/14r1NH2Bg4SgE17nr87E6xD4tV5kw0xF8/preview"
+  },
+  {
+    "id": 197,
+    "titulo": "La Torre Oscura 3: Las tierras baldias",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1p1lG2aHN6GEcGvfQR0iiXelD2qBNbAyc/preview"
+  },
+  {
+    "id": 198,
+    "titulo": "La Torre Oscura 4: Mago y cristal",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Lju97EsaiepfXZaZfC59RbF09jxa9qQg/preview"
+  },
+  {
+    "id": 199,
+    "titulo": "La Torre Oscura 5: Lobos del Calla",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1d9AliebDp01hU4avwcPjbB5fZ0AGGT4b/preview"
+  },
+  {
+    "id": 200,
+    "titulo": "La Torre Oscura 6: Cancion de Susannah",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1bHXiryRhPWFZVfooWIZztLpTOdTzZ8U2/preview"
+  },
+  {
+    "id": 201,
+    "titulo": "La Torre Oscura 7: La torre oscura",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1orPowr7reDf2KFibFx3htTv3ZFcWBbBZ/preview"
+  },
+  {
+    "id": 202,
+    "titulo": "El viento por la cerradura",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1BwLjYypzh6N-pDL4riyOHeCA4gRBmhT_/preview"
+  },
+  {
+    "id": 203,
+    "titulo": "La caja de botones de Gwendy",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1tSv4dsRmbcrGuRxvwgGKyiggrpUm-LD7/preview"
+  },
+  {
+    "id": 204,
+    "titulo": "Fin de guardia",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1ZQ9XgJuEDDG9uIHcuMGth0tPcOhwFNix/preview"
+  },
+  {
+    "id": 205,
+    "titulo": "La pluma magica de Gwendy",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1wx5kYznKh9I6a_HSuDCdqYk448DsqTUM/preview"
+  },
+  {
+    "id": 206,
+    "titulo": "La ultima mision de Gwendy",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1UjX-giBvJaMbRt3IPYPnBNmVRX-cCqVq/preview"
+  },
+  {
+    "id": 207,
+    "titulo": "Historias Fantasticas",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1PtOFP4F67ZOQmOWvJoEshUEjK3DRnmpu/preview"
+  },
+  {
+    "id": 208,
+    "titulo": "Insomnia",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1LheK0cCo4J3geNEjEWocZUe80OWybAUR/preview"
+  },
+  {
+    "id": 209,
+    "titulo": "It",
+    "autor": "Stephen King",
+    "anio": 1986,
+    "genero": "Thriller y misterio",
+    "descripcion": "Principios fundamentales de efectividad personal y profesional basados en valores universales y atemporales.",
+    "pdf": "https://drive.google.com/file/d/1yIN2zI92mhIh9htVVgIVwvYLFi3QjRw_/preview"
+  },
+  {
+    "id": 210,
+    "titulo": "Joyland",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1sOjw6RM9zLMLOjHHwgv3LT9e0qPuDU_Q/preview"
+  },
+  {
+    "id": 211,
+    "titulo": "La chica que amaba a Tom Gordon",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/13-seWRX9R_mzdPyrJMOzRpNm6hP72-vI/preview"
+  },
+  {
+    "id": 212,
+    "titulo": "La cupula",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1NhT9az9MsFz0qLE0-QS8iRW92V22WT9h/preview"
+  },
+  {
+    "id": 213,
+    "titulo": "La Expedicion",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1EQUfUb2P9w6F4AW4-VLilva1ENWAMqTY/preview"
+  },
+  {
+    "id": 214,
+    "titulo": "La historia de Lisey",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1aVBSyYHPW4Onrh2LIXaamtqxHOdyWAuq/preview"
+  },
+  {
+    "id": 215,
+    "titulo": "La Larga Marcha",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17nKhF8Af-7PmK0CFqpKS4IWK6j_HQgAg/preview"
+  },
+  {
+    "id": 216,
+    "titulo": "La milla verde",
+    "autor": "Stephen King",
+    "anio": 1996,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1J75ERCjrP1noy3WtXBw_dsV0NfnhEiPz/preview"
+  },
+  {
+    "id": 217,
+    "titulo": "La mitad oscura",
+    "autor": "Stephen King",
+    "anio": 1986,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1-bTQPXhHbxEGvOolmiIiqovUVAZNDFnJ/preview"
+  },
+  {
+    "id": 218,
+    "titulo": "La Niebla",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1h_bflBAnlaHzQNja1EssJi4GnxXp4hg3/preview"
+  },
+  {
+    "id": 219,
+    "titulo": "La sangre manda",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1b55s26gi5D7D2Ms_g61nz2kZXXXvJmmr/preview"
+  },
+  {
+    "id": 220,
+    "titulo": "La Tienda de los Deseos",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1sIrbQzhBoEyfqIom_7eyf6-WlbDOcaHZ/preview"
+  },
+  {
+    "id": 221,
+    "titulo": "La tormenta del siglo",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1eHMagEBUSPkW7qTup86rIFPBvoVa4IKf/preview"
+  },
+  {
+    "id": 222,
+    "titulo": "El juego de Gerald",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1_c4XgXhRnChm7_5gIFtOwIgllej_OvAQ/preview"
+  },
+  {
+    "id": 223,
+    "titulo": "El Instituto",
+    "autor": "Stephen King",
+    "anio": 1986,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1UN-bMn3oAl2MPbPnB22VneX5MFp29YoL/preview"
+  },
+  {
+    "id": 224,
+    "titulo": "El pasillo de la muerte",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1w58qGZ-9ZowSxfBr6wrORMDVji934yJh/preview"
+  },
+  {
+    "id": 225,
+    "titulo": "El resplandor",
+    "autor": "Stephen King",
+    "anio": 1977,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1sSJcfgx5iz-g6Xv2eKDQ7lWzIHwsZI1R/preview"
+  },
+  {
+    "id": 226,
+    "titulo": "El retrato de Rose Madder",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1HvIN0Bet4nYW1qUzHBr383R9_SwsNaYP/preview"
+  },
+  {
+    "id": 227,
+    "titulo": "El talisman",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17pWViCz5aK3TyTRxrb0mM4LrNSe_xt2m/preview"
+  },
+  {
+    "id": 228,
+    "titulo": "El umbral de la noche",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1MHoOsJA6pagvjZj5IWYZRA0HmNfJ0CV4/preview"
+  },
+  {
+    "id": 229,
+    "titulo": "El Visitante",
+    "autor": "Stephen King",
+    "anio": 1986,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1rEup-YiWujGFogXjEeiP4iPUrw0db9QX/preview"
+  },
+  {
+    "id": 230,
+    "titulo": "En la hierba alta",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/19gTfrXCrw2IIRMoC1h2-hMFSa7S4Eggd/preview"
+  },
+  {
+    "id": 231,
+    "titulo": "Elevacion",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1uAXlT57CJFWITQJuD32NAgSDETDaXa7o/preview"
+  },
+  {
+    "id": 232,
+    "titulo": "Cementerio de animales",
+    "autor": "Stephen King",
+    "anio": 1983,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/19avEC8inPctsh0XYnB1gFmEe92lqs84k/preview"
+  },
+  {
+    "id": 233,
+    "titulo": "Colorado kid",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/18oMPfAluKvlWDfr8IxkWwuHzA-oHtaAl/preview"
+  },
+  {
+    "id": 234,
+    "titulo": "Corazones en la Atlantida",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Xv-Jh0RMA-99Bl8PsqnrZaZ-_lAG_Egy/preview"
+  },
+  {
+    "id": 235,
+    "titulo": "Cuento de hadas",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1terC69We2zo_gpyHwbpQvekuYue40Ui-/preview"
+  },
+  {
+    "id": 236,
+    "titulo": "Cujo",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/12V82GXg9u6sNNN_a7pQnbQDeG4GLpBFm/preview"
+  },
+  {
+    "id": 237,
+    "titulo": "Danza macabra",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1nkV-D1RjJf0hnFvmEjFs5d6V_Y2Q24_1/preview"
+  },
+  {
+    "id": 238,
+    "titulo": "Desesperacion",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1yU3mNN4vc_N7cDaInyvdH2zveqlLLUdU/preview"
+  },
+  {
+    "id": 239,
+    "titulo": "Despues",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1-lsKVpcL1a_tRWTp3tuKwvSrxaGc3n5V/preview"
+  },
+  {
+    "id": 240,
+    "titulo": "Despues del anochecer",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JepqgKtp9kYl-bwYl0H4npUoxXl6kcLx/preview"
+  },
+  {
+    "id": 241,
+    "titulo": "Doctor Sueño",
+    "autor": "Stephen King",
+    "anio": 2013,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/12bW4qKfGNFBPu1njExMD_Za_1X4E_8dr/preview"
+  },
+  {
+    "id": 242,
+    "titulo": "Dolores Claiborne",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1S69CZPDJRK6utpRTaxa6d2q1AFpyRIl5/preview"
+  },
+  {
+    "id": 243,
+    "titulo": "Dos historias para no dormir",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JGfQbPQUk3fEq0DPRu3XSQVPW50wn8ZJ/preview"
+  },
+  {
+    "id": 244,
+    "titulo": "Duma Key",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1wBmYvMqIi0c7e-xDW2WFtbODRGnUVpNA/preview"
+  },
+  {
+    "id": 245,
+    "titulo": "El ciclo del hombre lobo",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Buh4uz-blIcleTchr3oUqQjMjB3eKfMh/preview"
+  },
+  {
+    "id": 246,
+    "titulo": "El bazar de los malos sueños",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1O0Wq-51MGl8Bh5u0MeVqr70e-WZTuteW/preview"
+  },
+  {
+    "id": 247,
+    "titulo": "El hombre del traje negro",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17zHibrdUMGETGZ3rDHKcb9hNiPD3WRAy/preview"
+  },
+  {
+    "id": 248,
+    "titulo": "El Fugitivo",
+    "autor": "Stephen King",
+    "anio": 1986,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1z40fZEvFCneh0apjMtgL4iZw-SZ9sEpu/preview"
+  },
+  {
+    "id": 249,
+    "titulo": "Almuerzo en el cafe Gotham",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JEfNdlB9C6CpY6G_PazJukCR8DKv1e1-/preview"
+  },
+  {
+    "id": 250,
+    "titulo": "22 11 63",
+    "autor": "Stephen King",
+    "anio": 2011,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1u4XWkg_oiG3TMZINEfUmptrc5rPuoEsV/preview"
+  },
+  {
+    "id": 251,
+    "titulo": "Apocalipsis Parte 1",
+    "autor": "Stephen King",
+    "anio": 1978,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1VdaAWCNcT30abBklthcyAKxgjNwukyOL/preview"
+  },
+  {
+    "id": 252,
+    "titulo": "Apocalipsis Parte 2",
+    "autor": "Stephen King",
+    "anio": 1978,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1CcF2vovQPUVVnGshqXFlaIWflxQ0GTmo/preview"
+  },
+  {
+    "id": 253,
+    "titulo": "Area 81",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1TLcd3w0qDuWqgZF_YOB9sbYLAh5viEe4/preview"
+  },
+  {
+    "id": 254,
+    "titulo": "Bellas durmientes",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1iYoC6vtXf1mZsCpFl_1cbGXF35OkD3n1/preview"
+  },
+  {
+    "id": 255,
+    "titulo": "Billy Summers",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1nD82Gw8oSCBN6We-N7VL9ABVHb6auoWx/preview"
+  },
+  {
+    "id": 256,
+    "titulo": "Blaze",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/13te49nnfOUFrd8vCA8q2Gk_ICH7cTk_G/preview"
+  },
+  {
+    "id": 257,
+    "titulo": "Blockade Billy",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1att8qST1PnfI1nV2Uu5VnVJToqh2nEn0/preview"
+  },
+  {
+    "id": 258,
+    "titulo": "Buick 8, un coche perverso",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1jpbyQFfYMnDfkjJIwWJ38iut9C6-NkEm/preview"
+  },
+  {
+    "id": 259,
+    "titulo": "Carretera maldita",
+    "autor": "Stephen King",
+    "anio": 1986,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1CNJ3Zj_vXReP2SOnkW62rB83PkzBOCRk/preview"
+  },
+  {
+    "id": 260,
+    "titulo": "Carrie",
+    "autor": "Stephen King",
+    "anio": 1974,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Gczmgki_YmgSisrWOD9Lcqklb-opJ0Zr/preview"
+  },
+  {
+    "id": 261,
+    "titulo": "Casa negra",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1MKIrNm1SoHmxSz0Kox9EWOMWbCvbOEav/preview"
+  },
+  {
+    "id": 262,
+    "titulo": "Cell",
+    "autor": "Stephen King",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1arOLs9BMDhefmEst59IQTLhc95BvrkqH/preview"
+  },
+  {
+    "id": 263,
+    "titulo": "La historia del loco",
+    "autor": "John Katzenbach",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1aaK9pyxeqIXw30w3rlFDdEIFVTceUkE2/preview"
+  },
+  {
+    "id": 264,
+    "titulo": "Jaque al psicoanalista",
+    "autor": "John Katzenbach",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1rngecNnP4CHd7gl1Ef72TI8uYrYbvPkS/preview"
+  },
+  {
+    "id": 265,
+    "titulo": "El psicoanalista",
+    "autor": "John Katzenbach",
+    "anio": 2002,
+    "genero": "Thriller y misterio",
+    "descripcion": "Un psicoanalista recibe una carta anónima que desencadena una pesadilla que amenaza con destruir su vida.",
+    "pdf": "https://drive.google.com/file/d/1Tr3hT32ucXIrRvv6DYfKrZX2h-p_QaYI/preview"
+  },
+  {
+    "id": 266,
+    "titulo": "Diario de un seductor-Kierkegaard Soren",
+    "autor": "Soren Kierkegaard",
+    "anio": 1843,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Estudio filosófico del amor y la seducción a través del diario íntimo de un joven danés calculador.",
+    "pdf": "https://drive.google.com/file/d/1r4KoNcQmR6GqMKWCJv2n31kA1dMxov8F/preview"
+  },
+  {
+    "id": 267,
+    "titulo": "El proceso-Kafka Franz",
+    "autor": "Franz Kafka",
+    "anio": 1925,
+    "genero": "Novela clásica",
+    "descripcion": "Josef K despierta un día arrestado por una causa que nunca le explican en un sistema judicial kafkiano.",
+    "pdf": "https://drive.google.com/file/d/1ULXqg5AlIjI848QuQNp58-tGzpyOCv3l/preview"
+  },
+  {
+    "id": 268,
+    "titulo": "El desaparecido America",
+    "autor": "Franz Kafka",
+    "anio": 1927,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1EiAOZxHsTaL1PG33w1OZsBxxcCBenwSD/preview"
+  },
+  {
+    "id": 269,
+    "titulo": "Ante la Ley",
+    "autor": "Franz Kafka",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/11ZBa7g4hKYWyaM-DRmWN9DgWgwa0JkKt/preview"
+  },
+  {
+    "id": 270,
+    "titulo": "Universos paralelos",
+    "autor": "MICHIO Kaku",
+    "anio": 2004,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "Exploración científica sobre la teoría del multiverso, las dimensiones paralelas y el futuro del cosmos.",
+    "pdf": "https://drive.google.com/file/d/1UlHz4nezedYB0nZP2lFHbRajfidthtky/preview"
+  },
+  {
+    "id": 271,
+    "titulo": "Poemas",
+    "autor": "Alejandra Pizarnik",
+    "anio": 0,
+    "genero": "Poesía clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JLCOqjnAaiP4UpcuwaFF8baAAMPWYG6i/preview"
+  },
+  {
+    "id": 272,
+    "titulo": "Extraccion de la piedra de la locura",
+    "autor": "Alejandra Pizarnik",
+    "anio": 0,
+    "genero": "Poesía clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1x4nX9MvmN2Syq7cqpp6Qoazeg2eb6xMx/preview"
+  },
+  {
+    "id": 273,
+    "titulo": "Las batallas en el desierto",
+    "autor": "José Emilio Pacheco",
+    "anio": 1981,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Novela breve sobre el México de los años cincuenta y un amor infantil imposible que marca para siempre.",
+    "pdf": "https://drive.google.com/file/d/1YHxjR3x5vaCl0J21pmZ1WJCHwqP85tof/preview"
+  },
+  {
+    "id": 274,
+    "titulo": "Los angeles que llevamos dentro",
+    "autor": "Steven Pinker",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1zyLr31QMAPxhp91FbyKNa65ZSInkaRiA/preview"
+  },
+  {
+    "id": 275,
+    "titulo": "Como funciona la mente",
+    "autor": "Steven Pinker",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/16wATXJylf2xYx6Z1ucjPv_-IkoSi24Jo/preview"
+  },
+  {
+    "id": 276,
+    "titulo": "La negacion moderna de la naturaleza humana",
+    "autor": "Steven Pinker",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1NP0Qny8lWu6N_pj7IqpECCH30fu12kIn/preview"
+  },
+  {
+    "id": 277,
+    "titulo": "El instinto del lenguaje",
+    "autor": "Steven Pinker",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/10whlMfIqndVI_nE-8pS8vnXeUjAwWCuu/preview"
+  },
+  {
+    "id": 278,
+    "titulo": "El mundo de las palabras",
+    "autor": "Steven Pinker",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1oMu9penTTN4WFUkGylEj5KHKlqgwnR3-/preview"
+  },
+  {
+    "id": 279,
+    "titulo": "Eterno Treblinka",
+    "autor": "Charles Patterson",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1csE-RMOq6NUG7B1urRTpQHlUtnMvjmAX/preview"
+  },
+  {
+    "id": 280,
+    "titulo": "Poemas",
+    "autor": "Edgar Allan Poe",
+    "anio": 1845,
+    "genero": "Cuento y relato corto",
+    "descripcion": "Poemario inaugural de Neruda que combina el deseo erótico con la melancolía del amor perdido.",
+    "pdf": "https://drive.google.com/file/d/1X-V1_REhp0-CxJgBafIZkMaoyqbxMc8L/preview"
+  },
+  {
+    "id": 281,
+    "titulo": "Narraciones extraordinarias",
+    "autor": "Edgar Allan Poe",
+    "anio": 1840,
+    "genero": "Cuento y relato corto",
+    "descripcion": "Colección de los más célebres relatos de terror, misterio y horror psicológico del maestro del género.",
+    "pdf": "https://drive.google.com/file/d/1vJpRdha0kuYKtPIPB9-D-ustGVA2rhe_/preview"
+  },
+  {
+    "id": 282,
+    "titulo": "La caida de la casa Usher Ilustrado",
+    "autor": "Edgar Allan Poe",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "El narrador visita la mansión de su amigo Roderick Usher y presencia la caída de una antigua familia maldita.",
+    "pdf": "https://drive.google.com/file/d/17wnG6bL-4iDi_IFRg9AhscVE-zWr-oAi/preview"
+  },
+  {
+    "id": 283,
+    "titulo": "El cuervo y otros poemas",
+    "autor": "Edgar Allan Poe",
+    "anio": 1845,
+    "genero": "Cuento y relato corto",
+    "descripcion": "Poemas que exploran la muerte, el duelo y lo sobrenatural con una musicalidad oscura y perturbadora.",
+    "pdf": "https://drive.google.com/file/d/10aiI9RCqwwyhnli4sgaxblNuBZZFFExl/preview"
+  },
+  {
+    "id": 284,
+    "titulo": "El gato negro y otros relatos de terror",
+    "autor": "Edgar Allan Poe",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JcKyZKSNIgICQjtK4UW-XuUgJSibtKgz/preview"
+  },
+  {
+    "id": 285,
+    "titulo": "La Republica-Platon",
+    "autor": "Platon",
+    "anio": -380,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Diálogos sobre la justicia, el gobierno ideal, el papel del filósofo y la naturaleza del alma.",
+    "pdf": "https://drive.google.com/file/d/1TKnJjPeTwpwJmY7kfnTjbpZNw_IORTdE/preview"
+  },
+  {
+    "id": 286,
+    "titulo": "El banquero anarquista-Fernando Pessoa",
+    "autor": "Fernando Pessoa",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JgIlnMxohUAhji3SW9jyPj7w6ziOlV1F/preview"
+  },
+  {
+    "id": 287,
+    "titulo": "El curso del Agua Caliente",
+    "autor": "Pedro Paradis",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JyUcXYH81GoE3F8SQkjFz-NqGDHtGlcw/preview"
+  },
+  {
+    "id": 288,
+    "titulo": "El laberinto de la soledad",
+    "autor": "OCTAVIO Paz",
+    "anio": 1950,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Análisis profundo de la psicología, la historia y la identidad del pueblo mexicano.",
+    "pdf": "https://drive.google.com/file/d/1HJlot6HdYnrBzC0HB9hhjq_cT3j5DCZa/preview"
+  },
+  {
+    "id": 289,
+    "titulo": "Fundacion y Tierra",
+    "autor": "Isaac Asimov",
+    "anio": 1951,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una enciclopedia galáctica es el plan de Hari Seldon para acortar miles de años de oscuridad intergaláctica.",
+    "pdf": "https://drive.google.com/file/d/1_onIRb4Cx7BD3pVjUT5Yv5tlt6P2aufh/preview"
+  },
+  {
+    "id": 290,
+    "titulo": "Los limites de la Fundacion",
+    "autor": "Isaac Asimov",
+    "anio": 1951,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una enciclopedia galáctica es el plan de Hari Seldon para acortar miles de años de oscuridad intergaláctica.",
+    "pdf": "https://drive.google.com/file/d/1cLyLS8GvbdLSMcLbZ4bQ50aujOR_pUKL/preview"
+  },
+  {
+    "id": 291,
+    "titulo": "Segunda Fundacion",
+    "autor": "Isaac Asimov",
+    "anio": 1951,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una enciclopedia galáctica es el plan de Hari Seldon para acortar miles de años de oscuridad intergaláctica.",
+    "pdf": "https://drive.google.com/file/d/1LdR8ZFjC8WxXYWlFLaKuiLsAUknbilAM/preview"
+  },
+  {
+    "id": 292,
+    "titulo": "Fundacion e Imperio",
+    "autor": "Isaac Asimov",
+    "anio": 1951,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una enciclopedia galáctica es el plan de Hari Seldon para acortar miles de años de oscuridad intergaláctica.",
+    "pdf": "https://drive.google.com/file/d/1lRkFbD5IABDtgLWvXPnDhNwRzOU_wNMD/preview"
+  },
+  {
+    "id": 293,
+    "titulo": "Fundacion",
+    "autor": "Isaac Asimov",
+    "anio": 1951,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una enciclopedia galáctica es el plan de Hari Seldon para acortar miles de años de oscuridad intergaláctica.",
+    "pdf": "https://drive.google.com/file/d/1wOi1ntiSEgIXx7fte53hPze39bMzcFyY/preview"
+  },
+  {
+    "id": 294,
+    "titulo": "Hacia la Fundacion",
+    "autor": "Isaac Asimov",
+    "anio": 1951,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una enciclopedia galáctica es el plan de Hari Seldon para acortar miles de años de oscuridad intergaláctica.",
+    "pdf": "https://drive.google.com/file/d/1fhCGQp7eoAdeUTsrV5nbWWIU7kSegR51/preview"
+  },
+  {
+    "id": 295,
+    "titulo": "Preludio a la Fundacion",
+    "autor": "Isaac Asimov",
+    "anio": 1951,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Una enciclopedia galáctica es el plan de Hari Seldon para acortar miles de años de oscuridad intergaláctica.",
+    "pdf": "https://drive.google.com/file/d/1QTwt9hH_LvmMbVW14zmfgNtpsu_kjFV_/preview"
+  },
+  {
+    "id": 296,
+    "titulo": "Trilogia del Imperio",
+    "autor": "Isaac Asimov",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1QL_aFlrucNt3FNLYA7V-jetK9lGDcw3X/preview"
+  },
+  {
+    "id": 297,
+    "titulo": "Suenos de robot",
+    "autor": "Isaac Asimov",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1EyQ4fr-_YbyJQZXOrWvnz1VzycCvF0B3/preview"
+  },
+  {
+    "id": 298,
+    "titulo": "El hombre bicentenario",
+    "autor": "Isaac Asimov",
+    "anio": 1976,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/119YplzsgxxAb6HQhZ5QhF2GxZBJaSHFp/preview"
+  },
+  {
+    "id": 299,
+    "titulo": "Yo, robot",
+    "autor": "Isaac Asimov",
+    "anio": 1950,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Colección de relatos que exploran las implicaciones éticas y filosóficas de la inteligencia artificial y la robótica.",
+    "pdf": "https://drive.google.com/file/d/1V3chHifkfbKqljjYC8LHjqNwZYc2Z14R/preview"
+  },
+  {
+    "id": 300,
+    "titulo": "La casa de los espiritus",
+    "autor": "Isabel Allende",
+    "anio": 1982,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Saga familiar de los Trueba a través de tres generaciones en un país latinoamericano convulso.",
+    "pdf": "https://drive.google.com/file/d/1MqV6ERp5Hk-YzcJUzOwt26yz6KvL1h8-/preview"
+  },
+  {
+    "id": 301,
+    "titulo": "La ciudad de las bestias",
+    "autor": "Isabel Allende",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1hYGImAcnlXQY8Lo_v1byEC1SS_DoXP8P/preview"
+  },
+  {
+    "id": 302,
+    "titulo": "Las mil y una noches-Anonimo",
+    "autor": "Anonimo",
+    "anio": 0,
+    "genero": "Historia y crónica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1hWyiUuXPGrMcToAy8URxBYCmTTtjfihI/preview"
+  },
+  {
+    "id": 303,
+    "titulo": "Evangelio de Judas-Anonimo",
+    "autor": "Anonimo",
+    "anio": 0,
+    "genero": "Historia y crónica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1izyu9hEhZ-bc4Fq_hcrCMW-NxovhvPQm/preview"
+  },
+  {
+    "id": 304,
+    "titulo": "Kamasutra el arte de amar-Anonimo",
+    "autor": "Anonimo",
+    "anio": 0,
+    "genero": "Historia y crónica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Umi6v9iCFQpvZiNHZApPFhYHjUZVafzg/preview"
+  },
+  {
+    "id": 305,
+    "titulo": "Emma",
+    "autor": "Jane Austen",
+    "anio": 1815,
+    "genero": "Novela clásica",
+    "descripcion": "Una joven matchmaker de la alta sociedad inglesa aprende las consecuencias de entrometerse en la vida amorosa ajena.",
+    "pdf": "https://drive.google.com/file/d/15I0irkHFCr5Z9s60FBtfa8LBRjU5LvRK/preview"
+  },
+  {
+    "id": 306,
+    "titulo": "Persuasion",
+    "autor": "Jane Austen",
+    "anio": 1817,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1BheLAzCfK9cF3yj3dQ0gJ4CclGMN0rxJ/preview"
+  },
+  {
+    "id": 307,
+    "titulo": "Sentido y sensibilidad",
+    "autor": "Jane Austen",
+    "anio": 1811,
+    "genero": "Novela clásica",
+    "descripcion": "Dos hermanas de temperamentos opuestos navegan el amor y el matrimonio en la Inglaterra de principios del XIX.",
+    "pdf": "https://drive.google.com/file/d/18KelCfnKqyCFsbIz7_hjqZ2n599gwaO7/preview"
+  },
+  {
+    "id": 308,
+    "titulo": "Orgullo y prejuicio trad Jose C Vales",
+    "autor": "Jane Austen",
+    "anio": 1813,
+    "genero": "Novela clásica",
+    "descripcion": "Elizabeth Bennet y el orgulloso señor Darcy superan sus prejuicios para descubrir su amor mutuo.",
+    "pdf": "https://drive.google.com/file/d/1xzfCFmr7dDK2QyZmBntlQ1qJqlZqaC_r/preview"
+  },
+  {
+    "id": 309,
+    "titulo": "Las habichuelas magicas-Hans Christian Andersen",
+    "autor": "Hans Christian Andersen",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1nKletf3pdAaDSGSS_i0-X7dtUCMcVFfm/preview"
+  },
+  {
+    "id": 310,
+    "titulo": "La sombra-Hans Christian Andersen",
+    "autor": "Hans Christian Andersen",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1axSIGkglZga6G1XX77E0cy33QgbWkDa1/preview"
+  },
+  {
+    "id": 311,
+    "titulo": "CONTAR LA PLATA-MAXIMILIANO ALVAREZ",
+    "autor": "MAXIMILIANO Alvarez",
+    "anio": 0,
+    "genero": "Economía y finanzas",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1MBx1VQFyhITWiOvbndRxAUF7qb4aCM1l/preview"
+  },
+  {
+    "id": 312,
+    "titulo": "Vegetarianismo en el debate politico",
+    "autor": "Ezequiel Arrieta",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1mT5EBkHmX1a_n7j8cBo0DJdkqAyqvUgY/preview"
+  },
+  {
+    "id": 313,
+    "titulo": "La divina comedia-Dante Alighieri",
+    "autor": "Dante Alighieri",
+    "anio": 1320,
+    "genero": "Poesía clásica",
+    "descripcion": "Dante viaja por el Infierno, el Purgatorio y el Paraíso guiado por Virgilio en busca de Beatriz.",
+    "pdf": "https://drive.google.com/file/d/1Lp2vBFWRCcIjABZT7XLG4dww27Wf9o2n/preview"
+  },
+  {
+    "id": 314,
+    "titulo": "Mujercitas-Alcott Louisa May",
+    "autor": "Louisa May Alcott",
+    "anio": 1868,
+    "genero": "Novela clásica",
+    "descripcion": "Las cuatro hermanas March crecen y buscan su lugar en el mundo durante la Guerra de Secesión americana.",
+    "pdf": "https://drive.google.com/file/d/159Vo8hx4T_Rqvr380urRhz4aR9VrUaix/preview"
+  },
+  {
+    "id": 315,
+    "titulo": "Meditaciones Gredos",
+    "autor": "MARCO AURELIO Antonio Augusto",
+    "anio": 180,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Reflexiones personales del emperador Marco Aurelio sobre el estoicismo, la virtud, el deber y la aceptación.",
+    "pdf": "https://drive.google.com/file/d/19t3RDIqkR0uNIgeZikt7dNTULMyc89E2/preview"
+  },
+  {
+    "id": 316,
+    "titulo": "Travesuras de la nina mala",
+    "autor": "Mario Vargas Llosa",
+    "anio": 2006,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1yHudA7PYaD_vzaJLYyF5BG9pmKNXBloi/preview"
+  },
+  {
+    "id": 317,
+    "titulo": "La fiesta del chivo",
+    "autor": "Mario Vargas Llosa",
+    "anio": 2000,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "La caída del dictador Trujillo en República Dominicana narrada desde tres perspectivas simultáneas.",
+    "pdf": "https://drive.google.com/file/d/1OHlQhSp7Xa00FMe_wr3MnH4ysBFuwT3u/preview"
+  },
+  {
+    "id": 318,
+    "titulo": "Pantaleon y las visitadoras",
+    "autor": "Mario Vargas Llosa",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1nFhE5MrkWXBFWkaKEa6repKVF_jrgYaJ/preview"
+  },
+  {
+    "id": 319,
+    "titulo": "Conversacion en La Catedral",
+    "autor": "Mario Vargas Llosa",
+    "anio": 1969,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1xba1uGiIya2mZ3mMzGBFSF3EP3zgnZ8H/preview"
+  },
+  {
+    "id": 320,
+    "titulo": "La ciudad y los perros",
+    "autor": "Mario Vargas Llosa",
+    "anio": 1963,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Novela que retrata la violencia y corrupción en el Colegio Leoncio Prado de Lima, Perú.",
+    "pdf": "https://drive.google.com/file/d/1W9_oGbo-EjKBVGlIigYbH1Qcor_IjsXC/preview"
+  },
+  {
+    "id": 321,
+    "titulo": "Cuentos fantasticos para un mundo en cri",
+    "autor": "Alfonso Villar Guerrero",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1mL3Yd7x7C-tEk3Y7HZdJB0WBVpGvqXl8/preview"
+  },
+  {
+    "id": 322,
+    "titulo": "Veinte mil leguas de viaje submarino",
+    "autor": "Julio Verne",
+    "anio": 1870,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "El capitán Nemo lleva a sus cautivos en un extraordinario viaje por los océanos a bordo del Nautilus.",
+    "pdf": "https://drive.google.com/file/d/13T8rfDAOnI-tDEkM9VBYOpe1COKCB6g1/preview"
+  },
+  {
+    "id": 323,
+    "titulo": "La casa de vapor Penguin Clasicos",
+    "autor": "Julio Verne",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1yYDg6x7mbSar-SGS9-Zbv5QrX5hFoa9Q/preview"
+  },
+  {
+    "id": 324,
+    "titulo": "De la Tierra a la Luna",
+    "autor": "Julio Verne",
+    "anio": 1865,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1ra3v8VG4IdzP81fWCmwMlLJZU1x2iGbR/preview"
+  },
+  {
+    "id": 325,
+    "titulo": "La vuelta al mundo en 80 dias",
+    "autor": "Julio Verne",
+    "anio": 1872,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Phileas Fogg apuesta que puede dar la vuelta al mundo en ochenta días exactos.",
+    "pdf": "https://drive.google.com/file/d/1H3nUDzMOovc_D_Kddocd0MhMP1psG0A4/preview"
+  },
+  {
+    "id": 326,
+    "titulo": "Viaje al centro de la Tierra",
+    "autor": "Julio Verne",
+    "anio": 1864,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Un profesor y sus acompañantes descienden por un volcán islandés hacia el interior de la Tierra.",
+    "pdf": "https://drive.google.com/file/d/1NhaowySKs778E30Qpi2gExw2FGlSe7go/preview"
+  },
+  {
+    "id": 327,
+    "titulo": "Maravillosas aventuras de Antifer",
+    "autor": "Julio Verne",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/19NgWybskavWcKDnVjy3hAkxLtMF1nqlQ/preview"
+  },
+  {
+    "id": 328,
+    "titulo": "Canto general",
+    "autor": "Pablo Neruda",
+    "anio": 1950,
+    "genero": "Poesía clásica",
+    "descripcion": "Monumental poema épico que recorre la historia, la geografía y los pueblos de toda América Latina.",
+    "pdf": "https://drive.google.com/file/d/1ojmnJH-raVRO0JNC_GEvgLl76l_QmG0S/preview"
+  },
+  {
+    "id": 329,
+    "titulo": "Residencia en la tierra",
+    "autor": "Pablo Neruda",
+    "anio": 0,
+    "genero": "Poesía clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/19GV7PMN6URZbvH0tBntg25nbjwwppZeC/preview"
+  },
+  {
+    "id": 330,
+    "titulo": "100 sonetos de amor",
+    "autor": "Pablo Neruda",
+    "anio": 1959,
+    "genero": "Poesía clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Rs_CEiLe1Hh-oIJr9CgxZ2WyBIeQBe74/preview"
+  },
+  {
+    "id": 331,
+    "titulo": "Veinte poemas de amor y una cancion dese",
+    "autor": "Pablo Neruda",
+    "anio": 1924,
+    "genero": "Poesía clásica",
+    "descripcion": "Poemario inaugural de Neruda que combina el deseo erótico con la melancolía del amor perdido.",
+    "pdf": "https://drive.google.com/file/d/1ujdq6UYH0Kh14XeJ3VgMqtA9FJOqhhQo/preview"
+  },
+  {
+    "id": 332,
+    "titulo": "Aforismos",
+    "autor": "Friedrich Nietzsche",
+    "anio": 0,
+    "genero": "Ensayo filosófico",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17sK2ukJMKNS0veQSA7QodSzW9LIoQkSc/preview"
+  },
+  {
+    "id": 333,
+    "titulo": "Asi hablo Zaratustra",
+    "autor": "Friedrich Nietzsche",
+    "anio": 1883,
+    "genero": "Ensayo filosófico",
+    "descripcion": "El profeta Zaratustra proclama la muerte de Dios y la llegada del superhombre en una prosa poética única.",
+    "pdf": "https://drive.google.com/file/d/1Y2FSGeYYrlkwdnuuGj5b30Iiw099WxGA/preview"
+  },
+  {
+    "id": 334,
+    "titulo": "Mas alla del bien y del mal-Friedrich Nietzsche",
+    "autor": "Friedrich Nietzsche",
+    "anio": 1886,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Crítica radical a la moral tradicional y propuesta de una nueva tabla de valores más allá del bien y el mal.",
+    "pdf": "https://drive.google.com/file/d/1tBNpOrcnQlcw88cQWKWj4JZA-Ebx1_0O/preview"
+  },
+  {
+    "id": 335,
+    "titulo": "La Tierra errante",
+    "autor": "Cixin Liu",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1OguT285kvB9X31Ozvq8eAZUneMUyswuB/preview"
+  },
+  {
+    "id": 336,
+    "titulo": "El bosque oscuro",
+    "autor": "Cixin Liu",
+    "anio": 2008,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "La humanidad descubre que el silencio del universo esconde una ley oscura de supervivencia cósmica.",
+    "pdf": "https://drive.google.com/file/d/13kC3IaEM0RJ0gaaKiltjEK9YhQyWd7_e/preview"
+  },
+  {
+    "id": 337,
+    "titulo": "El fin de la muerte",
+    "autor": "Cixin Liu",
+    "anio": 2010,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1h1iRA1-EDneGKj1xsplqauU3yvCMy7dL/preview"
+  },
+  {
+    "id": 338,
+    "titulo": "El problema de los Tres Cuerpos",
+    "autor": "Cixin Liu",
+    "anio": 2008,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Científica china contacta civilización alienígena durante la Revolución Cultural con consecuencias para la humanidad.",
+    "pdf": "https://drive.google.com/file/d/1La8XynI2wcBRmE-NMvJ1DXtA7ivK93-m/preview"
+  },
+  {
+    "id": 339,
+    "titulo": "La ultima batalla",
+    "autor": "S.C. Lewis",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1rY1IkMKyh_Gx1oxUBhQRDkCkBU4MfNka/preview"
+  },
+  {
+    "id": 340,
+    "titulo": "El sobrino del mago",
+    "autor": "S.C. Lewis",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1r9neajiZ4fz1pe_cLIc9ZmvVuDMbb4aQ/preview"
+  },
+  {
+    "id": 341,
+    "titulo": "El caballo y su nino",
+    "autor": "S.C. Lewis",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1ZKHQpPUppgBDCs11_gwJ9a3shRJMk94F/preview"
+  },
+  {
+    "id": 342,
+    "titulo": "La silla de plata",
+    "autor": "S.C. Lewis",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1JwMZMB-BTok1YJYrlTIpnGhSDeoJM4H7/preview"
+  },
+  {
+    "id": 343,
+    "titulo": "La travesia del Explorador del Amanecer",
+    "autor": "S.C. Lewis",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1HZTIXNEr71YTVraLPDNRz6qGa2sPhpoL/preview"
+  },
+  {
+    "id": 344,
+    "titulo": "El principe Caspian",
+    "autor": "S.C. Lewis",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Tratado político renacentista sobre el ejercicio del poder, la conquista y el mantenimiento del Estado.",
+    "pdf": "https://drive.google.com/file/d/1p3rXgCCnaeFJdB62R4Pdq-NJkpYS2xn9/preview"
+  },
+  {
+    "id": 345,
+    "titulo": "El leon, la bruja y el ropero",
+    "autor": "S.C. Lewis",
+    "anio": 1950,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Cuatro hermanos cruzan un armario mágico hacia Narnia, donde una bruja mantiene un eterno invierno sin Navidad.",
+    "pdf": "https://drive.google.com/file/d/1ESVxR3A20kQdZy3dErTsDssGbuxLUsje/preview"
+  },
+  {
+    "id": 346,
+    "titulo": "El cerebro y el mito del yo",
+    "autor": "Rodolfo Llinás R.",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1lUO77YsKukcnrz406WZC6wuW_wAUm-8e/preview"
+  },
+  {
+    "id": 347,
+    "titulo": "Hablaba con las bestias, los pecesy los pajaros",
+    "autor": "Konrad Lorenz",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1AhOZj9aVJaLgRGpoa1NzljahsT5erGr6/preview"
+  },
+  {
+    "id": 348,
+    "titulo": "Bestiario",
+    "autor": "H. P. Lovecraft",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1qMnI5vIpN8RxW3B8-5cOvf56_TpVeiRg/preview"
+  },
+  {
+    "id": 349,
+    "titulo": "El caso de Charles Dexter Ward",
+    "autor": "H. P. Lovecraft",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1WGMwdY72jQ8EHtVwBOVKUKVcSK2IetIS/preview"
+  },
+  {
+    "id": 350,
+    "titulo": "Hongos de Yuggoth y otros poemas fantasticos",
+    "autor": "H. P. Lovecraft",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/17qJ-Fq_eE3p0x2XZS3eOdv4bp9M5WIRR/preview"
+  },
+  {
+    "id": 351,
+    "titulo": "Los mitos de Cthulhu",
+    "autor": "H. P. Lovecraft",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/156ck3jsal0ZLgR1zkG4lwU4z9m3mbYM0/preview"
+  },
+  {
+    "id": 352,
+    "titulo": "El horror de Dunwich",
+    "autor": "H. P. Lovecraft",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1FwrSV08Q1AVmkAIItsjc0TJf198rVRdU/preview"
+  },
+  {
+    "id": 353,
+    "titulo": "El alquimista y otros relatos",
+    "autor": "H. P. Lovecraft",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1oVZjz4CA-cTDJZhqHLVHxwsFEMDqywMf/preview"
+  },
+  {
+    "id": 354,
+    "titulo": "En las montanas de la locura",
+    "autor": "H. P. Lovecraft",
+    "anio": 1936,
+    "genero": "Cuento y relato corto",
+    "descripcion": "Una expedición antártica descubre una ciudad abandonada de criaturas prehumanas de proporciones colosales.",
+    "pdf": "https://drive.google.com/file/d/1atWW968cQYounaXAywmy7VZKLLFrUecj/preview"
+  },
+  {
+    "id": 355,
+    "titulo": "El color que cayo del cielo",
+    "autor": "H. P. Lovecraft",
+    "anio": 0,
+    "genero": "Cuento y relato corto",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/10a36RDhVKt3WXPHo0L8C4EbDcYpqjxJM/preview"
+  },
+  {
+    "id": 356,
+    "titulo": "La llamada de Cthulhu",
+    "autor": "H. P. Lovecraft",
+    "anio": 1928,
+    "genero": "Cuento y relato corto",
+    "descripcion": "El descubrimiento de un culto ancestral lleva a un investigador hacia los misterios de los Grandes Antiguos.",
+    "pdf": "https://drive.google.com/file/d/1HXwHTYqnRhV2-jPVLoWn8aMEC81gCNoo/preview"
+  },
+  {
+    "id": 357,
+    "titulo": "El espejo",
+    "autor": "Eduardo Lopez Vera",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1bFnMMP9fPL5vIKHQWCKPPcIY9s0F9Uxu/preview"
+  },
+  {
+    "id": 358,
+    "titulo": "La peste escarlata-Jack London",
+    "autor": "Jack London",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1pQTJKE51ZILavgeqbE-t0hXDKrbJwRXp/preview"
+  },
+  {
+    "id": 359,
+    "titulo": "El amante de Lady Chatterley",
+    "autor": "D. H. Lawrence",
+    "anio": 1928,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1b-kugBrYHRxH7DS8YzMju_Cjl_jrQL9A/preview"
+  },
+  {
+    "id": 360,
+    "titulo": "Ensayo sobre el entendimiento humano",
+    "autor": "JOHN Locke",
+    "anio": 1689,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Exploración de los límites del conocimiento humano, el origen de las ideas y los fundamentos de la razón.",
+    "pdf": "https://drive.google.com/file/d/1zq9bJ4ffNIkCs6oLIf01M-5SKuZbM3Y8/preview"
+  },
+  {
+    "id": 361,
+    "titulo": "21 lecciones para el siglo XXI",
+    "autor": "Yuval Noah Harari",
+    "anio": 2018,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "Reflexiones sobre los desafíos más urgentes que enfrenta la humanidad en el presente.",
+    "pdf": "https://drive.google.com/file/d/1ehOmjVjjK7wmKZiymwS6b9tALmSKZ_HA/preview"
+  },
+  {
+    "id": 362,
+    "titulo": "Homo Deus",
+    "autor": "Yuval Noah Harari",
+    "anio": 2015,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "Exploración de los proyectos que guiarán a la humanidad en el siglo XXI: inmortalidad, felicidad y divinidad.",
+    "pdf": "https://drive.google.com/file/d/17bTstdCEHR9L5_hwqFMvBayPqqUokeRb/preview"
+  },
+  {
+    "id": 363,
+    "titulo": "De animales a dioses",
+    "autor": "Yuval Noah Harari",
+    "anio": 2011,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "Historia breve de la humanidad desde la prehistoria hasta la revolución científica y tecnológica.",
+    "pdf": "https://drive.google.com/file/d/1jlUY6C9Rj7ByGGyG9s0a_bnJvPxAN3P1/preview"
+  },
+  {
+    "id": 364,
+    "titulo": "Iliada trad Oscar Martinez",
+    "autor": "Homero",
+    "anio": -750,
+    "genero": "Poesía clásica",
+    "descripcion": "La cólera de Aquiles y la guerra de Troya narradas en verso épico por el poeta de la antigüedad griega.",
+    "pdf": "https://drive.google.com/file/d/1t2vmOWjUHuI0ChDg7XLqR7RW9R3U-qPk/preview"
+  },
+  {
+    "id": 365,
+    "titulo": "Odisea",
+    "autor": "Homero",
+    "anio": -700,
+    "genero": "Poesía clásica",
+    "descripcion": "El largo viaje de Odiseo de regreso a Ítaca tras la guerra de Troya, lleno de monstruos y dioses caprichosos.",
+    "pdf": "https://drive.google.com/file/d/1xLPEdILVyI8HgmYhjGGLG2jGRQ8E45TW/preview"
+  },
+  {
+    "id": 366,
+    "titulo": "Cuentos",
+    "autor": "Ernest Hemingway",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1UdSVaxbED0nmBP5lgeQi9yC7_bKfZBnZ/preview"
+  },
+  {
+    "id": 367,
+    "titulo": "El viejo y el mar",
+    "autor": "Ernest Hemingway",
+    "anio": 1952,
+    "genero": "Novela clásica",
+    "descripcion": "Un pescador cubano lucha durante días con un gigantesco marlín en las aguas del Golfo de México.",
+    "pdf": "https://drive.google.com/file/d/19CIX53EaRlHQ88Wdms4v3_u25p2m4Zr-/preview"
+  },
+  {
+    "id": 368,
+    "titulo": "Por quien doblan las campanas",
+    "autor": "Ernest Hemingway",
+    "anio": 1940,
+    "genero": "Novela clásica",
+    "descripcion": "Un profesor americano lucha con los republicanos en la Guerra Civil española durante tres días decisivos.",
+    "pdf": "https://drive.google.com/file/d/1nrZ-tdoCoxD4x7i0pip2-29OhDsGGCNa/preview"
+  },
+  {
+    "id": 369,
+    "titulo": "Un mundo feliz Ed Integra",
+    "autor": "Aldous Huxley",
+    "anio": 1932,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Sociedad futura donde los humanos son producidos en laboratorios y condicionados para ser felices y obedientes.",
+    "pdf": "https://drive.google.com/file/d/1RuIiuqr0KCzrt3Ylgk0_bDd9uVuBcYYu/preview"
+  },
+  {
+    "id": 370,
+    "titulo": "Verity La sombra de un engano",
+    "autor": "Colleen Hoover",
+    "anio": 2018,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1C6YIdrkfZ5flHOGM-iUxylLwFY2BKybo/preview"
+  },
+  {
+    "id": 371,
+    "titulo": "Amor en verso",
+    "autor": "Colleen Hoover",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1GlL7nsioD8IqrMPUxbGH04dhbdcpIsfA/preview"
+  },
+  {
+    "id": 372,
+    "titulo": "Romper el circulo",
+    "autor": "Colleen Hoover",
+    "anio": 2016,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1NL9jMQDy_NEl8-gK3u58ujPoVEDZ3-0z/preview"
+  },
+  {
+    "id": 373,
+    "titulo": "Arena Sensible",
+    "autor": "Manu Herrán",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Om-X3V3-bnO3_GvKnmhlEnYZuHbKL51Y/preview"
+  },
+  {
+    "id": 374,
+    "titulo": "Sufrimiento de los animales salvajes",
+    "autor": "Oscar Horta",
+    "anio": 0,
+    "genero": "Ensayo filosófico",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1B18d040yVkAdGLaajw0SEOHx4VEtgMwp/preview"
+  },
+  {
+    "id": 375,
+    "titulo": "Los miserables",
+    "autor": "Victor Hugo",
+    "anio": 1862,
+    "genero": "Novela clásica",
+    "descripcion": "La redención de Jean Valjean, ex presidiario, perseguido por el implacable inspector Javert en el París del XIX.",
+    "pdf": "https://drive.google.com/file/d/1Ok1Nc7bnZIbhLedtHGqAJKj4-TGMRTxp/preview"
+  },
+  {
+    "id": 376,
+    "titulo": "Nuestra senora de Paris trad Andres Merino",
+    "autor": "Victor Hugo",
+    "anio": 1831,
+    "genero": "Novela clásica",
+    "descripcion": "El jorobado Quasimodo se enamora de la gitana Esmeralda en el París medieval de Víctor Hugo.",
+    "pdf": "https://drive.google.com/file/d/1nhoaFtQcnoGXT-RzMXea7Pk6uSQkRCfm/preview"
+  },
+  {
+    "id": 377,
+    "titulo": "Historia del tiempo",
+    "autor": "STEPHEN Hawking",
+    "anio": 1988,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "Explicación accesible sobre los agujeros negros, el Big Bang y la naturaleza del tiempo para no científicos.",
+    "pdf": "https://drive.google.com/file/d/1tLq4qK7gkxWdNRomuUTOj1RMQCvDrvtU/preview"
+  },
+  {
+    "id": 378,
+    "titulo": "Por qué amamos a los perros, nos comemos a los cerdos y nos vestimos con las vacas. Una introducción al carnismo",
+    "autor": "Melanie Joy",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/18jGZfzyYKdHsNuRT7l6ir7XgK_RLLSCm/preview"
+  },
+  {
+    "id": 379,
+    "titulo": "Los destiladores de naranja",
+    "autor": "Horacio Quiroga",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1TZbS_iLpRoPwKlTBEJwVJvhFekFjBrbP/preview"
+  },
+  {
+    "id": 380,
+    "titulo": "La gallina degollada",
+    "autor": "Horacio Quiroga",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1t309GAZGaxGFVi-e0v3yEsO6LnLCdYAd/preview"
+  },
+  {
+    "id": 381,
+    "titulo": "Los muertos no resucitan y otros relatos policiacos",
+    "autor": "Ray Bradbury",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1E3Cnnq3kP85mql4Aqg_XuflB0J3gpu-B/preview"
+  },
+  {
+    "id": 382,
+    "titulo": "Cronicas marcianas completas",
+    "autor": "Ray Bradbury",
+    "anio": 1950,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Serie de relatos sobre la colonización humana de Marte y la extinción de la civilización marciana.",
+    "pdf": "https://drive.google.com/file/d/1E5u0HF3FZJIW6RSk7Tb_H9GLwDZVp3ds/preview"
+  },
+  {
+    "id": 383,
+    "titulo": "Fahrenheit 451",
+    "autor": "Ray Bradbury",
+    "anio": 1953,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "En una sociedad futura donde los libros están prohibidos, un bombero comienza a cuestionar su trabajo de quemarlos.",
+    "pdf": "https://drive.google.com/file/d/1v27V8ziUqswXI422Z5VeH5glDnCx1fet/preview"
+  },
+  {
+    "id": 384,
+    "titulo": "Guerra Mundial Z",
+    "autor": "Max Brooks",
+    "anio": 2006,
+    "genero": "Thriller y misterio",
+    "descripcion": "Historia oral de la guerra global contra los zombis narrada por sobrevivientes de todo el mundo.",
+    "pdf": "https://drive.google.com/file/d/125EcGIBeo-TnMLMlSCwutHgYVawGwgde/preview"
+  },
+  {
+    "id": 385,
+    "titulo": "El Exorcista Ed Emece latinoamerica",
+    "autor": "William Peter Blatty",
+    "anio": 1971,
+    "genero": "Thriller y misterio",
+    "descripcion": "Una niña de doce años es poseída por una entidad demoníaca y dos sacerdotes intentan exorcizarla.",
+    "pdf": "https://drive.google.com/file/d/1gtLG7XFuForz2WSP4w6KOK7wZyf5yjMl/preview"
+  },
+  {
+    "id": 386,
+    "titulo": "Origen",
+    "autor": "Dan Brown",
+    "anio": 2017,
+    "genero": "Thriller y misterio",
+    "descripcion": "La teoría de la evolución por selección natural, el libro que cambió para siempre la comprensión de la vida.",
+    "pdf": "https://drive.google.com/file/d/1r-VZmOJwl5IxrizMMIVtmXrmm4xWqKDZ/preview"
+  },
+  {
+    "id": 387,
+    "titulo": "Inferno",
+    "autor": "Dan Brown",
+    "anio": 2013,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1dXiOWgJAifCkAto3ZysUHQckcu1E3hHG/preview"
+  },
+  {
+    "id": 388,
+    "titulo": "El simbolo perdido",
+    "autor": "Dan Brown",
+    "anio": 0,
+    "genero": "Thriller y misterio",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1V0lWdjpYOsSYbRe9BnwtCSAzzVj6Yrwm/preview"
+  },
+  {
+    "id": 389,
+    "titulo": "El codigo Da Vinci",
+    "autor": "Dan Brown",
+    "anio": 2003,
+    "genero": "Thriller y misterio",
+    "descripcion": "Un profesor de simbología descubre una conspiración del Opus Dei para ocultar la verdad sobre Jesús.",
+    "pdf": "https://drive.google.com/file/d/13UULbT93_B4neL16rA5LVRJjcVBJeXqq/preview"
+  },
+  {
+    "id": 390,
+    "titulo": "Angeles y demonios",
+    "autor": "Dan Brown",
+    "anio": 2000,
+    "genero": "Thriller y misterio",
+    "descripcion": "Robert Langdon investiga el asesinato de un físico y la amenaza de una bomba de antimateria en el Vaticano.",
+    "pdf": "https://drive.google.com/file/d/1fHXoznLMpg4SqRAmITXD8vsx0CZ1j1X2/preview"
+  },
+  {
+    "id": 391,
+    "titulo": "Historia universal de la infamia",
+    "autor": "Jorge Luis Borges",
+    "anio": 1935,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1-VRasDflLBZEAdu1ktMPu62WROx7q7Ls/preview"
+  },
+  {
+    "id": 392,
+    "titulo": "Ficciones",
+    "autor": "Jorge Luis Borges",
+    "anio": 1944,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Colección de cuentos fantásticos e intelectuales que exploran laberintos, bibliotecas infinitas y mundos paralelos.",
+    "pdf": "https://drive.google.com/file/d/1WcB1xoOcZ40w5HT-5vBDo60L2YtDcPXa/preview"
+  },
+  {
+    "id": 393,
+    "titulo": "El Aleph",
+    "autor": "Jorge Luis Borges",
+    "anio": 1949,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Relatos sobre puntos en el espacio que contienen todos los demás puntos, explorando la infinitud y la memoria.",
+    "pdf": "https://drive.google.com/file/d/1MZrQDenWV9LjoTqoHd8Tga0GOyCR2GQk/preview"
+  },
+  {
+    "id": 394,
+    "titulo": "Poesia completa",
+    "autor": "Jorge Luis Borges",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1bcq19uu0ZC_AzaGcvfxJ-jMbsop0c4zE/preview"
+  },
+  {
+    "id": 395,
+    "titulo": "Deontología o ciencia de la moral",
+    "autor": "Jeremy Bentham",
+    "anio": 0,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1mMr_f9Q2cINZ_ltv00AS69HRgxPkcqUr/preview"
+  },
+  {
+    "id": 396,
+    "titulo": "El ingenio de los peces",
+    "autor": "Jonathan Balcombe",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1NppCZtOa1y-sftm7nSvDRN28RhuF82NI/preview"
+  },
+  {
+    "id": 397,
+    "titulo": "Cumbres borrascosas-Bronte Emily",
+    "autor": "Emily Bronte",
+    "anio": 1847,
+    "genero": "Novela clásica",
+    "descripcion": "La apasionada e intensa historia de amor y venganza entre Heathcliff y Catherine en los páramos ingleses.",
+    "pdf": "https://drive.google.com/file/d/1vfuW7HZAwyQBF_CJRyjhvYweBmrW6Lig/preview"
+  },
+  {
+    "id": 398,
+    "titulo": "Copia este libro",
+    "autor": "David Bravo",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1AVHZckZOwEJDiPcrvkv2BD4ezD8B_31b/preview"
+  },
+  {
+    "id": 399,
+    "titulo": "Canas y barro",
+    "autor": "Vicente Blasco Ibanez",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1S2hjV9t-SvN2EcmM_pfAxZ2dIodQdVhf/preview"
+  },
+  {
+    "id": 400,
+    "titulo": "Karma",
+    "autor": "Annie Besant",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1vC3Iu5g5QHZh2saLl3N6QNIvDBCFW_i8/preview"
+  },
+  {
+    "id": 401,
+    "titulo": "El cisne negro",
+    "autor": "Nassim Nicholas Taleb",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "Análisis sobre el impacto desproporcionado de eventos raros e impredecibles en la historia y la economía.",
+    "pdf": "https://drive.google.com/file/d/14pddCKS-w8bznpVjNYef7aX-nBN5NYg9/preview"
+  },
+  {
+    "id": 402,
+    "titulo": "Guerra y paz",
+    "autor": "León Tolstói",
+    "anio": 1869,
+    "genero": "Novela clásica",
+    "descripcion": "La vida de cinco familias aristocráticas rusas durante las guerras napoleónicas de principios del siglo XIX.",
+    "pdf": "https://drive.google.com/file/d/1zpVh2SA-F_HK6tJQ_36NNIAqABX7nTHC/preview"
+  },
+  {
+    "id": 403,
+    "titulo": "Anna Karenina",
+    "autor": "León Tolstói",
+    "anio": 1878,
+    "genero": "Novela clásica",
+    "descripcion": "La apasionada y trágica historia de una mujer de la aristocracia rusa que abandona a su marido por un oficial.",
+    "pdf": "https://drive.google.com/file/d/1FsmVy4wIzzkzwAig8WkciV9YchtHFUBj/preview"
+  },
+  {
+    "id": 404,
+    "titulo": "Historia de mi infancia",
+    "autor": "León Tolstói",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1GJZoraoAJjSCQbkT1MMlLc5G7h4auDzz/preview"
+  },
+  {
+    "id": 405,
+    "titulo": "El Silmarillion",
+    "autor": "J. R. R. Tolkien",
+    "anio": 1977,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Historia mítica de la creación de la Tierra Media y las guerras de los elfos contra Morgoth en la Primera Era.",
+    "pdf": "https://drive.google.com/file/d/1EHpB89RB62o0O_ywUsPkpe8QbeuFTsp2/preview"
+  },
+  {
+    "id": 406,
+    "titulo": "La comunidad del anillo",
+    "autor": "J. R. R. Tolkien",
+    "anio": 1954,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "Frodo hereda el Anillo Único y parte con ocho compañeros para destruirlo en las llamas del Monte del Destino.",
+    "pdf": "https://drive.google.com/file/d/1eS-B0YbjX0PY9XVomwhnPG6UkA6W0kyh/preview"
+  },
+  {
+    "id": 407,
+    "titulo": "Las dos torres",
+    "autor": "J. R. R. Tolkien",
+    "anio": 1954,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "La Comunidad del Anillo se divide mientras Frodo y Sam se acercan a Mordor guiados por el traicionero Gollum.",
+    "pdf": "https://drive.google.com/file/d/1UUlcfTlkqkFBRCEBoKJ9vUbazqGcxG8i/preview"
+  },
+  {
+    "id": 408,
+    "titulo": "El hobbit",
+    "autor": "J. R. R. Tolkien",
+    "anio": 1937,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "El hobbit Bilbo Bolsón parte en una aventura inesperada con trece enanos para recuperar un tesoro custodiado por un dragón.",
+    "pdf": "https://drive.google.com/file/d/1NvryzGDGt8iwZNeImIZ_-KCWYqAX6m9B/preview"
+  },
+  {
+    "id": 409,
+    "titulo": "Cartas de Papa Noel",
+    "autor": "J. R. R. Tolkien",
+    "anio": 0,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1bb1LCLkqNih2Z-3GQ2vYPPRDxTuivz6M/preview"
+  },
+  {
+    "id": 410,
+    "titulo": "El retorno del rey",
+    "autor": "J. R. R. Tolkien",
+    "anio": 1955,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "La guerra por la Tierra Media llega a su conclusión mientras Frodo lucha por destruir el Anillo en el Monte del Destino.",
+    "pdf": "https://drive.google.com/file/d/1vSbsyfv4PxDJ0afMQtRKYtPeLXWUZv6Z/preview"
+  },
+  {
+    "id": 411,
+    "titulo": "El Hobbit ilustrado por Jemima Catlin",
+    "autor": "J. R. R. Tolkien",
+    "anio": 1937,
+    "genero": "Fantasía y ciencia ficción",
+    "descripcion": "El hobbit Bilbo Bolsón parte en una aventura inesperada con trece enanos para recuperar un tesoro custodiado por un dragón.",
+    "pdf": "https://drive.google.com/file/d/1qj9brsHoT-hcyidqGlHwoKd5ORcmIH86/preview"
+  },
+  {
+    "id": 412,
+    "titulo": "El principe y el mendigo-Twain Mark",
+    "autor": "Mark Twain",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "Tratado político renacentista sobre el ejercicio del poder, la conquista y el mantenimiento del Estado.",
+    "pdf": "https://drive.google.com/file/d/1APJl1QmOLvkrUATaBV3XeA8tkK8s2hFi/preview"
+  },
+  {
+    "id": 413,
+    "titulo": "El forastero misterioso-",
+    "autor": "Mark Twain",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1I3GWSE6pNV1_kYepdFZ-H-jTyyAJbiZH/preview"
+  },
+  {
+    "id": 414,
+    "titulo": "Las aventuras de Tom Sawyer-Twain Mark",
+    "autor": "Mark Twain",
+    "anio": 1876,
+    "genero": "Novela clásica",
+    "descripcion": "Las travesuras y aventuras de un niño travieso en un pueblo del Mississippi a mediados del siglo XIX.",
+    "pdf": "https://drive.google.com/file/d/1dWvECOs84WhgWYSoVDsmNwpjoG3h1sc_/preview"
+  },
+  {
+    "id": 415,
+    "titulo": "El Orco - Las Glosas Udunenses",
+    "autor": "Tharilin De Enedwaith",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1qDKmrBSwjHlpZ828lwl7lfHBsftCnYlT/preview"
+  },
+  {
+    "id": 416,
+    "titulo": "El placebo eres tu",
+    "autor": "Joe Dispenza",
+    "anio": 2014,
+    "genero": "Desarrollo personal",
+    "descripcion": "Investigación sobre cómo la mente puede sanar el cuerpo y cambiar la realidad a través del pensamiento.",
+    "pdf": "https://drive.google.com/file/d/1Ofj9TMZcbWnjtsGPaLhj3j9pHEI_FuBz/preview"
+  },
+  {
+    "id": 417,
+    "titulo": "Sobrenatural",
+    "autor": "Joe Dispenza",
+    "anio": 0,
+    "genero": "Desarrollo personal",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1tnrgrEQWbLVClSzPwK0XkezEQNlP2VT9/preview"
+  },
+  {
+    "id": 418,
+    "titulo": "Deja de ser tu",
+    "autor": "Joe Dispenza",
+    "anio": 2012,
+    "genero": "Desarrollo personal",
+    "descripcion": "Guía para romper hábitos mentales y emocionales del pasado y crear una nueva versión de uno mismo.",
+    "pdf": "https://drive.google.com/file/d/1T5WlsABPXFmAeGwsYp5Ez0_lTFiTFRl7/preview"
+  },
+  {
+    "id": 419,
+    "titulo": "Bombas de intuicion y otras herramientas",
+    "autor": "Daniel Dennett",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1gf7WGdQoSk1b4N8lXeujByY-cBr2yGCl/preview"
+  },
+  {
+    "id": 420,
+    "titulo": "De las bacterias a Bach, La evolucion de la mente",
+    "autor": "Daniel Dennett",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1yx6tHpJf7wNviKFuKHY_ZV-abhxoRZTT/preview"
+  },
+  {
+    "id": 421,
+    "titulo": "Tipos De Mentes",
+    "autor": "Daniel Dennett",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1iYVPrrad7KJNdALPZKEEgKtU9VZKJD_k/preview"
+  },
+  {
+    "id": 422,
+    "titulo": "La conciencia explicada",
+    "autor": "Daniel Dennett",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1CtNnavgGtvZS7TurVeXG1NJT9MuGYcrI/preview"
+  },
+  {
+    "id": 423,
+    "titulo": "Ateismo para principiantes",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Vl0myQDvuiC9pHAsv9iVKz7EKZGt-osK/preview"
+  },
+  {
+    "id": 424,
+    "titulo": "Escalando el monte improbable",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1wgCXcuZtoBLGYmGz2aALgLlqx4HpPZUZ/preview"
+  },
+  {
+    "id": 425,
+    "titulo": "Destejiendo el arco iris",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1WMQzyo2GZfUOHzwRFgJZ1ZEt8lU9llO6/preview"
+  },
+  {
+    "id": 426,
+    "titulo": "El relojero ciego",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1LVvmYfthbMJSBocS0rRVEfXrytOlv1RX/preview"
+  },
+  {
+    "id": 427,
+    "titulo": "El gen egoista",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/15XpHt_ceBziODVL0zlN2OPt9D71N_osW/preview"
+  },
+  {
+    "id": 428,
+    "titulo": "Evolución  El mayor espectáculo sobre la Tierra",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/11dLW7maaalItSxxqozl7KldQ4fqDjbUx/preview"
+  },
+  {
+    "id": 429,
+    "titulo": "El Rio del Eden",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1Kn8INdbG7h_ocM0YSn4Vm68AULlbJrFg/preview"
+  },
+  {
+    "id": 430,
+    "titulo": "El espejismo de Dios",
+    "autor": "Richard Dawkins",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "Argumentación científica y filosófica sobre por qué Dios casi con certeza no existe y la religión es un error.",
+    "pdf": "https://drive.google.com/file/d/1GMcKKh2tel3C2O9azJU_iBeNkDP6C87u/preview"
+  },
+  {
+    "id": 431,
+    "titulo": "El origen del hombre",
+    "autor": "Charles Darwin",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1hPPrEoAIA35o_S-LFP03WRUJm5Eqps_d/preview"
+  },
+  {
+    "id": 432,
+    "titulo": "La expresion de las emociones",
+    "autor": "Charles Darwin",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1DUcyRXq0CMDZE5H2orYuxwsCPJz06SPe/preview"
+  },
+  {
+    "id": 433,
+    "titulo": "El origen de las especies por medio de la seleccion natural",
+    "autor": "Charles Darwin",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "La teoría de la evolución por selección natural, el libro que cambió para siempre la comprensión de la vida.",
+    "pdf": "https://drive.google.com/file/d/1CeNDyU3toeumf2rk7IrVWgPfdV-WaKgW/preview"
+  },
+  {
+    "id": 434,
+    "titulo": "Y el cerebro creo al hombre",
+    "autor": "Antonio Damasio",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1FL4lzchHJlqHwWCZeJ4dU4dZYARqcT9I/preview"
+  },
+  {
+    "id": 435,
+    "titulo": "El Gran Inquisidor",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1oBaOFELMTebP1iW8CKWZmI4SQNxwBNb8/preview"
+  },
+  {
+    "id": 436,
+    "titulo": "El adolescente",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1bFm2m23csCl5MjhB8FAnT4PBcaqwYvxt/preview"
+  },
+  {
+    "id": 437,
+    "titulo": "Los hermanos Karamazov",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 1880,
+    "genero": "Novela clásica",
+    "descripcion": "Tres hermanos de caracteres opuestos se ven envueltos en el asesinato de su padre en la Rusia zarista.",
+    "pdf": "https://drive.google.com/file/d/1bn-o7OOlXu0DjWDw55pxq3OwUrNKwNBa/preview"
+  },
+  {
+    "id": 438,
+    "titulo": "Noche Blancas",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/16d1EJziX9L1X9qjhJrfSg_vCY5etTBxt/preview"
+  },
+  {
+    "id": 439,
+    "titulo": "Crimen y castigo",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 1866,
+    "genero": "Novela clásica",
+    "descripcion": "Un estudiante ruso asesina a una usurera convencido de que el fin justifica los medios y sufre su tormento moral.",
+    "pdf": "https://drive.google.com/file/d/1MNu4su1KMRe2Uyv9pJA2R4iKx4KncPC7/preview"
+  },
+  {
+    "id": 440,
+    "titulo": "El idiota",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 1869,
+    "genero": "Novela clásica",
+    "descripcion": "El bondadoso príncipe Mishkin regresa a Rusia después de años en Suiza y se enreda en pasiones destructivas.",
+    "pdf": "https://drive.google.com/file/d/1JjdkcT-qIuOIaeNmA7vX1h2vpxz2d6mv/preview"
+  },
+  {
+    "id": 441,
+    "titulo": "Memorias del subsuelo",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1v_vdEmYc1N8_9zNzCxMFZWzbFBNCqY2h/preview"
+  },
+  {
+    "id": 442,
+    "titulo": "El jugador",
+    "autor": "Fiodor Dostoyevski",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1edSbs44bVLRB6V-G1M2sB1TKVwRsN1Nz/preview"
+  },
+  {
+    "id": 443,
+    "titulo": "El tulipan negro",
+    "autor": "Alexandre Dumas",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1ryFbAhA19RymPAMO20wCr19K7LYNPpG3/preview"
+  },
+  {
+    "id": 444,
+    "titulo": "David Copperfield trad Jaime Pineiro",
+    "autor": "Charles Dickens",
+    "anio": 1850,
+    "genero": "Novela clásica",
+    "descripcion": "La historia de vida de David Copperfield, desde su infancia miserable hasta su madurez como escritor.",
+    "pdf": "https://drive.google.com/file/d/12txOZPn6U4foxNh3VPD-wxaTtwNm5qst/preview"
+  },
+  {
+    "id": 445,
+    "titulo": "Oliver Twist ed Alba",
+    "autor": "Charles Dickens",
+    "anio": 1837,
+    "genero": "Novela clásica",
+    "descripcion": "Un huérfano escapa del asilo y cae en manos de una banda de ladrones en el Londres victoriano.",
+    "pdf": "https://drive.google.com/file/d/1a-K4Yp0DTaTKSBJphJdiysTCRYxQy8Vc/preview"
+  },
+  {
+    "id": 446,
+    "titulo": "Cancion de Navidad",
+    "autor": "Charles Dickens",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1rYIVlk2_I-ZnHgAMyCIyOHxw3mPrURSW/preview"
+  },
+  {
+    "id": 447,
+    "titulo": "Tiempos dificiles",
+    "autor": "Charles Dickens",
+    "anio": 0,
+    "genero": "Novela clásica",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/14hpxzsHXlvOKrjdkPbPVugDATG76j-0r/preview"
+  },
+  {
+    "id": 448,
+    "titulo": "Discurso del metodo-Rene Descartes",
+    "autor": "Rene Descartes",
+    "anio": 1637,
+    "genero": "Ensayo filosófico",
+    "descripcion": "Método filosófico para llegar a la verdad mediante la duda sistemática, base del racionalismo moderno.",
+    "pdf": "https://drive.google.com/file/d/17D0CqKpQ9RPaQ21h0VaoAyXNmkOZEFu2/preview"
+  },
+  {
+    "id": 449,
+    "titulo": "Don Quijote de la Mancha",
+    "autor": "MIGUEL De Cervantes Saavedra",
+    "anio": 1605,
+    "genero": "Novela clásica",
+    "descripcion": "El ingenioso hidalgo Alonso Quijano enloquece leyendo novelas de caballería y sale a ser caballero andante.",
+    "pdf": "https://drive.google.com/file/d/1Ey3_2POx3u41dCEMz_dHmJgk4dFOHZE7/preview"
+  },
+  {
+    "id": 450,
+    "titulo": "Mi negro pasado",
+    "autor": "Laura Esquivel",
+    "anio": 0,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1b_O_GerMXHuUT9j5MbLrbUgUoZTAYOMi/preview"
+  },
+  {
+    "id": 451,
+    "titulo": "La ley del amor",
+    "autor": "Laura Esquivel",
+    "anio": 1995,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1pyicfn3uGF6jZU9p2Tw0xC0_zPSuA0OM/preview"
+  },
+  {
+    "id": 452,
+    "titulo": "Como agua para chocolate",
+    "autor": "Laura Esquivel",
+    "anio": 1989,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Las emociones de Tita se transfieren mágicamente a los alimentos que cocina en el México de principios del XX.",
+    "pdf": "https://drive.google.com/file/d/1_-guXQobJ5ehLMhjXWIWMZsgcK93xMj7/preview"
+  },
+  {
+    "id": 453,
+    "titulo": "Mi credo Humanista",
+    "autor": "Albert Einstein",
+    "anio": 0,
+    "genero": "Ciencia y filosofía natural",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1SjWS37Vy6Uw-866Sermg2MySA2hkdTQ4/preview"
+  },
+  {
+    "id": 454,
+    "titulo": "El hombre en busca de sentido",
+    "autor": "Viktor Frankl",
+    "anio": 1946,
+    "genero": "Psicología",
+    "descripcion": "Psiquiatra austriaco superviviente del Holocausto explica cómo encontrar sentido incluso en el sufrimiento extremo.",
+    "pdf": "https://drive.google.com/file/d/11F-Tx9PSuUbduqPzxFT_ylHk_KHQlFcb/preview"
+  },
+  {
+    "id": 455,
+    "titulo": "La muerte de Artemio Cruz",
+    "autor": "Carlos Fuentes",
+    "anio": 1962,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Un magnate mexicano agonizante recuerda su vida desde la Revolución hasta su ascenso corrupto al poder.",
+    "pdf": "https://drive.google.com/file/d/1MTplso2H8jhY9r5QvmZS3n4VfbW2EXMx/preview"
+  },
+  {
+    "id": 456,
+    "titulo": "Aura",
+    "autor": "Carlos Fuentes",
+    "anio": 1962,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Un joven historiador es contratado para ordenar las memorias de un anciano general y descubre un misterio sobrenatural.",
+    "pdf": "https://drive.google.com/file/d/1rD90XfBZLIbipgLQ6nmrkBo50ghImGfE/preview"
+  },
+  {
+    "id": 457,
+    "titulo": "Por qué amamos",
+    "autor": "Helen Fisher E.",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1fVvzwQVuiLxC0dSJWsTSOpu7vKfklcHX/preview"
+  },
+  {
+    "id": 458,
+    "titulo": "Anatomia del amor",
+    "autor": "Helen Fisher E.",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/15GdUOuN3EN8Pedy0MxgdaCIlK4OCDHtq/preview"
+  },
+  {
+    "id": 459,
+    "titulo": "El si de las niñas",
+    "autor": "Leandro Fernandez De Moratin",
+    "anio": 0,
+    "genero": "Novela contemporánea",
+    "descripcion": "",
+    "pdf": "https://drive.google.com/file/d/1KVwdQ_F4XCfLDAe7nNZvg_6w16tqYIRH/preview"
+  },
+  {
+    "id": 460,
+    "titulo": "El ultimo mohicano-James Fenimore Cooper",
+    "autor": "James Fenimore Cooper",
+    "anio": 1826,
+    "genero": "Novela clásica",
+    "descripcion": "Durante la guerra francesa e india, un explorador y el último mohicano protegen a dos mujeres en el peligroso bosque.",
+    "pdf": "https://drive.google.com/file/d/1JYlNfn6gCE7xG9F6FnRBI-5N8QijKzrx/preview"
+  },
+  {
+    "id": 461,
+    "titulo": "Facundo o civilización y barbarie",
+    "autor": "DOMINGO Faustino Sarmiento",
+    "anio": 1845,
+    "genero": "Literatura latinoamericana",
+    "descripcion": "Retrato del caudillo Facundo Quiroga como símbolo de la barbarie que impide el progreso de Argentina.",
+    "pdf": "https://drive.google.com/file/d/139fmoEGRZCrItunc-nrzbuZQxAhE8INV/preview"
   }
 ]
