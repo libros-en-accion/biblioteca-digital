@@ -1,34 +1,36 @@
-/* ── FUENTES EXTERNAS ── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap');
+/* ── FUENTES ── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
 /* ── VARIABLES ── */
 :root {
-  --fondo:          #0d0d0f;
-  --fondo-tarjeta:  #131316;
-  --fondo-input:    #1a1a1e;
-  --fondo-hover:    #1e1e24;
-  --acento:         #e8b86d;
-  --acento-suave:   #c49a50;
-  --acento-glow:    rgba(232, 184, 109, 0.15);
-  --texto:          #f0ece4;
-  --texto-suave:    #7a7570;
-  --texto-medio:    #b0a99f;
-  --borde:          #222228;
-  --borde-hover:    #3a3830;
+  --fondo:           #f5f0e8;
+  --fondo-tarjeta:   #fdfaf4;
+  --fondo-header:    #2c1810;
+  --fondo-input:     #fff8f0;
+  --vino:            #8b1a2f;
+  --vino-claro:      #a83248;
+  --vino-suave:      rgba(139, 26, 47, 0.12);
+  --dorado:          #c4922a;
+  --dorado-suave:    #e8d5a3;
+  --texto:           #2c1810;
+  --texto-suave:     #8a7060;
+  --texto-medio:     #5a4030;
+  --borde:           #d4c4a8;
+  --borde-suave:     #e8dcc8;
+  --sombra:          rgba(44, 24, 16, 0.12);
+  --sombra-hover:    rgba(44, 24, 16, 0.22);
 }
 
 /* ── RESET ── */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Crimson Pro', Georgia, serif;
+  font-family: 'EB Garamond', Georgia, serif;
   background-color: var(--fondo);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(196,146,42,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,26,47,0.05) 0%, transparent 50%);
   color: var(--texto);
   min-height: 100vh;
   line-height: 1.6;
@@ -36,8 +38,11 @@ body {
 
 /* ── ENCABEZADO ── */
 header {
+  background-color: var(--fondo-header);
+  background-image:
+    linear-gradient(135deg, #3d1f10 0%, #2c1810 50%, #1a0f08 100%);
   text-align: center;
-  padding: 5rem 2rem 4rem;
+  padding: 4rem 2rem 3.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -45,96 +50,101 @@ header {
 header::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    var(--acento) 30%,
-    var(--acento) 70%,
-    transparent 100%);
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(196,146,42,0.03) 40px,
+      rgba(196,146,42,0.03) 41px
+    );
 }
 
 header::after {
   content: '';
   position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 300px;
-  background: radial-gradient(ellipse at top, var(--acento-glow) 0%, transparent 70%);
-  pointer-events: none;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--dorado) 20%,
+    var(--vino) 50%,
+    var(--dorado) 80%,
+    transparent 100%);
 }
 
 .header-ornamento {
-  font-family: 'Crimson Pro', serif;
-  font-size: 0.7rem;
-  letter-spacing: 8px;
-  color: var(--acento);
+  font-family: 'EB Garamond', serif;
+  font-size: 0.72rem;
+  letter-spacing: 6px;
+  color: var(--dorado);
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
 }
 
 header h1 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 3.5rem;
-  font-weight: 400;
-  letter-spacing: 2px;
-  color: var(--texto);
-  margin-bottom: 1rem;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #f5ede0;
+  letter-spacing: 1px;
   line-height: 1.2;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 header h1 span {
-  color: var(--acento);
+  color: var(--dorado);
   font-style: italic;
+  font-weight: 400;
 }
 
 header p {
   font-size: 1.05rem;
-  color: var(--texto-medio);
+  color: #c4b09a;
   font-style: italic;
-  font-weight: 300;
-  letter-spacing: 0.5px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
 }
 
-/* ── SEPARADOR DECORATIVO ── */
+/* ── SEPARADOR ── */
 .separador {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 0 2rem;
-  margin: 0.5rem 0;
+  padding: 1.5rem 2rem 0.5rem;
 }
 
 .separador::before,
 .separador::after {
   content: '';
   flex: 1;
-  max-width: 200px;
+  max-width: 180px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--borde-hover));
+  background: linear-gradient(90deg, transparent, var(--borde));
 }
 
 .separador-icono {
-  color: var(--acento);
-  font-size: 0.7rem;
+  color: var(--vino);
+  font-size: 0.65rem;
   letter-spacing: 4px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 /* ── BUSCADOR ── */
 .buscador {
   display: flex;
   justify-content: center;
-  padding: 2rem 1rem 1.5rem;
+  padding: 1.5rem 1rem 1rem;
 }
 
 .buscador-contenedor {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 580px;
 }
 
 .buscador-icono {
@@ -149,22 +159,21 @@ header p {
 
 .buscador input {
   width: 100%;
-  padding: 1rem 1.5rem 1rem 3rem;
+  padding: 0.95rem 1.5rem 0.95rem 3rem;
   font-size: 1rem;
-  font-family: 'Crimson Pro', serif;
-  font-weight: 300;
+  font-family: 'EB Garamond', serif;
   background: var(--fondo-input);
-  border: 1px solid var(--borde);
+  border: 1.5px solid var(--borde);
   border-radius: 2px;
   color: var(--texto);
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
-  letter-spacing: 0.3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .buscador input:focus {
-  border-color: var(--acento-suave);
-  box-shadow: 0 0 0 3px var(--acento-glow);
+  border-color: var(--vino);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 0 3px var(--vino-suave);
 }
 
 .buscador input::placeholder {
@@ -177,53 +186,51 @@ header p {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 1rem 2rem 1.5rem;
+  gap: 0.45rem;
+  padding: 0.8rem 2rem 1.2rem;
 }
 
 .btn-filtro {
-  padding: 0.4rem 1.1rem;
-  border: 1px solid var(--borde);
-  background: transparent;
-  color: var(--texto-suave);
-  font-family: 'Crimson Pro', serif;
-  font-size: 0.85rem;
-  border-radius: 1px;
+  padding: 0.35rem 1rem;
+  border: 1.5px solid var(--borde);
+  background: var(--fondo-tarjeta);
+  color: var(--texto-medio);
+  font-family: 'EB Garamond', serif;
+  font-size: 0.88rem;
+  border-radius: 2px;
   cursor: pointer;
-  transition: all 0.25s;
-  letter-spacing: 0.8px;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
 }
 
 .btn-filtro:hover {
-  border-color: var(--acento-suave);
-  color: var(--acento);
-  background: var(--acento-glow);
+  border-color: var(--vino-claro);
+  color: var(--vino);
+  background: var(--vino-suave);
 }
 
 .btn-filtro.activo {
-  background: var(--acento);
-  border-color: var(--acento);
-  color: var(--fondo);
-  font-weight: 400;
+  background: var(--vino);
+  border-color: var(--vino);
+  color: #fff8f0;
+  font-weight: 500;
 }
 
 /* ── CONTADOR ── */
 .contador {
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--texto-suave);
-  padding: 0.5rem 0 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-family: 'Crimson Pro', serif;
+  padding: 0.3rem 0 0.8rem;
+  font-style: italic;
 }
 
 /* ── GALERÍA ── */
 .galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.2rem;
-  padding: 1.5rem 3rem 5rem;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.4rem;
+  padding: 1rem 2.5rem 5rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -231,114 +238,104 @@ header p {
 /* ── TARJETA ── */
 .tarjeta {
   background: var(--fondo-tarjeta);
-  border: 1px solid var(--borde);
+  border: 1px solid var(--borde-suave);
+  border-top: 3px solid var(--dorado-suave);
   border-radius: 2px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 0.4s ease both;
+  box-shadow: 0 2px 8px var(--sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-top-color 0.25s;
+  animation: aparecer 0.35s ease both;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .tarjeta:hover {
-  transform: translateY(-6px);
-  border-color: var(--acento-suave);
-  box-shadow:
-    0 12px 40px rgba(0,0,0,0.5),
-    0 0 0 1px var(--acento-glow);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px var(--sombra-hover);
+  border-top-color: var(--vino);
 }
 
 .tarjeta-info {
-  padding: 1.3rem 1.3rem 0.8rem;
+  padding: 1.2rem 1.2rem 0.8rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .tarjeta-genero-badge {
   display: inline-block;
   font-size: 0.62rem;
-  color: var(--acento);
+  color: var(--vino);
   padding: 0.15rem 0.6rem;
-  border: 1px solid var(--acento-suave);
+  border: 1px solid var(--vino-claro);
+  background: var(--vino-suave);
   border-radius: 1px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   width: fit-content;
   margin-bottom: 0.5rem;
-  opacity: 0.85;
 }
 
 .tarjeta-titulo {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.05rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--texto);
   line-height: 1.4;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .tarjeta-autor {
-  font-size: 0.88rem;
-  color: var(--acento);
+  font-size: 0.9rem;
+  color: var(--vino-claro);
   font-style: italic;
-  font-weight: 300;
 }
 
 .tarjeta-anio {
   font-size: 0.72rem;
   color: var(--texto-suave);
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .tarjeta-descripcion {
   font-size: 0.88rem;
   color: var(--texto-medio);
   margin-top: 0.6rem;
-  line-height: 1.7;
+  line-height: 1.65;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-weight: 300;
 }
 
 /* ── BOTÓN VER ── */
 .btn-ver {
   display: block;
-  margin: 0.8rem 1.3rem 1.3rem;
+  margin: 0.8rem 1.2rem 1.2rem;
   padding: 0.6rem;
   background: transparent;
-  color: var(--acento);
+  color: var(--vino);
   text-align: center;
   text-decoration: none;
-  font-family: 'Crimson Pro', serif;
-  font-size: 0.82rem;
-  border: 1px solid var(--borde-hover);
-  border-radius: 1px;
-  transition: all 0.25s;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--vino);
+  border-radius: 2px;
+  transition: all 0.2s;
+  letter-spacing: 1px;
 }
 
 .btn-ver:hover {
-  background: var(--acento);
-  border-color: var(--acento);
-  color: var(--fondo);
-  box-shadow: 0 4px 15px var(--acento-glow);
+  background: var(--vino);
+  color: #fff8f0;
+  box-shadow: 0 3px 12px var(--vino-suave);
 }
 
 /* ── SIN RESULTADOS ── */
@@ -354,36 +351,127 @@ header p {
 /* ── FOOTER ── */
 footer {
   text-align: center;
-  padding: 2.5rem;
+  padding: 2rem;
   border-top: 1px solid var(--borde);
   color: var(--texto-suave);
-  font-size: 0.72rem;
-  letter-spacing: 2px;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-}
-
-footer::before {
-  content: '— ';
-  color: var(--acento);
-  opacity: 0.5;
-}
-
-footer::after {
-  content: ' —';
-  color: var(--acento);
-  opacity: 0.5;
+  background: linear-gradient(to bottom, var(--fondo), #ede8dc);
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  header h1 { font-size: 2.2rem; }
+  header h1 { font-size: 2rem; }
+  header { padding: 2.5rem 1rem 2rem; }
   .galeria {
     padding: 1rem 1rem 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  }
+  .filtros { padding: 0.8rem 0.5rem 1rem; }
+}
+
+/* ── BUSCADOR CON SELECT ── */
+.buscador {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.5rem 2rem 1rem;
+}
+
+.select-genero {
+  padding: 0.95rem 2.2rem 0.95rem 1rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: var(--fondo-input);
+  border: 1.5px solid var(--borde);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b1a2f' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  min-width: 180px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.select-genero:focus {
+  border-color: var(--vino);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 0 3px var(--vino-suave);
+}
+
+.select-genero:hover {
+  border-color: var(--vino-claro);
+}
+
+@media (max-width: 600px) {
+  .buscador {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .select-genero {
+    width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  header h1 { font-size: 1.8rem; }
-  header { padding: 3rem 1rem 2rem; }
+/* ── PAGINACIÓN ── */
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2.5rem 2rem 4rem;
+  flex-wrap: wrap;
+}
+
+.btn-pagina {
+  min-width: 2.8rem;
+  height: 2.8rem;
+  padding: 0 0.8rem;
+  border: 1.5px solid var(--borde);
+  background: var(--fondo-tarjeta);
+  color: var(--texto-medio);
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-pagina:hover {
+  border-color: var(--vino-claro);
+  color: var(--vino);
+  background: var(--vino-suave);
+}
+
+.btn-pagina.activo {
+  background: var(--vino);
+  border-color: var(--vino);
+  color: #fff8f0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.btn-pagina.desactivado {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.pagina-elipsis {
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+  padding: 0 0.3rem;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  height: 2.8rem;
 }

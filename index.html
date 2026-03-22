@@ -19,32 +19,35 @@
 </div>
 
   <!-- BARRA DE BÚSQUEDA -->
-  <section class="buscador">
-    <input
-      type="text"
-      id="inputBusqueda"
-      placeholder="Buscar por título o autor..."
-      oninput="filtrar()"
-    />
+<section class="buscador">
+    <div class="buscador-contenedor">
+      <span class="buscador-icono">🔍</span>
+      <input
+        type="text"
+        id="inputBusqueda"
+        placeholder="Buscar por título o autor..."
+        oninput="filtrar()"
+      />
+    </div>
+    <select id="selectGenero" class="select-genero" onchange="filtrarPorSelect()">
+      <option value="Todos">Todos los géneros</option>
+      <option value="Fantasía y ciencia ficción">Fantasía y CF</option>
+      <option value="Thriller y misterio">Thriller y misterio</option>
+      <option value="Novela clásica">Novela clásica</option>
+      <option value="Cuento y relato corto">Cuento y relato corto</option>
+      <option value="Ciencia y filosofía natural">Ciencia y filosofía</option>
+      <option value="Ensayo filosófico">Ensayo filosófico</option>
+      <option value="Novela contemporánea">Novela contemporánea</option>
+      <option value="Literatura latinoamericana">Literatura latinoamericana</option>
+      <option value="Poesía clásica">Poesía clásica</option>
+      <option value="Psicología">Psicología</option>
+      <option value="Desarrollo personal">Desarrollo personal</option>
+      <option value="Economía y finanzas">Economía y finanzas</option>
+      <option value="Biografía y memorias">Biografía y memorias</option>
+      <option value="Historia y crónica">Historia y crónica</option>
+      <option value="Otros">Otros</option>
+    </select>
   </section>
-
-  <!-- FILTROS POR GÉNERO -->
-  <section class="filtros">
-  <button class="btn-filtro activo" onclick="filtrarGenero('Todos', this)">Todos</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Novela clásica', this)">Novela clásica</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Novela contemporánea', this)">Contemporánea</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Literatura latinoamericana', this)">Latinoamericana</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Thriller y misterio', this)">Thriller</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Fantasía y ciencia ficción', this)">Fantasía y CF</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Ensayo filosófico', this)">Ensayo filosófico</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Ciencia y filosofía natural', this)">Ciencia</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Poesía clásica', this)">Poesía</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Cuento y relato corto', this)">Cuentos</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Desarrollo personal', this)">Desarrollo personal</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Psicología', this)">Psicología</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Economía y finanzas', this)">Economía</button>
-  <button class="btn-filtro" onclick="filtrarGenero('Historia y crónica', this)">Historia</button>
-</section>
 
   <!-- CONTADOR DE RESULTADOS -->
   <p id="contador" class="contador"></p>
@@ -56,6 +59,8 @@
   <p id="sinResultados" class="sin-resultados" style="display:none">
     No se encontraron libros con ese criterio.
   </p>
+
+<div id="paginacion" class="paginacion"></div>
 
   <script src="app.js"></script>
 </body>

@@ -1,15 +1,32 @@
 // ── VARIABLES GLOBALES ──
-let libros = [];           // Aquí vivirán todos los libros
-let generoActivo = 'Todos'; // Filtro de género activo
+let libros = [];
+let generoActivo = 'Todos';
+let paginaActual = 1;
+const LIBROS_POR_PAGINA = 24;
+let listaFiltrada = [];
 
 // ── CARGAR LIBROS AL INICIAR ──
-// fetch() lee el archivo libros.json y lo convierte en array de objetos
 fetch('libros.json')
   .then(respuesta => respuesta.json())
   .then(datos => {
     libros = datos;
-    mostrarLibros(libros); // Mostrar todos al cargar
+    listaFiltrada = libros;
+    mostrarPagina(1);
   });
+
+// ── MOSTRAR PÁGINA ──
+function mostrarPagina(pagina) {
+  paginaActual = pagina;
+  const inicio = (pagina - 1) * LIBROS_POR_PAGINA;
+  const fin = inicio + LIBROS_POR_PAGINA;
+  const paginaLibros = listaFiltrada.slice(inicio, fin);
+
+  mostrarLibros(paginaLibros);
+  renderPaginacion();
+
+  // Scroll suave arriba al cambiar página
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // ── MOSTRAR LIBROS EN LA PÁGINA ──
 function mostrarLibros(lista) {
@@ -17,72 +34,134 @@ function mostrarLibros(lista) {
   const sinResultados = document.getElementById('sinResultados');
   const contador = document.getElementById('contador');
 
-  galeria.innerHTML = ''; // Limpiar antes de redibujar
+  galeria.innerHTML = '';
 
   if (lista.length === 0) {
     sinResultados.style.display = 'block';
     contador.textContent = '';
+    renderPaginacion();
     return;
   }
 
   sinResultados.style.display = 'none';
-  contador.textContent = `${lista.length} libro${lista.length !== 1 ? 's' : ''} encontrado${lista.length !== 1 ? 's' : ''}`;
 
-  // Por cada libro, crear una tarjeta HTML
+  // Contador con info de paginación
+  const total = listaFiltrada.length;
+  const inicio = (paginaActual - 1) * LIBROS_POR_PAGINA + 1;
+  const fin = Math.min(paginaActual * LIBROS_POR_PAGINA, total);
+  contador.textContent = `Mostrando ${inicio}–${fin} de ${total} libro${total !== 1 ? 's' : ''}`;
+
   lista.forEach(libro => {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta';
-
     tarjeta.innerHTML = `
-      <img src="${libro.portada}" alt="Portada de ${libro.titulo}" 
-           onerror="this.src='https://via.placeholder.com/220x200?text=Sin+portada'"/>
       <div class="tarjeta-info">
+        <span class="tarjeta-genero-badge">${libro.genero}</span>
         <div class="tarjeta-titulo">${libro.titulo}</div>
         <div class="tarjeta-autor">${libro.autor}</div>
-        <div class="tarjeta-anio">${libro.anio}</div>
-        <span class="tarjeta-genero">${libro.genero}</span>
-        <div class="tarjeta-descripcion">${libro.descripcion}</div>
+        <div class="tarjeta-anio">${libro.anio || ''}</div>
+        <div class="tarjeta-descripcion">${libro.descripcion || ''}</div>
       </div>
       <a href="${libro.pdf}" target="_blank" class="btn-ver">📄 Ver documento</a>
     `;
-
     galeria.appendChild(tarjeta);
   });
 }
 
-// ── FUNCIÓN DE BÚSQUEDA ──
-// Se llama cada vez que el usuario escribe en el input
+// ── RENDERIZAR PAGINACIÓN ──
+function renderPaginacion() {
+  const contenedor = document.getElementById('paginacion');
+  if (!contenedor) return;
+
+  const totalPaginas = Math.ceil(listaFiltrada.length / LIBROS_POR_PAGINA);
+  contenedor.innerHTML = '';
+
+  if (totalPaginas <= 1) return;
+
+  // Botón anterior
+  const btnAnterior = document.createElement('button');
+  btnAnterior.className = 'btn-pagina' + (paginaActual === 1 ? ' desactivado' : '');
+  btnAnterior.textContent = '←';
+  btnAnterior.onclick = () => { if (paginaActual > 1) mostrarPagina(paginaActual - 1); };
+  contenedor.appendChild(btnAnterior);
+
+  // Páginas numeradas con elipsis
+  const paginas = paginasVisibles(paginaActual, totalPaginas);
+  paginas.forEach(p => {
+    if (p === '...') {
+      const elipsis = document.createElement('span');
+      elipsis.className = 'pagina-elipsis';
+      elipsis.textContent = '…';
+      contenedor.appendChild(elipsis);
+    } else {
+      const btn = document.createElement('button');
+      btn.className = 'btn-pagina' + (p === paginaActual ? ' activo' : '');
+      btn.textContent = p;
+      btn.onclick = () => mostrarPagina(p);
+      contenedor.appendChild(btn);
+    }
+  });
+
+  // Botón siguiente
+  const btnSiguiente = document.createElement('button');
+  btnSiguiente.className = 'btn-pagina' + (paginaActual === totalPaginas ? ' desactivado' : '');
+  btnSiguiente.textContent = '→';
+  btnSiguiente.onclick = () => { if (paginaActual < totalPaginas) mostrarPagina(paginaActual + 1); };
+  contenedor.appendChild(btnSiguiente);
+}
+
+// ── CALCULAR PÁGINAS VISIBLES ──
+function paginasVisibles(actual, total) {
+  if (total <= 7) return Array.from({length: total}, (_, i) => i + 1);
+
+  if (actual <= 4) return [1, 2, 3, 4, 5, '...', total];
+  if (actual >= total - 3) return [1, '...', total-4, total-3, total-2, total-1, total];
+  return [1, '...', actual-1, actual, actual+1, '...', total];
+}
+
+// ── BÚSQUEDA ──
 function filtrar() {
-  const texto = document.getElementById('inputBusqueda').value
+  const raw = document.getElementById('inputBusqueda').value;
+
+  const normalizar = texto => texto
     .toLowerCase()
-    .normalize('NFD')                        // Separar tildes
-    .replace(/[\u0300-\u036f]/g, '');        // Eliminar tildes para búsqueda flexible
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 
-  const resultado = libros.filter(libro => {
-    // Normalizar título y autor también
-    const titulo = libro.titulo.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    const autor = libro.autor.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const terminos = normalizar(raw).split(' ').filter(t => t.length > 0);
 
-    const coincideTexto = titulo.includes(texto) || autor.includes(texto);
+  listaFiltrada = libros.filter(libro => {
+    const campos = [
+      normalizar(libro.titulo || ''),
+      normalizar(libro.autor || ''),
+      normalizar(libro.genero || ''),
+      normalizar(libro.descripcion || ''),
+      String(libro.anio || ''),
+    ].join(' ');
+
+    const coincideTexto = terminos.length === 0 || terminos.every(t => campos.includes(t));
     const coincideGenero = generoActivo === 'Todos' || libro.genero === generoActivo;
 
     return coincideTexto && coincideGenero;
   });
 
-  mostrarLibros(resultado);
+  mostrarPagina(1); // Siempre volver a página 1 al buscar
 }
 
-// ── FUNCIÓN DE FILTRO POR GÉNERO ──
+// ── FILTRO POR SELECT ──
+function filtrarPorSelect() {
+  const select = document.getElementById('selectGenero');
+  generoActivo = select.value;
+  filtrar();
+}
+
+// ── FILTRO POR BOTÓN (por si lo usas en algún lado) ──
 function filtrarGenero(genero, boton) {
   generoActivo = genero;
-
-  // Quitar clase activo de todos los botones
   document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('activo'));
-  // Poner activo solo en el que se clickeó
-  boton.classList.add('activo');
-
-  // Volver a filtrar con el género nuevo
+  if (boton) boton.classList.add('activo');
   filtrar();
 }
