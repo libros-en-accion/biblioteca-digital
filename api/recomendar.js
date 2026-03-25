@@ -1,7 +1,5 @@
 // api/recomendar.js
-// Función Serverless de Vercel — recibe preferencias del usuario y consulta Gemini
-
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+// Función Serverless de Vercel — recibe preferencias del usuario y consulta OpenRouter
 
 module.exports = async function handler(req, res) {
   // Solo aceptamos POST
@@ -26,7 +24,6 @@ module.exports = async function handler(req, res) {
 
   // ── 3. CONSTRUIR EL PROMPT ──
   const prompt = `
-Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional.
 Tu misión es recomendar exactamente 3 libros del catálogo que te proporciono, adaptados al perfil del lector.
 
 PERFIL DEL LECTOR:
@@ -59,46 +56,49 @@ INSTRUCCIONES:
 ]
 `.trim();
 
-  // ── 4. LLAMAR A GEMINI API (con SDK oficial) ──
+  // ── 4. LLAMAR A OPENROUTER API ──
   try {
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-      return res.status(500).json({ error: 'API Key de Gemini no configurada en el servidor' });
+      return res.status(500).json({ error: 'API Key no configurada en el servidor' });
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
+    // Usamos el modelo Gemini 2.0 Flash Lite gratuito a través de OpenRouter
+    const openRouterRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://biblioteca-digital-eight.vercel.app/",
+        "X-Title": "Biblioteca Digital IA"
+      },
+      body: JSON.stringify({
+        model: "google/gemini-2.0-flash-lite-preview-02-05:free",
+        messages: [
+          { role: "system", content: "Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional." },
+          { role: "user", content: prompt }
+        ],
+        temperature: 0.7,
+        response_format: { type: "json_object" }
+      })
+    });
 
-    // Intentar modelos en orden de preferencia
-    const modelos = ['gemini-2.0-flash-lite', 'gemini-1.5-flash', 'gemini-2.0-flash'];
-    let resultado = null;
-    let ultimoError = null;
-
-    for (const nombreModelo of modelos) {
-      try {
-        const model = genAI.getGenerativeModel({ model: nombreModelo });
-        const result = await model.generateContent(prompt);
-        const response = result.response;
-        resultado = response.text();
-        console.log(`Modelo ${nombreModelo} respondió exitosamente`);
-        break;
-      } catch (modelError) {
-        ultimoError = modelError;
-        console.log(`Modelo ${nombreModelo} falló: ${modelError.message}`);
-        continue;
-      }
+    if (!openRouterRes.ok) {
+        const errorData = await openRouterRes.json();
+        console.error('Error de OpenRouter:', JSON.stringify(errorData));
+        return res.status(502).json({ error: 'Error al consultar la IA', detalle: errorData });
     }
 
-    if (!resultado) {
-      console.error('Todos los modelos fallaron. Último error:', ultimoError?.message);
-      return res.status(502).json({
-        error: 'Error al consultar la IA',
-        detalle: ultimoError?.message || 'Todos los modelos fallaron',
-      });
+    const data = await openRouterRes.json();
+    const textoRespuesta = data.choices[0]?.message?.content;
+
+    if (!textoRespuesta) {
+      return res.status(502).json({ error: 'La IA no devolvió una respuesta válida' });
     }
 
-    // Limpiar posibles bloques de código que Gemini a veces añade
-    const textoLimpio = resultado
+    // Limpiar posibles bloques de código que la IA a veces añade
+    const textoLimpio = textoRespuesta
       .trim()
       .replace(/^```json\s*/i, '')
       .replace(/^```\s*/i, '')
@@ -107,9 +107,13 @@ INSTRUCCIONES:
     let recomendaciones;
     try {
       recomendaciones = JSON.parse(textoLimpio);
+      // Extraer el array si OpenRouter lo envolvió en un objeto
+      if (!Array.isArray(recomendaciones) && recomendaciones.recomendaciones) {
+        recomendaciones = recomendaciones.recomendaciones;
+      }
     } catch (parseError) {
-      console.error('Error al parsear JSON de Gemini:', resultado);
-      return res.status(502).json({ error: 'La IA no devolvió JSON válido', respuestaRaw: resultado });
+      console.error('Error al parsear JSON:', textoLimpio);
+      return res.status(502).json({ error: 'La IA no devolvió JSON válido', respuestaRaw: textoLimpio });
     }
 
     return res.status(200).json({ recomendaciones });
