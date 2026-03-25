@@ -1,7 +1,7 @@
 // api/recomendar.js
 // Función Serverless de Vercel — recibe preferencias del usuario y consulta Gemini
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Solo aceptamos POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método no permitido' });
@@ -81,8 +81,8 @@ INSTRUCCIONES:
             { role: 'user', parts: [{ text: prompt }] }
           ],
           generationConfig: {
-            temperature: 0.7,      // Algo de creatividad, pero no demasiado
-            maxOutputTokens: 1024, // Suficiente para 3 recomendaciones
+            temperature: 0.7,
+            maxOutputTokens: 1024,
           }
         }),
       }
@@ -95,29 +95,31 @@ INSTRUCCIONES:
     }
 
     const data = await geminiRes.json();
-
-    // Extraer el texto de la respuesta
     const textoRespuesta = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (!textoRespuesta) {
       return res.status(502).json({ error: 'La IA no devolvió una respuesta válida' });
     }
 
-    // Parsear el JSON que devolvió Gemini
+    // Limpiar posibles bloques de código que Gemini a veces añade
+    const textoLimpio = textoRespuesta
+      .trim()
+      .replace(/^```json\s*/i, '')
+      .replace(/^```\s*/i, '')
+      .replace(/\s*```$/i, '');
+
     let recomendaciones;
     try {
-      // A veces Gemini añade espacios o saltos de línea al principio/final
-      recomendaciones = JSON.parse(textoRespuesta.trim());
+      recomendaciones = JSON.parse(textoLimpio);
     } catch (parseError) {
       console.error('Error al parsear JSON de Gemini:', textoRespuesta);
       return res.status(502).json({ error: 'La IA no devolvió JSON válido', respuestaRaw: textoRespuesta });
     }
 
-    // ── 5. DEVOLVER LAS RECOMENDACIONES ──
     return res.status(200).json({ recomendaciones });
 
   } catch (err) {
     console.error('Error interno:', err);
-    return res.status(500).json({ error: 'Error interno del servidor' });
+    return res.status(500).json({ error: 'Error interno del servidor', detalle: err.message });
   }
-}
+};
