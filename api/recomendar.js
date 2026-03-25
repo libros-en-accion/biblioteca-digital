@@ -15,20 +15,18 @@ module.exports = async function handler(req, res) {
   }
 
   // ── 2. CONSTRUIR EL CATÁLOGO RESUMIDO (solo campos esenciales) ──
-  // No enviamos la URL del PDF para ahorrar tokens y evitar confusión en la IA
+  // Enviamos solo id, titulo, autor y genero para reducir el tamaño del payload
   const catalogo = libros.map(l => ({
-    id:          l.id,
-    titulo:      l.titulo,
-    autor:       l.autor,
-    anio:        l.anio,
-    genero:      l.genero,
-    descripcion: l.descripcion,
+    id:     l.id,
+    titulo: l.titulo,
+    autor:  l.autor,
+    genero: l.genero,
   }));
 
   // ── 3. CONSTRUIR EL PROMPT ──
   const prompt = `
-Eres un bibliotecario experto, cálido y breve. Tu misión es recomendar exactamente 3 libros
-del catálogo que te proporciono, adaptados al perfil del lector que te presento hoy.
+Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional.
+Tu misión es recomendar exactamente 3 libros del catálogo que te proporciono, adaptados al perfil del lector.
 
 PERFIL DEL LECTOR:
 - Estado de ánimo: ${estado}
@@ -40,7 +38,7 @@ CATÁLOGO DISPONIBLE (JSON):
 ${JSON.stringify(catalogo)}
 
 INSTRUCCIONES:
-1. Analiza el perfil del lector y compáralo con las descripciones y géneros del catálogo.
+1. Analiza el perfil del lector y compáralo con los géneros y títulos del catálogo.
 2. Elige los 3 libros que mejor se ajusten a su estado y necesidad actual.
 3. Responde ÚNICAMENTE con un JSON válido, sin texto extra, sin bloques de código (sin \`\`\`), sin explicaciones fuera del JSON.
 4. El formato debe ser exactamente este:
@@ -68,21 +66,20 @@ INSTRUCCIONES:
       return res.status(500).json({ error: 'API Key de Gemini no configurada en el servidor' });
     }
 
+    // Usar gemini-2.0-flash con v1beta (modelo actual y estable)
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          systemInstruction: {
-            parts: [{ text: 'Eres un bibliotecario experto. Siempre respondes SOLO con JSON válido, sin texto adicional.' }]
-          },
           contents: [
             { role: 'user', parts: [{ text: prompt }] }
           ],
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 1024,
+            responseMimeType: 'application/json',
           }
         })
       }
@@ -90,7 +87,7 @@ INSTRUCCIONES:
 
     if (!geminiRes.ok) {
       const errorData = await geminiRes.json();
-      console.error('Error de Gemini:', errorData);
+      console.error('Error de Gemini:', JSON.stringify(errorData));
       return res.status(502).json({ error: 'Error al consultar la IA', detalle: errorData });
     }
 
