@@ -68,25 +68,49 @@ INSTRUCCIONES:
       return res.status(500).json({ error: 'API Key de Gemini no configurada en el servidor' });
     }
 
-    const geminiRes = await fetch(
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        systemInstruction: {
+          parts: [{ text: 'Eres un bibliotecario experto. Siempre respondes SOLO con JSON válido, sin texto adicional.' }]
+        },
+        contents: [
+          { role: 'user', parts: [{ text: prompt }] }
+        ],
+        generationConfig: {
+          temperature: 0.7,
+          maxOutputTokens: 1024,
+        }
+      })
+    };
+
+    let geminiRes = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-      {
+      requestOptions
+    );
+
+    if (geminiRes.status === 404) {
+      console.log('gemini-1.5-flash no encontrado, intentando con gemini-pro');
+      // gemini-pro usa format v1beta pero no soporta systemInstruction. Lo removemos para gemini-pro
+      const fallbackOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          systemInstruction: {
-            parts: [{ text: 'Eres un bibliotecario experto. Siempre respondes SOLO con JSON válido, sin texto adicional.' }]
-          },
           contents: [
-            { role: 'user', parts: [{ text: prompt }] }
+            { role: 'user', parts: [{ text: "Eres un bibliotecario experto. Siempre respondes SOLO con JSON válido.\n\n" + prompt }] }
           ],
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 1024,
           }
-        }),
-      }
-    );
+        })
+      };
+      geminiRes = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
+        fallbackOptions
+      );
+    }
 
     if (!geminiRes.ok) {
       const errorData = await geminiRes.json();
