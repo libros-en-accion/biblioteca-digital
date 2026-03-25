@@ -74,7 +74,7 @@ INSTRUCCIONES:
         "X-Title": "Biblioteca Digital IA"
       },
       body: JSON.stringify({
-        model: "google/gemini-2.0-flash-lite-preview-02-05:free",
+        model: "google/gemini-2.0-flash-lite-001",
         messages: [
           { role: "system", content: "Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional." },
           { role: "user", content: prompt }
