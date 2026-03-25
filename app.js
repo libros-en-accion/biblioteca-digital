@@ -143,7 +143,20 @@ function filtrar() {
     ].join(' ');
 
     const coincideTexto = terminos.length === 0 || terminos.every(t => campos.includes(t));
-    const coincideGenero = generoActivo === 'Todos' || libro.genero === generoActivo;
+    
+    // Filtro de género más flexible
+    let coincideGenero = true;
+    if (generoActivo !== 'Todos') {
+      const genLibro = normalizar(libro.genero || '');
+      const genFiltro = normalizar(generoActivo);
+      
+      // Si el filtro es compuesto (ej: "Misterio y Thriller"), separamos por "y"
+      const partesFiltro = generoActivo.includes(' y ') 
+        ? generoActivo.split(' y ').map(p => normalizar(p.trim()))
+        : [genFiltro];
+        
+      coincideGenero = partesFiltro.some(p => genLibro.includes(p));
+    }
 
     return coincideTexto && coincideGenero;
   });
