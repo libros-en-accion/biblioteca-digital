@@ -66,27 +66,50 @@ INSTRUCCIONES:
       return res.status(500).json({ error: 'API Key de Gemini no configurada en el servidor' });
     }
 
-    // Usar gemini-2.0-flash con v1beta (modelo actual y estable)
-    const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [
-            { role: 'user', parts: [{ text: prompt }] }
-          ],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 1024,
-            responseMimeType: 'application/json',
-          }
-        })
+    // Intentar con múltiples modelos por si hay restricciones regionales
+    const modelos = [
+      'gemini-2.0-flash-lite',
+      'gemini-1.5-flash',
+      'gemini-2.0-flash',
+    ];
+
+    let geminiRes = null;
+    let ultimoError = null;
+
+    for (const modelo of modelos) {
+      geminiRes = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [
+              { role: 'user', parts: [{ text: prompt }] }
+            ],
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 1024,
+              responseMimeType: 'application/json',
+            }
+          })
+        }
+      );
+
+      if (geminiRes.ok) break; // Si funciona, salimos del loop
+
+      // Si es error 429 (cuota) o 404, intentamos con el siguiente modelo
+      if (geminiRes.status === 429 || geminiRes.status === 404) {
+        ultimoError = await geminiRes.json();
+        console.log(`Modelo ${modelo} no disponible (${geminiRes.status}), probando siguiente...`);
+        continue;
       }
-    );
+
+      // Cualquier otro error, lo reportamos inmediatamente
+      break;
+    }
 
     if (!geminiRes.ok) {
-      const errorData = await geminiRes.json();
+      const errorData = ultimoError || await geminiRes.json();
       console.error('Error de Gemini:', JSON.stringify(errorData));
       return res.status(502).json({ error: 'Error al consultar la IA', detalle: errorData });
     }
