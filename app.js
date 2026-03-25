@@ -178,3 +178,147 @@ function filtrarGenero(genero, boton) {
   if (boton) boton.classList.add('activo');
   filtrar();
 }
+
+// ════════════════════════════════════════════════════════
+// RECOMENDADOR IA
+// ════════════════════════════════════════════════════════
+
+// Estado interno de las selecciones
+const iaSeleccion = { estado: null, tiempo: null, objetivo: null };
+
+// ── Abrir / Cerrar modal ──
+function abrirModalIA() {
+  document.getElementById('modalIA').classList.add('abierto');
+  document.body.style.overflow = 'hidden'; // Bloquea scroll del fondo
+  volverAPreguntas(); // Siempre arranca desde el inicio
+}
+
+function cerrarModalIA() {
+  document.getElementById('modalIA').classList.remove('abierto');
+  document.body.style.overflow = '';
+}
+
+// Cerrar si el usuario hace clic fuera del panel
+function cerrarModalSiOverlay(event) {
+  if (event.target === document.getElementById('modalIA')) {
+    cerrarModalIA();
+  }
+}
+
+// Tecla Escape para cerrar
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') cerrarModalIA();
+});
+
+// ── Selección de opciones (botones tipo chip) ──
+function seleccionarOpcion(boton, grupo) {
+  // Quita la selección previa en ese grupo
+  const contenedor = document.getElementById(`opciones-${grupo}`);
+  contenedor.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('seleccionado'));
+  // Marca el nuevo
+  boton.classList.add('seleccionado');
+  iaSeleccion[grupo] = boton.dataset.valor;
+}
+
+// ── Resetear el modal al estado de preguntas ──
+function volverAPreguntas() {
+  mostrarPaso('ia-preguntas');
+  // Limpia selecciones visuales
+  document.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('seleccionado'));
+  document.getElementById('ia-tema').value = '';
+  iaSeleccion.estado   = null;
+  iaSeleccion.tiempo   = null;
+  iaSeleccion.objetivo = null;
+  // Scroll al inicio del modal
+  document.querySelector('.modal-panel').scrollTop = 0;
+}
+
+// ── Mostrar uno de los pasos del modal ──
+function mostrarPaso(idActivo) {
+  ['ia-preguntas', 'ia-cargando', 'ia-resultados', 'ia-error'].forEach(id => {
+    document.getElementById(id).style.display = (id === idActivo) ? 'flex' : 'none';
+  });
+}
+
+// ── Pedir recomendación a la API ──
+async function pedirRecomendacion() {
+  // Validar que las 3 preguntas obligatorias estén respondidas
+  if (!iaSeleccion.estado || !iaSeleccion.tiempo || !iaSeleccion.objetivo) {
+    // Resalta visualmente los grupos sin respuesta
+    ['estado', 'tiempo', 'objetivo'].forEach(grupo => {
+      if (!iaSeleccion[grupo]) {
+        const contenedor = document.getElementById(`opciones-${grupo}`);
+        contenedor.style.outline = '2px solid var(--vino)';
+        contenedor.style.borderRadius = '2px';
+        setTimeout(() => {
+          contenedor.style.outline = '';
+        }, 2000);
+      }
+    });
+    return;
+  }
+
+  const tema = document.getElementById('ia-tema').value.trim();
+
+  // Mostrar pantalla de carga
+  mostrarPaso('ia-cargando');
+  document.querySelector('.modal-panel').scrollTop = 0;
+
+  try {
+    const respuesta = await fetch('/api/recomendar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        estado:   iaSeleccion.estado,
+        tiempo:   iaSeleccion.tiempo,
+        objetivo: iaSeleccion.objetivo,
+        tema:     tema || null,
+        libros:   libros, // El array completo ya cargado en memoria
+      }),
+    });
+
+    const datos = await respuesta.json();
+
+    if (!respuesta.ok || !datos.recomendaciones) {
+      throw new Error(datos.error || 'Respuesta inesperada del servidor');
+    }
+
+    renderizarResultados(datos.recomendaciones);
+
+  } catch (err) {
+    console.error('Error al pedir recomendación:', err);
+    document.getElementById('ia-error-msg').textContent =
+      err.message || 'No se pudo obtener una recomendación. Intenta de nuevo.';
+    mostrarPaso('ia-error');
+  }
+}
+
+// ── Renderizar las 3 tarjetas recomendadas ──
+function renderizarResultados(recomendaciones) {
+  const lista = document.getElementById('resultados-lista');
+  lista.innerHTML = '';
+
+  const nums = ['I', 'II', 'III'];
+
+  recomendaciones.forEach((rec, i) => {
+    // Buscar el libro completo en la lista global por ID
+    const libro = libros.find(l => l.id === rec.id);
+    if (!libro) return; // Si no lo encuentra, lo salta
+
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'resultado-tarjeta';
+    tarjeta.innerHTML = `
+      <div class="resultado-num">Recomendación ${nums[i] || i + 1}</div>
+      <div class="resultado-titulo">${libro.titulo}</div>
+      <div class="resultado-autor">${libro.autor}${libro.anio ? ` · ${libro.anio}` : ''}</div>
+      <div class="resultado-razon">${rec.razon}</div>
+      <a href="${libro.pdf}" target="_blank" rel="noopener" class="resultado-btn">
+        📄 Abrir documento
+      </a>
+    `;
+    lista.appendChild(tarjeta);
+  });
+
+  mostrarPaso('ia-resultados');
+  document.querySelector('.modal-panel').scrollTop = 0;
+}

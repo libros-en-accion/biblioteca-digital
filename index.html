@@ -15,8 +15,18 @@
   </header>
 
   <div class="separador">
-  <span class="separador-icono">✦ ✦ ✦</span>
-</div>
+    <span class="separador-icono">✦ ✦ ✦</span>
+  </div>
+
+  <!-- BOTÓN IA -->
+  <div class="ia-trigger-wrapper">
+    <button id="btnAbrirIA" class="btn-ia-trigger" onclick="abrirModalIA()">
+      <span class="btn-ia-icono">✦</span>
+      ¿Qué debería leer hoy?
+      <span class="btn-ia-icono">✦</span>
+    </button>
+    <p class="ia-subtexto">Deja que la IA elija por ti según tu estado de ánimo</p>
+  </div>
 
   <!-- BARRA DE BÚSQUEDA -->
 <section class="buscador">
@@ -62,6 +72,124 @@
   </p>
 
 <div id="paginacion" class="paginacion"></div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- MODAL: RECOMENDADOR IA                     -->
+  <!-- ══════════════════════════════════════════ -->
+  <div id="modalIA" class="modal-overlay" onclick="cerrarModalSiOverlay(event)">
+    <div class="modal-panel">
+
+      <!-- Encabezado del modal -->
+      <div class="modal-header">
+        <div class="modal-ornamento">✦ Recomendador Inteligente ✦</div>
+        <h2 class="modal-titulo">¿Qué debería leer hoy?</h2>
+        <p class="modal-subtitulo">Responde cuatro preguntas y la IA elegirá tres libros perfectos para ti.</p>
+        <button class="modal-cerrar" onclick="cerrarModalIA()" aria-label="Cerrar">✕</button>
+      </div>
+
+      <!-- Paso 1: Preguntas (estado inicial) -->
+      <div id="ia-preguntas" class="modal-body">
+
+        <div class="pregunta-grupo">
+          <label class="pregunta-label" for="ia-estado">
+            <span class="pregunta-num">01</span>
+            ¿Cuál es tu estado de ánimo hoy?
+          </label>
+          <div class="opciones-grid" id="opciones-estado">
+            <button class="opcion-btn" data-valor="Curioso y con energía" onclick="seleccionarOpcion(this, 'estado')">🌟 Curioso y con energía</button>
+            <button class="opcion-btn" data-valor="Melancólico o reflexivo" onclick="seleccionarOpcion(this, 'estado')">🌧 Melancólico</button>
+            <button class="opcion-btn" data-valor="Tranquilo y relajado" onclick="seleccionarOpcion(this, 'estado')">🍃 Tranquilo</button>
+            <button class="opcion-btn" data-valor="Ansioso o estresado" onclick="seleccionarOpcion(this, 'estado')">🌀 Estresado</button>
+            <button class="opcion-btn" data-valor="Aventurero y sin miedo" onclick="seleccionarOpcion(this, 'estado')">⚡ Aventurero</button>
+            <button class="opcion-btn" data-valor="Nostálgico o sentimental" onclick="seleccionarOpcion(this, 'estado')">🕯 Nostálgico</button>
+          </div>
+        </div>
+
+        <div class="pregunta-grupo">
+          <label class="pregunta-label" for="ia-tiempo">
+            <span class="pregunta-num">02</span>
+            ¿Cuánto tiempo tienes para leer?
+          </label>
+          <div class="opciones-grid" id="opciones-tiempo">
+            <button class="opcion-btn" data-valor="Poco tiempo, menos de 30 minutos" onclick="seleccionarOpcion(this, 'tiempo')">⏱ Menos de 30 min</button>
+            <button class="opcion-btn" data-valor="Tiempo moderado, una hora" onclick="seleccionarOpcion(this, 'tiempo')">🕐 Alrededor de 1 hora</button>
+            <button class="opcion-btn" data-valor="Mucho tiempo, puedo leer toda la tarde" onclick="seleccionarOpcion(this, 'tiempo')">📖 Toda la tarde</button>
+          </div>
+        </div>
+
+        <div class="pregunta-grupo">
+          <label class="pregunta-label" for="ia-objetivo">
+            <span class="pregunta-num">03</span>
+            ¿Qué buscas en esta lectura?
+          </label>
+          <div class="opciones-grid" id="opciones-objetivo">
+            <button class="opcion-btn" data-valor="Quiero aprender algo nuevo" onclick="seleccionarOpcion(this, 'objetivo')">🧠 Aprender algo nuevo</button>
+            <button class="opcion-btn" data-valor="Quiero entretenimiento puro" onclick="seleccionarOpcion(this, 'objetivo')">🎭 Entretenimiento</button>
+            <button class="opcion-btn" data-valor="Quiero reflexionar o filosofar" onclick="seleccionarOpcion(this, 'objetivo')">💭 Reflexionar</button>
+            <button class="opcion-btn" data-valor="Quiero escapar de la realidad" onclick="seleccionarOpcion(this, 'objetivo')">🚀 Escapar de la realidad</button>
+            <button class="opcion-btn" data-valor="Quiero inspirarme o motivarme" onclick="seleccionarOpcion(this, 'objetivo')">✨ Inspirarme</button>
+          </div>
+        </div>
+
+        <div class="pregunta-grupo">
+          <label class="pregunta-label" for="ia-tema">
+            <span class="pregunta-num">04</span>
+            ¿Hay algún tema que te llame la atención? <span class="opcional">(Opcional)</span>
+          </label>
+          <input
+            type="text"
+            id="ia-tema"
+            class="ia-input-tema"
+            placeholder="Ej: historia, amor, política, filosofía..."
+          />
+        </div>
+
+        <div class="modal-acciones">
+          <button class="btn-cancelar" onclick="cerrarModalIA()">Cancelar</button>
+          <button id="btnRecomendar" class="btn-recomendar" onclick="pedirRecomendacion()">
+            Recomendar
+            <span class="btn-flecha">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Paso 2: Estado de carga -->
+      <div id="ia-cargando" class="modal-body modal-estado" style="display:none">
+        <div class="cargando-icono">📚</div>
+        <p class="cargando-texto">Consultando a la biblioteca...</p>
+        <p class="cargando-subtexto">La IA está analizando tu perfil y el catálogo completo.</p>
+        <div class="cargando-puntos">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Paso 3: Resultados -->
+      <div id="ia-resultados" class="modal-body" style="display:none">
+        <div class="resultados-header">
+          <p class="resultados-intro">Tres libros elegidos especialmente para ti hoy:</p>
+        </div>
+        <div id="resultados-lista" class="resultados-lista"></div>
+        <div class="modal-acciones">
+          <button class="btn-cancelar" onclick="cerrarModalIA()">Cerrar</button>
+          <button class="btn-recomendar" onclick="volverAPreguntas()">
+            ← Volver a intentar
+          </button>
+        </div>
+      </div>
+
+      <!-- Paso 4: Error -->
+      <div id="ia-error" class="modal-body modal-estado" style="display:none">
+        <div class="cargando-icono">⚠️</div>
+        <p class="cargando-texto">Algo salió mal</p>
+        <p id="ia-error-msg" class="cargando-subtexto">No se pudo obtener una recomendación.</p>
+        <div class="modal-acciones">
+          <button class="btn-recomendar" onclick="volverAPreguntas()">← Volver a intentar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ══════════════════════════════════════════ -->
 
   <script src="app.js"></script>
 </body>
