@@ -91,10 +91,21 @@ function inicializarPagina() {
   if (footerAnio) {
     footerAnio.textContent = new Date().getFullYear();
   }
+
+  // Scroll horizontal de tags con rueda de ratón (desktop)
+  const filtrosTags = document.getElementById('filtrosTags');
+  if (filtrosTags) {
+    filtrosTags.addEventListener('wheel', (evt) => {
+      if (evt.deltaY !== 0) {
+        evt.preventDefault();
+        filtrosTags.scrollLeft += evt.deltaY;
+      }
+    });
+  }
 }
 
 // ── MOSTRAR PÁGINA ──
-function mostrarPagina(pagina) {
+function mostrarPagina(pagina, omitirScroll = false) {
   paginaActual = pagina;
   const inicio = (pagina - 1) * LIBROS_POR_PAGINA;
   const fin = inicio + LIBROS_POR_PAGINA;
@@ -104,8 +115,11 @@ function mostrarPagina(pagina) {
   renderPaginacion();
 
   // Scroll suave arriba al cambiar página
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (!omitirScroll) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
+
 
 // ── MOSTRAR LIBROS EN LA PÁGINA ──
 function mostrarLibros(lista) {
@@ -245,7 +259,7 @@ function filtrar() {
     return coincideTexto && coincideGenero;
   });
 
-  mostrarPagina(1);
+  mostrarPagina(1, true); // Omitimos el scroll al buscar o filtrar
 }
 
 // ── FILTRO POR TAG DE GÉNERO ──
