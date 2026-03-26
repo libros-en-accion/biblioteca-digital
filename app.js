@@ -5,6 +5,65 @@ let paginaActual = 1;
 const LIBROS_POR_PAGINA = 24;
 let listaFiltrada = [];
 
+// ── FRASES LITERARIAS ──
+const frases = [
+  '«Un lector vive mil vidas antes de morir.» — George R.R. Martin',
+  '«Los libros son espejos: solo se ve en ellos lo que uno ya lleva dentro.» — Carlos Ruiz Zafón',
+  '«Leer es soñar con los ojos abiertos.» — Anónimo',
+  '«No hay amigo más leal que un libro.» — Ernest Hemingway',
+  '«La lectura es para la mente lo que el ejercicio es para el cuerpo.» — Joseph Addison',
+  '«Un libro es un sueño que tienes en tus manos.» — Neil Gaiman',
+  '«Siempre imaginé que el paraíso sería algún tipo de biblioteca.» — Jorge Luis Borges',
+  '«Los libros que el mundo llama inmorales son los que muestran al mundo su propia vergüenza.» — Oscar Wilde',
+];
+
+// ── MAPA DE CLASES CSS POR GÉNERO ──
+const generoClaseMap = {
+  'ciencia ficcion': 'genero-ciencia-ficcion',
+  'ciencia ficción': 'genero-ciencia-ficcion',
+  'fantasia': 'genero-fantasia',
+  'fantasía': 'genero-fantasia',
+  'terror': 'genero-terror',
+  'romance': 'genero-romance',
+  'filosofia': 'genero-filosofia',
+  'filosofía': 'genero-filosofia',
+  'poesia': 'genero-poesia',
+  'poesía': 'genero-poesia',
+  'historia y cronica': 'genero-historia',
+  'historia y crónica': 'genero-historia',
+  'misterio y thriller': 'genero-misterio',
+  'misterio': 'genero-misterio',
+  'teatro': 'genero-teatro',
+  'divulgacion cientifica': 'genero-divulgacion',
+  'divulgación científica': 'genero-divulgacion',
+  'psicologia y autoayuda': 'genero-psicologia',
+  'psicología y autoayuda': 'genero-psicologia',
+  'biografia y memorias': 'genero-biografia',
+  'biografía y memorias': 'genero-biografia',
+  'literatura latinoamericana': 'genero-latinoamericana',
+};
+
+// ── LIMPIAR TÍTULO ──
+function limpiarTitulo(titulo) {
+  if (!titulo) return '';
+  // Reemplaza guiones bajos y guiones largos por espacios
+  let limpio = titulo.replace(/[_]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+  // Si está todo en mayúsculas o todo mal formateado, capitalizar
+  if (limpio === limpio.toUpperCase() && limpio.length > 3) {
+    limpio = limpio.toLowerCase().replace(/(?:^|\s)\S/g, l => l.toUpperCase());
+  }
+
+  return limpio;
+}
+
+// ── OBTENER CLASE CSS DE GÉNERO ──
+function obtenerClaseGenero(genero) {
+  if (!genero) return '';
+  const clave = genero.toLowerCase().trim();
+  return generoClaseMap[clave] || '';
+}
+
 // ── CARGAR LIBROS AL INICIAR ──
 fetch('libros.json')
   .then(respuesta => respuesta.json())
@@ -12,7 +71,27 @@ fetch('libros.json')
     libros = datos;
     listaFiltrada = libros;
     mostrarPagina(1);
+    inicializarPagina();
   });
+
+// ── INICIALIZAR PÁGINA ──
+function inicializarPagina() {
+  // Frase literaria aleatoria
+  const fraseEl = document.getElementById('fraseLiteraria');
+  if (fraseEl) {
+    fraseEl.textContent = frases[Math.floor(Math.random() * frases.length)];
+  }
+
+  // Footer
+  const footerStats = document.getElementById('footerStats');
+  if (footerStats) {
+    footerStats.textContent = `${libros.length.toLocaleString('es-MX')} libros disponibles en el catálogo`;
+  }
+  const footerAnio = document.getElementById('footerAnio');
+  if (footerAnio) {
+    footerAnio.textContent = new Date().getFullYear();
+  }
+}
 
 // ── MOSTRAR PÁGINA ──
 function mostrarPagina(pagina) {
@@ -51,14 +130,19 @@ function mostrarLibros(lista) {
   const fin = Math.min(paginaActual * LIBROS_POR_PAGINA, total);
   contador.textContent = `Mostrando ${inicio}–${fin} de ${total} libro${total !== 1 ? 's' : ''}`;
 
-  lista.forEach(libro => {
+  lista.forEach((libro, i) => {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta';
+    tarjeta.style.animationDelay = `${i * 0.03}s`;
+
+    const claseGenero = obtenerClaseGenero(libro.genero);
+    const tituloLimpio = limpiarTitulo(libro.titulo);
+
     tarjeta.innerHTML = `
       <div class="tarjeta-info">
-        <span class="tarjeta-genero-badge">${libro.genero}</span>
-        <div class="tarjeta-titulo">${libro.titulo}</div>
-        <div class="tarjeta-autor">${libro.autor}</div>
+        <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
+        <div class="tarjeta-titulo">${tituloLimpio}</div>
+        <div class="tarjeta-autor">${libro.autor || ''}</div>
         <div class="tarjeta-anio">${libro.anio || ''}</div>
         <div class="tarjeta-descripcion">${libro.descripcion || ''}</div>
       </div>
@@ -161,21 +245,22 @@ function filtrar() {
     return coincideTexto && coincideGenero;
   });
 
-  mostrarPagina(1); // Siempre volver a página 1 al buscar
+  mostrarPagina(1);
 }
 
-// ── FILTRO POR SELECT ──
-function filtrarPorSelect() {
-  const select = document.getElementById('selectGenero');
-  generoActivo = select.value;
-  filtrar();
-}
-
-// ── FILTRO POR BOTÓN (por si lo usas en algún lado) ──
+// ── FILTRO POR TAG DE GÉNERO ──
 function filtrarGenero(genero, boton) {
   generoActivo = genero;
-  document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('activo'));
+  
+  // Actualizar clase activa en los tags
+  document.querySelectorAll('.tag-genero').forEach(b => b.classList.remove('activo'));
   if (boton) boton.classList.add('activo');
+  
+  // Hacer scroll al tag activo
+  if (boton) {
+    boton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  
   filtrar();
 }
 
@@ -189,8 +274,8 @@ const iaSeleccion = { estado: null, tiempo: null, objetivo: null };
 // ── Abrir / Cerrar modal ──
 function abrirModalIA() {
   document.getElementById('modalIA').classList.add('abierto');
-  document.body.style.overflow = 'hidden'; // Bloquea scroll del fondo
-  volverAPreguntas(); // Siempre arranca desde el inicio
+  document.body.style.overflow = 'hidden';
+  volverAPreguntas();
 }
 
 function cerrarModalIA() {
@@ -212,10 +297,8 @@ document.addEventListener('keydown', (e) => {
 
 // ── Selección de opciones (botones tipo chip) ──
 function seleccionarOpcion(boton, grupo) {
-  // Quita la selección previa en ese grupo
   const contenedor = document.getElementById(`opciones-${grupo}`);
   contenedor.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('seleccionado'));
-  // Marca el nuevo
   boton.classList.add('seleccionado');
   iaSeleccion[grupo] = boton.dataset.valor;
 }
@@ -223,13 +306,11 @@ function seleccionarOpcion(boton, grupo) {
 // ── Resetear el modal al estado de preguntas ──
 function volverAPreguntas() {
   mostrarPaso('ia-preguntas');
-  // Limpia selecciones visuales
   document.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('seleccionado'));
   document.getElementById('ia-tema').value = '';
   iaSeleccion.estado   = null;
   iaSeleccion.tiempo   = null;
   iaSeleccion.objetivo = null;
-  // Scroll al inicio del modal
   document.querySelector('.modal-panel').scrollTop = 0;
 }
 
@@ -242,14 +323,12 @@ function mostrarPaso(idActivo) {
 
 // ── Pedir recomendación a la API ──
 async function pedirRecomendacion() {
-  // Validar que las 3 preguntas obligatorias estén respondidas
   if (!iaSeleccion.estado || !iaSeleccion.tiempo || !iaSeleccion.objetivo) {
-    // Resalta visualmente los grupos sin respuesta
     ['estado', 'tiempo', 'objetivo'].forEach(grupo => {
       if (!iaSeleccion[grupo]) {
         const contenedor = document.getElementById(`opciones-${grupo}`);
         contenedor.style.outline = '2px solid var(--vino)';
-        contenedor.style.borderRadius = '2px';
+        contenedor.style.borderRadius = '6px';
         setTimeout(() => {
           contenedor.style.outline = '';
         }, 2000);
@@ -260,7 +339,6 @@ async function pedirRecomendacion() {
 
   const tema = document.getElementById('ia-tema').value.trim();
 
-  // Mostrar pantalla de carga
   mostrarPaso('ia-cargando');
   document.querySelector('.modal-panel').scrollTop = 0;
 
@@ -273,7 +351,7 @@ async function pedirRecomendacion() {
         tiempo:   iaSeleccion.tiempo,
         objetivo: iaSeleccion.objetivo,
         tema:     tema || null,
-        libros:   libros, // El array completo ya cargado en memoria
+        libros:   libros,
       }),
     });
 
@@ -301,15 +379,16 @@ function renderizarResultados(recomendaciones) {
   const nums = ['I', 'II', 'III'];
 
   recomendaciones.forEach((rec, i) => {
-    // Buscar el libro completo en la lista global por ID
     const libro = libros.find(l => l.id === rec.id);
-    if (!libro) return; // Si no lo encuentra, lo salta
+    if (!libro) return;
+
+    const tituloLimpio = limpiarTitulo(libro.titulo);
 
     const tarjeta = document.createElement('div');
     tarjeta.className = 'resultado-tarjeta';
     tarjeta.innerHTML = `
       <div class="resultado-num">Recomendación ${nums[i] || i + 1}</div>
-      <div class="resultado-titulo">${libro.titulo}</div>
+      <div class="resultado-titulo">${tituloLimpio}</div>
       <div class="resultado-autor">${libro.autor}${libro.anio ? ` · ${libro.anio}` : ''}</div>
       <div class="resultado-razon">${rec.razon}</div>
       <a href="${libro.pdf}" target="_blank" rel="noopener" class="resultado-btn">

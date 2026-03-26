@@ -3,33 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Biblioteca Digital</title>
+  <title>Biblioteca Digital — Clásicos, novelas, ensayos y más</title>
+  <meta name="description" content="Explora una colección de más de 2,800 libros digitales: novelas, ensayos, filosofía, ciencia ficción y más. Con recomendador inteligente por IA.">
+  <meta name="theme-color" content="#1a0f08">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ENCABEZADO -->
+  <!-- ═══ ENCABEZADO ═══ -->
   <header>
-    <h1>Biblioteca <span>Digital</span></h1>
-    <p>Clásicos, novelas, ensayos y literatura general</p>
+    <div class="header-inner">
+      <div class="header-ornamento">⟡ Colección Literaria ⟡</div>
+      <h1>Biblioteca <span>Digital</span></h1>
+      <p class="header-subtitulo">Clásicos, novelas, ensayos y literatura general</p>
+      <p id="fraseLiteraria" class="frase-literaria"></p>
+    </div>
+    <div class="header-linea-inferior"></div>
   </header>
 
-  <div class="separador">
-    <span class="separador-icono">✦ ✦ ✦</span>
-  </div>
+  <!-- ═══ SECCIÓN IA ═══ -->
+  <section class="seccion-ia">
+    <div class="ia-fondo-deco"></div>
+    <div class="ia-contenido">
+      <div class="ia-ornamento-linea"></div>
+      <span class="ia-etiqueta">✦ Recomendador Inteligente ✦</span>
+      <button id="btnAbrirIA" class="btn-ia-trigger" onclick="abrirModalIA()">
+        <span class="btn-ia-icono">📚</span>
+        ¿Qué debería leer hoy?
+      </button>
+      <p class="ia-subtexto">Deja que la IA elija por ti según tu estado de ánimo</p>
+      <div class="ia-ornamento-linea"></div>
+    </div>
+  </section>
 
-  <!-- BOTÓN IA -->
-  <div class="ia-trigger-wrapper">
-    <button id="btnAbrirIA" class="btn-ia-trigger" onclick="abrirModalIA()">
-      <span class="btn-ia-icono">✦</span>
-      ¿Qué debería leer hoy?
-      <span class="btn-ia-icono">✦</span>
-    </button>
-    <p class="ia-subtexto">Deja que la IA elija por ti según tu estado de ánimo</p>
-  </div>
-
-  <!-- BARRA DE BÚSQUEDA -->
-<section class="buscador">
+  <!-- ═══ BUSCADOR ═══ -->
+  <section class="buscador">
     <div class="buscador-contenedor">
       <span class="buscador-icono">🔍</span>
       <input
@@ -39,39 +47,53 @@
         oninput="filtrar()"
       />
     </div>
-    <select id="selectGenero" class="select-genero" onchange="filtrarPorSelect()">
-      <option value="Todos">Todos los géneros</option>
-      <option value="Novela">Novela</option>
-      <option value="Ensayo">Ensayo</option>
-      <option value="Cuento">Cuento</option>
-      <option value="Ciencia Ficción">Ciencia Ficción</option>
-      <option value="Filosofía">Filosofía</option>
-      <option value="Romance">Romance</option>
-      <option value="Fantasía">Fantasía</option>
-      <option value="Misterio y Thriller">Misterio y Thriller</option>
-      <option value="Poesía">Poesía</option>
-      <option value="Teatro">Teatro</option>
-      <option value="Terror">Terror</option>
-      <option value="Historia y Crónica">Historia y Crónica</option>
-      <option value="Divulgación Científica">Divulgación Científica</option>
-      <option value="Literatura latinoamericana">Literatura latinoamericana</option>
-      <option value="Psicología y Autoayuda">Psicología y Autoayuda</option>
-      <option value="Biografía y Memorias">Biografía y Memorias</option>
-    </select>
   </section>
 
-  <!-- CONTADOR DE RESULTADOS -->
+  <!-- ═══ FILTROS POR GÉNERO (TAGS) ═══ -->
+  <section class="filtros-wrapper">
+    <div class="filtros-fade filtros-fade-izq"></div>
+    <div id="filtrosTags" class="filtros-tags">
+      <button class="tag-genero activo" data-genero="Todos" onclick="filtrarGenero('Todos', this)">📖 Todos</button>
+      <button class="tag-genero" data-genero="Novela" onclick="filtrarGenero('Novela', this)">📕 Novela</button>
+      <button class="tag-genero" data-genero="Ensayo" onclick="filtrarGenero('Ensayo', this)">📝 Ensayo</button>
+      <button class="tag-genero" data-genero="Cuento" onclick="filtrarGenero('Cuento', this)">📖 Cuento</button>
+      <button class="tag-genero" data-genero="Ciencia Ficción" onclick="filtrarGenero('Ciencia Ficción', this)">🚀 Ciencia Ficción</button>
+      <button class="tag-genero" data-genero="Filosofía" onclick="filtrarGenero('Filosofía', this)">🧠 Filosofía</button>
+      <button class="tag-genero" data-genero="Romance" onclick="filtrarGenero('Romance', this)">💕 Romance</button>
+      <button class="tag-genero" data-genero="Fantasía" onclick="filtrarGenero('Fantasía', this)">🐉 Fantasía</button>
+      <button class="tag-genero" data-genero="Misterio y Thriller" onclick="filtrarGenero('Misterio y Thriller', this)">🔍 Misterio</button>
+      <button class="tag-genero" data-genero="Poesía" onclick="filtrarGenero('Poesía', this)">🌹 Poesía</button>
+      <button class="tag-genero" data-genero="Teatro" onclick="filtrarGenero('Teatro', this)">🎭 Teatro</button>
+      <button class="tag-genero" data-genero="Terror" onclick="filtrarGenero('Terror', this)">👻 Terror</button>
+      <button class="tag-genero" data-genero="Historia y Crónica" onclick="filtrarGenero('Historia y Crónica', this)">📜 Historia</button>
+      <button class="tag-genero" data-genero="Divulgación Científica" onclick="filtrarGenero('Divulgación Científica', this)">🔬 Divulgación</button>
+      <button class="tag-genero" data-genero="Literatura latinoamericana" onclick="filtrarGenero('Literatura latinoamericana', this)">🌎 Latinoamericana</button>
+      <button class="tag-genero" data-genero="Psicología y Autoayuda" onclick="filtrarGenero('Psicología y Autoayuda', this)">🧩 Psicología</button>
+      <button class="tag-genero" data-genero="Biografía y Memorias" onclick="filtrarGenero('Biografía y Memorias', this)">👤 Biografía</button>
+    </div>
+    <div class="filtros-fade filtros-fade-der"></div>
+  </section>
+
+  <!-- ═══ CONTADOR ═══ -->
   <p id="contador" class="contador"></p>
 
-  <!-- GRID DE LIBROS -->
+  <!-- ═══ GRID DE LIBROS ═══ -->
   <main id="galeria" class="galeria"></main>
 
-  <!-- MENSAJE CUANDO NO HAY RESULTADOS -->
+  <!-- ═══ SIN RESULTADOS ═══ -->
   <p id="sinResultados" class="sin-resultados" style="display:none">
     No se encontraron libros con ese criterio.
   </p>
 
-<div id="paginacion" class="paginacion"></div>
+  <!-- ═══ PAGINACIÓN ═══ -->
+  <div id="paginacion" class="paginacion"></div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-ornamento">✦ ✦ ✦</div>
+    <p class="footer-stats" id="footerStats"></p>
+    <p class="footer-creditos">Biblioteca Digital · <span id="footerAnio"></span></p>
+  </footer>
 
   <!-- ══════════════════════════════════════════ -->
   <!-- MODAL: RECOMENDADOR IA                     -->
