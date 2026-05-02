@@ -1,5 +1,5 @@
 // api/recomendar.js
-// Función Serverless de Vercel — recibe preferencias del usuario y consulta OpenRouter
+// Función Serverless de Vercel — recibe preferencias del usuario y consulta DeepSeek directamente
 
 module.exports = async function handler(req, res) {
   // Solo aceptamos POST
@@ -56,62 +56,42 @@ INSTRUCCIONES:
 ]
 `.trim();
 
-  // ── 4. LLAMAR A OPENROUTER API ──
+  // ── 4. LLAMAR A DEEPSEEK API ──
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.DEEPSEEK_API_KEY;
 
     if (!apiKey) {
       return res.status(500).json({ error: 'API Key no configurada en el servidor' });
     }
 
-    // Modelos en orden: primero los gratuitos, luego el de pago como respaldo
-    const modelos = [
-      "meta-llama/llama-3.3-70b-instruct:free",
-      "meta-llama/llama-3.2-3b-instruct:free",
-      "google/gemini-2.0-flash-lite-001",
-    ];
+    const deepseekRes = await fetch("https://api.deepseek.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        model: "deepseek-chat",
+        messages: [
+          { role: "system", content: "Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional." },
+          { role: "user", content: prompt }
+        ],
+        temperature: 0.7,
+        max_tokens: 1000
+      })
+    });
 
-    let openRouterData = null;
-    let ultimoError = null;
-
-    for (const modelo of modelos) {
-      const openRouterRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://biblioteca-digital-eight.vercel.app/",
-          "X-Title": "Biblioteca Digital IA"
-        },
-        body: JSON.stringify({
-          model: modelo,
-          messages: [
-            { role: "system", content: "Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional." },
-            { role: "user", content: prompt }
-          ],
-          temperature: 0.7,
-        })
-      });
-
-      if (openRouterRes.ok) {
-        openRouterData = await openRouterRes.json();
-        console.log(`Modelo ${modelo} respondió exitosamente`);
-        break;
-      }
-
-      ultimoError = await openRouterRes.json();
-      console.log(`Modelo ${modelo} falló (${openRouterRes.status}), probando siguiente...`);
+    if (!deepseekRes.ok) {
+      const errorData = await deepseekRes.json();
+      console.error('Error en DeepSeek:', errorData);
+      return res.status(502).json({ error: 'Error al consultar DeepSeek', detalle: errorData });
     }
 
-    if (!openRouterData) {
-      console.error('Todos los modelos fallaron:', JSON.stringify(ultimoError));
-      return res.status(502).json({ error: 'Error al consultar la IA', detalle: ultimoError });
-    }
-
-    const textoRespuesta = openRouterData.choices[0]?.message?.content;
+    const data = await deepseekRes.json();
+    const textoRespuesta = data.choices[0]?.message?.content;
 
     if (!textoRespuesta) {
-      return res.status(502).json({ error: 'La IA no devolvió una respuesta válida' });
+      return res.status(502).json({ error: 'DeepSeek no devolvió una respuesta válida' });
     }
 
     // Limpiar posibles bloques de código que la IA a veces añade
@@ -124,7 +104,7 @@ INSTRUCCIONES:
     let recomendaciones;
     try {
       recomendaciones = JSON.parse(textoLimpio);
-      // Extraer el array si OpenRouter lo envolvió en un objeto
+      // Extraer el array si DeepSeek lo envolvió en un objeto
       if (!Array.isArray(recomendaciones) && recomendaciones.recomendaciones) {
         recomendaciones = recomendaciones.recomendaciones;
       }
