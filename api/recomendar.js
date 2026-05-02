@@ -16,9 +16,9 @@ module.exports = async function handler(req, res) {
 
   // ── 2. CONSTRUIR EL CATÁLOGO RESUMIDO ──
   const catalogo = libros.map(l => ({
-    id:     l.id,
+    id: l.id,
     titulo: l.titulo,
-    autor:  l.autor,
+    autor: l.autor,
     genero: l.genero,
   }));
 
@@ -71,7 +71,7 @@ INSTRUCCIONES:
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "deepseek-chat",
+        model: "deepseek-v4-flash",
         messages: [
           { role: "system", content: "Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional." },
           { role: "user", content: prompt }
