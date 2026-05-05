@@ -23,9 +23,10 @@
 
 ### 🔴 Prioridad alta
 - [x] **Normalizar géneros** — 3 grupos duplicados unificados. ✅
-- [ ] **Crear `vercel.json`** — necesario para el deploy correcto en Vercel (rutas, runtime, rewrites).
-- [ ] **Crear `package.json`** — dependencias (si aplica) y scripts.
-- [ ] **Crear `.gitignore`** — evitar subir basura a Git.
+- [x] **Crear `vercel.json`** — config básica (versión 2). ✅
+- [x] **Crear `package.json`** — name, node 20.x, scripts dev/deploy. ✅
+- [x] **Crear `.gitignore`** — *.bak, node_modules/, .env, .DS_Store. ✅
+- [ ] **Configurar deploy en Vercel** — ver guía abajo.
 - [ ] **Documentar variables de entorno** — `DEEPSEEK_API_KEY` necesaria para el recomendador.
 
 ### 🟡 Prioridad media
@@ -66,17 +67,87 @@ biblioteca/
 
 ### Variables de entorno (Vercel)
 
+Necesitas agregar esto en el dashboard de Vercel (Project → Settings → Environment Variables):
+
 ```
 DEEPSEEK_API_KEY=sk-...
 ```
 
+---
+
+## 🚀 Guía de deploy
+
+### Opción A: Vía CLI de Vercel (recomendada para pruebas rápidas)
+
+```bash
+# 1. Iniciar sesión (abre el navegador para autenticarte)
+vercel login
+
+# 2. Vincular el proyecto (desde /home/daniel/biblioteca/)
+vercel link
+# Responde: ¿Existing project? → No (crear nuevo)
+#           ¿Project name? → biblioteca-digital
+#           ¿Directory? → ./
+
+# 3. Agregar variable de entorno
+vercel env add DEEPSEEK_API_KEY
+# Pega tu API key y presiona Enter
+
+# 4. Desplegar a producción
+vercel --prod
+```
+
+**Después del primer deploy**, para actualizar solo basta con:
+
+```bash
+cd /home/daniel/biblioteca/
+git add -A
+git commit -m "descripción del cambio"
+vercel --prod
+```
+
+### Opción B: Vía GitHub + Vercel (auto-deploy)_
+
+Si prefieres que cada push a GitHub despliegue automáticamente:
+
+```bash
+# 1. Crear repo en GitHub (desde CLI)
+gh repo create biblioteca-digital --public --source=. --push
+
+# 2. Ir a https://vercel.com/new
+#    Importar el repo de GitHub
+#    Agregar variable DEEPSEEK_API_KEY
+#    Deploy
+```
+
+A partir de ahí, cada `git push` a main hace deploy automático. 🔄
+
+### ¿Cómo sé si mi deploy funcionó?
+
+```bash
+# Ver los últimos deploys
+vercel list
+
+# Ver logs del serverless function (API)
+vercel logs api/recomendar.js
+```
+
+### Pro tips
+
+- `vercel dev` inicia un servidor local que emula Vercel (incluye la API funcionando).
+- Si solo cambias `libros.json`, el deploy tarda segundos (solo sube el archivo).
+- La primera vez que alguien use el recomendador, DeepSeek tardará ~3-5s (cache miss). Las siguientes serán ~1-2s.
+
+---
+
 ### Archivos faltantes
 
-| Archivo | Propósito |
-|---|---|
-| `vercel.json` | Configuración de rutas y runtime para Vercel |
-| `package.json` | Dependencias (ninguna por ahora, pero necesario para Vercel) |
-| `.gitignore` | Ignorar `*.bak`, `node_modules/`, etc. |
+| Archivo | Propósito | Estado |
+|---|---|---|
+| `vercel.json` | Configuración de rutas y runtime para Vercel | ✅ Creado |
+| `package.json` | Metadatos, engine node, scripts | ✅ Creado |
+| `.gitignore` | Ignorar `*.bak`, `node_modules/`, `.env` | ✅ Creado |
+| `DEEPSEEK_API_KEY` | Variable de entorno en Vercel | ❌ Pendiente |
 
 ---
 
@@ -93,7 +164,7 @@ DEEPSEEK_API_KEY=sk-...
 
 3. **HTML mezcla `onclick` inline con `addEventListener`** — el modal IA usa addEventListener para Escape, pero los botones usan onclick en el HTML. Funciona, pero es inconsistente.
 
-4. **No hay `vercel.json`** — se eliminó en un commit previo por error de validación y nunca se restauró.
+4. ~~**No hay `vercel.json`** — se eliminó en un commit previo por error de validación y nunca se restauró.~~ ✅ **Resuelto** — creado con sintaxis correcta (versión 2).
 
 5. **Los tags de filtro no cubren todos los géneros** — hay 17 tags pero géneros como "Novela histórica" (49 libros), "Romance / Drama" (88) o "Thriller" (27) no tienen botón propio.
 
@@ -143,3 +214,5 @@ DEEPSEEK_API_KEY=sk-...
 | 2026-05-04 | Corregido género `null` en los 3 libros Ghostgirl → "Novela" |
 | 2026-05-04 | Agregado mapeo CSS para "Filosofía Política" en `app.js` |
 | 2026-05-04 | Creado PROYECTO.md para seguimiento del proyecto |
+| 2026-05-04 | Creados vercel.json y package.json para deploy |
+| 2026-05-04 | Instalada CLI de Vercel (npm i -g vercel) |
