@@ -27,6 +27,8 @@ const generoClaseMap = {
   'romance': 'genero-romance',
   'filosofia': 'genero-filosofia',
   'filosofía': 'genero-filosofia',
+  'filosofia politica': 'genero-filosofia',
+  'filosofía política': 'genero-filosofia',
   'poesia': 'genero-poesia',
   'poesía': 'genero-poesia',
   'historia y cronica': 'genero-historia',

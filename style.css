@@ -47,7 +47,7 @@ body {
 /* ENCABEZADO                                             */
 /* ══════════════════════════════════════════════════════ */
 header {
-  background: linear-gradient(170deg, #4a2820 0%, #3a1f16 40%, #2a1610 100%);
+  background: linear-gradient(170deg, #2a1610 0%, #1a0f08 40%, #0f0804 100%);
   text-align: center;
   padding: 0;
   position: relative;
