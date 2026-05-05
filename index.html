@@ -6,7 +6,24 @@
   <title>Biblioteca Digital — Clásicos, novelas, ensayos y más</title>
   <meta name="description" content="Explora una colección de más de 2,800 libros digitales: novelas, ensayos, filosofía, ciencia ficción y más. Con recomendador inteligente por IA.">
   <meta name="theme-color" content="#1a0f08">
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- SEO: Open Graph -->
+  <meta property="og:title" content="Biblioteca Digital — Colección Literaria">
+  <meta property="og:description" content="Más de 2,800 libros digitales gratuitos: novelas, ensayos, filosofía, ciencia ficción, teatro y más.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Biblioteca Digital — Colección Literaria">
+  <meta name="twitter:description" content="Más de 2,800 libros digitales gratuitos con recomendador inteligente por IA.">
+
+  <!-- SEO: Additional -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Daniel">
+  <link rel="canonical" href="/">
+
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
 
@@ -18,6 +35,7 @@
       <p class="header-subtitulo">Clásicos, novelas, ensayos y literatura general</p>
       <p id="fraseLiteraria" class="frase-literaria"></p>
     </div>
+    <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>
     <div class="header-linea-inferior"></div>
   </header>
 
@@ -27,10 +45,16 @@
     <div class="ia-contenido">
       <div class="ia-ornamento-linea"></div>
       <span class="ia-etiqueta">✦ Recomendador Inteligente ✦</span>
-      <button id="btnAbrirIA" class="btn-ia-trigger" onclick="abrirModalIA()">
-        <span class="btn-ia-icono">📚</span>
-        ¿Qué debería leer hoy?
-      </button>
+      <div class="ia-botones-grupo">
+        <button id="btnAbrirIA" class="btn-ia-trigger">
+          <span class="btn-ia-icono">📚</span>
+          ¿Qué debería leer hoy?
+        </button>
+        <button id="btnAzar" class="btn-azar" title="Libro al azar">
+          <span class="btn-azar-icono">🎲</span>
+          Sorpréndeme
+        </button>
+      </div>
       <p class="ia-subtexto">Deja que la IA elija por ti según tu estado de ánimo</p>
       <div class="ia-ornamento-linea"></div>
     </div>
@@ -40,50 +64,42 @@
   <section class="buscador">
     <div class="buscador-contenedor">
       <span class="buscador-icono">🔍</span>
-      <input
-        type="text"
-        id="inputBusqueda"
-        placeholder="Buscar por título o autor..."
-        oninput="filtrar()"
-      />
+      <input type="text" id="inputBusqueda" placeholder="Buscar por título, autor, género o año..." />
+      <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda">✕</button>
     </div>
   </section>
 
   <!-- ═══ FILTROS POR GÉNERO (TAGS) ═══ -->
   <section class="filtros-wrapper">
     <div class="filtros-fade filtros-fade-izq"></div>
-    <div id="filtrosTags" class="filtros-tags">
-      <button class="tag-genero activo" data-genero="Todos" onclick="filtrarGenero('Todos', this)">📖 Todos</button>
-      <button class="tag-genero" data-genero="Novela" onclick="filtrarGenero('Novela', this)">📕 Novela</button>
-      <button class="tag-genero" data-genero="Ensayo" onclick="filtrarGenero('Ensayo', this)">📝 Ensayo</button>
-      <button class="tag-genero" data-genero="Cuento" onclick="filtrarGenero('Cuento', this)">📖 Cuento</button>
-      <button class="tag-genero" data-genero="Ciencia Ficción" onclick="filtrarGenero('Ciencia Ficción', this)">🚀 Ciencia Ficción</button>
-      <button class="tag-genero" data-genero="Filosofía" onclick="filtrarGenero('Filosofía', this)">🧠 Filosofía</button>
-      <button class="tag-genero" data-genero="Romance" onclick="filtrarGenero('Romance', this)">💕 Romance</button>
-      <button class="tag-genero" data-genero="Fantasía" onclick="filtrarGenero('Fantasía', this)">🐉 Fantasía</button>
-      <button class="tag-genero" data-genero="Misterio y Thriller" onclick="filtrarGenero('Misterio y Thriller', this)">🔍 Misterio</button>
-      <button class="tag-genero" data-genero="Poesía" onclick="filtrarGenero('Poesía', this)">🌹 Poesía</button>
-      <button class="tag-genero" data-genero="Teatro" onclick="filtrarGenero('Teatro', this)">🎭 Teatro</button>
-      <button class="tag-genero" data-genero="Terror" onclick="filtrarGenero('Terror', this)">👻 Terror</button>
-      <button class="tag-genero" data-genero="Historia y Crónica" onclick="filtrarGenero('Historia y Crónica', this)">📜 Historia</button>
-      <button class="tag-genero" data-genero="Divulgación Científica" onclick="filtrarGenero('Divulgación Científica', this)">🔬 Divulgación</button>
-      <button class="tag-genero" data-genero="Literatura latinoamericana" onclick="filtrarGenero('Literatura latinoamericana', this)">🌎 Latinoamericana</button>
-      <button class="tag-genero" data-genero="Psicología y Autoayuda" onclick="filtrarGenero('Psicología y Autoayuda', this)">🧩 Psicología</button>
-      <button class="tag-genero" data-genero="Biografía y Memorias" onclick="filtrarGenero('Biografía y Memorias', this)">👤 Biografía</button>
-    </div>
+    <div id="filtrosTags" class="filtros-tags"></div>
     <div class="filtros-fade filtros-fade-der"></div>
   </section>
 
-  <!-- ═══ CONTADOR ═══ -->
-  <p id="contador" class="contador"></p>
+  <!-- ═══ BARRA DE CONTROLES ═══ -->
+  <div class="controles-barra">
+    <p id="contador" class="contador"></p>
+    <div class="controles-derecha">
+      <select id="selectOrden" class="select-orden" aria-label="Ordenar por">
+        <option value="default">Ordenar por…</option>
+        <option value="titulo-asc">Título A → Z</option>
+        <option value="titulo-desc">Título Z → A</option>
+        <option value="autor-asc">Autor A → Z</option>
+        <option value="anio-desc">Más recientes</option>
+        <option value="anio-asc">Más antiguos</option>
+      </select>
+    </div>
+  </div>
 
   <!-- ═══ GRID DE LIBROS ═══ -->
   <main id="galeria" class="galeria"></main>
 
   <!-- ═══ SIN RESULTADOS ═══ -->
-  <p id="sinResultados" class="sin-resultados" style="display:none">
-    No se encontraron libros con ese criterio.
-  </p>
+  <div id="sinResultados" class="sin-resultados" style="display:none">
+    <div class="sin-resultados-icono">📚</div>
+    <p class="sin-resultados-texto">No se encontraron libros con ese criterio.</p>
+    <button id="btnLimpiarTodo" class="btn-limpiar-todo">Limpiar filtros y buscar todo</button>
+  </div>
 
   <!-- ═══ PAGINACIÓN ═══ -->
   <div id="paginacion" class="paginacion"></div>
@@ -95,107 +111,100 @@
     <p class="footer-creditos">Biblioteca Digital · <span id="footerAnio"></span></p>
   </footer>
 
-  <!-- ══════════════════════════════════════════ -->
-  <!-- MODAL: RECOMENDADOR IA                     -->
-  <!-- ══════════════════════════════════════════ -->
-  <div id="modalIA" class="modal-overlay" onclick="cerrarModalSiOverlay(event)">
-    <div class="modal-panel">
+  <!-- ═══ MODAL: DETALLE DEL LIBRO ═══ -->
+  <div id="modalDetalle" class="modal-overlay">
+    <div class="modal-panel modal-panel-detalle">
+      <div class="modal-header">
+        <div class="modal-ornamento">✦ Detalle del libro ✦</div>
+        <h2 id="detalle-titulo" class="modal-titulo"></h2>
+        <button id="btnCerrarDetalle" class="modal-cerrar" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body detalle-body">
+        <span id="detalle-genero" class="tarjeta-genero-badge"></span>
+        <p id="detalle-autor" class="detalle-autor"></p>
+        <p id="detalle-anio" class="detalle-anio"></p>
+        <p id="detalle-descripcion" class="detalle-descripcion"></p>
+        <a id="detalle-pdf-link" href="#" target="_blank" rel="noopener" class="btn-recomendar detalle-pdf-btn">
+          📄 Abrir documento
+        </a>
+        <div id="detalle-relacionados-seccion" class="detalle-relacionados-seccion">
+          <h3 class="detalle-relacionados-titulo">Libros similares</h3>
+          <div id="detalle-relacionados" class="detalle-relacionados-grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <!-- Encabezado del modal -->
+  <!-- ═══ MODAL: RECOMENDADOR IA ═══ -->
+  <div id="modalIA" class="modal-overlay">
+    <div class="modal-panel">
       <div class="modal-header">
         <div class="modal-ornamento">✦ Recomendador Inteligente ✦</div>
         <h2 class="modal-titulo">¿Qué debería leer hoy?</h2>
         <p class="modal-subtitulo">Responde cuatro preguntas y la IA elegirá tres libros perfectos para ti.</p>
-        <button class="modal-cerrar" onclick="cerrarModalIA()" aria-label="Cerrar">✕</button>
+        <button id="btnCerrarIA" class="modal-cerrar" aria-label="Cerrar">✕</button>
       </div>
 
-      <!-- Paso 1: Preguntas (estado inicial) -->
+      <!-- Paso 1: Preguntas -->
       <div id="ia-preguntas" class="modal-body">
-
         <div class="pregunta-grupo">
-          <label class="pregunta-label" for="ia-estado">
-            <span class="pregunta-num">01</span>
-            ¿Cuál es tu estado de ánimo hoy?
-          </label>
+          <label class="pregunta-label"><span class="pregunta-num">01</span> ¿Cuál es tu estado de ánimo hoy?</label>
           <div class="opciones-grid" id="opciones-estado">
-            <button class="opcion-btn" data-valor="Curioso y con energía" onclick="seleccionarOpcion(this, 'estado')">🌟 Curioso y con energía</button>
-            <button class="opcion-btn" data-valor="Melancólico o reflexivo" onclick="seleccionarOpcion(this, 'estado')">🌧 Melancólico</button>
-            <button class="opcion-btn" data-valor="Tranquilo y relajado" onclick="seleccionarOpcion(this, 'estado')">🍃 Tranquilo</button>
-            <button class="opcion-btn" data-valor="Ansioso o estresado" onclick="seleccionarOpcion(this, 'estado')">🌀 Estresado</button>
-            <button class="opcion-btn" data-valor="Aventurero y sin miedo" onclick="seleccionarOpcion(this, 'estado')">⚡ Aventurero</button>
-            <button class="opcion-btn" data-valor="Nostálgico o sentimental" onclick="seleccionarOpcion(this, 'estado')">🕯 Nostálgico</button>
+            <button class="opcion-btn" data-valor="Curioso y con energía" data-grupo="estado">🌟 Curioso y con energía</button>
+            <button class="opcion-btn" data-valor="Melancólico o reflexivo" data-grupo="estado">🌧 Melancólico</button>
+            <button class="opcion-btn" data-valor="Tranquilo y relajado" data-grupo="estado">🍃 Tranquilo</button>
+            <button class="opcion-btn" data-valor="Ansioso o estresado" data-grupo="estado">🌀 Estresado</button>
+            <button class="opcion-btn" data-valor="Aventurero y sin miedo" data-grupo="estado">⚡ Aventurero</button>
+            <button class="opcion-btn" data-valor="Nostálgico o sentimental" data-grupo="estado">🕯 Nostálgico</button>
           </div>
         </div>
 
         <div class="pregunta-grupo">
-          <label class="pregunta-label" for="ia-tiempo">
-            <span class="pregunta-num">02</span>
-            ¿Cuánto tiempo tienes para leer?
-          </label>
+          <label class="pregunta-label"><span class="pregunta-num">02</span> ¿Cuánto tiempo tienes para leer?</label>
           <div class="opciones-grid" id="opciones-tiempo">
-            <button class="opcion-btn" data-valor="Poco tiempo, menos de 30 minutos" onclick="seleccionarOpcion(this, 'tiempo')">⏱ Menos de 30 min</button>
-            <button class="opcion-btn" data-valor="Tiempo moderado, una hora" onclick="seleccionarOpcion(this, 'tiempo')">🕐 Alrededor de 1 hora</button>
-            <button class="opcion-btn" data-valor="Mucho tiempo, puedo leer toda la tarde" onclick="seleccionarOpcion(this, 'tiempo')">📖 Toda la tarde</button>
+            <button class="opcion-btn" data-valor="Poco tiempo, menos de 30 minutos" data-grupo="tiempo">⏱ Menos de 30 min</button>
+            <button class="opcion-btn" data-valor="Tiempo moderado, una hora" data-grupo="tiempo">🕐 Alrededor de 1 hora</button>
+            <button class="opcion-btn" data-valor="Mucho tiempo, puedo leer toda la tarde" data-grupo="tiempo">📖 Toda la tarde</button>
           </div>
         </div>
 
         <div class="pregunta-grupo">
-          <label class="pregunta-label" for="ia-objetivo">
-            <span class="pregunta-num">03</span>
-            ¿Qué buscas en esta lectura?
-          </label>
+          <label class="pregunta-label"><span class="pregunta-num">03</span> ¿Qué buscas en esta lectura?</label>
           <div class="opciones-grid" id="opciones-objetivo">
-            <button class="opcion-btn" data-valor="Quiero aprender algo nuevo" onclick="seleccionarOpcion(this, 'objetivo')">🧠 Aprender algo nuevo</button>
-            <button class="opcion-btn" data-valor="Quiero entretenimiento puro" onclick="seleccionarOpcion(this, 'objetivo')">🎭 Entretenimiento</button>
-            <button class="opcion-btn" data-valor="Quiero reflexionar o filosofar" onclick="seleccionarOpcion(this, 'objetivo')">💭 Reflexionar</button>
-            <button class="opcion-btn" data-valor="Quiero escapar de la realidad" onclick="seleccionarOpcion(this, 'objetivo')">🚀 Escapar de la realidad</button>
-            <button class="opcion-btn" data-valor="Quiero inspirarme o motivarme" onclick="seleccionarOpcion(this, 'objetivo')">✨ Inspirarme</button>
+            <button class="opcion-btn" data-valor="Quiero aprender algo nuevo" data-grupo="objetivo">🧠 Aprender algo nuevo</button>
+            <button class="opcion-btn" data-valor="Quiero entretenimiento puro" data-grupo="objetivo">🎭 Entretenimiento</button>
+            <button class="opcion-btn" data-valor="Quiero reflexionar o filosofar" data-grupo="objetivo">💭 Reflexionar</button>
+            <button class="opcion-btn" data-valor="Quiero escapar de la realidad" data-grupo="objetivo">🚀 Escapar de la realidad</button>
+            <button class="opcion-btn" data-valor="Quiero inspirarme o motivarme" data-grupo="objetivo">✨ Inspirarme</button>
           </div>
         </div>
 
         <div class="pregunta-grupo">
-          <label class="pregunta-label" for="ia-tema">
-            <span class="pregunta-num">04</span>
-            ¿Hay algún tema que te llame la atención? <span class="opcional">(Opcional)</span>
-          </label>
-          <input
-            type="text"
-            id="ia-tema"
-            class="ia-input-tema"
-            placeholder="Ej: historia, amor, política, filosofía..."
-          />
+          <label class="pregunta-label"><span class="pregunta-num">04</span> ¿Hay algún tema que te llame la atención? <span class="opcional">(Opcional)</span></label>
+          <input type="text" id="ia-tema" class="ia-input-tema" placeholder="Ej: historia, amor, política, filosofía..." />
         </div>
 
         <div class="modal-acciones">
-          <button class="btn-cancelar" onclick="cerrarModalIA()">Cancelar</button>
-          <button id="btnRecomendar" class="btn-recomendar" onclick="pedirRecomendacion()">
-            Recomendar
-            <span class="btn-flecha">→</span>
-          </button>
+          <button id="btnCancelarIA" class="btn-cancelar">Cancelar</button>
+          <button id="btnRecomendar" class="btn-recomendar">Recomendar <span class="btn-flecha">→</span></button>
         </div>
       </div>
 
-      <!-- Paso 2: Estado de carga -->
+      <!-- Paso 2: Carga -->
       <div id="ia-cargando" class="modal-body modal-estado" style="display:none">
         <div class="cargando-icono">📚</div>
         <p class="cargando-texto">Consultando a la biblioteca...</p>
         <p class="cargando-subtexto">La IA está analizando tu perfil y el catálogo completo.</p>
-        <div class="cargando-puntos">
-          <span></span><span></span><span></span>
-        </div>
+        <div class="cargando-puntos"><span></span><span></span><span></span></div>
       </div>
 
       <!-- Paso 3: Resultados -->
       <div id="ia-resultados" class="modal-body" style="display:none">
-        <div class="resultados-header">
-          <p class="resultados-intro">Tres libros elegidos especialmente para ti hoy:</p>
-        </div>
+        <div class="resultados-header"><p class="resultados-intro">Tres libros elegidos especialmente para ti hoy:</p></div>
         <div id="resultados-lista" class="resultados-lista"></div>
         <div class="modal-acciones">
-          <button class="btn-cancelar" onclick="cerrarModalIA()">Cerrar</button>
-          <button class="btn-recomendar" onclick="volverAPreguntas()">
-            ← Volver a intentar
-          </button>
+          <button id="btnCerrarResultados" class="btn-cancelar">Cerrar</button>
+          <button id="btnVolverIntentar" class="btn-recomendar">← Volver a intentar</button>
         </div>
       </div>
 
@@ -205,14 +214,12 @@
         <p class="cargando-texto">Algo salió mal</p>
         <p id="ia-error-msg" class="cargando-subtexto">No se pudo obtener una recomendación.</p>
         <div class="modal-acciones">
-          <button class="btn-recomendar" onclick="volverAPreguntas()">← Volver a intentar</button>
+          <button id="btnVolverError" class="btn-recomendar">← Volver a intentar</button>
         </div>
       </div>
-
     </div>
   </div>
-  <!-- ══════════════════════════════════════════ -->
 
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

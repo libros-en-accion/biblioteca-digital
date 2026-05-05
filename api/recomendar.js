@@ -1,5 +1,32 @@
 // api/recomendar.js
 // Función Serverless de Vercel — recibe preferencias del usuario y consulta DeepSeek directamente
+// El catálogo se lee del filesystem del servidor, NO del cliente.
+
+const fs = require('fs');
+const path = require('path');
+
+// ── Cargar el catálogo una sola vez al arrancar la función ──
+// En Vercel Serverless, el módulo se cachea entre invocaciones del mismo worker,
+// así que esta lectura solo ocurre 1 vez por cold start.
+let catalogoCache = null;
+
+function obtenerCatalogo() {
+  if (catalogoCache) return catalogoCache;
+
+  const librosPath = path.join(__dirname, '..', 'libros.json');
+  const raw = fs.readFileSync(librosPath, 'utf-8');
+  const libros = JSON.parse(raw);
+
+  // Solo necesitamos id, titulo, autor y genero para las recomendaciones
+  catalogoCache = libros.map(l => ({
+    id: l.id,
+    titulo: l.titulo,
+    autor: l.autor,
+    genero: l.genero,
+  }));
+
+  return catalogoCache;
+}
 
 module.exports = async function handler(req, res) {
   // Solo aceptamos POST
@@ -8,19 +35,16 @@ module.exports = async function handler(req, res) {
   }
 
   // ── 1. RECIBIR DATOS DEL USUARIO ──
-  const { estado, tiempo, objetivo, tema, libros } = req.body;
+  // Ya no recibimos el catálogo completo del cliente.
+  // Aceptamos `libros` por retrocompatibilidad pero lo ignoramos.
+  const { estado, tiempo, objetivo, tema } = req.body;
 
-  if (!libros || libros.length === 0) {
-    return res.status(400).json({ error: 'No se recibió el catálogo de libros' });
+  if (!estado || !tiempo || !objetivo) {
+    return res.status(400).json({ error: 'Faltan datos del perfil del lector (estado, tiempo, objetivo)' });
   }
 
-  // ── 2. CONSTRUIR EL CATÁLOGO RESUMIDO ──
-  const catalogo = libros.map(l => ({
-    id: l.id,
-    titulo: l.titulo,
-    autor: l.autor,
-    genero: l.genero,
-  }));
+  // ── 2. OBTENER EL CATÁLOGO DEL SERVIDOR ──
+  const catalogo = obtenerCatalogo();
 
   // ── 3. CONSTRUIR MENSAJES CON CACHE-FRIENDLY STRUCTURE ──
   // El system message contiene todo lo fijo (catálogo + instrucciones).
@@ -97,8 +121,6 @@ module.exports = async function handler(req, res) {
     }
 
     // ── 5. OPCIONAL: LOGUEAR USO DE CACHÉ PARA MONITOREO ──
-    // Útil para verificar que el cache está funcionando correctamente.
-    // prompt_cache_hit_tokens > 0 confirma que el catálogo fue cacheado.
     const usage = data.usage;
     if (usage) {
       console.log('Tokens usados:', {
@@ -110,7 +132,6 @@ module.exports = async function handler(req, res) {
     }
 
     // ── 6. LIMPIAR Y PARSEAR RESPUESTA ──
-    // Limpia posibles bloques de código que la IA a veces añade
     const textoLimpio = textoRespuesta
     .trim()
     .replace(/^```json\s*/i, '')

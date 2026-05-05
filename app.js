@@ -4,6 +4,7 @@ let generoActivo = 'Todos';
 let paginaActual = 1;
 const LIBROS_POR_PAGINA = 24;
 let listaFiltrada = [];
+let ordenActivo = 'default'; // default | titulo-asc | titulo-desc | autor-asc | anio-asc | anio-desc
 
 // ── FRASES LITERARIAS ──
 const frases = [
@@ -43,6 +44,41 @@ const generoClaseMap = {
   'biografia y memorias': 'genero-biografia',
   'biografía y memorias': 'genero-biografia',
   'literatura latinoamericana': 'genero-latinoamericana',
+  'novela histórica': 'genero-historia',
+  'novela juvenil': 'genero-fantasia',
+  'novela negra': 'genero-misterio',
+  'epistolar': 'genero-biografia',
+  'economía y política': 'genero-divulgacion',
+  'religión y teología': 'genero-filosofia',
+  'otro': '',
+};
+
+// ── MAPA DE EMOJIS POR GÉNERO ──
+const generoEmojiMap = {
+  'Novela': '📕',
+  'Ensayo': '📝',
+  'Ciencia Ficción': '🚀',
+  'Cuento': '📖',
+  'Filosofía': '🧠',
+  'Fantasía': '🐉',
+  'Misterio y Thriller': '🔍',
+  'Divulgación Científica': '🔬',
+  'Romance': '💕',
+  'Terror': '👻',
+  'Poesía': '🌹',
+  'Teatro': '🎭',
+  'Novela histórica': '⚔️',
+  'Psicología y Autoayuda': '🧩',
+  'Historia y Crónica': '📜',
+  'Biografía y Memorias': '👤',
+  'Novela juvenil': '🌟',
+  'Novela negra': '🕵️',
+  'Otro': '📚',
+  'Epistolar': '✉️',
+  'Economía y Política': '📊',
+  'Religión y Teología': '⛪',
+  'Literatura latinoamericana': '🌎',
+  'Todos': '📖',
 };
 
 // ── LIMPIAR TÍTULO ──
@@ -66,14 +102,41 @@ function obtenerClaseGenero(genero) {
   return generoClaseMap[clave] || '';
 }
 
+// ── DEBOUNCE ──
+function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
 // ── CARGAR LIBROS AL INICIAR ──
 fetch('libros.json')
-  .then(respuesta => respuesta.json())
+  .then(respuesta => {
+    if (!respuesta.ok) throw new Error(`Error HTTP: ${respuesta.status}`);
+    return respuesta.json();
+  })
   .then(datos => {
     libros = datos;
     listaFiltrada = libros;
     mostrarPagina(1);
     inicializarPagina();
+  })
+  .catch(error => {
+    console.error('Error al cargar el catálogo:', error);
+    const galeria = document.getElementById('galeria');
+    if (galeria) {
+      galeria.innerHTML = `
+        <div class="error-carga">
+          <div class="error-icono">📚</div>
+          <h2>No se pudo cargar el catálogo</h2>
+          <p>${error.message}</p>
+          <button id="btnReintentar" class="btn-recomendar">Reintentar</button>
+        </div>
+      `;
+      document.getElementById('btnReintentar')?.addEventListener('click', () => location.reload());
+    }
   });
 
 // ── INICIALIZAR PÁGINA ──
@@ -94,6 +157,9 @@ function inicializarPagina() {
     footerAnio.textContent = new Date().getFullYear();
   }
 
+  // Generar tags dinámicamente
+  generarTagsFiltro();
+
   // Scroll horizontal de tags con rueda de ratón (desktop)
   const filtrosTags = document.getElementById('filtrosTags');
   if (filtrosTags) {
@@ -104,6 +170,74 @@ function inicializarPagina() {
       }
     });
   }
+
+  // Buscador con debounce
+  const inputBusqueda = document.getElementById('inputBusqueda');
+  if (inputBusqueda) {
+    const filtrarConDebounce = debounce(() => filtrar(), 250);
+    inputBusqueda.addEventListener('input', () => {
+      const btnLimpiar = document.getElementById('btnLimpiarBusqueda');
+      if (btnLimpiar) {
+        btnLimpiar.style.display = inputBusqueda.value.length > 0 ? 'flex' : 'none';
+      }
+      filtrarConDebounce();
+    });
+  }
+
+  // Selector de ordenamiento
+  const selectOrden = document.getElementById('selectOrden');
+  if (selectOrden) {
+    selectOrden.addEventListener('change', (e) => {
+      ordenActivo = e.target.value;
+      filtrar();
+    });
+  }
+
+  // Registrar TODOS los event listeners (zero onclick inline)
+  registrarEventos();
+
+  // Modo oscuro
+  inicializarTema();
+}
+
+// ── GENERAR TAGS DE FILTRO DINÁMICAMENTE ──
+function generarTagsFiltro() {
+  const contenedor = document.getElementById('filtrosTags');
+  if (!contenedor) return;
+
+  // Contar libros por género
+  const conteo = {};
+  libros.forEach(l => {
+    const g = l.genero || 'Otro';
+    conteo[g] = (conteo[g] || 0) + 1;
+  });
+
+  // Ordenar por cantidad (mayor a menor), excluir los muy pequeños
+  const generosOrdenados = Object.entries(conteo)
+    .filter(([, c]) => c >= 10) // Solo géneros con 10+ libros
+    .sort((a, b) => b[1] - a[1]);
+
+  contenedor.innerHTML = '';
+
+  // Tag "Todos"
+  const btnTodos = document.createElement('button');
+  btnTodos.className = 'tag-genero activo';
+  btnTodos.dataset.genero = 'Todos';
+  btnTodos.textContent = `📖 Todos`;
+  btnTodos.addEventListener('click', () => filtrarGenero('Todos', btnTodos));
+  contenedor.appendChild(btnTodos);
+
+  // Tags por género
+  generosOrdenados.forEach(([genero, cantidad]) => {
+    const emoji = generoEmojiMap[genero] || '📚';
+    const btn = document.createElement('button');
+    btn.className = 'tag-genero';
+    btn.dataset.genero = genero;
+    btn.textContent = `${emoji} ${genero}`;
+    btn.title = `${cantidad} libros`;
+    btn.addEventListener('click', () => filtrarGenero(genero, btn));
+    contenedor.appendChild(btn);
+  });
 }
 
 // ── MOSTRAR PÁGINA ──
@@ -155,7 +289,7 @@ function mostrarLibros(lista) {
     const tituloLimpio = limpiarTitulo(libro.titulo);
 
     tarjeta.innerHTML = `
-      <div class="tarjeta-info">
+      <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
         <div class="tarjeta-titulo">${tituloLimpio}</div>
         <div class="tarjeta-autor">${libro.autor || ''}</div>
@@ -164,6 +298,7 @@ function mostrarLibros(lista) {
       </div>
       <a href="${libro.pdf}" target="_blank" class="btn-ver">📄 Ver documento</a>
     `;
+    tarjeta.querySelector('.tarjeta-info').addEventListener('click', () => abrirDetalleLibro(libro.id));
     galeria.appendChild(tarjeta);
   });
 }
@@ -182,7 +317,7 @@ function renderPaginacion() {
   const btnAnterior = document.createElement('button');
   btnAnterior.className = 'btn-pagina' + (paginaActual === 1 ? ' desactivado' : '');
   btnAnterior.textContent = '←';
-  btnAnterior.onclick = () => { if (paginaActual > 1) mostrarPagina(paginaActual - 1); };
+  btnAnterior.addEventListener('click', () => { if (paginaActual > 1) mostrarPagina(paginaActual - 1); });
   contenedor.appendChild(btnAnterior);
 
   // Páginas numeradas con elipsis
@@ -197,7 +332,7 @@ function renderPaginacion() {
       const btn = document.createElement('button');
       btn.className = 'btn-pagina' + (p === paginaActual ? ' activo' : '');
       btn.textContent = p;
-      btn.onclick = () => mostrarPagina(p);
+      btn.addEventListener('click', () => mostrarPagina(p));
       contenedor.appendChild(btn);
     }
   });
@@ -206,7 +341,7 @@ function renderPaginacion() {
   const btnSiguiente = document.createElement('button');
   btnSiguiente.className = 'btn-pagina' + (paginaActual === totalPaginas ? ' desactivado' : '');
   btnSiguiente.textContent = '→';
-  btnSiguiente.onclick = () => { if (paginaActual < totalPaginas) mostrarPagina(paginaActual + 1); };
+  btnSiguiente.addEventListener('click', () => { if (paginaActual < totalPaginas) mostrarPagina(paginaActual + 1); });
   contenedor.appendChild(btnSiguiente);
 }
 
@@ -219,18 +354,43 @@ function paginasVisibles(actual, total) {
   return [1, '...', actual-1, actual, actual+1, '...', total];
 }
 
+// ── NORMALIZAR TEXTO PARA BÚSQUEDA ──
+const normalizar = texto => texto
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9\s]/g, ' ')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+// ── ORDENAR LISTA ──
+function ordenarLista(lista) {
+  if (ordenActivo === 'default') return lista;
+
+  const copia = [...lista];
+  switch (ordenActivo) {
+    case 'titulo-asc':
+      copia.sort((a, b) => normalizar(a.titulo || '').localeCompare(normalizar(b.titulo || ''), 'es'));
+      break;
+    case 'titulo-desc':
+      copia.sort((a, b) => normalizar(b.titulo || '').localeCompare(normalizar(a.titulo || ''), 'es'));
+      break;
+    case 'autor-asc':
+      copia.sort((a, b) => normalizar(a.autor || '').localeCompare(normalizar(b.autor || ''), 'es'));
+      break;
+    case 'anio-asc':
+      copia.sort((a, b) => (a.anio || 9999) - (b.anio || 9999));
+      break;
+    case 'anio-desc':
+      copia.sort((a, b) => (b.anio || 0) - (a.anio || 0));
+      break;
+  }
+  return copia;
+}
+
 // ── BÚSQUEDA ──
 function filtrar() {
   const raw = document.getElementById('inputBusqueda').value;
-
-  const normalizar = texto => texto
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-
   const terminos = normalizar(raw).split(' ').filter(t => t.length > 0);
 
   listaFiltrada = libros.filter(libro => {
@@ -261,7 +421,24 @@ function filtrar() {
     return coincideTexto && coincideGenero;
   });
 
+  // Aplicar ordenamiento
+  listaFiltrada = ordenarLista(listaFiltrada);
+
   mostrarPagina(1, true); // Omitimos el scroll al buscar o filtrar
+}
+
+// ── LIMPIAR BÚSQUEDA ──
+function limpiarBusqueda() {
+  const input = document.getElementById('inputBusqueda');
+  const btnLimpiar = document.getElementById('btnLimpiarBusqueda');
+  if (input) {
+    input.value = '';
+    input.focus();
+  }
+  if (btnLimpiar) {
+    btnLimpiar.style.display = 'none';
+  }
+  filtrar();
 }
 
 // ── FILTRO POR TAG DE GÉNERO ──
@@ -278,6 +455,76 @@ function filtrarGenero(genero, boton) {
   }
   
   filtrar();
+}
+
+// ── LIBRO AL AZAR ──
+function libroAlAzar() {
+  if (libros.length === 0) return;
+  const libro = libros[Math.floor(Math.random() * libros.length)];
+  abrirDetalleLibro(libro.id);
+}
+
+// ════════════════════════════════════════════════════════
+// MODAL DE DETALLE DEL LIBRO
+// ════════════════════════════════════════════════════════
+
+function abrirDetalleLibro(id) {
+  const libro = libros.find(l => l.id === id);
+  if (!libro) return;
+
+  const modal = document.getElementById('modalDetalle');
+  if (!modal) return;
+
+  const tituloLimpio = limpiarTitulo(libro.titulo);
+  const claseGenero = obtenerClaseGenero(libro.genero);
+
+  document.getElementById('detalle-titulo').textContent = tituloLimpio;
+  document.getElementById('detalle-autor').textContent = libro.autor || 'Autor desconocido';
+  document.getElementById('detalle-anio').textContent = libro.anio ? `Publicado en ${libro.anio}` : '';
+  document.getElementById('detalle-descripcion').textContent = libro.descripcion || 'Sin descripción disponible.';
+  
+  const badge = document.getElementById('detalle-genero');
+  badge.textContent = libro.genero || 'General';
+  badge.className = `tarjeta-genero-badge ${claseGenero}`;
+
+  const linkPdf = document.getElementById('detalle-pdf-link');
+  linkPdf.href = libro.pdf;
+
+  // Libros relacionados (mismo género, excluyendo el actual)
+  const relacionados = libros
+    .filter(l => l.genero === libro.genero && l.id !== libro.id)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 4);
+
+  const listaRelacionados = document.getElementById('detalle-relacionados');
+  if (relacionados.length > 0) {
+    listaRelacionados.innerHTML = '';
+    relacionados.forEach(r => {
+      const tLimpio = limpiarTitulo(r.titulo);
+      const item = document.createElement('div');
+      item.className = 'relacionado-item';
+      item.innerHTML = `
+        <div class="relacionado-titulo">${tLimpio}</div>
+        <div class="relacionado-autor">${r.autor || ''}</div>
+      `;
+      item.addEventListener('click', () => abrirDetalleLibro(r.id));
+      listaRelacionados.appendChild(item);
+    });
+    document.getElementById('detalle-relacionados-seccion').style.display = 'block';
+  } else {
+    document.getElementById('detalle-relacionados-seccion').style.display = 'none';
+  }
+
+  modal.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarDetalle() {
+  const modal = document.getElementById('modalDetalle');
+  if (modal) {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -299,17 +546,6 @@ function cerrarModalIA() {
   document.body.style.overflow = '';
 }
 
-// Cerrar si el usuario hace clic fuera del panel
-function cerrarModalSiOverlay(event) {
-  if (event.target === document.getElementById('modalIA')) {
-    cerrarModalIA();
-  }
-}
-
-// Tecla Escape para cerrar
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') cerrarModalIA();
-});
 
 // ── Selección de opciones (botones tipo chip) ──
 function seleccionarOpcion(boton, grupo) {
@@ -327,7 +563,7 @@ function volverAPreguntas() {
   iaSeleccion.estado   = null;
   iaSeleccion.tiempo   = null;
   iaSeleccion.objetivo = null;
-  document.querySelector('.modal-panel').scrollTop = 0;
+  document.querySelector('#modalIA .modal-panel').scrollTop = 0;
 }
 
 // ── Mostrar uno de los pasos del modal ──
@@ -356,7 +592,7 @@ async function pedirRecomendacion() {
   const tema = document.getElementById('ia-tema').value.trim();
 
   mostrarPaso('ia-cargando');
-  document.querySelector('.modal-panel').scrollTop = 0;
+  document.querySelector('#modalIA .modal-panel').scrollTop = 0;
 
   try {
     const respuesta = await fetch('/api/recomendar', {
@@ -367,7 +603,6 @@ async function pedirRecomendacion() {
         tiempo:   iaSeleccion.tiempo,
         objetivo: iaSeleccion.objetivo,
         tema:     tema || null,
-        libros:   libros,
       }),
     });
 
@@ -415,5 +650,107 @@ function renderizarResultados(recomendaciones) {
   });
 
   mostrarPaso('ia-resultados');
-  document.querySelector('.modal-panel').scrollTop = 0;
+  document.querySelector('#modalIA .modal-panel').scrollTop = 0;
+}
+
+// ════════════════════════════════════════════════════════
+// REGISTRAR TODOS LOS EVENT LISTENERS (cero onclick inline)
+// ════════════════════════════════════════════════════════
+
+function registrarEventos() {
+  // Botones principales
+  const el = (id) => document.getElementById(id);
+
+  el('btnAbrirIA')?.addEventListener('click', abrirModalIA);
+  el('btnAzar')?.addEventListener('click', libroAlAzar);
+  el('btnLimpiarBusqueda')?.addEventListener('click', limpiarBusqueda);
+  el('btnLimpiarTodo')?.addEventListener('click', limpiarTodo);
+  el('btnTema')?.addEventListener('click', alternarTema);
+
+  // Modal detalle
+  el('btnCerrarDetalle')?.addEventListener('click', cerrarDetalle);
+  el('modalDetalle')?.addEventListener('click', (e) => {
+    if (e.target === el('modalDetalle')) cerrarDetalle();
+  });
+
+  // Modal IA — botones de cierre
+  el('btnCerrarIA')?.addEventListener('click', cerrarModalIA);
+  el('btnCancelarIA')?.addEventListener('click', cerrarModalIA);
+  el('btnCerrarResultados')?.addEventListener('click', cerrarModalIA);
+  el('modalIA')?.addEventListener('click', (e) => {
+    if (e.target === el('modalIA')) cerrarModalIA();
+  });
+
+  // Modal IA — acciones
+  el('btnRecomendar')?.addEventListener('click', pedirRecomendacion);
+  el('btnVolverIntentar')?.addEventListener('click', volverAPreguntas);
+  el('btnVolverError')?.addEventListener('click', volverAPreguntas);
+
+  // Opciones de la IA (delegación por data-grupo)
+  document.querySelectorAll('.opcion-btn[data-grupo]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const grupo = btn.dataset.grupo;
+      const contenedor = btn.closest('.opciones-grid');
+      contenedor.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('seleccionado'));
+      btn.classList.add('seleccionado');
+      iaSeleccion[grupo] = btn.dataset.valor;
+    });
+  });
+
+  // Tecla Escape para cerrar modales
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      cerrarModalIA();
+      cerrarDetalle();
+    }
+  });
+}
+
+// ════════════════════════════════════════════════════════
+// MODO OSCURO
+// ════════════════════════════════════════════════════════
+
+function inicializarTema() {
+  const guardado = localStorage.getItem('tema');
+  if (guardado) {
+    document.documentElement.setAttribute('data-theme', guardado);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  actualizarIconoTema();
+
+  // Escuchar cambios del sistema
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('tema')) {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      actualizarIconoTema();
+    }
+  });
+}
+
+function alternarTema() {
+  const actual = document.documentElement.getAttribute('data-theme');
+  const nuevo = actual === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', nuevo);
+  localStorage.setItem('tema', nuevo);
+  actualizarIconoTema();
+}
+
+function actualizarIconoTema() {
+  const btn = document.getElementById('btnTema');
+  if (!btn) return;
+  const esDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  btn.textContent = esDark ? '☀️' : '🌙';
+}
+
+// ════════════════════════════════════════════════════════
+// LIMPIAR TODO
+// ════════════════════════════════════════════════════════
+
+function limpiarTodo() {
+  document.getElementById('inputBusqueda').value = '';
+  document.getElementById('btnLimpiarBusqueda').style.display = 'none';
+  document.getElementById('selectOrden').value = 'default';
+  ordenActivo = 'default';
+  filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
 }
