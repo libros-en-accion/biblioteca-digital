@@ -6,13 +6,6 @@ const LIBROS_POR_PAGINA = 24;
 let listaFiltrada = [];
 let ordenActivo = 'default'; // default | titulo-asc | titulo-desc | autor-asc | anio-asc | anio-desc
 
-// ── AYUDANTE: extraer file_id de URL de Google Drive ──
-function extraerFileId(url) {
-  if (!url) return null;
-  const m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-  return m ? m[1] : null;
-}
-
 // ── FRASES LITERARIAS ──
 const frases = [
   '«Un lector vive mil vidas antes de morir.» — George R.R. Martin',
@@ -295,11 +288,8 @@ function mostrarLibros(lista) {
     const claseGenero = obtenerClaseGenero(libro.genero);
     const tituloLimpio = limpiarTitulo(libro.titulo);
 
-    const fileId = extraerFileId(libro.pdf);
-    const imgUrl = fileId ? `https://drive.google.com/thumbnail?id=${fileId}&sz=w400` : '';
-
     tarjeta.innerHTML = `
-      ${imgUrl ? `<img src="${imgUrl}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" />` : ''}
+      ${libro.portada ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" />` : ''}
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
         <div class="tarjeta-titulo">${tituloLimpio}</div>
@@ -499,9 +489,8 @@ function abrirDetalleLibro(id) {
   badge.className = `tarjeta-genero-badge ${claseGenero}`;
 
   const detallePortada = document.getElementById('detalle-portada');
-  const fileId = extraerFileId(libro.pdf);
-  if (fileId && detallePortada) {
-    detallePortada.src = `https://drive.google.com/thumbnail?id=${fileId}&sz=w600`;
+  if (libro.portada && detallePortada) {
+    detallePortada.src = libro.portada;
     detallePortada.alt = tituloLimpio;
     detallePortada.style.display = 'block';
   } else if (detallePortada) {
@@ -522,12 +511,10 @@ function abrirDetalleLibro(id) {
     listaRelacionados.innerHTML = '';
     relacionados.forEach(r => {
       const tLimpio = limpiarTitulo(r.titulo);
-      const rFileId = extraerFileId(r.pdf);
-      const rImg = rFileId ? `https://drive.google.com/thumbnail?id=${rFileId}&sz=w200` : '';
       const item = document.createElement('div');
       item.className = 'relacionado-item';
       item.innerHTML = `
-        ${rImg ? `<img src="${rImg}" alt="${tLimpio}" class="relacionado-portada" loading="lazy" />` : ''}
+        ${r.portada ? `<img src="${r.portada}" alt="${tLimpio}" class="relacionado-portada" loading="lazy" />` : ''}
         <div class="relacionado-titulo">${tLimpio}</div>
         <div class="relacionado-autor">${r.autor || ''}</div>
       `;
