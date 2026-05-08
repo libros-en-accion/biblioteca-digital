@@ -120,13 +120,20 @@
         <button id="btnCerrarDetalle" class="modal-cerrar" aria-label="Cerrar">✕</button>
       </div>
       <div class="modal-body detalle-body">
-        <span id="detalle-genero" class="tarjeta-genero-badge"></span>
-        <p id="detalle-autor" class="detalle-autor"></p>
-        <p id="detalle-anio" class="detalle-anio"></p>
-        <p id="detalle-descripcion" class="detalle-descripcion"></p>
-        <a id="detalle-pdf-link" href="#" target="_blank" rel="noopener" class="btn-recomendar detalle-pdf-btn">
-          📄 Abrir documento
-        </a>
+        <div class="detalle-grid">
+          <div class="detalle-portada-wrapper">
+            <img id="detalle-portada" class="detalle-portada" alt="" />
+          </div>
+          <div class="detalle-info">
+            <span id="detalle-genero" class="tarjeta-genero-badge"></span>
+            <p id="detalle-autor" class="detalle-autor"></p>
+            <p id="detalle-anio" class="detalle-anio"></p>
+            <p id="detalle-descripcion" class="detalle-descripcion"></p>
+            <a id="detalle-pdf-link" href="#" target="_blank" rel="noopener" class="btn-recomendar detalle-pdf-btn">
+              📄 Abrir documento
+            </a>
+          </div>
+        </div>
         <div id="detalle-relacionados-seccion" class="detalle-relacionados-seccion">
           <h3 class="detalle-relacionados-titulo">Libros similares</h3>
           <div id="detalle-relacionados" class="detalle-relacionados-grid"></div>
@@ -220,6 +227,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=3"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

@@ -474,6 +474,18 @@ header h1 span {
   position: relative;
 }
 
+/* Portada del libro (thumbnail de Google Drive) */
+.tarjeta-portada {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  background: var(--fondo);
+  border-bottom: 1px solid var(--borde-suave);
+}
+}
+
 /* Línea superior decorativa */
 .tarjeta::before {
   content: '';
@@ -1315,6 +1327,42 @@ footer {
   gap: 0.8rem;
 }
 
+.detalle-grid {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.detalle-portada-wrapper {
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.detalle-portada {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px var(--sombra);
+  display: block;
+}
+
+.detalle-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .detalle-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .detalle-portada-wrapper {
+    width: 140px;
+  }
+}
+
 .detalle-autor {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
@@ -1373,6 +1421,19 @@ footer {
   border-radius: var(--radio);
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.relacionado-portada {
+  width: 48px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  background: var(--fondo-tarjeta);
+  box-shadow: 0 1px 4px var(--sombra);
 }
 
 .relacionado-item:hover {
