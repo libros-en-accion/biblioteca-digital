@@ -35,7 +35,7 @@
       <p class="header-subtitulo">Clásicos, novelas, ensayos y literatura general</p>
       <p id="fraseLiteraria" class="frase-literaria"></p>
     </div>
-    <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro">🌙</button>
+    <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
     <div class="header-linea-inferior"></div>
   </header>
 
@@ -47,11 +47,11 @@
       <span class="ia-etiqueta">✦ Recomendador Inteligente ✦</span>
       <div class="ia-botones-grupo">
         <button id="btnAbrirIA" class="btn-ia-trigger">
-          <span class="btn-ia-icono">📚</span>
+          <span class="btn-ia-icono"><i data-lucide="sparkles"></i></span>
           ¿Qué debería leer hoy?
         </button>
         <button id="btnAzar" class="btn-azar" title="Libro al azar">
-          <span class="btn-azar-icono">🎲</span>
+          <span class="btn-azar-icono"><i data-lucide="dices"></i></span>
           Sorpréndeme
         </button>
       </div>
@@ -63,9 +63,9 @@
   <!-- ═══ BUSCADOR ═══ -->
   <section class="buscador">
     <div class="buscador-contenedor">
-      <span class="buscador-icono">🔍</span>
+      <span class="buscador-icono"><i data-lucide="search" class="icono-sm"></i></span>
       <input type="text" id="inputBusqueda" placeholder="Buscar por título, autor, género o año..." />
-      <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda">✕</button>
+      <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda"><i data-lucide="x" class="icono-sm"></i></button>
     </div>
   </section>
 
@@ -80,6 +80,17 @@
   <div class="controles-barra">
     <p id="contador" class="contador"></p>
     <div class="controles-derecha">
+      <select id="selectEpoca" class="select-orden" aria-label="Filtrar por época">
+        <option value="Todas">Todas las épocas</option>
+        <option value="pre-1800">Antes de 1800</option>
+        <option value="1800-1899">1800 - 1899</option>
+        <option value="1900-1949">1900 - 1949</option>
+        <option value="1950-1999">1950 - 1999</option>
+        <option value="2000+">2000 en adelante</option>
+      </select>
+      <select id="selectAutor" class="select-orden" aria-label="Filtrar por autor">
+        <option value="Todos">Todos los autores</option>
+      </select>
       <select id="selectOrden" class="select-orden" aria-label="Ordenar por">
         <option value="default">Ordenar por…</option>
         <option value="titulo-asc">Título A → Z</option>
@@ -96,7 +107,7 @@
 
   <!-- ═══ SIN RESULTADOS ═══ -->
   <div id="sinResultados" class="sin-resultados" style="display:none">
-    <div class="sin-resultados-icono">📚</div>
+    <div class="sin-resultados-icono"><i data-lucide="library" class="icono-lg"></i></div>
     <p class="sin-resultados-texto">No se encontraron libros con ese criterio.</p>
     <button id="btnLimpiarTodo" class="btn-limpiar-todo">Limpiar filtros y buscar todo</button>
   </div>
@@ -113,11 +124,11 @@
 
   <!-- ═══ MODAL: DETALLE DEL LIBRO ═══ -->
   <div id="modalDetalle" class="modal-overlay">
-    <div class="modal-panel modal-panel-detalle">
+    <div class="modal-panel modal-panel-detalle" role="dialog" aria-modal="true" aria-labelledby="detalle-titulo">
       <div class="modal-header">
         <div class="modal-ornamento">✦ Detalle del libro ✦</div>
         <h2 id="detalle-titulo" class="modal-titulo"></h2>
-        <button id="btnCerrarDetalle" class="modal-cerrar" aria-label="Cerrar">✕</button>
+        <button id="btnCerrarDetalle" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
       <div class="modal-body detalle-body">
         <div class="detalle-grid">
@@ -144,12 +155,12 @@
 
   <!-- ═══ MODAL: RECOMENDADOR IA ═══ -->
   <div id="modalIA" class="modal-overlay">
-    <div class="modal-panel">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Recomendador Inteligente">
       <div class="modal-header">
         <div class="modal-ornamento">✦ Recomendador Inteligente ✦</div>
         <h2 class="modal-titulo">¿Qué debería leer hoy?</h2>
         <p class="modal-subtitulo">Responde cuatro preguntas y la IA elegirá tres libros perfectos para ti.</p>
-        <button id="btnCerrarIA" class="modal-cerrar" aria-label="Cerrar">✕</button>
+        <button id="btnCerrarIA" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
 
       <!-- Paso 1: Preguntas -->
@@ -199,7 +210,7 @@
 
       <!-- Paso 2: Carga -->
       <div id="ia-cargando" class="modal-body modal-estado" style="display:none">
-        <div class="cargando-icono">📚</div>
+        <div class="cargando-icono"><i data-lucide="loader-2" class="spin"></i></div>
         <p class="cargando-texto">Consultando a la biblioteca...</p>
         <p class="cargando-subtexto">La IA está analizando tu perfil y el catálogo completo.</p>
         <div class="cargando-puntos"><span></span><span></span><span></span></div>
@@ -217,7 +228,7 @@
 
       <!-- Paso 4: Error -->
       <div id="ia-error" class="modal-body modal-estado" style="display:none">
-        <div class="cargando-icono">⚠️</div>
+        <div class="cargando-icono"><i data-lucide="alert-triangle"></i></div>
         <p class="cargando-texto">Algo salió mal</p>
         <p id="ia-error-msg" class="cargando-subtexto">No se pudo obtener una recomendación.</p>
         <div class="modal-acciones">
@@ -227,6 +238,24 @@
     </div>
   </div>
 
+  <!-- ═══ MODAL: LECTOR PDF ═══ -->
+  <div id="modalLector" class="modal-overlay">
+    <div class="modal-panel modal-panel-lector" role="dialog" aria-modal="true" aria-labelledby="lector-titulo">
+      <div class="modal-header header-lector">
+        <h2 id="lector-titulo" class="modal-titulo titulo-lector"></h2>
+        <button id="btnCerrarLector" class="modal-cerrar" aria-label="Cerrar lector"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body body-lector">
+        <div id="lector-cargando" class="cargando-lector">
+          <div class="cargando-icono"><i data-lucide="loader-2" class="spin"></i></div>
+          <p class="cargando-texto">Cargando documento...</p>
+        </div>
+        <iframe id="iframe-lector" class="iframe-lector" allowfullscreen title="Lector PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="app.js?v=5"></script>
 </body>
 </html>

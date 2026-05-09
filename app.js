@@ -5,6 +5,9 @@ let paginaActual = 1;
 const LIBROS_POR_PAGINA = 24;
 let listaFiltrada = [];
 let ordenActivo = 'default'; // default | titulo-asc | titulo-desc | autor-asc | anio-asc | anio-desc
+let autorActivo = 'Todos';
+let epocaActiva = 'Todas';
+let ultimoElementoEnfocado = null;
 
 // ── FRASES LITERARIAS ──
 const frases = [
@@ -53,32 +56,32 @@ const generoClaseMap = {
   'otro': '',
 };
 
-// ── MAPA DE EMOJIS POR GÉNERO ──
-const generoEmojiMap = {
-  'Novela': '📕',
-  'Ensayo': '📝',
-  'Ciencia Ficción': '🚀',
-  'Cuento': '📖',
-  'Filosofía': '🧠',
-  'Fantasía': '🐉',
-  'Misterio y Thriller': '🔍',
-  'Divulgación Científica': '🔬',
-  'Romance': '💕',
-  'Terror': '👻',
-  'Poesía': '🌹',
-  'Teatro': '🎭',
-  'Novela histórica': '⚔️',
-  'Psicología y Autoayuda': '🧩',
-  'Historia y Crónica': '📜',
-  'Biografía y Memorias': '👤',
-  'Novela juvenil': '🌟',
-  'Novela negra': '🕵️',
-  'Otro': '📚',
-  'Epistolar': '✉️',
-  'Economía y Política': '📊',
-  'Religión y Teología': '⛪',
-  'Literatura latinoamericana': '🌎',
-  'Todos': '📖',
+// ── MAPA DE ICONOS POR GÉNERO (Lucide) ──
+const generoIconMap = {
+  'Novela': 'book',
+  'Ensayo': 'pen-tool',
+  'Ciencia Ficción': 'rocket',
+  'Cuento': 'book-open',
+  'Filosofía': 'brain',
+  'Fantasía': 'wand-2',
+  'Misterio y Thriller': 'search',
+  'Divulgación Científica': 'microscope',
+  'Romance': 'heart',
+  'Terror': 'ghost',
+  'Poesía': 'feather',
+  'Teatro': 'ticket',
+  'Novela histórica': 'scroll',
+  'Psicología y Autoayuda': 'puzzle',
+  'Historia y Crónica': 'landmark',
+  'Biografía y Memorias': 'user',
+  'Novela juvenil': 'star',
+  'Novela negra': 'eye',
+  'Otro': 'library',
+  'Epistolar': 'mail',
+  'Economía y Política': 'trending-up',
+  'Religión y Teología': 'book-marked',
+  'Literatura latinoamericana': 'globe',
+  'Todos': 'library',
 };
 
 // ── LIMPIAR TÍTULO ──
@@ -184,6 +187,38 @@ function inicializarPagina() {
     });
   }
 
+  // Selector de autores
+  const selectAutor = document.getElementById('selectAutor');
+  if (selectAutor) {
+    const autoresSet = new Set();
+    libros.forEach(l => {
+      if (l.autor && l.autor.trim() !== '') autoresSet.add(l.autor.trim());
+    });
+    
+    const autoresOrdenados = Array.from(autoresSet).sort((a, b) => a.localeCompare(b, 'es'));
+    
+    autoresOrdenados.forEach(autor => {
+      const option = document.createElement('option');
+      option.value = autor;
+      option.textContent = autor;
+      selectAutor.appendChild(option);
+    });
+
+    selectAutor.addEventListener('change', (e) => {
+      autorActivo = e.target.value;
+      filtrar();
+    });
+  }
+
+  // Selector de época
+  const selectEpoca = document.getElementById('selectEpoca');
+  if (selectEpoca) {
+    selectEpoca.addEventListener('change', (e) => {
+      epocaActiva = e.target.value;
+      filtrar();
+    });
+  }
+
   // Selector de ordenamiento
   const selectOrden = document.getElementById('selectOrden');
   if (selectOrden) {
@@ -201,6 +236,8 @@ function inicializarPagina() {
 
   // Rutas hash
   manejarRutaHash();
+
+  if (window.lucide) lucide.createIcons();
 }
 
 // ── GENERAR TAGS DE FILTRO DINÁMICAMENTE ──
@@ -226,21 +263,23 @@ function generarTagsFiltro() {
   const btnTodos = document.createElement('button');
   btnTodos.className = 'tag-genero activo';
   btnTodos.dataset.genero = 'Todos';
-  btnTodos.textContent = `📖 Todos`;
+  btnTodos.innerHTML = `<i data-lucide="library" class="icono-sm"></i> Todos`;
   btnTodos.addEventListener('click', () => filtrarGenero('Todos', btnTodos));
   contenedor.appendChild(btnTodos);
 
   // Tags por género
   generosOrdenados.forEach(([genero, cantidad]) => {
-    const emoji = generoEmojiMap[genero] || '📚';
+    const iconName = generoIconMap[genero] || 'library';
     const btn = document.createElement('button');
     btn.className = 'tag-genero';
     btn.dataset.genero = genero;
-    btn.textContent = `${emoji} ${genero}`;
+    btn.innerHTML = `<i data-lucide="${iconName}" class="icono-sm"></i> ${genero}`;
     btn.title = `${cantidad} libros`;
     btn.addEventListener('click', () => filtrarGenero(genero, btn));
     contenedor.appendChild(btn);
   });
+  
+  if (window.lucide) lucide.createIcons({ root: contenedor });
 }
 
 // ── MOSTRAR PÁGINA ──
@@ -265,6 +304,8 @@ function mostrarLibros(lista) {
   const galeria = document.getElementById('galeria');
   const sinResultados = document.getElementById('sinResultados');
   const contador = document.getElementById('contador');
+
+  actualizarSchemaSEO(lista);
 
   galeria.innerHTML = '';
 
@@ -300,11 +341,17 @@ function mostrarLibros(lista) {
         <div class="tarjeta-anio">${libro.anio || ''}</div>
         <div class="tarjeta-descripcion">${libro.descripcion || ''}</div>
       </div>
-      <a href="${libro.pdf}" target="_blank" class="btn-ver">📄 Ver documento</a>
+      <a href="#" class="btn-ver"><i data-lucide="file-text" class="icono-sm"></i> Ver documento</a>
     `;
     tarjeta.querySelector('.tarjeta-info').addEventListener('click', () => abrirDetalleLibro(libro.id));
+    tarjeta.querySelector('.btn-ver').addEventListener('click', (e) => {
+      e.preventDefault();
+      abrirLectorPDF(libro.pdf, tituloLimpio);
+    });
     galeria.appendChild(tarjeta);
   });
+
+  if (window.lucide) lucide.createIcons({ root: galeria });
 }
 
 // ── RENDERIZAR PAGINACIÓN ──
@@ -422,7 +469,30 @@ function filtrar() {
       coincideGenero = partesFiltro.some(p => genLibro.includes(p));
     }
 
-    return coincideTexto && coincideGenero;
+    // Filtro por autor
+    let coincideAutor = true;
+    if (autorActivo !== 'Todos') {
+      coincideAutor = libro.autor && libro.autor.trim() === autorActivo;
+    }
+
+    // Filtro por época
+    let coincideEpoca = true;
+    if (epocaActiva !== 'Todas') {
+      const anio = parseInt(libro.anio, 10);
+      if (isNaN(anio)) {
+        coincideEpoca = false;
+      } else {
+        switch (epocaActiva) {
+          case 'pre-1800': coincideEpoca = anio < 1800; break;
+          case '1800-1899': coincideEpoca = anio >= 1800 && anio <= 1899; break;
+          case '1900-1949': coincideEpoca = anio >= 1900 && anio <= 1949; break;
+          case '1950-1999': coincideEpoca = anio >= 1950 && anio <= 1999; break;
+          case '2000+': coincideEpoca = anio >= 2000; break;
+        }
+      }
+    }
+
+    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca;
   });
 
   // Aplicar ordenamiento
@@ -501,7 +571,11 @@ function abrirDetalleLibro(id, omitirPush = false) {
   }
 
   const linkPdf = document.getElementById('detalle-pdf-link');
-  linkPdf.href = libro.pdf;
+  linkPdf.href = '#';
+  linkPdf.onclick = (e) => {
+    e.preventDefault();
+    abrirLectorPDF(libro.pdf, tituloLimpio);
+  };
 
   // Libros relacionados (mismo género, excluyendo el actual)
   const relacionados = libros
@@ -529,8 +603,14 @@ function abrirDetalleLibro(id, omitirPush = false) {
     document.getElementById('detalle-relacionados-seccion').style.display = 'none';
   }
 
+  actualizarSchemaSEO([libro], true);
+
   modal.classList.add('abierto');
   document.body.style.overflow = 'hidden';
+
+  ultimoElementoEnfocado = document.activeElement;
+  const btnCerrar = modal.querySelector('.modal-cerrar');
+  if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
 
   if (!omitirPush) {
     history.pushState(null, '', '#/libro/' + id);
@@ -542,6 +622,13 @@ function cerrarDetalle(omitirPush = false) {
   if (modal && modal.classList.contains('abierto')) {
     modal.classList.remove('abierto');
     document.body.style.overflow = '';
+    
+    if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
+
+    // Restaurar SEO al catálogo visible
+    const inicio = (paginaActual - 1) * LIBROS_POR_PAGINA;
+    const paginaLibros = listaFiltrada.slice(inicio, inicio + LIBROS_POR_PAGINA);
+    actualizarSchemaSEO(paginaLibros);
 
     if (!omitirPush && window.location.hash.startsWith('#/libro/')) {
       history.pushState(null, '', window.location.pathname + window.location.search);
@@ -558,14 +645,19 @@ const iaSeleccion = { estado: null, tiempo: null, objetivo: null };
 
 // ── Abrir / Cerrar modal ──
 function abrirModalIA() {
-  document.getElementById('modalIA').classList.add('abierto');
+  const modal = document.getElementById('modalIA');
+  modal.classList.add('abierto');
   document.body.style.overflow = 'hidden';
+  ultimoElementoEnfocado = document.activeElement;
   volverAPreguntas();
+  const btnCerrar = modal.querySelector('.modal-cerrar');
+  if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
 }
 
 function cerrarModalIA() {
   document.getElementById('modalIA').classList.remove('abierto');
   document.body.style.overflow = '';
+  if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
 }
 
 
@@ -664,15 +756,116 @@ function renderizarResultados(recomendaciones) {
       <div class="resultado-titulo">${tituloLimpio}</div>
       <div class="resultado-autor">${libro.autor}${libro.anio ? ` · ${libro.anio}` : ''}</div>
       <div class="resultado-razon">${rec.razon}</div>
-      <a href="${libro.pdf}" target="_blank" rel="noopener" class="resultado-btn">
-        📄 Abrir documento
+      <a href="#" class="resultado-btn">
+        <i data-lucide="file-text" class="icono-sm"></i> Abrir documento
       </a>
     `;
+    tarjeta.querySelector('.resultado-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      abrirLectorPDF(libro.pdf, tituloLimpio);
+    });
     lista.appendChild(tarjeta);
   });
 
+  if (window.lucide) lucide.createIcons({ root: lista });
+  
   mostrarPaso('ia-resultados');
   document.querySelector('#modalIA .modal-panel').scrollTop = 0;
+}
+
+// ════════════════════════════════════════════════════════
+// LECTOR PDF
+// ════════════════════════════════════════════════════════
+
+function abrirLectorPDF(url, titulo) {
+  const modal = document.getElementById('modalLector');
+  if (!modal) return;
+  
+  document.getElementById('lector-titulo').textContent = titulo;
+  
+  let embedUrl = url;
+  if (embedUrl.includes('drive.google.com') && embedUrl.includes('/view')) {
+    embedUrl = embedUrl.replace('/view', '/preview');
+  }
+  
+  const iframe = document.getElementById('iframe-lector');
+  const cargando = document.getElementById('lector-cargando');
+  
+  cargando.style.display = 'flex';
+  iframe.onload = () => {
+    cargando.style.display = 'none';
+  };
+  iframe.src = embedUrl;
+  
+  modal.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+  ultimoElementoEnfocado = document.activeElement;
+  
+  const btnCerrar = document.getElementById('btnCerrarLector');
+  if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
+}
+
+function cerrarLector() {
+  const modal = document.getElementById('modalLector');
+  if (modal && modal.classList.contains('abierto')) {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+    document.getElementById('iframe-lector').src = 'about:blank';
+    if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
+  }
+}
+
+// ════════════════════════════════════════════════════════
+// SEO DINÁMICO (JSON-LD)
+// ════════════════════════════════════════════════════════
+function actualizarSchemaSEO(librosList, unicoLibro = false) {
+  let scriptEl = document.getElementById('seo-schema');
+  if (!scriptEl) {
+    scriptEl = document.createElement('script');
+    scriptEl.id = 'seo-schema';
+    scriptEl.type = 'application/ld+json';
+    document.head.appendChild(scriptEl);
+  }
+
+  if (unicoLibro && librosList.length === 1) {
+    const libro = librosList[0];
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": limpiarTitulo(libro.titulo),
+      "author": {
+        "@type": "Person",
+        "name": libro.autor || "Autor Desconocido"
+      },
+      "url": window.location.origin + window.location.pathname + "#/libro/" + libro.id,
+      "genre": libro.genero || "General",
+      "datePublished": libro.anio ? String(libro.anio) : undefined,
+      "description": libro.descripcion || undefined,
+      "image": libro.portada || undefined
+    };
+    scriptEl.textContent = JSON.stringify(schema);
+  } else if (librosList.length > 0) {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": librosList.map((libro, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Book",
+          "name": limpiarTitulo(libro.titulo),
+          "author": {
+            "@type": "Person",
+            "name": libro.autor || "Autor Desconocido"
+          },
+          "url": window.location.origin + window.location.pathname + "#/libro/" + libro.id
+        }
+      }))
+    };
+    scriptEl.textContent = JSON.stringify(schema);
+  } else {
+    scriptEl.textContent = '';
+  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -708,6 +901,12 @@ function registrarEventos() {
   el('btnVolverIntentar')?.addEventListener('click', volverAPreguntas);
   el('btnVolverError')?.addEventListener('click', volverAPreguntas);
 
+  // Modal Lector PDF
+  el('btnCerrarLector')?.addEventListener('click', cerrarLector);
+  el('modalLector')?.addEventListener('click', (e) => {
+    if (e.target === el('modalLector')) cerrarLector();
+  });
+
   // Opciones de la IA (delegación por data-grupo)
   document.querySelectorAll('.opcion-btn[data-grupo]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -719,11 +918,37 @@ function registrarEventos() {
     });
   });
 
-  // Tecla Escape para cerrar modales
+  // Tecla Escape para cerrar modales y Tab para focus trap
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       cerrarModalIA();
       cerrarDetalle();
+      cerrarLector();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const modalAbierto = document.querySelector('.modal-overlay.abierto');
+      if (!modalAbierto) return;
+
+      const focusable = Array.from(modalAbierto.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+        .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
+
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === document.body)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
@@ -777,7 +1002,8 @@ function actualizarIconoTema() {
   const btn = document.getElementById('btnTema');
   if (!btn) return;
   const esDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  btn.textContent = esDark ? '☀️' : '🌙';
+  btn.innerHTML = esDark ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+  if (window.lucide) lucide.createIcons({ root: btn });
 }
 
 // ════════════════════════════════════════════════════════
@@ -787,6 +1013,15 @@ function actualizarIconoTema() {
 function limpiarTodo() {
   document.getElementById('inputBusqueda').value = '';
   document.getElementById('btnLimpiarBusqueda').style.display = 'none';
+  
+  const selectAutor = document.getElementById('selectAutor');
+  if (selectAutor) selectAutor.value = 'Todos';
+  autorActivo = 'Todos';
+
+  const selectEpoca = document.getElementById('selectEpoca');
+  if (selectEpoca) selectEpoca.value = 'Todas';
+  epocaActiva = 'Todas';
+
   document.getElementById('selectOrden').value = 'default';
   ordenActivo = 'default';
   filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
