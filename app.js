@@ -8,6 +8,7 @@ let ordenActivo = 'default'; // default | titulo-asc | titulo-desc | autor-asc |
 let autorActivo = 'Todos';
 let epocaActiva = 'Todas';
 let ultimoElementoEnfocado = null;
+let vistaActiva = localStorage.getItem('biblioteca-vista') || 'grid';
 
 // ── FRASES LITERARIAS ──
 const frases = [
@@ -236,6 +237,9 @@ function inicializarPagina() {
 
   // Rutas hash
   manejarRutaHash();
+
+  // Inicializar vista (grid/lista)
+  cambiarVista(vistaActiva);
 
   if (window.lucide) lucide.createIcons();
 }
@@ -499,6 +503,7 @@ function filtrar() {
   listaFiltrada = ordenarLista(listaFiltrada);
 
   mostrarPagina(1, true); // Omitimos el scroll al buscar o filtrar
+  actualizarBreadcrumbs();
 }
 
 // ── LIMPIAR BÚSQUEDA ──
@@ -773,6 +778,79 @@ function renderizarResultados(recomendaciones) {
   document.querySelector('#modalIA .modal-panel').scrollTop = 0;
 }
 
+// ── BREADCRUMBS / FILTROS ACTIVOS ──
+function actualizarBreadcrumbs() {
+  const container = document.getElementById('breadcrumbs');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  const items = [];
+  
+  const rawBusqueda = document.getElementById('inputBusqueda').value.trim();
+  if (rawBusqueda) {
+    items.push({ label: 'Búsqueda', value: rawBusqueda, type: 'texto' });
+  }
+  
+  if (generoActivo !== 'Todos') {
+    items.push({ label: 'Género', value: generoActivo, type: 'genero' });
+  }
+  
+  if (autorActivo !== 'Todos') {
+    items.push({ label: 'Autor', value: autorActivo, type: 'autor' });
+  }
+  
+  if (epocaActiva !== 'Todas') {
+    let epocaLabel = epocaActiva;
+    if (epocaActiva === 'pre-1800') epocaLabel = 'Antes de 1800';
+    if (epocaActiva === '2000+') epocaLabel = '2000 en adelante';
+    items.push({ label: 'Época', value: epocaLabel, type: 'epoca' });
+  }
+  
+  if (items.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+  
+  container.style.display = 'flex';
+  
+  items.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'breadcrumb-item';
+    el.innerHTML = `
+      <span class="breadcrumb-label">${item.label}:</span>
+      <span class="breadcrumb-value">${item.value}</span>
+      <button class="breadcrumb-btn-remove" aria-label="Eliminar filtro">
+        <i data-lucide="x" class="icono-sm"></i>
+      </button>
+    `;
+    
+    el.querySelector('.breadcrumb-btn-remove').onclick = () => {
+      if (item.type === 'texto') limpiarBusqueda();
+      if (item.type === 'genero') filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
+      if (item.type === 'autor') {
+        document.getElementById('selectAutor').value = 'Todos';
+        autorActivo = 'Todos';
+        filtrar();
+      }
+      if (item.type === 'epoca') {
+        document.getElementById('selectEpoca').value = 'Todas';
+        epocaActiva = 'Todas';
+        filtrar();
+      }
+    };
+    
+    container.appendChild(el);
+  });
+  
+  const btnClearAll = document.createElement('button');
+  btnClearAll.className = 'breadcrumb-clear-all';
+  btnClearAll.textContent = 'Limpiar todos los filtros';
+  btnClearAll.onclick = limpiarTodo;
+  container.appendChild(btnClearAll);
+  
+  if (window.lucide) lucide.createIcons({ root: container });
+}
+
 // ════════════════════════════════════════════════════════
 // LECTOR PDF
 // ════════════════════════════════════════════════════════
@@ -907,6 +985,10 @@ function registrarEventos() {
     if (e.target === el('modalLector')) cerrarLector();
   });
 
+  // Botones de vista
+  el('btnVistaGrid')?.addEventListener('click', () => cambiarVista('grid'));
+  el('btnVistaLista')?.addEventListener('click', () => cambiarVista('lista'));
+
   // Opciones de la IA (delegación por data-grupo)
   document.querySelectorAll('.opcion-btn[data-grupo]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1004,6 +1086,26 @@ function actualizarIconoTema() {
   const esDark = document.documentElement.getAttribute('data-theme') === 'dark';
   btn.innerHTML = esDark ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
   if (window.lucide) lucide.createIcons({ root: btn });
+}
+
+// ── CAMBIAR VISTA (GRID/LISTA) ──
+function cambiarVista(nuevaVista) {
+  vistaActiva = nuevaVista;
+  const galeria = document.getElementById('galeria');
+  const btnGrid = document.getElementById('btnVistaGrid');
+  const btnLista = document.getElementById('btnVistaLista');
+  
+  if (nuevaVista === 'lista') {
+    galeria?.classList.add('vista-lista');
+    btnLista?.classList.add('activo');
+    btnGrid?.classList.remove('activo');
+  } else {
+    galeria?.classList.remove('vista-lista');
+    btnGrid?.classList.add('activo');
+    btnLista?.classList.remove('activo');
+  }
+  
+  localStorage.setItem('biblioteca-vista', nuevaVista);
 }
 
 // ════════════════════════════════════════════════════════

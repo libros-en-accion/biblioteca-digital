@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
+  <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
 
   <!-- ═══ ENCABEZADO ═══ -->
   <header>
@@ -33,7 +34,6 @@
       <div class="header-ornamento">⟡ Colección Literaria ⟡</div>
       <h1>Biblioteca <span>Digital</span></h1>
       <p class="header-subtitulo">Clásicos, novelas, ensayos y literatura general</p>
-      <p id="fraseLiteraria" class="frase-literaria"></p>
     </div>
     <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
     <div class="header-linea-inferior"></div>
@@ -80,6 +80,10 @@
   <div class="controles-barra">
     <p id="contador" class="contador"></p>
     <div class="controles-derecha">
+      <div class="vista-controles">
+        <button id="btnVistaGrid" class="btn-vista activo" title="Vista cuadrícula" aria-label="Vista cuadrícula"><i data-lucide="layout-grid"></i></button>
+        <button id="btnVistaLista" class="btn-vista" title="Vista lista" aria-label="Vista lista"><i data-lucide="list"></i></button>
+      </div>
       <select id="selectEpoca" class="select-orden" aria-label="Filtrar por época">
         <option value="Todas">Todas las épocas</option>
         <option value="pre-1800">Antes de 1800</option>
@@ -102,6 +106,9 @@
     </div>
   </div>
 
+  <!-- ═══ BREADCRUMBS / FILTROS ACTIVOS ═══ -->
+  <div id="breadcrumbs" class="breadcrumbs-container" style="display:none"></div>
+
   <!-- ═══ GRID DE LIBROS ═══ -->
   <main id="galeria" class="galeria"></main>
 
@@ -118,6 +125,7 @@
   <!-- ═══ FOOTER ═══ -->
   <footer>
     <div class="footer-ornamento">✦ ✦ ✦</div>
+    <p id="fraseLiteraria" class="frase-literaria"></p>
     <p class="footer-stats" id="footerStats"></p>
     <p class="footer-creditos">Biblioteca Digital · <span id="footerAnio"></span></p>
   </footer>
