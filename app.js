@@ -345,13 +345,9 @@ function mostrarLibros(lista) {
         <div class="tarjeta-anio">${libro.anio || ''}</div>
         <div class="tarjeta-descripcion">${libro.descripcion || ''}</div>
       </div>
-      <a href="#" class="btn-ver"><i data-lucide="file-text" class="icono-sm"></i> Ver documento</a>
+      <a href="${libro.pdf}" target="_blank" rel="noopener" class="btn-ver"><i data-lucide="file-text" class="icono-sm"></i> Ver documento</a>
     `;
     tarjeta.querySelector('.tarjeta-info').addEventListener('click', () => abrirDetalleLibro(libro.id));
-    tarjeta.querySelector('.btn-ver').addEventListener('click', (e) => {
-      e.preventDefault();
-      abrirLectorPDF(libro.pdf, tituloLimpio);
-    });
     galeria.appendChild(tarjeta);
   });
 
@@ -576,11 +572,8 @@ function abrirDetalleLibro(id, omitirPush = false) {
   }
 
   const linkPdf = document.getElementById('detalle-pdf-link');
-  linkPdf.href = '#';
-  linkPdf.onclick = (e) => {
-    e.preventDefault();
-    abrirLectorPDF(libro.pdf, tituloLimpio);
-  };
+  linkPdf.href = libro.pdf;
+  linkPdf.onclick = null;
 
   // Libros relacionados (mismo género, excluyendo el actual)
   const relacionados = libros
@@ -761,14 +754,10 @@ function renderizarResultados(recomendaciones) {
       <div class="resultado-titulo">${tituloLimpio}</div>
       <div class="resultado-autor">${libro.autor}${libro.anio ? ` · ${libro.anio}` : ''}</div>
       <div class="resultado-razon">${rec.razon}</div>
-      <a href="#" class="resultado-btn">
+      <a href="${libro.pdf}" target="_blank" rel="noopener" class="resultado-btn">
         <i data-lucide="file-text" class="icono-sm"></i> Abrir documento
       </a>
     `;
-    tarjeta.querySelector('.resultado-btn').addEventListener('click', (e) => {
-      e.preventDefault();
-      abrirLectorPDF(libro.pdf, tituloLimpio);
-    });
     lista.appendChild(tarjeta);
   });
 
@@ -849,48 +838,6 @@ function actualizarBreadcrumbs() {
   container.appendChild(btnClearAll);
   
   if (window.lucide) lucide.createIcons({ root: container });
-}
-
-// ════════════════════════════════════════════════════════
-// LECTOR PDF
-// ════════════════════════════════════════════════════════
-
-function abrirLectorPDF(url, titulo) {
-  const modal = document.getElementById('modalLector');
-  if (!modal) return;
-  
-  document.getElementById('lector-titulo').textContent = titulo;
-  
-  let embedUrl = url;
-  if (embedUrl.includes('drive.google.com') && embedUrl.includes('/view')) {
-    embedUrl = embedUrl.replace('/view', '/preview');
-  }
-  
-  const iframe = document.getElementById('iframe-lector');
-  const cargando = document.getElementById('lector-cargando');
-  
-  cargando.style.display = 'flex';
-  iframe.onload = () => {
-    cargando.style.display = 'none';
-  };
-  iframe.src = embedUrl;
-  
-  modal.classList.add('abierto');
-  document.body.style.overflow = 'hidden';
-  ultimoElementoEnfocado = document.activeElement;
-  
-  const btnCerrar = document.getElementById('btnCerrarLector');
-  if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
-}
-
-function cerrarLector() {
-  const modal = document.getElementById('modalLector');
-  if (modal && modal.classList.contains('abierto')) {
-    modal.classList.remove('abierto');
-    document.body.style.overflow = '';
-    document.getElementById('iframe-lector').src = 'about:blank';
-    if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
-  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -979,12 +926,6 @@ function registrarEventos() {
   el('btnVolverIntentar')?.addEventListener('click', volverAPreguntas);
   el('btnVolverError')?.addEventListener('click', volverAPreguntas);
 
-  // Modal Lector PDF
-  el('btnCerrarLector')?.addEventListener('click', cerrarLector);
-  el('modalLector')?.addEventListener('click', (e) => {
-    if (e.target === el('modalLector')) cerrarLector();
-  });
-
   // Botones de vista
   el('btnVistaGrid')?.addEventListener('click', () => cambiarVista('grid'));
   el('btnVistaLista')?.addEventListener('click', () => cambiarVista('lista'));
@@ -1005,7 +946,6 @@ function registrarEventos() {
     if (e.key === 'Escape') {
       cerrarModalIA();
       cerrarDetalle();
-      cerrarLector();
       return;
     }
 
