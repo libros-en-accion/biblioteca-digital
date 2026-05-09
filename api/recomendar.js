@@ -17,13 +17,10 @@ function obtenerCatalogo() {
   const raw = fs.readFileSync(librosPath, 'utf-8');
   const libros = JSON.parse(raw);
 
-  // Solo necesitamos id, titulo, autor y genero para las recomendaciones
-  catalogoCache = libros.map(l => ({
-    id: l.id,
-    titulo: l.titulo,
-    autor: l.autor,
-    genero: l.genero,
-  }));
+  // Compacto: id|titulo|autor|genero — menos tokens, mismo contenido
+  catalogoCache = libros.map(l =>
+    `${l.id}|${l.titulo}|${l.autor}|${l.genero}`
+  );
 
   return catalogoCache;
 }
@@ -50,20 +47,20 @@ module.exports = async function handler(req, res) {
   // El system message contiene todo lo fijo (catálogo + instrucciones).
   // DeepSeek cacheará este prefijo tras la primera llamada,
   // reduciendo el costo de input ~80% en llamadas subsecuentes.
-  const systemMessage = `Eres un bibliotecario experto, cálido y breve. Siempre respondes SOLO con JSON válido, sin texto adicional.
+  const systemMessage = `Eres un bibliotecario experto, calido y breve. Siempre respondes SOLO con JSON valido, sin texto adicional.
 
-  CATÁLOGO DISPONIBLE (JSON):
-  ${JSON.stringify(catalogo)}
+  CATALOGO DISPONIBLE (formato: id|titulo|autor|genero):
+  ${catalogo.join('\n')}
 
   INSTRUCCIONES PARA RECOMENDAR:
-  1. Analiza el perfil del lector que te enviará el usuario y compáralo con los géneros y títulos del catálogo.
+  1. Analiza el perfil del lector que te enviara el usuario y comparalo con los generos y titulos del catalogo.
   2. Elige los 3 libros que mejor se ajusten a su estado y necesidad actual.
-  3. Responde ÚNICAMENTE con un JSON válido, sin texto extra, sin bloques de código (sin \`\`\`), sin explicaciones fuera del JSON.
+  3. Responde UNICAMENTE con un JSON valido, sin texto extra, sin bloques de codigo (sin \`\`\`), sin explicaciones fuera del JSON.
   4. El formato debe ser exactamente este:
   [
     {
       "id": 12,
-      "razon": "Una explicación de 2 a 3 oraciones, cálida y personalizada, dirigida directamente al lector usando 'tú'."
+      "razon": "Una explicacion de 2 a 3 oraciones, calida y personalizada, dirigida directamente al lector usando 'tu'."
     },
     {
       "id": 45,
@@ -131,23 +128,42 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // ── 6. LIMPIAR Y PARSEAR RESPUESTA ──
-    const textoLimpio = textoRespuesta
-    .trim()
-    .replace(/^```json\s*/i, '')
-    .replace(/^```\s*/i, '')
-    .replace(/\s*```$/i, '');
+    // ── 6. PARSEAR RESPUESTA CON REINTENTO ──
+    let recomendaciones = parsearRecomendaciones(textoRespuesta);
 
-    let recomendaciones;
-    try {
-      recomendaciones = JSON.parse(textoLimpio);
-      // Extraer el array si DeepSeek lo envolvió en un objeto
-      if (!Array.isArray(recomendaciones) && recomendaciones.recomendaciones) {
-        recomendaciones = recomendaciones.recomendaciones;
+    if (!recomendaciones) {
+      // Un reintento pidiendo a DeepSeek que devuelva solo JSON
+      console.log('JSON invalido en primer intento, reintentando...');
+      const retryRes = await fetch("https://api.deepseek.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "deepseek-v4-flash",
+          messages: [
+            { role: "system", content: systemMessage },
+            { role: "user",   content: userMessage   },
+            { role: "assistant", content: textoRespuesta },
+            { role: "user", content: "Tu respuesta anterior no es JSON valido. Responde UNICAMENTE con el array JSON en el formato indicado, sin ningun otro texto." }
+          ],
+          temperature: 0.3,
+          max_tokens: 600
+        })
+      });
+
+      if (retryRes.ok) {
+        const retryData = await retryRes.json();
+        const retryTexto = retryData.choices[0]?.message?.content;
+        if (retryTexto) {
+          recomendaciones = parsearRecomendaciones(retryTexto);
+        }
       }
-    } catch (parseError) {
-      console.error('Error al parsear JSON:', textoLimpio);
-      return res.status(502).json({ error: 'La IA no devolvió JSON válido', respuestaRaw: textoLimpio });
+
+      if (!recomendaciones) {
+        return res.status(502).json({ error: 'La IA no devolvio JSON valido', respuestaRaw: textoRespuesta });
+      }
     }
 
     return res.status(200).json({ recomendaciones });
@@ -157,3 +173,22 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Error interno del servidor', detalle: err.message });
   }
 };
+
+function parsearRecomendaciones(texto) {
+  if (!texto) return null;
+
+  const textoLimpio = texto
+    .trim()
+    .replace(/^```json\s*/i, '')
+    .replace(/^```\s*/i, '')
+    .replace(/\s*```$/i, '');
+
+  try {
+    const parsed = JSON.parse(textoLimpio);
+    if (Array.isArray(parsed)) return parsed;
+    if (parsed.recomendaciones && Array.isArray(parsed.recomendaciones)) return parsed.recomendaciones;
+    return null;
+  } catch {
+    return null;
+  }
+}
