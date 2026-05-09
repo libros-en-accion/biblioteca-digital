@@ -1,218 +1,192 @@
-# 📚 Biblioteca Digital — PROYECTO
+# Biblioteca Digital — PROYECTO
 
-> Archivo vivo de seguimiento del proyecto.
-> Actualizado por Axón según se realicen cambios.
+> Guia del proyecto. Actualizada 2026-05-08.
 
 ---
 
-## 📋 Ficha técnica
+## Ficha tecnica
 
 | | |
 |---|---|
-| **Descripción** | Aplicación web de catálogo visual de libros + recomendador IA |
+| **Descripcion** | Aplicacion web de catalogo visual de libros + recomendador IA |
 | **Stack** | HTML, CSS, JavaScript plano (sin frameworks) + Vercel Serverless Function (Node.js) |
-| **IA** | DeepSeek v4 Flash via API serverless |
-| **Libros** | 2,848 títulos en `libros.json` (~1 MB) |
-| **PDFs** | 2,848 enlaces a Google Drive |
-| **Estado** | 🟢 Funcional (sin deploy activo conocido) |
-| **Git** | 26 commits (desde 2026-03-21) — rama principal |
+| **IA** | DeepSeek v4 Flash via API serverless (`api/recomendar.js`) |
+| **Libros** | 2,847 titulos en `libros.json` |
+| **Portadas** | 2,724 imagenes locales en `portadas/` (WebP, ~45 MB). 130 libros sin portada por falta de PDF coincidente. |
+| **PDFs** | 2,847 enlaces a Google Drive (`/preview`). Almacenados localmente en `/home/daniel/biblioteca-digital/` |
+| **Estado** | Desplegado en Vercel: https://biblioteca-digital-eight.vercel.app/ |
+| **Git** | 43 commits — rama principal |
 
 ---
 
-## 🗺️ Roadmap / Pendientes
-
-### 🔴 Prioridad alta
-- [x] **Normalizar géneros** — 3 grupos duplicados unificados. ✅
-- [x] **Crear `vercel.json`** — config básica (versión 2). ✅
-- [x] **Crear `package.json`** — name, node 20.x, scripts dev/deploy. ✅
-- [x] **Crear `.gitignore`** — *.bak, node_modules/, .env, .DS_Store. ✅
-- [ ] **Configurar deploy en Vercel** — ver guía abajo.
-- [ ] **Documentar variables de entorno** — `DEEPSEEK_API_KEY` necesaria para el recomendador.
-
-### 🟡 Prioridad media
-- [ ] **Migrar `onclick` inline a event listeners** — el HTML mezcla onclick inline con JS moderno; limpiar para consistencia.
-- [ ] **Refinar la paginación** — los IDs de libros no son secuenciales (saltan de 2488 a 2727), hay 3 IDs duplicados.
-- [ ] **Agregar más géneros como filtros rápidos** — hay géneros con +30 libros que no están en los tags (ej: "Novela histórica", "Romance / Drama", "Thriller").
-- [ ] **Indexación SEO** — agregar meta tags, sitemap.xml y `robots.txt`.
-
-### 🟢 Prioridad baja / nice to have
-- [ ] **Modo oscuro** toggle
-- [ ] **Vista de detalles del libro al hacer clic** (modal con info extendida)
-- [ ] **Estadísticas del catálogo** (gráfica de géneros, autores más frecuentes, etc.)
-- [ ] **PWA** (service worker para offline)
-- [ ] **Caché de recomendaciones** — si el usuario repite el mismo perfil, mostrar resultados cacheados.
-
----
-
-## 📂 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 biblioteca/
-├── index.html          # Página principal
-├── style.css           # Estilos completos (modo claro, responsive, modal IA)
-├── app.js              # Lógica: galería, búsqueda, filtros, modal IA, paginación
-├── libros.json         # Catálogo completo (2,845 libros)
-├── catalogo.csv        # Export CSV del catálogo
+├── index.html              # Pagina principal
+├── style.css               # Estilos (modo claro/oscuro, responsive)
+├── app.js                  # Logica: galeria, busqueda, filtros, modal, paginacion
+├── libros.json             # Catalogo completo (2,847 libros)
+├── catalogo.csv            # Export CSV del catalogo
+├── generar_portadas.py     # Script para extraer portadas desde PDFs locales
+├── portadas/               # Imagenes de portada en WebP (~45 MB, 2,724 archivos)
+│   ├── 1.webp
+│   ├── 2.webp
+│   └── ...
 ├── api/
-│   └── recomendar.js   # Función serverless Vercel → DeepSeek API
-├── PROYECTO.md         # ← Este archivo (seguimiento vivo)
-├── libros.json.bak     # Backup anterior (~174 KB)
-├── libros.json.bak2    # Backup anterior (~1 MB)
-└── .git/
+│   └── recomendar.js       # Funcion serverless Vercel -> DeepSeek API
+├── scripts/
+│   └── normalizar.js       # Utilidad de normalizacion de datos
+├── vercel.json             # Config de Vercel (version 2)
+├── package.json            # Node 20.x, scripts dev/deploy
+├── robots.txt              # SEO: permite crawlers en /, bloquea /api/ y /scripts/
+├── sitemap.xml             # Sitemap basico
+├── .gitignore
+└── PROYECTO.md             # Este archivo
 ```
 
 ---
 
-## ⚙️ Configuración necesaria para deploy
+## Como agregar libros al proyecto
+
+Cada vez que quieras sumar libros al catalogo, segui estos pasos en orden:
+
+### 1. Preparar el PDF en Google Drive
+
+1. Subi el PDF a tu Google Drive, dentro de la carpeta correspondiente en `/home/daniel/biblioteca-digital/{Letra}/{Autor}/`.
+2. El archivo debe llamarse exactamente `{Titulo} - {Autor}.pdf`.
+3. En Google Drive (web), hace clic derecho en el PDF > **Compartir** > **"Cualquiera con el enlace puede ver"** > copiar enlace.
+4. El enlace tendra el formato `https://drive.google.com/file/d/{FILE_ID}/view`. Convertilo a formato preview:
+   ```
+   https://drive.google.com/file/d/{FILE_ID}/preview
+   ```
+
+### 2. Agregar la entrada en libros.json
+
+Agrega un objeto al array en `libros.json` con esta estructura:
+
+```json
+{
+  "id": 2848,
+  "titulo": "Titulo del libro",
+  "autor": "Nombre del Autor",
+  "anio": 2024,
+  "genero": "Novela",
+  "descripcion": "Breve descripcion del libro.",
+  "pdf": "https://drive.google.com/file/d/{FILE_ID}/preview",
+  "portada": ""
+}
+```
+
+- **`id`**: numero unico, autoincremental (ultimo usado + 1).
+- **`titulo`**: exactamente igual que el nombre del archivo PDF (parte antes del ` - `).
+- **`autor`**: como figura en el JSON existente.
+- **`portada`**: dejalo vacio `""`. Se completa en el paso 3.
+
+### 3. Generar la portada
+
+Ejecuta el script desde la raiz del proyecto:
+
+```bash
+python3 generar_portadas.py
+```
+
+El script:
+- Recorre los PDFs en `/home/daniel/biblioteca-digital/`
+- Empareja cada PDF con su libro por titulo normalizado
+- Extrae la primera pagina del PDF como imagen WebP (300px de ancho)
+- La guarda en `portadas/{id}.webp`
+- Actualiza el campo `portada` en `libros.json`
+
+Es seguro re-ejecutarlo: solo procesa libros cuya portada no existe aun.
+
+### 4. Verificar y desplegar
+
+```bash
+# Verificar que el JSON es valido
+python3 -c "import json; json.load(open('libros.json')); print('OK')"
+
+# Commitear y pushear (Vercel despliega automaticamente)
+git add libros.json portadas/
+git commit -m "nuevo libro: Titulo del libro"
+git push
+```
+
+### Notas importantes
+
+- Si el titulo en `libros.json` no coincide con el nombre del archivo PDF (ignorando mayusculas y acentos), el script no encontrara el match y la portada quedara vacia.
+- Si el PDF no esta compartido como "Cualquiera con el enlace", el link de preview no funcionara en la web.
+- Si queres agregar muchos libros de una vez, el script tarda ~1 segundo por portada nueva (extrae miniatura del PDF).
+
+---
+
+## Roadmap
+
+### Completado
+
+- [x] Normalizar generos duplicados (Ciencia Ficcion, Divulgacion Cientifica, Filosofia Politica)
+- [x] Corregir IDs duplicados (Ghostgirl)
+- [x] Crear `vercel.json`, `package.json`, `.gitignore`
+- [x] Configurar deploy en Vercel (via GitHub, auto-deploy)
+- [x] Variables de entorno (`DEEPSEEK_API_KEY` en Vercel)
+- [x] Portadas locales (extraidas de PDFs, formato WebP)
+- [x] `robots.txt` y `sitemap.xml`
+- [x] Modo oscuro
+
+### Pendiente
+
+- [ ] Migrar `onclick` inline a event listeners — consistencia JS
+- [ ] Refinar paginacion — IDs no secuenciales, saltos grandes
+- [ ] Agregar mas generos como filtros rapidos (Novela historica, Romance/Drama, Thriller)
+- [ ] Vista de detalle del libro con info extendida (modal)
+- [ ] Estadisticas del catalogo
+- [ ] PWA (service worker para offline)
+- [ ] Cache de recomendaciones IA
+
+---
+
+## Configuracion para deploy
 
 ### Variables de entorno (Vercel)
 
-Necesitas agregar esto en el dashboard de Vercel (Project → Settings → Environment Variables):
+Configurado en Vercel dashboard (Project > Settings > Environment Variables):
 
 ```
 DEEPSEEK_API_KEY=sk-...
 ```
 
----
+### Deploy
 
-## 🚀 Guía de deploy
+El proyecto esta conectado a GitHub. Cada `git push` a la rama principal dispara un deploy automatico en Vercel.
 
-### Opción A: Vía CLI de Vercel (recomendada para pruebas rápidas)
-
-```bash
-# 1. Iniciar sesión (abre el navegador para autenticarte)
-vercel login
-
-# 2. Vincular el proyecto (desde /home/daniel/biblioteca/)
-vercel link
-# Responde: ¿Existing project? → No (crear nuevo)
-#           ¿Project name? → biblioteca-digital
-#           ¿Directory? → ./
-
-# 3. Agregar variable de entorno
-vercel env add DEEPSEEK_API_KEY
-# Pega tu API key y presiona Enter
-
-# 4. Desplegar a producción
-vercel --prod
-```
-
-**Después del primer deploy**, para actualizar solo basta con:
+Para desarrollo local:
 
 ```bash
-cd /home/daniel/biblioteca/
-git add -A
-git commit -m "descripción del cambio"
-vercel --prod
-```
-
-### Opción B: Vía GitHub + Vercel (auto-deploy)_
-
-Si prefieres que cada push a GitHub despliegue automáticamente:
-
-```bash
-# 1. Crear repo en GitHub (desde CLI)
-gh repo create biblioteca-digital --public --source=. --push
-
-# 2. Ir a https://vercel.com/new
-#    Importar el repo de GitHub
-#    Agregar variable DEEPSEEK_API_KEY
-#    Deploy
-```
-
-A partir de ahí, cada `git push` a main hace deploy automático. 🔄
-
-### ¿Cómo sé si mi deploy funcionó?
-
-```bash
-# Ver los últimos deploys
-vercel list
-
-# Ver logs del serverless function (API)
-vercel logs api/recomendar.js
-```
-
-### Pro tips
-
-- `vercel dev` inicia un servidor local que emula Vercel (incluye la API funcionando).
-- Si solo cambias `libros.json`, el deploy tarda segundos (solo sube el archivo).
-- La primera vez que alguien use el recomendador, DeepSeek tardará ~3-5s (cache miss). Las siguientes serán ~1-2s.
-
----
-
-### Archivos faltantes
-
-| Archivo | Propósito | Estado |
-|---|---|---|
-| `vercel.json` | Configuración de rutas y runtime para Vercel | ✅ Creado |
-| `package.json` | Metadatos, engine node, scripts | ✅ Creado |
-| `.gitignore` | Ignorar `*.bak`, `node_modules/`, `.env` | ✅ Creado |
-| `DEEPSEEK_API_KEY` | Variable de entorno en Vercel | ❌ Pendiente |
-
----
-
-## 🔍 Issues conocidos
-
-1. ~~**Géneros duplicados por mayúsculas/minúsculas (3 grupos):**~~ ✅ **Resuelto**
-   - "Ciencia Ficción" (159) + "Ciencia ficción" (92) → 251 unificados
-   - "Divulgación Científica" (47) + "Divulgación científica" (20) → 67 unificados
-   - "Filosofía Política" (10) + "Filosofía política" (2) → 12 unificados
-
-2. ~~**IDs duplicados en `libros.json`** — 2,845 libros con 3 IDs duplicados (2486, 2487, 2488).~~ ✅ **Resuelto**
-   - Los 3 libros Ghostgirl reasignados a IDs 2846, 2847, 2848.
-   - Ahora: 2,848 libros, todos con ID único.
-
-3. **HTML mezcla `onclick` inline con `addEventListener`** — el modal IA usa addEventListener para Escape, pero los botones usan onclick en el HTML. Funciona, pero es inconsistente.
-
-4. ~~**No hay `vercel.json`** — se eliminó en un commit previo por error de validación y nunca se restauró.~~ ✅ **Resuelto** — creado con sintaxis correcta (versión 2).
-
-5. **Los tags de filtro no cubren todos los géneros** — hay 17 tags pero géneros como "Novela histórica" (49 libros), "Romance / Drama" (88) o "Thriller" (27) no tienen botón propio.
-
----
-
-## 📜 Historial de Git (resumido)
-
-```
-2026-05-01  chore: aprovechar el cache hit de deepseek
-2026-05-01  chore: migrar a deepseek-v4-flash (mitad de precio)
-2026-05-01  Corregir: reemplazar OpenRouter por DeepSeek correctamente
-2026-03-31  Agrega 3 libros Ghostgirl (IDs 2486-2488)
-2026-03-26  fix(ux): scroll horizontal de tags en desktop
-2026-03-26  fix(ui): aclarar fondo del header y mejorar contraste
-2026-03-26  feat(ui): rediseño visual completo
-2026-03-26  Agregar libros 2727-2845 (119 nuevos)
-2026-03-25  Varios fixes: migración OpenRouter → Gemini → DeepSeek
-2026-03-25  feat: recomendador de libros con IA
-2026-03-24  ampliación a 2700+ documentos
-2026-03-22  paginación, buscador mejorado, 461 libros
-2026-03-21  461 libros, catálogo completo con todos los géneros
-2026-03-21  12 libros, nuevos géneros ciencia y filosofía natural
-2026-03-21  primer commit: biblioteca digital funcional
+vercel dev        # servidor local que emula Vercel (incluye API)
 ```
 
 ---
 
-## 🧠 Decisiones técnicas
+## Decisiones tecnicas
 
-- **DeepSeek v4 Flash** como modelo IA por ser económico (~$0.35/M tokens input) con cache.
-- **Estrategia de cache**: el system message incluye el catálogo completo. DeepSeek cachea el prefijo tras la primera llamada, reduciendo costo ~80% en consultas subsecuentes.
-- **Sin frameworks**: vanilla JS para mantener ligero y sin dependencias.
-- **PDFs en Google Drive**: todos los enlaces usan `drive.google.com/.../preview` para visualización embebida.
-
----
-
-*Última actualización: 2026-05-04*
+- **Portadas locales en WebP**: antes se usaban URLs efimeras de Google Drive (`lh3.googleusercontent.com/drive-storage/...`) que caducaban. Ahora las portadas se extraen de los PDFs locales con `pdftoppm`, se convierten a WebP (300px, calidad 65) y se alojan en el repositorio. No dependen de servicios externos.
+- **DeepSeek v4 Flash**: modelo IA economico (~$0.35/M tokens input) con cache activado. El system message incluye el catalogo completo; tras la primera llamada DeepSeek cachea el prefijo, reduciendo costo ~80% en consultas subsecuentes.
+- **Sin frameworks**: vanilla JS para mantener el proyecto ligero y sin dependencias.
+- **PDFs en Google Drive**: todos los enlaces usan `drive.google.com/.../preview` para visualizacion embebida. Los archivos deben estar compartidos como "Cualquiera con el enlace puede ver".
 
 ---
 
-## 📝 Historial de cambios
+## Historial de cambios
 
 | Fecha | Cambio |
 |---|---|
-| 2026-05-04 | Normalización de 3 grupos de géneros duplicados (Ciencia Ficción, Divulgación Científica, Filosofía Política) |
-| 2026-05-04 | Corregidos 3 IDs duplicados en los libros Ghostgirl (IDs 2846-2848) |
-| 2026-05-04 | Corregido género `null` en los 3 libros Ghostgirl → "Novela" |
-| 2026-05-04 | Agregado mapeo CSS para "Filosofía Política" en `app.js` |
-| 2026-05-04 | Creado PROYECTO.md para seguimiento del proyecto |
-| 2026-05-04 | Creados vercel.json y package.json para deploy |
-| 2026-05-04 | Instalada CLI de Vercel (npm i -g vercel) |
+| 2026-05-08 | Portadas: reemplazadas URLs efimeras de Drive por imagenes WebP locales extraidas de PDFs |
+| 2026-05-08 | Creado `generar_portadas.py` para automatizar la extraccion de portadas |
+| 2026-05-04 | Normalizacion de 3 grupos de generos duplicados |
+| 2026-05-04 | Corregidos 3 IDs duplicados en libros Ghostgirl (IDs 2846-2848) |
+| 2026-05-04 | Creados vercel.json, package.json, .gitignore, PROYECTO.md |
+| 2026-05-01 | Migracion a DeepSeek v4 Flash (cache hit) |
+| 2026-03-31 | +3 libros Ghostgirl |
+| 2026-03-26 | Rediseno visual completo, modo oscuro, scroll horizontal de tags |
+| 2026-03-25 | Recomendador de libros con IA |
+| 2026-03-21 | Primer commit: biblioteca digital funcional |

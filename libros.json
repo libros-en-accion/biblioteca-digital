@@ -1,15 +1,5 @@
 [
   {
-    "id": 1,
-    "titulo": "Contar La Plata",
-    "autor": "Maximiliano Alvarez",
-    "anio": 2017,
-    "genero": "Novela",
-    "descripcion": "Relato autobiográfico sobre las vivencias de un joven en su primer empleo bancario en el Uruguay de los años 2000.",
-    "pdf": "https://drive.google.com/file/d/1MBx1VQFyhITWiOvbndRxAUF7qb4aCM1l/preview",
-    "portada": ""
-  },
-  {
     "id": 2,
     "titulo": "Meditaciones Gredos",
     "autor": "Marco Aurelio Antonio Augusto",
@@ -107,7 +97,7 @@
     "genero": "Novela",
     "descripcion": "Historia del crecimiento y las aspiraciones de las cuatro hermanas March durante la Guerra Civil estadounidense.",
     "pdf": "https://drive.google.com/file/d/159Vo8hx4T_Rqvr380urRhz4aR9VrUaix/preview",
-    "portada": ""
+    "portada": "portadas/11.webp"
   },
   {
     "id": 12,
@@ -137,7 +127,7 @@
     "genero": "Poesía",
     "descripcion": "Poema épico que narra el viaje del alma a través del Infierno, el Purgatorio y el Paraíso.",
     "pdf": "https://drive.google.com/file/d/1Lp2vBFWRCcIjABZT7XLG4dww27Wf9o2n/preview",
-    "portada": ""
+    "portada": "portadas/14.webp"
   },
   {
     "id": 15,
@@ -637,7 +627,7 @@
     "genero": "Cuento",
     "descripcion": "Cuento alegórico sobre un hombre que pierde su sombra, la cual termina usurpando su identidad y vida.",
     "pdf": "https://drive.google.com/file/d/1axSIGkglZga6G1XX77E0cy33QgbWkDa1/preview",
-    "portada": ""
+    "portada": "portadas/64.webp"
   },
   {
     "id": 65,
@@ -647,7 +637,7 @@
     "genero": "Novela juvenil",
     "descripcion": "Adaptación del cuento clásico sobre un niño que cambia una vaca por semillas que crecen hasta el cielo.",
     "pdf": "https://drive.google.com/file/d/1nKletf3pdAaDSGSS_i0-X7dtUCMcVFfm/preview",
-    "portada": ""
+    "portada": "portadas/65.webp"
   },
   {
     "id": 66,
@@ -667,7 +657,7 @@
     "genero": "Religión y Teología",
     "descripcion": "Texto gnóstico que ofrece una visión alternativa del papel de Judas Iscariote en la pasión de Cristo.",
     "pdf": "https://drive.google.com/file/d/1izyu9hEhZ-bc4Fq_hcrCMW-NxovhvPQm/preview",
-    "portada": ""
+    "portada": "portadas/67.webp"
   },
   {
     "id": 68,
@@ -677,7 +667,7 @@
     "genero": "Ensayo",
     "descripcion": "Antiguo tratado indio sobre el comportamiento humano, el amor, el deseo y las relaciones sociales y sexuales.",
     "pdf": "https://drive.google.com/file/d/1Umi6v9iCFQpvZiNHZApPFhYHjUZVafzg/preview",
-    "portada": ""
+    "portada": "portadas/68.webp"
   },
   {
     "id": 69,
@@ -687,7 +677,7 @@
     "genero": "Cuento",
     "descripcion": "Famosa recopilación de cuentos folclóricos del Oriente Medio unidos por el relato marco de Sherezade.",
     "pdf": "https://drive.google.com/file/d/1hWyiUuXPGrMcToAy8URxBYCmTTtjfihI/preview",
-    "portada": ""
+    "portada": "portadas/69.webp"
   },
   {
     "id": 70,
@@ -1727,7 +1717,7 @@
     "genero": "Divulgación Científica",
     "descripcion": "Volumen dedicado a la biología, la medicina y el estudio de los seres vivos.",
     "pdf": "https://drive.google.com/file/d/1w6661efk-XBilznj95kuEldR0E8o9oUB/preview",
-    "portada": ""
+    "portada": "portadas/173.webp"
   },
   {
     "id": 174,
@@ -2917,7 +2907,7 @@
     "genero": "Psicología y Autoayuda",
     "descripcion": "Explicación teosófica sobre la ley de causa y efecto y su influencia en la evolución espiritual del alma.",
     "pdf": "https://drive.google.com/file/d/1vC3Iu5g5QHZh2saLl3N6QNIvDBCFW_i8/preview",
-    "portada": ""
+    "portada": "portadas/294.webp"
   },
   {
     "id": 295,
@@ -2927,7 +2917,7 @@
     "genero": "Novela",
     "descripcion": "Drama naturalista ambientado en la Albufera valenciana, centrado en las luchas de tres generaciones de pescadores.",
     "pdf": "https://drive.google.com/file/d/1S2hjV9t-SvN2EcmM_pfAxZ2dIodQdVhf/preview",
-    "portada": ""
+    "portada": "portadas/295.webp"
   },
   {
     "id": 296,
@@ -3237,7 +3227,7 @@
     "genero": "Ensayo",
     "descripcion": "Ensayo jurídico que cuestiona las leyes de propiedad intelectual y defiende el intercambio libre de cultura en la era digital.",
     "pdf": "https://drive.google.com/file/d/1E3Cnnq3kP85mql4Aqg_XuflB0J3gpu-B/preview",
-    "portada": ""
+    "portada": "portadas/327.webp"
   },
   {
     "id": 328,
@@ -4097,7 +4087,7 @@
     "genero": "Teatro",
     "descripcion": "Drama mitológico sobre Ulises y la maga Circe, explorando la lucha entre el deber y la pasión amorosa.",
     "pdf": "https://drive.google.com/file/d/1Kc3zJ_wXVgbk0Gw8Pzy5wa3r9k1-XtPc/preview",
-    "portada": ""
+    "portada": "portadas/413.webp"
   },
   {
     "id": 414,
@@ -4107,7 +4097,7 @@
     "genero": "Teatro",
     "descripcion": "El príncipe Segismundo es encerrado para evitar una profecía, cuestionando la realidad, el destino y el libre albedrío.",
     "pdf": "https://drive.google.com/file/d/17CjPpYf__b0STH9J9F4KKixkzgk4SsqP/preview",
-    "portada": ""
+    "portada": "portadas/414.webp"
   },
   {
     "id": 415,
@@ -4277,7 +4267,7 @@
     "genero": "Novela",
     "descripcion": "Marco Polo describe al emperador Kublai Kan ciudades fantásticas que son metáforas de la existencia y la memoria.",
     "pdf": "https://drive.google.com/file/d/1xiaWZLeEEaEChkyJDaaK3rCkPNrxSqqQ/preview",
-    "portada": ""
+    "portada": "portadas/431.webp"
   },
   {
     "id": 432,
@@ -4607,7 +4597,7 @@
     "genero": "Novela",
     "descripcion": "Una niña cae por una madriguera hacia un reino de fantasía donde las leyes naturales no aplican.",
     "pdf": "https://drive.google.com/file/d/1VRBKCT24Hgh2YaRX5ZFlcz-LmVkOW4gY/preview",
-    "portada": ""
+    "portada": "portadas/464.webp"
   },
   {
     "id": 465,
@@ -4667,7 +4657,7 @@
     "genero": "Cuento",
     "descripcion": "Famoso relato sobre un romance adúltero que evoluciona hacia un sentimiento profundo y melancólico.",
     "pdf": "https://drive.google.com/file/d/1qGf-bjIR16VLoiFaKX1okD7oMMnbxapg/preview",
-    "portada": ""
+    "portada": "portadas/470.webp"
   },
   {
     "id": 471,
@@ -5117,7 +5107,7 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Diez personas son invitadas a una isla privada donde comienzan a morir una a una siguiendo una canción infantil.",
     "pdf": "https://drive.google.com/file/d/1IdaXTaP9xqkLX4Lb-jJVrmJyM15gXOLI/preview",
-    "portada": ""
+    "portada": "portadas/515.webp"
   },
   {
     "id": 516,
@@ -6257,7 +6247,7 @@
     "genero": "Novela",
     "descripcion": "Marlow viaja al corazón del Congo para encontrar a Kurtz, enfrentándose a la brutalidad y la locura colonial.",
     "pdf": "https://drive.google.com/file/d/1t-7H0wZnimTItTem-dV0vRhn354x_nhN/preview",
-    "portada": ""
+    "portada": "portadas/629.webp"
   },
   {
     "id": 630,
@@ -6277,7 +6267,7 @@
     "genero": "Novela",
     "descripcion": "Novela experimental que surge de un capítulo de Rayuela, donde los personajes interactúan en una trama fragmentaria.",
     "pdf": "https://drive.google.com/file/d/1eUtiVNBF95RWPXdSRo_rNF1pRw0LXbmR/preview",
-    "portada": ""
+    "portada": "portadas/631.webp"
   },
   {
     "id": 632,
@@ -6740,16 +6730,6 @@
     "portada": "portadas/677.webp"
   },
   {
-    "id": 678,
-    "titulo": "Retratos de una isla",
-    "autor": "Manuel Cubero Urbano",
-    "anio": 2010,
-    "genero": "Historia y Crónica",
-    "descripcion": "Crónica literaria que captura la esencia, los paisajes y la gente de una isla a través de descripciones detalladas.",
-    "pdf": "https://drive.google.com/file/d/1zEdMkb0kOPlga2h6_Ju5m1cJu1ozHDD5/preview",
-    "portada": ""
-  },
-  {
     "id": 679,
     "titulo": "Don Quijote de la Mancha (Miguel de Cervantes Saavedra)",
     "autor": "Miguel De Cervantes Saavedra",
@@ -7198,16 +7178,6 @@
     "descripcion": "Investigación sobre las diferentes capacidades cognitivas de animales y máquinas para entender qué hace única a la mente humana.",
     "pdf": "https://drive.google.com/file/d/1iYVPrrad7KJNdALPZKEEgKtU9VZKJD_k/preview",
     "portada": "portadas/723.webp"
-  },
-  {
-    "id": 724,
-    "titulo": "Discurso del metodo",
-    "autor": "Rene Descartes",
-    "anio": 1637,
-    "genero": "Filosofía",
-    "descripcion": "Tratado fundamental que establece las bases del racionalismo moderno y la duda metódica como camino hacia la verdad.",
-    "pdf": "https://drive.google.com/file/d/17D0CqKpQ9RPaQ21h0VaoAyXNmkOZEFu2/preview",
-    "portada": ""
   },
   {
     "id": 725,
@@ -7727,7 +7697,7 @@
     "genero": "Novela",
     "descripcion": "Crítica al utilitarismo y la deshumanización industrial en una ciudad dominada por los hechos y las cifras.",
     "pdf": "https://drive.google.com/file/d/14hpxzsHXlvOKrjdkPbPVugDATG76j-0r/preview",
-    "portada": ""
+    "portada": "portadas/776.webp"
   },
   {
     "id": 777,
@@ -8147,7 +8117,7 @@
     "genero": "Novela",
     "descripcion": "Aventura histórica sobre la obsesión de cultivar un tulipán negro en medio de intrigas políticas en la Holanda del XVII.",
     "pdf": "https://drive.google.com/file/d/1ryFbAhA19RymPAMO20wCr19K7LYNPpG3/preview",
-    "portada": ""
+    "portada": "portadas/818.webp"
   },
   {
     "id": 819,
@@ -9707,7 +9677,7 @@
     "genero": "Ensayo",
     "descripcion": "Declaración de principios éticos donde el autor defiende la libertad individual, la justicia y la dignidad humana.",
     "pdf": "https://drive.google.com/file/d/1SjWS37Vy6Uw-866Sermg2MySA2hkdTQ4/preview",
-    "portada": ""
+    "portada": "portadas/974.webp"
   },
   {
     "id": 975,
@@ -10317,17 +10287,7 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Ojo de Halcón y sus aliados mohicanos intentan rescatar a las hijas de un coronel británico en 1757.",
     "pdf": "https://drive.google.com/file/d/1JYlNfn6gCE7xG9F6FnRBI-5N8QijKzrx/preview",
-    "portada": ""
-  },
-  {
-    "id": 1036,
-    "titulo": "El si de las ninas",
-    "autor": "Leandro Fernandez de Moratin",
-    "anio": 1806,
-    "genero": "Teatro",
-    "descripcion": "Comedia neoclásica que critica los matrimonios concertados y defiende la libertad de elección de las mujeres.",
-    "pdf": "https://drive.google.com/file/d/1KVwdQ_F4XCfLDAe7nNZvg_6w16tqYIRH/preview",
-    "portada": ""
+    "portada": "portadas/1035.webp"
   },
   {
     "id": 1037,
@@ -11587,7 +11547,7 @@
     "genero": "Cuento",
     "descripcion": "Historias breves sobre la vida doméstica y social, capturando momentos cotidianos con una mirada crítica.",
     "pdf": "https://drive.google.com/file/d/1AiBOvMIHqJ7dopghwBsS1zsxHzGrIjdR/preview",
-    "portada": ""
+    "portada": "portadas/1162.webp"
   },
   {
     "id": 1163,
@@ -12047,7 +12007,7 @@
     "genero": "Teatro",
     "descripcion": "Tragedia clásica sobre un erudito que hace un pacto con el diablo para obtener conocimiento y placeres ilimitados.",
     "pdf": "https://drive.google.com/file/d/1a-iaoGalCerEph4OkgM0xmbQzWw_lCtM/preview",
-    "portada": ""
+    "portada": "portadas/1208.webp"
   },
   {
     "id": 1209,
@@ -12317,7 +12277,7 @@
     "genero": "Cuento",
     "descripcion": "Fábula clásica sobre un joven que debe cumplir misiones imposibles para casarse con la hija del rey.",
     "pdf": "https://drive.google.com/file/d/1paOANsj-IhuHS-6f4YljxcYuZ48fHKWr/preview",
-    "portada": ""
+    "portada": "portadas/1235.webp"
   },
   {
     "id": 1236,
@@ -15320,16 +15280,6 @@
     "portada": "portadas/1535.webp"
   },
   {
-    "id": 1536,
-    "titulo": "Ante la Ley",
-    "autor": "Franz Kafka",
-    "anio": 1915,
-    "genero": "Cuento",
-    "descripcion": "Parábola sobre la inaccesibilidad a la justicia, donde un hombre espera toda su vida ante una puerta.",
-    "pdf": "https://drive.google.com/file/d/11ZBa7g4hKYWyaM-DRmWN9DgWgwa0JkKt/preview",
-    "portada": ""
-  },
-  {
     "id": 1537,
     "titulo": "Carta al padre",
     "autor": "Franz Kafka",
@@ -15457,7 +15407,7 @@
     "genero": "Novela",
     "descripcion": "Un joven inmigrante europeo vive peripecias absurdas y desafortunadas en un Estados Unidos surrealista.",
     "pdf": "https://drive.google.com/file/d/1EiAOZxHsTaL1PG33w1OZsBxxcCBenwSD/preview",
-    "portada": ""
+    "portada": "portadas/1549.webp"
   },
   {
     "id": 1550,
@@ -15637,7 +15587,7 @@
     "genero": "Filosofía",
     "descripcion": "Un seductor esteta narra su elaborado plan para conquistar a una joven y luego abandonarla.",
     "pdf": "https://drive.google.com/file/d/1r4KoNcQmR6GqMKWCJv2n31kA1dMxov8F/preview",
-    "portada": ""
+    "portada": "portadas/1567.webp"
   },
   {
     "id": 1568,
@@ -15677,7 +15627,7 @@
     "genero": "Fantasía",
     "descripcion": "Tras una plaga gripal, los supervivientes se dividen en dos bandos en una lucha épica.",
     "pdf": "https://drive.google.com/file/d/1CcF2vovQPUVVnGshqXFlaIWflxQ0GTmo/preview",
-    "portada": ""
+    "portada": "portadas/1571.webp"
   },
   {
     "id": 1572,
@@ -16137,7 +16087,7 @@
     "genero": "Fantasía",
     "descripcion": "Una niña recibe una caja misteriosa con botones que pueden otorgar bendiciones o causar catástrofes globales.",
     "pdf": "https://drive.google.com/file/d/1wx5kYznKh9I6a_HSuDCdqYk448DsqTUM/preview",
-    "portada": ""
+    "portada": "portadas/1617.webp"
   },
   {
     "id": 1618,
@@ -16147,7 +16097,7 @@
     "genero": "Fantasía",
     "descripcion": "Una niña recibe una caja misteriosa con botones que pueden otorgar bendiciones o causar catástrofes globales.",
     "pdf": "https://drive.google.com/file/d/1UjX-giBvJaMbRt3IPYPnBNmVRX-cCqVq/preview",
-    "portada": ""
+    "portada": "portadas/1618.webp"
   },
   {
     "id": 1619,
@@ -16247,7 +16197,7 @@
     "genero": "Fantasía",
     "descripcion": "La épica odisea de Roland Deschain para encontrar el eje que une todos los universos conocidos.",
     "pdf": "https://drive.google.com/file/d/1qKenbrNJxH6oTr7J1aTfLCNEf1vxfUHa/preview",
-    "portada": ""
+    "portada": "portadas/1628.webp"
   },
   {
     "id": 1629,
@@ -16257,7 +16207,7 @@
     "genero": "Fantasía",
     "descripcion": "La épica odisea de Roland Deschain para encontrar el eje que une todos los universos conocidos.",
     "pdf": "https://drive.google.com/file/d/1p1lG2aHN6GEcGvfQR0iiXelD2qBNbAyc/preview",
-    "portada": ""
+    "portada": "portadas/1629.webp"
   },
   {
     "id": 1630,
@@ -16487,7 +16437,7 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Cuatro relatos largos que se alejan del terror puro para explorar la naturaleza humana y la esperanza.",
     "pdf": "https://drive.google.com/file/d/11eWR8duXDchs0WltWa3nxQAz8lzMJlL4/preview",
-    "portada": ""
+    "portada": "portadas/1652.webp"
   },
   {
     "id": 1653,
@@ -17087,7 +17037,7 @@
     "genero": "Novela",
     "descripcion": "Novela que escandalizó a su época al narrar el romance adúltero entre una noble y un guardabosques.",
     "pdf": "https://drive.google.com/file/d/1b-kugBrYHRxH7DS8YzMju_Cjl_jrQL9A/preview",
-    "portada": ""
+    "portada": "portadas/1712.webp"
   },
   {
     "id": 1713,
@@ -17628,16 +17578,6 @@
     "descripcion": "Un eminente neurocientífico explora cómo el cerebro genera la mente y la noción del yo.",
     "pdf": "https://drive.google.com/file/d/1lUO77YsKukcnrz406WZC6wuW_wAUm-8e/preview",
     "portada": "portadas/1766.webp"
-  },
-  {
-    "id": 1767,
-    "titulo": "La peste escarlata",
-    "autor": "Jack London",
-    "anio": 1912,
-    "genero": "Ciencia Ficción",
-    "descripcion": "Relato post-apocalíptico sobre un anciano que cuenta a sus nietos cómo colapsó la civilización humana.",
-    "pdf": "https://drive.google.com/file/d/1pQTJKE51ZILavgeqbE-t0hXDKrbJwRXp/preview",
-    "portada": ""
   },
   {
     "id": 1768,
@@ -19160,16 +19100,6 @@
     "portada": "portadas/1919.webp"
   },
   {
-    "id": 1920,
-    "titulo": "Moby Dick",
-    "autor": "Herman Melville",
-    "anio": 1851,
-    "genero": "Novela negra",
-    "descripcion": "El capitán Ahab dirige una cacería obsesiva contra una gran ballena blanca por todo el mundo.",
-    "pdf": "https://drive.google.com/file/d/1k1C1dYBQRXV7vIOT0laZ-F-pDmHTQz6h/preview",
-    "portada": ""
-  },
-  {
     "id": 1921,
     "titulo": "Omu",
     "autor": "Herman Melville",
@@ -19310,16 +19240,6 @@
     "portada": "portadas/1934.webp"
   },
   {
-    "id": 1935,
-    "titulo": "Paraiso Perdido",
-    "autor": "John Milton",
-    "anio": 1667,
-    "genero": "Poesía",
-    "descripcion": "Poema épico que relata la rebelión de Satanás y la caída del hombre en el Paraíso.",
-    "pdf": "https://drive.google.com/file/d/1_fBf1UHk-RUEDD4JMtI9Asi8ukAhZ44C/preview",
-    "portada": ""
-  },
-  {
     "id": 1936,
     "titulo": "Marvin Minsky - (incompleto) La maquina de las emociones",
     "autor": "Marvin Minsky",
@@ -19337,7 +19257,7 @@
     "genero": "Divulgación Científica",
     "descripcion": "Teoría pionera sobre cómo la mente humana funciona como una red de procesos simples cooperativos.",
     "pdf": "https://drive.google.com/file/d/1MjbmsKJr5_UPPil911SNV4A4jCws_QBP/preview",
-    "portada": ""
+    "portada": "portadas/1937.webp"
   },
   {
     "id": 1938,
@@ -19587,7 +19507,7 @@
     "genero": "Novela",
     "descripcion": "Una mujer y un escritor se cruzan en una realidad paralela con dos lunas y sectas religiosas.",
     "pdf": "https://drive.google.com/file/d/1o_AUSC_kCJ-y77gIKU0Z-BMzlwpsW7YF/preview",
-    "portada": ""
+    "portada": "portadas/1962.webp"
   },
   {
     "id": 1963,
@@ -20687,7 +20607,7 @@
     "genero": "Filosofía",
     "descripcion": "Crítica a la filosofía y moral tradicional, proponiendo una nueva jerarquía de valores vitales.",
     "pdf": "https://drive.google.com/file/d/1tBNpOrcnQlcw88cQWKWj4JZA-Ebx1_0O/preview",
-    "portada": ""
+    "portada": "portadas/2072.webp"
   },
   {
     "id": 2073,
@@ -20977,7 +20897,7 @@
     "genero": "Cuento",
     "descripcion": "Un banquero millonario argumenta que su acumulación de riqueza es la máxima expresión de la libertad anarquista.",
     "pdf": "https://drive.google.com/file/d/1JgIlnMxohUAhji3SW9jyPj7w6ziOlV1F/preview",
-    "portada": ""
+    "portada": "portadas/2101.webp"
   },
   {
     "id": 2102,
@@ -21327,7 +21247,7 @@
     "genero": "Filosofía",
     "descripcion": "Obra fundamental sobre la justicia, el Estado ideal y la alegoría de la caverna.",
     "pdf": "https://drive.google.com/file/d/1TKnJjPeTwpwJmY7kfnTjbpZNw_IORTdE/preview",
-    "portada": ""
+    "portada": "portadas/2136.webp"
   },
   {
     "id": 2137,
@@ -22317,7 +22237,7 @@
     "genero": "Terror",
     "descripcion": "Cuentos de terror y locura ambientados en la selva misionera o entornos rurales sombríos.",
     "pdf": "https://drive.google.com/file/d/1t309GAZGaxGFVi-e0v3yEsO6LnLCdYAd/preview",
-    "portada": ""
+    "portada": "portadas/2235.webp"
   },
   {
     "id": 2236,
@@ -22327,7 +22247,7 @@
     "genero": "Cuento",
     "descripcion": "Relatos que exploran la lucha del hombre contra la naturaleza y la decadencia humana.",
     "pdf": "https://drive.google.com/file/d/1TZbS_iLpRoPwKlTBEJwVJvhFekFjBrbP/preview",
-    "portada": ""
+    "portada": "portadas/2236.webp"
   },
   {
     "id": 2237,
@@ -22637,7 +22557,7 @@
     "genero": "Filosofía",
     "descripcion": "Obra de filosofía política sobre la libertad, la soberanía y la voluntad general.",
     "pdf": "https://drive.google.com/file/d/12dYEwLpKEBe-0Zn0wu2JilU2mTLwpxxh/preview",
-    "portada": ""
+    "portada": "portadas/2267.webp"
   },
   {
     "id": 2268,
@@ -22667,7 +22587,7 @@
     "genero": "Filosofía",
     "descripcion": "Ensayo sobre cómo la propiedad privada corrompió al hombre natural creando jerarquías injustas.",
     "pdf": "https://drive.google.com/file/d/1eecl8YTa71kPyRCiS_uV5OtSpaLGJncv/preview",
-    "portada": ""
+    "portada": "portadas/2270.webp"
   },
   {
     "id": 2271,
@@ -23327,7 +23247,7 @@
     "genero": "Novela",
     "descripcion": "Perturbadora crónica de abusos cometidos por cuatro libertinos en un castillo aislado durante cuatro meses.",
     "pdf": "https://drive.google.com/file/d/1VAWk7ZUH8CipQr_2-VtsNCi6tjA1VjZR/preview",
-    "portada": ""
+    "portada": "portadas/2336.webp"
   },
   {
     "id": 2337,
@@ -23427,7 +23347,7 @@
     "genero": "Cuento",
     "descripcion": "Un aviador perdido en el desierto encuentra a un pequeño príncipe que le enseña sobre el amor.",
     "pdf": "https://drive.google.com/file/d/1XPpyTS3aY3X4ZPB2f88KEDtxD8gVRjlI/preview",
-    "portada": ""
+    "portada": "portadas/2346.webp"
   },
   {
     "id": 2347,
@@ -23437,7 +23357,7 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Aventuras de la Duquesa de Eboli luchando contra los turcos en la Chipre del siglo XVI.",
     "pdf": "https://drive.google.com/file/d/1u_tAFMQGGdb8Gdc1L0I8QyUmv8qFYiGg/preview",
-    "portada": ""
+    "portada": "portadas/2347.webp"
   },
   {
     "id": 2348,
@@ -23650,16 +23570,6 @@
     "portada": "portadas/2368.webp"
   },
   {
-    "id": 2369,
-    "titulo": "Ubunchu 3",
-    "autor": "Hiroshi Seo",
-    "anio": 2008,
-    "genero": "Teatro",
-    "descripcion": "Manga educativo sobre tres estudiantes y sus experiencias utilizando el sistema operativo Ubuntu Linux.",
-    "pdf": "https://drive.google.com/file/d/1xNiX8On-hyv1fJuXNpCG83heY52bjS93/preview",
-    "portada": ""
-  },
-  {
     "id": 2370,
     "titulo": "El mercader de Venecia Como gusteis",
     "autor": "William Shakespeare",
@@ -23788,16 +23698,6 @@
     "descripcion": "La clásica historia del científico que juega a ser Dios con resultados catastróficos.",
     "pdf": "https://drive.google.com/file/d/1Mw2o3SzHzAs9Hkb_hd7vsGxnU3vE_LMm/preview",
     "portada": "portadas/2382.webp"
-  },
-  {
-    "id": 2383,
-    "titulo": "Frankenstein",
-    "autor": "Mary Shelley",
-    "anio": 1818,
-    "genero": "Novela",
-    "descripcion": "Novela gótica fundacional sobre la creación de la vida y el rechazo social de lo diferente.",
-    "pdf": "https://drive.google.com/file/d/1fSCu4sQfGQ0Tx7Y3KxwxqLo__9CKzB35/preview",
-    "portada": ""
   },
   {
     "id": 2384,
@@ -23937,7 +23837,7 @@
     "genero": "Teatro",
     "descripcion": "Tragedia griega sobre un rey que descubre que ha cumplido la profecía de matar a su padre.",
     "pdf": "https://drive.google.com/file/d/1aSyyGTmlVNxbRcjffveZEKUkHd_XGFXu/preview",
-    "portada": ""
+    "portada": "portadas/2397.webp"
   },
   {
     "id": 2398,
@@ -24870,16 +24770,6 @@
     "portada": "portadas/2490.webp"
   },
   {
-    "id": 2491,
-    "titulo": "El huesped de Dracula",
-    "autor": "Bram Stoker",
-    "anio": 1897,
-    "genero": "Terror",
-    "descripcion": "Un conde vampiro viaja desde Transilvania a Inglaterra para extender su maldición y encontrar a su amada.",
-    "pdf": "https://drive.google.com/file/d/1jW_PIgKKhNNa65z5FHZ25iL2pEVjtv0d/preview",
-    "portada": ""
-  },
-  {
     "id": 2492,
     "titulo": "Cartas de Papa Noel",
     "autor": "J. R. R. Tolkien",
@@ -25500,26 +25390,6 @@
     "portada": "portadas/2553.webp"
   },
   {
-    "id": 2554,
-    "titulo": "El forastero misterioso",
-    "autor": "Mark Twain",
-    "anio": 1916,
-    "genero": "Novela",
-    "descripcion": "Reflexión pesimista sobre el determinismo y la religión protagonizada por un sobrino de Satanás.",
-    "pdf": "https://drive.google.com/file/d/1I3GWSE6pNV1_kYepdFZ-H-jTyyAJbiZH/preview",
-    "portada": ""
-  },
-  {
-    "id": 2555,
-    "titulo": "El principe y el mendigo",
-    "autor": "Mark Twain",
-    "anio": 1881,
-    "genero": "Novela histórica",
-    "descripcion": "Un joven príncipe y un niño pobre intercambian sus vidas en la Inglaterra del siglo XVI.",
-    "pdf": "https://drive.google.com/file/d/1APJl1QmOLvkrUATaBV3XeA8tkK8s2hFi/preview",
-    "portada": ""
-  },
-  {
     "id": 2556,
     "titulo": "Guia para viajeros inocentes",
     "autor": "Mark Twain",
@@ -26007,7 +25877,7 @@
     "genero": "Historia y Crónica",
     "descripcion": "Reflexiones y reportajes del autor tras sus viajes a los territorios en conflicto en Oriente Próximo.",
     "pdf": "https://drive.google.com/file/d/18KVyaZ6RfOyydmY6HpIhbwEsm3STAT-i/preview",
-    "portada": ""
+    "portada": "portadas/2604.webp"
   },
   {
     "id": 2605,
@@ -26277,7 +26147,7 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Búsqueda de un tesoro oculto guiada por complejas coordenadas geográficas a través de varios mares.",
     "pdf": "https://drive.google.com/file/d/19NgWybskavWcKDnVjy3hAkxLtMF1nqlQ/preview",
-    "portada": ""
+    "portada": "portadas/2631.webp"
   },
   {
     "id": 2632,
@@ -26807,7 +26677,7 @@
     "genero": "Teatro",
     "descripcion": "Sátira de las convenciones sociales mediante una comedia de enredos y dobles identidades.",
     "pdf": "https://drive.google.com/file/d/1ZiO1yEF0WPgp-_M0PWtXpHxvsyOhgHuf/preview",
-    "portada": ""
+    "portada": "portadas/2684.webp"
   },
   {
     "id": 2685,
@@ -27647,7 +27517,7 @@
     "genero": "Psicología y Autoayuda",
     "descripcion": "Analiza las diferencias de comunicación y necesidades emocionales entre hombres y mujeres para mejorar las relaciones.",
     "pdf": "https://drive.google.com/file/d/12gOvhDk7cJc-PBDyTU9MJh8LOHvhsH04/preview",
-    "portada": ""
+    "portada": "portadas/2768.webp"
   },
   {
     "id": 2769,
@@ -27867,7 +27737,7 @@
     "genero": "Psicología y Autoayuda",
     "descripcion": "Explora la psicología detrás de las decisiones financieras y cómo las actitudes ante el dinero determinan el éxito económico.",
     "pdf": "https://drive.google.com/file/d/1xduOtK2W-3Xh3mOtR-OD-XO1l-97bkBe/preview",
-    "portada": ""
+    "portada": "portadas/2790.webp"
   },
   {
     "id": 2791,
@@ -27897,7 +27767,7 @@
     "genero": "Terror",
     "descripcion": "Dos hermanos escuchan a un niño perdido en un campo de hierba que los atrapa en un laberinto sin salida sobrenatural.",
     "pdf": "https://drive.google.com/file/d/19gTfrXCrw2IIRMoC1h2-hMFSa7S4Eggd/preview",
-    "portada": ""
+    "portada": "portadas/2793.webp"
   },
   {
     "id": 2794,
