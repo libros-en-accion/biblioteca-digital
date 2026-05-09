@@ -1,6 +1,5 @@
 # Backups
-*.bak
-*.bak2
+*.bak*
 
 # OS
 .DS_Store

@@ -198,6 +198,9 @@ function inicializarPagina() {
 
   // Modo oscuro
   inicializarTema();
+
+  // Rutas hash
+  manejarRutaHash();
 }
 
 // ── GENERAR TAGS DE FILTRO DINÁMICAMENTE ──
@@ -214,7 +217,7 @@ function generarTagsFiltro() {
 
   // Ordenar por cantidad (mayor a menor), excluir los muy pequeños
   const generosOrdenados = Object.entries(conteo)
-    .filter(([, c]) => c >= 10) // Solo géneros con 10+ libros
+    .filter(([, c]) => c >= 1) // Todos los géneros
     .sort((a, b) => b[1] - a[1]);
 
   contenedor.innerHTML = '';
@@ -469,7 +472,7 @@ function libroAlAzar() {
 // MODAL DE DETALLE DEL LIBRO
 // ════════════════════════════════════════════════════════
 
-function abrirDetalleLibro(id) {
+function abrirDetalleLibro(id, omitirPush = false) {
   const libro = libros.find(l => l.id === id);
   if (!libro) return;
 
@@ -528,13 +531,21 @@ function abrirDetalleLibro(id) {
 
   modal.classList.add('abierto');
   document.body.style.overflow = 'hidden';
+
+  if (!omitirPush) {
+    history.pushState(null, '', '#/libro/' + id);
+  }
 }
 
-function cerrarDetalle() {
+function cerrarDetalle(omitirPush = false) {
   const modal = document.getElementById('modalDetalle');
-  if (modal) {
+  if (modal && modal.classList.contains('abierto')) {
     modal.classList.remove('abierto');
     document.body.style.overflow = '';
+
+    if (!omitirPush && window.location.hash.startsWith('#/libro/')) {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    }
   }
 }
 
@@ -715,6 +726,21 @@ function registrarEventos() {
       cerrarDetalle();
     }
   });
+
+  window.addEventListener('hashchange', manejarRutaHash);
+}
+
+function manejarRutaHash() {
+  const hash = window.location.hash;
+  if (hash.startsWith('#/libro/')) {
+    const idStr = hash.replace('#/libro/', '');
+    const id = parseInt(idStr, 10);
+    if (!isNaN(id)) {
+      abrirDetalleLibro(id, true);
+    }
+  } else {
+    cerrarDetalle(true);
+  }
 }
 
 // ════════════════════════════════════════════════════════
