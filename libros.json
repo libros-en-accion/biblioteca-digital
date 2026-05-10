@@ -28378,5 +28378,45 @@
     "descripcion": "Un manual que propone un sistema para alinear la mentalidad con los deseos personales, argumentando que la realidad exterior es un reflejo del estado interior y ofreciendo pasos para 'programar' el éxito.",
     "pdf": "https://drive.google.com/file/d/18MvrWozBSEAuT-isBIF419uNujeDYOog/preview",
     "portada": "portadas/2854.webp"
+  },
+  {
+    "id": 2855,
+    "titulo": "Artemisa",
+    "autor": "Andy Weir",
+    "anio": 2017,
+    "genero": "Ciencia ficción",
+    "descripcion": "Jazz Bashara es una criminal de poca monta en Artemisa, la primera ciudad en la Luna, quien acepta un trabajo demasiado tentador para rechazarlo, viéndose envuelta en una conspiración por el control de la colonia.",
+    "pdf": "https://drive.google.com/file/d/13tf7ER5Ti_a760btMs7P2go6f19HX9Zh/preview",
+    "portada": "portadas/2855.webp"
+  },
+  {
+    "id": 2856,
+    "titulo": "El marciano",
+    "autor": "Andy Weir",
+    "anio": 2011,
+    "genero": "Ciencia ficción",
+    "descripcion": "Tras una tormenta de arena que obliga a su tripulación a evacuar Marte, el astronauta Mark Watney queda varado y solo, debiendo utilizar su ingenio y conocimientos científicos para sobrevivir en un entorno hostil hasta un posible rescate.",
+    "pdf": "https://drive.google.com/file/d/1MGipymJGLUTiqHAYgGoobGMezMDuGNTv/preview",
+    "portada": "portadas/2856.webp"
+  },
+  {
+    "id": 2857,
+    "titulo": "Proyecto Hail Mary",
+    "autor": "Andy Weir",
+    "anio": 2021,
+    "genero": "Ciencia ficción",
+    "descripcion": "Ryland Grace despierta en una nave espacial sin recordar quién es ni su misión, solo para descubrir que es la última esperanza de la humanidad para evitar una extinción solar y que deberá colaborar con un aliado inesperado.",
+    "pdf": "https://drive.google.com/file/d/1k1k9OuUDgXaREHvHhZsgCxasr6CinKMR/preview",
+    "portada": "portadas/2857.webp"
+  },
+  {
+    "id": 2858,
+    "titulo": "Universo de Andy Weir",
+    "autor": "Andy Weir",
+    "anio": 2020,
+    "genero": "Ciencia ficción",
+    "descripcion": "Una colección que reúne relatos cortos y material adicional del autor, incluyendo historias como 'El Huevo', explorando diversos conceptos filosóficos y científicos con su característico estilo narrativo.",
+    "pdf": "https://drive.google.com/file/d/1CXYwSUk1FLugVdO3RlTbPBRj5WIKZGFj/preview",
+    "portada": "portadas/2858.webp"
   }
 ]
