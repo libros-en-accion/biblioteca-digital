@@ -28418,5 +28418,15 @@
     "descripcion": "Una colección que reúne relatos cortos y material adicional del autor, incluyendo historias como 'El Huevo', explorando diversos conceptos filosóficos y científicos con su característico estilo narrativo.",
     "pdf": "https://drive.google.com/file/d/1CXYwSUk1FLugVdO3RlTbPBRj5WIKZGFj/preview",
     "portada": "portadas/2858.webp"
+  },
+  {
+    "id": 2859,
+    "titulo": "No Me Llames Loca",
+    "autor": "Gilraen Eärfalas",
+    "anio": 2022,
+    "genero": "Desarrollo personal",
+    "descripcion": "Una obra que explora temas de salud mental, autoaceptación y la lucha contra los estigmas sociales, narrando un proceso de sanación emocional a través de una perspectiva íntima y personal.",
+    "pdf": "https://drive.google.com/file/d/11JFHVu-LNxplxIjrwRnY2E8xlBinfjk-/preview",
+    "portada": "portadas/2859.webp"
   }
 ]
