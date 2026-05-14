@@ -185,6 +185,24 @@ header h1 {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Enlace del título principal — vuelve al inicio */
+.header-home-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.header-home-link:hover h1,
+.header-home-link:focus-visible h1 {
+  text-shadow: 0 2px 20px rgba(212, 169, 74, 0.3);
+}
+
+.header-home-link:focus-visible {
+  outline: 2px solid var(--dorado);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
 header h1 span {
   color: var(--dorado-claro);
   font-style: italic;

@@ -660,7 +660,7 @@ function cerrarDetalle(omitirPush = false) {
     const paginaLibros = listaFiltrada.slice(inicio, inicio + LIBROS_POR_PAGINA);
     actualizarSchemaSEO(paginaLibros);
 
-    if (!omitirPush && window.location.hash.startsWith('#/libro/')) {
+    if (!omitirPush && window.location.hash) {
       history.pushState(null, '', window.location.pathname + window.location.search);
     }
   }
