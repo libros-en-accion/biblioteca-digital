@@ -554,13 +554,45 @@ function abrirDetalleLibro(id, omitirPush = false) {
   const claseGenero = obtenerClaseGenero(libro.genero);
 
   document.getElementById('detalle-titulo').textContent = tituloLimpio;
-  document.getElementById('detalle-autor').textContent = libro.autor || 'Autor desconocido';
+
+  // Autor como enlace clickeable que filtra
+  const autorEl = document.getElementById('detalle-autor');
+  autorEl.innerHTML = '';
+  if (libro.autor) {
+    const autorLink = document.createElement('button');
+    autorLink.className = 'detalle-enlace';
+    autorLink.textContent = libro.autor;
+    autorLink.setAttribute('aria-label', `Filtrar por autor: ${libro.autor}`);
+    autorLink.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cerrarDetalle();
+      document.getElementById('selectAutor').value = libro.autor;
+      autorActivo = libro.autor;
+      filtrar();
+    });
+    autorEl.appendChild(autorLink);
+  } else {
+    autorEl.textContent = 'Autor desconocido';
+  }
+
   document.getElementById('detalle-anio').textContent = libro.anio ? `Publicado en ${libro.anio}` : '';
   document.getElementById('detalle-descripcion').textContent = libro.descripcion || 'Sin descripción disponible.';
   
+  // Género como enlace clickeable que filtra
   const badge = document.getElementById('detalle-genero');
-  badge.textContent = libro.genero || 'General';
+  badge.innerHTML = '';
   badge.className = `tarjeta-genero-badge ${claseGenero}`;
+  const generoLink = document.createElement('button');
+  generoLink.className = 'detalle-enlace-badge';
+  generoLink.textContent = libro.genero || 'General';
+  generoLink.setAttribute('aria-label', `Filtrar por género: ${libro.genero}`);
+  generoLink.addEventListener('click', (e) => {
+    e.stopPropagation();
+    cerrarDetalle();
+    const tagBtn = document.querySelector(`.tag-genero[data-genero="${libro.genero}"]`);
+    filtrarGenero(libro.genero, tagBtn);
+  });
+  badge.appendChild(generoLink);
 
   const detallePortada = document.getElementById('detalle-portada');
   if (libro.portada && detallePortada) {
