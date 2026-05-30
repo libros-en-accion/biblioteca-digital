@@ -1954,37 +1954,72 @@ footer {
 /* ── Responsive modal ── */
 @media (max-width: 600px) {
   .galeria.vista-lista .tarjeta {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 0.8rem;
+    gap: 0.8rem;
   }
   
   .galeria.vista-lista .tarjeta-portada {
-    width: 60px;
-    height: 85px;
-    margin-bottom: 0.5rem;
+    width: 45px;
+    height: 60px;
+    margin-bottom: 0;
+    border-radius: 4px;
   }
   
   .galeria.vista-lista .tarjeta-info {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.3rem;
-    width: 100%;
+    gap: 0.1rem;
+    width: auto;
+    flex: 1;
+    min-width: 0;
   }
   
   .galeria.vista-lista .tarjeta-titulo {
-    white-space: normal;
-    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.95rem;
+    font-weight: 600;
+    width: 100%;
+    line-height: 1.2;
+  }
+
+  .galeria.vista-lista .tarjeta-autor {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+    width: 100%;
+    opacity: 0.7;
   }
   
   .galeria.vista-lista .tarjeta-anio {
     text-align: left;
     width: auto;
+    font-size: 0.75rem;
+    opacity: 0.6;
   }
 
   .galeria.vista-lista .btn-ver {
-    width: 100%;
-    margin-top: 0.8rem;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+    border-radius: 50%;
+    margin-top: 0;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .galeria.vista-lista .btn-ver i,
+  .galeria.vista-lista .btn-ver svg {
+    margin: 0;
+    width: 16px;
+    height: 16px;
   }
 
   .modal-panel {
