@@ -28,45 +28,46 @@
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- ═══ ENCABEZADO ═══ -->
-  <header>
-    <div class="header-inner">
-      <div class="header-ornamento">⟡ Colección Literaria ⟡</div>
-      <a href="/" class="header-home-link" aria-label="Ir al inicio de la biblioteca"><h1>Biblioteca <span>Digital</span></h1></a>
-      <p class="header-subtitulo">Clásicos, novelas, ensayos y literatura general</p>
-    </div>
+  <!-- ═══ SECCIÓN HÉROE UNIFICADA ═══ -->
+  <section class="hero-seccion">
+    <div class="hero-background-deco"></div>
     <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
-    <div class="header-linea-inferior"></div>
-  </header>
+    
+    <div class="hero-contenido">
+      <div class="hero-encabezado">
+        <div class="hero-ornamento">⟡ Colección Literaria ⟡</div>
+        <a href="/" class="header-home-link" aria-label="Ir al inicio de la biblioteca">
+          <h1>Biblioteca <span>Digital</span></h1>
+        </a>
+        <p class="hero-subtitulo">Tu próxima gran historia está aquí</p>
+        <p class="hero-descripcion">Explora una colección de más de 2,800 clásicos, novelas y ensayos con recomendación inteligente por IA.</p>
+      </div>
 
-  <!-- ═══ SECCIÓN IA ═══ -->
-  <section class="seccion-ia">
-    <div class="ia-fondo-deco"></div>
-    <div class="ia-contenido">
-      <div class="ia-ornamento-linea"></div>
-      <span class="ia-etiqueta">✦ Recomendador Inteligente ✦</span>
-      <div class="ia-botones-grupo">
+      <!-- Buscador Centralizado con Autocompletado -->
+      <div class="hero-buscador-caja">
+        <div class="buscador-contenedor">
+          <span class="buscador-icono"><i data-lucide="search" class="icono-sm"></i></span>
+          <input type="text" id="inputBusqueda" placeholder="Buscar por título, autor, género o año..." autocomplete="off" />
+          <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda"><i data-lucide="x" class="icono-sm"></i></button>
+        </div>
+        
+        <!-- Panel Flotante de Autocompletado (Predictivo) -->
+        <div id="autocompletarPanel" class="autocompletar-panel" style="display:none"></div>
+      </div>
+
+      <!-- CTAs de Descubrimiento Rápido (IA y Azar) -->
+      <div class="hero-acciones">
         <button id="btnAbrirIA" class="btn-ia-trigger">
           <span class="btn-ia-icono"><i data-lucide="sparkles"></i></span>
-          ¿Qué debería leer hoy?
+          ¿Qué leer hoy? (Pregunta a la IA)
         </button>
         <button id="btnAzar" class="btn-azar" title="Libro al azar">
           <span class="btn-azar-icono"><i data-lucide="dices"></i></span>
           Sorpréndeme
         </button>
       </div>
-      <p class="ia-subtexto">Deja que la IA elija por ti según tu estado de ánimo</p>
-      <div class="ia-ornamento-linea"></div>
     </div>
-  </section>
-
-  <!-- ═══ BUSCADOR ═══ -->
-  <section class="buscador">
-    <div class="buscador-contenedor">
-      <span class="buscador-icono"><i data-lucide="search" class="icono-sm"></i></span>
-      <input type="text" id="inputBusqueda" placeholder="Buscar por título, autor, género o año..." />
-      <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda"><i data-lucide="x" class="icono-sm"></i></button>
-    </div>
+    <div class="hero-linea-inferior"></div>
   </section>
 
   <!-- ═══ FILTROS POR GÉNERO (TAGS) ═══ -->
@@ -78,31 +79,54 @@
 
   <!-- ═══ BARRA DE CONTROLES ═══ -->
   <div class="controles-barra">
-    <p id="contador" class="contador"></p>
+    <div class="controles-izq">
+      <p id="contador" class="contador"></p>
+      
+      <!-- Chips de Época en lugar de select tradicional -->
+      <div class="epoca-chips" id="filtrosEpoca">
+        <button class="chip-epoca activo" data-epoca="Todas">Todas las épocas</button>
+        <button class="chip-epoca" data-epoca="pre-1800">Antes de 1800</button>
+        <button class="chip-epoca" data-epoca="1800-1899">S. XIX (1800s)</button>
+        <button class="chip-epoca" data-epoca="1900-1949">S. XX (1900-1949)</button>
+        <button class="chip-epoca" data-epoca="1950-1999">Posguerra (1950-1999)</button>
+        <button class="chip-epoca" data-epoca="2000+">S. XXI (2000+)</button>
+      </div>
+    </div>
+    
     <div class="controles-derecha">
       <div class="vista-controles">
         <button id="btnVistaGrid" class="btn-vista activo" title="Vista cuadrícula" aria-label="Vista cuadrícula"><i data-lucide="layout-grid"></i></button>
         <button id="btnVistaLista" class="btn-vista" title="Vista lista" aria-label="Vista lista"><i data-lucide="list"></i></button>
       </div>
-      <select id="selectEpoca" class="select-orden" aria-label="Filtrar por época">
-        <option value="Todas">Todas las épocas</option>
-        <option value="pre-1800">Antes de 1800</option>
-        <option value="1800-1899">1800 - 1899</option>
-        <option value="1900-1949">1900 - 1949</option>
-        <option value="1950-1999">1950 - 1999</option>
-        <option value="2000+">2000 en adelante</option>
-      </select>
-      <select id="selectAutor" class="select-orden" aria-label="Filtrar por autor">
-        <option value="Todos">Todos los autores</option>
-      </select>
-      <select id="selectOrden" class="select-orden" aria-label="Ordenar por">
-        <option value="default">Ordenar por…</option>
-        <option value="titulo-asc">Título A → Z</option>
-        <option value="titulo-desc">Título Z → A</option>
-        <option value="autor-asc">Autor A → Z</option>
-        <option value="anio-desc">Más recientes</option>
-        <option value="anio-asc">Más antiguos</option>
-      </select>
+
+      <!-- Buscador de Autor Custom (Searchable Dropdown) -->
+      <div class="custom-dropdown searchable" id="dropdownAutor">
+        <div class="dropdown-trigger">
+          <input type="text" class="dropdown-input" id="inputDropdownAutor" placeholder="Todos los autores" autocomplete="off" aria-label="Filtrar por autor" />
+          <button class="dropdown-clear-btn" id="btnLimpiarAutor" style="display:none" aria-label="Limpiar autor"><i data-lucide="x" class="icono-sm"></i></button>
+          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
+        </div>
+        <ul class="dropdown-menu" role="listbox" id="menuDropdownAutor">
+          <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Todos los autores</li>
+          <!-- Se llena dinámicamente con JS -->
+        </ul>
+      </div>
+
+      <!-- Ordenamiento Custom (Custom Dropdown Menu) -->
+      <div class="custom-dropdown" id="dropdownOrden">
+        <button class="dropdown-btn" id="btnDropdownOrden" aria-haspopup="listbox" aria-expanded="false">
+          <span id="labelDropdownOrden">Ordenar por…</span>
+          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
+        </button>
+        <ul class="dropdown-menu" role="listbox" id="menuDropdownOrden">
+          <li data-valor="default" class="dropdown-item seleccionado" role="option">Ordenar por…</li>
+          <li data-valor="titulo-asc" class="dropdown-item" role="option">Título A → Z</li>
+          <li data-valor="titulo-desc" class="dropdown-item" role="option">Título Z → A</li>
+          <li data-valor="autor-asc" class="dropdown-item" role="option">Autor A → Z</li>
+          <li data-valor="anio-desc" class="dropdown-item" role="option">Más recientes</li>
+          <li data-valor="anio-asc" class="dropdown-item" role="option">Más antiguos</li>
+        </ul>
+      </div>
     </div>
   </div>
 

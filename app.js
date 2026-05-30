@@ -9,6 +9,15 @@ let autorActivo = 'Todos';
 let epocaActiva = 'Todas';
 let ultimoElementoEnfocado = null;
 let vistaActiva = localStorage.getItem('biblioteca-vista') || 'grid';
+let moodActivo = 'Todos';
+
+const moodTagsData = [
+  { id: 'rapido', label: 'Lectura Rápida', icon: 'clock', valor: 'rapido' },
+  { id: 'reflexionar', label: 'Reflexionar', icon: 'brain', valor: 'reflexionar' },
+  { id: 'escapar', label: 'Escapar', icon: 'compass', valor: 'escapar' },
+  { id: 'aprender', label: 'Aprender', icon: 'microscope', valor: 'aprender' },
+  { id: 'intriga', label: 'Misterio e Intriga', icon: 'ghost', valor: 'intriga' }
+];
 
 // ── FRASES LITERARIAS ──
 const frases = [
@@ -188,46 +197,11 @@ function inicializarPagina() {
     });
   }
 
-  // Selector de autores
-  const selectAutor = document.getElementById('selectAutor');
-  if (selectAutor) {
-    const autoresSet = new Set();
-    libros.forEach(l => {
-      if (l.autor && l.autor.trim() !== '') autoresSet.add(l.autor.trim());
-    });
-    
-    const autoresOrdenados = Array.from(autoresSet).sort((a, b) => a.localeCompare(b, 'es'));
-    
-    autoresOrdenados.forEach(autor => {
-      const option = document.createElement('option');
-      option.value = autor;
-      option.textContent = autor;
-      selectAutor.appendChild(option);
-    });
-
-    selectAutor.addEventListener('change', (e) => {
-      autorActivo = e.target.value;
-      filtrar();
-    });
-  }
-
-  // Selector de época
-  const selectEpoca = document.getElementById('selectEpoca');
-  if (selectEpoca) {
-    selectEpoca.addEventListener('change', (e) => {
-      epocaActiva = e.target.value;
-      filtrar();
-    });
-  }
-
-  // Selector de ordenamiento
-  const selectOrden = document.getElementById('selectOrden');
-  if (selectOrden) {
-    selectOrden.addEventListener('change', (e) => {
-      ordenActivo = e.target.value;
-      filtrar();
-    });
-  }
+  // Poblar e inicializar los custom dropdowns, chips y autocompletado
+  poblarDropdownAutores();
+  inicializarDropdowns();
+  inicializarChipsEpoca();
+  inicializarAutocompletado();
 
   // Registrar TODOS los event listeners (zero onclick inline)
   registrarEventos();
@@ -256,14 +230,24 @@ function generarTagsFiltro() {
     conteo[g] = (conteo[g] || 0) + 1;
   });
 
-  // Ordenar por cantidad (mayor a menor), excluir los muy pequeños
+  // Ordenar por cantidad (mayor a menor)
   const generosOrdenados = Object.entries(conteo)
     .filter(([, c]) => c >= 1) // Todos los géneros
     .sort((a, b) => b[1] - a[1]);
 
   contenedor.innerHTML = '';
 
-  // Tag "Todos"
+  // 1. Renderizar primero los Mood Tags (Descubrimiento Inteligente)
+  moodTagsData.forEach(m => {
+    const btn = document.createElement('button');
+    btn.className = 'tag-genero tag-mood-btn';
+    btn.dataset.mood = m.valor;
+    btn.innerHTML = `<i data-lucide="${m.icon}" class="icono-sm"></i> ${m.label}`;
+    btn.addEventListener('click', () => filtrarMood(m.valor, btn));
+    contenedor.appendChild(btn);
+  });
+
+  // 2. Renderizar Tag "Todos"
   const btnTodos = document.createElement('button');
   btnTodos.className = 'tag-genero activo';
   btnTodos.dataset.genero = 'Todos';
@@ -271,7 +255,7 @@ function generarTagsFiltro() {
   btnTodos.addEventListener('click', () => filtrarGenero('Todos', btnTodos));
   contenedor.appendChild(btnTodos);
 
-  // Tags por género
+  // 3. Renderizar Tags por género
   generosOrdenados.forEach(([genero, cantidad]) => {
     const iconName = generoIconMap[genero] || 'library';
     const btn = document.createElement('button');
@@ -461,7 +445,6 @@ function filtrar() {
       const genLibro = normalizar(libro.genero || '');
       const genFiltro = normalizar(generoActivo);
       
-      // Si el filtro es compuesto (ej: "Misterio y Thriller"), separamos por "y"
       const partesFiltro = generoActivo.includes(' y ') 
         ? generoActivo.split(' y ').map(p => normalizar(p.trim()))
         : [genFiltro];
@@ -492,7 +475,30 @@ function filtrar() {
       }
     }
 
-    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca;
+    // Filtro por estado de ánimo (Mood Tags)
+    let coincideMood = true;
+    if (moodActivo !== 'Todos') {
+      const gen = libro.genero || '';
+      switch (moodActivo) {
+        case 'rapido':
+          coincideMood = gen === 'Cuento';
+          break;
+        case 'reflexionar':
+          coincideMood = gen === 'Filosofía' || gen === 'Ensayo';
+          break;
+        case 'escapar':
+          coincideMood = gen === 'Ciencia Ficción' || gen === 'Fantasía' || gen === 'Novela juvenil';
+          break;
+        case 'aprender':
+          coincideMood = gen === 'Divulgación Científica' || gen === 'Economía y Política';
+          break;
+        case 'intriga':
+          coincideMood = gen === 'Terror' || gen === 'Misterio y Thriller' || gen === 'Novela negra';
+          break;
+      }
+    }
+
+    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca && coincideMood;
   });
 
   // Aplicar ordenamiento
@@ -520,8 +526,12 @@ function limpiarBusqueda() {
 function filtrarGenero(genero, boton) {
   generoActivo = genero;
   
-  // Actualizar clase activa en los tags
-  document.querySelectorAll('.tag-genero').forEach(b => b.classList.remove('activo'));
+  // Desactivar mood tags al usar género tradicional
+  moodActivo = 'Todos';
+  document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+
+  // Actualizar clase activa en los tags normales
+  document.querySelectorAll('.tag-genero:not(.tag-mood-btn)').forEach(b => b.classList.remove('activo'));
   if (boton) boton.classList.add('activo');
   
   // Hacer scroll al tag activo
@@ -566,7 +576,13 @@ function abrirDetalleLibro(id, omitirPush = false) {
     autorLink.addEventListener('click', (e) => {
       e.stopPropagation();
       cerrarDetalle();
-      document.getElementById('selectAutor').value = libro.autor;
+      const inputAutor = document.getElementById('inputDropdownAutor');
+      if (inputAutor) inputAutor.value = libro.autor;
+      document.querySelectorAll('#menuDropdownAutor .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
+      const targetItem = Array.from(document.querySelectorAll('#menuDropdownAutor .dropdown-item')).find(li => li.dataset.valor === libro.autor);
+      if (targetItem) targetItem.classList.add('seleccionado');
+      const btnClear = document.getElementById('btnLimpiarAutor');
+      if (btnClear) btnClear.style.display = 'flex';
       autorActivo = libro.autor;
       filtrar();
     });
@@ -815,6 +831,13 @@ function actualizarBreadcrumbs() {
   if (generoActivo !== 'Todos') {
     items.push({ label: 'Género', value: generoActivo, type: 'genero' });
   }
+
+  if (moodActivo !== 'Todos') {
+    let moodLabel = moodActivo;
+    const moodObj = moodTagsData.find(m => m.valor === moodActivo);
+    if (moodObj) moodLabel = moodObj.label;
+    items.push({ label: 'Estilo', value: moodLabel, type: 'mood' });
+  }
   
   if (autorActivo !== 'Todos') {
     items.push({ label: 'Autor', value: autorActivo, type: 'autor' });
@@ -848,13 +871,24 @@ function actualizarBreadcrumbs() {
     el.querySelector('.breadcrumb-btn-remove').onclick = () => {
       if (item.type === 'texto') limpiarBusqueda();
       if (item.type === 'genero') filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
+      if (item.type === 'mood') {
+        moodActivo = 'Todos';
+        document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+        filtrar();
+      }
       if (item.type === 'autor') {
-        document.getElementById('selectAutor').value = 'Todos';
+        const inputAutor = document.getElementById('inputDropdownAutor');
+        if (inputAutor) inputAutor.value = '';
+        document.querySelectorAll('#menuDropdownAutor .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
+        document.querySelector('#menuDropdownAutor .dropdown-item[data-valor="Todos"]')?.classList.add('seleccionado');
+        const btnClear = document.getElementById('btnLimpiarAutor');
+        if (btnClear) btnClear.style.display = 'none';
         autorActivo = 'Todos';
         filtrar();
       }
       if (item.type === 'epoca') {
-        document.getElementById('selectEpoca').value = 'Todas';
+        document.querySelectorAll('.chip-epoca').forEach(c => c.classList.remove('activo'));
+        document.querySelector('.chip-epoca[data-epoca="Todas"]')?.classList.add('activo');
         epocaActiva = 'Todas';
         filtrar();
       }
@@ -1088,15 +1122,300 @@ function limpiarTodo() {
   document.getElementById('inputBusqueda').value = '';
   document.getElementById('btnLimpiarBusqueda').style.display = 'none';
   
-  const selectAutor = document.getElementById('selectAutor');
-  if (selectAutor) selectAutor.value = 'Todos';
+  // Limpiar panel de autocompletado
+  const panel = document.getElementById('autocompletarPanel');
+  if (panel) {
+    panel.innerHTML = '';
+    panel.style.display = 'none';
+  }
+
+  // Limpiar Autor custom
+  const inputAutor = document.getElementById('inputDropdownAutor');
+  if (inputAutor) inputAutor.value = '';
+  document.querySelectorAll('#menuDropdownAutor .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
+  document.querySelector('#menuDropdownAutor .dropdown-item[data-valor="Todos"]')?.classList.add('seleccionado');
+  const btnLimpiarAutor = document.getElementById('btnLimpiarAutor');
+  if (btnLimpiarAutor) btnLimpiarAutor.style.display = 'none';
   autorActivo = 'Todos';
 
-  const selectEpoca = document.getElementById('selectEpoca');
-  if (selectEpoca) selectEpoca.value = 'Todas';
+  // Limpiar Época chips
+  document.querySelectorAll('.chip-epoca').forEach(c => c.classList.remove('activo'));
+  document.querySelector('.chip-epoca[data-epoca="Todas"]')?.classList.add('activo');
   epocaActiva = 'Todas';
 
-  document.getElementById('selectOrden').value = 'default';
+  // Limpiar Orden custom
+  document.querySelectorAll('#menuDropdownOrden .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
+  document.querySelector('#menuDropdownOrden .dropdown-item[data-valor="default"]')?.classList.add('seleccionado');
+  const labelOrden = document.getElementById('labelDropdownOrden');
+  if (labelOrden) labelOrden.textContent = 'Ordenar por…';
   ordenActivo = 'default';
+
+  // Limpiar Mood Tags
+  moodActivo = 'Todos';
+  document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+
   filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
+}
+
+// ── CUSTOM LOGIC FOR REDESIGNED CONTROLS ──
+
+function filtrarMood(mood, boton) {
+  if (moodActivo === mood) {
+    moodActivo = 'Todos';
+    boton.classList.remove('activo');
+  } else {
+    moodActivo = mood;
+    document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+    boton.classList.add('activo');
+    
+    // Resetear género convencional al usar mood
+    generoActivo = 'Todos';
+    document.querySelectorAll('.tag-genero:not(.tag-mood-btn)').forEach(b => b.classList.remove('activo'));
+    document.querySelector('.tag-genero[data-genero="Todos"]')?.classList.add('activo');
+  }
+  filtrar();
+}
+
+function inicializarAutocompletado() {
+  const inputBusqueda = document.getElementById('inputBusqueda');
+  const panel = document.getElementById('autocompletarPanel');
+  if (!inputBusqueda || !panel) return;
+
+  inputBusqueda.addEventListener('input', () => {
+    const raw = inputBusqueda.value;
+    if (raw.trim().length === 0) {
+      panel.innerHTML = '';
+      panel.style.display = 'none';
+      return;
+    }
+
+    const terminos = normalizar(raw).split(' ').filter(t => t.length > 0);
+    if (terminos.length === 0) {
+      panel.innerHTML = '';
+      panel.style.display = 'none';
+      return;
+    }
+    
+    const coincidencias = libros.filter(libro => {
+      const tituloNorm = normalizar(libro.titulo || '');
+      const autorNorm = normalizar(libro.autor || '');
+      return terminos.every(t => tituloNorm.includes(t) || autorNorm.includes(t));
+    }).slice(0, 5);
+
+    if (coincidencias.length === 0) {
+      panel.innerHTML = '<div class="autocompletar-item vacio">No hay resultados rápidos</div>';
+      panel.style.display = 'block';
+      return;
+    }
+
+    panel.innerHTML = '';
+    coincidencias.forEach(libro => {
+      const item = document.createElement('div');
+      item.className = 'autocompletar-item';
+      
+      let tituloResaltado = limpiarTitulo(libro.titulo);
+      terminos.forEach(t => {
+        const regex = new RegExp(`(${t})`, 'gi');
+        tituloResaltado = tituloResaltado.replace(regex, '<strong>$1</strong>');
+      });
+
+      item.innerHTML = `
+        ${libro.portada ? `<img src="${libro.portada}" alt="" class="autocompletar-portada" />` : '<div class="autocompletar-portada-vacia">📚</div>'}
+        <div class="autocompletar-info">
+          <div class="autocompletar-titulo">${tituloResaltado}</div>
+          <div class="autocompletar-autor">${libro.autor || ''}</div>
+        </div>
+        <span class="autocompletar-genero">${libro.genero || 'General'}</span>
+      `;
+      
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        abrirDetalleLibro(libro.id);
+        panel.style.display = 'none';
+        inputBusqueda.value = '';
+        document.getElementById('btnLimpiarBusqueda').style.display = 'none';
+      });
+
+      panel.appendChild(item);
+    });
+
+    panel.style.display = 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!inputBusqueda.contains(e.target) && !panel.contains(e.target)) {
+      panel.style.display = 'none';
+    }
+  });
+
+  inputBusqueda.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      panel.style.display = 'none';
+    }
+  });
+}
+
+function inicializarDropdowns() {
+  // Dropdown Orden
+  const dropdownOrden = document.getElementById('dropdownOrden');
+  const btnOrden = document.getElementById('btnDropdownOrden');
+  const menuOrden = document.getElementById('menuDropdownOrden');
+  const labelOrden = document.getElementById('labelDropdownOrden');
+
+  if (btnOrden && menuOrden) {
+    btnOrden.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cerrarTodosDropdowns(dropdownOrden);
+      dropdownOrden.classList.toggle('abierto');
+      const abierto = dropdownOrden.classList.contains('abierto');
+      btnOrden.setAttribute('aria-expanded', abierto);
+    });
+
+    menuOrden.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuOrden.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
+        item.classList.add('seleccionado');
+        ordenActivo = item.dataset.valor;
+        if (labelOrden) labelOrden.textContent = item.textContent;
+        dropdownOrden.classList.remove('abierto');
+        btnOrden.setAttribute('aria-expanded', 'false');
+        filtrar();
+      });
+    });
+  }
+
+  // Dropdown Autor
+  const dropdownAutor = document.getElementById('dropdownAutor');
+  const inputAutor = document.getElementById('inputDropdownAutor');
+  const menuAutor = document.getElementById('menuDropdownAutor');
+  const btnLimpiarAutor = document.getElementById('btnLimpiarAutor');
+
+  if (inputAutor && menuAutor) {
+    inputAutor.addEventListener('focus', (e) => {
+      e.stopPropagation();
+      cerrarTodosDropdowns(dropdownAutor);
+      dropdownAutor.classList.add('abierto');
+    });
+
+    inputAutor.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    inputAutor.addEventListener('input', () => {
+      dropdownAutor.classList.add('abierto');
+      const query = normalizar(inputAutor.value);
+      
+      if (inputAutor.value.trim().length > 0) {
+        btnLimpiarAutor.style.display = 'flex';
+      } else {
+        btnLimpiarAutor.style.display = 'none';
+      }
+
+      menuAutor.querySelectorAll('.dropdown-item').forEach(item => {
+        if (item.dataset.valor === 'Todos') {
+          item.style.display = 'block';
+          return;
+        }
+        const autorNorm = normalizar(item.dataset.valor);
+        if (autorNorm.includes(query)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+
+    btnLimpiarAutor.addEventListener('click', (e) => {
+      e.stopPropagation();
+      inputAutor.value = '';
+      btnLimpiarAutor.style.display = 'none';
+      menuAutor.querySelectorAll('.dropdown-item').forEach(item => {
+        item.style.display = 'block';
+        item.classList.remove('seleccionado');
+      });
+      menuAutor.querySelector('.dropdown-item[data-valor="Todos"]')?.classList.add('seleccionado');
+      autorActivo = 'Todos';
+      dropdownAutor.classList.remove('abierto');
+      filtrar();
+    });
+  }
+
+  document.addEventListener('click', () => {
+    cerrarTodosDropdowns();
+  });
+}
+
+function cerrarTodosDropdowns(excepto = null) {
+  document.querySelectorAll('.custom-dropdown').forEach(d => {
+    if (d !== excepto) {
+      d.classList.remove('abierto');
+      const btn = d.querySelector('.dropdown-btn') || d.querySelector('.dropdown-input');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+function inicializarChipsEpoca() {
+  const filtrosEpoca = document.getElementById('filtrosEpoca');
+  if (!filtrosEpoca) return;
+
+  filtrosEpoca.querySelectorAll('.chip-epoca').forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      e.stopPropagation();
+      filtrosEpoca.querySelectorAll('.chip-epoca').forEach(c => c.classList.remove('activo'));
+      chip.classList.add('activo');
+      epocaActiva = chip.dataset.epoca;
+      filtrar();
+    });
+  });
+}
+
+function poblarDropdownAutores() {
+  const menuAutor = document.getElementById('menuDropdownAutor');
+  const inputAutor = document.getElementById('inputDropdownAutor');
+  const btnLimpiarAutor = document.getElementById('btnLimpiarAutor');
+  const dropdownAutor = document.getElementById('dropdownAutor');
+  if (!menuAutor || !inputAutor) return;
+
+  const autoresSet = new Set();
+  libros.forEach(l => {
+    if (l.autor && l.autor.trim() !== '') autoresSet.add(l.autor.trim());
+  });
+
+  const autoresOrdenados = Array.from(autoresSet).sort((a, b) => a.localeCompare(b, 'es'));
+
+  menuAutor.innerHTML = '<li data-valor="Todos" class="dropdown-item seleccionado" role="option">Todos los autores</li>';
+
+  autoresOrdenados.forEach(autor => {
+    const li = document.createElement('li');
+    li.className = 'dropdown-item';
+    li.dataset.valor = autor;
+    li.role = 'option';
+    li.textContent = autor;
+    
+    li.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuAutor.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
+      li.classList.add('seleccionado');
+      autorActivo = autor;
+      inputAutor.value = autor;
+      if (btnLimpiarAutor) btnLimpiarAutor.style.display = 'flex';
+      dropdownAutor.classList.remove('abierto');
+      filtrar();
+    });
+
+    menuAutor.appendChild(li);
+  });
+
+  menuAutor.querySelector('.dropdown-item[data-valor="Todos"]').addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuAutor.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
+    menuAutor.querySelector('.dropdown-item[data-valor="Todos"]').classList.add('seleccionado');
+    autorActivo = 'Todos';
+    inputAutor.value = '';
+    if (btnLimpiarAutor) btnLimpiarAutor.style.display = 'none';
+    dropdownAutor.classList.remove('abierto');
+    filtrar();
+  });
 }
