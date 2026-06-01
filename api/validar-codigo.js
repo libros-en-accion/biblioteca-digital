@@ -84,7 +84,7 @@ module.exports = async function handler(req, res) {
     const cookieValor = `${codigoNormalizado}.${firma}`;
 
     res.setHeader('Set-Cookie', [
-      `donor_token=${cookieValor}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=315360000`
+      `donor_token=${cookieValor}; Path=/; Secure; SameSite=Strict; Max-Age=315360000`
       // Max-Age=315360000 = 10 años (permanente en la práctica)
     ]);
 
