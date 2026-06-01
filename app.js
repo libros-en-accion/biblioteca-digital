@@ -1,3 +1,16 @@
+// ── CONFIGURACIÓN DE LIBROS DESTACADOS ──
+// Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
+// según los libros más populares de Amazon u otra fuente de tu preferencia.
+const LIBROS_DESTACADOS_IDS = [
+  2875, // El túnel (Ernesto Sabato)
+  2876, // Sobre héroes y tumbas (Ernesto Sabato)
+  2870, // Sentir es el secreto (Neville Goddard)
+  2860, // El cerebro se cambia a sí mismo (Norman Doidge)
+  2863, // El poder de tu mente subconsciente (Joseph Murphy)
+  2868, // Las siete leyes espirituales del éxito (Deepak Chopra)
+  2874  // Tu fe es tu fortuna (Neville Goddard)
+];
+
 // ── VARIABLES GLOBALES ──
 let libros = [];
 let generoActivo = 'Todos';
@@ -281,9 +294,80 @@ function generarTagsFiltro() {
   if (window.lucide) lucide.createIcons({ root: contenedor });
 }
 
+// ── RENDERIZAR LIBROS DESTACADOS ──
+function renderizarDestacados() {
+  const seccion = document.getElementById('destacados-seccion');
+  const galeriaDestacados = document.getElementById('destacados-galeria');
+  
+  if (!seccion || !galeriaDestacados) return;
+
+  const inputBusqueda = document.getElementById('inputBusqueda');
+  const busquedaText = inputBusqueda ? inputBusqueda.value.trim() : '';
+
+  const tieneFiltros = 
+    generoActivo !== 'Todos' || 
+    autorActivo !== 'Todos' || 
+    epocaActiva !== 'Todas' || 
+    moodActivo !== 'Todos' || 
+    busquedaText !== '' ||
+    paginaActual > 1;
+
+  if (tieneFiltros) {
+    seccion.style.display = 'none';
+    return;
+  }
+
+  const librosDestacados = libros.filter(libro => LIBROS_DESTACADOS_IDS.includes(libro.id));
+  
+  if (librosDestacados.length === 0) {
+    seccion.style.display = 'none';
+    return;
+  }
+
+  seccion.style.display = 'block';
+  galeriaDestacados.innerHTML = '';
+
+  librosDestacados.forEach((libro, i) => {
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'tarjeta';
+    tarjeta.style.animationDelay = `${i * 0.03}s`;
+    const claseGenero = obtenerClaseGenero(libro.genero);
+    const tituloLimpio = limpiarTitulo(libro.titulo);
+    const hasPdf = !!libro.archivo_pdf;
+
+    tarjeta.innerHTML = `
+      ${libro.portada ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" />` : ''}
+      <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
+        <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
+        <div class="tarjeta-titulo">${tituloLimpio}</div>
+        <div class="tarjeta-autor">${libro.autor || ''}</div>
+        <div class="tarjeta-anio">${libro.anio || ''}</div>
+        <div class="tarjeta-descripcion">${libro.descripcion || ''}</div>
+      </div>
+      ${hasPdf ?
+        `<button class="btn-ver btn-leer-lector" style="cursor:pointer"><i data-lucide="book-open" class="icono-sm"></i> Leer</button>` :
+        `<a href="${libro.pdf || '#'}" target="_blank" rel="noopener" class="btn-ver"><i data-lucide="file-text" class="icono-sm"></i> Ver documento</a>`
+      }
+    `;
+
+    tarjeta.querySelector('.tarjeta-info').addEventListener('click', () => abrirDetalleLibro(libro.id));
+    if (hasPdf) {
+      tarjeta.querySelector('.btn-leer-lector').addEventListener('click', (e) => {
+        e.stopPropagation();
+        abrirLector(libro.id, libro);
+      });
+    }
+
+    galeriaDestacados.appendChild(tarjeta);
+  });
+
+  if (window.lucide) lucide.createIcons({ root: galeriaDestacados });
+}
+
 // ── MOSTRAR PÁGINA ──
 function mostrarPagina(pagina, omitirScroll = false) {
   paginaActual = pagina;
+  renderizarDestacados();
   const inicio = (pagina - 1) * LIBROS_POR_PAGINA;
   const fin = inicio + LIBROS_POR_PAGINA;
   const paginaLibros = listaFiltrada.slice(inicio, fin);
