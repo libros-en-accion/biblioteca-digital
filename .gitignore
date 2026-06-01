@@ -8,4 +8,6 @@ Thumbs.db
 # Node
 node_modules/
 .env
+.env.local
 .aider*
+scripts/agregar_donador.py
