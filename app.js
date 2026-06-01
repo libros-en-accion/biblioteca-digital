@@ -331,6 +331,7 @@ function mostrarLibros(lista) {
     const claseGenero = obtenerClaseGenero(libro.genero);
     const tituloLimpio = limpiarTitulo(libro.titulo);
 
+    const hasPdf = !!libro.archivo_pdf;
     tarjeta.innerHTML = `
       ${libro.portada ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" />` : ''}
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
@@ -340,9 +341,18 @@ function mostrarLibros(lista) {
         <div class="tarjeta-anio">${libro.anio || ''}</div>
         <div class="tarjeta-descripcion">${libro.descripcion || ''}</div>
       </div>
-      <a href="${libro.pdf}" target="_blank" rel="noopener" class="btn-ver"><i data-lucide="file-text" class="icono-sm"></i> Ver documento</a>
+      ${hasPdf ?
+        `<button class="btn-ver btn-leer-lector" style="cursor:pointer"><i data-lucide="book-open" class="icono-sm"></i> Leer</button>` :
+        `<a href="${libro.pdf || '#'}" target="_blank" rel="noopener" class="btn-ver"><i data-lucide="file-text" class="icono-sm"></i> Ver documento</a>`
+      }
     `;
     tarjeta.querySelector('.tarjeta-info').addEventListener('click', () => abrirDetalleLibro(libro.id));
+    if (hasPdf) {
+      tarjeta.querySelector('.btn-leer-lector').addEventListener('click', (e) => {
+        e.stopPropagation();
+        abrirLector(libro.id, libro);
+      });
+    }
     galeria.appendChild(tarjeta);
   });
 
@@ -1016,6 +1026,13 @@ function registrarEventos() {
   el('btnAbrirIA')?.addEventListener('click', abrirModalIA);
   el('btnAzar')?.addEventListener('click', libroAlAzar);
   el('btnLimpiarBusqueda')?.addEventListener('click', limpiarBusqueda);
+  el('btnBuscarClick')?.addEventListener('click', () => {
+    filtrar();
+    const galeria = document.getElementById('galeria');
+    if (galeria) {
+      galeria.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
   el('btnLimpiarTodo')?.addEventListener('click', limpiarTodo);
   el('btnTema')?.addEventListener('click', alternarTema);
 
@@ -1793,6 +1810,11 @@ async function irPaginaAnterior() {
 }
 
 async function irPaginaSiguiente() {
+  if (!lectorEstado.esDonador && lectorEstado.pagina >= PREVIEW_LIMIT) {
+    const bloqueo = document.getElementById('lectorBloqueo');
+    if (bloqueo) bloqueo.style.display = 'flex';
+    return;
+  }
   if (lectorEstado.pagina < lectorEstado.totalPaginas) {
     lectorEstado.pagina++;
     await renderizarPagina(lectorEstado.pagina);

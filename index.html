@@ -54,7 +54,10 @@
         <div class="buscador-contenedor">
           <span class="buscador-icono"><i data-lucide="search" class="icono-sm"></i></span>
           <input type="text" id="inputBusqueda" placeholder="Buscar por título, autor, género o año..." autocomplete="off" />
-          <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda"><i data-lucide="x" class="icono-sm"></i></button>
+          <div class="buscador-botones-derecha">
+            <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda"><i data-lucide="x" class="icono-sm"></i></button>
+            <button id="btnBuscarClick" class="btn-buscar-click" aria-label="Ejecutar búsqueda"><i data-lucide="search" class="icono-sm"></i></button>
+          </div>
         </div>
         
         <!-- Panel Flotante de Autocompletado (Predictivo) -->
@@ -307,7 +310,7 @@
           <h2 class="lector-bloqueo-titulo">¿Te está gustando esta lectura?</h2>
           <p class="lector-bloqueo-texto">Has llegado al final de la vista previa gratuita (15 páginas). Apoya nuestro proyecto con una donación para desbloquear el libro completo, la descarga en PDF y la impresión.</p>
           <div class="lector-bloqueo-opciones">
-            <a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn-donar-preview">💛 Donar desde $3 USD</a>
+            <a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn-donar-preview">💛 Donar voluntariamente</a>
             <button id="lectorBtnIngresarCodigo" class="btn-codigo-preview">🔑 Ya tengo un código</button>
           </div>
         </div>
@@ -333,7 +336,7 @@
           <button id="btnCancelarCodigo" class="btn-cancelar">Cancelar</button>
           <button id="btnValidarCodigo" class="btn-recomendar"><i data-lucide="check"></i> Verificar código</button>
         </div>
-        <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://www.paypal.com" target="_blank" rel="noopener">Realiza una donación desde $3 USD</a> para obtener el tuyo.</p>
+        <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://www.paypal.com" target="_blank" rel="noopener">Realiza una donación voluntaria</a> para obtener el tuyo.</p>
       </div>
     </div>
   </div>

@@ -237,7 +237,7 @@ body {
 
 .hero-buscador-caja input {
   width: 100%;
-  padding: 0.7rem 1.5rem 0.7rem 3.2rem; /* Buscador más estrecho */
+  padding: 0.7rem 5.2rem 0.7rem 3.2rem; /* Aumentado padding-right para dar espacio a los dos botones de la derecha */
   font-size: 1rem;
   font-family: 'EB Garamond', serif;
   background: rgba(255, 249, 243, 0.95);
@@ -1454,11 +1454,18 @@ footer {
 /* ══════════════════════════════════════════════════════ */
 /* BOTÓN LIMPIAR BÚSQUEDA                                */
 /* ══════════════════════════════════════════════════════ */
-.btn-limpiar-busqueda {
+.buscador-botones-derecha {
   position: absolute;
   right: 0.8rem;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-limpiar-busqueda,
+.btn-buscar-click {
   background: none;
   border: none;
   color: var(--texto-suave);
@@ -1474,7 +1481,8 @@ footer {
   height: 1.8rem;
 }
 
-.btn-limpiar-busqueda:hover {
+.btn-limpiar-busqueda:hover,
+.btn-buscar-click:hover {
   background: var(--vino-suave);
   color: var(--vino);
 }
@@ -2499,7 +2507,7 @@ footer {
   background: rgba(26, 15, 8, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(184, 137, 42, 0.3);
-  z-index: 9010;
+  z-index: 9030;
   flex-shrink: 0;
 }
 .lector-titulo-texto {
@@ -2617,7 +2625,7 @@ footer {
 
 /* Panel de bloqueo (página 16+) */
 .lector-bloqueo {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(14, 9, 6, 0.88);
   backdrop-filter: blur(8px);
