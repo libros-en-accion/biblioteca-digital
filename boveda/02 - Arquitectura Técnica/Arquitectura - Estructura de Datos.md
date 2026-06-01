@@ -24,7 +24,8 @@ El catálogo consiste en una única matriz (Array) de objetos JSON. Cada objeto 
   "genero": "Novela",
   "descripcion": "Sinopsis breve del libro.",
   "pdf": "https://drive.google.com/file/d/XXXX_FILE_ID_XXXX/preview",
-  "portada": "portadas/2848.webp"
+  "portada": "portadas/2848.webp",
+  "archivo_pdf": "N/Nombre de Autor/Nombre del Libro - Nombre de Autor.pdf"
 }
 ```
 
@@ -40,8 +41,33 @@ El catálogo consiste en una única matriz (Array) de objetos JSON. Cada objeto 
 | **`anio`** | Entero / Nulo | No | Año original de publicación. Si se desconoce por completo, se deja como `null` en el JSON. |
 | **`genero`** | Cadena (String) | Sí | Categoría literaria. Debe coincidir con uno de los ~25 géneros estándar consolidados para no romper los filtros visuales. |
 | **`descripcion`** | Cadena (String) | Sí | Breve sinopsis de 1 o 2 oraciones para mostrar en las tarjetas y detalles. Si no hay descripción, debe ir como cadena vacía `""`. |
-| **`pdf`** | Cadena (String) | Sí | URL completa del visor de Google Drive en formato preview. Debe terminar obligatoriamente con `/preview`. |
+| **`pdf`** | Cadena (String) | Sí | URL completa del visor de Google Drive en formato preview. Actúa como método alternativo o fallback si el libro no tiene PDF en Cloudflare R2. |
 | **`portada`** | Cadena (String) | Sí | Ruta relativa a la imagen de portada local. Ej: `portadas/12.webp`. Si el libro no tiene portada, se deja como cadena vacía `""`. |
+| **`archivo_pdf`** | Cadena / Nulo | No | Ruta relativa del archivo PDF en el bucket de Cloudflare R2. Sirve de llave del objeto para generar los enlaces seguros y cargar el lector embebido. Ej: `A/Allende, Isabel/La casa de los espiritus - Isabel Allende.pdf`. |
+
+---
+
+## 🗄️ Base de Datos de Donadores (Redis Cloud)
+
+El sistema utiliza una base de datos Redis en la nube para gestionar los códigos de donador y los límites de dispositivos.
+
+### Estructura de Claves
+
+#### Código de Donador
+*   **Formato de Clave:** `donor:code:{CODIGO_EN_MAYUSCULAS}`
+*   **Tipo de Dato:** String (que almacena un JSON serializado)
+*   **Ejemplo de Clave:** `donor:code:DONOR-DAN1907`
+*   **Ejemplo de Valor (JSON):**
+    ```json
+    {
+      "dispositivos": ["a3b5c7d8e9f01234", "b4c5d6e7f8a90123"],
+      "limite": 3
+    }
+    ```
+
+##### Campos del JSON:
+*   `dispositivos` (Array de Strings): Lista de hashes SHA-256 truncados de 16 caracteres, que representan los fingerprints de los navegadores que han activado el código.
+*   `limite` (Entero): Cantidad máxima de dispositivos únicos que pueden activar el mismo código (por defecto, `3`).
 
 ---
 
@@ -50,11 +76,13 @@ El catálogo consiste en una única matriz (Array) de objetos JSON. Cada objeto 
 Para evitar errores de renderizado en el sitio web, cualquier modificación manual o mediante scripts en `libros.json` debe respetar las siguientes restricciones:
 
 1.  **Unicidad del ID:** No deben existir dos libros con el mismo valor en `"id"`.
-2.  **Enlace de Drive Embebido:** La URL del campo `"pdf"` debe tener el formato `https://drive.google.com/file/d/{FILE_ID}/preview`. Si se usa el enlace normal `/view`, el navegador podría bloquear la visualización por políticas de seguridad debido al uso de iframes.
-3.  **Géneros Permitidos:** Para que los filtros rápidos funcionen correctamente, los géneros deben estar normalizados de acuerdo al mapeo unificado. Géneros mal escritos (como "ciencia ficcion" en minúscula y sin acento) no se agruparán en el tag "Ciencia Ficción" del menú.
-4.  **Codificación de Archivo:** El archivo debe guardarse en codificación **UTF-8 sin BOM** para evitar problemas al renderizar caracteres especiales y acentos en español (ej: `á`, `ñ`, `ü`).
+2.  **Ruta de R2 Normalizada:** El campo `"archivo_pdf"` debe tener las barras inclinadas hacia adelante `/` como separadores (estilo UNIX), incluso si los scripts corren en Windows, para coincidir con la estructura de Cloudflare R2.
+3.  **Enlace de Drive Embebido:** La URL del campo `"pdf"` debe tener el formato `https://drive.google.com/file/d/{FILE_ID}/preview`. Si se usa el enlace normal `/view`, el navegador podría bloquear la visualización por políticas de seguridad debido al uso de iframes.
+4.  **Géneros Permitidos:** Para que los filtros rápidos funcionen correctamente, los géneros deben estar normalizados de acuerdo al mapeo unificado. Géneros mal escritos (como "ciencia ficcion" en minúscula y sin acento) no se agruparán en el tag "Ciencia Ficción" del menú.
+5.  **Codificación de Archivo:** El archivo debe guardarse en codificación **UTF-8 sin BOM** para evitar problemas al renderizar caracteres especiales y acentos en español (ej: `á`, `ñ`, `ü`).
 
 ---
+
 **Notas Relacionadas:**
 *   [[Guía - Normalización de Catálogo|Normalización y consolidación de géneros]]
 *   [[Guía - Agregar Libro|Cómo agregar entradas al catálogo]]

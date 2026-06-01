@@ -64,26 +64,31 @@ Esto iniciará un servidor local (usualmente en [http://localhost:3000](http://l
 
 ## 🔑 Variables de Entorno
 
-La API de recomendaciones requiere una clave de acceso válida para comunicarse con el modelo DeepSeek.
+El proyecto requiere varias variables de entorno en producción (Vercel Dashboard) y locales (archivo `.env.local` o `.env` para desarrollo) para poder operar la IA, Cloudflare R2 y Redis Cloud:
+
+### Listado de Variables de Entorno
+
+| Variable | Descripción | Ubicación / Origen |
+|---|---|---|
+| **`DEEPSEEK_API_KEY`** (o `GEMINI_API_KEY`) | Clave de API para el modelo de recomendación de IA. | Proveedor de la IA (DeepSeek o Google AI Studio) |
+| **`R2_ENDPOINT`** | Endpoint de conexión S3 a tu Cloudflare R2. Formato: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com` | Cloudflare Dashboard > R2 |
+| **`R2_ACCESS_KEY_ID`** | Token de acceso S3 para Cloudflare R2 con permisos de lectura/escritura. | Cloudflare Dashboard > R2 > Manage API Tokens |
+| **`R2_SECRET_ACCESS_KEY`** | Clave secreta del token de acceso S3 de Cloudflare R2. | Cloudflare Dashboard > R2 > Manage API Tokens |
+| **`R2_BUCKET_NAME`** | Nombre del bucket donde están alojados tus PDFs. Ej: `biblioteca-digital`. | Cloudflare Dashboard > R2 |
+| **`REDIS_URL`** | URL de conexión TCP para la base de datos de donadores. Formato: `redis://default:password@host:port` | Redis Cloud Dashboard > Database settings |
+| **`DONOR_COOKIE_SECRET`** | Cadena de texto larga y aleatoria usada para firmar las cookies de sesión del donador. | Inventada por el administrador (mín. 32 caracteres) |
 
 ### En Producción (Panel de Vercel)
-La clave está configurada en la sección de configuración de Vercel:
-1.  Ingresa a tu dashboard en [vercel.com](https://vercel.com).
-2.  Navega a: **Project Settings** > **Environment Variables**.
-3.  La variable debe llamarse exactamente:
-    ```env
-    DEEPSEEK_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    ```
-4.  Se encuentra encriptada y se inyecta automáticamente en el worker serverless al arrancar.
+Para configurarlas en el servidor de producción:
+1.  Ingresa a tu dashboard de proyecto en [vercel.com](https://vercel.com).
+2.  Navega a: **Settings** > **Environment Variables**.
+3.  Agrega cada una de las variables con sus respectivos valores.
+4.  Cualquier cambio requiere re-desplegar el sitio para que tenga efecto.
 
 ### En Desarrollo Local
-Para probar la función de la IA en tu entorno local:
-1.  Crea un archivo llamado `.env` en la raíz de tu proyecto (este archivo está excluido en el `.gitignore` por seguridad).
-2.  Agrega tu clave de la API en el archivo:
-    ```env
-    DEEPSEEK_API_KEY=tu_clave_privada_de_deepseek
-    ```
-3.  Al iniciar `vercel dev`, la herramienta leerá el archivo `.env` e inyectará la variable localmente.
+1.  Copia el archivo `.env.example` en la raíz como `.env.local` o `.env` (ambos ignorados en Git por seguridad).
+2.  Rellena las claves con tus datos de prueba. Vercel dev cargará automáticamente estas variables.
+3.  Alternativamente, puedes ejecutar `vercel env pull` desde la terminal local para traer las variables configuradas en la nube a tu computadora.
 
 ---
 

@@ -24,6 +24,7 @@ graph TD
     Guias --> G4[Despliegue en Vercel]
     Guias --> G5[Git y Flujo de Trabajo]
     Guias --> G6[Uso con Agentes de IA]
+    Guias --> G7[Gestión de Donadores]
 
     Arq --> A1[Vista General]
     Arq --> A2[API de Recomendación]
@@ -43,6 +44,7 @@ Procedimientos operativos estándar (SOP) para el mantenimiento y actualización
 *   [[Guía - Despliegue en Vercel|Guía: Despliegue en Vercel]]: Configuración y comandos de producción.
 *   [[Guía - Git y Flujo de Trabajo|Guía: Comandos de Git]]: Flujo de trabajo para actualizar la web.
 *   [[Guía - Uso con Agentes de IA|Guía: Uso con Agentes de IA (Claude/Hermes)]]: Cómo guiar a otras IAs de forma eficiente y económica.
+*   [[Guía - Gestión de Donadores|Guía: Gestión de Donadores y Códigos]]: Administración de accesos, límites y comandos locales de terminal.
 
 ### ⚙️ [02 - Arquitectura Técnica]([[02 - Arquitectura Técnica]])
 Documentación técnica sobre cómo está construido el sistema.

@@ -17,22 +17,26 @@ Este documento detalla el mapa de archivos y directorios del repositorio de la *
 biblioteca/
 ├── index.html              # Interfaz de usuario principal (HTML5)
 ├── style.css               # Estilos globales y variables de diseño (CSS3)
-├── app.js                  # Lógica del cliente, búsqueda y paginación (JavaScript)
+├── app.js                  # Lógica del cliente, lector PDF.js y eventos
 ├── libros.json             # Catálogo completo en formato JSON (Base de datos estática)
-├── catalogo.csv            # Exportación tabular del catálogo en formato CSV
 ├── agregar_libro.py        # Script automatizado en Python para catalogar libros
 ├── generar_portadas.py     # Script en Python para extraer portadas desde PDFs
 ├── portadas/               # Directorio con imágenes WebP optimizadas (miniaturas)
 │   ├── 1.webp
-│   ├── 2.webp
 │   └── ...
 ├── api/                    # Código ejecutado en el servidor (Vercel Serverless)
-│   └── recomendar.js       # Integración con la API de DeepSeek v4 Flash
+│   ├── recomendar.js       # Integración con la API de DeepSeek v4 Flash
+│   ├── leer.js             # Generador de URLs firmadas de Cloudflare R2
+│   └── validar-codigo.js   # Validador de códigos de donadores con Redis Cloud
 ├── scripts/                # Scripts auxiliares y de mantenimiento
-│   └── normalizar.js       # Script de Node.js para normalización de catálogo
+│   ├── normalizar.js       # Script de Node.js para normalización de catálogo
+│   ├── mapear_pdfs.py      # Mapeador de PDFs locales a libros.json
+│   ├── agregar_donador.py  # [Local/Ignorado] Crea códigos en la DB Redis
+│   ├── listar_donadores.py  # [Local/Ignorado] Lista códigos activos en la DB
+│   └── eliminar_donador.py # [Local/Ignorado] Elimina códigos de la DB
 ├── boveda/                 # Este Cerebro Digital (Bóveda de Obsidian)
-├── vercel.json             # Configuración de despliegue para la nube de Vercel
-├── package.json            # Scripts de ejecución NPM y metadatos de Node
+├── vercel.json             # Configuración de despliegue y CORS en Vercel
+├── package.json            # Scripts NPM y dependencias del proyecto (Node)
 ├── robots.txt              # Instrucciones para crawlers y buscadores (SEO)
 ├── sitemap.xml             # Mapa del sitio para indexación en buscadores (SEO)
 └── .gitignore              # Archivos y carpetas excluidos del control de versiones
@@ -43,26 +47,24 @@ biblioteca/
 ## 📝 Responsabilidad de Componentes
 
 ### 1. Núcleo de la Aplicación Web (Frontend)
-*   **`index.html`**: Define la estructura semántica de la SPA. Contiene el esqueleto del buscador, el menú de tags, el contenedor de la galería, y las estructuras de los modales de detalle y recomendador IA.
-*   **`style.css`**: Contiene todo el diseño visual. Implementa un sistema de diseño con variables CSS (`--vino`, `--crema`, `--dorado`), animaciones de entrada fluidas, diseño adaptativo para móviles mediante CSS Grid/Flexbox y la redefinición de colores para el modo oscuro (`[data-theme="dark"]`).
-*   **`app.js`**: El "motor" del frontend. Se encarga de descargar el catálogo al inicio, realizar búsquedas complejas en memoria, filtrar por género/autor/época, controlar la paginación de 24 libros por página, inyectar el SEO estructurado y manejar los eventos de los modales.
+*   **`index.html`**: Define la estructura semántica de la SPA. Contiene el buscador, el menú de tags, el catálogo, el visor de PDF.js (`#modalLector`), y el modal para ingresar el código de donador.
+*   **`style.css`**: CSS modular con variables de diseño. Implementa el visor de PDF.js con adaptabilidad a móviles y la ventana de bloqueo de lectura (con efecto esmerilado blur) y botón de cierre.
+*   **`app.js`**: El motor del frontend. Realiza búsquedas e indexación local, controla la paginación, gestiona el estado del lector (límitador de 15 páginas para no-donadores) e interactúa con las APIs de Vercel.
 
 ### 2. Base de Datos e Imágenes
-*   **`libros.json`**: El archivo que almacena la información estructurada de los ~2,843 libros.
-*   **`portadas/`**: Contiene las imágenes WebP de 300px generadas localmente. Alojar las portadas en el propio repositorio evita llamadas externas lentas y previene enlaces caídos de imágenes.
+*   **`libros.json`**: Almacena el catálogo con la ruta del PDF en R2 en el campo `"archivo_pdf"`.
+*   **`portadas/`**: Imágenes WebP optimizadas de las portadas de los libros.
 
-### 3. Procesamiento en el Servidor (Backend)
-*   **`api/recomendar.js`**: Función serverless escrita en Node.js para Vercel. Procesa la encuesta del lector, lee el catálogo local desde el disco del servidor, realiza la consulta optimizada a DeepSeek y devuelve el resultado sanitizado.
+### 3. Procesamiento en el Servidor (Backend APIs)
+*   **`api/recomendar.js`**: Consulta al modelo de recomendación de IA.
+*   **`api/leer.js`**: Autentica si el usuario pide descargar y genera una URL firmada de Cloudflare R2 (expiración de 5 a 10 min).
+*   **`api/validar-codigo.js`**: Verifica códigos de donadores contra la base de datos de Redis y asocia hasta 3 fingerprints de navegadores.
 
 ### 4. Automatización y Mantenimiento (Herramientas)
-*   **`agregar_libro.py`**: Utilidad escrita en Python que sirve de interfaz interactiva para añadir libros al catálogo sin cometer errores de formato.
-*   **`generar_portadas.py`**: Utilidad que automatiza la extracción de imágenes desde los archivos PDF locales mediante `pdftoppm` e `ImageMagick`.
-*   **`scripts/normalizar.js`**: Utilidad en Node.js que limpia los nombres y consolida la taxonomía de géneros literarios.
-
-### 5. Configuración y SEO
-*   **`package.json`**: Define los comandos de alias como `npm run dev` para iniciar el entorno local de Vercel.
-*   **`vercel.json`**: Ajustes del despliegue en la plataforma de Vercel.
-*   **`robots.txt` & `sitemap.xml`**: Archivos estándar de SEO para controlar la indexación en motores de búsqueda (ej. Google).
+*   **`agregar_libro.py`**: Interfaz interactiva en Python para registrar libros nuevos.
+*   **`generar_portadas.py`**: Automatización de la extracción de imágenes desde los PDFs.
+*   **`scripts/mapear_pdfs.py`**: Python script que recorre la colección local de PDFs y mapea sus rutas a `libros.json`.
+*   **`scripts/agregar_donador.py` / `listar_donadores.py` / `eliminar_donador.py`**: Scripts en Python para administrar los códigos de donador directo desde la terminal local conectándose por TCP sockets a Redis Cloud. Ignorados en Git por seguridad.
 
 ---
 **Notas Relacionadas:**
