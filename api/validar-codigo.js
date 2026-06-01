@@ -3,7 +3,7 @@
 // Usa Vercel KV (Redis) para almacenar los códigos y los dispositivos permitidos.
 // Límite: 3 dispositivos por código. Los códigos son permanentes (sin expiración de fecha).
 
-const { kv } = require('@vercel/kv');
+const { createClient } = require('redis');
 const crypto = require('crypto');
 
 // Genera un ID de dispositivo único a partir de cabeceras de la petición.
@@ -37,9 +37,16 @@ module.exports = async function handler(req, res) {
   const codigoNormalizado = codigo.trim().toUpperCase();
   const kvKey = `donor:code:${codigoNormalizado}`;
 
+  const client = createClient({
+    url: process.env.REDIS_URL || process.env.KV_URL
+  });
+
   try {
-    // 1. Verificar si el código existe en Vercel KV
-    const registro = await kv.get(kvKey);
+    await client.connect();
+
+    // 1. Verificar si el código existe en Redis
+    const registroRaw = await client.get(kvKey);
+    const registro = registroRaw ? JSON.parse(registroRaw) : null;
 
     if (!registro) {
       return res.status(404).json({
@@ -69,7 +76,7 @@ module.exports = async function handler(req, res) {
 
     // 5. Registrar el nuevo dispositivo
     const nuevosDispositivos = [...dispositivos, idDispositivo];
-    await kv.set(kvKey, { ...registro, dispositivos: nuevosDispositivos });
+    await client.set(kvKey, JSON.stringify({ ...registro, dispositivos: nuevosDispositivos }));
 
     // 6. Emitir una cookie segura firmada (donor_token) al navegador
     const secret = process.env.DONOR_COOKIE_SECRET || 'biblioteca-digital-secret';
@@ -89,7 +96,11 @@ module.exports = async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('[validar-codigo] Error de KV:', error);
+    console.error('[validar-codigo] Error de Redis:', error);
     return res.status(500).json({ error: 'Error interno del servidor. Inténtalo de nuevo.' });
+  } finally {
+    try {
+      await client.quit();
+    } catch (_) {}
   }
 };
