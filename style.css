@@ -2773,9 +2773,29 @@ footer {
 .destacados-galeria {
   padding: 0.5rem 0 1.5rem !important;
 }
-.destacados-divisor {
-  border: 0;
+.destacados-fin-banner {
+  position: relative;
+  text-align: center;
+  margin: 2.5rem 0 1.5rem;
+}
+.destacados-fin-banner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
   height: 1px;
   background: var(--borde-suave);
-  margin: 1.5rem 0 0.5rem;
+  z-index: 1;
+}
+.destacados-fin-texto {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--texto-suave);
+  background: var(--fondo);
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+  letter-spacing: 0.03em;
 }
