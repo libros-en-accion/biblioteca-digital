@@ -2,13 +2,16 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
-  2875, // El túnel (Ernesto Sabato)
-  2876, // Sobre héroes y tumbas (Ernesto Sabato)
-  2870, // Sentir es el secreto (Neville Goddard)
-  2860, // El cerebro se cambia a sí mismo (Norman Doidge)
-  2863, // El poder de tu mente subconsciente (Joseph Murphy)
-  2868, // Las siete leyes espirituales del éxito (Deepak Chopra)
-  2874  // Tu fe es tu fortuna (Neville Goddard)
+  1233, // Las 48 leyes del poder
+  2845, // Alas de sangre
+  2763, // No tengo boca y debo gritar
+  814, // Noches blancas (Ilustrado)
+  2857, // Proyecto Hail Mary
+  783, // El placebo eres tu
+  1250, // La sociedad del cansancio
+  2079, // 1984
+  2875, // El túnel
+  2820  // Los siete maridos de Evelyn Hugo 
 ];
 
 // ── VARIABLES GLOBALES ──
