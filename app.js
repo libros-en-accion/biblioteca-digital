@@ -1493,7 +1493,7 @@ function poblarDropdownAutores() {
  * mostrar la UI de donador sin hacer un fetch adicional.
  */
 function esDonadorLocal() {
-  return document.cookie.split(';').some(c => c.trim().startsWith('donor_token='));
+  return localStorage.getItem('esDonador') === 'true';
 }
 
 /**
@@ -1573,6 +1573,7 @@ async function validarCodigo() {
     const data = await resp.json();
 
     if (resp.ok && data.valido) {
+      localStorage.setItem('esDonador', 'true');
       mostrarMensajeCodigo(`✅ ¡Código válido! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
       // Actualizar botón de código en el hero
       actualizarBtnCodigo(true);
