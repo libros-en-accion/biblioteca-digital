@@ -28428,5 +28428,155 @@
     "descripcion": "Una obra que explora temas de salud mental, autoaceptación y la lucha contra los estigmas sociales, narrando un proceso de sanación emocional a través de una perspectiva íntima y personal.",
     "pdf": "https://drive.google.com/file/d/11JFHVu-LNxplxIjrwRnY2E8xlBinfjk-/preview",
     "portada": "portadas/2859.webp"
+  },
+  {
+    "id": 2860,
+    "titulo": "El cerebro se cambia a sí mismo",
+    "autor": "Norman Doidge",
+    "anio": 2007,
+    "genero": "Divulgación Científica",
+    "descripcion": "Un análisis sobre la neuroplasticidad que demuestra cómo el cerebro humano es capaz de modificarse a sí mismo, sanar y adaptarse a través de la experiencia y el pensamiento.",
+    "pdf": "https://drive.google.com/file/d/1MboZtodywB4CQRWzY3Km-8sPD8aq1rEA/preview",
+    "portada": "portadas/2860.webp"
+  },
+  {
+    "id": 2861,
+    "titulo": "El dominio de sí mismo",
+    "autor": "Émile Coué",
+    "anio": 1922,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Obra pionera sobre el poder de la autosugestión consciente, detallando el método del autor para reprogramar la mente mediante afirmaciones repetitivas para alcanzar el bienestar físico y mental.",
+    "pdf": "https://drive.google.com/file/d/1ySGaaEFB7IUR4Eicyfh_LnIoVllfv022/preview",
+    "portada": "portadas/2861.webp"
+  },
+  {
+    "id": 2862,
+    "titulo": "El poder de la intención",
+    "autor": "Wayne Dyer",
+    "anio": 2004,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "El autor redefine la intención no como un impulso interno, sino como una fuerza del universo a la que todos pueden conectarse para moldear su vida de manera positiva y con propósito.",
+    "pdf": "https://drive.google.com/file/d/1Al_rA_f_dXDIWJPHapeI3J7GKoqucBuK/preview",
+    "portada": "portadas/2862.webp"
+  },
+  {
+    "id": 2863,
+    "titulo": "El poder de tu mente subconsciente",
+    "autor": "Joseph Murphy",
+    "anio": 1963,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Un clásico del pensamiento positivo que explica cómo las creencias profundas arraigadas en el subconsciente determinan el éxito, la salud y las relaciones en la vida cotidiana.",
+    "pdf": "https://drive.google.com/file/d/1J9O0EaHUg5br9KS3TNw1aeNCblKfa6gn/preview",
+    "portada": "portadas/2863.webp"
+  },
+  {
+    "id": 2864,
+    "titulo": "El principio",
+    "autor": "Tara Swart",
+    "anio": 2019,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Una neurocientífica examina las bases biológicas detrás de la ley de la atracción, enseñando cómo la visualización y la atención dirigida pueden transformar la estructura cerebral y facilitar el éxito.",
+    "pdf": "https://drive.google.com/file/d/1dQlnSKRbnwys2PprVxykYzGXzfMoHvy7/preview",
+    "portada": "portadas/2864.webp"
+  },
+  {
+    "id": 2865,
+    "titulo": "El Tao de la física",
+    "autor": "Fritjof Capra",
+    "anio": 1975,
+    "genero": "Filosofía",
+    "descripcion": "Un místico e influyente ensayo que explora los paralelismos existentes entre los descubrimientos de la física cuántica moderna y los conceptos filosóficos y espirituales del misticismo oriental.",
+    "pdf": "https://drive.google.com/file/d/1hzNPEiOnHuOkod7d9kZoIUoZOMFaY6oM/preview",
+    "portada": "portadas/2865.webp"
+  },
+  {
+    "id": 2866,
+    "titulo": "La Ciencia de Hacerse Rico",
+    "autor": "Wallace D. Wattles",
+    "anio": 1910,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Obra histórica que plantea que la riqueza material no se alcanza por azar, sino a través de actuar y pensar de una \"manera determinada\" enfocada en la creación y no en la competencia.",
+    "pdf": "https://drive.google.com/file/d/1UbJkNyh1sHBdplTo6m3rsltQGw3Dq7x5/preview",
+    "portada": "portadas/2866.webp"
+  },
+  {
+    "id": 2867,
+    "titulo": "La totalidad y el orden implicado",
+    "autor": "David Bohm",
+    "anio": 1980,
+    "genero": "Filosofía",
+    "descripcion": "Una obra clave de la física teórica que propone una realidad fragmentada solo en apariencia, argumentando que el universo opera como un todo conectado bajo un orden \"implicado\" subyacente.",
+    "pdf": "https://drive.google.com/file/d/1JLNjEXlpR6HCkLwMx-qKjsHwVhRQaIRF/preview",
+    "portada": "portadas/2867.webp"
+  },
+  {
+    "id": 2868,
+    "titulo": "Las siete leyes espirituales del éxito",
+    "autor": "Deepak Chopra",
+    "anio": 1994,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Una guía práctica basada en principios eternos de la naturaleza que enseña a vivir en armonía para que el éxito, la abundancia y la felicidad fluyan sin esfuerzo en la vida.",
+    "pdf": "https://drive.google.com/file/d/1yGXuALqAr_RQqyqnedY1n172yPn2Xla-/preview",
+    "portada": "portadas/2868.webp"
+  },
+  {
+    "id": 2869,
+    "titulo": "Maestría cuántica",
+    "autor": "Miguel Angel Camiletti Sáez",
+    "anio": 2021,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "El autor integra conceptos básicos de la física cuántica con el crecimiento interior, proponiendo técnicas de manifestación basadas en la modificación del campo energético del individuo.",
+    "pdf": "https://drive.google.com/file/d/1dnYmO3gGHfu9_jhvfZJYBdIW7WFTWivq/preview",
+    "portada": "portadas/2869.webp"
+  },
+  {
+    "id": 2870,
+    "titulo": "Sentir es el secreto",
+    "autor": "Neville Goddard",
+    "anio": 1944,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Obra central del pensamiento metafísico que afirma que el sentimiento y la asunción del deseo ya cumplido son los mecanismos con los cuales se impresiona al subconsciente para proyectar la realidad.",
+    "pdf": "https://drive.google.com/file/d/1qTcZJxauvnS0UHtoDarqK_OZJDlUwU20/preview",
+    "portada": "portadas/2870.webp"
+  },
+  {
+    "id": 2871,
+    "titulo": "Tratado de autosugestión",
+    "autor": "Émile Coué",
+    "anio": 1922,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Una profundización en las metodologías del autor acerca del dominio consciente de la imaginación sobre la voluntad, estructurando ejercicios de repetición mental para superar males físicos y emocionales.",
+    "pdf": "https://drive.google.com/file/d/1EHcmKCkDX1gsSejfWUzCdkGa4B74ZEQ6/preview",
+    "portada": "portadas/2871.webp"
+  },
+  {
+    "id": 2872,
+    "titulo": "El arte de realizar tus deseos",
+    "autor": "Neville Goddard",
+    "anio": 1951,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Una explicación de las técnicas de meditación, oración y uso consciente de la imaginación que permiten sintonizar la mente con el resultado deseado hasta materializarlo en el entorno.",
+    "pdf": "https://drive.google.com/file/d/1nLNpn0Jfer7363qMXjZTq6g47fIZ0Ugl/preview",
+    "portada": "portadas/2872.webp"
+  },
+  {
+    "id": 2873,
+    "titulo": "Lecciones para manifestar tus deseos",
+    "autor": "Neville Goddard",
+    "anio": 1948,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Recopilación de conferencias y textos prácticos donde se analizan las escrituras bíblicas desde un punto de vista psicológico para descifrar el arte de cambiar el propio concepto de uno mismo.",
+    "pdf": "https://drive.google.com/file/d/1hGr4DnFpM8JKol8WzzO96_yomMTBDYJM/preview",
+    "portada": "portadas/2873.webp"
+  },
+  {
+    "id": 2874,
+    "titulo": "Tu fe es tu fortuna",
+    "autor": "Neville Goddard",
+    "anio": 1941,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "El autor reinterpreta el significado profundo de los relatos religiosos clásicos, argumentando que la única y verdadera causa de las experiencias humanas es la propia conciencia de ser.",
+    "pdf": "https://drive.google.com/file/d/11HrdtyU4NDHqX-ceftEEK8-b-GHfK_yq/preview",
+    "portada": "portadas/2874.webp"
   }
 ]
