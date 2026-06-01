@@ -2738,5 +2738,13 @@ footer {
   .lector-bloqueo-caja { padding: 1.5rem 1.2rem; }
   .lector-bloqueo-titulo { font-size: 1.1rem; }
   .btn-codigo-donador span { display: none; }
-  .btn-codigo-donador { right: 4.2rem; padding: 0.4rem 0.55rem; }
+  .btn-codigo-donador {
+    right: 1.2rem;
+    top: 4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+  }
 }
