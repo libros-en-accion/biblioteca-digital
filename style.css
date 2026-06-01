@@ -2636,6 +2636,7 @@ footer {
   padding: 1.5rem;
 }
 .lector-bloqueo-caja {
+  position: relative;
   max-width: 440px;
   text-align: center;
   background: rgba(26, 15, 8, 0.95);
@@ -2643,6 +2644,27 @@ footer {
   border-radius: 12px;
   padding: 2.2rem 2rem;
   box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+.lector-bloqueo-cerrar {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: var(--texto-suave);
+  cursor: pointer;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border-radius: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+.lector-bloqueo-cerrar:hover {
+  color: var(--dorado-claro);
+  background: rgba(184, 137, 42, 0.15);
 }
 .lector-bloqueo-icono {
   font-size: 3rem;

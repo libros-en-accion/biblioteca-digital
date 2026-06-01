@@ -1854,12 +1854,20 @@ function inicializarLector() {
   const btnDescarga = document.getElementById('lectorBtnDescarga');
   const btnIngresarCodigo = document.getElementById('lectorBtnIngresarCodigo');
 
+  const btnCerrarBloqueo = document.getElementById('btnCerrarBloqueo');
+
   if (btnPrev) btnPrev.addEventListener('click', irPaginaAnterior);
   if (btnNext) btnNext.addEventListener('click', irPaginaSiguiente);
   if (btnZoomIn) btnZoomIn.addEventListener('click', () => aplicarZoom(1.25));
   if (btnZoomOut) btnZoomOut.addEventListener('click', () => aplicarZoom(0.8));
   if (btnFit) btnFit.addEventListener('click', ajustarAlAncho);
   if (btnCerrar) btnCerrar.addEventListener('click', cerrarLector);
+  if (btnCerrarBloqueo) {
+    btnCerrarBloqueo.addEventListener('click', () => {
+      const bloqueo = document.getElementById('lectorBloqueo');
+      if (bloqueo) bloqueo.style.display = 'none';
+    });
+  }
 
   if (btnDescarga) {
     btnDescarga.addEventListener('click', () => {
