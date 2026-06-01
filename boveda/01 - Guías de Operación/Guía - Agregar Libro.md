@@ -88,6 +88,7 @@ python3 agregar_libro.py \
 > [!important] Requisitos del archivo PDF
 > - El archivo debe nombrarse exactamente `{Título} - {Autor}.pdf`.
 > - Debe guardarse localmente en `/home/daniel/biblioteca-digital/{Letra}/{Autor}/`. El script se encarga de crear las carpetas y moverlo si le proporcionas el PDF al iniciarlo.
+> - **Formato del Autor:** En el campo `"autor"` de `libros.json`, el nombre siempre debe ser **`Nombre Apellido`** (ej. `"Ernesto Sabato"`), ya que así lo requiere el filtro del frontend de la web. En cambio, en la estructura física de directorios se usa **`Apellido, Nombre`** (ej. `S/Sabato, Ernesto/`).
 
 > [!warning] Permisos de Google Drive
 > El link del PDF debe estar configurado en Google Drive como **"Cualquiera con el enlace puede ver"**. De lo contrario, los visitantes de la web se encontrarán con un error de acceso al hacer clic en "Ver documento".

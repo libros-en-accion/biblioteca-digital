@@ -77,7 +77,7 @@ Además del mapeo de géneros, el script ejecuta las siguientes transformaciones
 
 ### Para Autores:
 *   Remueve espacios en blanco innecesarios en los extremos.
-*   Normaliza el formato a `Apellido, Nombre` cuando corresponde.
+*   **Formato de Nombre:** Mantiene el formato `"Nombre Apellido"` (ej. `"Ernesto Sabato"`) en la propiedad `"autor"` de `libros.json` para no romper los filtros web. (Nota: La estructura de carpetas físicas sí se organiza por `"Apellido, Nombre"`).
 *   Asegura que la primera letra del nombre y apellido siempre comience con mayúscula.
 
 ---
