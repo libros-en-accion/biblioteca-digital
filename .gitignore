@@ -12,3 +12,4 @@ node_modules/
 .aider*
 scripts/agregar_donador.py
 scripts/listar_donadores.py
+scripts/eliminar_donador.py
