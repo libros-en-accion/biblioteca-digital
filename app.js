@@ -850,6 +850,7 @@ function renderizarResultados(recomendaciones) {
     if (!libro) return;
 
     const tituloLimpio = limpiarTitulo(libro.titulo);
+    const hasPdf = !!libro.archivo_pdf;
 
     const tarjeta = document.createElement('div');
     tarjeta.className = 'resultado-tarjeta';
@@ -858,10 +859,24 @@ function renderizarResultados(recomendaciones) {
       <div class="resultado-titulo">${tituloLimpio}</div>
       <div class="resultado-autor">${libro.autor}${libro.anio ? ` · ${libro.anio}` : ''}</div>
       <div class="resultado-razon">${rec.razon}</div>
-      <a href="${libro.pdf}" target="_blank" rel="noopener" class="resultado-btn">
-        <i data-lucide="file-text" class="icono-sm"></i> Abrir documento
-      </a>
+      ${hasPdf ? `
+        <button class="resultado-btn btn-leer-recomendado" style="cursor:pointer">
+          <i data-lucide="book-open" class="icono-sm"></i> Leer
+        </button>
+      ` : `
+        <a href="${libro.pdf || '#'}" target="_blank" rel="noopener" class="resultado-btn">
+          <i data-lucide="file-text" class="icono-sm"></i> Abrir documento
+        </a>
+      `}
     `;
+
+    if (hasPdf) {
+      tarjeta.querySelector('.btn-leer-recomendado').addEventListener('click', () => {
+        cerrarModalIA();
+        abrirLector(libro.id, libro);
+      });
+    }
+
     lista.appendChild(tarjeta);
   });
 
