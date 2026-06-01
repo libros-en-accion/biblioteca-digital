@@ -1769,10 +1769,15 @@ async function renderizarPagina(numeroPagina) {
   if (!canvas) return;
 
   const page = await lectorEstado.pdf.getPage(numeroPagina);
-  const viewport = page.getViewport({ scale: lectorEstado.escala });
+  
+  // Soporte para pantallas de alta densidad (Retina, dispositivos móviles) para evitar textos pixelados
+  const dpr = window.devicePixelRatio || 1;
+  const viewport = page.getViewport({ scale: lectorEstado.escala * dpr });
 
   canvas.width = viewport.width;
   canvas.height = viewport.height;
+  canvas.style.width = `${viewport.width / dpr}px`;
+  canvas.style.height = `${viewport.height / dpr}px`;
 
   const ctx = canvas.getContext('2d');
   lectorEstado.renderTask = page.render({ canvasContext: ctx, viewport });
