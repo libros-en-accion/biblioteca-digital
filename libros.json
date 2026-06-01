@@ -31355,5 +31355,38 @@
     "pdf": "https://drive.google.com/file/d/11HrdtyU4NDHqX-ceftEEK8-b-GHfK_yq/preview",
     "portada": "portadas/2874.webp",
     "archivo_pdf": "G/Goddard, Neville/Tu fe es tu fortuna - Neville Goddard.pdf"
+  },
+  {
+    "id": 2875,
+    "titulo": "El túnel",
+    "autor": "Sabato, Ernesto",
+    "anio": 1948,
+    "genero": "Novela",
+    "descripcion": "El pintor Juan Pablo Castel narra desde la prisión los motivos psicológicos y la obsesión enfermiza que lo llevaron a asesinar a la única mujer capaz de comprenderlo, Elena Iribarne.",
+    "pdf": "",
+    "portada": "portadas/2875.webp",
+    "archivo_pdf": "S/Sabato, Ernesto/El tunel - Ernesto Sabato.pdf"
+  },
+  {
+    "id": 2876,
+    "titulo": "Sobre héroes y tumbas",
+    "autor": "Sabato, Ernesto",
+    "anio": 1961,
+    "genero": "Novela",
+    "descripcion": "Una compleja y monumental obra que entrelaza la tormentosa historia de amor entre Martín y la enigmática Alejandra con el devenir histórico argentino y el célebre e inquietante \"Informe sobre ciegos\".",
+    "pdf": "",
+    "portada": "portadas/2876.webp",
+    "archivo_pdf": "S/Sabato, Ernesto/Sobre héroes y tumbas - Ernesto Sabato.pdf"
+  },
+  {
+    "id": 2877,
+    "titulo": "Abaddón el exterminador",
+    "autor": "Sabato, Ernesto",
+    "anio": 1974,
+    "genero": "Novela",
+    "descripcion": "Novela de estructura fragmentaria y apocalíptica donde el propio Sabato se introduce como personaje para reflexionar sobre la condición humana, el mal, la crisis de la sociedad moderna y el destino de Argentina.",
+    "pdf": "",
+    "portada": "portadas/2877.webp",
+    "archivo_pdf": "S/Sabato, Ernesto/Abaddón el exterminador - Ernesto Sabato.pdf"
   }
 ]
