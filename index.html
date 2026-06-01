@@ -24,6 +24,8 @@
   <link rel="canonical" href="/">
 
   <link rel="stylesheet" href="style.css?v=3" />
+  <!-- PDF.js: lector de PDF embebido -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs" type="module" id="pdfjs-script"></script>
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -32,6 +34,10 @@
   <section class="hero-seccion">
     <div class="hero-background-deco"></div>
     <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
+    <button id="btnCodigo" class="btn-codigo-donador" aria-label="Ingresar código de donador" title="Código de donador">
+      <i data-lucide="key-round"></i>
+      <span id="etiquetaCodigo">Código Donador</span>
+    </button>
     
     <div class="hero-contenido">
       <div class="hero-encabezado">
@@ -172,9 +178,12 @@
             <p id="detalle-autor" class="detalle-autor"></p>
             <p id="detalle-anio" class="detalle-anio"></p>
             <p id="detalle-descripcion" class="detalle-descripcion"></p>
-            <a id="detalle-pdf-link" href="#" target="_blank" rel="noopener" class="btn-recomendar detalle-pdf-btn">
-              📄 Abrir documento
-            </a>
+            <button id="detalle-pdf-link" class="btn-recomendar detalle-pdf-btn">
+              <i data-lucide="book-open" class="icono-sm"></i> Leer libro
+            </button>
+            <button id="detalle-descargar-btn" class="btn-descargar-donador" style="display:none">
+              <i data-lucide="download" class="icono-sm"></i> Descargar PDF
+            </button>
           </div>
         </div>
         <div id="detalle-relacionados-seccion" class="detalle-relacionados-seccion">
@@ -270,7 +279,66 @@
     </div>
   </div>
 
+  <!-- ═══ MODAL: LECTOR DE PDF ═══ -->
+  <div id="modalLector" class="lector-overlay" role="dialog" aria-modal="true" aria-label="Lector de libro" style="display:none">
+    <div class="lector-barra-controles">
+      <div class="lector-titulo-texto" id="lectorTituloTexto"></div>
+      <div class="lector-controles">
+        <button id="lectorBtnPrev" class="lector-btn" title="Página anterior"><i data-lucide="chevron-left"></i></button>
+        <span class="lector-paginas"><span id="lectorPagActual">1</span> / <span id="lectorPagTotal">?</span></span>
+        <button id="lectorBtnNext" class="lector-btn" title="Página siguiente"><i data-lucide="chevron-right"></i></button>
+        <button id="lectorBtnZoomOut" class="lector-btn" title="Alejar"><i data-lucide="zoom-out"></i></button>
+        <button id="lectorBtnZoomIn" class="lector-btn" title="Acercar"><i data-lucide="zoom-in"></i></button>
+        <button id="lectorBtnFit" class="lector-btn" title="Ajustar al ancho"><i data-lucide="maximize-2"></i></button>
+        <button id="lectorBtnDescarga" class="lector-btn lector-btn-donar" style="display:none" title="Descargar PDF (Donadores)"><i data-lucide="download"></i></button>
+        <button id="lectorBtnCerrar" class="lector-btn lector-btn-cerrar" title="Cerrar lector"><i data-lucide="x"></i></button>
+      </div>
+    </div>
+    <div class="lector-canvas-container" id="lectorContainer">
+      <div class="lector-cargando" id="lectorCargando">
+        <div class="lector-spinner"></div>
+        <p>Cargando libro…</p>
+      </div>
+      <canvas id="lectorCanvas"></canvas>
+      <!-- Panel de bloqueo para no donadores (se muestra en pág 16+) -->
+      <div id="lectorBloqueo" class="lector-bloqueo" style="display:none">
+        <div class="lector-bloqueo-caja">
+          <div class="lector-bloqueo-icono">📚</div>
+          <h2 class="lector-bloqueo-titulo">¿Te está gustando esta lectura?</h2>
+          <p class="lector-bloqueo-texto">Has llegado al final de la vista previa gratuita (15 páginas). Apoya nuestro proyecto con una donación para desbloquear el libro completo, la descarga en PDF y la impresión.</p>
+          <div class="lector-bloqueo-opciones">
+            <a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn-donar-preview">💛 Donar desde $3 USD</a>
+            <button id="lectorBtnIngresarCodigo" class="btn-codigo-preview">🔑 Ya tengo un código</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL: CÓDIGO DE DONADOR ═══ -->
+  <div id="modalCodigo" class="modal-overlay" style="display:none">
+    <div class="modal-panel modal-codigo-panel" role="dialog" aria-modal="true" aria-labelledby="codigo-titulo">
+      <div class="modal-header">
+        <div class="modal-ornamento">🔑 Acceso Donador</div>
+        <h2 id="codigo-titulo" class="modal-titulo">Ingresar Código</h2>
+        <button id="btnCerrarCodigo" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="codigo-descripcion">Ingresa tu código de donador para desbloquear el libro completo, las descargas en PDF e impresión en hasta 3 dispositivos.</p>
+        <div class="codigo-input-wrapper">
+          <input type="text" id="inputCodigoDonador" class="codigo-input" placeholder="EJEMPLO: DONOR-A82F" autocomplete="off" spellcheck="false" />
+        </div>
+        <div id="codigoMensaje" class="codigo-mensaje" style="display:none"></div>
+        <div class="modal-acciones">
+          <button id="btnCancelarCodigo" class="btn-cancelar">Cancelar</button>
+          <button id="btnValidarCodigo" class="btn-recomendar"><i data-lucide="check"></i> Verificar código</button>
+        </div>
+        <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://www.paypal.com" target="_blank" rel="noopener">Realiza una donación desde $3 USD</a> para obtener el tuyo.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

@@ -184,7 +184,7 @@ function inicializarPagina() {
     });
   }
 
-  // Buscador con debounce
+  // Buscador con debounce + Enter para hacer scroll a resultados
   const inputBusqueda = document.getElementById('inputBusqueda');
   if (inputBusqueda) {
     const filtrarConDebounce = debounce(() => filtrar(), 250);
@@ -194,6 +194,17 @@ function inicializarPagina() {
         btnLimpiar.style.display = inputBusqueda.value.length > 0 ? 'flex' : 'none';
       }
       filtrarConDebounce();
+    });
+    // Al presionar Enter: filtrar y desplazar la vista al catálogo
+    inputBusqueda.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        filtrar();
+        const galeria = document.getElementById('galeria');
+        if (galeria) {
+          galeria.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     });
   }
 
@@ -518,7 +529,7 @@ function filtrar() {
   // Aplicar ordenamiento
   listaFiltrada = ordenarLista(listaFiltrada);
 
-  mostrarPagina(1, true); // Omitimos el scroll al buscar o filtrar
+  mostrarPagina(1, true);
   actualizarBreadcrumbs();
 }
 
@@ -633,9 +644,30 @@ function abrirDetalleLibro(id, omitirPush = false) {
     detallePortada.style.display = 'none';
   }
 
+  // Botón Leer libro → abre lector embebido
   const linkPdf = document.getElementById('detalle-pdf-link');
-  linkPdf.href = libro.pdf;
-  linkPdf.onclick = null;
+  const btnDescargar = document.getElementById('detalle-descargar-btn');
+
+  if (libro.archivo_pdf) {
+    linkPdf.style.display = 'flex';
+    linkPdf.onclick = (e) => {
+      e.preventDefault();
+      cerrarDetalle();
+      abrirLector(libro.id, libro);
+    };
+  } else {
+    linkPdf.style.display = 'none';
+  }
+
+  // Mostrar botón de descarga solo si es donador
+  if (btnDescargar) {
+    if (esDonadorLocal() && libro.archivo_pdf) {
+      btnDescargar.style.display = 'flex';
+      btnDescargar.onclick = () => descargarPdf(libro.id);
+    } else {
+      btnDescargar.style.display = 'none';
+    }
+  }
 
   // Libros relacionados (mismo género, excluyendo el actual)
   const relacionados = libros
@@ -1433,3 +1465,416 @@ function poblarDropdownAutores() {
     filtrar();
   });
 }
+
+// ════════════════════════════════════════════════════════
+// SISTEMA DE DONADORES — COOKIE LOCAL
+// ════════════════════════════════════════════════════════
+
+/**
+ * Comprueba si la cookie donor_token está presente en el navegador.
+ * La validez real se verifica en el servidor; aquí solo decidimos si
+ * mostrar la UI de donador sin hacer un fetch adicional.
+ */
+function esDonadorLocal() {
+  return document.cookie.split(';').some(c => c.trim().startsWith('donor_token='));
+}
+
+/**
+ * Descarga un PDF llamando a /api/leer?id=X&descargar=true
+ * Solo funciona si la cookie donor_token está presente (el servidor la verifica).
+ */
+async function descargarPdf(libroId) {
+  try {
+    const resp = await fetch(`/api/leer?id=${encodeURIComponent(libroId)}&descargar=true`);
+    if (!resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      alert(data.error || 'No se pudo generar el enlace de descarga.');
+      return;
+    }
+    const { url } = await resp.json();
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } catch (err) {
+    console.error('[descargarPdf]', err);
+    alert('Error de red al intentar descargar el PDF.');
+  }
+}
+
+// ════════════════════════════════════════════════════════
+// MODAL: CÓDIGO DE DONADOR
+// ════════════════════════════════════════════════════════
+
+// Callback opcional que se llama cuando el código se valida con éxito.
+let _callbackCodigoValidado = null;
+
+function abrirModalCodigo(callbackAlValidar) {
+  _callbackCodigoValidado = callbackAlValidar || null;
+  const modal = document.getElementById('modalCodigo');
+  const input = document.getElementById('inputCodigoDonador');
+  const msg = document.getElementById('codigoMensaje');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
+    if (input) { input.value = ''; setTimeout(() => input.focus(), 80); }
+    lucide.createIcons();
+  }
+}
+
+function cerrarModalCodigo() {
+  const modal = document.getElementById('modalCodigo');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+async function validarCodigo() {
+  const input = document.getElementById('inputCodigoDonador');
+  const btn = document.getElementById('btnValidarCodigo');
+  const msg = document.getElementById('codigoMensaje');
+  const codigo = input ? input.value.trim() : '';
+
+  if (!codigo) {
+    mostrarMensajeCodigo('Escribe tu código de donador.', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Verificando…';
+
+  try {
+    const resp = await fetch('/api/validar-codigo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ codigo }),
+    });
+    const data = await resp.json();
+
+    if (resp.ok && data.valido) {
+      mostrarMensajeCodigo(`✅ ¡Código válido! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
+      // Actualizar botón de código en el hero
+      actualizarBtnCodigo(true);
+      setTimeout(() => {
+        cerrarModalCodigo();
+        if (typeof _callbackCodigoValidado === 'function') {
+          _callbackCodigoValidado();
+        }
+      }, 1800);
+    } else {
+      mostrarMensajeCodigo(data.error || 'Código inválido.', 'error');
+    }
+  } catch (err) {
+    console.error('[validarCodigo]', err);
+    mostrarMensajeCodigo('Error de conexión. Inténtalo de nuevo.', 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i data-lucide="check"></i> Verificar código';
+    lucide.createIcons();
+  }
+}
+
+function mostrarMensajeCodigo(texto, tipo) {
+  const msg = document.getElementById('codigoMensaje');
+  if (!msg) return;
+  msg.textContent = texto;
+  msg.className = `codigo-mensaje ${tipo}`;
+  msg.style.display = 'block';
+}
+
+function actualizarBtnCodigo(esDonador) {
+  const btn = document.getElementById('btnCodigo');
+  const etiqueta = document.getElementById('etiquetaCodigo');
+  if (!btn) return;
+  if (esDonador) {
+    btn.classList.add('activo');
+    if (etiqueta) etiqueta.textContent = '✓ Donador';
+  } else {
+    btn.classList.remove('activo');
+    if (etiqueta) etiqueta.textContent = 'Código Donador';
+  }
+}
+
+function inicializarModalCodigo() {
+  // Botón en el hero
+  const btnHero = document.getElementById('btnCodigo');
+  if (btnHero) {
+    btnHero.addEventListener('click', () => abrirModalCodigo());
+  }
+
+  // Botones del modal
+  const btnCerrar = document.getElementById('btnCerrarCodigo');
+  const btnCancelar = document.getElementById('btnCancelarCodigo');
+  const btnValidar = document.getElementById('btnValidarCodigo');
+  const inputCodigo = document.getElementById('inputCodigoDonador');
+  const overlay = document.getElementById('modalCodigo');
+
+  if (btnCerrar) btnCerrar.addEventListener('click', cerrarModalCodigo);
+  if (btnCancelar) btnCancelar.addEventListener('click', cerrarModalCodigo);
+  if (btnValidar) btnValidar.addEventListener('click', validarCodigo);
+  if (inputCodigo) {
+    inputCodigo.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') validarCodigo();
+    });
+  }
+  if (overlay) {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) cerrarModalCodigo();
+    });
+  }
+
+  // Reflejar estado actual en el botón del hero
+  actualizarBtnCodigo(esDonadorLocal());
+}
+
+// ════════════════════════════════════════════════════════
+// LECTOR DE PDF EMBEBIDO (PDF.js)
+// ════════════════════════════════════════════════════════
+
+const PREVIEW_LIMIT = 15; // Páginas gratuitas
+
+let lectorEstado = {
+  pdf: null,         // Objeto PDFDocumentProxy
+  pagina: 1,
+  totalPaginas: 0,
+  escala: 1.0,
+  renderTask: null,  // Tarea de render en curso
+  libroId: null,
+  esDonador: false,
+};
+
+/**
+ * Abre el lector embebido para el libro dado.
+ * Solicita la URL firmada a /api/leer y renderiza con PDF.js.
+ */
+async function abrirLector(libroId, libro) {
+  const modal = document.getElementById('modalLector');
+  const canvas = document.getElementById('lectorCanvas');
+  const cargando = document.getElementById('lectorCargando');
+  const bloqueo = document.getElementById('lectorBloqueo');
+  const titulo = document.getElementById('lectorTituloTexto');
+  const btnDescarga = document.getElementById('lectorBtnDescarga');
+
+  if (!modal || !canvas) return;
+
+  // Resetear estado
+  lectorEstado.libroId = libroId;
+  lectorEstado.pagina = 1;
+  lectorEstado.pdf = null;
+  lectorEstado.esDonador = esDonadorLocal();
+
+  if (titulo) titulo.textContent = `${libro.titulo}${libro.autor ? ' — ' + libro.autor : ''}`;
+  if (bloqueo) bloqueo.style.display = 'none';
+  if (cargando) cargando.style.display = 'flex';
+  if (canvas) canvas.style.display = 'none';
+  if (btnDescarga) btnDescarga.style.display = lectorEstado.esDonador ? 'flex' : 'none';
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  lucide.createIcons();
+
+  try {
+    // 1. Obtener URL firmada del servidor
+    const resp = await fetch(`/api/leer?id=${encodeURIComponent(libroId)}`);
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      alert(err.error || 'No se pudo cargar el libro. Inténtalo de nuevo.');
+      cerrarLector();
+      return;
+    }
+    const { url } = await resp.json();
+
+    // 2. Cargar PDF con PDF.js (módulo ESM ya cargado en el head)
+    const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs');
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.worker.min.mjs';
+
+    const pdfDoc = await pdfjsLib.getDocument({ url, withCredentials: false }).promise;
+    lectorEstado.pdf = pdfDoc;
+    lectorEstado.totalPaginas = pdfDoc.numPages;
+
+    actualizarInfoPagina();
+
+    if (cargando) cargando.style.display = 'none';
+    if (canvas) canvas.style.display = 'block';
+
+    // Calcular escala inicial para ajustar al ancho del contenedor
+    await calcularEscalaFit();
+    await renderizarPagina(lectorEstado.pagina);
+
+  } catch (error) {
+    console.error('[abrirLector]', error);
+    if (cargando) cargando.style.display = 'none';
+    alert('Error al cargar el PDF. Verifica tu conexión o inténtalo más tarde.');
+    cerrarLector();
+  }
+}
+
+/**
+ * Calcula la escala para que la página se ajuste al ancho del contenedor.
+ */
+async function calcularEscalaFit() {
+  if (!lectorEstado.pdf) return;
+  const page = await lectorEstado.pdf.getPage(1);
+  const viewport = page.getViewport({ scale: 1 });
+  const container = document.getElementById('lectorContainer');
+  if (!container) return;
+  const containerWidth = container.clientWidth - 32; // 2x padding
+  lectorEstado.escala = Math.max(0.5, containerWidth / viewport.width);
+}
+
+/**
+ * Renderiza la página especificada en el canvas.
+ */
+async function renderizarPagina(numeroPagina) {
+  if (!lectorEstado.pdf) return;
+
+  const bloqueo = document.getElementById('lectorBloqueo');
+
+  // Verificar límite de páginas
+  if (!lectorEstado.esDonador && numeroPagina > PREVIEW_LIMIT) {
+    if (bloqueo) bloqueo.style.display = 'flex';
+    return;
+  }
+  if (bloqueo) bloqueo.style.display = 'none';
+
+  // Cancelar render previo si está en curso
+  if (lectorEstado.renderTask) {
+    try { lectorEstado.renderTask.cancel(); } catch (_) {}
+  }
+
+  const canvas = document.getElementById('lectorCanvas');
+  if (!canvas) return;
+
+  const page = await lectorEstado.pdf.getPage(numeroPagina);
+  const viewport = page.getViewport({ scale: lectorEstado.escala });
+
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
+
+  const ctx = canvas.getContext('2d');
+  lectorEstado.renderTask = page.render({ canvasContext: ctx, viewport });
+
+  try {
+    await lectorEstado.renderTask.promise;
+  } catch (err) {
+    if (err?.name !== 'RenderingCancelledException') {
+      console.error('[renderizarPagina]', err);
+    }
+  }
+
+  actualizarBotonesNavegacion();
+}
+
+function actualizarInfoPagina() {
+  const pagActual = document.getElementById('lectorPagActual');
+  const pagTotal = document.getElementById('lectorPagTotal');
+  if (pagActual) pagActual.textContent = lectorEstado.pagina;
+  if (pagTotal) pagTotal.textContent = lectorEstado.totalPaginas;
+}
+
+function actualizarBotonesNavegacion() {
+  actualizarInfoPagina();
+  const btnPrev = document.getElementById('lectorBtnPrev');
+  const btnNext = document.getElementById('lectorBtnNext');
+  if (btnPrev) btnPrev.disabled = lectorEstado.pagina <= 1;
+  if (btnNext) btnNext.disabled = lectorEstado.pagina >= lectorEstado.totalPaginas;
+}
+
+async function irPaginaAnterior() {
+  if (lectorEstado.pagina > 1) {
+    lectorEstado.pagina--;
+    await renderizarPagina(lectorEstado.pagina);
+  }
+}
+
+async function irPaginaSiguiente() {
+  if (lectorEstado.pagina < lectorEstado.totalPaginas) {
+    lectorEstado.pagina++;
+    await renderizarPagina(lectorEstado.pagina);
+  }
+}
+
+async function aplicarZoom(factor) {
+  lectorEstado.escala = Math.min(4, Math.max(0.3, lectorEstado.escala * factor));
+  await renderizarPagina(lectorEstado.pagina);
+}
+
+async function ajustarAlAncho() {
+  await calcularEscalaFit();
+  await renderizarPagina(lectorEstado.pagina);
+}
+
+function cerrarLector() {
+  const modal = document.getElementById('modalLector');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  if (lectorEstado.renderTask) {
+    try { lectorEstado.renderTask.cancel(); } catch (_) {}
+  }
+  lectorEstado.pdf = null;
+  lectorEstado.pagina = 1;
+}
+
+function inicializarLector() {
+  const btnPrev = document.getElementById('lectorBtnPrev');
+  const btnNext = document.getElementById('lectorBtnNext');
+  const btnZoomIn = document.getElementById('lectorBtnZoomIn');
+  const btnZoomOut = document.getElementById('lectorBtnZoomOut');
+  const btnFit = document.getElementById('lectorBtnFit');
+  const btnCerrar = document.getElementById('lectorBtnCerrar');
+  const btnDescarga = document.getElementById('lectorBtnDescarga');
+  const btnIngresarCodigo = document.getElementById('lectorBtnIngresarCodigo');
+
+  if (btnPrev) btnPrev.addEventListener('click', irPaginaAnterior);
+  if (btnNext) btnNext.addEventListener('click', irPaginaSiguiente);
+  if (btnZoomIn) btnZoomIn.addEventListener('click', () => aplicarZoom(1.25));
+  if (btnZoomOut) btnZoomOut.addEventListener('click', () => aplicarZoom(0.8));
+  if (btnFit) btnFit.addEventListener('click', ajustarAlAncho);
+  if (btnCerrar) btnCerrar.addEventListener('click', cerrarLector);
+
+  if (btnDescarga) {
+    btnDescarga.addEventListener('click', () => {
+      if (lectorEstado.libroId) descargarPdf(lectorEstado.libroId);
+    });
+  }
+
+  if (btnIngresarCodigo) {
+    btnIngresarCodigo.addEventListener('click', () => {
+      abrirModalCodigo(async () => {
+        // Tras validar el código, actualizar estado del lector y re-renderizar
+        lectorEstado.esDonador = true;
+        const btnDesc = document.getElementById('lectorBtnDescarga');
+        if (btnDesc) btnDesc.style.display = 'flex';
+        const bloqueo = document.getElementById('lectorBloqueo');
+        if (bloqueo) bloqueo.style.display = 'none';
+        await renderizarPagina(lectorEstado.pagina);
+        lucide.createIcons();
+      });
+    });
+  }
+
+  // Navegación con teclado cuando el lector está abierto
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('modalLector');
+    if (!modal || modal.style.display === 'none') return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') irPaginaSiguiente();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') irPaginaAnterior();
+    if (e.key === 'Escape') cerrarLector();
+  });
+}
+
+// ════════════════════════════════════════════════════════
+// INICIALIZACIÓN COMPLETA DEL SISTEMA
+// ════════════════════════════════════════════════════════
+// Llama a estos inits desde DOMContentLoaded (ya se llama registrarEventos() allí)
+document.addEventListener('DOMContentLoaded', () => {
+  inicializarModalCodigo();
+  inicializarLector();
+});
