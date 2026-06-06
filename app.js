@@ -140,7 +140,26 @@ function debounce(fn, delay) {
   };
 }
 
+// ── MOSTRAR SKELETON LOADERS DURANTE LA CARGA ──
+function mostrarSkeletons() {
+  const galeria = document.getElementById('galeria');
+  if (!galeria) return;
+  
+  galeria.innerHTML = Array.from({ length: 12 }, () => `
+    <div class="tarjeta skeleton-tarjeta">
+      <div class="skeleton skeleton-portada"></div>
+      <div class="tarjeta-info">
+        <div class="skeleton skeleton-badge"></div>
+        <div class="skeleton skeleton-titulo"></div>
+        <div class="skeleton skeleton-autor"></div>
+        <div class="skeleton skeleton-btn"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
 // ── CARGAR LIBROS AL INICIAR ──
+mostrarSkeletons();
 fetch('libros.json')
   .then(respuesta => {
     if (!respuesta.ok) throw new Error(`Error HTTP: ${respuesta.status}`);

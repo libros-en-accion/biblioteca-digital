@@ -3042,3 +3042,62 @@ input,
 :root[data-theme="dark"] .btn-pagina.activo {
   color: #0c2621 !important; /* Contraste óptimo (AAA) sobre fondo verde menta brillante */
 }
+
+/* ── SKELETON LOADING ── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--borde-suave) 0%,
+    var(--fondo-tarjeta) 50%,
+    var(--borde-suave) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-portada {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radio) var(--radio) 0 0;
+}
+
+.skeleton-badge {
+  width: 70px;
+  height: 18px;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-titulo {
+  width: 90%;
+  height: 16px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-autor {
+  width: 60%;
+  height: 14px;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-btn {
+  width: 100%;
+  height: 36px;
+  margin-top: auto;
+  border-radius: var(--radio);
+}
+
+.skeleton-tarjeta {
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
