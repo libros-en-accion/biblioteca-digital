@@ -188,6 +188,13 @@
     <p id="fraseLiteraria" class="frase-literaria"></p>
     <p class="footer-stats" id="footerStats"></p>
     <p class="footer-creditos">Libractiva · <span id="footerAnio"></span></p>
+    <div class="footer-enlaces">
+      <button id="btnAcercaDe" class="footer-link-btn">Acerca de</button>
+      <span class="footer-sep">·</span>
+      <button id="btnFAQ" class="footer-link-btn">Preguntas frecuentes</button>
+      <span class="footer-sep">·</span>
+      <a href="mailto:contacto@libractiva.com" class="footer-link-btn">Contacto</a>
+    </div>
   </footer>
 
   <!-- ═══ MODAL: DETALLE DEL LIBRO ═══ -->
@@ -374,6 +381,60 @@
           <button id="btnValidarCodigo" class="btn-recomendar"><i data-lucide="check"></i> Verificar código</button>
         </div>
         <!-- <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://www.paypal.com" target="_blank" rel="noopener">Realiza una donación voluntaria</a> para obtener el tuyo.</p> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL: ACERCA DE / FAQ ═══ -->
+  <div id="modalInfo" class="modal-overlay">
+    <div class="modal-panel modal-info-panel" role="dialog" aria-modal="true" aria-labelledby="info-titulo">
+      <div class="modal-header">
+        <div class="modal-ornamento">✦ Información ✦</div>
+        <h2 id="info-titulo" class="modal-titulo">Sobre Libractiva</h2>
+        <button id="btnCerrarInfo" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
+      </div>
+      
+      <!-- Pestañas del modal -->
+      <div class="info-tabs">
+        <button id="tabAcerca" class="info-tab-btn activo">Sobre el Proyecto</button>
+        <button id="tabFAQ" class="info-tab-btn">Preguntas Frecuentes</button>
+      </div>
+      
+      <div class="modal-body info-modal-body">
+        <!-- Contenido: Acerca de -->
+        <div id="infoContentAcerca" class="info-tab-content activo">
+          <h3>¿Qué es Libractiva?</h3>
+          <p>Libractiva (Biblioteca Digital) es una plataforma cultural independiente diseñada para facilitar el acceso universal a la literatura y el conocimiento de manera libre y gratuita.</p>
+          
+          <h3>¿Es legal este sitio?</h3>
+          <p><strong>Sí, absolutamente.</strong> Todos los libros disponibles en nuestro catálogo forman parte del <strong>dominio público</strong> o están publicados bajo licencias libres y abiertas. Esto significa que las obras ya no están sujetas a derechos de autor restrictivos, por lo que su copia, distribución y lectura en esta plataforma son completamente legales y respetan la propiedad intelectual.</p>
+          
+          <h3>Misión del Proyecto</h3>
+          <p>Creemos que la cultura debe ser accesible para todos. A través de la curaduría digital, optimizamos obras literarias clásicas y académicas para que puedan leerse directamente en el navegador, descargarse o consultarse sin barreras tecnológicas.</p>
+        </div>
+        
+        <!-- Contenido: FAQ -->
+        <div id="infoContentFAQ" class="info-tab-content">
+          <div class="faq-item">
+            <h4>¿Cómo funciona la donación voluntaria?</h4>
+            <p>Libractiva no tiene publicidad ni fines de lucro. Los costes de servidores, ancho de banda y digitalización se financian mediante donaciones voluntarias de los lectores. Al apoyar económicamente el proyecto, contribuyes directamente a mantener la biblioteca abierta para todo el mundo.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>¿Qué es el "Código de Donador" y cómo lo obtengo?</h4>
+            <p>Como gesto de gratitud, los usuarios que realizan una donación voluntaria reciben un <strong>Código de Donador</strong>. Al introducir este código en la plataforma, se desbloquean funciones premium para mejorar la experiencia de estudio y lectura: lectura ilimitada en el lector web (eliminando el límite de 15 páginas de vista previa), descarga del libro completo en formato PDF original e impresión directa.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>¿Puedo seguir usando la biblioteca sin donar?</h4>
+            <p><strong>¡Por supuesto!</strong> El catálogo principal de Libractiva, las búsquedas, la interacción con la inteligencia artificial y las primeras 15 páginas de todos los libros en formato PDF son 100% gratuitos y libres de restricciones para todos los visitantes.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>¿Cómo se seleccionan y digitalizan los libros?</h4>
+            <p>Nuestro equipo y la comunidad colaboran seleccionando textos de valor universal. Posteriormente se normalizan sus metadatos, se adaptan sus portadas y se cargan copias digitales optimizadas de alta calidad y legibilidad.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -854,6 +854,49 @@ function cerrarDetalle(omitirPush = false) {
   }
 }
 
+// ── Abrir / Cerrar modal Acerca de / FAQ ──
+function abrirModalInfo(tabActiva = 'acerca') {
+  const modal = document.getElementById('modalInfo');
+  if (!modal) return;
+  modal.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+  
+  // Seleccionar la pestaña activa inicial
+  activarPestañaInfo(tabActiva);
+  
+  ultimoElementoEnfocado = document.activeElement;
+  const btnCerrar = modal.querySelector('.modal-cerrar');
+  if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
+}
+
+function cerrarModalInfo() {
+  const modal = document.getElementById('modalInfo');
+  if (modal) {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+    if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
+  }
+}
+
+function activarPestañaInfo(tabName) {
+  const btnAcerca = document.getElementById('tabAcerca');
+  const btnFAQ = document.getElementById('tabFAQ');
+  const contentAcerca = document.getElementById('infoContentAcerca');
+  const contentFAQ = document.getElementById('infoContentFAQ');
+  
+  if (tabName === 'acerca') {
+    btnAcerca?.classList.add('activo');
+    btnFAQ?.classList.remove('activo');
+    contentAcerca?.classList.add('activo');
+    contentFAQ?.classList.remove('activo');
+  } else {
+    btnAcerca?.classList.remove('activo');
+    btnFAQ?.classList.add('activo');
+    contentAcerca?.classList.remove('activo');
+    contentFAQ?.classList.add('activo');
+  }
+}
+
 // ════════════════════════════════════════════════════════
 // RECOMENDADOR IA
 // ════════════════════════════════════════════════════════
@@ -1225,6 +1268,16 @@ function registrarEventos() {
     if (e.target === el('modalIA')) cerrarModalIA();
   });
 
+  // Modal Información (Acerca de / FAQ)
+  el('btnAcercaDe')?.addEventListener('click', () => abrirModalInfo('acerca'));
+  el('btnFAQ')?.addEventListener('click', () => abrirModalInfo('faq'));
+  el('btnCerrarInfo')?.addEventListener('click', cerrarModalInfo);
+  el('tabAcerca')?.addEventListener('click', () => activarPestañaInfo('acerca'));
+  el('tabFAQ')?.addEventListener('click', () => activarPestañaInfo('faq'));
+  el('modalInfo')?.addEventListener('click', (e) => {
+    if (e.target === el('modalInfo')) cerrarModalInfo();
+  });
+
   // Modal IA — acciones
   el('btnRecomendar')?.addEventListener('click', pedirRecomendacion);
   el('btnVolverIntentar')?.addEventListener('click', volverAPreguntas);
@@ -1255,6 +1308,8 @@ function registrarEventos() {
     if (e.key === 'Escape') {
       cerrarModalIA();
       cerrarDetalle();
+      cerrarModalCodigo();
+      cerrarModalInfo();
       return;
     }
 

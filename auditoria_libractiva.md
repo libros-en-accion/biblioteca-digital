@@ -169,65 +169,6 @@ Limitar la animación a las primeras iteraciones o activarla solo en hover:
 
 ---
 
-**📍 Problema identificado:**  
-**No existe una sección "Acerca de" ni un enlace de ayuda/FAQ.**  
-El sitio consta de una única página SPA sin ninguna sección informativa adicional. No hay forma de que un usuario nuevo entienda: ¿Quién está detrás de Libractiva? ¿Es legal? ¿Cómo funciona la donación? ¿Qué es el código de donador? ¿Cómo se seleccionan los libros? Esta información está completamente ausente.
-
-**💥 Impacto en el usuario:**  
-Falta de confianza. Los usuarios dudan de la legitimidad de la plataforma, especialmente cuando se les pide un "código de donador" sin contexto. Afecta la tasa de conversión de donaciones y la percepción de profesionalismo.
-
-**✅ Solución propuesta:**  
-Agregar un footer informativo con secciones mínimas y un modal "Acerca de":
-
-```html
-<!-- Agregar al footer existente, antes del cierre de </footer> -->
-<div class="footer-enlaces">
-  <button id="btnAcercaDe" class="footer-link-btn">Acerca de</button>
-  <span class="footer-sep">·</span>
-  <button id="btnFAQ" class="footer-link-btn">Preguntas frecuentes</button>
-  <span class="footer-sep">·</span>
-  <a href="mailto:contacto@libractiva.com" class="footer-link-btn">Contacto</a>
-</div>
-```
-
-```css
-.footer-enlaces {
-  display: flex;
-  justify-content: center;
-  gap: 0.3rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-}
-
-.footer-link-btn {
-  background: none;
-  border: none;
-  color: var(--texto-suave);
-  font-family: var(--fuente-cuerpo);
-  font-size: 0.82rem;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 3px;
-  transition: all 0.2s;
-  padding: 0.2rem 0.4rem;
-}
-
-.footer-link-btn:hover {
-  color: var(--teal-profundo);
-  text-decoration-color: currentColor;
-}
-
-.footer-sep {
-  color: var(--texto-suave);
-  opacity: 0.4;
-  font-size: 0.82rem;
-}
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 **📍 Problema identificado:**  
 **Los filtros de "Época" (chips) no tienen indicación visual de su cantidad de libros.**  
@@ -724,7 +665,6 @@ function adaptarPlaceholder() {
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
 | 13 | **Separar visualmente Mood Tags de tags de género** | Medio | Bajo | Claridad en sistema de filtros |
 | 14 | **Estandarizar modal de código donador con clase `.abierto`** | Medio | Bajo | Consistencia de animaciones |
-| 15 | **Agregar sección "Acerca de" y FAQ en footer** | Alto | Medio | Genera confianza en la plataforma |
 
 ---
 
