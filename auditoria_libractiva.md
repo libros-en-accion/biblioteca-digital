@@ -647,28 +647,6 @@ Cambiar a un layout de 2 columnas fijo en móvil con más espacio entre tarjetas
 
 ---
 
-**📍 Problema identificado:**  
-**El texto del panel de bloqueo (página 16+) tiene tono transaccional agresivo: "Apoya nuestro proyecto con una donación para desbloquear...".**  
-El copy actual en `.lector-bloqueo-texto` dice: *"Has llegado al final de la vista previa gratuita (15 páginas). Apoya nuestro proyecto con una donación para desbloquear el libro completo, la descarga en PDF y la impresión."* Esto suena más a un paywall que a una invitación a contribuir.
-
-**💥 Impacto en el usuario:**  
-El tono genera fricción emocional. Los lectores que están inmersos en un libro sienten que se les está vendiendo algo, rompiendo la magia de la experiencia de lectura. Puede generar sentimientos negativos hacia la plataforma.
-
-**✅ Solución propuesta:**  
-Reformular el copy con un enfoque de gratitud y comunidad:
-
-```html
-<h2 class="lector-bloqueo-titulo">Estamos felices de que disfrutes esta lectura ✨</h2>
-<p class="lector-bloqueo-texto">
-  Esta vista previa de 15 páginas es nuestra forma de invitarte a descubrir nuevas obras.
-  Si deseas continuar leyendo este libro completo, descargarlo en PDF o imprimirlo,
-  tu contribución voluntaria nos ayuda a mantener esta biblioteca viva y creciendo.
-</p>
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 **📍 Problema identificado:**  
 **Los CTAs del hero no tienen jerarquía visual clara — "¿Qué leer hoy? (Pregunta a la IA)" y "Sorpréndeme" compiten en importancia.**  
@@ -744,7 +722,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 12 | **Mejorar copywriting del panel de bloqueo** | Alto | Bajo | Reduce fricción emocional del paywall |
 | 13 | **Separar visualmente Mood Tags de tags de género** | Medio | Bajo | Claridad en sistema de filtros |
 | 14 | **Estandarizar modal de código donador con clase `.abierto`** | Medio | Bajo | Consistencia de animaciones |
 | 15 | **Agregar sección "Acerca de" y FAQ en footer** | Alto | Medio | Genera confianza en la plataforma |
