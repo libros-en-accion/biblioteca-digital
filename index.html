@@ -3,25 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Biblioteca Digital — Clásicos, novelas, ensayos y más</title>
-  <meta name="description" content="Explora una colección de más de 2,800 libros digitales: novelas, ensayos, filosofía, ciencia ficción y más. Con recomendador inteligente por IA.">
-  <meta name="theme-color" content="#1a0f08">
+  <title>Libractiva — Tu bibliotecario inteligente · +2,800 libros</title>
+  <meta name="description" content="Explora Libractiva, tu bibliotecario inteligente. Más de 2,800 libros digitales con recomendación IA personalizada, lector PDF y más.">
+  <meta name="theme-color" content="#0e2a24">
 
   <!-- SEO: Open Graph -->
-  <meta property="og:title" content="Biblioteca Digital — Colección Literaria">
-  <meta property="og:description" content="Más de 2,800 libros digitales gratuitos: novelas, ensayos, filosofía, ciencia ficción, teatro y más.">
+  <meta property="og:title" content="Libractiva — Biblioteca digital inteligente">
+  <meta property="og:description" content="Explora Libractiva, tu bibliotecario inteligente. Descubre tu próxima gran lectura entre más de 2,800 libros con recomendación IA personalizada.">
+  <meta property="og:image" content="portada%20Libractiva.jpeg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_MX">
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Biblioteca Digital — Colección Literaria">
-  <meta name="twitter:description" content="Más de 2,800 libros digitales gratuitos con recomendador inteligente por IA.">
+  <meta name="twitter:title" content="Libractiva — Tu bibliotecario inteligente">
+  <meta name="twitter:description" content="Explora Libractiva, tu bibliotecario inteligente. Descubre tu próxima gran lectura entre más de 2,800 libros con recomendación IA personalizada.">
+  <meta name="twitter:image" content="portada%20Libractiva.jpeg">
 
   <!-- SEO: Additional -->
   <meta name="robots" content="index, follow">
   <meta name="author" content="Daniel">
   <link rel="canonical" href="/">
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
 
   <link rel="stylesheet" href="style.css?v=3" />
   <!-- PDF.js: lector de PDF embebido -->
@@ -42,10 +51,11 @@
     <div class="hero-contenido">
       <div class="hero-encabezado">
         <div class="hero-ornamento">⟡ Colección Literaria ⟡</div>
-        <a href="/" class="header-home-link" aria-label="Ir al inicio de la biblioteca">
-          <h1>Biblioteca <span>Digital</span></h1>
+        <a href="/" class="header-home-link" aria-label="Ir al inicio de Libractiva">
+          <img src="logo Libractiva.jpeg" alt="Logo Libractiva" class="hero-logo" />
+          <h1>Libractiva</h1>
         </a>
-        <p class="hero-subtitulo">Tu próxima gran historia está aquí</p>
+        <p class="hero-subtitulo">Tu bibliotecario personal, ahora es inteligente</p>
         <p class="hero-descripcion">Explora una colección de más de 2,800 clásicos, novelas y ensayos con recomendación inteligente por IA.</p>
       </div>
 
@@ -169,7 +179,7 @@
     <div class="footer-ornamento">✦ ✦ ✦</div>
     <p id="fraseLiteraria" class="frase-literaria"></p>
     <p class="footer-stats" id="footerStats"></p>
-    <p class="footer-creditos">Biblioteca Digital · <span id="footerAnio"></span></p>
+    <p class="footer-creditos">Libractiva · <span id="footerAnio"></span></p>
   </footer>
 
   <!-- ═══ MODAL: DETALLE DEL LIBRO ═══ -->
@@ -208,7 +218,7 @@
 
   <!-- ═══ MODAL: RECOMENDADOR IA ═══ -->
   <div id="modalIA" class="modal-overlay">
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Recomendador Inteligente">
+    <div class="modal-panel modal-panel-ia" role="dialog" aria-modal="true" aria-label="Recomendador Inteligente">
       <div class="modal-header">
         <div class="modal-ornamento">✦ Recomendador Inteligente ✦</div>
         <h2 class="modal-titulo">¿Qué debería leer hoy?</h2>
@@ -263,7 +273,13 @@
 
       <!-- Paso 2: Carga -->
       <div id="ia-cargando" class="modal-body modal-estado" style="display:none">
-        <div class="cargando-icono"><i data-lucide="loader-2" class="spin"></i></div>
+        <div class="cargando-icono">
+          <div class="book-loader">
+            <span class="book-page"></span>
+            <span class="book-page"></span>
+            <span class="book-page"></span>
+          </div>
+        </div>
         <p class="cargando-texto">Consultando a la biblioteca...</p>
         <p class="cargando-subtexto">La IA está analizando tu perfil y el catálogo completo.</p>
         <div class="cargando-puntos"><span></span><span></span><span></span></div>
