@@ -1,13 +1,13 @@
 ---
 tipo: arquitectura
 area: tecnica
-tags: [arquitectura, directorios, archivos, estructura]
-fecha: 2026-05-30
+tags: [arquitectura, directorios, archivos, estructura, libractiva]
+fecha: 2026-06-05
 ---
 
 # 📁 Arquitectura: Estructura del Proyecto
 
-Este documento detalla el mapa de archivos y directorios del repositorio de la **Biblioteca Digital** y la responsabilidad técnica de cada elemento.
+Este documento detalla el mapa de archivos y directorios del repositorio de **Libractiva** y la responsabilidad técnica de cada elemento.
 
 ---
 
@@ -21,6 +21,8 @@ biblioteca/
 ├── libros.json             # Catálogo completo en formato JSON (Base de datos estática)
 ├── agregar_libro.py        # Script automatizado en Python para catalogar libros
 ├── generar_portadas.py     # Script en Python para extraer portadas desde PDFs
+├── nuevo_logo.jpg          # Recurso gráfico: Logotipo oficial de la marca
+├── portada Libractiva.jpeg # Recurso gráfico: Imagen de portada de la plataforma
 ├── portadas/               # Directorio con imágenes WebP optimizadas (miniaturas)
 │   ├── 1.webp
 │   └── ...
@@ -35,6 +37,10 @@ biblioteca/
 │   ├── listar_donadores.py  # [Local/Ignorado] Lista códigos activos en la DB
 │   └── eliminar_donador.py # [Local/Ignorado] Elimina códigos de la DB
 ├── boveda/                 # Este Cerebro Digital (Bóveda de Obsidian)
+│   ├── 00 - Inicio.md      # Nota de bienvenida y MOC principal
+│   ├── 01 - Guías de Operación/ # Procedimientos estándar de catálogo y sistemas
+│   ├── 02 - Arquitectura Técnica/ # Notas sobre stack de desarrollo y rendimiento
+│   └── 03 - Identidad y Marca/ # Nota sobre la estrategia de marca Libractiva
 ├── vercel.json             # Configuración de despliegue y CORS en Vercel
 ├── package.json            # Scripts NPM y dependencias del proyecto (Node)
 ├── robots.txt              # Instrucciones para crawlers y buscadores (SEO)
@@ -64,9 +70,13 @@ biblioteca/
 *   **`agregar_libro.py`**: Interfaz interactiva en Python para registrar libros nuevos.
 *   **`generar_portadas.py`**: Automatización de la extracción de imágenes desde los PDFs.
 *   **`scripts/mapear_pdfs.py`**: Python script que recorre la colección local de PDFs y mapea sus rutas a `libros.json`.
-*   **`scripts/agregar_donador.py` / `listar_donadores.py` / `eliminar_donador.py`**: Scripts en Python para administrar los códigos de donador directo desde la terminal local conectándose por TCP sockets a Redis Cloud. Ignorados en Git por seguridad.
+*   **`scripts/agregar_donador.py` / `listar_donadores.py` / `eliminar_donador.py`**: Scripts en Python para administrar los códigos de donador directo desde la terminal local. Ignorados en Git por seguridad.
+
+### 5. Documentación y Estrategia (Bóveda)
+*   **`boveda/`**: Bóveda de Obsidian estructurada con MOC (`00 - Inicio.md`), Guías de Operación (`01/`), notas de Arquitectura Técnica (`02/`) y Estrategia de Naming e Identidad (`03/`).
 
 ---
 **Notas Relacionadas:**
 *   [[Arquitectura - Vista General|Vista general del stack de software]]
 *   [[Guía - Despliegue en Vercel|Cómo emular y desplegar el proyecto]]
+*   [[Marca - Libractiva|Estrategia de marca e identidad visual]]
