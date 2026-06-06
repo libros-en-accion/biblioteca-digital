@@ -869,14 +869,6 @@ function cerrarModalIA() {
 }
 
 
-// ── Selección de opciones (botones tipo chip) ──
-function seleccionarOpcion(boton, grupo) {
-  const contenedor = document.getElementById(`opciones-${grupo}`);
-  contenedor.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('seleccionado'));
-  boton.classList.add('seleccionado');
-  iaSeleccion[grupo] = boton.dataset.valor;
-}
-
 // ── Resetear el modal al estado de preguntas ──
 function volverAPreguntas() {
   mostrarPaso('ia-preguntas');
@@ -885,6 +877,14 @@ function volverAPreguntas() {
   iaSeleccion.estado   = null;
   iaSeleccion.tiempo   = null;
   iaSeleccion.objetivo = null;
+
+  // Limpiar validaciones previas si existen
+  document.querySelectorAll('.opciones-grid').forEach(contenedor => {
+    contenedor.classList.remove('campo-incompleto');
+    const msg = contenedor.parentElement.querySelector('.validacion-msg');
+    if (msg) msg.remove();
+  });
+
   document.querySelector('#modalIA .modal-panel').scrollTop = 0;
 }
 
@@ -897,17 +897,40 @@ function mostrarPaso(idActivo) {
 
 // ── Pedir recomendación a la API ──
 async function pedirRecomendacion() {
-  if (!iaSeleccion.estado || !iaSeleccion.tiempo || !iaSeleccion.objetivo) {
-    ['estado', 'tiempo', 'objetivo'].forEach(grupo => {
-      if (!iaSeleccion[grupo]) {
-        const contenedor = document.getElementById(`opciones-${grupo}`);
-        contenedor.style.outline = '2px solid var(--vino)';
-        contenedor.style.borderRadius = '6px';
-        setTimeout(() => {
-          contenedor.style.outline = '';
-        }, 2000);
+  const camposFaltantes = [];
+  
+  ['estado', 'tiempo', 'objetivo'].forEach(grupo => {
+    const contenedor = document.getElementById(`opciones-${grupo}`);
+    if (!contenedor) return;
+    const mensajeExistente = contenedor.parentElement.querySelector('.validacion-msg');
+    
+    if (!iaSeleccion[grupo]) {
+      camposFaltantes.push(grupo);
+      contenedor.classList.add('campo-incompleto');
+      
+      // Agregar mensaje de validación si no existe
+      if (!mensajeExistente) {
+        const msg = document.createElement('span');
+        msg.className = 'validacion-msg';
+        msg.textContent = 'Selecciona una opción';
+        contenedor.parentElement.appendChild(msg);
       }
-    });
+      
+      setTimeout(() => {
+        contenedor.classList.remove('campo-incompleto');
+        const msg = contenedor.parentElement.querySelector('.validacion-msg');
+        if (msg) msg.remove();
+      }, 3000);
+    } else {
+      if (mensajeExistente) mensajeExistente.remove();
+      contenedor.classList.remove('campo-incompleto');
+    }
+  });
+
+  if (camposFaltantes.length > 0) {
+    // Scroll al primer campo incompleto
+    const primerCampo = document.getElementById(`opciones-${camposFaltantes[0]}`);
+    primerCampo?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
@@ -1209,6 +1232,11 @@ function registrarEventos() {
       contenedor.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('seleccionado'));
       btn.classList.add('seleccionado');
       iaSeleccion[grupo] = btn.dataset.valor;
+
+      // Limpiar validación si existía
+      contenedor.classList.remove('campo-incompleto');
+      const mensajeExistente = contenedor.parentElement.querySelector('.validacion-msg');
+      if (mensajeExistente) mensajeExistente.remove();
     });
   });
 

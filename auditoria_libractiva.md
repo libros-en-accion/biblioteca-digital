@@ -340,87 +340,6 @@ contenedor.appendChild(separador);
 
 ---
 
-**📍 Problema identificado:**  
-**Falta de validación visual antes de enviar el formulario de recomendación IA.**  
-La función `pedirRecomendacion()` valida que `estado`, `tiempo` y `objetivo` estén seleccionados, pero la retroalimentación visual consiste solo en un `outline: 2px solid var(--vino)` temporal de 2 segundos en el contenedor de opciones, sin ningún texto explicativo. El usuario no entiende qué campo falta completar.
-
-**💥 Impacto en el usuario:**  
-Los usuarios pueden hacer clic en "Recomendar →" repetidamente sin entender por qué no pasa nada. La señal visual roja es sutil y no explica qué se necesita completar.
-
-**✅ Solución propuesta:**  
-Agregar mensajes de validación inline y destacar visualmente las preguntas incompletas:
-
-```javascript
-async function pedirRecomendacion() {
-  const camposFaltantes = [];
-  
-  ['estado', 'tiempo', 'objetivo'].forEach(grupo => {
-    const contenedor = document.getElementById(`opciones-${grupo}`);
-    const mensajeExistente = contenedor.parentElement.querySelector('.validacion-msg');
-    
-    if (!iaSeleccion[grupo]) {
-      camposFaltantes.push(grupo);
-      contenedor.classList.add('campo-incompleto');
-      
-      // Agregar mensaje de validación si no existe
-      if (!mensajeExistente) {
-        const msg = document.createElement('span');
-        msg.className = 'validacion-msg';
-        msg.textContent = 'Selecciona una opción';
-        contenedor.parentElement.appendChild(msg);
-      }
-      
-      setTimeout(() => {
-        contenedor.classList.remove('campo-incompleto');
-        const msg = contenedor.parentElement.querySelector('.validacion-msg');
-        if (msg) msg.remove();
-      }, 3000);
-    } else {
-      if (mensajeExistente) mensajeExistente.remove();
-      contenedor.classList.remove('campo-incompleto');
-    }
-  });
-
-  if (camposFaltantes.length > 0) {
-    // Scroll al primer campo incompleto
-    const primerCampo = document.getElementById(`opciones-${camposFaltantes[0]}`);
-    primerCampo?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return;
-  }
-
-  // ... resto del código existente ...
-}
-```
-
-```css
-.campo-incompleto {
-  outline: 2px solid var(--vino);
-  outline-offset: 6px;
-  border-radius: 8px;
-  animation: sacudir 0.4s ease;
-}
-
-.validacion-msg {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--vino);
-  font-style: italic;
-  margin-top: 0.4rem;
-  animation: aparecer 0.3s ease;
-}
-
-@keyframes sacudir {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-4px); }
-  40% { transform: translateX(4px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
-}
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 
 **📍 Problema identificado:**  
@@ -863,7 +782,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 10 | **Mejorar validación visual del recomendador IA** | Alto | Medio | Reduce frustración en flujo principal |
 | 11 | **Agregar `width`/`height` a imágenes de portada** | Alto | Bajo | Reduce CLS (Core Web Vital) |
 | 12 | **Mejorar copywriting del panel de bloqueo** | Alto | Bajo | Reduce fricción emocional del paywall |
 | 13 | **Separar visualmente Mood Tags de tags de género** | Medio | Bajo | Claridad en sistema de filtros |

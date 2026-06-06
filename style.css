@@ -1304,6 +1304,36 @@ footer {
   font-style: italic;
 }
 
+/* Validación visual */
+.campo-incompleto {
+  outline: 2px solid var(--vino);
+  outline-offset: 6px;
+  border-radius: 8px;
+  animation: sacudir 0.4s ease;
+}
+
+.validacion-msg {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--vino);
+  font-style: italic;
+  margin-top: 0.4rem;
+  animation: aparecerMensaje 0.3s ease;
+}
+
+@keyframes sacudir {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+@keyframes aparecerMensaje {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ═══════════════════════════════════════════════════ */
 /* BOTONES DE ACCIÓN DEL MODAL                          */
 /* ═══════════════════════════════════════════════════ */
