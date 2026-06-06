@@ -3107,3 +3107,42 @@ input,
   flex-direction: column;
 }
 
+/* ── BOTÓN VOLVER ARRIBA ── */
+.btn-scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--teal-profundo);
+  color: #fff8f0;
+  border: 1.5px solid rgba(212, 169, 74, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px var(--sombra-glow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.btn-scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-scroll-top:hover {
+  background: var(--teal-medio);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(26, 92, 80, 0.45);
+  border-color: var(--dorado-claro);
+}
+
+.btn-scroll-top:active {
+  transform: scale(0.95);
+}
+
+

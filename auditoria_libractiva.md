@@ -288,82 +288,7 @@ function actualizarConteosEpoca() {
 
 ---
 
-**📍 Problema identificado:**  
-**No hay "scroll to top" para catálogos largos.**  
-Cuando el usuario navega por las 117+ páginas del catálogo (2,800 libros / 24 por página), no existe un botón flotante para volver al inicio. Aunque `mostrarPagina()` hace `window.scrollTo({ top: 0 })`, el usuario que está haciendo scroll manual dentro de la misma página no tiene forma rápida de volver al hero/buscador.
 
-**💥 Impacto en el usuario:**  
-Frustración al tener que hacer scroll manual largo hacia arriba, especialmente en dispositivos móviles.
-
-**✅ Solución propuesta:**
-
-```html
-<!-- Agregar antes del cierre de </body> -->
-<button id="btnScrollTop" class="btn-scroll-top" aria-label="Volver arriba" style="display:none">
-  <i data-lucide="chevron-up"></i>
-</button>
-```
-
-```css
-.btn-scroll-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--teal-profundo);
-  color: #fff8f0;
-  border: 1.5px solid rgba(212, 169, 74, 0.3);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(26, 92, 80, 0.35);
-  transition: all 0.3s ease;
-  z-index: 100;
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.btn-scroll-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.btn-scroll-top:hover {
-  background: var(--teal-medio);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(26, 92, 80, 0.45);
-}
-```
-
-```javascript
-// Agregar en registrarEventos()
-const btnScrollTop = document.getElementById('btnScrollTop');
-if (btnScrollTop) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 600) {
-      btnScrollTop.classList.add('visible');
-      btnScrollTop.style.display = 'flex';
-    } else {
-      btnScrollTop.classList.remove('visible');
-      setTimeout(() => {
-        if (!btnScrollTop.classList.contains('visible')) {
-          btnScrollTop.style.display = 'none';
-        }
-      }, 300);
-    }
-  });
-  btnScrollTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 **📍 Problema identificado:**  
 **Los Mood Tags ("Lectura Rápida", "Reflexionar", etc.) se mezclan visualmente con los tags de género.**  
@@ -1052,7 +977,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 7 | **Agregar botón "Scroll to Top" flotante** | Alto | Bajo | Navegación más fluida en catálogos largos |
 | 8 | **Agregar gestos táctiles (swipe) al lector PDF** | Alto | Medio | Experiencia de lectura en móvil transformada |
 | 9 | **Agregar navegación por teclado al autocompletado** | Alto | Medio | UX de búsqueda para usuarios avanzados |
 | 10 | **Mejorar validación visual del recomendador IA** | Alto | Medio | Reduce frustración en flujo principal |

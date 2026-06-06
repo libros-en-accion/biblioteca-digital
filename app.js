@@ -1157,6 +1157,27 @@ function registrarEventos() {
   el('btnLimpiarTodo')?.addEventListener('click', limpiarTodo);
   el('btnTema')?.addEventListener('click', alternarTema);
 
+  // Botón volver arriba
+  const btnScrollTop = el('btnScrollTop');
+  if (btnScrollTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        btnScrollTop.classList.add('visible');
+        btnScrollTop.style.display = 'flex';
+      } else {
+        btnScrollTop.classList.remove('visible');
+        setTimeout(() => {
+          if (!btnScrollTop.classList.contains('visible')) {
+            btnScrollTop.style.display = 'none';
+          }
+        }, 300);
+      }
+    });
+    btnScrollTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // Modal detalle
   el('btnCerrarDetalle')?.addEventListener('click', cerrarDetalle);
   el('modalDetalle')?.addEventListener('click', (e) => {
