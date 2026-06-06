@@ -1,19 +1,19 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, normalizacion, js, catalogo, limpieza]
-fecha: 2026-05-30
+tags: [guia, normalizacion, js, catalogo, limpieza, libractiva]
+fecha: 2026-06-05
 ---
 
 # 🏷️ Guía: Normalización de Catálogo
 
-Esta guía detalla el funcionamiento de la herramienta de normalización de datos (`scripts/normalizar.js`), diseñada para unificar criterios en el catálogo, limpiar títulos sucios y consolidar la taxonomía de géneros literarios.
+Esta guía detalla el funcionamiento de la herramienta de normalización de datos (`scripts/normalizar.js`), diseñada para unificar criterios en el catálogo, limpiar títulos sucios y consolidar la taxonomía de géneros literarios en **Libractiva**.
 
 ---
 
 ## 🧐 ¿Por qué normalizar el catálogo?
 
-A lo largo del desarrollo del proyecto, el archivo `libros.json` acumuló más de **278 géneros únicos** debido a la falta de unificación (por ejemplo: "ciencia ficcion", "ciencia ficción", "cf", "ciencia ficción / terror", "distopía", etc.). 
+A lo largo del desarrollo del proyecto, el archivo `libros.json` acumuló originalmente más de **278 géneros únicos** debido a la falta de unificación (por ejemplo: "ciencia ficcion", "ciencia ficción", "cf", "ciencia ficción / terror", "distopía", etc.). 
 
 El script de normalización soluciona esto reduciendo y unificando el catálogo a aproximadamente **25 géneros principales**, lo que permite:
 1.  **Filtros consistentes:** Que los tags del frontend agrupen correctamente los libros.
@@ -83,5 +83,5 @@ Además del mapeo de géneros, el script ejecuta las siguientes transformaciones
 ---
 **Notas Relacionadas:**
 *   [[Arquitectura - Estructura de Datos|Campos del catálogo libros.json]]
-*   [[Guía - Agregar Libro|Cómo añadir libros sin romper el formato]]
-*   [[Auditoría UX y Plan de Mejoras|Hallazgos de la auditoría de datos]]
+*   [[Guía - Agregar Libro|Cómo agregar entradas al catálogo]]
+*   [[Arquitectura - Auditoría y Rendimiento|Hallazgos de la auditoría y rendimiento del sistema]]

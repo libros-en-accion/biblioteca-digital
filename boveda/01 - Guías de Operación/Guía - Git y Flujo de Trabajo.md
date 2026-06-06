@@ -1,13 +1,13 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, git, github, versionado, flujo-de-trabajo]
-fecha: 2026-05-30
+tags: [guia, git, github, versionado, flujo-de-trabajo, libractiva]
+fecha: 2026-06-05
 ---
 
 # 💻 Guía: Git y Flujo de Trabajo
 
-Esta guía explica detalladamente el uso de Git y el flujo de trabajo en el repositorio de la **Biblioteca Digital** para mantener el catálogo sincronizado y desplegado en producción de manera segura.
+Esta guía explica detalladamente el uso de Git y el flujo de trabajo en el repositorio de **Libractiva** para mantener el catálogo sincronizado y desplegado en producción de manera segura.
 
 ---
 

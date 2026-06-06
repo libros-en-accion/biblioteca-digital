@@ -1,19 +1,19 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, donadores, codigos, base-de-datos, redis, terminal]
-fecha: 2026-06-01
+tags: [guia, donadores, codigos, base-de-datos, redis, terminal, libractiva]
+fecha: 2026-06-05
 ---
 
 # 🔑 Guía: Gestión de Donadores y Códigos
 
-Esta guía describe el funcionamiento del sistema de códigos de donadores, la seguridad del lector embebido y los procedimientos para crear, listar y eliminar códigos desde la terminal de tu computadora.
+Esta guía describe el funcionamiento del sistema de códigos de donadores, la seguridad del lector embebido y los procedimientos para crear, listar y eliminar códigos desde la terminal de tu computadora en **Libractiva**.
 
 ---
 
 ## ⚙️ Funcionamiento del Sistema
 
-Para motivar la donación voluntaria y mantener la sostenibilidad del proyecto, la biblioteca implementa las siguientes restricciones:
+Para motivar la donación voluntaria y mantener la sostenibilidad del proyecto, Libractiva implementa las siguientes restricciones:
 
 1. **Lector con Límite de Vista Previa:** Los usuarios normales pueden abrir el visor embebido (PDF.js) y leer gratuitamente hasta la **página 15** de cualquier libro. Al intentar pasar a la página 16, se les bloquea la lectura y se muestra un aviso invitándoles a ingresar un código de donador.
 2. **Descargas Restringidas:** El botón para descargar el archivo PDF completo en su computadora solo es visible y funcional para los usuarios que hayan validado un código de donador en el navegador. Las peticiones de descarga directa a la API son bloqueadas si no tienen la firma de la cookie del donador.

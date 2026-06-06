@@ -1,13 +1,13 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, ia, agentes, claude-code, prompt-engineering, optimizacion]
-fecha: 2026-05-30
+tags: [guia, ia, agentes, claude-code, prompt-engineering, optimizacion, libractiva]
+fecha: 2026-06-05
 ---
 
 # 🤖 Guía: Uso con Agentes de IA
 
-Esta guía está diseñada para que tú (u otros desarrolladores) sepán cómo interactuar de manera eficiente con **agentes de Inteligencia Artificial** (como Claude Code, Hermes Agent, GitHub Copilot, etc.) al realizar modificaciones o mantenimiento en este proyecto.
+Esta guía está diseñada para que tú (u otros desarrolladores) sepáis cómo interactuar de manera eficiente con **agentes de Inteligencia Artificial** (como Claude Code, Hermes Agent, GitHub Copilot, etc.) al realizar modificaciones o mantenimiento en **Libractiva**.
 
 ---
 
@@ -15,7 +15,7 @@ Esta guía está diseñada para que tú (u otros desarrolladores) sepán cómo i
 
 Este repositorio contiene dos elementos muy pesados que **no aportan valor lógico** al código de programación, pero que consumen una gran cantidad de memoria (tokens) si la IA intenta leerlos:
 
-1.  **`libros.json` (~1.1 MB):** Contiene el catálogo completo de más de 2,843 libros. Si un agente de IA lee este archivo por completo, consumirá más de **220,000 tokens de entrada** en cada consulta. Esto ralentiza las respuestas, aumenta el coste drásticamente y puede hacer que la IA "olvide" instrucciones debido a la saturación de contexto.
+1.  **`libros.json` (~1.36 MB):** Contiene el catálogo completo de más de 2,800 libros. Si un agente de IA lee este archivo por completo, consumirá más de **250,000 tokens de entrada** en cada consulta. Esto ralentiza las respuestas, aumenta el coste drásticamente y puede hacer que la IA "olvide" instrucciones debido a la saturación de contexto.
 2.  **`portadas/` (Carpeta con ~2,850 WebPs):** Es una carpeta con miles de imágenes binarias. Las IAs no necesitan analizar estas imágenes para corregir o mejorar el código del sitio.
 
 ---

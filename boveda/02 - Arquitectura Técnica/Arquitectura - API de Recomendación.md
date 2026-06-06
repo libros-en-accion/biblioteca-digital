@@ -1,13 +1,13 @@
 ---
 tipo: arquitectura
 area: tecnica
-tags: [arquitectura, api, serverless, deepseek, node, ia]
-fecha: 2026-05-30
+tags: [arquitectura, api, serverless, deepseek, node, ia, libractiva]
+fecha: 2026-06-05
 ---
 
 # 🤖 Arquitectura: API de Recomendación
 
-Este documento detalla el diseño, la lógica y la optimización de costes del recomendador inteligente por IA, implementado en la ruta serverless `api/recomendar.js`.
+Este documento detalla el diseño, la lógica y la optimización de costes del recomendador inteligente por IA de **Libractiva**, implementado en la ruta serverless `api/recomendar.js`.
 
 ---
 
@@ -114,4 +114,4 @@ Si el parseo de la respuesta falla (el JSON no es válido o está incompleto), l
 **Notas Relacionadas:**
 *   [[Guía - Despliegue en Vercel|Cómo levantar la API en desarrollo local]]
 *   [[Arquitectura - Estructura de Datos|Propiedades de libros.json]]
-*   [[Auditoría UX y Plan de Mejoras|Rendimiento y caching en la nube]]
+*   [[Arquitectura - Auditoría y Rendimiento|Auditoría de rendimiento y caching en la nube]]

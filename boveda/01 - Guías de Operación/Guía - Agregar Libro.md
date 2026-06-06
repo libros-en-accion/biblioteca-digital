@@ -1,13 +1,13 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, catalogacion, scripts, python]
-fecha: 2026-05-30
+tags: [guia, catalogacion, scripts, python, libractiva]
+fecha: 2026-06-05
 ---
 
 # 📖 Guía: Agregar Libro al Catálogo
 
-Esta guía describe el procedimiento estándar para añadir nuevos títulos al catálogo de la **Biblioteca Digital**. Contamos con un script en Python (`agregar_libro.py`) diseñado para automatizar la mayoría de los pasos (copia del archivo, actualización del JSON, extracción de la portada y confirmación en Git).
+Esta guía describe el procedimiento estándar para añadir nuevos títulos al catálogo de **Libractiva**. Contamos con un script en Python (`agregar_libro.py`) diseñado para automatizar la mayoría de los pasos (copia del archivo, actualización del JSON, extracción de la portada y confirmación en Git).
 
 ---
 

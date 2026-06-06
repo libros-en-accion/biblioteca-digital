@@ -188,6 +188,19 @@ fetch('libros.json')
   });
 
 // ── INICIALIZAR PÁGINA ──
+/* Adapta el placeholder del buscador según el tamaño del viewport */
+function adaptarPlaceholder() {
+  const input = document.getElementById('inputBusqueda');
+  if (!input) return;
+  const actualizar = () => {
+    input.placeholder = window.innerWidth < 480
+      ? 'Buscar libro, autor…'
+      : 'Buscar por título, autor, género o año…';
+  };
+  actualizar();
+  window.addEventListener('resize', actualizar, { passive: true });
+}
+
 function inicializarPagina() {
   // Frase literaria aleatoria
   const fraseEl = document.getElementById('fraseLiteraria');
@@ -207,6 +220,9 @@ function inicializarPagina() {
 
   // Generar tags dinámicamente
   generarTagsFiltro();
+
+  // Conteos en chips de época
+  actualizarConteosEpoca();
 
   // Scroll horizontal de tags con rueda de ratón (desktop)
   const filtrosTags = document.getElementById('filtrosTags');
@@ -242,6 +258,9 @@ function inicializarPagina() {
       }
     });
   }
+
+  // Adaptar placeholder del buscador según viewport (móvil / desktop)
+  adaptarPlaceholder();
 
   // Poblar e inicializar los custom dropdowns, chips y autocompletado
   poblarDropdownAutores();
@@ -293,6 +312,11 @@ function generarTagsFiltro() {
     contenedor.appendChild(btn);
   });
 
+  const separador = document.createElement('div');
+  separador.className = 'tag-separador';
+  separador.setAttribute('aria-hidden', 'true');
+  contenedor.appendChild(separador);
+
   // 2. Renderizar Tag "Todos"
   const btnTodos = document.createElement('button');
   btnTodos.className = 'tag-genero activo';
@@ -314,6 +338,31 @@ function generarTagsFiltro() {
   });
   
   if (window.lucide) lucide.createIcons({ root: contenedor });
+}
+
+function actualizarConteosEpoca() {
+  const rangos = {
+    'pre-1800':    l => { const a = parseInt(l.anio); return a < 1800; },
+    '1800-1899':   l => { const a = parseInt(l.anio); return a >= 1800 && a <= 1899; },
+    '1900-1949':   l => { const a = parseInt(l.anio); return a >= 1900 && a <= 1949; },
+    '1950-1999':   l => { const a = parseInt(l.anio); return a >= 1950 && a <= 1999; },
+    '2000+':       l => { const a = parseInt(l.anio); return a >= 2000; }
+  };
+
+  Object.entries(rangos).forEach(([epoca, filtro]) => {
+    const chip = document.querySelector(`.chip-epoca[data-epoca="${epoca}"]`);
+    if (!chip) return;
+    const count = libros.filter(l => l.anio && filtro(l)).length;
+    chip.setAttribute('title', `${count} libros`);
+
+    let badge = chip.querySelector('.chip-count');
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'chip-count';
+      chip.appendChild(badge);
+    }
+    badge.textContent = count;
+  });
 }
 
 // ── RENDERIZAR LIBROS DESTACADOS ──
@@ -1224,11 +1273,14 @@ function registrarEventos() {
   el('btnAzar')?.addEventListener('click', libroAlAzar);
   el('btnLimpiarBusqueda')?.addEventListener('click', limpiarBusqueda);
   el('btnBuscarClick')?.addEventListener('click', () => {
+    const btn = document.getElementById('btnBuscarClick');
+    btn?.classList.add('busqueda-ejecutada');
     filtrar();
     const galeria = document.getElementById('galeria');
     if (galeria) {
       galeria.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setTimeout(() => btn?.classList.remove('busqueda-ejecutada'), 500);
   });
   el('btnLimpiarTodo')?.addEventListener('click', limpiarTodo);
   el('btnTema')?.addEventListener('click', alternarTema);
@@ -1808,7 +1860,7 @@ function abrirModalCodigo(callbackAlValidar) {
   const input = document.getElementById('inputCodigoDonador');
   const msg = document.getElementById('codigoMensaje');
   if (modal) {
-    modal.style.display = 'flex';
+    modal.classList.add('abierto');
     document.body.style.overflow = 'hidden';
     if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
     if (input) { input.value = ''; setTimeout(() => input.focus(), 80); }
@@ -1819,7 +1871,7 @@ function abrirModalCodigo(callbackAlValidar) {
 function cerrarModalCodigo() {
   const modal = document.getElementById('modalCodigo');
   if (modal) {
-    modal.style.display = 'none';
+    modal.classList.remove('abierto');
     document.body.style.overflow = '';
   }
 }

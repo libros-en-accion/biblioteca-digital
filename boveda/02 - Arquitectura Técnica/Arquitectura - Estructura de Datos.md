@@ -1,13 +1,13 @@
 ---
 tipo: arquitectura
 area: tecnica
-tags: [arquitectura, datos, json, base-de-datos]
-fecha: 2026-05-30
+tags: [arquitectura, datos, json, base-de-datos, libractiva]
+fecha: 2026-06-05
 ---
 
 # 📊 Arquitectura: Estructura de Datos
 
-Este documento define el formato y las especificaciones técnicas del archivo `libros.json`, que actúa como la base de datos principal y catálogo estático de la **Biblioteca Digital**.
+Este documento define el formato y las especificaciones técnicas del archivo `libros.json`, que actúa como la base de datos principal y catálogo estático de **Libractiva**.
 
 ---
 
@@ -66,7 +66,7 @@ El sistema utiliza una base de datos Redis en la nube para gestionar los código
     ```
 
 ##### Campos del JSON:
-*   `dispositivos` (Array de Strings): Lista de hashes SHA-256 truncados de 16 caracteres, que representan los fingerprints de los navegadores que han activado el código.
+*   `dispositivos` (Array de Strings): Lista de hashes SHA-256 de 16 caracteres, que representan los fingerprints de los navegadores que han activado el código.
 *   `limite` (Entero): Cantidad máxima de dispositivos únicos que pueden activar el mismo código (por defecto, `3`).
 
 ---
@@ -82,7 +82,6 @@ Para evitar errores de renderizado en el sitio web, cualquier modificación manu
 5.  **Codificación de Archivo:** El archivo debe guardarse en codificación **UTF-8 sin BOM** para evitar problemas al renderizar caracteres especiales y acentos en español (ej: `á`, `ñ`, `ü`).
 
 ---
-
 **Notas Relacionadas:**
 *   [[Guía - Normalización de Catálogo|Normalización y consolidación de géneros]]
 *   [[Guía - Agregar Libro|Cómo agregar entradas al catálogo]]

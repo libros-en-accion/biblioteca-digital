@@ -1,13 +1,13 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, destacados, frontend, configuracion, app.js]
-fecha: 2026-06-01
+tags: [guia, destacados, frontend, configuracion, app.js, libractiva]
+fecha: 2026-06-05
 ---
 
 # 🌟 Guía: Gestión de Libros Destacados en la Home
 
-Esta guía describe el funcionamiento, estructura e instrucciones para actualizar la sección de **Libros Destacados** en la página de inicio de la **Biblioteca Digital**.
+Esta guía describe el funcionamiento, estructura e instrucciones para actualizar la sección de **Libros Destacados** en la página de inicio de **Libractiva**.
 
 ---
 
@@ -15,7 +15,7 @@ Esta guía describe el funcionamiento, estructura e instrucciones para actualiza
 
 Para mejorar la experiencia del usuario y evitar que se sienta abrumado por el catálogo de más de 2800 libros, la página web cuenta con una sección superior dedicada a **Libros Destacados**. 
 
-Esta sección muestra un conjunto de portadas seleccionadas manualmente (por ejemplo, los más leídos de la semana o los más vendidos de Amazon) antes de presentar la lista completa de libros.
+Esta sección muestra un conjunto de portadas seleccionadas manualmente (por ejemplo, los más leídos de la semana o los recomendados de la temporada) antes de presentar la lista completa de libros.
 
 ---
 

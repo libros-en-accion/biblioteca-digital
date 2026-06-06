@@ -1,13 +1,13 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, portadas, pdf, imagemagick, poppler, python]
-fecha: 2026-05-30
+tags: [guia, portadas, pdf, imagemagick, poppler, python, libractiva]
+fecha: 2026-06-05
 ---
 
 # 🖼️ Guía: Generación de Portadas
 
-Esta guía describe el funcionamiento y uso del script `generar_portadas.py`, encargado de extraer automáticamente la primera página de los PDFs locales y convertirlos en portadas WebP optimizadas para la galería web.
+Esta guía describe el funcionamiento y uso del script `generar_portadas.py`, encargado de extraer automáticamente la primera página de los PDFs locales y convertirlos en portadas WebP optimizadas para la galería de **Libractiva**.
 
 ---
 
