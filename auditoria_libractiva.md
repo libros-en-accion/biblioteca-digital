@@ -31,38 +31,7 @@ Libractiva es una plataforma de biblioteca digital ambiciosa con un stack técni
 
 ---
 
-**📍 Problema identificado:**  
-**Hero section excesivamente comprimido — `.hero-descripcion` oculta con `display: none`.**  
-La descripción del hero (`Explora una colección de más de 2,800 clásicos, novelas y ensayos con recomendación inteligente por IA.`) está oculta con CSS (`display: none` en línea 289 del `style.css`). El padding del hero se redujo a `1.4rem 2rem 1rem` (comentario: "Reducido a la mitad"). Esto elimina el contexto principal que comunica la propuesta de valor del producto a los nuevos visitantes.
 
-**💥 Impacto en el usuario:**  
-Los nuevos visitantes no entienden qué es Libractiva en los primeros 3 segundos. El subtítulo "Tu bibliotecario personal, ahora es inteligente" es insuficiente para comunicar la amplitud del catálogo y la funcionalidad IA. La tasa de rebote aumenta porque los usuarios no perciben valor inmediato.
-
-**✅ Solución propuesta:**  
-Restaurar la descripción y optimizar el espacio vertical con un diseño más compacto pero informativo:
-
-```css
-/* Restaurar la descripción con un tratamiento visual compacto */
-.hero-descripcion {
-  display: block; /* Reactivar */
-  font-family: var(--fuente-literaria);
-  font-size: 0.95rem;
-  color: rgba(236, 217, 198, 0.85);
-  max-width: 520px;
-  line-height: 1.6;
-  margin: 0 auto;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-}
-
-/* Ajustar padding del hero para equilibrar con la descripción restaurada */
-.hero-seccion {
-  padding: 2rem 2rem 1.4rem;
-}
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 **📍 Problema identificado:**  
 **Duplicación de regla CSS `.controles-barra` — Conflicto de estilos.**  
@@ -1176,7 +1145,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 3 | **Restaurar `.hero-descripcion` y ajustar padding del hero** | Alto | Bajo | Propuesta de valor comunicada a nuevos usuarios |
 | 4 | **Mover `@import` de Google Fonts a `<link>` con `preconnect`** | Alto | Bajo | Mejora de ~200-400ms en primer renderizado |
 | 5 | **Fijar versión de Lucide Icons (quitar `@latest`)** | Alto | Bajo | Elimina riesgo de roturas imprevistas |
 | 6 | **Corregir Open Graph image a URL absoluta** | Alto | Bajo | Shares en redes sociales muestran imagen |

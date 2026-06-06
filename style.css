@@ -160,7 +160,7 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 1.4rem 2rem 1rem; /* Reducido a la mitad */
+  padding: 2rem 2rem 1.4rem;
 }
 
 .hero-background-deco {
@@ -278,7 +278,14 @@ body {
 }
 
 .hero-descripcion {
-  display: none; /* Ocultado para reducir espacio vertical a la mitad */
+  display: block;
+  font-family: var(--fuente-literaria);
+  font-size: 1rem;
+  color: rgba(244, 237, 228, 0.85);
+  max-width: 580px;
+  line-height: 1.5;
+  margin: 0.6rem auto 1.2rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Buscador Caja y Autocompletado */
