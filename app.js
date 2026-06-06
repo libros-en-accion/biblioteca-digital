@@ -2046,6 +2046,49 @@ function inicializarLector() {
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') irPaginaAnterior();
     if (e.key === 'Escape') cerrarLector();
   });
+
+  // Soporte de gestos táctiles (swipe) para cambiar página en móvil
+  function inicializarGestosTactiles() {
+    const container = document.getElementById('lectorContainer');
+    if (!container) return;
+
+    let startX = 0;
+    let startY = 0;
+    let distX = 0;
+    let distY = 0;
+    
+    container.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      distX = 0;
+      distY = 0;
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e) => {
+      distX = e.touches[0].clientX - startX;
+      distY = e.touches[0].clientY - startY;
+    }, { passive: true });
+
+    container.addEventListener('touchend', () => {
+      const modal = document.getElementById('modalLector');
+      if (!modal || modal.style.display === 'none') return;
+      
+      const umbral = 60; // Mínimo de pixeles horizontales para considerarlo swipe
+      const maxDesviacionVertical = 45; // Para evitar cambiar página durante el scroll vertical
+      
+      if (Math.abs(distX) > umbral && Math.abs(distY) < maxDesviacionVertical) {
+        if (distX < 0) {
+          irPaginaSiguiente();
+        } else {
+          irPaginaAnterior();
+        }
+      }
+      distX = 0;
+      distY = 0;
+    }, { passive: true });
+  }
+
+  inicializarGestosTactiles();
 }
 
 // ════════════════════════════════════════════════════════

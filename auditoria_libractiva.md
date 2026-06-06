@@ -769,61 +769,7 @@ Cambiar a un layout de 2 columnas fijo en móvil con más espacio entre tarjetas
 
 ---
 
-**📍 Problema identificado:**  
-**El lector PDF no soporta gestos táctiles (swipe para cambiar página, pinch to zoom).**  
-El lector embebido usa botones discretos para la navegación (anterior/siguiente) y zoom. En dispositivos móviles, los usuarios esperan poder hacer swipe horizontal para pasar página y pinch para zoom. Actualmente solo soporta teclado (flechas) y clics.
 
-**💥 Impacto en el usuario:**  
-La experiencia de lectura en móvil es frustrante. Los botones del lector son pequeños (32x32px en `<600px`) y el usuario debe alcanzar la barra superior para cada cambio de página.
-
-**✅ Solución propuesta:**  
-Agregar soporte de gestos táctiles para el contenedor del lector:
-
-```javascript
-// Agregar en inicializarLector()
-function inicializarGestosTactiles() {
-  const container = document.getElementById('lectorContainer');
-  if (!container) return;
-
-  let startX = 0;
-  let startY = 0;
-  let distX = 0;
-  
-  container.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  }, { passive: true });
-
-  container.addEventListener('touchmove', (e) => {
-    distX = e.touches[0].clientX - startX;
-  }, { passive: true });
-
-  container.addEventListener('touchend', () => {
-    const modal = document.getElementById('modalLector');
-    if (!modal || modal.style.display === 'none') return;
-    
-    const umbral = 60; // Mínimo de pixeles para considerar swipe
-    
-    if (Math.abs(distX) > umbral) {
-      if (distX < 0) {
-        // Swipe izquierda → siguiente página
-        irPaginaSiguiente();
-      } else {
-        // Swipe derecha → página anterior
-        irPaginaAnterior();
-      }
-    }
-    distX = 0;
-  }, { passive: true });
-}
-
-// Llamar en inicializarLector()
-inicializarGestosTactiles();
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 ### 2.5 Rendimiento Técnico
 
@@ -977,7 +923,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 8 | **Agregar gestos táctiles (swipe) al lector PDF** | Alto | Medio | Experiencia de lectura en móvil transformada |
 | 9 | **Agregar navegación por teclado al autocompletado** | Alto | Medio | UX de búsqueda para usuarios avanzados |
 | 10 | **Mejorar validación visual del recomendador IA** | Alto | Medio | Reduce frustración en flujo principal |
 | 11 | **Agregar `width`/`height` a imágenes de portada** | Alto | Bajo | Reduce CLS (Core Web Vital) |
