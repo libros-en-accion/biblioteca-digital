@@ -637,45 +637,7 @@ Cambiar a un layout de 2 columnas fijo en móvil con más espacio entre tarjetas
 
 
 
-**📍 Problema identificado:**  
-**Las imágenes de portada se cargan desde URLs externas (Google Drive thumbnails) sin dimensiones explícitas (`width`/`height`).**  
-Las portadas de los libros se renderizan como `<img src="${libro.portada}" class="tarjeta-portada" loading="lazy" />` sin atributos `width` ni `height`. Aunque el CSS define `aspect-ratio: 3 / 4`, la ausencia de dimensiones intrínsecas causa **Cumulative Layout Shift (CLS)** durante la carga.
 
-**💥 Impacto en el usuario:**  
-Las tarjetas "saltan" mientras las imágenes se cargan, especialmente en conexiones lentas. Esto afecta el Core Web Vital CLS.
-
-**✅ Solución propuesta:**  
-Agregar dimensiones explícitas a las imágenes de portada:
-
-```javascript
-// En mostrarLibros() y renderizarDestacados():
-tarjeta.innerHTML = `
-  ${libro.portada 
-    ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" 
-           loading="lazy" width="230" height="307" decoding="async" />`
-    : `<div class="tarjeta-portada tarjeta-portada-placeholder">
-         <i data-lucide="book" class="icono-lg"></i>
-       </div>`
-  }
-  ...
-`;
-```
-
-```css
-/* Placeholder para libros sin portada */
-.tarjeta-portada-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--fondo) 0%, var(--borde-suave) 100%);
-  color: var(--texto-suave);
-  opacity: 0.5;
-}
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 
 
@@ -782,7 +744,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 11 | **Agregar `width`/`height` a imágenes de portada** | Alto | Bajo | Reduce CLS (Core Web Vital) |
 | 12 | **Mejorar copywriting del panel de bloqueo** | Alto | Bajo | Reduce fricción emocional del paywall |
 | 13 | **Separar visualmente Mood Tags de tags de género** | Medio | Bajo | Claridad en sistema de filtros |
 | 14 | **Estandarizar modal de código donador con clase `.abierto`** | Medio | Bajo | Consistencia de animaciones |

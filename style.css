@@ -707,6 +707,29 @@ body {
   border-bottom: 1px solid var(--borde-suave);
 }
 
+/* Placeholder para libros sin portada */
+.tarjeta-portada-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--fondo) 0%, var(--borde-suave) 100%);
+  color: var(--texto-suave);
+  opacity: 0.5;
+}
+
+.tarjeta-portada-placeholder svg,
+.tarjeta-portada-placeholder i {
+  width: 40px;
+  height: 40px;
+  stroke-width: 1.5px;
+}
+
+.galeria.vista-lista .tarjeta-portada-placeholder svg,
+.galeria.vista-lista .tarjeta-portada-placeholder i {
+  width: 24px;
+  height: 24px;
+}
+
 /* ── ESTILOS VISTA LISTA ── */
 .galeria.vista-lista {
   display: flex;

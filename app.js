@@ -358,7 +358,12 @@ function renderizarDestacados() {
     const hasPdf = !!libro.archivo_pdf;
 
     tarjeta.innerHTML = `
-      ${libro.portada ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" />` : ''}
+      ${libro.portada 
+        ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" width="230" height="307" decoding="async" />` 
+        : `<div class="tarjeta-portada tarjeta-portada-placeholder">
+             <i data-lucide="book" class="icono-lg"></i>
+           </div>`
+      }
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
         <div class="tarjeta-titulo">${tituloLimpio}</div>
@@ -439,7 +444,12 @@ function mostrarLibros(lista) {
 
     const hasPdf = !!libro.archivo_pdf;
     tarjeta.innerHTML = `
-      ${libro.portada ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" />` : ''}
+      ${libro.portada 
+        ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" width="230" height="307" decoding="async" />` 
+        : `<div class="tarjeta-portada tarjeta-portada-placeholder">
+             <i data-lucide="book" class="icono-lg"></i>
+           </div>`
+      }
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
         <div class="tarjeta-titulo">${tituloLimpio}</div>
