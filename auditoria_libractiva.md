@@ -966,36 +966,7 @@ tarjeta.innerHTML = `
 
 ---
 
-**📍 Problema identificado:**  
-**El `@import` de Google Fonts en la primera línea del CSS es render-blocking.**  
-La línea `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display...&display=swap')` bloquea el renderizado hasta que las fuentes se descargan. Esto es el patrón menos eficiente para cargar fuentes web.
 
-**💥 Impacto en el usuario:**  
-Retraso perceptible en la primera pintura de contenido, especialmente en dispositivos con conectividad limitada. El texto puede parpadear (FOUT) cuando las fuentes llegan.
-
-**✅ Solución propuesta:**  
-Mover la carga de fuentes a `<link>` en el HTML con `preconnect` y atributos de rendimiento:
-
-```html
-<!-- En el <head>, ANTES del stylesheet -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" 
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-      media="print" 
-      onload="this.media='all'" />
-```
-
-Y eliminar el `@import` del CSS:
-
-```css
-/* ELIMINAR esta línea del style.css */
-/* @import url('https://fonts.googleapis.com/css2?family=...'); */
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 **📍 Problema identificado:**  
 **El Open Graph image usa una ruta relativa con encoding incorrecto: `portada%20Libractiva.jpeg`.**  
@@ -1145,7 +1116,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 4 | **Mover `@import` de Google Fonts a `<link>` con `preconnect`** | Alto | Bajo | Mejora de ~200-400ms en primer renderizado |
 | 5 | **Fijar versión de Lucide Icons (quitar `@latest`)** | Alto | Bajo | Elimina riesgo de roturas imprevistas |
 | 6 | **Corregir Open Graph image a URL absoluta** | Alto | Bajo | Shares en redes sociales muestran imagen |
 | 7 | **Agregar botón "Scroll to Top" flotante** | Alto | Bajo | Navegación más fluida en catálogos largos |
