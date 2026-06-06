@@ -22,7 +22,7 @@ biblioteca/
 ├── agregar_libro.py        # Script automatizado en Python para catalogar libros
 ├── generar_portadas.py     # Script en Python para extraer portadas desde PDFs
 ├── nuevo_logo.jpg          # Recurso gráfico: Logotipo oficial de la marca
-├── portada Libractiva.jpeg # Recurso gráfico: Imagen de portada de la plataforma
+├── portada-libractiva.jpeg # Recurso gráfico: Imagen de portada de la plataforma
 ├── portadas/               # Directorio con imágenes WebP optimizadas (miniaturas)
 │   ├── 1.webp
 │   └── ...

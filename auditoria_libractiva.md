@@ -949,52 +949,7 @@ tarjeta.innerHTML = `
 
 
 
-**📍 Problema identificado:**  
-**El Open Graph image usa una ruta relativa con encoding incorrecto: `portada%20Libractiva.jpeg`.**  
-En el HTML (línea 21): `<meta property="og:image" content="portada%20Libractiva.jpeg">`. Esta es una ruta relativa que no se resolverá correctamente en redes sociales. Las plataformas como Twitter, Facebook y WhatsApp requieren URLs absolutas para las imágenes OG.
 
-**💥 Impacto en el usuario:**  
-Cuando alguien comparte un enlace de Libractiva en redes sociales o WhatsApp, la vista previa no mostrará imagen, reduciendo significativamente la tasa de clics en compartidos.
-
-**✅ Solución propuesta:**
-
-```html
-<!-- Usar URL absoluta para OG images -->
-<meta property="og:image" content="https://biblioteca-digital-eight.vercel.app/portada%20Libractiva.jpeg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://biblioteca-digital-eight.vercel.app/" />
-
-<!-- Twitter Card también necesita URL absoluta -->
-<meta name="twitter:image" content="https://biblioteca-digital-eight.vercel.app/portada%20Libractiva.jpeg" />
-```
-
-Adicionalmente, renombrar el archivo a `portada-libractiva.jpeg` (sin espacios) para evitar problemas de encoding:
-
-```html
-<meta property="og:image" content="https://biblioteca-digital-eight.vercel.app/portada-libractiva.jpeg" />
-```
-
-**🎯 Prioridad:** Alto
-
----
-
-**📍 Problema identificado:**  
-**El `<link rel="canonical" href="/">` usa ruta relativa — debería ser absoluta.**  
-La URL canónica (línea 34) usa `href="/"` en lugar de la URL completa. Esto puede causar problemas de indexación cuando el sitio se accede desde diferentes subdominios o proxies.
-
-**💥 Impacto en el usuario:**  
-SEO degradado: los motores de búsqueda pueden indexar versiones duplicadas de la página, diluyendo la autoridad del dominio.
-
-**✅ Solución propuesta:**
-
-```html
-<link rel="canonical" href="https://biblioteca-digital-eight.vercel.app/" />
-```
-
-**🎯 Prioridad:** Medio
-
----
 
 ### 2.6 Contenido y Copywriting
 
@@ -1097,7 +1052,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 6 | **Corregir Open Graph image a URL absoluta** | Alto | Bajo | Shares en redes sociales muestran imagen |
 | 7 | **Agregar botón "Scroll to Top" flotante** | Alto | Bajo | Navegación más fluida en catálogos largos |
 | 8 | **Agregar gestos táctiles (swipe) al lector PDF** | Alto | Medio | Experiencia de lectura en móvil transformada |
 | 9 | **Agregar navegación por teclado al autocompletado** | Alto | Medio | UX de búsqueda para usuarios avanzados |

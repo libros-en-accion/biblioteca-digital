@@ -40,7 +40,7 @@ La selección del nombre responde a criterios estratégicos de comunicación y d
 Los recursos gráficos oficiales de la marca están disponibles en la raíz del repositorio local:
 
 *   **Logotipo Oficial:** [[nuevo_logo.jpg]]
-*   **Portada de la Plataforma:** [[portada Libractiva.jpeg]]
+*   **Portada de la Plataforma:** [[portada-libractiva.jpeg]]
 
 ---
 
