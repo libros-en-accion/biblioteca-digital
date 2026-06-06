@@ -905,26 +905,7 @@ inicializarGestosTactiles();
 ---
 
 
-**📍 Problema identificado:**  
-**La librería Lucide Icons se carga desde unpkg sin versión fija (`https://unpkg.com/lucide@latest`).**  
-En la línea 377 del HTML: `<script src="https://unpkg.com/lucide@latest"></script>`. Usar `@latest` es riesgoso porque: (1) una actualización rompedora de Lucide podría romper el sitio, (2) los CDN sin versionado no se cachean eficientemente por los navegadores.
 
-**💥 Impacto en el usuario:**  
-Riesgo de rotura del sitio si Lucide cambia su API. Además, el navegador no puede cachear agresivamente un recurso `@latest`, lo que impacta el rendimiento en visitas recurrentes.
-
-**✅ Solución propuesta:**  
-Fijar a una versión específica y agregar `integrity` para seguridad:
-
-```html
-<!-- Cambiar de @latest a una versión fija -->
-<script src="https://unpkg.com/lucide@0.378.0/dist/umd/lucide.min.js" 
-        integrity="sha384-..." 
-        crossorigin="anonymous"></script>
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 **📍 Problema identificado:**  
 **Las imágenes de portada se cargan desde URLs externas (Google Drive thumbnails) sin dimensiones explícitas (`width`/`height`).**  
@@ -1116,7 +1097,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 5 | **Fijar versión de Lucide Icons (quitar `@latest`)** | Alto | Bajo | Elimina riesgo de roturas imprevistas |
 | 6 | **Corregir Open Graph image a URL absoluta** | Alto | Bajo | Shares en redes sociales muestran imagen |
 | 7 | **Agregar botón "Scroll to Top" flotante** | Alto | Bajo | Navegación más fluida en catálogos largos |
 | 8 | **Agregar gestos táctiles (swipe) al lector PDF** | Alto | Medio | Experiencia de lectura en móvil transformada |
