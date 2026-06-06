@@ -1386,7 +1386,21 @@ function inicializarAutocompletado() {
   const panel = document.getElementById('autocompletarPanel');
   if (!inputBusqueda || !panel) return;
 
+  let indiceAutocompletar = -1;
+
+  function actualizarItemActivo(items) {
+    items.forEach((item, i) => {
+      if (i === indiceAutocompletar) {
+        item.classList.add('autocompletar-activo');
+        item.scrollIntoView({ block: 'nearest' });
+      } else {
+        item.classList.remove('autocompletar-activo');
+      }
+    });
+  }
+
   inputBusqueda.addEventListener('input', () => {
+    indiceAutocompletar = -1;
     const raw = inputBusqueda.value;
     if (raw.trim().length === 0) {
       panel.innerHTML = '';
@@ -1439,6 +1453,7 @@ function inicializarAutocompletado() {
         panel.style.display = 'none';
         inputBusqueda.value = '';
         document.getElementById('btnLimpiarBusqueda').style.display = 'none';
+        indiceAutocompletar = -1;
       });
 
       panel.appendChild(item);
@@ -1454,8 +1469,32 @@ function inicializarAutocompletado() {
   });
 
   inputBusqueda.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+    const items = panel.querySelectorAll('.autocompletar-item:not(.vacio)');
+    if (panel.style.display === 'none' || items.length === 0) {
+      if (e.key === 'Escape') panel.style.display = 'none';
+      return;
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      indiceAutocompletar = Math.min(indiceAutocompletar + 1, items.length - 1);
+      actualizarItemActivo(items);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      indiceAutocompletar = Math.max(indiceAutocompletar - 1, -1);
+      actualizarItemActivo(items);
+    } else if (e.key === 'Enter') {
+      if (indiceAutocompletar >= 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        items[indiceAutocompletar]?.click();
+        indiceAutocompletar = -1;
+      } else {
+        panel.style.display = 'none';
+      }
+    } else if (e.key === 'Escape') {
       panel.style.display = 'none';
+      indiceAutocompletar = -1;
     }
   });
 }

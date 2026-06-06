@@ -369,8 +369,14 @@ body {
   border-bottom: none;
 }
 
-.autocompletar-item:hover {
+.autocompletar-item:hover,
+.autocompletar-item.autocompletar-activo {
   background-color: var(--teal-suave);
+}
+
+.autocompletar-item.autocompletar-activo {
+  outline: 2px solid var(--teal-medio);
+  outline-offset: -2px;
 }
 
 .autocompletar-item.vacio {

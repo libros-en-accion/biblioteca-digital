@@ -422,66 +422,6 @@ async function pedirRecomendacion() {
 
 ---
 
-**📍 Problema identificado:**  
-**La función de autocompletado no soporta navegación con teclado (flechas arriba/abajo).**  
-El panel de autocompletado (`#autocompletarPanel`) se abre correctamente y los items son clickeables, pero no se puede navegar entre resultados con las teclas de flecha. El usuario solo puede usar el ratón para seleccionar un resultado, limitando severamente la usabilidad para usuarios que prefieren el teclado.
-
-**💥 Impacto en el usuario:**  
-Usuarios avanzados que buscan eficiencia (tipear + flecha + Enter) se ven forzados a mover la mano al ratón, rompiendo su flujo de trabajo.
-
-**✅ Solución propuesta:**
-
-```javascript
-// Agregar dentro de inicializarAutocompletado(), después del listener de 'input'
-let indiceAutocompletar = -1;
-
-inputBusqueda.addEventListener('keydown', (e) => {
-  const items = panel.querySelectorAll('.autocompletar-item:not(.vacio)');
-  if (items.length === 0 || panel.style.display === 'none') return;
-
-  if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    indiceAutocompletar = Math.min(indiceAutocompletar + 1, items.length - 1);
-    actualizarItemActivo(items);
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    indiceAutocompletar = Math.max(indiceAutocompletar - 1, -1);
-    actualizarItemActivo(items);
-  } else if (e.key === 'Enter' && indiceAutocompletar >= 0) {
-    e.preventDefault();
-    items[indiceAutocompletar]?.click();
-    indiceAutocompletar = -1;
-  }
-});
-
-function actualizarItemActivo(items) {
-  items.forEach((item, i) => {
-    if (i === indiceAutocompletar) {
-      item.classList.add('autocompletar-activo');
-      item.scrollIntoView({ block: 'nearest' });
-    } else {
-      item.classList.remove('autocompletar-activo');
-    }
-  });
-}
-
-// Resetear índice cuando cambia la búsqueda
-inputBusqueda.addEventListener('input', () => {
-  indiceAutocompletar = -1;
-});
-```
-
-```css
-.autocompletar-item.autocompletar-activo {
-  background-color: var(--teal-suave);
-  outline: 2px solid var(--teal-medio);
-  outline-offset: -2px;
-}
-```
-
-**🎯 Prioridad:** Alto
-
----
 
 **📍 Problema identificado:**  
 **El botón "Buscar" (lupa derecha del input) no muestra estado de carga ni feedback visual al ejecutarse.**  
@@ -923,7 +863,6 @@ function adaptarPlaceholder() {
 | # | Acción | Prioridad | Esfuerzo | Impacto |
 |---|--------|-----------|----------|---------|
 | 1 | **Descomentar/agregar CTA de donación en panel de bloqueo del lector** | Crítico | Bajo | Embudo de conversión reparado |
-| 9 | **Agregar navegación por teclado al autocompletado** | Alto | Medio | UX de búsqueda para usuarios avanzados |
 | 10 | **Mejorar validación visual del recomendador IA** | Alto | Medio | Reduce frustración en flujo principal |
 | 11 | **Agregar `width`/`height` a imágenes de portada** | Alto | Bajo | Reduce CLS (Core Web Vital) |
 | 12 | **Mejorar copywriting del panel de bloqueo** | Alto | Bajo | Reduce fricción emocional del paywall |
