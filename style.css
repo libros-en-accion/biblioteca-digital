@@ -1805,6 +1805,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-left: auto;
 }
 
 .select-orden {
@@ -2212,6 +2213,7 @@ footer {
   }
   .destacados-fin-banner {
     padding: 0 1rem;
+    margin: 1rem 0 0.6rem;
   }
   .destacados-fin-banner::before {
     left: 1rem;
@@ -2316,7 +2318,7 @@ footer {
   }
   .destacados-fin-banner {
     padding: 0 0.5rem;
-    margin: 1.8rem 0 1rem;
+    margin: 0.8rem 0 0.5rem;
   }
   .destacados-fin-banner::before {
     left: 0.5rem;
@@ -2533,11 +2535,7 @@ footer {
 }
 
 .controles-izq {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-  flex: 1;
+  display: none !important;
 }
 
 .chip-count {
@@ -3272,7 +3270,7 @@ footer {
 .destacados-fin-banner {
   position: relative;
   text-align: center;
-  margin: 2.5rem 0 1.5rem;
+  margin: 1.2rem 0 0.8rem;
   padding: 0 2.5rem;
 }
 .destacados-fin-banner::before {
@@ -3284,17 +3282,6 @@ footer {
   height: 1px;
   background: var(--borde-suave);
   z-index: 1;
-}
-.destacados-fin-texto {
-  font-family: var(--fuente-titulo);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--texto-suave);
-  background: var(--fondo);
-  padding: 0 1.5rem;
-  position: relative;
-  z-index: 2;
-  letter-spacing: 0.03em;
 }
 
 /* ── Cabecera del Catálogo Completo ── */
