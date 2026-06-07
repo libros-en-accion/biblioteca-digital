@@ -1337,6 +1337,14 @@ function registrarEventos() {
   el('btnVistaGrid')?.addEventListener('click', () => cambiarVista('grid'));
   el('btnVistaLista')?.addEventListener('click', () => cambiarVista('lista'));
 
+  // Botones de carrusel destacados
+  el('btnCarruselIzq')?.addEventListener('click', () => {
+    document.getElementById('destacados-galeria')?.scrollBy({ left: -320, behavior: 'smooth' });
+  });
+  el('btnCarruselDer')?.addEventListener('click', () => {
+    document.getElementById('destacados-galeria')?.scrollBy({ left: 320, behavior: 'smooth' });
+  });
+
   // Opciones de la IA (delegación por data-grupo)
   document.querySelectorAll('.opcion-btn[data-grupo]').forEach(btn => {
     btn.addEventListener('click', () => {

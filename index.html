@@ -110,11 +110,6 @@
     </div>
     
     <div class="controles-derecha">
-      <div class="vista-controles">
-        <button id="btnVistaGrid" class="btn-vista activo" title="Vista cuadrícula" aria-label="Vista cuadrícula"><i data-lucide="layout-grid"></i></button>
-        <button id="btnVistaLista" class="btn-vista" title="Vista lista" aria-label="Vista lista"><i data-lucide="list"></i></button>
-      </div>
-
       <!-- Buscador de Autor Custom (Searchable Dropdown) -->
       <div class="custom-dropdown searchable" id="dropdownAutor">
         <div class="dropdown-trigger">
@@ -168,11 +163,34 @@
   <!-- ═══ SECCIÓN DESTACADOS ═══ -->
   <section id="destacados-seccion" class="destacados-seccion" style="display:none">
     <h2 class="seccion-titulo-destacados">Los 10 libros más destacados</h2>
-    <div id="destacados-galeria" class="galeria destacados-galeria"></div>
+    <div class="destacados-carrusel-contenedor">
+      <button class="carrusel-btn carrusel-btn-izq" id="btnCarruselIzq" aria-label="Anterior" title="Anterior">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <div id="destacados-galeria" class="galeria destacados-galeria"></div>
+      <button class="carrusel-btn carrusel-btn-der" id="btnCarruselDer" aria-label="Siguiente" title="Siguiente">
+        <i data-lucide="chevron-right"></i>
+      </button>
+      <div class="carrusel-fade carrusel-fade-izq"></div>
+      <div class="carrusel-fade carrusel-fade-der"></div>
+    </div>
     <div class="destacados-fin-banner">
       <span class="destacados-fin-texto">✦ Fin de destacados · Explora el catálogo completo abajo ✦</span>
     </div>
   </section>
+
+  <!-- ═══ CABECERA DEL CATÁLOGO ═══ -->
+  <div class="catalogo-header-barra">
+    <h3 class="catalogo-barra-titulo">Catálogo Completo</h3>
+    <div class="vista-controles">
+      <button id="btnVistaGrid" class="btn-vista activo" title="Vista cuadrícula" aria-label="Vista cuadrícula">
+        <i data-lucide="layout-grid"></i>
+      </button>
+      <button id="btnVistaLista" class="btn-vista" title="Vista lista" aria-label="Vista lista">
+        <i data-lucide="list"></i>
+      </button>
+    </div>
+  </div>
 
   <!-- ═══ GRID DE LIBROS ═══ -->
   <main id="galeria" class="galeria"></main>

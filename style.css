@@ -2205,7 +2205,31 @@ footer {
   }
 
   .destacados-seccion {
-    padding: 1.5rem 1rem 0.5rem;
+    padding: 1.5rem 0 0.5rem;
+  }
+  .seccion-titulo-destacados {
+    padding: 0 1rem;
+  }
+  .destacados-fin-banner {
+    padding: 0 1rem;
+  }
+  .destacados-fin-banner::before {
+    left: 1rem;
+    right: 1rem;
+  }
+  .destacados-galeria {
+    padding: 0.5rem 1rem 1.5rem !important;
+    gap: 1rem;
+  }
+  .destacados-galeria .tarjeta {
+    flex: 0 0 180px !important;
+  }
+  .catalogo-header-barra {
+    padding: 0 1rem 0.5rem;
+    margin: 1.5rem auto 0.8rem;
+  }
+  .catalogo-barra-titulo {
+    font-size: 1.2rem;
   }
 
   .tarjeta-portada {
@@ -2282,12 +2306,35 @@ footer {
   }
 
   .destacados-seccion {
-    padding: 0.8rem 0.5rem 0.5rem;
+    padding: 0.8rem 0 0.5rem;
   }
 
   .seccion-titulo-destacados {
+    padding: 0 0.5rem;
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
+  }
+  .destacados-fin-banner {
+    padding: 0 0.5rem;
+    margin: 1.8rem 0 1rem;
+  }
+  .destacados-fin-banner::before {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+  .destacados-galeria {
+    padding: 0.5rem 0.5rem 1.5rem !important;
+    gap: 0.6rem;
+  }
+  .destacados-galeria .tarjeta {
+    flex: 0 0 160px !important;
+  }
+  .catalogo-header-barra {
+    padding: 0 0.5rem 0.4rem;
+    margin: 1.2rem auto 0.6rem;
+  }
+  .catalogo-barra-titulo {
+    font-size: 1.05rem;
   }
 
   .tarjeta-info {
@@ -2336,8 +2383,8 @@ footer {
   }
   
   .vista-controles {
-    flex: 1 1 100%;
-    justify-content: center;
+    flex: none !important;
+    justify-content: flex-end;
   }
 }
 
@@ -3126,11 +3173,11 @@ footer {
   .lector-bloqueo-titulo { font-size: 1.1rem; }
 }
 
-/* ── Sección de destacados ── */
+/* ── Sección de destacados (Carrusel) ── */
 .destacados-seccion {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1.5rem 2.5rem 0.5rem;
+  padding: 1.5rem 0 0.5rem;
 }
 .seccion-titulo-destacados {
   font-family: var(--fuente-titulo);
@@ -3141,26 +3188,99 @@ footer {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  padding: 0 2.5rem;
 }
 .seccion-titulo-destacados::before {
   content: '✦';
   font-size: 1.1rem;
   color: var(--dorado);
 }
+.destacados-carrusel-contenedor {
+  position: relative;
+  width: 100%;
+}
 .destacados-galeria {
-  padding: 0.5rem 0 1.5rem !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  padding: 0.5rem 2.5rem 1.5rem !important;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.destacados-galeria::-webkit-scrollbar {
+  display: none;
+}
+.destacados-galeria .tarjeta {
+  flex: 0 0 230px !important;
+  scroll-snap-align: start;
+}
+.carrusel-btn {
+  position: absolute;
+  top: calc(50% - 20px);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--fondo-tarjeta);
+  border: 1.5px solid var(--borde);
+  color: var(--teal-profundo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px var(--sombra);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.85;
+}
+.carrusel-btn:hover {
+  opacity: 1;
+  background: var(--teal-suave);
+  color: var(--teal-profundo);
+  border-color: var(--dorado);
+  transform: scale(1.1);
+}
+.carrusel-btn:active {
+  transform: scale(0.95);
+}
+.carrusel-btn-izq {
+  left: 1rem;
+}
+.carrusel-btn-der {
+  right: 1rem;
+}
+.carrusel-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.3s;
+}
+.carrusel-fade-izq {
+  left: 0;
+  background: linear-gradient(to right, var(--fondo) 0%, transparent 100%);
+}
+.carrusel-fade-der {
+  right: 0;
+  background: linear-gradient(to left, var(--fondo) 0%, transparent 100%);
 }
 .destacados-fin-banner {
   position: relative;
   text-align: center;
   margin: 2.5rem 0 1.5rem;
+  padding: 0 2.5rem;
 }
 .destacados-fin-banner::before {
   content: '';
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
+  left: 2.5rem;
+  right: 2.5rem;
   height: 1px;
   background: var(--borde-suave);
   z-index: 1;
@@ -3175,6 +3295,32 @@ footer {
   position: relative;
   z-index: 2;
   letter-spacing: 0.03em;
+}
+
+/* ── Cabecera del Catálogo Completo ── */
+.catalogo-header-barra {
+  max-width: 1400px;
+  margin: 2.5rem auto 1rem;
+  padding: 0 2.5rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--borde-suave);
+}
+.catalogo-barra-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--teal-profundo);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+.catalogo-barra-titulo::before {
+  content: '✦';
+  font-size: 0.9rem;
+  color: var(--dorado);
 }
 /* ── Estilos de Tipografía Literaria (Fase 2) ── */
 .tarjeta-descripcion,
