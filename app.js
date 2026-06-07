@@ -2150,7 +2150,22 @@ async function renderizarPagina(numeroPagina) {
 function actualizarInfoPagina() {
   const pagActual = document.getElementById('lectorPagActual');
   const pagTotal = document.getElementById('lectorPagTotal');
-  if (pagActual) pagActual.textContent = lectorEstado.pagina;
+  const inputPag = document.getElementById('inputLectorPag');
+
+  if (lectorEstado.esDonador) {
+    if (pagActual) pagActual.style.display = 'none';
+    if (inputPag) {
+      inputPag.style.display = 'inline-block';
+      inputPag.value = lectorEstado.pagina;
+    }
+  } else {
+    if (pagActual) {
+      pagActual.style.display = 'inline';
+      pagActual.textContent = lectorEstado.pagina;
+    }
+    if (inputPag) inputPag.style.display = 'none';
+  }
+
   if (pagTotal) pagTotal.textContent = lectorEstado.totalPaginas;
 }
 
@@ -2213,11 +2228,34 @@ function inicializarLector() {
   const btnCerrar = document.getElementById('lectorBtnCerrar');
   const btnDescarga = document.getElementById('lectorBtnDescarga');
   const btnIngresarCodigo = document.getElementById('lectorBtnIngresarCodigo');
+  const inputPag = document.getElementById('inputLectorPag');
 
   const btnCerrarBloqueo = document.getElementById('btnCerrarBloqueo');
 
   if (btnPrev) btnPrev.addEventListener('click', irPaginaAnterior);
   if (btnNext) btnNext.addEventListener('click', irPaginaSiguiente);
+
+  if (inputPag) {
+    const irAPaginaIngresada = async () => {
+      let val = parseInt(inputPag.value, 10);
+      if (isNaN(val) || val < 1 || val > lectorEstado.totalPaginas) {
+        inputPag.value = lectorEstado.pagina;
+        return;
+      }
+      lectorEstado.pagina = val;
+      await renderizarPagina(lectorEstado.pagina);
+    };
+
+    inputPag.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        irAPaginaIngresada();
+        inputPag.blur();
+      }
+    });
+
+    inputPag.addEventListener('blur', irAPaginaIngresada);
+  }
   if (btnZoomIn) btnZoomIn.addEventListener('click', () => aplicarZoom(1.25));
   if (btnZoomOut) btnZoomOut.addEventListener('click', () => aplicarZoom(0.8));
   if (btnFit) btnFit.addEventListener('click', ajustarAlAncho);

@@ -333,7 +333,11 @@
       <div class="lector-titulo-texto" id="lectorTituloTexto"></div>
       <div class="lector-controles">
         <button id="lectorBtnPrev" class="lector-btn" title="Página anterior"><i data-lucide="chevron-left"></i></button>
-        <span class="lector-paginas"><span id="lectorPagActual">1</span> / <span id="lectorPagTotal">?</span></span>
+        <span class="lector-paginas">
+          <span id="lectorPagActual">1</span>
+          <input type="number" id="inputLectorPag" class="lector-pag-input" value="1" min="1" style="display:none;" />
+          / <span id="lectorPagTotal">?</span>
+        </span>
         <button id="lectorBtnNext" class="lector-btn" title="Página siguiente"><i data-lucide="chevron-right"></i></button>
         <button id="lectorBtnZoomOut" class="lector-btn" title="Alejar"><i data-lucide="zoom-out"></i></button>
         <button id="lectorBtnZoomIn" class="lector-btn" title="Acercar"><i data-lucide="zoom-in"></i></button>
