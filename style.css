@@ -2211,6 +2211,8 @@ footer {
   .tarjeta-portada {
     object-fit: contain;
     background: var(--fondo-tarjeta);
+    height: auto;
+    aspect-ratio: auto;
   }
 
   .galeria.vista-lista .tarjeta-portada {
