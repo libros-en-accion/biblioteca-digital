@@ -2204,6 +2204,19 @@ footer {
     gap: 1rem;
   }
 
+  .destacados-seccion {
+    padding: 1.5rem 1rem 0.5rem;
+  }
+
+  .tarjeta-portada {
+    object-fit: contain;
+    background: var(--fondo-tarjeta);
+  }
+
+  .galeria.vista-lista .tarjeta-portada {
+    object-fit: cover;
+  }
+
   .filtros-tags {
     padding: 0.5rem 1rem;
   }
