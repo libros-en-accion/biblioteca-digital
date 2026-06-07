@@ -394,6 +394,12 @@ function renderizarDestacados() {
     return;
   }
 
+  // Mezclar el orden de manera aleatoria (Algoritmo Fisher-Yates)
+  for (let i = librosDestacados.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [librosDestacados[i], librosDestacados[j]] = [librosDestacados[j], librosDestacados[i]];
+  }
+
   seccion.style.display = 'block';
   galeriaDestacados.innerHTML = '';
 
