@@ -265,7 +265,6 @@ function inicializarPagina() {
   // Poblar e inicializar los custom dropdowns, chips y autocompletado
   poblarDropdownAutores();
   inicializarDropdowns();
-  inicializarChipsEpoca();
   inicializarAutocompletado();
 
   // Registrar TODOS los event listeners (zero onclick inline)
@@ -350,16 +349,16 @@ function actualizarConteosEpoca() {
   };
 
   Object.entries(rangos).forEach(([epoca, filtro]) => {
-    const chip = document.querySelector(`.chip-epoca[data-epoca="${epoca}"]`);
-    if (!chip) return;
+    const item = document.querySelector(`#menuDropdownEpoca .dropdown-item[data-valor="${epoca}"]`);
+    if (!item) return;
     const count = libros.filter(l => l.anio && filtro(l)).length;
-    chip.setAttribute('title', `${count} libros`);
+    item.setAttribute('title', `${count} libros`);
 
-    let badge = chip.querySelector('.chip-count');
+    let badge = item.querySelector('.chip-count');
     if (!badge) {
       badge = document.createElement('span');
       badge.className = 'chip-count';
-      chip.appendChild(badge);
+      item.appendChild(badge);
     }
     badge.textContent = count;
   });
@@ -1189,9 +1188,8 @@ function actualizarBreadcrumbs() {
         filtrar();
       }
       if (item.type === 'epoca') {
-        document.querySelectorAll('.chip-epoca').forEach(c => c.classList.remove('activo'));
-        document.querySelector('.chip-epoca[data-epoca="Todas"]')?.classList.add('activo');
         epocaActiva = 'Todas';
+        actualizarDropdownEpocaUI();
         filtrar();
       }
     };
@@ -1488,10 +1486,9 @@ function limpiarTodo() {
   if (btnLimpiarAutor) btnLimpiarAutor.style.display = 'none';
   autorActivo = 'Todos';
 
-  // Limpiar Época chips
-  document.querySelectorAll('.chip-epoca').forEach(c => c.classList.remove('activo'));
-  document.querySelector('.chip-epoca[data-epoca="Todas"]')?.classList.add('activo');
+  // Limpiar Época dropdown
   epocaActiva = 'Todas';
+  actualizarDropdownEpocaUI();
 
   // Limpiar Orden custom
   document.querySelectorAll('#menuDropdownOrden .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
@@ -1730,6 +1727,38 @@ function inicializarDropdowns() {
     });
   }
 
+  // Dropdown Época
+  const dropdownEpoca = document.getElementById('dropdownEpoca');
+  const btnEpoca = document.getElementById('btnDropdownEpoca');
+  const menuEpoca = document.getElementById('menuDropdownEpoca');
+  const labelEpoca = document.getElementById('labelDropdownEpoca');
+
+  if (btnEpoca && menuEpoca) {
+    btnEpoca.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cerrarTodosDropdowns(dropdownEpoca);
+      dropdownEpoca.classList.toggle('abierto');
+      const abierto = dropdownEpoca.classList.contains('abierto');
+      btnEpoca.setAttribute('aria-expanded', abierto);
+    });
+
+    menuEpoca.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuEpoca.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
+        item.classList.add('seleccionado');
+        epocaActiva = item.dataset.valor;
+        if (labelEpoca) {
+          const labelText = item.childNodes[0].textContent.trim();
+          labelEpoca.textContent = labelText;
+        }
+        dropdownEpoca.classList.remove('abierto');
+        btnEpoca.setAttribute('aria-expanded', 'false');
+        filtrar();
+      });
+    });
+  }
+
   document.addEventListener('click', () => {
     cerrarTodosDropdowns();
   });
@@ -1745,19 +1774,18 @@ function cerrarTodosDropdowns(excepto = null) {
   });
 }
 
-function inicializarChipsEpoca() {
-  const filtrosEpoca = document.getElementById('filtrosEpoca');
-  if (!filtrosEpoca) return;
-
-  filtrosEpoca.querySelectorAll('.chip-epoca').forEach(chip => {
-    chip.addEventListener('click', (e) => {
-      e.stopPropagation();
-      filtrosEpoca.querySelectorAll('.chip-epoca').forEach(c => c.classList.remove('activo'));
-      chip.classList.add('activo');
-      epocaActiva = chip.dataset.epoca;
-      filtrar();
-    });
-  });
+function actualizarDropdownEpocaUI() {
+  const menuEpoca = document.getElementById('menuDropdownEpoca');
+  const labelEpoca = document.getElementById('labelDropdownEpoca');
+  if (menuEpoca && labelEpoca) {
+    menuEpoca.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
+    const targetItem = menuEpoca.querySelector(`.dropdown-item[data-valor="${epocaActiva}"]`);
+    if (targetItem) {
+      targetItem.classList.add('seleccionado');
+      const labelText = targetItem.childNodes[0].textContent.trim();
+      labelEpoca.textContent = labelText;
+    }
+  }
 }
 
 function poblarDropdownAutores() {

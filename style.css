@@ -2493,53 +2493,20 @@ footer {
   flex: 1;
 }
 
-.epoca-chips {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.chip-epoca {
-  font-family: var(--fuente-cuerpo);
-  font-size: 0.85rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 20px;
-  border: 1.5px solid var(--borde);
-  background: var(--fondo-tarjeta);
-  color: var(--texto-medio);
-  cursor: pointer;
-  transition: all 0.25s;
-  box-shadow: 0 1px 3px var(--sombra);
-}
-
-.chip-epoca:hover {
-  border-color: var(--teal-medio);
-  color: var(--teal-profundo);
-  background: var(--teal-suave);
-  transform: translateY(-1px);
-}
-
-.chip-epoca.activo {
-  background: var(--teal-profundo);
-  border-color: var(--teal-profundo);
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(26, 92, 80, 0.25);
-  font-weight: 500;
-}
-
 .chip-count {
   font-size: 0.72rem;
-  background: rgba(26, 92, 80, 0.15);
+  background: rgba(26, 92, 80, 0.12);
   color: var(--teal-profundo);
   padding: 0.1rem 0.45rem;
   border-radius: 10px;
-  margin-left: 0.3rem;
+  margin-left: 0.4rem;
   font-weight: 600;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.chip-epoca.activo .chip-count {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+.custom-dropdown .dropdown-item.seleccionado .chip-count {
+  background: rgba(26, 92, 80, 0.25);
 }
 
 /* Custom Dropdown Menus */
@@ -2737,35 +2704,6 @@ footer {
   .controles-izq {
     width: 100%;
     align-items: center;
-    position: relative; /* necesario para el fade de scroll */
-  }
-
-  /* Fade derecho para indicar scroll horizontal en chips de época */
-  .controles-izq::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 3rem;
-    height: 100%;
-    background: linear-gradient(to left, var(--fondo-barra, var(--fondo)), transparent);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .epoca-chips {
-    justify-content: flex-start;
-    overflow-x: auto;
-    width: 100%;
-    padding-bottom: 0.4rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    /* Padding derecho para que el último chip no quede bajo el fade */
-    padding-right: 2.5rem;
-  }
-  
-  .epoca-chips::-webkit-scrollbar {
-    display: none;
   }
 
   .controles-derecha {

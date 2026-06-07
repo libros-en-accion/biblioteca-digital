@@ -107,16 +107,6 @@
   <div class="controles-barra">
     <div class="controles-izq">
       <p id="contador" class="contador"></p>
-      
-      <!-- Chips de Época en lugar de select tradicional -->
-      <div class="epoca-chips" id="filtrosEpoca">
-        <button class="chip-epoca activo" data-epoca="Todas">Todas las épocas</button>
-        <button class="chip-epoca" data-epoca="pre-1800">Antes de 1800</button>
-        <button class="chip-epoca" data-epoca="1800-1899">S. XIX (1800s)</button>
-        <button class="chip-epoca" data-epoca="1900-1949">S. XX (1900-1949)</button>
-        <button class="chip-epoca" data-epoca="1950-1999">Posguerra (1950-1999)</button>
-        <button class="chip-epoca" data-epoca="2000+">S. XXI (2000+)</button>
-      </div>
     </div>
     
     <div class="controles-derecha">
@@ -135,6 +125,22 @@
         <ul class="dropdown-menu" role="listbox" id="menuDropdownAutor">
           <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Todos los autores</li>
           <!-- Se llena dinámicamente con JS -->
+        </ul>
+      </div>
+
+      <!-- Época Custom (Custom Dropdown Menu) -->
+      <div class="custom-dropdown" id="dropdownEpoca">
+        <button class="dropdown-btn" id="btnDropdownEpoca" aria-haspopup="listbox" aria-expanded="false">
+          <span id="labelDropdownEpoca">Todas las épocas</span>
+          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
+        </button>
+        <ul class="dropdown-menu" role="listbox" id="menuDropdownEpoca">
+          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Todas las épocas</li>
+          <li data-valor="pre-1800" class="dropdown-item" role="option">Antes de 1800</li>
+          <li data-valor="1800-1899" class="dropdown-item" role="option">S. XIX (1800s)</li>
+          <li data-valor="1900-1949" class="dropdown-item" role="option">S. XX (1900-1949)</li>
+          <li data-valor="1950-1999" class="dropdown-item" role="option">Posguerra (1950-1999)</li>
+          <li data-valor="2000+" class="dropdown-item" role="option">S. XXI (2000+)</li>
         </ul>
       </div>
 
