@@ -2219,24 +2219,7 @@ footer {
     left: 1rem;
     right: 1rem;
   }
-  .destacados-galeria {
-    padding: 0.5rem calc((100% - 320px) / 2) 1.5rem !important;
-    gap: 1.5rem;
-  }
-  .destacados-galeria .tarjeta {
-    flex: 0 0 320px !important;
-    flex-direction: column !important;
-    scroll-snap-align: center;
-  }
-  .destacados-galeria .tarjeta-portada {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 3/4 !important;
-    object-fit: cover !important;
-    border-radius: var(--radio) var(--radio) 0 0 !important;
-    border-right: none !important;
-    border-bottom: 1px solid var(--borde-suave) !important;
-  }
+
   .catalogo-header-barra {
     padding: 0 1rem 0.5rem;
     margin: 1.5rem auto 0.8rem;
@@ -2335,24 +2318,7 @@ footer {
     left: 0.5rem;
     right: 0.5rem;
   }
-  .destacados-galeria {
-    padding: 0.5rem calc((100% - 280px) / 2) 1.5rem !important;
-    gap: 1.2rem;
-  }
-  .destacados-galeria .tarjeta {
-    flex: 0 0 280px !important;
-    flex-direction: column !important;
-    scroll-snap-align: center;
-  }
-  .destacados-galeria .tarjeta-portada {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 3/4 !important;
-    object-fit: cover !important;
-    border-radius: var(--radio) var(--radio) 0 0 !important;
-    border-right: none !important;
-    border-bottom: 1px solid var(--borde-suave) !important;
-  }
+
   .catalogo-header-barra {
     padding: 0 0.5rem 0.4rem;
     margin: 1.2rem auto 0.6rem;
@@ -3236,7 +3202,7 @@ footer {
 }
 .destacados-galeria .tarjeta {
   flex: 0 0 230px !important;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 .carrusel-btn {
   position: absolute;
@@ -3288,6 +3254,51 @@ footer {
 .carrusel-fade-der {
   right: 0;
   background: linear-gradient(to left, var(--fondo) 0%, transparent 100%);
+}
+
+/* ── Carrusel Responsivo (DEBE ir DESPUÉS de los estilos base) ── */
+@media (max-width: 768px) {
+  .destacados-galeria {
+    padding: 0.5rem 20vw 1.5rem !important;
+    gap: 1.5rem;
+  }
+  .destacados-galeria .tarjeta {
+    flex: 0 0 60vw !important;
+    flex-direction: column !important;
+    scroll-snap-align: center;
+  }
+  .destacados-galeria .tarjeta-portada {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3/4 !important;
+    object-fit: cover !important;
+    border-radius: var(--radio) var(--radio) 0 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--borde-suave) !important;
+  }
+  .carrusel-btn {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .destacados-galeria {
+    padding: 0.5rem 10vw 1.5rem !important;
+    gap: 1rem;
+  }
+  .destacados-galeria .tarjeta {
+    flex: 0 0 80vw !important;
+    flex-direction: column !important;
+    scroll-snap-align: center;
+  }
+  .destacados-galeria .tarjeta-portada {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3/4 !important;
+    object-fit: cover !important;
+    border-radius: var(--radio) var(--radio) 0 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--borde-suave) !important;
+  }
 }
 .destacados-fin-banner {
   position: relative;
