@@ -159,7 +159,7 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 2rem 2rem 1.4rem;
+  padding: 1.5rem 2rem 1rem;
 }
 
 .hero-background-deco {
@@ -188,7 +188,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem; /* Espacio vertical estrecho */
+  gap: 0.5rem;
 }
 
 .hero-encabezado {
@@ -240,18 +240,17 @@ body {
   }
 }
 
-.hero-ornamento {
-  font-family: var(--fuente-cuerpo);
-  font-size: 0.7rem;
-  font-weight: 300;
-  letter-spacing: 8px;
-  color: var(--dorado-claro);
-  text-transform: uppercase;
-  margin-bottom: 0.2rem;
-  opacity: 0.8;
+.hero-seccion h1 {
+  font-family: var(--fuente-titulo);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f5eedf;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.6);
 }
 
-.hero-seccion h1 {
+@keyframes respiracionLogo {
   font-family: var(--fuente-titulo);
   font-size: 2.2rem; /* Tamaño de letra reducido */
   font-weight: 700;
@@ -269,22 +268,11 @@ body {
 
 .hero-subtitulo {
   font-family: var(--fuente-titulo);
-  font-size: 1.1rem; /* Subtítulo reducido */
+  font-size: 1.1rem;
   color: #ecd9c6;
   font-style: italic;
   font-weight: 400;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.hero-descripcion {
-  display: block;
-  font-family: var(--fuente-literaria);
-  font-size: 1rem;
-  color: rgba(244, 237, 228, 0.85);
-  max-width: 580px;
-  line-height: 1.5;
-  margin: 0.6rem auto 1.2rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Buscador Caja y Autocompletado */
@@ -2206,11 +2194,6 @@ footer {
   .hero-seccion h1 {
     font-size: 1.4rem;
     letter-spacing: 1px;
-  }
-
-  .hero-ornamento {
-    font-size: 0.55rem;
-    letter-spacing: 4px;
   }
 
   .hero-subtitulo {
