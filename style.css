@@ -3256,14 +3256,13 @@ footer {
   background: linear-gradient(to left, var(--fondo) 0%, transparent 100%);
 }
 
-/* ── Carrusel Responsivo (DEBE ir DESPUÉS de los estilos base) ── */
 @media (max-width: 768px) {
   .destacados-galeria {
-    padding: 0.5rem 20vw 1.5rem !important;
+    padding: 0.5rem calc((100vw - clamp(200px, 48vw, 280px)) / 2) 1.5rem !important;
     gap: 1.5rem;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 60vw !important;
+    flex: 0 0 clamp(200px, 48vw, 280px) !important;
     flex-direction: column !important;
     scroll-snap-align: center;
   }
@@ -3275,6 +3274,25 @@ footer {
     border-radius: var(--radio) var(--radio) 0 0 !important;
     border-right: none !important;
     border-bottom: 1px solid var(--borde-suave) !important;
+  }
+  .destacados-galeria .tarjeta-info {
+    padding: 1rem 1rem 0.5rem !important;
+    gap: 0.25rem !important;
+  }
+  .destacados-galeria .tarjeta-titulo {
+    font-size: 0.98rem !important;
+  }
+  .destacados-galeria .tarjeta-autor {
+    font-size: 0.88rem !important;
+  }
+  .destacados-galeria .tarjeta-descripcion {
+    font-size: 0.84rem !important;
+    -webkit-line-clamp: 2 !important;
+  }
+  .destacados-galeria .btn-ver {
+    margin: 0.5rem 1rem 1rem !important;
+    padding: 0.55rem !important;
+    font-size: 0.84rem !important;
   }
   .carrusel-btn {
     display: none;
@@ -3282,11 +3300,11 @@ footer {
 }
 @media (max-width: 480px) {
   .destacados-galeria {
-    padding: 0.5rem 10vw 1.5rem !important;
+    padding: 0.5rem calc((100vw - clamp(180px, 58vw, 230px)) / 2) 1.5rem !important;
     gap: 1rem;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 80vw !important;
+    flex: 0 0 clamp(180px, 58vw, 230px) !important;
     flex-direction: column !important;
     scroll-snap-align: center;
   }
@@ -3298,6 +3316,27 @@ footer {
     border-radius: var(--radio) var(--radio) 0 0 !important;
     border-right: none !important;
     border-bottom: 1px solid var(--borde-suave) !important;
+  }
+  .destacados-galeria .tarjeta-info {
+    padding: 0.8rem 0.8rem 0.4rem !important;
+    gap: 0.2rem !important;
+  }
+  .destacados-galeria .tarjeta-titulo {
+    font-size: 0.92rem !important;
+  }
+  .destacados-galeria .tarjeta-autor {
+    font-size: 0.82rem !important;
+  }
+  .destacados-galeria .tarjeta-descripcion {
+    font-size: 0.8rem !important;
+    -webkit-line-clamp: 2 !important;
+    margin-top: 0.3rem !important;
+    line-height: 1.4 !important;
+  }
+  .destacados-galeria .btn-ver {
+    margin: 0.4rem 0.8rem 0.8rem !important;
+    padding: 0.5rem !important;
+    font-size: 0.8rem !important;
   }
 }
 .destacados-fin-banner {
