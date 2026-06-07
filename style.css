@@ -2220,12 +2220,22 @@ footer {
     right: 1rem;
   }
   .destacados-galeria {
-    padding: 0.5rem calc((100% - 200px) / 2) 1.5rem !important;
-    gap: 1rem;
+    padding: 0.5rem calc((100% - 320px) / 2) 1.5rem !important;
+    gap: 1.5rem;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 200px !important;
+    flex: 0 0 320px !important;
+    flex-direction: column !important;
     scroll-snap-align: center;
+  }
+  .destacados-galeria .tarjeta-portada {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3/4 !important;
+    object-fit: cover !important;
+    border-radius: var(--radio) var(--radio) 0 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--borde-suave) !important;
   }
   .catalogo-header-barra {
     padding: 0 1rem 0.5rem;
@@ -2326,12 +2336,22 @@ footer {
     right: 0.5rem;
   }
   .destacados-galeria {
-    padding: 0.5rem calc((100% - 190px) / 2) 1.5rem !important;
-    gap: 0.6rem;
+    padding: 0.5rem calc((100% - 280px) / 2) 1.5rem !important;
+    gap: 1.2rem;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 190px !important;
+    flex: 0 0 280px !important;
+    flex-direction: column !important;
     scroll-snap-align: center;
+  }
+  .destacados-galeria .tarjeta-portada {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3/4 !important;
+    object-fit: cover !important;
+    border-radius: var(--radio) var(--radio) 0 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--borde-suave) !important;
   }
   .catalogo-header-barra {
     padding: 0 0.5rem 0.4rem;
