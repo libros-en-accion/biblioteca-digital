@@ -2301,7 +2301,10 @@ footer {
   }
 
   .tarjeta-descripcion {
-    display: none; /* Ocultar en móvil para ahorrar espacio */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
   }
 
   .tarjeta-autor {
