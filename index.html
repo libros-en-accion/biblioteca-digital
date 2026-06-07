@@ -50,14 +50,9 @@
   <!-- ═══ SECCIÓN HÉROE UNIFICADA ═══ -->
   <section class="hero-seccion">
     <div class="hero-background-deco"></div>
-    <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
-    <button id="btnCodigo" class="btn-codigo-donador" aria-label="Ingresar código de donador" title="Código de donador">
-      <i data-lucide="key-round"></i>
-      <span id="etiquetaCodigo">Código Donador</span>
-    </button>
     
     <div class="hero-contenido">
-      <div class="hero-encabezado">
+      <div class="hero-marca">
         <a href="/" class="header-home-link" aria-label="Ir al inicio de Libractiva">
           <img src="logo_display.png" alt="Logo Libractiva" class="hero-logo" />
           <h1>Libractiva</h1>
@@ -75,16 +70,22 @@
             <button id="btnBuscarClick" class="btn-buscar-click" aria-label="Ejecutar búsqueda"><i data-lucide="search" class="icono-sm"></i></button>
           </div>
         </div>
-        
-        <!-- Panel Flotante de Autocompletado (Predictivo) -->
         <div id="autocompletarPanel" class="autocompletar-panel" style="display:none"></div>
+      </div>
+
+      <div class="hero-utilidades">
+        <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
+        <button id="btnCodigo" class="btn-codigo-donador" aria-label="Ingresar código de donador" title="Código de donador">
+          <i data-lucide="key-round"></i>
+          <span id="etiquetaCodigo">Código Donador</span>
+        </button>
       </div>
 
       <!-- CTAs de Descubrimiento Rápido (IA y Azar) -->
       <div class="hero-acciones">
         <button id="btnAbrirIA" class="btn-ia-trigger">
           <span class="btn-ia-icono"><i data-lucide="sparkles"></i></span>
-          ¿Qué leer hoy? (Pregunta a la IA)
+          ¿Qué leer hoy?
         </button>
         <button id="btnAzar" class="btn-azar" title="Libro al azar">
           <span class="btn-azar-icono"><i data-lucide="dices"></i></span>

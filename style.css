@@ -100,22 +100,19 @@
 
 /* ── BOTÓN TEMA ── */
 .btn-tema {
-  position: absolute;
-  top: 1rem;
-  right: 1.2rem;
   background: none;
   border: 1.5px solid rgba(212, 169, 74, 0.3);
   color: var(--dorado-claro);
-  font-size: 1.2rem;
-  width: 2.4rem;
-  height: 2.4rem;
+  font-size: 1.1rem;
+  width: 2.2rem;
+  height: 2.2rem;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  flex-shrink: 0;
 }
 
 .btn-tema:hover {
@@ -156,10 +153,9 @@ body {
 /* ── SECCIÓN HÉROE UNIFICADA ── */
 .hero-seccion {
   background: linear-gradient(170deg, #1a5c50 0%, #0e2a24 50%, #060f0d 100%);
-  text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 1.5rem 2rem 1rem;
+  padding: 0.8rem 1.5rem;
 }
 
 .hero-background-deco {
@@ -183,24 +179,26 @@ body {
 .hero-contenido {
   position: relative;
   z-index: 5;
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.3rem 1.2rem;
   align-items: center;
-  gap: 0.5rem;
 }
 
-.hero-encabezado {
+.hero-marca {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 0.15rem;
 }
 
 .header-home-link {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-decoration: none;
   color: inherit;
@@ -213,14 +211,15 @@ body {
 }
 
 .hero-logo {
-  width: 75px;
-  height: 75px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--dorado-claro);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   animation: respiracionLogo 4s ease-in-out 2;
+  flex-shrink: 0;
 }
 
 .header-home-link:hover .hero-logo {
@@ -242,34 +241,19 @@ body {
 
 .hero-seccion h1 {
   font-family: var(--fuente-titulo);
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #f5eedf;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   line-height: 1.1;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes respiracionLogo {
-  font-family: var(--fuente-titulo);
-  font-size: 2.2rem; /* Tamaño de letra reducido */
-  font-weight: 700;
-  color: #f5eedf;
-  letter-spacing: 2px;
-  line-height: 1.1;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.6);
-}
-
-.hero-seccion h1 span {
-  color: var(--dorado-claro);
-  font-style: italic;
-  font-weight: 400;
+  white-space: nowrap;
 }
 
 .hero-subtitulo {
-  font-family: var(--fuente-titulo);
-  font-size: 1.1rem;
-  color: #ecd9c6;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.78rem;
+  color: rgba(236, 217, 198, 0.7);
   font-style: italic;
   font-weight: 400;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -277,10 +261,19 @@ body {
 
 /* Buscador Caja y Autocompletado */
 .hero-buscador-caja {
+  grid-column: 2;
+  grid-row: 1;
   position: relative;
   width: 100%;
-  max-width: 580px;
   z-index: 10;
+}
+
+.hero-utilidades {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .buscador-contenedor {
@@ -438,22 +431,24 @@ body {
 
 /* CTAs en Hero */
 .hero-acciones {
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
   justify-content: center;
 }
 
 .btn-ia-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.5rem; /* CTA primario: más generoso */
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: #fff8f0;
   background: linear-gradient(135deg, var(--teal-profundo) 0%, #0c362e 100%);
-  border: 1.5px solid rgba(184, 137, 42, 0.55); /* Borde dorado más visible */
+  border: 1.5px solid rgba(184, 137, 42, 0.55);
   border-radius: var(--radio);
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(26, 92, 80, 0.45), 0 0 0 0 rgba(184,137,42,0);
@@ -471,12 +466,12 @@ body {
 .btn-azar {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1rem;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 400;
-  color: rgba(236, 217, 198, 0.75); /* más apagado */
+  color: rgba(236, 217, 198, 0.75);
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radio);
@@ -2154,17 +2149,58 @@ footer {
 /* RESPONSIVE                                             */
 /* ══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .hero-seccion h1 {
-    font-size: 1.8rem;
+  .hero-seccion {
+    padding: 0.6rem 1rem;
   }
 
-  .hero-seccion {
-    padding: 1.2rem 1.2rem 0.8rem;
+  .hero-contenido {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: 0.4rem 0.8rem;
+  }
+
+  .hero-marca {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-utilidades {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 0.3rem;
+  }
+
+  .hero-buscador-caja {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .hero-acciones {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .hero-seccion h1 {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-subtitulo {
+    font-size: 0.7rem;
+  }
+
+  .hero-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .btn-codigo-donador span {
+    display: none;
   }
 
   .galeria {
     padding: 0.5rem 1rem 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 1rem;
   }
 
@@ -2192,36 +2228,51 @@ footer {
 
 @media (max-width: 480px) {
   .hero-seccion h1 {
-    font-size: 1.4rem;
-    letter-spacing: 1px;
+    font-size: 1.2rem;
   }
 
   .hero-subtitulo {
-    font-size: 0.95rem;
+    font-size: 0.65rem;
+  }
+
+  .hero-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .btn-tema {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
   }
 
   .hero-acciones {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
-    max-width: 320px;
-    margin: 0.8rem auto 0;
-    gap: 0.6rem;
   }
 
   .btn-ia-trigger,
   .btn-azar {
-    width: 100%;
     justify-content: center;
-    padding: 0.55rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
   }
 
   /* Grid de 2 columnas fijas en móvil para mejor legibilidad */
   .galeria {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    padding: 0.5rem 0.8rem 3rem;
+    gap: 0.6rem;
+    padding: 0.5rem 0.5rem 3rem;
+  }
+
+  .destacados-seccion {
+    padding: 0.8rem 0.5rem 0.5rem;
+  }
+
+  .seccion-titulo-destacados {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
   }
 
   .tarjeta-info {
@@ -2722,22 +2773,19 @@ footer {
    BOTÓN CÓDIGO DONADOR (HERO)
 ════════════════════════════════════════════════════════ */
 .btn-codigo-donador {
-  position: absolute;
-  top: 1rem;
-  right: 4rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.75rem;
+  padding: 0.35rem 0.7rem;
   background: rgba(184, 137, 42, 0.15);
   border: 1px solid var(--dorado);
   border-radius: 20px;
   color: var(--dorado-claro);
   font-family: var(--fuente-cuerpo);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
-  z-index: 10;
+  flex-shrink: 0;
 }
 .btn-codigo-donador:hover {
   background: rgba(184, 137, 42, 0.28);
@@ -3075,27 +3123,11 @@ footer {
 }
 
 /* ── Responsive: botones de hero en móvil ── */
-@media (max-width: 768px) {
-  /* Mover el botón de código donador a la izquierda para no chocar con el botón de tema */
-  .btn-codigo-donador {
-    right: auto;
-    left: 1.2rem;
-    top: 1rem;
-  }
-}
-
 @media (max-width: 480px) {
-  /* En móvil pequeño: reducir a solo icono circular */
   .btn-codigo-donador span { display: none; }
   .btn-codigo-donador {
-    left: 1.2rem;
-    right: auto;
-    top: 1rem;
-    width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 50%;
-    padding: 0;
-    justify-content: center;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
   }
 }
 
