@@ -932,6 +932,27 @@ function cerrarModalInfo() {
   }
 }
 
+// ── Abrir / Cerrar modal Contacto ──
+function abrirModalContacto() {
+  const modal = document.getElementById('modalContacto');
+  if (!modal) return;
+  modal.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+  
+  ultimoElementoEnfocado = document.activeElement;
+  const btnCerrar = modal.querySelector('.modal-cerrar');
+  if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
+}
+
+function cerrarModalContacto() {
+  const modal = document.getElementById('modalContacto');
+  if (modal) {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+    if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
+  }
+}
+
 function activarPestañaInfo(tabName) {
   const btnAcerca = document.getElementById('tabAcerca');
   const btnFAQ = document.getElementById('tabFAQ');
@@ -1332,6 +1353,13 @@ function registrarEventos() {
   el('tabFAQ')?.addEventListener('click', () => activarPestañaInfo('faq'));
   el('modalInfo')?.addEventListener('click', (e) => {
     if (e.target === el('modalInfo')) cerrarModalInfo();
+  });
+
+  // Modal Contacto
+  el('btnContacto')?.addEventListener('click', abrirModalContacto);
+  el('btnCerrarContacto')?.addEventListener('click', cerrarModalContacto);
+  el('modalContacto')?.addEventListener('click', (e) => {
+    if (e.target === el('modalContacto')) cerrarModalContacto();
   });
 
   // Modal IA — acciones

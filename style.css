@@ -1202,6 +1202,93 @@ footer {
   margin-bottom: 0;
 }
 
+/* ── Estilos Modal Contacto ── */
+.modal-contacto-panel {
+  max-width: 480px;
+  width: 90%;
+}
+
+.contacto-descripcion {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.92rem;
+  color: var(--texto-medio);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.contacto-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contacto-opcion-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio);
+  text-decoration: none;
+  color: var(--texto);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--fondo-tarjeta);
+}
+
+.contacto-opcion-card:hover {
+  border-color: var(--dorado);
+  background: var(--teal-suave);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--sombra);
+}
+
+.contacto-icono-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+/* Colores específicos para los iconos de contacto */
+.contacto-opcion-card.opcion-email .contacto-icono-wrapper {
+  background: rgba(26, 92, 80, 0.1);
+  color: var(--teal-profundo);
+}
+
+:root[data-theme="dark"] .contacto-opcion-card.opcion-email .contacto-icono-wrapper {
+  background: rgba(212, 169, 74, 0.15);
+  color: var(--dorado);
+}
+
+.contacto-opcion-card.opcion-whatsapp .contacto-icono-wrapper {
+  background: rgba(37, 211, 102, 0.1);
+  color: #25d366;
+}
+
+.contacto-opcion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contacto-opcion-titulo {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--texto);
+}
+
+.contacto-opcion-valor {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.86rem;
+  color: var(--texto-suave);
+}
+
 /* ── PAGINACIÓN ── */
 /* ══════════════════════════════════════════════════════ */
 .paginacion {

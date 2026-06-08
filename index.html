@@ -214,7 +214,7 @@
       <span class="footer-sep">·</span>
       <button id="btnFAQ" class="footer-link-btn">Preguntas frecuentes</button>
       <span class="footer-sep">·</span>
-      <a href="mailto:librosenaccionoficial@gmail.com" class="footer-link-btn">Contacto</a>
+      <button id="btnContacto" class="footer-link-btn">Contacto</button>
     </div>
   </footer>
 
@@ -376,7 +376,7 @@
           <h2 class="lector-bloqueo-titulo">Estamos felices de que disfrutes esta lectura ✨</h2>
           <p class="lector-bloqueo-texto">
             Esta vista previa de 15 páginas es nuestra forma de invitarte a descubrir nuevas obras.
-            Si deseas continuar leyendo este libro completo, descargarlo en PDF o disfrutar de otras funciones,
+            Si deseas continuar leyendo este libro completo, descargarlo en formatos <strong>PDF y EPUB</strong> (ideal para disfrutarlo en tu Kindle o tu aplicación de lectura favorita) o disfrutar de otras funciones,
             tu contribución voluntaria nos ayuda a mantener esta biblioteca viva y en constante crecimiento.
           </p>
           <div class="lector-bloqueo-opciones">
@@ -447,7 +447,7 @@
           
           <div class="faq-item">
             <h4>¿Qué es el "Código de Donador" y cómo lo obtengo?</h4>
-            <p>Como gesto de gratitud, los usuarios que realizan una donación voluntaria reciben un <strong>Código de Donador</strong>. Al introducir este código en la plataforma, se desbloquean funciones para mejorar la experiencia de estudio y lectura: lectura ilimitada en el lector web (eliminando el límite de 15 páginas de vista previa), descarga del libro completo en formato PDF original e impresión directa.</p>
+            <p>Como gesto de gratitud, los usuarios que realizan una donación voluntaria reciben un <strong>Código de Donador</strong>. Al introducir este código en la plataforma, se desbloquean funciones para mejorar la experiencia de estudio y lectura: lectura ilimitada en el lector web (eliminando el límite de 15 páginas de vista previa), descarga del libro completo en formatos <strong>PDF y EPUB</strong> (ideal para leerlo en tu Kindle, tablet o aplicación de lectura favorita) e impresión directa.</p>
           </div>
           
           <div class="faq-item">
@@ -459,6 +459,44 @@
             <h4>¿Cómo se seleccionan y digitalizan los libros?</h4>
             <p>Nuestro equipo y la comunidad colaboran seleccionando textos de valor universal. Posteriormente se normalizan sus metadatos, se adaptan sus portadas y se cargan copias digitales optimizadas de alta calidad y legibilidad.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL: CONTACTO ═══ -->
+  <div id="modalContacto" class="modal-overlay">
+    <div class="modal-panel modal-contacto-panel" role="dialog" aria-modal="true" aria-labelledby="contacto-titulo">
+      <div class="modal-header">
+        <div class="modal-ornamento">✦ Contacto ✦</div>
+        <h2 id="contacto-titulo" class="modal-titulo">Ponte en contacto</h2>
+        <button id="btnCerrarContacto" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="contacto-descripcion">
+          ¿Tienes alguna duda, sugerencia o necesitas reportar un problema? Puedes comunicarte con nosotros a través de cualquiera de los siguientes medios:
+        </p>
+        
+        <div class="contacto-opciones">
+          <a href="mailto:librosenaccionoficial@gmail.com" class="contacto-opcion-card opcion-email">
+            <div class="contacto-icono-wrapper">
+              <i data-lucide="mail"></i>
+            </div>
+            <div class="contacto-opcion-info">
+              <span class="contacto-opcion-titulo">Correo Electrónico</span>
+              <span class="contacto-opcion-valor">librosenaccionoficial@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="https://wa.me/524811289106" target="_blank" rel="noopener" class="contacto-opcion-card opcion-whatsapp">
+            <div class="contacto-icono-wrapper">
+              <i data-lucide="message-square"></i>
+            </div>
+            <div class="contacto-opcion-info">
+              <span class="contacto-opcion-titulo">WhatsApp</span>
+              <span class="contacto-opcion-valor">+52 481 128 9106</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
