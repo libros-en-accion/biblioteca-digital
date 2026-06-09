@@ -2872,21 +2872,30 @@ footer {
   color: #1a0f08;
   font-weight: 600;
 }
+.descargar-donador-grupo {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  flex-wrap: nowrap;
+}
 .btn-descargar-donador {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
-  margin-top: 0.5rem;
-  padding: 0.55rem 1.1rem;
+  flex: 1;
+  padding: 0.55rem 0.5rem;
   background: var(--dorado);
   border: none;
   border-radius: var(--radio);
   color: #1a0f08;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
 }
 .btn-descargar-donador:hover {
   background: var(--dorado-claro);
@@ -2899,6 +2908,14 @@ footer {
 }
 .btn-descargar-donador.btn-descargar-epub:hover {
   background: var(--teal-medio);
+}
+
+@media (max-width: 480px) {
+  .btn-descargar-donador {
+    font-size: 0.78rem;
+    padding: 0.5rem 0.3rem;
+    gap: 0.25rem;
+  }
 }
 
 /* ════════════════════════════════════════════════════════
@@ -3077,6 +3094,18 @@ footer {
 .lector-btn-donar-epub:hover {
   background: var(--teal-medio);
   color: #fff;
+}
+.lector-btn-descarga-formato {
+  width: auto !important;
+  padding: 0 0.55rem;
+  gap: 0.25rem;
+}
+.lector-btn-lbl {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  font-family: var(--fuente-cuerpo);
 }
 .lector-btn-cerrar {
   background: rgba(122, 26, 46, 0.15);
@@ -3305,7 +3334,7 @@ footer {
   display: none;
 }
 .destacados-galeria .tarjeta {
-  flex: 0 0 230px !important;
+  flex: 0 0 190px !important;
   scroll-snap-align: center;
 }
 .carrusel-btn {
@@ -3362,11 +3391,11 @@ footer {
 
 @media (max-width: 768px) {
   .destacados-galeria {
-    padding: 0.5rem calc((100vw - clamp(200px, 48vw, 280px)) / 2) 1.5rem !important;
+    padding: 0.5rem calc((100vw - clamp(150px, 42vw, 190px)) / 2) 1.5rem !important;
     gap: 1.5rem;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 clamp(200px, 48vw, 280px) !important;
+    flex: 0 0 clamp(150px, 42vw, 190px) !important;
     flex-direction: column !important;
     scroll-snap-align: center;
   }
@@ -3404,11 +3433,11 @@ footer {
 }
 @media (max-width: 480px) {
   .destacados-galeria {
-    padding: 0.5rem calc((100vw - clamp(180px, 58vw, 230px)) / 2) 1.5rem !important;
+    padding: 0.5rem calc((100vw - clamp(130px, 44vw, 160px)) / 2) 1.5rem !important;
     gap: 1rem;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 clamp(180px, 58vw, 230px) !important;
+    flex: 0 0 clamp(130px, 44vw, 160px) !important;
     flex-direction: column !important;
     scroll-snap-align: center;
   }
