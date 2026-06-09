@@ -3286,6 +3286,12 @@ footer {
   .lector-titulo-texto { display: none; }
   .lector-barra-controles { padding: 0.4rem 0.5rem; }
   .lector-btn { width: 32px; height: 32px; }
+  .lector-btn-lbl { display: none !important; }
+  .lector-btn-descarga-formato {
+    width: 32px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
   .lector-paginas { font-size: 0.8rem; padding: 0 0.2rem; }
   .lector-canvas-container { padding: 0.5rem 0; }
   .lector-bloqueo-caja { padding: 1.5rem 1.2rem; }
