@@ -2081,6 +2081,7 @@ async function abrirLector(libroId, libro) {
   const bloqueo = document.getElementById('lectorBloqueo');
   const titulo = document.getElementById('lectorTituloTexto');
   const btnDescarga = document.getElementById('lectorBtnDescarga');
+  const btnDescargaEpub = document.getElementById('lectorBtnDescargaEpub');
 
   if (!modal || !canvas) return;
 
@@ -2094,7 +2095,13 @@ async function abrirLector(libroId, libro) {
   if (bloqueo) bloqueo.style.display = 'none';
   if (cargando) cargando.style.display = 'flex';
   if (canvas) canvas.style.display = 'none';
-  if (btnDescarga) btnDescarga.style.display = lectorEstado.esDonador ? 'flex' : 'none';
+  
+  if (btnDescarga) {
+    btnDescarga.style.display = (lectorEstado.esDonador && libro.archivo_pdf) ? 'flex' : 'none';
+  }
+  if (btnDescargaEpub) {
+    btnDescargaEpub.style.display = (lectorEstado.esDonador && libro.archivo_epub) ? 'flex' : 'none';
+  }
 
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -2278,6 +2285,7 @@ function inicializarLector() {
   const btnFit = document.getElementById('lectorBtnFit');
   const btnCerrar = document.getElementById('lectorBtnCerrar');
   const btnDescarga = document.getElementById('lectorBtnDescarga');
+  const btnDescargaEpub = document.getElementById('lectorBtnDescargaEpub');
   const btnIngresarCodigo = document.getElementById('lectorBtnIngresarCodigo');
   const inputPag = document.getElementById('inputLectorPag');
 
@@ -2324,13 +2332,31 @@ function inicializarLector() {
     });
   }
 
+  if (btnDescargaEpub) {
+    btnDescargaEpub.addEventListener('click', () => {
+      if (lectorEstado.libroId) descargarArchivo(lectorEstado.libroId, 'epub');
+    });
+  }
+
   if (btnIngresarCodigo) {
     btnIngresarCodigo.addEventListener('click', () => {
       abrirModalCodigo(async () => {
         // Tras validar el código, actualizar estado del lector y re-renderizar
         lectorEstado.esDonador = true;
+        
+        // Obtener el libro actual para saber si tiene epub/pdf
+        const libroActual = libros.find(l => l.id === lectorEstado.libroId);
+        
         const btnDesc = document.getElementById('lectorBtnDescarga');
-        if (btnDesc) btnDesc.style.display = 'flex';
+        if (btnDesc) {
+          btnDesc.style.display = (libroActual && libroActual.archivo_pdf) ? 'flex' : 'none';
+        }
+        
+        const btnDescEp = document.getElementById('lectorBtnDescargaEpub');
+        if (btnDescEp) {
+          btnDescEp.style.display = (libroActual && libroActual.archivo_epub) ? 'flex' : 'none';
+        }
+
         const bloqueo = document.getElementById('lectorBloqueo');
         if (bloqueo) bloqueo.style.display = 'none';
         await renderizarPagina(lectorEstado.pagina);

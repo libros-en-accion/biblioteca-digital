@@ -3069,6 +3069,15 @@ footer {
   background: var(--dorado);
   color: #1a0f08;
 }
+.lector-btn-donar-epub {
+  background: rgba(42, 123, 106, 0.25);
+  border-color: var(--dorado);
+  color: var(--teal-claro);
+}
+.lector-btn-donar-epub:hover {
+  background: var(--teal-medio);
+  color: #fff;
+}
 .lector-btn-cerrar {
   background: rgba(122, 26, 46, 0.15);
   border-color: rgba(122, 26, 46, 0.3);
