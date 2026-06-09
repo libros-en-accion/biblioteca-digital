@@ -160,7 +160,7 @@ function mostrarSkeletons() {
 
 // ── CARGAR LIBROS AL INICIAR ──
 mostrarSkeletons();
-fetch('libros.json?v=8')
+fetch('libros.json?v=9')
   .then(respuesta => {
     if (!respuesta.ok) throw new Error(`Error HTTP: ${respuesta.status}`);
     return respuesta.json();
