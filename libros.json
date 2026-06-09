@@ -3917,16 +3917,6 @@
     "archivo_epub": "001_EPUB/B/Bronte, Emily/Cumbres borrascosas - Emily Bronte.epub"
   },
   {
-    "id": 334,
-    "titulo": "Cumbres borrascosas",
-    "autor": "Emily Bronte",
-    "anio": 1847,
-    "genero": "Novela",
-    "descripcion": "Relato oscuro sobre familias enfrentadas y un amor prohibido que perdura a través de las generaciones.",
-    "pdf": "https://drive.google.com/file/d/1-kktq8PFgnzUXSqPSpTKAoeZdTXkRtNw/preview",
-    "portada": "portadas/334.webp"
-  },
-  {
     "id": 335,
     "titulo": "Poesia completa",
     "autor": "Emily Bronte",
@@ -7369,14 +7359,14 @@
     "archivo_epub": "001_EPUB/C/Collins, Suzanne/En llamas - Suzanne Collins.epub"
   },
   {
-    "id": 623,
-    "titulo": "Gregor La profecia de la destruccion",
+    "id": 625,
+    "titulo": "Gregor. La profecia de la destruccion",
     "autor": "Suzanne Collins",
     "anio": 2004,
     "genero": "Novela juvenil",
-    "descripcion": "Gregor debe regresar a las Tierras Bajas para salvar a sus amigos de una guerra total entre especies.",
-    "pdf": "https://drive.google.com/file/d/1te0DDGwG4F3KI9N92-lwoa3qxGvZVvwI/preview",
-    "portada": "portadas/623.webp",
+    "descripcion": "Tercera entrega de las Crónicas de las Tierras Bajas, donde Gregor enfrenta dilemas éticos durante el conflicto bélico.",
+    "pdf": "https://drive.google.com/file/d/1DB9HdkH8_FTIEo-s-AJ8u-4QEjc5205v/preview",
+    "portada": "portadas/625.webp",
     "archivo_pdf": "C/Collins, Suzanne/Gregor. La profecia de la destruccion - Suzanne Collins.pdf",
     "archivo_epub": "001_EPUB/C/Collins, Suzanne/Gregor. La profecia de la destruccion - Suzanne Collins.epub"
   },
@@ -7391,26 +7381,6 @@
     "portada": "portadas/624.webp",
     "archivo_pdf": "C/Collins, Suzanne/Gregor. La profecia del gris - Suzanne Collins.pdf",
     "archivo_epub": "001_EPUB/C/Collins, Suzanne/Gregor La profecia del gris - Suzanne Collins.epub"
-  },
-  {
-    "id": 625,
-    "titulo": "Gregor. La profecia de la destruccion",
-    "autor": "Suzanne Collins",
-    "anio": 2004,
-    "genero": "Novela juvenil",
-    "descripcion": "Tercera entrega de las Crónicas de las Tierras Bajas, donde Gregor enfrenta dilemas éticos durante el conflicto bélico.",
-    "pdf": "https://drive.google.com/file/d/1DB9HdkH8_FTIEo-s-AJ8u-4QEjc5205v/preview",
-    "portada": "portadas/625.webp"
-  },
-  {
-    "id": 626,
-    "titulo": "Gregor. La profecia del gris",
-    "autor": "Suzanne Collins",
-    "anio": 2003,
-    "genero": "Novela juvenil",
-    "descripcion": "Inicio de la saga épica subterránea donde el joven protagonista descubre su destino como guerrero salvador.",
-    "pdf": "https://drive.google.com/file/d/1ZDBhFRYtYpyiBzmjcCuePofe_HNhfBft/preview",
-    "portada": "portadas/626.webp"
   },
   {
     "id": 627,
@@ -7467,7 +7437,8 @@
     "descripcion": "Novela experimental que surge de un capítulo de Rayuela, donde los personajes interactúan en una trama fragmentaria.",
     "pdf": "https://drive.google.com/file/d/1eUtiVNBF95RWPXdSRo_rNF1pRw0LXbmR/preview",
     "portada": "portadas/631.webp",
-    "archivo_epub": "001_EPUB/C/Cortázar, Julio/62 Modelo para armar - Julio Cortazar.epub"
+    "archivo_epub": "001_EPUB/C/Cortázar, Julio/62 Modelo para armar - Julio Cortazar.epub",
+    "archivo_pdf": "C/Cortázar, Julio/62_Modelo para armar - Julio Cortazar.pdf"
   },
   {
     "id": 632,
@@ -9684,7 +9655,7 @@
   {
     "id": 819,
     "titulo": "Alberto Savarus",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1842,
     "genero": "Novela",
     "descripcion": "Un abogado ambicioso oculta su pasado mientras busca el éxito político y el amor de una aristócrata.",
@@ -9696,7 +9667,7 @@
   {
     "id": 820,
     "titulo": "Alberto Savarus y otras historias",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1842,
     "genero": "Cuento",
     "descripcion": "Colección de relatos que diseccionan las ambiciones sociales y los secretos familiares de la burguesía francesa.",
@@ -9708,7 +9679,7 @@
   {
     "id": 821,
     "titulo": "Beatriz",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1839,
     "genero": "Novela",
     "descripcion": "Crónica de la pasión destructiva de un joven por una mujer sofisticada en el entorno de la aristocracia bretona.",
@@ -9720,7 +9691,7 @@
   {
     "id": 822,
     "titulo": "Cuentos completos de La Comedia Humana",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1845,
     "genero": "Cuento",
     "descripcion": "Recopilación de la narrativa breve que complementa el vasto fresco social de la sociedad francesa decimonónica.",
@@ -9732,7 +9703,7 @@
   {
     "id": 823,
     "titulo": "Cuentos filosoficos",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1831,
     "genero": "Cuento",
     "descripcion": "Relatos que exploran temas metafísicos, la voluntad y la búsqueda de lo absoluto en el ser humano.",
@@ -9744,7 +9715,7 @@
   {
     "id": 824,
     "titulo": "El Centenario",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1822,
     "genero": "Novela",
     "descripcion": "Novela temprana de terror y misterio sobre un anciano que busca prolongar su vida mediante métodos oscuros.",
@@ -9756,7 +9727,7 @@
   {
     "id": 825,
     "titulo": "El arte de pagar sus deudas sin gastar un",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1827,
     "genero": "Ensayo",
     "descripcion": "Manual satírico que ofrece consejos ingeniosos y cínicos para navegar por la insolvencia en la alta sociedad.",
@@ -9768,7 +9739,7 @@
   {
     "id": 826,
     "titulo": "El coronel Chabert (trad. Mercedes Lopez-B",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Novela",
     "descripcion": "Un oficial dado por muerto en la guerra regresa para reclamar su identidad y propiedades robadas.",
@@ -9780,7 +9751,7 @@
   {
     "id": 827,
     "titulo": "El coronel Chabert",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Novela",
     "descripcion": "Tragedia de un héroe napoleónico que enfrenta la ingratitud y la codicia de una sociedad que lo ha olvidado.",
@@ -9792,7 +9763,7 @@
   {
     "id": 828,
     "titulo": "El coronel Chabert y otras historias",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Cuento",
     "descripcion": "Antología que reúne casos de injusticia social y drama psicológico en la Francia de la Restauración.",
@@ -9804,7 +9775,7 @@
   {
     "id": 829,
     "titulo": "El cura de Tours",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Novela",
     "descripcion": "Relato sobre las mezquinas intrigas eclesiásticas y sociales que destruyen la tranquilidad de un clérigo ingenuo.",
@@ -9816,7 +9787,7 @@
   {
     "id": 830,
     "titulo": "El diputado de Arcis & Z. Marcas",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1847,
     "genero": "Novela",
     "descripcion": "Dos historias que exploran la corrupción política y las dificultades de los jóvenes con talento en el gobierno.",
@@ -9828,7 +9799,7 @@
   {
     "id": 831,
     "titulo": "El hijo maldito y otras historias",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1831,
     "genero": "Cuento",
     "descripcion": "Narraciones marcadas por el conflicto familiar, la herencia y las pasiones prohibidas en la Comedia Humana.",
@@ -9840,7 +9811,7 @@
   {
     "id": 832,
     "titulo": "El lirio en el valle & La piel de chagren",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1836,
     "genero": "Novela",
     "descripcion": "Drama sobre el amor platónico frente a una fábula fantástica sobre los deseos y la mortalidad.",
@@ -9852,7 +9823,7 @@
   {
     "id": 833,
     "titulo": "El medico rural & El cura de aldea",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1833,
     "genero": "Novela",
     "descripcion": "Dos obras que presentan figuras de autoridad moral intentando mejorar la vida material y espiritual del pueblo.",
@@ -9864,7 +9835,7 @@
   {
     "id": 834,
     "titulo": "El pobre Goriot",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1835,
     "genero": "Novela",
     "descripcion": "Un anciano se arruina para satisfacer los caprichos de sus hijas, mientras el joven Rastignac descubre la ambición.",
@@ -9876,7 +9847,7 @@
   {
     "id": 835,
     "titulo": "El primo Pons",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1847,
     "genero": "Novela",
     "descripcion": "Historia de un músico pobre y coleccionista acechado por parientes codiciosos que desean su valiosa herencia artística.",
@@ -9888,7 +9859,7 @@
   {
     "id": 836,
     "titulo": "El reverso de la historia contemporanea y",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1848,
     "genero": "Novela",
     "descripcion": "Relato sobre una sociedad secreta dedicada a la caridad y la redención en medio del caos social.",
@@ -9900,7 +9871,7 @@
   {
     "id": 837,
     "titulo": "Esplendores y miserias de las cortesanas (",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1838,
     "genero": "Novela",
     "descripcion": "Saga criminal y social sobre el ascenso y caída de un joven ambicioso y una prostituta de lujo.",
@@ -9910,19 +9881,9 @@
     "archivo_epub": "001_EPUB/D/de Balzac, Honoré/Esplendores y miserias de las cortesanas - Honore de Balzac.epub"
   },
   {
-    "id": 838,
-    "titulo": "Esplendores y miserias de las cortesanas",
-    "autor": "Honoré De Balzac",
-    "anio": 1838,
-    "genero": "Novela",
-    "descripcion": "Misterios, chantajes y el poder del dinero en los bajos fondos y salones de París.",
-    "pdf": "https://drive.google.com/file/d/1Qo8EXRtWAp_7Ta_RrEZybu3NGg-NXQWe/preview",
-    "portada": "portadas/838.webp"
-  },
-  {
     "id": 839,
     "titulo": "Eugenia Grandet (trad. Mauro Armino)",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1833,
     "genero": "Novela",
     "descripcion": "La vida de una joven marcada por la avaricia extrema de su padre y un amor no correspondido.",
@@ -9934,7 +9895,7 @@
   {
     "id": 840,
     "titulo": "Eugenia Grandet",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1833,
     "genero": "Novela",
     "descripcion": "Clásico realista que disecciona la opresión familiar y el poder corruptor del oro en provincias.",
@@ -9946,7 +9907,7 @@
   {
     "id": 841,
     "titulo": "Eugenie Grandet (trad. de Joan Riambau)",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1833,
     "genero": "Novela",
     "descripcion": "Estudio psicológico sobre la abnegación femenina frente al materialismo despiadado de la sociedad francesa.",
@@ -9958,7 +9919,7 @@
   {
     "id": 842,
     "titulo": "Grandeza y decadencia de Cesar Birotteau",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1837,
     "genero": "Novela",
     "descripcion": "Un perfumista honesto alcanza el éxito comercial solo para caer en la ruina por la especulación.",
@@ -9968,19 +9929,9 @@
     "archivo_epub": "001_EPUB/D/de Balzac, Honoré/Grandeza y decadencia de Cesar Birotteau - Honore de Balzac.epub"
   },
   {
-    "id": 843,
-    "titulo": "Grandeza y decadencia de Cesar Birotteau,",
-    "autor": "Honoré De Balzac",
-    "anio": 1837,
-    "genero": "Novela",
-    "descripcion": "Crónica sobre el honor comercial y las trampas financieras en el París de la posguerra.",
-    "pdf": "https://drive.google.com/file/d/1cW5dAjV8ouDE_Y34tpnCZHwCLirGBpi_/preview",
-    "portada": "portadas/843.webp"
-  },
-  {
     "id": 844,
     "titulo": "Historia de la grandeza y decadencia de Ce",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1837,
     "genero": "Novela",
     "descripcion": "Narración sobre la fragilidad del éxito burgués y la lucha por mantener la integridad moral.",
@@ -9992,7 +9943,7 @@
   {
     "id": 845,
     "titulo": "Historia de los trece",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1833,
     "genero": "Novela",
     "descripcion": "Trilogía de novelas que presentan a una poderosa sociedad secreta que manipula los destinos de París.",
@@ -10004,7 +9955,7 @@
   {
     "id": 846,
     "titulo": "Ilusiones Perdidas (2 y 3)",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1839,
     "genero": "Novela",
     "descripcion": "Continuación de la historia de Lucien de Rubempré y su amargo aprendizaje en el periodismo parisino.",
@@ -10016,7 +9967,7 @@
   {
     "id": 847,
     "titulo": "Jesucristo en Flandes y otras historias",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1831,
     "genero": "Cuento",
     "descripcion": "Relatos que mezclan lo sobrenatural y lo religioso con el realismo social característico del autor.",
@@ -10028,7 +9979,7 @@
   {
     "id": 848,
     "titulo": "La busqueda del absoluto",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1834,
     "genero": "Novela",
     "descripcion": "Un químico obsesionado con hallar la materia prima del universo arruina a su familia en el proceso.",
@@ -10040,7 +9991,7 @@
   {
     "id": 849,
     "titulo": "La casa del gato que juega a la pelota y o",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1829,
     "genero": "Cuento",
     "descripcion": "Historias sobre los peligros de los matrimonios por interés y las diferencias de clase social.",
@@ -10052,7 +10003,7 @@
   {
     "id": 850,
     "titulo": "La muchacha de los ojos de oro",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1833,
     "genero": "Novela",
     "descripcion": "Misterioso y decadente relato sobre el deseo, los celos y el cautiverio en el París aristocrático.",
@@ -10064,7 +10015,7 @@
   {
     "id": 851,
     "titulo": "La mujer de treinta anos & El tio Goriot",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Novela",
     "descripcion": "Doble retrato de la insatisfacción matrimonial femenina y el sacrificio paterno absoluto.",
@@ -10076,7 +10027,7 @@
   {
     "id": 852,
     "titulo": "La mujer de treinta anos",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Novela",
     "descripcion": "Exploración de la psicología femenina y las crisis emocionales en las distintas etapas de la madurez.",
@@ -10088,7 +10039,7 @@
   {
     "id": 853,
     "titulo": "La obra maestra desconocida",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1831,
     "genero": "Cuento",
     "descripcion": "Un anciano pintor trabaja durante años en un cuadro que busca capturar la vida misma, terminando en el caos.",
@@ -10100,7 +10051,7 @@
   {
     "id": 854,
     "titulo": "La piel de zapa",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1831,
     "genero": "Novela",
     "descripcion": "Un joven adquiere un talismán que cumple deseos pero consume su vida con cada petición.",
@@ -10112,7 +10063,7 @@
   {
     "id": 855,
     "titulo": "La prima Bela",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1846,
     "genero": "Novela",
     "descripcion": "Una mujer soltera y resentida trama una venganza sistemática para destruir a su propia familia.",
@@ -10124,7 +10075,7 @@
   {
     "id": 856,
     "titulo": "Las Ilusiones Perdidas (trad. Jose Ramon M",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1837,
     "genero": "Novela",
     "descripcion": "Obra maestra sobre la corrupción del talento y la pérdida de la inocencia en el mundo literario.",
@@ -10136,7 +10087,7 @@
   {
     "id": 857,
     "titulo": "Las rivalidades & Ilusiones perdidas (1)",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1837,
     "genero": "Novela",
     "descripcion": "Luchas de poder en provincias y el inicio del viaje de Lucien hacia la fama.",
@@ -10148,7 +10099,7 @@
   {
     "id": 858,
     "titulo": "Los Chuanes & Una pasion en el desierto",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1829,
     "genero": "Novela",
     "descripcion": "Relato de la insurrección realista en Bretaña frente a una historia de amor entre un soldado y una pantera.",
@@ -10160,7 +10111,7 @@
   {
     "id": 859,
     "titulo": "Los campesinos",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1844,
     "genero": "Novela",
     "descripcion": "Crudo análisis sobre la lucha de clases en el campo y la resistencia de los campesinos ante los terratenientes.",
@@ -10172,7 +10123,7 @@
   {
     "id": 860,
     "titulo": "Los parientes pobres (2) & Los comediantes",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1846,
     "genero": "Novela",
     "descripcion": "Relatos que exploran la marginalidad social y el cinismo de los actores en la gran ciudad.",
@@ -10184,7 +10135,7 @@
   {
     "id": 861,
     "titulo": "Los parientes pobres",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1846,
     "genero": "Novela",
     "descripcion": "Serie que incluye La prima Bela y El primo Pons, centrada en la envidia y el parasitismo familiar.",
@@ -10196,7 +10147,7 @@
   {
     "id": 862,
     "titulo": "Los parisienses en provincias",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Cuento",
     "descripcion": "Sátira sobre el choque cultural y las pretensiones de los habitantes de la capital frente a los de provincias.",
@@ -10208,7 +10159,7 @@
   {
     "id": 863,
     "titulo": "Los pequenos burgueses (Trad. Antonio Ribe",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1854,
     "genero": "Novela",
     "descripcion": "Estudio social sobre las aspiraciones y miserias de la clase media en ascenso en el París decimonónico.",
@@ -10220,7 +10171,7 @@
   {
     "id": 864,
     "titulo": "Los pequenos burgueses",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1854,
     "genero": "Novela",
     "descripcion": "Novela póstuma que completa el panorama de las profesiones y niveles sociales de la Comedia Humana.",
@@ -10232,7 +10183,7 @@
   {
     "id": 865,
     "titulo": "Los secretos de la princesa de Cadignan y",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1839,
     "genero": "Cuento",
     "descripcion": "Relatos sobre la diplomacia amorosa y las intrigas de alcoba en los salones de la alta sociedad.",
@@ -10244,7 +10195,7 @@
   {
     "id": 866,
     "titulo": "Los solterones",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Novela",
     "descripcion": "Historias de personajes aislados cuya soledad influye en sus comportamientos excéntricos o malvados.",
@@ -10256,7 +10207,7 @@
   {
     "id": 867,
     "titulo": "Modesta Mignon & Una entrada en la vida",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1844,
     "genero": "Novela",
     "descripcion": "Un romance epistolar lleno de engaños frente a un viaje que marca el fin de la juventud.",
@@ -10268,7 +10219,7 @@
   {
     "id": 868,
     "titulo": "Papa Goriot",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1835,
     "genero": "Novela",
     "descripcion": "El drama de la ingratitud filial y la ambición social desenfrenada en una casa de huéspedes parisina.",
@@ -10280,7 +10231,7 @@
   {
     "id": 869,
     "titulo": "Penas de amor de una gata inglesa",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1840,
     "genero": "Cuento",
     "descripcion": "Fábula satírica que utiliza animales para parodiar las costumbres y los sentimientos de la sociedad humana.",
@@ -10292,7 +10243,7 @@
   {
     "id": 870,
     "titulo": "Pequenas miserias de la vida conyugal & Ob",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1845,
     "genero": "Ensayo",
     "descripcion": "Compendio de observaciones humorísticas y agudas sobre los conflictos diarios en el matrimonio.",
@@ -10304,7 +10255,7 @@
   {
     "id": 871,
     "titulo": "Petrilla",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1832,
     "genero": "Cuento",
     "descripcion": "Historia de una joven criada que enfrenta los desafíos morales y sociales de su posición.",
@@ -10316,7 +10267,7 @@
   {
     "id": 872,
     "titulo": "Serafita & Fisiologia del matrimonio",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1834,
     "genero": "Novela",
     "descripcion": "Novela mística sobre un ser andrógino frente a un ensayo analítico sobre las leyes matrimoniales.",
@@ -10328,7 +10279,7 @@
   {
     "id": 873,
     "titulo": "Sobre Catalina de Medicis & otras historia",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1842,
     "genero": "Novela histórica",
     "descripcion": "Reivindicación histórica de la reina frente a relatos de misterio y poder político.",
@@ -10340,7 +10291,7 @@
   {
     "id": 874,
     "titulo": "Tratado de la vida elegante (tr. de L. M.",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1830,
     "genero": "Ensayo",
     "descripcion": "Ensayo sobre el dandismo, la moda y las reglas de etiqueta de la clase alta francesa.",
@@ -10352,7 +10303,7 @@
   {
     "id": 875,
     "titulo": "Tratado de la vida elegante",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1830,
     "genero": "Ensayo",
     "descripcion": "Reflexión filosófica y estética sobre la distinción y el estilo personal en la sociedad moderna.",
@@ -10364,7 +10315,7 @@
   {
     "id": 876,
     "titulo": "Un asunto tenebroso",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1841,
     "genero": "Novela",
     "descripcion": "Novela policial e histórica que narra una conspiración política durante la época de Napoleón.",
@@ -10376,7 +10327,7 @@
   {
     "id": 877,
     "titulo": "Una hija de Eva",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1838,
     "genero": "Novela",
     "descripcion": "Relato sobre una joven casada que se ve envuelta en deudas y engaños para complacer a su amante.",
@@ -10388,7 +10339,7 @@
   {
     "id": 878,
     "titulo": "Una hija de Eva y otras historias",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1838,
     "genero": "Cuento",
     "descripcion": "Colección de dramas domésticos que exploran la fragilidad de la virtud femenina.",
@@ -10400,7 +10351,7 @@
   {
     "id": 879,
     "titulo": "Ursula Mirouet & Eugenia Grandet",
-    "autor": "Honoré De Balzac",
+    "autor": "Honoré de Balzac",
     "anio": 1841,
     "genero": "Novela",
     "descripcion": "Historia sobre la herencia disputada de una huérfana virtuosa frente al drama de la avaricia familiar.",
@@ -14828,14 +14779,14 @@
     "archivo_epub": "001_EPUB/H/Han, Byung-Chul/La sociedad de la transparencia - Byung-Chul Han.epub"
   },
   {
-    "id": 1250,
+    "id": 2777,
     "titulo": "La sociedad del cansancio",
     "autor": "Byung-Chul Han",
     "anio": 2010,
     "genero": "Filosofía",
-    "descripcion": "Diagnóstico sobre la autoexplotación y las patologías neuronales resultantes del exceso de positividad en la sociedad actual.",
-    "pdf": "https://drive.google.com/file/d/1ZpeNKV7t9tDpn6qK98vFWG7O7zfmes4L/preview",
-    "portada": "portadas/1250.webp",
+    "descripcion": "Ensayo filosófico que diagnostica a la sociedad contemporánea como una sociedad de rendimiento que produce depresión y agotamiento.",
+    "pdf": "https://drive.google.com/file/d/1CFo5ExNiyTdxYYy66wr-NqiRZOn2JFFl/preview",
+    "portada": "portadas/2777.webp",
     "archivo_pdf": "H/Han, Byung-Chul/La sociedad del cansancio - Byung-Chul Han.pdf",
     "archivo_epub": "001_EPUB/H/Han, Byung-Chul/La sociedad del cansancio - Byung-Chul Han.epub"
   },
@@ -18392,14 +18343,14 @@
     "archivo_epub": "001_EPUB/K/Kafka, Franz/El proceso (trad. Miguel Vedda) - Franz Kafka.epub"
   },
   {
-    "id": 1548,
+    "id": 1550,
     "titulo": "El proceso",
     "autor": "Franz Kafka",
     "anio": 1925,
     "genero": "Novela",
-    "descripcion": "Josef K. es arrestado y procesado por un tribunal invisible sin conocer nunca de qué se le acusa.",
-    "pdf": "https://drive.google.com/file/d/1WfKO1357o09TJ5VuD15yOrVnBfuyhgo7/preview",
-    "portada": "portadas/1548.webp",
+    "descripcion": "Josef K. enfrenta un sistema judicial laberíntico y absurdo tras ser arrestado sin motivo aparente.",
+    "pdf": "https://drive.google.com/file/d/1ULXqg5AlIjI848QuQNp58-tGzpyOCv3l/preview",
+    "portada": "portadas/1550.webp",
     "archivo_pdf": "K/Kafka, Franz/El proceso - Franz Kafka.pdf",
     "archivo_epub": "001_EPUB/K/Kafka, Franz/El proceso - Franz Kafka.epub"
   },
@@ -18412,16 +18363,6 @@
     "descripcion": "Un joven inmigrante europeo vive peripecias absurdas y desafortunadas en un Estados Unidos surrealista.",
     "pdf": "https://drive.google.com/file/d/1EiAOZxHsTaL1PG33w1OZsBxxcCBenwSD/preview",
     "portada": "portadas/1549.webp"
-  },
-  {
-    "id": 1550,
-    "titulo": "El proceso",
-    "autor": "Franz Kafka",
-    "anio": 1925,
-    "genero": "Novela",
-    "descripcion": "Josef K. enfrenta un sistema judicial laberíntico y absurdo tras ser arrestado sin motivo aparente.",
-    "pdf": "https://drive.google.com/file/d/1ULXqg5AlIjI848QuQNp58-tGzpyOCv3l/preview",
-    "portada": "portadas/1550.webp"
   },
   {
     "id": 1551,
@@ -18627,7 +18568,7 @@
   },
   {
     "id": 1568,
-    "titulo": "22 11 63 (Stephen King)",
+    "titulo": "22 11 63",
     "autor": "Stephen King",
     "anio": 2011,
     "genero": "Ciencia Ficción",
@@ -18638,7 +18579,7 @@
   },
   {
     "id": 1569,
-    "titulo": "Almuerzo en el cafe Gotham (Stephen King)",
+    "titulo": "Almuerzo en el cafe Gotham",
     "autor": "Stephen King",
     "anio": 1995,
     "genero": "Terror",
@@ -18650,7 +18591,7 @@
   },
   {
     "id": 1570,
-    "titulo": "Apocalipsis (Stephen King) - Tomo 1",
+    "titulo": "Apocalipsis - Tomo 1",
     "autor": "Stephen King",
     "anio": 1978,
     "genero": "Fantasía",
@@ -18661,7 +18602,7 @@
   },
   {
     "id": 1571,
-    "titulo": "Apocalipsis (Stephen King) - Tomo 2",
+    "titulo": "Apocalipsis - Tomo 2",
     "autor": "Stephen King",
     "anio": 1978,
     "genero": "Fantasía",
@@ -18671,7 +18612,7 @@
   },
   {
     "id": 1572,
-    "titulo": "Area 81 (Stephen King)",
+    "titulo": "Area 81",
     "autor": "Stephen King",
     "anio": 2011,
     "genero": "Terror",
@@ -18683,7 +18624,7 @@
   },
   {
     "id": 1573,
-    "titulo": "Bellas durmientes (Stephen King)",
+    "titulo": "Bellas durmientes",
     "autor": "Stephen King",
     "anio": 2017,
     "genero": "Fantasía",
@@ -18695,7 +18636,7 @@
   },
   {
     "id": 1574,
-    "titulo": "Billy Summers (Stephen King)",
+    "titulo": "Billy Summers",
     "autor": "Stephen King",
     "anio": 2021,
     "genero": "Misterio y Thriller",
@@ -18719,7 +18660,7 @@
   },
   {
     "id": 1576,
-    "titulo": "Blockade Billy (Stephen King)",
+    "titulo": "Blockade Billy",
     "autor": "Stephen King",
     "anio": 2010,
     "genero": "Terror",
@@ -18731,7 +18672,7 @@
   },
   {
     "id": 1577,
-    "titulo": "Buick 8, un coche perverso (Stephen King)",
+    "titulo": "Buick 8, un coche perverso",
     "autor": "Stephen King",
     "anio": 2002,
     "genero": "Terror",
@@ -18740,18 +18681,6 @@
     "portada": "portadas/1577.webp",
     "archivo_pdf": "K/King, Stephen/Buick 8, un coche perverso (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/Buick 8, un coche perverso (Stephen King).epub"
-  },
-  {
-    "id": 1578,
-    "titulo": "Buick 8 un coche perverso",
-    "autor": "Stephen King",
-    "anio": 2002,
-    "genero": "Terror",
-    "descripcion": "Un coche misterioso guardado en un cobertizo policial parece ser una ventana a otra dimensión.",
-    "pdf": "https://drive.google.com/file/d/1xJpU5u8k81UnlhD1kWuvMN9F3X0U7SPR/preview",
-    "portada": "portadas/1578.webp",
-    "archivo_pdf": "K/King, Stephen/Buick 8_ un coche perverso - Stephen King.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Buick 8_ un coche perverso - Stephen King.epub"
   },
   {
     "id": 1579,
@@ -18779,7 +18708,7 @@
   },
   {
     "id": 1581,
-    "titulo": "Carrie (Stephen King)",
+    "titulo": "Carrie",
     "autor": "Stephen King",
     "anio": 1974,
     "genero": "Terror",
@@ -18791,7 +18720,7 @@
   },
   {
     "id": 1582,
-    "titulo": "Casa negra (Stephen King)",
+    "titulo": "Casa negra",
     "autor": "Stephen King",
     "anio": 2001,
     "genero": "Terror",
@@ -18803,7 +18732,7 @@
   },
   {
     "id": 1583,
-    "titulo": "Cell (Stephen King)",
+    "titulo": "Cell",
     "autor": "Stephen King",
     "anio": 2006,
     "genero": "Ciencia Ficción",
@@ -18815,7 +18744,7 @@
   },
   {
     "id": 1584,
-    "titulo": "Cementerio de animales (Stephen King)",
+    "titulo": "Cementerio de animales",
     "autor": "Stephen King",
     "anio": 1983,
     "genero": "Terror",
@@ -18839,7 +18768,7 @@
   },
   {
     "id": 1586,
-    "titulo": "Colorado kid (Stephen King)",
+    "titulo": "Colorado kid",
     "autor": "Stephen King",
     "anio": 2005,
     "genero": "Misterio y Thriller",
@@ -18851,7 +18780,7 @@
   },
   {
     "id": 1587,
-    "titulo": "Corazones en la Atlantida (Stephen King)",
+    "titulo": "Corazones en la Atlantida",
     "autor": "Stephen King",
     "anio": 1999,
     "genero": "Fantasía",
@@ -18863,7 +18792,7 @@
   },
   {
     "id": 1588,
-    "titulo": "Cuento de hadas (Stephen King)",
+    "titulo": "Cuento de hadas",
     "autor": "Stephen King",
     "anio": 2022,
     "genero": "Fantasía",
@@ -18875,7 +18804,7 @@
   },
   {
     "id": 1589,
-    "titulo": "Cujo (Stephen King)",
+    "titulo": "Cujo",
     "autor": "Stephen King",
     "anio": 1981,
     "genero": "Terror",
@@ -18887,7 +18816,7 @@
   },
   {
     "id": 1590,
-    "titulo": "Danza macabra (Stephen King)",
+    "titulo": "Danza macabra",
     "autor": "Stephen King",
     "anio": 1981,
     "genero": "Ensayo",
@@ -18899,7 +18828,7 @@
   },
   {
     "id": 1591,
-    "titulo": "Desesperacion (Stephen King)",
+    "titulo": "Desesperacion",
     "autor": "Stephen King",
     "anio": 1996,
     "genero": "Terror",
@@ -18911,7 +18840,7 @@
   },
   {
     "id": 1592,
-    "titulo": "Despues (Stephen King)",
+    "titulo": "Despues",
     "autor": "Stephen King",
     "anio": 2021,
     "genero": "Terror",
@@ -18923,7 +18852,7 @@
   },
   {
     "id": 1593,
-    "titulo": "Despues del anochecer (Stephen King)",
+    "titulo": "Despues del anochecer",
     "autor": "Stephen King",
     "anio": 2008,
     "genero": "Terror",
@@ -18935,7 +18864,7 @@
   },
   {
     "id": 1594,
-    "titulo": "Doctor Sueño (Stephen King)",
+    "titulo": "Doctor Sueño",
     "autor": "Stephen King",
     "anio": 2013,
     "genero": "Terror",
@@ -18947,7 +18876,7 @@
   },
   {
     "id": 1595,
-    "titulo": "Dolores Claiborne (Stephen King)",
+    "titulo": "Dolores Claiborne",
     "autor": "Stephen King",
     "anio": 1992,
     "genero": "Misterio y Thriller",
@@ -18959,7 +18888,7 @@
   },
   {
     "id": 1596,
-    "titulo": "Dos historias para no dormir (Stephen King)",
+    "titulo": "Dos historias para no dormir",
     "autor": "Stephen King",
     "anio": 1994,
     "genero": "Terror",
@@ -18971,7 +18900,7 @@
   },
   {
     "id": 1597,
-    "titulo": "Duma Key (Stephen King)",
+    "titulo": "Duma Key",
     "autor": "Stephen King",
     "anio": 2008,
     "genero": "Terror",
@@ -18995,7 +18924,7 @@
   },
   {
     "id": 1599,
-    "titulo": "El Instituto (Stephen King)",
+    "titulo": "El Instituto",
     "autor": "Stephen King",
     "anio": 2019,
     "genero": "Ciencia Ficción",
@@ -19007,7 +18936,7 @@
   },
   {
     "id": 1600,
-    "titulo": "El Visitante (Stephen King)",
+    "titulo": "El Visitante",
     "autor": "Stephen King",
     "anio": 2018,
     "genero": "Terror",
@@ -19019,7 +18948,7 @@
   },
   {
     "id": 1601,
-    "titulo": "El bazar de los malos sueños (Stephen King)",
+    "titulo": "El bazar de los malos sueños",
     "autor": "Stephen King",
     "anio": 2015,
     "genero": "Terror",
@@ -19043,7 +18972,7 @@
   },
   {
     "id": 1603,
-    "titulo": "El ciclo del hombre lobo (Stephen King)",
+    "titulo": "El ciclo del hombre lobo",
     "autor": "Stephen King",
     "anio": 1983,
     "genero": "Terror",
@@ -19055,7 +18984,7 @@
   },
   {
     "id": 1604,
-    "titulo": "El hombre del traje negro (Stephen King)",
+    "titulo": "El hombre del traje negro",
     "autor": "Stephen King",
     "anio": 1994,
     "genero": "Terror",
@@ -19067,7 +18996,7 @@
   },
   {
     "id": 1605,
-    "titulo": "El juego de Gerald (Stephen King)",
+    "titulo": "El juego de Gerald",
     "autor": "Stephen King",
     "anio": 1992,
     "genero": "Misterio y Thriller",
@@ -19091,7 +19020,7 @@
   },
   {
     "id": 1607,
-    "titulo": "El pasillo de la muerte (Stephen King)",
+    "titulo": "El pasillo de la muerte",
     "autor": "Stephen King",
     "anio": 1996,
     "genero": "Fantasía",
@@ -19115,7 +19044,7 @@
   },
   {
     "id": 1609,
-    "titulo": "El resplandor (Stephen King)",
+    "titulo": "El resplandor",
     "autor": "Stephen King",
     "anio": 1977,
     "genero": "Terror",
@@ -19127,7 +19056,7 @@
   },
   {
     "id": 1610,
-    "titulo": "El retrato de Rose Madder (Stephen King)",
+    "titulo": "El retrato de Rose Madder",
     "autor": "Stephen King",
     "anio": 1995,
     "genero": "Fantasía",
@@ -19139,7 +19068,7 @@
   },
   {
     "id": 1611,
-    "titulo": "El talisman (Stephen King)",
+    "titulo": "El talisman",
     "autor": "Stephen King",
     "anio": 1984,
     "genero": "Fantasía",
@@ -19151,7 +19080,7 @@
   },
   {
     "id": 1612,
-    "titulo": "El umbral de la noche (Stephen King)",
+    "titulo": "El umbral de la noche",
     "autor": "Stephen King",
     "anio": 1978,
     "genero": "Terror",
@@ -19163,7 +19092,7 @@
   },
   {
     "id": 1613,
-    "titulo": "Elevacion (Stephen King)",
+    "titulo": "Elevacion",
     "autor": "Stephen King",
     "anio": 2018,
     "genero": "Fantasía",
@@ -19174,20 +19103,20 @@
     "archivo_epub": "001_EPUB/K/King, Stephen/Elevacion (Stephen King).epub"
   },
   {
-    "id": 1614,
-    "titulo": "En la hierba alta (Stephen King)",
+    "id": 2793,
+    "titulo": "En la hierba alta",
     "autor": "Stephen King",
     "anio": 2012,
     "genero": "Terror",
-    "descripcion": "Dos hermanos se adentran en un campo de hierba alta tras oír gritos y quedan atrapados en un laberinto.",
+    "descripcion": "Dos hermanos escuchan a un niño perdido en un campo de hierba que los atrapa en un laberinto sin salida sobrenatural.",
     "pdf": "https://drive.google.com/file/d/19gTfrXCrw2IIRMoC1h2-hMFSa7S4Eggd/preview",
-    "portada": "portadas/1614.webp",
+    "portada": "portadas/2793.webp",
     "archivo_pdf": "K/King, Stephen/En la hierba alta (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/En la hierba alta (Stephen King).epub"
   },
   {
     "id": 1615,
-    "titulo": "Fin de guardia (Stephen King)",
+    "titulo": "Fin de guardia",
     "autor": "Stephen King",
     "anio": 2016,
     "genero": "Misterio y Thriller",
@@ -19230,7 +19159,7 @@
   },
   {
     "id": 1619,
-    "titulo": "Historias Fantasticas (Stephen King)",
+    "titulo": "Historias Fantasticas",
     "autor": "Stephen King",
     "anio": 1985,
     "genero": "Terror",
@@ -19242,7 +19171,7 @@
   },
   {
     "id": 1620,
-    "titulo": "Insomnia (Stephen King)",
+    "titulo": "Insomnia",
     "autor": "Stephen King",
     "anio": 1994,
     "genero": "Fantasía",
@@ -19254,7 +19183,7 @@
   },
   {
     "id": 1621,
-    "titulo": "It (Stephen King)",
+    "titulo": "It",
     "autor": "Stephen King",
     "anio": 1986,
     "genero": "Terror",
@@ -19266,7 +19195,7 @@
   },
   {
     "id": 1622,
-    "titulo": "Joyland (Stephen King)",
+    "titulo": "Joyland",
     "autor": "Stephen King",
     "anio": 2013,
     "genero": "Misterio y Thriller",
@@ -19278,7 +19207,7 @@
   },
   {
     "id": 1623,
-    "titulo": "La Expedicion (Stephen King)",
+    "titulo": "La Expedicion",
     "autor": "Stephen King",
     "anio": 1985,
     "genero": "Ciencia Ficción",
@@ -19302,7 +19231,7 @@
   },
   {
     "id": 1625,
-    "titulo": "La Niebla (Stephen King)",
+    "titulo": "La Niebla",
     "autor": "Stephen King",
     "anio": 1980,
     "genero": "Terror",
@@ -19314,7 +19243,7 @@
   },
   {
     "id": 1626,
-    "titulo": "La Tienda de los Deseos (Stephen King)",
+    "titulo": "La Tienda de los Deseos",
     "autor": "Stephen King",
     "anio": 1991,
     "genero": "Terror",
@@ -19326,7 +19255,7 @@
   },
   {
     "id": 1627,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 1",
+    "titulo": "La Torre Oscura - Tomo 1",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19337,7 +19266,7 @@
   },
   {
     "id": 1628,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 2",
+    "titulo": "La Torre Oscura - Tomo 2",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19347,7 +19276,7 @@
   },
   {
     "id": 1629,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 3",
+    "titulo": "La Torre Oscura - Tomo 3",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19357,7 +19286,7 @@
   },
   {
     "id": 1630,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 4",
+    "titulo": "La Torre Oscura - Tomo 4",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19369,7 +19298,7 @@
   },
   {
     "id": 1631,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 5",
+    "titulo": "La Torre Oscura - Tomo 5",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19381,7 +19310,7 @@
   },
   {
     "id": 1632,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 6",
+    "titulo": "La Torre Oscura - Tomo 6",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19393,7 +19322,7 @@
   },
   {
     "id": 1633,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 7",
+    "titulo": "La Torre Oscura - Tomo 7",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19405,7 +19334,7 @@
   },
   {
     "id": 1634,
-    "titulo": "La Torre Oscura (Stephen King) - Tomo 8",
+    "titulo": "La Torre Oscura - Tomo 8",
     "autor": "Stephen King",
     "anio": 0,
     "genero": "Fantasía",
@@ -19429,7 +19358,7 @@
   },
   {
     "id": 1636,
-    "titulo": "La chica que amaba a Tom Gordon (Stephen King)",
+    "titulo": "La chica que amaba a Tom Gordon",
     "autor": "Stephen King",
     "anio": 1999,
     "genero": "Misterio y Thriller",
@@ -19441,7 +19370,7 @@
   },
   {
     "id": 1637,
-    "titulo": "La cupula (Stephen King)",
+    "titulo": "La cupula",
     "autor": "Stephen King",
     "anio": 2009,
     "genero": "Ciencia Ficción",
@@ -19452,20 +19381,8 @@
     "archivo_epub": "001_EPUB/K/King, Stephen/La cupula (Stephen King).epub"
   },
   {
-    "id": 1638,
-    "titulo": "La expedicion",
-    "autor": "Stephen King",
-    "anio": 1985,
-    "genero": "Ciencia Ficción",
-    "descripcion": "En el futuro, el teletransporte es posible pero conlleva un riesgo mortal si el viajero está despierto.",
-    "pdf": "https://drive.google.com/file/d/1nwOpVIftPrEypbhTZGQrd6Qxonilo5tR/preview",
-    "portada": "portadas/1638.webp",
-    "archivo_pdf": "K/King, Stephen/La expedicion - Stephen King.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/La expedicion - Stephen King.epub"
-  },
-  {
     "id": 1639,
-    "titulo": "La historia de Lisey (Stephen King)",
+    "titulo": "La historia de Lisey",
     "autor": "Stephen King",
     "anio": 2006,
     "genero": "Fantasía",
@@ -19489,7 +19406,7 @@
   },
   {
     "id": 1641,
-    "titulo": "La milla verde (Stephen King)",
+    "titulo": "La milla verde",
     "autor": "Stephen King",
     "anio": 1996,
     "genero": "Fantasía",
@@ -19501,7 +19418,7 @@
   },
   {
     "id": 1642,
-    "titulo": "La mitad oscura (Stephen King)",
+    "titulo": "La mitad oscura",
     "autor": "Stephen King",
     "anio": 1989,
     "genero": "Terror",
@@ -19525,7 +19442,7 @@
   },
   {
     "id": 1644,
-    "titulo": "La sangre manda (Stephen King)",
+    "titulo": "La sangre manda",
     "autor": "Stephen King",
     "anio": 2020,
     "genero": "Terror",
@@ -19549,7 +19466,7 @@
   },
   {
     "id": 1646,
-    "titulo": "La tormenta del siglo (Stephen King)",
+    "titulo": "La tormenta del siglo",
     "autor": "Stephen King",
     "anio": 1999,
     "genero": "Terror",
@@ -19561,7 +19478,7 @@
   },
   {
     "id": 1647,
-    "titulo": "La zona muerta (Stephen King)",
+    "titulo": "La zona muerta",
     "autor": "Stephen King",
     "anio": 1979,
     "genero": "Misterio y Thriller",
@@ -19573,7 +19490,7 @@
   },
   {
     "id": 1648,
-    "titulo": "Las Cuatro Despues De Medianoche (Stephen King)",
+    "titulo": "Las Cuatro Despues De Medianoche",
     "autor": "Stephen King",
     "anio": 1990,
     "genero": "Terror",
@@ -19585,7 +19502,7 @@
   },
   {
     "id": 1649,
-    "titulo": "Las Dos Después De Medianoche (Stephen King)",
+    "titulo": "Las Dos Después De Medianoche",
     "autor": "Stephen King",
     "anio": 1990,
     "genero": "Terror",
@@ -19597,7 +19514,7 @@
   },
   {
     "id": 1650,
-    "titulo": "Las cuatro despues de la medianoche (Stephen King)",
+    "titulo": "Las cuatro despues de la medianoche",
     "autor": "Stephen King",
     "anio": 1990,
     "genero": "Terror",
@@ -19609,7 +19526,7 @@
   },
   {
     "id": 1651,
-    "titulo": "Las cuatro estaciones (Stephen King) - Tomo 1",
+    "titulo": "Las cuatro estaciones - Tomo 1",
     "autor": "Stephen King",
     "anio": 1982,
     "genero": "Misterio y Thriller",
@@ -19620,7 +19537,7 @@
   },
   {
     "id": 1652,
-    "titulo": "Las cuatro estaciones (Stephen King) - Tomo 2",
+    "titulo": "Las cuatro estaciones - Tomo 2",
     "autor": "Stephen King",
     "anio": 1982,
     "genero": "Misterio y Thriller",
@@ -19642,7 +19559,7 @@
   },
   {
     "id": 1654,
-    "titulo": "Laurie (Stephen King)",
+    "titulo": "Laurie",
     "autor": "Stephen King",
     "anio": 2018,
     "genero": "Cuento",
@@ -19666,7 +19583,7 @@
   },
   {
     "id": 1656,
-    "titulo": "Los Ojos del Dragon (Stephen King)",
+    "titulo": "Los Ojos del Dragon",
     "autor": "Stephen King",
     "anio": 1984,
     "genero": "Fantasía",
@@ -19678,7 +19595,7 @@
   },
   {
     "id": 1657,
-    "titulo": "Los Tommyknockers (Stephen King)",
+    "titulo": "Los Tommyknockers",
     "autor": "Stephen King",
     "anio": 1987,
     "genero": "Ciencia Ficción",
@@ -19726,7 +19643,7 @@
   },
   {
     "id": 1661,
-    "titulo": "Mientras escribo (Stephen King)",
+    "titulo": "Mientras escribo",
     "autor": "Stephen King",
     "anio": 2000,
     "genero": "Divulgación Científica",
@@ -19738,7 +19655,7 @@
   },
   {
     "id": 1662,
-    "titulo": "Mile 81 (Stephen King)",
+    "titulo": "Mile 81",
     "autor": "Stephen King",
     "anio": 2011,
     "genero": "Terror",
@@ -19750,7 +19667,7 @@
   },
   {
     "id": 1663,
-    "titulo": "Misery (Stephen King)",
+    "titulo": "Misery",
     "autor": "Stephen King",
     "anio": 1987,
     "genero": "Misterio y Thriller",
@@ -19762,7 +19679,7 @@
   },
   {
     "id": 1664,
-    "titulo": "Montado en la Bala (Stephen King)",
+    "titulo": "Montado en la Bala",
     "autor": "Stephen King",
     "anio": 2000,
     "genero": "Terror",
@@ -19774,7 +19691,7 @@
   },
   {
     "id": 1665,
-    "titulo": "Mr Mercedes (Stephen King)",
+    "titulo": "Mr Mercedes",
     "autor": "Stephen King",
     "anio": 2014,
     "genero": "Novela negra",
@@ -19785,20 +19702,8 @@
     "archivo_epub": "001_EPUB/K/King, Stephen/Mr Mercedes (Stephen King).epub"
   },
   {
-    "id": 1666,
-    "titulo": "Mr. Mercedes",
-    "autor": "Stephen King",
-    "anio": 2014,
-    "genero": "Novela negra",
-    "descripcion": "Un detective retirado es provocado por un asesino de masas, iniciando un juego mortal del gato.",
-    "pdf": "https://drive.google.com/file/d/173wq-j3ijl9SoQ8DzY9OsO4d9G2_FUpr/preview",
-    "portada": "portadas/1666.webp",
-    "archivo_pdf": "K/King, Stephen/Mr. Mercedes - Stephen King.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Mr. Mercedes - Stephen King.epub"
-  },
-  {
     "id": 1667,
-    "titulo": "Ojos de fuego (Stephen King)",
+    "titulo": "Ojos de fuego",
     "autor": "Stephen King",
     "anio": 1980,
     "genero": "Ciencia Ficción",
@@ -19810,7 +19715,7 @@
   },
   {
     "id": 1668,
-    "titulo": "Pesadillas y alucinaciones (Stephen King)",
+    "titulo": "Pesadillas y alucinaciones",
     "autor": "Stephen King",
     "anio": 1993,
     "genero": "Terror",
@@ -19834,7 +19739,7 @@
   },
   {
     "id": 1670,
-    "titulo": "Quien Pierde Paga (Stephen King)",
+    "titulo": "Quien Pierde Paga",
     "autor": "Stephen King",
     "anio": 2015,
     "genero": "Novela negra",
@@ -19858,7 +19763,7 @@
   },
   {
     "id": 1672,
-    "titulo": "Revival (Stephen King)",
+    "titulo": "Revival",
     "autor": "Stephen King",
     "anio": 2014,
     "genero": "Terror",
@@ -19882,7 +19787,7 @@
   },
   {
     "id": 1674,
-    "titulo": "Salems Lot (Stephen King)",
+    "titulo": "Salems Lot",
     "autor": "Stephen King",
     "anio": 1975,
     "genero": "Terror",
@@ -19894,7 +19799,7 @@
   },
   {
     "id": 1675,
-    "titulo": "Todo es Eventual (Stephen King)",
+    "titulo": "Todo es Eventual",
     "autor": "Stephen King",
     "anio": 2002,
     "genero": "Terror",
@@ -19906,7 +19811,7 @@
   },
   {
     "id": 1676,
-    "titulo": "Todo oscuro, sin estrellas (Stephen King)",
+    "titulo": "Todo oscuro, sin estrellas",
     "autor": "Stephen King",
     "anio": 2010,
     "genero": "Terror",
@@ -19942,7 +19847,7 @@
   },
   {
     "id": 1679,
-    "titulo": "Un rostro en la multitud (Stephen King)",
+    "titulo": "Un rostro en la multitud",
     "autor": "Stephen King",
     "anio": 2012,
     "genero": "Terror",
@@ -19954,7 +19859,7 @@
   },
   {
     "id": 1680,
-    "titulo": "Un saco de huesos (Stephen King)",
+    "titulo": "Un saco de huesos",
     "autor": "Stephen King",
     "anio": 1998,
     "genero": "Terror",
@@ -19966,7 +19871,7 @@
   },
   {
     "id": 1681,
-    "titulo": "Verano de Corrupcion (Stephen King)",
+    "titulo": "Verano de Corrupcion",
     "autor": "Stephen King",
     "anio": 1982,
     "genero": "Misterio y Thriller",
@@ -20121,14 +20026,14 @@
     "archivo_epub": "001_EPUB/K/Kundera, Milan/La inmortalidad - Milan Kundera.epub"
   },
   {
-    "id": 1694,
+    "id": 2798,
     "titulo": "La insoportable levedad del ser",
     "autor": "Milan Kundera",
     "anio": 1984,
     "genero": "Novela",
-    "descripcion": "Las vidas entrelazadas de cuatro personajes exploran el peso de la responsabilidad y la levedad del ser.",
-    "pdf": "https://drive.google.com/file/d/1bMM0wiWQXGszuQh4mQXfkT_EEK6i59vQ/preview",
-    "portada": "portadas/1694.webp",
+    "descripcion": "Cuatro personajes en la Praga comunista exploran el amor, la política y la dualidad entre lo eterno y lo efímero.",
+    "pdf": "https://drive.google.com/file/d/11bsZp7Ei3wFtV4sltKebz3rErhPC3L68/preview",
+    "portada": "portadas/2798.webp",
     "archivo_pdf": "K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera.pdf",
     "archivo_epub": "001_EPUB/K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera.epub"
   },
@@ -22483,16 +22388,6 @@
     "archivo_epub": "001_EPUB/M/Marx, Karl/Teorias sobre la plusvalia (Tomo IV de El  - Karl Marx.epub"
   },
   {
-    "id": 1892,
-    "titulo": "Teorias sobre la plusvalia (Tomo IV de El",
-    "autor": "Karl Marx",
-    "anio": 1905,
-    "genero": "Economía y Política",
-    "descripcion": "Estudio crítico de las doctrinas económicas clásicas, considerado el cuarto tomo de El Capital.",
-    "pdf": "https://drive.google.com/file/d/1TNaDIjcd1aLZZDDidcCjEwmEqQdLChAF/preview",
-    "portada": "portadas/1892.webp"
-  },
-  {
     "id": 1893,
     "titulo": "Trabajo asalariado y capital",
     "autor": "Karl Marx",
@@ -23007,14 +22902,14 @@
     "portada": "portadas/1937.webp"
   },
   {
-    "id": 1938,
+    "id": 2811,
     "titulo": "A tres metros sobre el cielo",
     "autor": "Federico Moccia",
-    "anio": 0,
+    "anio": 1992,
     "genero": "Romance",
-    "descripcion": "Relato romántico juvenil sobre amores apasionados y desafíos en la Italia contemporánea.",
-    "pdf": "https://drive.google.com/file/d/123pbUt8sFbnaXT80cfMz_lJpUYte_Z9Y/preview",
-    "portada": "portadas/1938.webp",
+    "descripcion": "Historia de amor turbulento entre un chico rebelde y una chica de buena familia en la Roma adolescente de los noventa.",
+    "pdf": "https://drive.google.com/file/d/1tRnF8wN2JxHYyU6AuUSxBaEHU0P9iRbl/preview",
+    "portada": "portadas/2811.webp",
     "archivo_pdf": "M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia.pdf",
     "archivo_epub": "001_EPUB/M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia.epub"
   },
@@ -23031,14 +22926,14 @@
     "archivo_epub": "001_EPUB/M/Moccia, Federico/Perdona si te llamo amor - Federico Moccia.epub"
   },
   {
-    "id": 1940,
+    "id": 2812,
     "titulo": "Tengo ganas de ti",
     "autor": "Federico Moccia",
-    "anio": 0,
+    "anio": 2006,
     "genero": "Romance",
-    "descripcion": "Relato romántico juvenil sobre amores apasionados y desafíos en la Italia contemporánea.",
-    "pdf": "https://drive.google.com/file/d/1T_aeUgKIi-rOgjejooKKBCWho7Ly_Rey/preview",
-    "portada": "portadas/1940.webp",
+    "descripcion": "Secuela donde los protagonistas de Tres metros se reencuentran años después marcados por el dolor y una segunda oportunidad.",
+    "pdf": "https://drive.google.com/file/d/17fL2YkgkwY-QkTJJDbcJcNKzfaukqmc2/preview",
+    "portada": "portadas/2812.webp",
     "archivo_pdf": "M/Moccia, Federico/Tengo ganas de ti - Federico Moccia.pdf",
     "archivo_epub": "001_EPUB/M/Moccia, Federico/Tengo ganas de ti - Federico Moccia.epub"
   },
@@ -25565,16 +25460,6 @@
     "archivo_epub": "001_EPUB/P/Poe, Edgar Allan/El gato negro y otros relatos de terror - Edgar Allan Poe.epub"
   },
   {
-    "id": 2152,
-    "titulo": "La caida de la casa Usher Ilustrado",
-    "autor": "Edgar Allan Poe",
-    "anio": 1839,
-    "genero": "Terror",
-    "descripcion": "Historia sobre la decadencia física y mental de una familia en una mansión sombría.",
-    "pdf": "https://drive.google.com/file/d/17wnG6bL-4iDi_IFRg9AhscVE-zWr-oAi/preview",
-    "portada": "portadas/2152.webp"
-  },
-  {
     "id": 2153,
     "titulo": "Narraciones extraordinarias",
     "autor": "Edgar Allan Poe",
@@ -28023,16 +27908,6 @@
     "archivo_epub": "001_EPUB/S/Sartre, Jean-Paul/La puta respetuosa. A puerta cerrada - Jean-Paul Sartre.epub"
   },
   {
-    "id": 2359,
-    "titulo": "La Nausea",
-    "autor": "Jean-Paul Sartre",
-    "anio": 1938,
-    "genero": "Novela",
-    "descripcion": "Novela existencialista sobre la angustia de un hombre al percibir el vacío de la realidad.",
-    "pdf": "https://drive.google.com/file/d/1B7IWbNk_ys6OTx5OSYF-DTrc2Ztgnibq/preview",
-    "portada": "portadas/2359.webp"
-  },
-  {
     "id": 2360,
     "titulo": "Las Palabras",
     "autor": "Jean-Paul Sartre",
@@ -28273,18 +28148,6 @@
     "archivo_epub": "001_EPUB/S/Shelley, Mary/Frankenstein (trad. Silvia Alemany) - Mary Shelley.epub"
   },
   {
-    "id": 2381,
-    "titulo": "Frankenstein o el moderno Prometeo",
-    "autor": "Mary Shelley",
-    "anio": 1818,
-    "genero": "Novela",
-    "descripcion": "Víctor Frankenstein y su criatura se enfrentan en una lucha de soledad y venganza.",
-    "pdf": "https://drive.google.com/file/d/1_I2pXaeAXVv_iIfdia2O0lnVGdgS13zz/preview",
-    "portada": "portadas/2381.webp",
-    "archivo_pdf": "S/Shelley, Mary/Frankenstein, o el moderno Prometeo - Mary Shelley.pdf",
-    "archivo_epub": "001_EPUB/S/Shelley, Mary/Frankenstein, o el moderno Prometeo - Mary Shelley.epub"
-  },
-  {
     "id": 2382,
     "titulo": "Frankenstein, o el moderno Prometeo",
     "autor": "Mary Shelley",
@@ -28292,7 +28155,9 @@
     "genero": "Novela",
     "descripcion": "La clásica historia del científico que juega a ser Dios con resultados catastróficos.",
     "pdf": "https://drive.google.com/file/d/1Mw2o3SzHzAs9Hkb_hd7vsGxnU3vE_LMm/preview",
-    "portada": "portadas/2382.webp"
+    "portada": "portadas/2382.webp",
+    "archivo_pdf": "S/Shelley, Mary/Frankenstein, o el moderno Prometeo - Mary Shelley.pdf",
+    "archivo_epub": "001_EPUB/S/Shelley, Mary/Frankenstein, o el moderno Prometeo - Mary Shelley.epub"
   },
   {
     "id": 2384,
@@ -30440,18 +30305,6 @@
     "archivo_epub": "001_EPUB/T/Twain, Mark/Las aventuras de Tom Sawyer (trad. Simon S - Mark Twain.epub"
   },
   {
-    "id": 2566,
-    "titulo": "Las aventuras de Tom Sawyer",
-    "autor": "Mark Twain",
-    "anio": 1876,
-    "genero": "Novela",
-    "descripcion": "Relato clásico de la infancia sobre un niño travieso en un pueblo a orillas del Misisipi.",
-    "pdf": "https://drive.google.com/file/d/1KpZRpnKets2t27e_uMGSFuzgvGFFhy4C/preview",
-    "portada": "portadas/2566.webp",
-    "archivo_pdf": "T/Twain, Mark/Las aventuras de Tom Sawyer - Mark Twain.pdf",
-    "archivo_epub": "001_EPUB/T/Twain, Mark/Las aventuras de Tom Sawyer - Mark Twain.epub"
-  },
-  {
     "id": 2567,
     "titulo": "Las aventuras de Tom Sawyer",
     "autor": "Mark Twain",
@@ -30459,7 +30312,9 @@
     "genero": "Novela",
     "descripcion": "Obra del gran humorista estadounidense que retrata con ironía la vida y la moral de su tiempo.",
     "pdf": "https://drive.google.com/file/d/1dWvECOs84WhgWYSoVDsmNwpjoG3h1sc_/preview",
-    "portada": "portadas/2567.webp"
+    "portada": "portadas/2567.webp",
+    "archivo_pdf": "T/Twain, Mark/Las aventuras de Tom Sawyer - Mark Twain.pdf",
+    "archivo_epub": "001_EPUB/T/Twain, Mark/Las aventuras de Tom Sawyer - Mark Twain.epub"
   },
   {
     "id": 2568,
@@ -30901,7 +30756,8 @@
     "genero": "Historia y Crónica",
     "descripcion": "Reflexiones y reportajes del autor tras sus viajes a los territorios en conflicto en Oriente Próximo.",
     "pdf": "https://drive.google.com/file/d/18KVyaZ6RfOyydmY6HpIhbwEsm3STAT-i/preview",
-    "portada": "portadas/2604.webp"
+    "portada": "portadas/2604.webp",
+    "archivo_pdf": "V/Vargas Llosa, Mario/Israel_Palestina - Mario Vargas Llosa.pdf"
   },
   {
     "id": 2605,
@@ -32866,16 +32722,6 @@
     "portada": "portadas/2768.webp"
   },
   {
-    "id": 2769,
-    "titulo": "El Arte de la Seduccion",
-    "autor": "Robert Greene",
-    "anio": 2001,
-    "genero": "Psicología y Autoayuda",
-    "descripcion": "Estudio histórico y psicológico de los arquetipos de la seducción y las estrategias de poder en las relaciones humanas.",
-    "pdf": "https://drive.google.com/file/d/1CKYcYptTGiM2Ceh08PxrZyywYq4SCaxC/preview",
-    "portada": "portadas/2769.webp"
-  },
-  {
     "id": 2770,
     "titulo": "Fluir en El sin yo",
     "autor": "Jacobo Grinberg Zylberbaum",
@@ -32958,16 +32804,6 @@
     "portada": "portadas/2776.webp",
     "archivo_pdf": "H/Haig, Matt/La Biblioteca de la Medianoche - Matt Haig.pdf",
     "archivo_epub": "001_EPUB/H/Haig, Matt/La Biblioteca de la Medianoche - Matt Haig.epub"
-  },
-  {
-    "id": 2777,
-    "titulo": "La sociedad del cansancio",
-    "autor": "Byung-Chul Han",
-    "anio": 2010,
-    "genero": "Filosofía",
-    "descripcion": "Ensayo filosófico que diagnostica a la sociedad contemporánea como una sociedad de rendimiento que produce depresión y agotamiento.",
-    "pdf": "https://drive.google.com/file/d/1CFo5ExNiyTdxYYy66wr-NqiRZOn2JFFl/preview",
-    "portada": "portadas/2777.webp"
   },
   {
     "id": 2778,
@@ -33148,16 +32984,6 @@
     "archivo_epub": "001_EPUB/I/Iniciados, Tres/El Kybalion - Tres Iniciados.epub"
   },
   {
-    "id": 2793,
-    "titulo": "En la hierba alta",
-    "autor": "Stephen King",
-    "anio": 2012,
-    "genero": "Terror",
-    "descripcion": "Dos hermanos escuchan a un niño perdido en un campo de hierba que los atrapa en un laberinto sin salida sobrenatural.",
-    "pdf": "https://drive.google.com/file/d/19gTfrXCrw2IIRMoC1h2-hMFSa7S4Eggd/preview",
-    "portada": "portadas/2793.webp"
-  },
-  {
     "id": 2794,
     "titulo": "El negocio del siglo 21",
     "autor": "Robert Toru Kiyosaki",
@@ -33204,16 +33030,6 @@
     "portada": "portadas/2797.webp",
     "archivo_pdf": "K/Kuang, R F/La Republica del Dragon - R F Kuang.pdf",
     "archivo_epub": "001_EPUB/K/Kuang, R F/La Republica del Dragon - R F Kuang.epub"
-  },
-  {
-    "id": 2798,
-    "titulo": "La insoportable levedad del ser",
-    "autor": "Milan Kundera",
-    "anio": 1984,
-    "genero": "Novela",
-    "descripcion": "Cuatro personajes en la Praga comunista exploran el amor, la política y la dualidad entre lo eterno y lo efímero.",
-    "pdf": "https://drive.google.com/file/d/11bsZp7Ei3wFtV4sltKebz3rErhPC3L68/preview",
-    "portada": "portadas/2798.webp"
   },
   {
     "id": 2799,
@@ -33358,26 +33174,6 @@
     "portada": "portadas/2810.webp",
     "archivo_pdf": "M/Miller, Madeline/La cancion de Aquiles - Madeline Miller.pdf",
     "archivo_epub": "001_EPUB/M/Miller, Madeline/La cancion de Aquiles - Madeline Miller.epub"
-  },
-  {
-    "id": 2811,
-    "titulo": "A tres metros sobre el cielo",
-    "autor": "Federico Moccia",
-    "anio": 1992,
-    "genero": "Romance",
-    "descripcion": "Historia de amor turbulento entre un chico rebelde y una chica de buena familia en la Roma adolescente de los noventa.",
-    "pdf": "https://drive.google.com/file/d/1tRnF8wN2JxHYyU6AuUSxBaEHU0P9iRbl/preview",
-    "portada": "portadas/2811.webp"
-  },
-  {
-    "id": 2812,
-    "titulo": "Tengo ganas de ti",
-    "autor": "Federico Moccia",
-    "anio": 2006,
-    "genero": "Romance",
-    "descripcion": "Secuela donde los protagonistas de Tres metros se reencuentran años después marcados por el dolor y una segunda oportunidad.",
-    "pdf": "https://drive.google.com/file/d/17fL2YkgkwY-QkTJJDbcJcNKzfaukqmc2/preview",
-    "portada": "portadas/2812.webp"
   },
   {
     "id": 2813,
@@ -34213,58 +34009,15 @@
     "archivo_epub": "001_EPUB/M/Martel, Yann/La vida de Pi - Yann Martel.epub"
   },
   {
-    "id": 2883,
-    "titulo": "Tengo ganas de ti",
-    "autor": "Federico Moccia(1)",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2883.webp",
-    "archivo_pdf": "M/Moccia, Federico/Tengo ganas de ti - Federico Moccia(1).pdf",
-    "archivo_epub": "001_EPUB/M/Moccia, Federico/Tengo ganas de ti - Federico Moccia(1).epub"
-  },
-  {
-    "id": 2884,
-    "titulo": "A tres metros sobre el cielo",
-    "autor": "Federico Moccia(1)",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2884.webp",
-    "archivo_pdf": "M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia(1).pdf",
-    "archivo_epub": "001_EPUB/M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia(1).epub"
-  },
-  {
     "id": 2885,
     "titulo": "1q84",
-    "autor": "(Libro 3) - Haruki Murakami",
+    "autor": "Haruki Murakami",
     "anio": null,
     "genero": "Novela",
     "descripcion": "",
     "portada": "portadas/2885.webp",
     "archivo_pdf": "M/Murakami, Haruki/1Q84 - (Libro 3) - Haruki Murakami.pdf",
     "archivo_epub": "001_EPUB/M/Murakami, Haruki/1Q84 - (Libro 3) - Haruki Murakami.epub"
-  },
-  {
-    "id": 2886,
-    "titulo": "1q84",
-    "autor": "(Libros 1 y 2) - Haruki Murakami",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2886.webp",
-    "archivo_pdf": "M/Murakami, Haruki/1Q84 - (Libros 1 y 2) - Haruki Murakami.pdf",
-    "archivo_epub": "001_EPUB/M/Murakami, Haruki/1Q84 - (Libros 1 y 2) - Haruki Murakami.epub"
-  },
-  {
-    "id": 2887,
-    "titulo": "Teorias sobre la plusvalia (Tomo IV de El",
-    "autor": "Karl Marx",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "M/Marx, Karl/Teorias sobre la plusvalia (Tomo IV de El  - Karl Marx.pdf"
   },
   {
     "id": 2888,
@@ -34523,36 +34276,6 @@
     "archivo_epub": "001_EPUB/P/Pullman, Philip/La daga - Philip Pullman.epub"
   },
   {
-    "id": 2912,
-    "titulo": "Gregor La profecia del gris",
-    "autor": "Suzanne Collins",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Collins, Suzanne/Gregor La profecia del gris - Suzanne Collins.pdf"
-  },
-  {
-    "id": 2913,
-    "titulo": "Gregor La profecia de la destruccion",
-    "autor": "Suzanne Collins",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Collins, Suzanne/Gregor La profecia de la destruccion - Suzanne Collins.pdf"
-  },
-  {
-    "id": 2914,
-    "titulo": "62 Modelo para armar",
-    "autor": "Julio Cortazar",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Cortázar, Julio/62_Modelo para armar - Julio Cortazar.pdf"
-  },
-  {
     "id": 2915,
     "titulo": "El corazon de las tinieblas-Joseph Conrad",
     "autor": "Joseph Conrad",
@@ -34720,28 +34443,6 @@
     "archivo_pdf": "W/Wilde, Oscar/La_importancia_de_llamarse_Ernesto-Wilde_Oscar.pdf"
   },
   {
-    "id": 2931,
-    "titulo": "Muchas vidas, muchos maestros",
-    "autor": "Brian Weiss(1)",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2931.webp",
-    "archivo_pdf": "W/Weiss, Brian/Muchas vidas, muchos maestros - Brian Weiss(1).pdf",
-    "archivo_epub": "001_EPUB/W/Weiss, Brian/Muchas vidas, muchos maestros - Brian Weiss(1).epub"
-  },
-  {
-    "id": 2932,
-    "titulo": "Lazos de amor",
-    "autor": "Brian Weiss(1)",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2932.webp",
-    "archivo_pdf": "W/Weiss, Brian/Lazos de amor - Brian Weiss(1).pdf",
-    "archivo_epub": "001_EPUB/W/Weiss, Brian/Lazos de amor - Brian Weiss(1).epub"
-  },
-  {
     "id": 2933,
     "titulo": "Hojas de hierba",
     "autor": "Walt Whitman",
@@ -34901,16 +34602,6 @@
     "archivo_epub": "001_EPUB/V/Vallejo, Irene/El infinito en un junco - Irene Vallejo.epub"
   },
   {
-    "id": 2948,
-    "titulo": "Israel Palestina",
-    "autor": "Mario Vargas Llosa",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "V/Vargas Llosa, Mario/Israel_Palestina - Mario Vargas Llosa.pdf"
-  },
-  {
     "id": 2949,
     "titulo": "Maravillosas aventuras de Antifer-Verne Julio",
     "autor": "Julio Verne",
@@ -34982,26 +34673,6 @@
     "portada": "portadas/2955.webp",
     "archivo_pdf": "D/Diamond, Jared/Armas, germenes y acero - Jared Diamond.pdf",
     "archivo_epub": "001_EPUB/D/Diamond, Jared/Armas, germenes y acero - Jared Diamond.epub"
-  },
-  {
-    "id": 2956,
-    "titulo": "Grandeza y decadencia de Cesar Birotteau",
-    "autor": "Honore de Balzac",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "D/de Balzac, Honoré/Grandeza y decadencia de Cesar Birotteau - Honore de Balzac.pdf"
-  },
-  {
-    "id": 2957,
-    "titulo": "Esplendores y miserias de las cortesanas",
-    "autor": "Honore de Balzac",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "D/de Balzac, Honoré/Esplendores y miserias de las cortesanas - Honore de Balzac.pdf"
   },
   {
     "id": 2958,
@@ -35099,7 +34770,7 @@
   {
     "id": 2967,
     "titulo": "Gwendy (Stephen King y Richard Chizmar)",
-    "autor": "Tomo 2",
+    "autor": "Stephen King",
     "anio": null,
     "genero": "Novela",
     "descripcion": "",
@@ -35108,42 +34779,9 @@
     "archivo_epub": "001_EPUB/K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 2.epub"
   },
   {
-    "id": 2968,
-    "titulo": "La Torre Oscura (Stephen King)",
-    "autor": "Tomo 1",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2968.webp",
-    "archivo_pdf": "K/King, Stephen/La Torre Oscura (Stephen King) - Tomo 1.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/La Torre Oscura (Stephen King) - Tomo 1.epub"
-  },
-  {
-    "id": 2969,
-    "titulo": "La Torre Oscura (Stephen King)",
-    "autor": "Tomo 3",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2969.webp",
-    "archivo_pdf": "K/King, Stephen/La Torre Oscura (Stephen King) - Tomo 3.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/La Torre Oscura (Stephen King) - Tomo 3.epub"
-  },
-  {
-    "id": 2970,
-    "titulo": "Gwendy (Stephen King y Richard Chizmar)",
-    "autor": "Tomo 1",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2970.webp",
-    "archivo_pdf": "K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 1.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 1.epub"
-  },
-  {
     "id": 2971,
-    "titulo": "Apocalipsis (Stephen King)",
-    "autor": "Tomo 1",
+    "titulo": "Apocalipsis",
+    "autor": "Stephen King",
     "anio": null,
     "genero": "Novela",
     "descripcion": "",
@@ -35153,69 +34791,14 @@
   },
   {
     "id": 2972,
-    "titulo": "Las cuatro estaciones (Stephen King)",
-    "autor": "Tomo 2",
+    "titulo": "Las cuatro estaciones",
+    "autor": "Stephen King",
     "anio": null,
     "genero": "Novela",
     "descripcion": "",
     "portada": "portadas/2972.webp",
     "archivo_pdf": "K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 2.pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 2.epub"
-  },
-  {
-    "id": 2973,
-    "titulo": "Gwendy (Stephen King y Richard Chizmar)",
-    "autor": "Tomo 3",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2973.webp",
-    "archivo_pdf": "K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 3.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 3.epub"
-  },
-  {
-    "id": 2974,
-    "titulo": "Las cuatro estaciones (Stephen King)",
-    "autor": "Tomo 1",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2974.webp",
-    "archivo_pdf": "K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 1.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 1.epub"
-  },
-  {
-    "id": 2975,
-    "titulo": "Apocalipsis (Stephen King)",
-    "autor": "Tomo 2",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2975.webp",
-    "archivo_pdf": "K/King, Stephen/Apocalipsis (Stephen King) - Tomo 2.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Apocalipsis (Stephen King) - Tomo 2.epub"
-  },
-  {
-    "id": 2976,
-    "titulo": "La Torre Oscura (Stephen King)",
-    "autor": "Tomo 2",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2976.webp",
-    "archivo_pdf": "K/King, Stephen/La Torre Oscura (Stephen King) - Tomo 2.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/La Torre Oscura (Stephen King) - Tomo 2.epub"
-  },
-  {
-    "id": 2977,
-    "titulo": "La insoportable levedad del ser",
-    "autor": "Milan Kundera(1)",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2977.webp",
-    "archivo_pdf": "K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera(1).pdf",
-    "archivo_epub": "001_EPUB/K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera(1).epub"
   },
   {
     "id": 2978,
@@ -35282,7 +34865,7 @@
   {
     "id": 2984,
     "titulo": "Introduccion a la ciencia",
-    "autor": "II. Ciencias B - Isaac Asimov",
+    "autor": "Isaac Asimov",
     "anio": null,
     "genero": "Novela",
     "descripcion": "",
@@ -35300,27 +34883,6 @@
     "portada": "portadas/2985.webp",
     "archivo_pdf": "A/Asimov, Isaac/Los limites de la Fundacion - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Los limites de la Fundacion - Isaac Asimov.epub"
-  },
-  {
-    "id": 2986,
-    "titulo": "Introduccion a la ciencia",
-    "autor": "I. Ciencias Fi - Isaac Asimov",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2986.webp",
-    "archivo_pdf": "A/Asimov, Isaac/Introduccion a la ciencia - I. Ciencias Fi - Isaac Asimov.pdf",
-    "archivo_epub": "001_EPUB/A/Asimov, Isaac/Introduccion a la ciencia - I. Ciencias Fi - Isaac Asimov.epub"
-  },
-  {
-    "id": 2987,
-    "titulo": "La caida de la Casa Usher (Ilustrado)",
-    "autor": "Edgar Allan Poe",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Allan Poe, Edgar/La caida de la Casa Usher (Ilustrado) - Edgar Allan Poe.pdf"
   },
   {
     "id": 2988,
@@ -35445,16 +35007,6 @@
     "descripcion": "",
     "portada": "",
     "archivo_pdf": "S/Seo, Hiroshi/Ubunchu_3-Seo_Hiroshi.pdf"
-  },
-  {
-    "id": 3000,
-    "titulo": "Frankenstein o el moderno Prometeo",
-    "autor": "Mary Shelley",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "S/Shelley, Mary/Frankenstein o el moderno Prometeo - Mary Shelley.pdf"
   },
   {
     "id": 3001,
@@ -35623,17 +35175,6 @@
     "descripcion": "",
     "portada": "",
     "archivo_pdf": "G/Garcia, Yolanda/Relatos de la cacerola_yolanda_garcia.pdf"
-  },
-  {
-    "id": 3017,
-    "titulo": "El Arte de la Seduccion",
-    "autor": "Robert Greene(1)",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/3017.webp",
-    "archivo_pdf": "G/Greene, Robert/El Arte de la Seduccion - Robert Greene(1).pdf",
-    "archivo_epub": "001_EPUB/G/Greene, Robert/El Arte de la Seduccion - Robert Greene(1).epub"
   },
   {
     "id": 3018,
