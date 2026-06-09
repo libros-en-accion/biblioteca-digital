@@ -1,117 +1,161 @@
 ---
 tipo: guia
 area: operacion
-tags: [guia, catalogacion, scripts, python, libractiva]
-fecha: 2026-06-05
+tags: [guia, catalogacion, scripts, python, epub, cloudflare, rclone, libractiva]
+fecha: 2026-06-09
 ---
 
-# 📖 Guía: Agregar Libro al Catálogo
+# 📖 Guía: Carga y Gestión de Libros (PDF, EPUB y Carga Masiva)
 
-Esta guía describe el procedimiento estándar para añadir nuevos títulos al catálogo de **Libractiva**. Contamos con un script en Python (`agregar_libro.py`) diseñado para automatizar la mayoría de los pasos (copia del archivo, actualización del JSON, extracción de la portada y confirmación en Git).
+Esta guía describe los procedimientos y flujos de trabajo para añadir, mapear y sincronizar nuevos títulos en el catálogo de **Libractiva**, tanto en formato **PDF** como **EPUB**, utilizando herramientas automatizadas de importación, saneamiento y sincronización con la nube.
 
 ---
 
-## 🔄 Flujo de Trabajo General
+## ⚡ El Formato EPUB en Libractiva
+
+Hemos incorporado soporte completo para descargas en formato **EPUB**. Los beneficios clave de ofrecer este formato a los donadores son:
+- **Lectura Adaptativa (Flowable Text):** A diferencia del PDF, el EPUB adapta el texto al tamaño de pantalla del dispositivo (móviles, tablets y lectores electrónicos).
+- **Compatibilidad con E-readers:** Formato ideal e indispensable para disfrutar de la lectura en dispositivos dedicados como **Kindle**, Kobo o aplicaciones móviles de lectura (Apple Books, Google Play Books).
+- **Bajo Consumo de Espacio:** El peso de los archivos EPUB suele ser significativamente menor que el de un PDF escaneado, lo que agiliza su descarga y optimiza el almacenamiento.
+
+---
+
+## 🔄 Flujo de Trabajo General (Carga Masiva)
 
 ```mermaid
 graph TD
-    A[Obtener PDF del libro] --> B{¿Está en Drive?}
-    B -- Sí (en Drive) --> C[Copiar ruta de rclone o enlace de Drive]
-    B -- No (local) --> D[Identificar ruta del PDF local]
-    C --> E[Ejecutar agregar_libro.py]
-    D --> E
-    E --> F[El script copia el PDF a /home/daniel/biblioteca-digital/]
-    E --> G[El script agrega la entrada en libros.json]
-    E --> H[El script ejecuta generar_portadas.py automáticamente]
-    E --> I{¿Hacer Commit y Push?}
-    I -- Sí --> J[El script ejecuta git add, commit y push]
-    I -- No --> K[Fin del proceso manual]
-    J --> L[Vercel detecta cambios y redespliega automáticamente 🚀]
+    A[Mover archivos PDF y EPUB a local] --> B[Registrar PDFs en catálogo: scripts/agregar_nuevos_libros.py]
+    B --> C[Mapear EPUBs en catálogo: scripts/mapear_epubs.py]
+    C --> D[Establecer años: scripts/actualizar_anios.py]
+    D --> E[Resolver duplicados: scripts/limpiar_duplicados_avanzados.py]
+    E --> F[Normalizar catálogo: node scripts/normalizar.js --apply]
+    F --> G[Extraer portadas: python3 generar_portadas.py]
+    G --> H[Subir archivos a Cloudflare R2: rclone copy]
+    H --> I[Subir catálogo a GitHub: git push]
 ```
 
 ---
 
-## 🛠️ Modos de Ejecución del Script
+## 📂 Organización de Archivos en Local
 
-El script está ubicado en la raíz del repositorio: `/home/daniel/biblioteca/agregar_libro.py`. Puedes ejecutarlo en tres modos:
+Los libros físicos deben organizarse localmente en la carpeta `/home/daniel/biblioteca-digital/` con la siguiente estructura de directorios:
 
-### 1. Modo Interactivo (Recomendado)
-Es el método más guiado. Te preguntará de dónde proviene el PDF y los metadatos de forma conversacional.
+### Para archivos PDF:
+```text
+/home/daniel/biblioteca-digital/
+├── A/
+│   └── Allende, Isabel/
+│       └── La casa de los espíritus - Isabel Allende.pdf
+├── B/
+│   └── Borges, Jorge Luis/
+│       └── El Aleph - Jorge Luis Borges.pdf
+```
+*Las carpetas alfabéticas van de la `A` a la `Z`. La carpeta del autor sigue el formato `Apellido, Nombre`, mientras que el archivo del libro se nombra `{Título} - {Autor}.pdf`.*
 
-**Cómo ejecutarlo:**
+### Para archivos EPUB:
+Los EPUBs siguen exactamente la misma estructura de carpetas pero deben colocarse dentro del subdirectorio especial `001_EPUB/`:
+```text
+/home/daniel/biblioteca-digital/
+└── 001_EPUB/
+    ├── A/
+    │   └── Allende, Isabel/
+    │       └── La casa de los espíritus - Isabel Allende.epub
+    └── B/
+        └── Borges, Jorge Luis/
+            └── El Aleph - Jorge Luis Borges.epub
+```
+
+---
+
+## 🛠️ Herramientas y Scripts de Automatización
+
+Contamos con varios scripts especializados en el directorio `scripts/` para realizar la catalogación masiva sin intervenciones manuales tediosas:
+
+### 1. Importación Masiva de PDFs
+Si copiaste múltiples archivos PDF nuevos a `/home/daniel/biblioteca-digital/`, ejecuta:
 ```bash
-python3 agregar_libro.py
+python3 scripts/agregar_nuevos_libros.py
 ```
+**Qué hace:** 
+- Escanea de forma recursiva los PDFs locales.
+- Identifica cuáles **no están** registrados en `libros.json`.
+- Extrae el título, el autor (invirtiendo el formato `Apellido, Nombre` de la carpeta a `Nombre Apellido`), y los añade con un nuevo ID secuencial.
+- Asocia una descripción en blanco `""` para que puedas definir una descripción corta y real a cada libro posteriormente.
 
-El script te guiará con los siguientes pasos:
-1.  **Origen del PDF:** Elige si está en una ruta local (opción 1), si ya lo copiaste a la biblioteca de PDFs (opción 2) o si quieres descargarlo de Google Drive mediante `rclone` (opción 3).
-2.  **Autocompletado de datos:** Si el PDF local tiene el formato estándar `Título - Autor.pdf`, el script pre-rellenará el título y el autor automáticamente.
-3.  **Año y Género:** Introduce el año. Para el género, te presentará una lista numerada con los géneros populares para que selecciones o escribas uno nuevo.
-4.  **Enlace de Google Drive:** Introduce el enlace compartido de Google Drive. El script lo convertirá automáticamente a formato `/preview` si es necesario.
-5.  **Generación de Portada:** Se invocará a `generar_portadas.py` en segundo plano para extraer la miniatura en WebP.
-6.  **Git Commit y Push:** Te preguntará si deseas subir el cambio directamente a GitHub.
-
----
-
-### 2. Modo Rclone (Cuando el PDF está en Google Drive)
-Si sincronizas tus carpetas con Google Drive usando `rclone` (remoto llamado `biblioteca`), puedes pasarle la ruta remota directamente.
-
-**Ejemplo:**
+### 2. Mapeo de Archivos EPUB
+Una vez que agregues nuevos archivos EPUB a la subcarpeta `001_EPUB/`, ejecuta:
 ```bash
-python3 agregar_libro.py --rclone "biblioteca:biblioteca-digital/W/Wolynn, Mark/Este dolor no es mío.pdf"
+python3 scripts/mapear_epubs.py
 ```
+**Qué hace:**
+- Escanea de forma recursiva el directorio `001_EPUB/`.
+- Busca coincidencias de título y autor con los registros de `libros.json`.
+- Asocia el campo `"archivo_epub"` en el JSON a los libros correspondientes.
 
-El script descargará el PDF en segundo plano y te preguntará de forma interactiva el resto de los campos.
-
----
-
-### 3. Modo Batch (No interactivo)
-Útil para automatizar cargas masivas o si prefieres pasar todos los datos en una sola línea de comandos.
-
-**Ejemplo:**
+### 3. Asignación Estricta de Años
+Para inyectar rápidamente el año de publicación a los libros recién agregados, se puede usar:
 ```bash
-python3 agregar_libro.py \
-  --batch \
-  --titulo "1984" \
-  --autor "George Orwell" \
-  --anio 1949 \
-  --genero "Ciencia Ficción" \
-  --descripcion "Novela distópica clásica sobre el Gran Hermano." \
-  --pdf "https://drive.google.com/file/d/1XXXXXX_FILE_ID_XXXXXX/preview" \
-  --pdf-local ~/Descargas/1984.pdf
+python3 scripts/actualizar_anios.py
+```
+**Qué hace:**
+- Contiene un mapa estricto de tuplas `(título, autor)` con sus respectivos años reales y los actualiza de golpe de forma segura.
+
+### 4. Saneamiento de Autores y Duplicados
+Al importar libros de carpetas locales, a veces surgen inconsistencias en los nombres o duplicados. Contamos con dos scripts de limpieza:
+```bash
+# Limpieza básica de nombres (remueve sufijos '(1)' y unifica autores/títulos de Stephen King)
+python3 scripts/limpiar_duplicados_y_autores.py
+
+# Fusión avanzada de duplicados de libros
+python3 scripts/limpiar_duplicados_avanzados.py
+```
+**Qué hacen:**
+- Si un libro se importó como duplicado porque el nombre del archivo incluía el autor (ej. `Evangelio de Judas-Anonimo.pdf` vs el original `Evangelio de Judas`), detecta la colisión.
+- Transfiere los enlaces a los archivos PDF/EPUB del registro duplicado (sin metadatos) al registro principal (con descripción y portada).
+- Elimina los registros duplicados sobrantes de `libros.json`.
+
+### 5. Normalización y Consistencia de Formato
+Para formatear el JSON y catalogar los géneros literarios dentro de las categorías padre unificadas de la web:
+```bash
+node scripts/normalizar.js --apply
+```
+
+### 6. Extracción Masiva de Portadas
+Para extraer la primera página de los PDFs nuevos y guardarla automáticamente como miniatura WebP optimizada:
+```bash
+# Genera portadas WebP para todos los libros que tienen 'portada' vacío en libros.json
+python3 scripts/extraer_portadas_faltantes.py
 ```
 
 ---
 
-## ⚠️ Checklist e Información Importante
+## ☁️ Sincronización con Cloudflare R2 (Almacenamiento)
 
-> [!important] Requisitos del archivo PDF
-> - El archivo debe nombrarse exactamente `{Título} - {Autor}.pdf`.
-> - Debe guardarse localmente en `/home/daniel/biblioteca-digital/{Letra}/{Autor}/`. El script se encarga de crear las carpetas y moverlo si le proporcionas el PDF al iniciarlo.
-> - **Formato del Autor:** En el campo `"autor"` de `libros.json`, el nombre siempre debe ser **`Nombre Apellido`** (ej. `"Ernesto Sabato"`), ya que así lo requiere el filtro del frontend de la web. En cambio, en la estructura física de directorios se usa **`Apellido, Nombre`** (ej. `S/Sabato, Ernesto/`).
+Los archivos físicos (PDF y EPUB) se sirven a los usuarios desde **Cloudflare R2** a través de URLs firmadas de corta duración generadas por nuestro backend serverless. 
 
-> [!warning] Permisos de Google Drive
-> El link del PDF debe estar configurado en Google Drive como **"Cualquiera con el enlace puede ver"**. De lo contrario, los visitantes de la web se encontrarán con un error de acceso al hacer clic en "Ver documento".
+Para subir los nuevos libros agregados a la nube, ejecuta:
+```bash
+rclone copy /home/daniel/biblioteca-digital/ cloudflare:biblioteca-digital/ --progress
+```
 
-> [!tip] Formato de Enlace de Drive
-> Si copias el enlace estándar de Drive (`https://drive.google.com/file/d/ID/view?usp=sharing`), el script lo normalizará al formato `/preview` (`https://drive.google.com/file/d/ID/preview`), que permite embeber la visualización dentro del navegador.
+> [!tip] Comportamiento inteligente de R2 Sincronización
+> Este comando es incremental: rclone comparará lo que ya está en Cloudflare R2 con tu disco local y **solo subirá los archivos nuevos o modificados**, ignorando los miles de libros que ya se encuentran arriba. Esto ahorra ancho de banda y tiempo.
 
 ---
 
-## 🔧 Resolución de Problemas
+## 🚀 Despliegue de Cambios en la Web
 
-### La portada no se generó
-*   **Causa común:** El título del libro registrado en el JSON no coincide exactamente (ignorando acentos y mayúsculas) con el nombre del archivo PDF en el disco.
-*   **Solución:** Modifica el título en `libros.json` para que coincida con el archivo, o renombra el PDF y vuelve a ejecutar el script de portadas: `python3 generar_portadas.py`.
+Una vez que tengas actualizados tus archivos locales en `libros.json` y generadas las miniaturas en `portadas/`, sube los cambios para redesplegar en Vercel:
 
-### Error de JSON inválido tras la edición
-*   Si editaste `libros.json` a mano y rompiste una coma o llave, puedes verificar la validez sintáctica del JSON ejecutando:
-    ```bash
-    python3 -c "import json; json.load(open('libros.json')); print('OK')"
-    ```
+```bash
+git add libros.json portadas/
+git commit -m "feat: incorporar nuevos títulos al catálogo de Libractiva"
+git push
+```
+*(Si la terminal falla al empujar por permisos de cuenta, realiza el push de forma manual utilizando tu cliente Git habitual o GitHub Desktop).*
 
 ---
 **Notas Relacionadas:**
-*   [[Guía - Generar Portadas|Generación automática de portadas]]
-*   [[Guía - Git y Flujo de Trabajo|Actualizaciones con comandos de Git]]
-*   [[Arquitectura - Estructura de Datos|Detalles de libros.json]]
+- [[Guía - Git y Flujo de Trabajo|Trabajo con ramas y Vercel]]
+- [[Guía - Generar Portadas|Detalles de pdftoppm y conversión]]
+- [[Arquitectura - Estructura de Datos|Propiedades del archivo libros.json]]
