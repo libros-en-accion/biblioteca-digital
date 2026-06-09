@@ -16,7 +16,7 @@ Esta guía describe el funcionamiento del sistema de códigos de donadores, la s
 Para motivar la donación voluntaria y mantener la sostenibilidad del proyecto, Libractiva implementa las siguientes restricciones:
 
 1. **Lector con Límite de Vista Previa:** Los usuarios normales pueden abrir el visor embebido (PDF.js) y leer gratuitamente hasta la **página 15** de cualquier libro. Al intentar pasar a la página 16, se les bloquea la lectura y se muestra un aviso invitándoles a ingresar un código de donador.
-2. **Descargas Restringidas:** El botón para descargar el archivo PDF completo en su computadora solo es visible y funcional para los usuarios que hayan validado un código de donador en el navegador. Las peticiones de descarga directa a la API son bloqueadas si no tienen la firma de la cookie del donador.
+2. **Descargas Restringidas:** El botón para descargar el archivo PDF y EPUB completo en su computadora solo es visible y funcional para los usuarios que hayan validado un código de donador en el navegador. Las peticiones de descarga directa a la API son bloqueadas si no tienen la firma de la cookie del donador.
 3. **Límite de Dispositivos (Fingerprint):** Cada código de donador está limitado por defecto a usarse en un máximo de **3 dispositivos** únicos de forma simultánea.
 
 ### 🛡️ Seguridad y Cookies

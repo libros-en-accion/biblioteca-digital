@@ -7,7 +7,28 @@ fecha: 2026-06-09
 
 # 📖 Guía: Carga y Gestión de Libros (PDF, EPUB y Carga Masiva)
 
-Esta guía describe los procedimientos y flujos de trabajo para añadir, mapear y sincronizar nuevos títulos en el catálogo de **Libractiva**, tanto en formato **PDF** como **EPUB**, utilizando herramientas automatizadas de importación, saneamiento y sincronización con la nube.
+Esta guía describe los procedimientos y flujos de trabajo para añadir, mapear y sincronizar nuevos títulos en el catálogo de **Libractiva**, tanto en formato **PDF** como **EPUB**, utilizando herramientas automatizadas e interactivas de importación, saneamiento y sincronización con la nube.
+
+---
+
+## 🆚 Diferencias entre Scripts de Catalogación
+
+Contamos con dos scripts en Python destinados a registrar libros en la base de datos `libros.json`. Su uso depende de la situación:
+
+### 1. `agregar_libro.py` (En la raíz)
+* **Propósito:** Carga unitaria (libro por libro) desde un archivo local, remoto de Drive o directamente ya copiado en la biblioteca.
+* **Flujo:** Te pregunta de dónde proviene el archivo PDF y sus metadatos (Título, Autor, Año, Género, Descripción). Copia el archivo automáticamente y genera la portada al instante, ofreciendo además hacer un `git push`.
+* **Cuándo usarlo:** Cuando deseas registrar un solo título individual.
+
+### 2. `scripts/agregar_nuevos_libros.py` (En la carpeta `/scripts`)
+* **Propósito:** Carga masiva de libros (a granel) previamente copiados en `/home/daniel/biblioteca-digital/`.
+* **Flujo:** Escanea de forma recursiva toda tu biblioteca local buscando archivos PDF que **no existan** en `libros.json`. Para cada libro no indexado que detecta, abre un **asistente interactivo en caliente** preguntándote por consola:
+  - Confirmación/Edición del Título autodetectado.
+  - Confirmación/Edición del Autor autodetectado.
+  - Año de publicación (estrictamente numérico, o 0 para nulo).
+  - Género (elegido de una lista popular de géneros o escribiendo uno nuevo).
+  - Descripción breve del libro (sin textos genéricos).
+* **Cuándo usarlo:** Cuando copiaste un lote de múltiples PDFs nuevos a tu disco y quieres registrarlos de forma masiva pero ingresándoles su metadata real paso a paso sin comandos complejos.
 
 ---
 
@@ -26,12 +47,11 @@ Hemos incorporado soporte completo para descargas en formato **EPUB**. Los benef
 graph TD
     A[Mover archivos PDF y EPUB a local] --> B[Registrar PDFs en catálogo: scripts/agregar_nuevos_libros.py]
     B --> C[Mapear EPUBs en catálogo: scripts/mapear_epubs.py]
-    C --> D[Establecer años: scripts/actualizar_anios.py]
-    D --> E[Resolver duplicados: scripts/limpiar_duplicados_avanzados.py]
-    E --> F[Normalizar catálogo: node scripts/normalizar.js --apply]
-    F --> G[Extraer portadas: python3 generar_portadas.py]
-    G --> H[Subir archivos a Cloudflare R2: rclone copy]
-    H --> I[Subir catálogo a GitHub: git push]
+    C --> D[Resolver duplicados: scripts/limpiar_duplicados_avanzados.py]
+    D --> E[Normalizar catálogo: node scripts/normalizar.js --apply]
+    E --> F[Extraer portadas: python3 scripts/extraer_portadas_faltantes.py]
+    F --> G[Subir archivos a Cloudflare R2: rclone copy]
+    G --> H[Subir catálogo a GitHub: git push]
 ```
 
 ---
@@ -69,38 +89,20 @@ Los EPUBs siguen exactamente la misma estructura de carpetas pero deben colocars
 
 ## 🛠️ Herramientas y Scripts de Automatización
 
-Contamos con varios scripts especializados en el directorio `scripts/` para realizar la catalogación masiva sin intervenciones manuales tediosas:
-
-### 1. Importación Masiva de PDFs
-Si copiaste múltiples archivos PDF nuevos a `/home/daniel/biblioteca-digital/`, ejecuta:
+### 1. Importación Masiva Interactiva
 ```bash
 python3 scripts/agregar_nuevos_libros.py
 ```
-**Qué hace:** 
-- Escanea de forma recursiva los PDFs locales.
-- Identifica cuáles **no están** registrados en `libros.json`.
-- Extrae el título, el autor (invirtiendo el formato `Apellido, Nombre` de la carpeta a `Nombre Apellido`), y los añade con un nuevo ID secuencial.
-- Asocia una descripción en blanco `""` para que puedas definir una descripción corta y real a cada libro posteriormente.
+**Comportamiento:** Escanea la carpeta local, detecta PDFs huérfanos y te pregunta ordenadamente por consola el título, autor, año, género y descripción de cada uno para agregarlos en caliente a `libros.json`.
 
 ### 2. Mapeo de Archivos EPUB
 Una vez que agregues nuevos archivos EPUB a la subcarpeta `001_EPUB/`, ejecuta:
 ```bash
 python3 scripts/mapear_epubs.py
 ```
-**Qué hace:**
-- Escanea de forma recursiva el directorio `001_EPUB/`.
-- Busca coincidencias de título y autor con los registros de `libros.json`.
-- Asocia el campo `"archivo_epub"` en el JSON a los libros correspondientes.
+**Comportamiento:** Asocia de forma automática el campo `"archivo_epub"` en el JSON buscando coincidencias de título/autor.
 
-### 3. Asignación Estricta de Años
-Para inyectar rápidamente el año de publicación a los libros recién agregados, se puede usar:
-```bash
-python3 scripts/actualizar_anios.py
-```
-**Qué hace:**
-- Contiene un mapa estricto de tuplas `(título, autor)` con sus respectivos años reales y los actualiza de golpe de forma segura.
-
-### 4. Saneamiento de Autores y Duplicados
+### 3. Saneamiento de Autores y Duplicados
 Al importar libros de carpetas locales, a veces surgen inconsistencias en los nombres o duplicados. Contamos con dos scripts de limpieza:
 ```bash
 # Limpieza básica de nombres (remueve sufijos '(1)' y unifica autores/títulos de Stephen King)
@@ -109,29 +111,23 @@ python3 scripts/limpiar_duplicados_y_autores.py
 # Fusión avanzada de duplicados de libros
 python3 scripts/limpiar_duplicados_avanzados.py
 ```
-**Qué hacen:**
-- Si un libro se importó como duplicado porque el nombre del archivo incluía el autor (ej. `Evangelio de Judas-Anonimo.pdf` vs el original `Evangelio de Judas`), detecta la colisión.
-- Transfiere los enlaces a los archivos PDF/EPUB del registro duplicado (sin metadatos) al registro principal (con descripción y portada).
-- Elimina los registros duplicados sobrantes de `libros.json`.
+**Comportamiento:** Si un libro se importó como duplicado, fusiona las rutas a los archivos físicos de la copia en el libro principal con metadatos y borra el duplicado.
 
-### 5. Normalización y Consistencia de Formato
-Para formatear el JSON y catalogar los géneros literarios dentro de las categorías padre unificadas de la web:
+### 4. Normalización y Consistencia de Formato
 ```bash
 node scripts/normalizar.js --apply
 ```
+**Comportamiento:** Formatea y limpia el JSON catalogando los géneros en las categorías padre unificadas de la web.
 
-### 6. Extracción Masiva de Portadas
-Para extraer la primera página de los PDFs nuevos y guardarla automáticamente como miniatura WebP optimizada:
+### 5. Extracción Masiva de Portadas
 ```bash
-# Genera portadas WebP para todos los libros que tienen 'portada' vacío en libros.json
 python3 scripts/extraer_portadas_faltantes.py
 ```
+**Comportamiento:** Genera portadas WebP para todos los libros que tienen `'portada'` vacío en `libros.json` a partir de la primera página del PDF físico.
 
 ---
 
 ## ☁️ Sincronización con Cloudflare R2 (Almacenamiento)
-
-Los archivos físicos (PDF y EPUB) se sirven a los usuarios desde **Cloudflare R2** a través de URLs firmadas de corta duración generadas por nuestro backend serverless. 
 
 Para subir los nuevos libros agregados a la nube, ejecuta:
 ```bash
@@ -139,14 +135,13 @@ rclone copy /home/daniel/biblioteca-digital/ cloudflare:biblioteca-digital/ --pr
 ```
 
 > [!tip] Comportamiento inteligente de R2 Sincronización
-> Este comando es incremental: rclone comparará lo que ya está en Cloudflare R2 con tu disco local y **solo subirá los archivos nuevos o modificados**, ignorando los miles de libros que ya se encuentran arriba. Esto ahorra ancho de banda y tiempo.
+> Este comando es incremental: rclone comparará lo que ya está en Cloudflare R2 con tu disco local y **solo subirá los archivos nuevos o modificados**, ahorrando ancho de banda y tiempo.
 
 ---
 
 ## 🚀 Despliegue de Cambios en la Web
 
-Una vez que tengas actualizados tus archivos locales en `libros.json` y generadas las miniaturas en `portadas/`, sube los cambios para redesplegar en Vercel:
-
+Sube los cambios para redesplegar en Vercel:
 ```bash
 git add libros.json portadas/
 git commit -m "feat: incorporar nuevos títulos al catálogo de Libractiva"
@@ -159,3 +154,4 @@ git push
 - [[Guía - Git y Flujo de Trabajo|Trabajo con ramas y Vercel]]
 - [[Guía - Generar Portadas|Detalles de pdftoppm y conversión]]
 - [[Arquitectura - Estructura de Datos|Propiedades del archivo libros.json]]
+- [[Guía - Gestión de Donadores|Administración de códigos donadores y control local]]
