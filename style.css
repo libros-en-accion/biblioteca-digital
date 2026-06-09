@@ -2892,6 +2892,14 @@ footer {
   background: var(--dorado-claro);
   transform: scale(1.03);
 }
+.btn-descargar-donador.btn-descargar-epub {
+  background: var(--teal-profundo);
+  color: #fff8f0;
+  border: 1px solid rgba(212, 169, 74, 0.35);
+}
+.btn-descargar-donador.btn-descargar-epub:hover {
+  background: var(--teal-medio);
+}
 
 /* ════════════════════════════════════════════════════════
    MODAL: CÓDIGO DE DONADOR

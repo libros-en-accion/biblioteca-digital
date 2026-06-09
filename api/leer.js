@@ -53,7 +53,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Método no permitido' });
   }
 
-  const { id, descargar } = req.query;
+  const { id, descargar, formato } = req.query;
   if (!id) {
     return res.status(400).json({ error: 'Se requiere el parámetro id del libro.' });
   }
@@ -66,8 +66,13 @@ module.exports = async function handler(req, res) {
     return res.status(404).json({ error: 'Libro no encontrado en el catálogo.' });
   }
 
-  if (!libro.archivo_pdf) {
-    return res.status(404).json({ error: 'Este libro aún no tiene archivo PDF asociado en el servidor.' });
+  const esEpub = formato === 'epub';
+  const rutaArchivo = esEpub ? libro.archivo_epub : libro.archivo_pdf;
+
+  if (!rutaArchivo) {
+    return res.status(404).json({
+      error: `Este libro aún no tiene archivo ${esEpub ? 'EPUB' : 'PDF'} asociado en el servidor.`
+    });
   }
 
   // Verificar permiso de descarga
@@ -80,7 +85,7 @@ module.exports = async function handler(req, res) {
 
   try {
     // Normalizar la clave del objeto (separador de directorios en R2 es "/")
-    const objectKey = libro.archivo_pdf.replace(/\\/g, '/');
+    const objectKey = rutaArchivo.replace(/\\/g, '/');
 
     const params = {
       Bucket: BUCKET,
@@ -89,7 +94,8 @@ module.exports = async function handler(req, res) {
 
     if (quiereDescargar) {
       // Header que fuerza descarga en el navegador
-      const nombreArchivo = encodeURIComponent(`${libro.titulo} - ${libro.autor}.pdf`);
+      const ext = esEpub ? '.epub' : '.pdf';
+      const nombreArchivo = encodeURIComponent(`${libro.titulo} - ${libro.autor}${ext}`);
       params.ResponseContentDisposition = `attachment; filename="${nombreArchivo}"`;
     }
 

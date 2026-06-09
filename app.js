@@ -839,13 +839,22 @@ function abrirDetalleLibro(id, omitirPush = false) {
     linkPdf.style.display = 'none';
   }
 
-  // Mostrar botón de descarga solo si es donador
+  // Mostrar botones de descarga solo si es donador
+  const btnDescargarEpub = document.getElementById('detalle-descargar-epub-btn');
   if (btnDescargar) {
     if (esDonadorLocal() && libro.archivo_pdf) {
       btnDescargar.style.display = 'flex';
-      btnDescargar.onclick = () => descargarPdf(libro.id);
+      btnDescargar.onclick = () => descargarArchivo(libro.id, 'pdf');
     } else {
       btnDescargar.style.display = 'none';
+    }
+  }
+  if (btnDescargarEpub) {
+    if (esDonadorLocal() && libro.archivo_epub) {
+      btnDescargarEpub.style.display = 'flex';
+      btnDescargarEpub.onclick = () => descargarArchivo(libro.id, 'epub');
+    } else {
+      btnDescargarEpub.style.display = 'none';
     }
   }
 
@@ -1893,12 +1902,12 @@ function esDonadorLocal() {
 }
 
 /**
- * Descarga un PDF llamando a /api/leer?id=X&descargar=true
+ * Descarga un archivo (PDF o EPUB) llamando a /api/leer?id=X&descargar=true&formato=pdf|epub
  * Solo funciona si la cookie donor_token está presente (el servidor la verifica).
  */
-async function descargarPdf(libroId) {
+async function descargarArchivo(libroId, formato = 'pdf') {
   try {
-    const resp = await fetch(`/api/leer?id=${encodeURIComponent(libroId)}&descargar=true`);
+    const resp = await fetch(`/api/leer?id=${encodeURIComponent(libroId)}&descargar=true&formato=${formato}`);
     if (!resp.ok) {
       const data = await resp.json().catch(() => ({}));
       alert(data.error || 'No se pudo generar el enlace de descarga.');
@@ -1912,8 +1921,8 @@ async function descargarPdf(libroId) {
     a.click();
     document.body.removeChild(a);
   } catch (err) {
-    console.error('[descargarPdf]', err);
-    alert('Error de red al intentar descargar el PDF.');
+    console.error(`[descargarArchivo] ${formato}`, err);
+    alert(`Error de red al intentar descargar el ${formato.toUpperCase()}.`);
   }
 }
 
@@ -2311,7 +2320,7 @@ function inicializarLector() {
 
   if (btnDescarga) {
     btnDescarga.addEventListener('click', () => {
-      if (lectorEstado.libroId) descargarPdf(lectorEstado.libroId);
+      if (lectorEstado.libroId) descargarArchivo(lectorEstado.libroId, 'pdf');
     });
   }
 
