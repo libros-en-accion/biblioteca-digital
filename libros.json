@@ -115,7 +115,8 @@
     "genero": "Novela",
     "descripcion": "Historia del crecimiento y las aspiraciones de las cuatro hermanas March durante la Guerra Civil estadounidense.",
     "pdf": "https://drive.google.com/file/d/159Vo8hx4T_Rqvr380urRhz4aR9VrUaix/preview",
-    "portada": "portadas/11.webp"
+    "portada": "portadas/11.webp",
+    "archivo_pdf": "A/Alcott, Louisa May/Mujercitas-Alcott_Louisa_May.pdf"
   },
   {
     "id": 12,
@@ -149,7 +150,8 @@
     "genero": "Poesía",
     "descripcion": "Poema épico que narra el viaje del alma a través del Infierno, el Purgatorio y el Paraíso.",
     "pdf": "https://drive.google.com/file/d/1Lp2vBFWRCcIjABZT7XLG4dww27Wf9o2n/preview",
-    "portada": "portadas/14.webp"
+    "portada": "portadas/14.webp",
+    "archivo_pdf": "A/Alighieri, Dante/La_divina_comedia-Dante_Alighieri.pdf"
   },
   {
     "id": 15,
@@ -747,7 +749,8 @@
     "genero": "Cuento",
     "descripcion": "Cuento alegórico sobre un hombre que pierde su sombra, la cual termina usurpando su identidad y vida.",
     "pdf": "https://drive.google.com/file/d/1axSIGkglZga6G1XX77E0cy33QgbWkDa1/preview",
-    "portada": "portadas/64.webp"
+    "portada": "portadas/64.webp",
+    "archivo_pdf": "A/Andersen, Hans Christian/La_sombra-Hans_Christian_Andersen.pdf"
   },
   {
     "id": 65,
@@ -757,7 +760,8 @@
     "genero": "Novela juvenil",
     "descripcion": "Adaptación del cuento clásico sobre un niño que cambia una vaca por semillas que crecen hasta el cielo.",
     "pdf": "https://drive.google.com/file/d/1nKletf3pdAaDSGSS_i0-X7dtUCMcVFfm/preview",
-    "portada": "portadas/65.webp"
+    "portada": "portadas/65.webp",
+    "archivo_pdf": "A/Andersen, Hans Christian/Las_habichuelas_magicas-Hans_Christian_Andersen.pdf"
   },
   {
     "id": 66,
@@ -779,7 +783,8 @@
     "genero": "Religión y Teología",
     "descripcion": "Texto gnóstico que ofrece una visión alternativa del papel de Judas Iscariote en la pasión de Cristo.",
     "pdf": "https://drive.google.com/file/d/1izyu9hEhZ-bc4Fq_hcrCMW-NxovhvPQm/preview",
-    "portada": "portadas/67.webp"
+    "portada": "portadas/67.webp",
+    "archivo_pdf": "A/Anonimo/Evangelio_de_Judas-Anonimo.pdf"
   },
   {
     "id": 68,
@@ -789,7 +794,8 @@
     "genero": "Ensayo",
     "descripcion": "Antiguo tratado indio sobre el comportamiento humano, el amor, el deseo y las relaciones sociales y sexuales.",
     "pdf": "https://drive.google.com/file/d/1Umi6v9iCFQpvZiNHZApPFhYHjUZVafzg/preview",
-    "portada": "portadas/68.webp"
+    "portada": "portadas/68.webp",
+    "archivo_pdf": "A/Anonimo/Kamasutra_el_arte_de_amar-Anonimo.pdf"
   },
   {
     "id": 69,
@@ -799,7 +805,8 @@
     "genero": "Cuento",
     "descripcion": "Famosa recopilación de cuentos folclóricos del Oriente Medio unidos por el relato marco de Sherezade.",
     "pdf": "https://drive.google.com/file/d/1hWyiUuXPGrMcToAy8URxBYCmTTtjfihI/preview",
-    "portada": "portadas/69.webp"
+    "portada": "portadas/69.webp",
+    "archivo_pdf": "A/Anonimo/Las_mil_y_una_noches-Anonimo.pdf"
   },
   {
     "id": 70,
@@ -2028,7 +2035,8 @@
     "descripcion": "Tratado pedagógico sobre los principios fundamentales de la física, la química y la astronomía.",
     "pdf": "https://drive.google.com/file/d/1ZQbAQYCGMTDic-4MzmPj0o5DfVUowOxl/preview",
     "portada": "portadas/172.webp",
-    "archivo_epub": "001_EPUB/A/Asimov, Isaac/Introduccion a la ciencia - II. Ciencias B - Isaac Asimov.epub"
+    "archivo_epub": "001_EPUB/A/Asimov, Isaac/Introduccion a la ciencia - II. Ciencias B - Isaac Asimov.epub",
+    "archivo_pdf": "A/Asimov, Isaac/Introduccion a la ciencia - II. Ciencias B - Isaac Asimov.pdf"
   },
   {
     "id": 173,
@@ -3462,7 +3470,8 @@
     "genero": "Psicología y Autoayuda",
     "descripcion": "Explicación teosófica sobre la ley de causa y efecto y su influencia en la evolución espiritual del alma.",
     "pdf": "https://drive.google.com/file/d/1vC3Iu5g5QHZh2saLl3N6QNIvDBCFW_i8/preview",
-    "portada": "portadas/294.webp"
+    "portada": "portadas/294.webp",
+    "archivo_pdf": "B/Besant, Annie/Karma-Annie_Besant.pdf"
   },
   {
     "id": 295,
@@ -3472,7 +3481,8 @@
     "genero": "Novela",
     "descripcion": "Drama naturalista ambientado en la Albufera valenciana, centrado en las luchas de tres generaciones de pescadores.",
     "pdf": "https://drive.google.com/file/d/1S2hjV9t-SvN2EcmM_pfAxZ2dIodQdVhf/preview",
-    "portada": "portadas/295.webp"
+    "portada": "portadas/295.webp",
+    "archivo_pdf": "B/Blasco Ibanez, Vicente/Canas_y_barro-Vicente_Blasco_Ibanez.pdf"
   },
   {
     "id": 296,
@@ -3842,7 +3852,8 @@
     "genero": "Ensayo",
     "descripcion": "Ensayo jurídico que cuestiona las leyes de propiedad intelectual y defiende el intercambio libre de cultura en la era digital.",
     "pdf": "https://drive.google.com/file/d/1E3Cnnq3kP85mql4Aqg_XuflB0J3gpu-B/preview",
-    "portada": "portadas/327.webp"
+    "portada": "portadas/327.webp",
+    "archivo_pdf": "B/Bravo, David/Copia_este_libro-David_Bravo.pdf"
   },
   {
     "id": 328,
@@ -4858,7 +4869,8 @@
     "genero": "Teatro",
     "descripcion": "Drama mitológico sobre Ulises y la maga Circe, explorando la lucha entre el deber y la pasión amorosa.",
     "pdf": "https://drive.google.com/file/d/1Kc3zJ_wXVgbk0Gw8Pzy5wa3r9k1-XtPc/preview",
-    "portada": "portadas/413.webp"
+    "portada": "portadas/413.webp",
+    "archivo_pdf": "C/Calderon de la Barca, Pedro/El_mayor_encanto_amor-Calderon_de_la_Barca_Pedro.pdf"
   },
   {
     "id": 414,
@@ -4868,7 +4880,8 @@
     "genero": "Teatro",
     "descripcion": "El príncipe Segismundo es encerrado para evitar una profecía, cuestionando la realidad, el destino y el libre albedrío.",
     "pdf": "https://drive.google.com/file/d/17CjPpYf__b0STH9J9F4KKixkzgk4SsqP/preview",
-    "portada": "portadas/414.webp"
+    "portada": "portadas/414.webp",
+    "archivo_pdf": "C/Calderon de la Barca, Pedro/La_vida_es_sueno-Calderon_de_la_Barca_Pedro.pdf"
   },
   {
     "id": 415,
@@ -5070,7 +5083,8 @@
     "genero": "Novela",
     "descripcion": "Marco Polo describe al emperador Kublai Kan ciudades fantásticas que son metáforas de la existencia y la memoria.",
     "pdf": "https://drive.google.com/file/d/1xiaWZLeEEaEChkyJDaaK3rCkPNrxSqqQ/preview",
-    "portada": "portadas/431.webp"
+    "portada": "portadas/431.webp",
+    "archivo_pdf": "C/Calvino, Italo/Las_ciudades_Invisibles-Italo_Calvino.pdf"
   },
   {
     "id": 432,
@@ -5464,7 +5478,8 @@
     "genero": "Novela",
     "descripcion": "Una niña cae por una madriguera hacia un reino de fantasía donde las leyes naturales no aplican.",
     "pdf": "https://drive.google.com/file/d/1VRBKCT24Hgh2YaRX5ZFlcz-LmVkOW4gY/preview",
-    "portada": "portadas/464.webp"
+    "portada": "portadas/464.webp",
+    "archivo_pdf": "C/Carroll, Lewis/Alicia_en_el_pais_de_las_maravillas-Carroll_Lewis.pdf"
   },
   {
     "id": 465,
@@ -5534,7 +5549,8 @@
     "genero": "Cuento",
     "descripcion": "Famoso relato sobre un romance adúltero que evoluciona hacia un sentimiento profundo y melancólico.",
     "pdf": "https://drive.google.com/file/d/1qGf-bjIR16VLoiFaKX1okD7oMMnbxapg/preview",
-    "portada": "portadas/470.webp"
+    "portada": "portadas/470.webp",
+    "archivo_pdf": "C/Chejov, Anton/La_dama_del_perrito-Anton_Chejov.pdf"
   },
   {
     "id": 471,
@@ -6072,7 +6088,8 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Diez personas son invitadas a una isla privada donde comienzan a morir una a una siguiendo una canción infantil.",
     "pdf": "https://drive.google.com/file/d/1IdaXTaP9xqkLX4Lb-jJVrmJyM15gXOLI/preview",
-    "portada": "portadas/515.webp"
+    "portada": "portadas/515.webp",
+    "archivo_pdf": "C/Christie, Agatha/Diez_negritos-Christie_Agatha.pdf"
   },
   {
     "id": 516,
@@ -7414,7 +7431,8 @@
     "genero": "Novela",
     "descripcion": "Marlow viaja al corazón del Congo para encontrar a Kurtz, enfrentándose a la brutalidad y la locura colonial.",
     "pdf": "https://drive.google.com/file/d/1t-7H0wZnimTItTem-dV0vRhn354x_nhN/preview",
-    "portada": "portadas/629.webp"
+    "portada": "portadas/629.webp",
+    "archivo_pdf": "C/Conrad, Joseph/El_corazon_de_las_tinieblas-Joseph_Conrad.pdf"
   },
   {
     "id": 630,
@@ -9148,7 +9166,8 @@
     "genero": "Novela",
     "descripcion": "Crítica al utilitarismo y la deshumanización industrial en una ciudad dominada por los hechos y las cifras.",
     "pdf": "https://drive.google.com/file/d/14hpxzsHXlvOKrjdkPbPVugDATG76j-0r/preview",
-    "portada": "portadas/776.webp"
+    "portada": "portadas/776.webp",
+    "archivo_pdf": "D/Dickens, Charles/Tiempos_dificiles-Charles_Dickens.pdf"
   },
   {
     "id": 777,
@@ -9650,7 +9669,8 @@
     "genero": "Novela",
     "descripcion": "Aventura histórica sobre la obsesión de cultivar un tulipán negro en medio de intrigas políticas en la Holanda del XVII.",
     "pdf": "https://drive.google.com/file/d/1ryFbAhA19RymPAMO20wCr19K7LYNPpG3/preview",
-    "portada": "portadas/818.webp"
+    "portada": "portadas/818.webp",
+    "archivo_pdf": "D/Dumas, Alexandre/El_tulipan_negro-Dumas_Alexandre.pdf"
   },
   {
     "id": 819,
@@ -11496,7 +11516,8 @@
     "genero": "Ensayo",
     "descripcion": "Declaración de principios éticos donde el autor defiende la libertad individual, la justicia y la dignidad humana.",
     "pdf": "https://drive.google.com/file/d/1SjWS37Vy6Uw-866Sermg2MySA2hkdTQ4/preview",
-    "portada": "portadas/974.webp"
+    "portada": "portadas/974.webp",
+    "archivo_pdf": "E/Einstein, Albert/Mi_credo_Humanista-Einstein_Albert.pdf"
   },
   {
     "id": 975,
@@ -12226,7 +12247,8 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Ojo de Halcón y sus aliados mohicanos intentan rescatar a las hijas de un coronel británico en 1757.",
     "pdf": "https://drive.google.com/file/d/1JYlNfn6gCE7xG9F6FnRBI-5N8QijKzrx/preview",
-    "portada": "portadas/1035.webp"
+    "portada": "portadas/1035.webp",
+    "archivo_pdf": "F/Fenimore Cooper, James/El_ultimo_mohicano-James_Fenimore_Cooper.pdf"
   },
   {
     "id": 1037,
@@ -13736,7 +13758,8 @@
     "genero": "Cuento",
     "descripcion": "Historias breves sobre la vida doméstica y social, capturando momentos cotidianos con una mirada crítica.",
     "pdf": "https://drive.google.com/file/d/1AiBOvMIHqJ7dopghwBsS1zsxHzGrIjdR/preview",
-    "portada": "portadas/1162.webp"
+    "portada": "portadas/1162.webp",
+    "archivo_pdf": "G/Garcia, Yolanda/Relatos de la cacerola_yolanda_garcia.pdf"
   },
   {
     "id": 1163,
@@ -14286,7 +14309,8 @@
     "genero": "Teatro",
     "descripcion": "Tragedia clásica sobre un erudito que hace un pacto con el diablo para obtener conocimiento y placeres ilimitados.",
     "pdf": "https://drive.google.com/file/d/1a-iaoGalCerEph4OkgM0xmbQzWw_lCtM/preview",
-    "portada": "portadas/1208.webp"
+    "portada": "portadas/1208.webp",
+    "archivo_pdf": "G/Goethe, Wolfgang Johann/Fausto-Goethe_Wolfgang__Johann.pdf"
   },
   {
     "id": 1209,
@@ -14608,7 +14632,8 @@
     "genero": "Cuento",
     "descripcion": "Fábula clásica sobre un joven que debe cumplir misiones imposibles para casarse con la hija del rey.",
     "pdf": "https://drive.google.com/file/d/1paOANsj-IhuHS-6f4YljxcYuZ48fHKWr/preview",
-    "portada": "portadas/1235.webp"
+    "portada": "portadas/1235.webp",
+    "archivo_pdf": "G/Grimm, Hermanos/Los_tres_pelos_de_oro_del_diablo-Hermanos_Grimm.pdf"
   },
   {
     "id": 1236,
@@ -18564,7 +18589,8 @@
     "genero": "Filosofía",
     "descripcion": "Un seductor esteta narra su elaborado plan para conquistar a una joven y luego abandonarla.",
     "pdf": "https://drive.google.com/file/d/1r4KoNcQmR6GqMKWCJv2n31kA1dMxov8F/preview",
-    "portada": "portadas/1567.webp"
+    "portada": "portadas/1567.webp",
+    "archivo_pdf": "K/Kierkegaard, Soren/Diario_de_un_seductor-Kierkegaard_Soren.pdf"
   },
   {
     "id": 1568,
@@ -18598,7 +18624,8 @@
     "descripcion": "Tras una plaga gripal, los supervivientes se dividen en dos bandos en una lucha épica.",
     "pdf": "https://drive.google.com/file/d/1VdaAWCNcT30abBklthcyAKxgjNwukyOL/preview",
     "portada": "portadas/1570.webp",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Apocalipsis (Stephen King) - Tomo 2.epub"
+    "archivo_epub": "001_EPUB/K/King, Stephen/Apocalipsis (Stephen King) - Tomo 2.epub",
+    "archivo_pdf": "K/King, Stephen/Apocalipsis (Stephen King) - Tomo 1.pdf"
   },
   {
     "id": 1571,
@@ -19135,7 +19162,8 @@
     "descripcion": "Una niña recibe una caja misteriosa con botones que pueden otorgar bendiciones o causar catástrofes globales.",
     "pdf": "https://drive.google.com/file/d/1tSv4dsRmbcrGuRxvwgGKyiggrpUm-LD7/preview",
     "portada": "portadas/1616.webp",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 2.epub"
+    "archivo_epub": "001_EPUB/K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 2.epub",
+    "archivo_pdf": "K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 2.pdf"
   },
   {
     "id": 1617,
@@ -19533,7 +19561,8 @@
     "descripcion": "Cuatro relatos largos que se alejan del terror puro para explorar la naturaleza humana y la esperanza.",
     "pdf": "https://drive.google.com/file/d/1_cUWUNUNVnZ8yQqmGXkJlWzy5YlYtw72/preview",
     "portada": "portadas/1651.webp",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 1.epub"
+    "archivo_epub": "001_EPUB/K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 1.epub",
+    "archivo_pdf": "K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 2.pdf"
   },
   {
     "id": 1652,
@@ -20249,7 +20278,8 @@
     "genero": "Novela",
     "descripcion": "Novela que escandalizó a su época al narrar el romance adúltero entre una noble y un guardabosques.",
     "pdf": "https://drive.google.com/file/d/1b-kugBrYHRxH7DS8YzMju_Cjl_jrQL9A/preview",
-    "portada": "portadas/1712.webp"
+    "portada": "portadas/1712.webp",
+    "archivo_pdf": "L/Lawrence, D. H./El_amante_de_Lady_Chatterley-D._H._Lawrence.pdf"
   },
   {
     "id": 1713,
@@ -22899,7 +22929,8 @@
     "genero": "Divulgación Científica",
     "descripcion": "Teoría pionera sobre cómo la mente humana funciona como una red de procesos simples cooperativos.",
     "pdf": "https://drive.google.com/file/d/1MjbmsKJr5_UPPil911SNV4A4jCws_QBP/preview",
-    "portada": "portadas/1937.webp"
+    "portada": "portadas/1937.webp",
+    "archivo_pdf": "M/Minsky, Marvin /Sociedad de la mente_de Marvin Minsky.pdf"
   },
   {
     "id": 2811,
@@ -24514,7 +24545,8 @@
     "genero": "Filosofía",
     "descripcion": "Crítica a la filosofía y moral tradicional, proponiendo una nueva jerarquía de valores vitales.",
     "pdf": "https://drive.google.com/file/d/1tBNpOrcnQlcw88cQWKWj4JZA-Ebx1_0O/preview",
-    "portada": "portadas/2072.webp"
+    "portada": "portadas/2072.webp",
+    "archivo_pdf": "N/Nietzsche, Friedrich/Mas_alla_del_bien_y_del_mal-Friedrich_Nietzsche.pdf"
   },
   {
     "id": 2073,
@@ -24860,7 +24892,8 @@
     "genero": "Cuento",
     "descripcion": "Un banquero millonario argumenta que su acumulación de riqueza es la máxima expresión de la libertad anarquista.",
     "pdf": "https://drive.google.com/file/d/1JgIlnMxohUAhji3SW9jyPj7w6ziOlV1F/preview",
-    "portada": "portadas/2101.webp"
+    "portada": "portadas/2101.webp",
+    "archivo_pdf": "P/Pessoa, Fernando/El_banquero_anarquista-Fernando_Pessoa.pdf"
   },
   {
     "id": 2102,
@@ -25277,7 +25310,8 @@
     "genero": "Filosofía",
     "descripcion": "Obra fundamental sobre la justicia, el Estado ideal y la alegoría de la caverna.",
     "pdf": "https://drive.google.com/file/d/1TKnJjPeTwpwJmY7kfnTjbpZNw_IORTdE/preview",
-    "portada": "portadas/2136.webp"
+    "portada": "portadas/2136.webp",
+    "archivo_pdf": "P/Platon/La_Republica-Platon.pdf"
   },
   {
     "id": 2137,
@@ -26450,7 +26484,8 @@
     "genero": "Terror",
     "descripcion": "Cuentos de terror y locura ambientados en la selva misionera o entornos rurales sombríos.",
     "pdf": "https://drive.google.com/file/d/1t309GAZGaxGFVi-e0v3yEsO6LnLCdYAd/preview",
-    "portada": "portadas/2235.webp"
+    "portada": "portadas/2235.webp",
+    "archivo_pdf": "Q/Quiroga, Horacio/La_gallina_degollada-Horacio_Quiroga.pdf"
   },
   {
     "id": 2236,
@@ -26460,7 +26495,8 @@
     "genero": "Cuento",
     "descripcion": "Relatos que exploran la lucha del hombre contra la naturaleza y la decadencia humana.",
     "pdf": "https://drive.google.com/file/d/1TZbS_iLpRoPwKlTBEJwVJvhFekFjBrbP/preview",
-    "portada": "portadas/2236.webp"
+    "portada": "portadas/2236.webp",
+    "archivo_pdf": "Q/Quiroga, Horacio/Los_destiladores_de_naranja-Horacio_Quiroga.pdf"
   },
   {
     "id": 2237,
@@ -26823,7 +26859,8 @@
     "genero": "Filosofía",
     "descripcion": "Obra de filosofía política sobre la libertad, la soberanía y la voluntad general.",
     "pdf": "https://drive.google.com/file/d/12dYEwLpKEBe-0Zn0wu2JilU2mTLwpxxh/preview",
-    "portada": "portadas/2267.webp"
+    "portada": "portadas/2267.webp",
+    "archivo_pdf": "R/Rousseau, Jean-Jacques/El_contrato_social-Jean-Jacques_Rousseau.pdf"
   },
   {
     "id": 2268,
@@ -26857,7 +26894,8 @@
     "genero": "Filosofía",
     "descripcion": "Ensayo sobre cómo la propiedad privada corrompió al hombre natural creando jerarquías injustas.",
     "pdf": "https://drive.google.com/file/d/1eecl8YTa71kPyRCiS_uV5OtSpaLGJncv/preview",
-    "portada": "portadas/2270.webp"
+    "portada": "portadas/2270.webp",
+    "archivo_pdf": "R/Rousseau, Jean-Jacques/La_desigualdad_entre_los_hombres-Jean-Jacques_Rousseau.pdf"
   },
   {
     "id": 2271,
@@ -27647,7 +27685,8 @@
     "genero": "Novela",
     "descripcion": "Perturbadora crónica de abusos cometidos por cuatro libertinos en un castillo aislado durante cuatro meses.",
     "pdf": "https://drive.google.com/file/d/1VAWk7ZUH8CipQr_2-VtsNCi6tjA1VjZR/preview",
-    "portada": "portadas/2336.webp"
+    "portada": "portadas/2336.webp",
+    "archivo_pdf": "S/Sade, Marques de/Los_120_dias_de_Sodoma-Marques_de_Sade.pdf"
   },
   {
     "id": 2337,
@@ -27763,7 +27802,8 @@
     "genero": "Cuento",
     "descripcion": "Un aviador perdido en el desierto encuentra a un pequeño príncipe que le enseña sobre el amor.",
     "pdf": "https://drive.google.com/file/d/1XPpyTS3aY3X4ZPB2f88KEDtxD8gVRjlI/preview",
-    "portada": "portadas/2346.webp"
+    "portada": "portadas/2346.webp",
+    "archivo_pdf": "S/Saint Exupery, Antoine De/El_principito-Antoine_De_Saint_Exupery.pdf"
   },
   {
     "id": 2347,
@@ -27773,7 +27813,8 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Aventuras de la Duquesa de Eboli luchando contra los turcos en la Chipre del siglo XVI.",
     "pdf": "https://drive.google.com/file/d/1u_tAFMQGGdb8Gdc1L0I8QyUmv8qFYiGg/preview",
-    "portada": "portadas/2347.webp"
+    "portada": "portadas/2347.webp",
+    "archivo_pdf": "S/Salgari, Emilio/El_capitan_tormenta-Emilio_Salgari.pdf"
   },
   {
     "id": 2348,
@@ -28322,7 +28363,8 @@
     "genero": "Teatro",
     "descripcion": "Tragedia griega sobre un rey que descubre que ha cumplido la profecía de matar a su padre.",
     "pdf": "https://drive.google.com/file/d/1aSyyGTmlVNxbRcjffveZEKUkHd_XGFXu/preview",
-    "portada": "portadas/2397.webp"
+    "portada": "portadas/2397.webp",
+    "archivo_pdf": "S/Sofocles/Edipo_Rey-Sofocles.pdf"
   },
   {
     "id": 2398,
@@ -31079,7 +31121,8 @@
     "genero": "Misterio y Thriller",
     "descripcion": "Búsqueda de un tesoro oculto guiada por complejas coordenadas geográficas a través de varios mares.",
     "pdf": "https://drive.google.com/file/d/19NgWybskavWcKDnVjy3hAkxLtMF1nqlQ/preview",
-    "portada": "portadas/2631.webp"
+    "portada": "portadas/2631.webp",
+    "archivo_pdf": "V/Verne, Julio/Maravillosas_aventuras_de_Antifer-Verne_Julio.pdf"
   },
   {
     "id": 2632,
@@ -31713,7 +31756,8 @@
     "genero": "Teatro",
     "descripcion": "Sátira de las convenciones sociales mediante una comedia de enredos y dobles identidades.",
     "pdf": "https://drive.google.com/file/d/1ZiO1yEF0WPgp-_M0PWtXpHxvsyOhgHuf/preview",
-    "portada": "portadas/2684.webp"
+    "portada": "portadas/2684.webp",
+    "archivo_pdf": "W/Wilde, Oscar/La_importancia_de_llamarse_Ernesto-Wilde_Oscar.pdf"
   },
   {
     "id": 2685,
@@ -32719,7 +32763,9 @@
     "genero": "Psicología y Autoayuda",
     "descripcion": "Analiza las diferencias de comunicación y necesidades emocionales entre hombres y mujeres para mejorar las relaciones.",
     "pdf": "https://drive.google.com/file/d/12gOvhDk7cJc-PBDyTU9MJh8LOHvhsH04/preview",
-    "portada": "portadas/2768.webp"
+    "portada": "portadas/2768.webp",
+    "archivo_pdf": "G/Gray, John/Los hombres son de Marte, las mujeres so - John Gray.pdf",
+    "archivo_epub": "001_EPUB/G/Gray, John/Los hombres son de Marte, las mujeres so - John Gray.epub"
   },
   {
     "id": 2770,
@@ -32957,7 +33003,9 @@
     "genero": "Psicología y Autoayuda",
     "descripcion": "Explora la psicología detrás de las decisiones financieras y cómo las actitudes ante el dinero determinan el éxito económico.",
     "pdf": "https://drive.google.com/file/d/1xduOtK2W-3Xh3mOtR-OD-XO1l-97bkBe/preview",
-    "portada": "portadas/2790.webp"
+    "portada": "portadas/2790.webp",
+    "archivo_pdf": "H/Housel, Morgan/Cómo piensan los ricos -Morgan Housel.pdf",
+    "archivo_epub": "001_EPUB/H/Housel, Morgan/Cómo piensan los ricos -Morgan Housel.epub"
   },
   {
     "id": 2791,
@@ -33956,16 +34004,6 @@
     "archivo_epub": "001_EPUB/S/Sabato, Ernesto/Abaddón el exterminador - Ernesto Sabato.epub"
   },
   {
-    "id": 2878,
-    "titulo": "El ultimo mohicano-James Fenimore Cooper",
-    "autor": "James Fenimore Cooper",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "F/Fenimore Cooper, James/El_ultimo_mohicano-James_Fenimore_Cooper.pdf"
-  },
-  {
     "id": 2879,
     "titulo": "El gran Gatsby",
     "autor": "Francis Scott Fitzgerald",
@@ -34009,17 +34047,6 @@
     "archivo_epub": "001_EPUB/M/Martel, Yann/La vida de Pi - Yann Martel.epub"
   },
   {
-    "id": 2885,
-    "titulo": "1q84",
-    "autor": "Haruki Murakami",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2885.webp",
-    "archivo_pdf": "M/Murakami, Haruki/1Q84 - (Libro 3) - Haruki Murakami.pdf",
-    "archivo_epub": "001_EPUB/M/Murakami, Haruki/1Q84 - (Libro 3) - Haruki Murakami.epub"
-  },
-  {
     "id": 2888,
     "titulo": "Moby Dick-Herman Melville",
     "autor": "Herman Melville",
@@ -34028,16 +34055,6 @@
     "descripcion": "",
     "portada": "",
     "archivo_pdf": "M/Melville, Herman/Moby_Dick-Herman_Melville.pdf"
-  },
-  {
-    "id": 2889,
-    "titulo": "Sociedad de la mente de Marvin Minsky",
-    "autor": "Marvin Minsky",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "M/Minsky, Marvin /Sociedad de la mente_de Marvin Minsky.pdf"
   },
   {
     "id": 2890,
@@ -34059,28 +34076,6 @@
     "portada": "portadas/2891.webp",
     "archivo_pdf": "H/Hosseini, Khaled/Cometas en el cielo - Khaled Hosseini.pdf",
     "archivo_epub": "001_EPUB/H/Hosseini, Khaled/Cometas en el cielo - Khaled Hosseini.epub"
-  },
-  {
-    "id": 2892,
-    "titulo": "Cómo piensan los ricos -Morgan Housel",
-    "autor": "Morgan Housel",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2892.webp",
-    "archivo_pdf": "H/Housel, Morgan/Cómo piensan los ricos -Morgan Housel.pdf",
-    "archivo_epub": "001_EPUB/H/Housel, Morgan/Cómo piensan los ricos -Morgan Housel.epub"
-  },
-  {
-    "id": 2893,
-    "titulo": "La sociedad del cansancio 4 Ed",
-    "autor": "ByungChul Han",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2893.webp",
-    "archivo_pdf": "H/Han, ByungChul/La sociedad del cansancio 4 Ed - ByungChul Han.pdf",
-    "archivo_epub": "001_EPUB/H/Han, ByungChul/La sociedad del cansancio 4 Ed - ByungChul Han.epub"
   },
   {
     "id": 2894,
@@ -34138,26 +34133,6 @@
     "archivo_epub": "001_EPUB/J/Jung, Carl Gustav/Recuerdos, suenos, pensamientos - Carl Gustav Jung.epub"
   },
   {
-    "id": 2899,
-    "titulo": "Mas alla del bien y del mal-Friedrich Nietzsche",
-    "autor": "Friedrich Nietzsche",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "N/Nietzsche, Friedrich/Mas_alla_del_bien_y_del_mal-Friedrich_Nietzsche.pdf"
-  },
-  {
-    "id": 2900,
-    "titulo": "El amante de Lady Chatterley-D. H. Lawrence",
-    "autor": "D. H. Lawrence",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "L/Lawrence, D. H./El_amante_de_Lady_Chatterley-D._H._Lawrence.pdf"
-  },
-  {
     "id": 2901,
     "titulo": "Los hombres que no amaban a las mujeres",
     "autor": "Stieg Larsson",
@@ -34212,26 +34187,6 @@
     "archivo_epub": "001_EPUB/P/Puig, Manuel/El beso de la mujer arana - Manuel Puig.epub"
   },
   {
-    "id": 2906,
-    "titulo": "El banquero anarquista-Fernando Pessoa",
-    "autor": "Fernando Pessoa",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "P/Pessoa, Fernando/El_banquero_anarquista-Fernando_Pessoa.pdf"
-  },
-  {
-    "id": 2907,
-    "titulo": "La Republica-Platon",
-    "autor": "Platon",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "P/Platon/La_Republica-Platon.pdf"
-  },
-  {
     "id": 2908,
     "titulo": "El catalejo lacado",
     "autor": "Philip Pullman",
@@ -34276,16 +34231,6 @@
     "archivo_epub": "001_EPUB/P/Pullman, Philip/La daga - Philip Pullman.epub"
   },
   {
-    "id": 2915,
-    "titulo": "El corazon de las tinieblas-Joseph Conrad",
-    "autor": "Joseph Conrad",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Conrad, Joseph/El_corazon_de_las_tinieblas-Joseph_Conrad.pdf"
-  },
-  {
     "id": 2916,
     "titulo": "Las aventuras de Sherlock Holmes",
     "autor": "Arthur Conan Doyle",
@@ -34319,16 +34264,6 @@
     "archivo_epub": "001_EPUB/C/Capote, Truman/A sangre fria - Truman Capote.epub"
   },
   {
-    "id": 2919,
-    "titulo": "Diez negritos-Christie Agatha",
-    "autor": "Agatha Christie",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Christie, Agatha/Diez_negritos-Christie_Agatha.pdf"
-  },
-  {
     "id": 2920,
     "titulo": "Los pasos perdidos",
     "autor": "Alejo Carpentier",
@@ -34338,56 +34273,6 @@
     "portada": "portadas/2920.webp",
     "archivo_pdf": "C/Carpentier, Alejo/Los pasos perdidos - Alejo Carpentier.pdf",
     "archivo_epub": "001_EPUB/C/Carpentier, Alejo/Los pasos perdidos - Alejo Carpentier.epub"
-  },
-  {
-    "id": 2921,
-    "titulo": "La dama del perrito-Anton Chejov",
-    "autor": "Anton Chejov",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Chejov, Anton/La_dama_del_perrito-Anton_Chejov.pdf"
-  },
-  {
-    "id": 2922,
-    "titulo": "La vida es sueno-Calderon de la Barca Pedro",
-    "autor": "Pedro Calderon de la Barca",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Calderon de la Barca, Pedro/La_vida_es_sueno-Calderon_de_la_Barca_Pedro.pdf"
-  },
-  {
-    "id": 2923,
-    "titulo": "El mayor encanto amor-Calderon de la Barca Pedro",
-    "autor": "Pedro Calderon de la Barca",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Calderon de la Barca, Pedro/El_mayor_encanto_amor-Calderon_de_la_Barca_Pedro.pdf"
-  },
-  {
-    "id": 2924,
-    "titulo": "Alicia en el pais de las maravillas-Carroll Lewis",
-    "autor": "Lewis Carroll",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Carroll, Lewis/Alicia_en_el_pais_de_las_maravillas-Carroll_Lewis.pdf"
-  },
-  {
-    "id": 2925,
-    "titulo": "Las ciudades Invisibles-Italo Calvino",
-    "autor": "Italo Calvino",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "C/Calvino, Italo/Las_ciudades_Invisibles-Italo_Calvino.pdf"
   },
   {
     "id": 2926,
@@ -34433,16 +34318,6 @@
     "archivo_pdf": "C/Cubero Urbano, Manuel/Retratos de una isla - Manuel Cubero Urbano.pdf"
   },
   {
-    "id": 2930,
-    "titulo": "La importancia de llamarse Ernesto-Wilde Oscar",
-    "autor": "Oscar Wilde",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "W/Wilde, Oscar/La_importancia_de_llamarse_Ernesto-Wilde_Oscar.pdf"
-  },
-  {
     "id": 2933,
     "titulo": "Hojas de hierba",
     "autor": "Walt Whitman",
@@ -34452,26 +34327,6 @@
     "portada": "portadas/2933.webp",
     "archivo_pdf": "W/Whitman, Walt/Hojas de hierba - Walt Whitman.pdf",
     "archivo_epub": "001_EPUB/W/Whitman, Walt/Hojas de hierba - Walt Whitman.epub"
-  },
-  {
-    "id": 2934,
-    "titulo": "La gallina degollada-Horacio Quiroga",
-    "autor": "Horacio Quiroga",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "Q/Quiroga, Horacio/La_gallina_degollada-Horacio_Quiroga.pdf"
-  },
-  {
-    "id": 2935,
-    "titulo": "Los destiladores de naranja-Horacio Quiroga",
-    "autor": "Horacio Quiroga",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "Q/Quiroga, Horacio/Los_destiladores_de_naranja-Horacio_Quiroga.pdf"
   },
   {
     "id": 2936,
@@ -34518,46 +34373,6 @@
     "archivo_epub": "001_EPUB/B/Bolano, Roberto/Llamadas telefonicas - Roberto Bolano.epub"
   },
   {
-    "id": 2940,
-    "titulo": "Karma-Annie Besant",
-    "autor": "Annie Besant",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "B/Besant, Annie/Karma-Annie_Besant.pdf"
-  },
-  {
-    "id": 2941,
-    "titulo": "Cumbres borrascosas-Bronte Emily",
-    "autor": "Emily Bronte",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "B/Bronte, Emily/Cumbres_borrascosas-Bronte_Emily.pdf"
-  },
-  {
-    "id": 2942,
-    "titulo": "Copia este libro-David Bravo",
-    "autor": "David Bravo",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "B/Bravo, David/Copia_este_libro-David_Bravo.pdf"
-  },
-  {
-    "id": 2943,
-    "titulo": "Canas y barro-Vicente Blasco Ibanez",
-    "autor": "Vicente Blasco Ibanez",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "B/Blasco Ibanez, Vicente/Canas_y_barro-Vicente_Blasco_Ibanez.pdf"
-  },
-  {
     "id": 2944,
     "titulo": "La naranja mecanica",
     "autor": "Anthony Burgess",
@@ -34600,36 +34415,6 @@
     "portada": "portadas/2947.webp",
     "archivo_pdf": "V/Vallejo, Irene/El infinito en un junco - Irene Vallejo.pdf",
     "archivo_epub": "001_EPUB/V/Vallejo, Irene/El infinito en un junco - Irene Vallejo.epub"
-  },
-  {
-    "id": 2949,
-    "titulo": "Maravillosas aventuras de Antifer-Verne Julio",
-    "autor": "Julio Verne",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "V/Verne, Julio/Maravillosas_aventuras_de_Antifer-Verne_Julio.pdf"
-  },
-  {
-    "id": 2950,
-    "titulo": "El contrato social-Jean-Jacques Rousseau",
-    "autor": "Jean-Jacques Rousseau",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "R/Rousseau, Jean-Jacques/El_contrato_social-Jean-Jacques_Rousseau.pdf"
-  },
-  {
-    "id": 2951,
-    "titulo": "La desigualdad entre los hombres-Jean-Jacques Rousseau",
-    "autor": "Jean-Jacques Rousseau",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "R/Rousseau, Jean-Jacques/La_desigualdad_entre_los_hombres-Jean-Jacques_Rousseau.pdf"
   },
   {
     "id": 2952,
@@ -34675,16 +34460,6 @@
     "archivo_epub": "001_EPUB/D/Diamond, Jared/Armas, germenes y acero - Jared Diamond.epub"
   },
   {
-    "id": 2958,
-    "titulo": "El tulipan negro-Dumas Alexandre",
-    "autor": "Alexandre Dumas",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "D/Dumas, Alexandre/El_tulipan_negro-Dumas_Alexandre.pdf"
-  },
-  {
     "id": 2959,
     "titulo": "El conde de Montecristo",
     "autor": "Alexandre Dumas",
@@ -34707,16 +34482,6 @@
     "archivo_epub": "001_EPUB/D/Dumas, Alexandre/Los tres mosqueteros - Alexandre Dumas.epub"
   },
   {
-    "id": 2961,
-    "titulo": "Tiempos dificiles-Charles Dickens",
-    "autor": "Charles Dickens",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "D/Dickens, Charles/Tiempos_dificiles-Charles_Dickens.pdf"
-  },
-  {
     "id": 2962,
     "titulo": "Pensar rapido, pensar despacio",
     "autor": "Daniel Kahneman",
@@ -34728,26 +34493,6 @@
     "archivo_epub": "001_EPUB/K/Kahneman, Daniel/Pensar rapido, pensar despacio - Daniel Kahneman.epub"
   },
   {
-    "id": 2963,
-    "titulo": "El proceso-Kafka Franz",
-    "autor": "Franz Kafka",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "K/Kafka, Franz/El_proceso-Kafka_Franz.pdf"
-  },
-  {
-    "id": 2964,
-    "titulo": "El desaparecido America-Kafka Franz",
-    "autor": "Franz Kafka",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "K/Kafka, Franz/El_desaparecido_America-Kafka_Franz.pdf"
-  },
-  {
     "id": 2965,
     "titulo": "Ante la Ley-Kafka Franz",
     "autor": "Franz Kafka",
@@ -34756,59 +34501,6 @@
     "descripcion": "",
     "portada": "",
     "archivo_pdf": "K/Kafka, Franz/Ante_la_Ley-Kafka_Franz.pdf"
-  },
-  {
-    "id": 2966,
-    "titulo": "Diario de un seductor-Kierkegaard Soren",
-    "autor": "Soren Kierkegaard",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "K/Kierkegaard, Soren/Diario_de_un_seductor-Kierkegaard_Soren.pdf"
-  },
-  {
-    "id": 2967,
-    "titulo": "Gwendy (Stephen King y Richard Chizmar)",
-    "autor": "Stephen King",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2967.webp",
-    "archivo_pdf": "K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 2.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Gwendy (Stephen King y Richard Chizmar) - Tomo 2.epub"
-  },
-  {
-    "id": 2971,
-    "titulo": "Apocalipsis",
-    "autor": "Stephen King",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2971.webp",
-    "archivo_pdf": "K/King, Stephen/Apocalipsis (Stephen King) - Tomo 1.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Apocalipsis (Stephen King) - Tomo 1.epub"
-  },
-  {
-    "id": 2972,
-    "titulo": "Las cuatro estaciones",
-    "autor": "Stephen King",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2972.webp",
-    "archivo_pdf": "K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 2.pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/Las cuatro estaciones (Stephen King) - Tomo 2.epub"
-  },
-  {
-    "id": 2978,
-    "titulo": "Mi credo Humanista-Einstein Albert",
-    "autor": "Albert Einstein",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "E/Einstein, Albert/Mi_credo_Humanista-Einstein_Albert.pdf"
   },
   {
     "id": 2979,
@@ -34822,36 +34514,6 @@
     "archivo_epub": "001_EPUB/A/Arguedas, Jose Maria/Los rios profundos - Jose Maria Arguedas.epub"
   },
   {
-    "id": 2980,
-    "titulo": "La sombra-Hans Christian Andersen",
-    "autor": "Hans Christian Andersen",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Andersen, Hans Christian/La_sombra-Hans_Christian_Andersen.pdf"
-  },
-  {
-    "id": 2981,
-    "titulo": "Las habichuelas magicas-Hans Christian Andersen",
-    "autor": "Hans Christian Andersen",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Andersen, Hans Christian/Las_habichuelas_magicas-Hans_Christian_Andersen.pdf"
-  },
-  {
-    "id": 2982,
-    "titulo": "La divina comedia-Dante Alighieri",
-    "autor": "Dante Alighieri",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Alighieri, Dante/La_divina_comedia-Dante_Alighieri.pdf"
-  },
-  {
     "id": 2983,
     "titulo": "Los oceanos de Venus",
     "autor": "Isaac Asimov",
@@ -34863,28 +34525,6 @@
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Los oceanos de Venus - Isaac Asimov.epub"
   },
   {
-    "id": 2984,
-    "titulo": "Introduccion a la ciencia",
-    "autor": "Isaac Asimov",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2984.webp",
-    "archivo_pdf": "A/Asimov, Isaac/Introduccion a la ciencia - II. Ciencias B - Isaac Asimov.pdf",
-    "archivo_epub": "001_EPUB/A/Asimov, Isaac/Introduccion a la ciencia - II. Ciencias B - Isaac Asimov.epub"
-  },
-  {
-    "id": 2985,
-    "titulo": "Los limites de la Fundacion",
-    "autor": "Isaac Asimov",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/2985.webp",
-    "archivo_pdf": "A/Asimov, Isaac/Los limites de la Fundacion - Isaac Asimov.pdf",
-    "archivo_epub": "001_EPUB/A/Asimov, Isaac/Los limites de la Fundacion - Isaac Asimov.epub"
-  },
-  {
     "id": 2988,
     "titulo": "Patria",
     "autor": "Fernando Aramburu",
@@ -34894,16 +34534,6 @@
     "portada": "portadas/2988.webp",
     "archivo_pdf": "A/Aramburu, Fernando/Patria - Fernando Aramburu.pdf",
     "archivo_epub": "001_EPUB/A/Aramburu, Fernando/Patria - Fernando Aramburu.epub"
-  },
-  {
-    "id": 2989,
-    "titulo": "Mujercitas-Alcott Louisa May",
-    "autor": "Louisa May Alcott",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Alcott, Louisa May/Mujercitas-Alcott_Louisa_May.pdf"
   },
   {
     "id": 2990,
@@ -34927,16 +34557,6 @@
     "archivo_epub": "001_EPUB/A/ALVAREZ, MAXIMILIANO/Vegetarianismo en el debate politico - Ezequiel Arrieta.epub"
   },
   {
-    "id": 2992,
-    "titulo": "Evangelio de Judas-Anonimo",
-    "autor": "Anonimo",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Anonimo/Evangelio_de_Judas-Anonimo.pdf"
-  },
-  {
     "id": 2993,
     "titulo": "Cantar del mio Cid",
     "autor": "Anonimo",
@@ -34948,36 +34568,6 @@
     "archivo_epub": "001_EPUB/A/Anonimo/Cantar del mio Cid - Anonimo.epub"
   },
   {
-    "id": 2994,
-    "titulo": "Las mil y una noches-Anonimo",
-    "autor": "Anonimo",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Anonimo/Las_mil_y_una_noches-Anonimo.pdf"
-  },
-  {
-    "id": 2995,
-    "titulo": "Kamasutra el arte de amar-Anonimo",
-    "autor": "Anonimo",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "A/Anonimo/Kamasutra_el_arte_de_amar-Anonimo.pdf"
-  },
-  {
-    "id": 2996,
-    "titulo": "Los 120 dias de Sodoma-Marques de Sade",
-    "autor": "Marques de Sade",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "S/Sade, Marques de/Los_120_dias_de_Sodoma-Marques_de_Sade.pdf"
-  },
-  {
     "id": 2997,
     "titulo": "Hyperion",
     "autor": "Dan Simmons",
@@ -34987,16 +34577,6 @@
     "portada": "portadas/2997.webp",
     "archivo_pdf": "S/Simmons, Dan/Hyperion - Dan Simmons.pdf",
     "archivo_epub": "001_EPUB/S/Simmons, Dan/Hyperion - Dan Simmons.epub"
-  },
-  {
-    "id": 2998,
-    "titulo": "El capitan tormenta-Emilio Salgari",
-    "autor": "Emilio Salgari",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "S/Salgari, Emilio/El_capitan_tormenta-Emilio_Salgari.pdf"
   },
   {
     "id": 2999,
@@ -35028,16 +34608,6 @@
     "portada": "portadas/3002.webp",
     "archivo_pdf": "S/Salinger, J. D./El guardian entre el centeno - J. D. Salinger.pdf",
     "archivo_epub": "001_EPUB/S/Salinger, J. D./El guardian entre el centeno - J. D. Salinger.epub"
-  },
-  {
-    "id": 3003,
-    "titulo": "El huesped de Dracula-Stoker Bram",
-    "autor": "Bram Stoker",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "S/Stoker, Bram/El_huesped_de_Dracula-Stoker_Bram.pdf"
   },
   {
     "id": 3004,
@@ -35084,36 +34654,6 @@
     "archivo_epub": "001_EPUB/S/Sun, Tzu/El arte de la guerra - Sun Tzu.epub"
   },
   {
-    "id": 3008,
-    "titulo": "El principito-Antoine De Saint Exupery",
-    "autor": "Antoine De Saint Exupery",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "S/Saint Exupery, Antoine De/El_principito-Antoine_De_Saint_Exupery.pdf"
-  },
-  {
-    "id": 3009,
-    "titulo": "Edipo Rey-Sofocles",
-    "autor": "Sofocles",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "S/Sofocles/Edipo_Rey-Sofocles.pdf"
-  },
-  {
-    "id": 3010,
-    "titulo": "La Nausea-Sartre Jean-Paul",
-    "autor": "Jean-Paul Sartre",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "S/Sartre, Jean-Paul/La_Nausea-Sartre_Jean-Paul.pdf"
-  },
-  {
     "id": 3011,
     "titulo": "La cabana del tio Tom",
     "autor": "Harriet Beecher Stowe",
@@ -35136,47 +34676,6 @@
     "archivo_epub": "001_EPUB/G/Gibson, William/Neuromante - William Gibson.epub"
   },
   {
-    "id": 3013,
-    "titulo": "Los hombres son de Marte, las mujeres so",
-    "autor": "John Gray",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "portadas/3013.webp",
-    "archivo_pdf": "G/Gray, John/Los hombres son de Marte, las mujeres so - John Gray.pdf",
-    "archivo_epub": "001_EPUB/G/Gray, John/Los hombres son de Marte, las mujeres so - John Gray.epub"
-  },
-  {
-    "id": 3014,
-    "titulo": "Fausto-Goethe Wolfgang Johann",
-    "autor": "Wolfgang Johann Goethe",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "G/Goethe, Wolfgang Johann/Fausto-Goethe_Wolfgang__Johann.pdf"
-  },
-  {
-    "id": 3015,
-    "titulo": "Los tres pelos de oro del diablo-Hermanos Grimm",
-    "autor": "Hermanos Grimm",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "G/Grimm, Hermanos/Los_tres_pelos_de_oro_del_diablo-Hermanos_Grimm.pdf"
-  },
-  {
-    "id": 3016,
-    "titulo": "Relatos de la cacerola yolanda garcia",
-    "autor": "Yolanda Garcia",
-    "anio": null,
-    "genero": "Cuento",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "G/Garcia, Yolanda/Relatos de la cacerola_yolanda_garcia.pdf"
-  },
-  {
     "id": 3018,
     "titulo": "El senor de las moscas",
     "autor": "William Golding",
@@ -35186,16 +34685,6 @@
     "portada": "portadas/3018.webp",
     "archivo_pdf": "G/Golding, William/El senor de las moscas - William Golding.pdf",
     "archivo_epub": "001_EPUB/G/Golding, William/El senor de las moscas - William Golding.epub"
-  },
-  {
-    "id": 3019,
-    "titulo": "Las aventuras de Tom Sawyer-Twain Mark",
-    "autor": "Mark Twain",
-    "anio": null,
-    "genero": "Novela",
-    "descripcion": "",
-    "portada": "",
-    "archivo_pdf": "T/Twain, Mark/Las_aventuras_de_Tom_Sawyer-Twain_Mark.pdf"
   },
   {
     "id": 3020,
