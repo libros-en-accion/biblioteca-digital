@@ -90,6 +90,37 @@ python3 scripts/eliminar_donador.py <CODIGO>
 
 ---
 
+## 🗃️ Generación y Control de Códigos Donadores (Local)
+
+Para generar nuevos códigos de forma segura sin repetirlos y mantener un control estricto de a quién se le entrega cada clave, se utiliza el sistema de administración local ubicado en:
+`/home/daniel/002_CODIGOS/`
+
+Este directorio contiene dos archivos clave:
+1. `generar_codigo.py`: Script en Python encargado de generar códigos donadores aleatorios **únicos (no repetidos)**.
+2. `lista_codigos.csv`: Archivo que funge como base de datos local y registro histórico de los códigos.
+
+### Estructura de lista_codigos.csv
+El archivo CSV está estructurado con las siguientes 4 columnas:
+- **CODIGO:** El código donador único generado (ej. `DONOR-XXXXXX`).
+- **NOMBRE:** Nombre del usuario donador a quien se le asignó.
+- **CORREO:** Dirección de correo electrónico del usuario.
+- **ESTATUS:** Estatus de disponibilidad del código (`disponible` o `usado`).
+
+### Flujo de Trabajo para Entregar un Código:
+1. **Generar el Código:** Ejecuta el generador local para obtener un nuevo código único disponible (esto lo registrará automáticamente en el CSV como `disponible`):
+   ```bash
+   python3 /home/daniel/002_CODIGOS/generar_codigo.py
+   ```
+2. **Asignar Información:** Abre `/home/daniel/002_CODIGOS/lista_codigos.csv`, localiza el código generado y asocia el **Nombre** y **Correo** del donante, cambiando su **Estatus** a `usado`.
+3. **Activar el Código en la Nube (Redis):** Registra y activa el código en la base de datos de producción Redis de Libractiva usando el script del repositorio:
+   ```bash
+   # Posicionado en la carpeta ~/biblioteca
+   python3 scripts/agregar_donador.py <CODIGO_GENERADO>
+   ```
+4. **Entrega:** Proporciona el código al donador para que pueda desbloquear las descargas de EPUB/PDF y la lectura ilimitada en la web.
+
+---
+
 ## 🖥️ Administración Visual (Redis Insight)
 
 Si prefieres realizar estas tareas mediante una interfaz gráfica de usuario (GUI) en el navegador:
