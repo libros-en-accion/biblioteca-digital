@@ -1962,7 +1962,7 @@ async function validarCodigo() {
   const codigo = input ? input.value.trim() : '';
 
   if (!codigo) {
-    mostrarMensajeCodigo('Escribe tu código de donador.', 'error');
+    mostrarMensajeCodigo('Escribe tu código de acceso.', 'error');
     return;
   }
 
@@ -1979,7 +1979,7 @@ async function validarCodigo() {
 
     if (resp.ok && data.valido) {
       localStorage.setItem('esDonador', 'true');
-      mostrarMensajeCodigo(`✅ ¡Código válido! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
+      mostrarMensajeCodigo(`✅ ¡Acceso activado! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
       // Actualizar botón de código en el hero
       actualizarBtnCodigo(true);
       setTimeout(() => {
@@ -2015,10 +2015,10 @@ function actualizarBtnCodigo(esDonador) {
   if (!btn) return;
   if (esDonador) {
     btn.classList.add('activo');
-    if (etiqueta) etiqueta.textContent = '✓ Donador';
+    if (etiqueta) etiqueta.textContent = '✓ Activo';
   } else {
     btn.classList.remove('activo');
-    if (etiqueta) etiqueta.textContent = 'Código Donador';
+    if (etiqueta) etiqueta.textContent = 'Activar Acceso';
   }
 }
 

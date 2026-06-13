@@ -1,5 +1,5 @@
 // api/validar-codigo.js
-// Endpoint Vercel Serverless: valida un código de donador y registra el dispositivo.
+// Endpoint Vercel Serverless: valida un código de acceso lifetime y registra el dispositivo.
 // Usa Vercel KV (Redis) para almacenar los códigos y los dispositivos permitidos.
 // Límite: 3 dispositivos por código. Los códigos son permanentes (sin expiración de fecha).
 
@@ -31,7 +31,7 @@ module.exports = async function handler(req, res) {
 
   const { codigo } = req.body;
   if (!codigo || typeof codigo !== 'string') {
-    return res.status(400).json({ error: 'Se requiere un código de donador.' });
+    return res.status(400).json({ error: 'Se requiere un código de acceso.' });
   }
 
   const codigoNormalizado = codigo.trim().toUpperCase();
@@ -51,7 +51,7 @@ module.exports = async function handler(req, res) {
     if (!registro) {
       return res.status(404).json({
         valido: false,
-        error: 'Código de donador no reconocido. Verifica que sea correcto.'
+        error: 'Código de acceso no reconocido. Verifica que sea correcto o adquiere tu acceso en https://mpago.la/1Ek1HPz'
       });
     }
 
@@ -70,7 +70,7 @@ module.exports = async function handler(req, res) {
     if (dispositivos.length >= limite) {
       return res.status(403).json({
         valido: false,
-        error: `Este código ya alcanzó el límite de ${limite} dispositivos registrados. Si tienes problemas, contacta al administrador.`
+        error: `Este código de acceso ya está activo en el límite de ${limite} dispositivos. Si tienes problemas, contacta al soporte.`
       });
     }
 

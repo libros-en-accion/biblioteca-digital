@@ -75,9 +75,9 @@
 
       <div class="hero-utilidades">
         <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
-        <button id="btnCodigo" class="btn-codigo-donador" aria-label="Ingresar código de donador" title="Código de donador">
+        <button id="btnCodigo" class="btn-codigo-donador" aria-label="Activar mi acceso" title="Mi Acceso">
           <i data-lucide="key-round"></i>
-          <span id="etiquetaCodigo">Código Donador</span>
+          <span id="etiquetaCodigo">Activar Acceso</span>
         </button>
       </div>
 
@@ -374,46 +374,43 @@
         <p>Cargando libro…</p>
       </div>
       <canvas id="lectorCanvas"></canvas>
-      <!-- Panel de bloqueo para no donadores (se muestra en pág 16+) -->
+      <!-- Panel de bloqueo para no activos (se muestra en pág 16+) -->
       <div id="lectorBloqueo" class="lector-bloqueo" style="display:none">
         <div class="lector-bloqueo-caja">
           <button id="btnCerrarBloqueo" class="lector-bloqueo-cerrar" aria-label="Cerrar aviso"><i data-lucide="x"></i></button>
           <div class="lector-bloqueo-icono">📚</div>
-          <h2 class="lector-bloqueo-titulo">Estamos felices de que disfrutes esta lectura ✨</h2>
+          <h2 class="lector-bloqueo-titulo">Has llegado al final de la vista previa 📖</h2>
           <p class="lector-bloqueo-texto">
-            Esta vista previa de 15 páginas es nuestra forma de invitarte a descubrir nuevas obras.
-            Si deseas continuar leyendo este libro completo, descargarlo en formatos <strong>PDF y EPUB</strong> (ideal para disfrutarlo en tu Kindle o tu aplicación de lectura favorita) o disfrutar de otras funciones,
-            tu contribución voluntaria nos ayuda a mantener esta biblioteca viva y en constante crecimiento.
+            Este libro y los más de 2,800 títulos del catálogo están disponibles completos — incluyendo descargas en <strong>PDF y EPUB</strong> (ideal para Kindle o tu app de lectura favorita) — con un pago único de <strong>$100 MXN</strong>. Sin mensualidades ni cargos ocultos.
           </p>
           <div class="lector-bloqueo-opciones">
+            <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-preview">🛒 Obtener Acceso Lifetime — $100 MXN</a>
             <button id="lectorBtnIngresarCodigo" class="btn-codigo-preview">🔑 Ya tengo un código</button>
-            <!-- <a href="https://www.paypal.com" target="_blank" rel="noopener" class="btn-donar-preview">❤️ Apoyar el proyecto</a> -->
-            <!-- <p class="bloqueo-nota">Una donación voluntaria te da acceso completo al catálogo.</p> -->
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ MODAL: CÓDIGO DE DONADOR ═══ -->
+  <!-- ═══ MODAL: CÓDIGO DE ACCESO ═══ -->
   <div id="modalCodigo" class="modal-overlay">
     <div class="modal-panel modal-codigo-panel" role="dialog" aria-modal="true" aria-labelledby="codigo-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento">🔑 Acceso Donador</div>
+        <div class="modal-ornamento">🔑 Activar Acceso</div>
         <h2 id="codigo-titulo" class="modal-titulo">Ingresar Código</h2>
         <button id="btnCerrarCodigo" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
       <div class="modal-body">
-        <p class="codigo-descripcion">Ingresa tu código de donador para desbloquear el libro completo, las descargas en PDF e impresión en hasta 3 dispositivos.</p>
+        <p class="codigo-descripcion">Ingresa tu código de acceso para desbloquear el catálogo completo, descargas en PDF y EPUB, en hasta 3 dispositivos.</p>
         <div class="codigo-input-wrapper">
-          <input type="text" id="inputCodigoDonador" class="codigo-input" placeholder="EJEMPLO: DONOR-A82F" autocomplete="off" spellcheck="false" />
+          <input type="text" id="inputCodigoDonador" class="codigo-input" placeholder="EJEMPLO: LTD-A82F" autocomplete="off" spellcheck="false" />
         </div>
         <div id="codigoMensaje" class="codigo-mensaje" style="display:none"></div>
         <div class="modal-acciones">
           <button id="btnCancelarCodigo" class="btn-cancelar">Cancelar</button>
           <button id="btnValidarCodigo" class="btn-recomendar"><i data-lucide="check"></i> Verificar código</button>
         </div>
-        <!-- <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://www.paypal.com" target="_blank" rel="noopener">Realiza una donación voluntaria</a> para obtener el tuyo.</p> -->
+        <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener">Adquiere tu acceso lifetime por $100 MXN</a> para obtener el tuyo.</p>
       </div>
     </div>
   </div>

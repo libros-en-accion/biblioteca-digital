@@ -3232,7 +3232,7 @@ footer {
   gap: 0.7rem;
   align-items: center;
 }
-.btn-donar-preview {
+.btn-comprar-preview {
   display: inline-block;
   padding: 0.7rem 1.8rem;
   background: var(--dorado);
@@ -3244,7 +3244,7 @@ footer {
   text-decoration: none;
   transition: background 0.2s, transform 0.15s;
 }
-.btn-donar-preview:hover {
+.btn-comprar-preview:hover {
   background: var(--dorado-claro);
   transform: scale(1.04);
 }

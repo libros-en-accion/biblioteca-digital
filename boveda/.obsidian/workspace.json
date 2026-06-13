@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00 - Inicio.md",
+                "file": "01 - Guías de Operación/Guía - Gestión de Accesos.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00 - Inicio"
+              "title": "Guía - Gestión de Accesos"
             }
           }
         ]
@@ -185,13 +185,16 @@
   },
   "active": "d1b7a133f708be30",
   "lastOpenFiles": [
-    "01 - Guías de Operación/Guía - Gestión de Donadores.md",
     "00 - Inicio.md",
-    "resumen_ejecutivo.md",
+    "03 - Identidad y Marca/Modelo de Negocio.md",
+    "01 - Guías de Operación/Guía - Gestión de Donadores.md",
+    "01 - Guías de Operación/Guía - Gestión de Accesos.md",
+    "02 - Arquitectura Técnica/Arquitectura - Estructura de Datos.md",
+    "01 - Guías de Operación/Guía - Generar Portadas.md",
     "01 - Guías de Operación/Guía - Agregar Libro.md",
+    "resumen_ejecutivo.md",
     "02 - Arquitectura Técnica/Arquitectura - Estructura del Proyecto.md",
     "01 - Guías de Operación/Guía - Uso con Agentes de IA.md",
-    "01 - Guías de Operación/Guía - Generar Portadas.md",
     "03 - Gestión del Proyecto/Roadmap y Tareas.md",
     "03 - Gestión del Proyecto/Auditoría UX y Plan de Mejoras.md",
     "03 - Gestión del Proyecto/Estadísticas del Catálogo.md",

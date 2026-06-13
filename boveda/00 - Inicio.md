@@ -25,7 +25,7 @@ graph TD
     Guias --> G4[Despliegue en Vercel]
     Guias --> G5[Git y Flujo de Trabajo]
     Guias --> G6[Uso con Agentes de IA]
-    Guias --> G7[Gestión de Donadores]
+    Guias --> G7[Gestión de Accesos]
     Guias --> G8[Gestión de Destacados]
 
     Arq --> A1[Vista General]
@@ -53,7 +53,7 @@ Procedimientos operativos estándar (SOP) para el mantenimiento y actualización
 *   [[Guía - Despliegue en Vercel|Guía: Despliegue en Vercel]]: Configuración de variables de entorno y comandos de producción.
 *   [[Guía - Git y Flujo de Trabajo|Guía: Comandos de Git]]: Flujo de trabajo para actualizar la web.
 *   [[Guía - Uso con Agentes de IA|Guía: Uso con Agentes de IA]]: Cómo guiar a otras IAs de forma eficiente y económica.
-*   [[Guía - Gestión de Donadores|Guía: Gestión de Donadores y Códigos]]: Administración de accesos, límites de dispositivos y comandos CLI.
+*   [[Guía - Gestión de Accesos|Guía: Gestión de Accesos y Códigos]]: Administración de accesos, límites de dispositivos y comandos CLI.
 *   [[Guía - Gestión de Libros Destacados|Guía: Gestión de Libros Destacados]]: Administración de la sección de recomendados en la Home.
 
 ### ⚙️ [02 - Arquitectura Técnica]([[02 - Arquitectura Técnica]])
@@ -67,6 +67,7 @@ Documentación técnica sobre el diseño conceptual y desarrollo de Libractiva.
 ### 🎨 [03 - Identidad y Marca]([[03 - Identidad y Marca]])
 Definición y estrategia de la evolución de marca.
 *   [[Marca - Libractiva|Estrategia de Marca Libractiva]]: Justificación fonética, SEO, dominios y recursos gráficos.
+*   [[Modelo de Negocio|Modelo de Negocio (LTD $100 MXN)]]: Estrategia de monetización, pasarela de pago y flujo de venta.
 
 ---
 

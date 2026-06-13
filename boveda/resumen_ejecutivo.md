@@ -63,7 +63,7 @@ Libractiva está estructurada bajo una filosofía de **simplicidad técnica máx
 *   **Backend (Serverless en Vercel):**
     *   `api/recomendar.js`: Integra consultas seguras a la API de **DeepSeek v4 Flash** para procesar los perfiles e intereses del lector y retornar recomendaciones.
     *   `api/leer.js`: Genera enlaces firmados y seguros de corta expiración para proteger y distribuir los archivos del catálogo en formato PDF y EPUB.
-    *   `api/validar-codigo.js`: Controla las sesiones y límites de dispositivos asociados a códigos de donación.
+    *   `api/validar-codigo.js`: Controla las sesiones y límites de dispositivos asociados a códigos de acceso lifetime.
 *   **Almacenamiento y Datos:**
     *   **Cloudflare R2 Object Storage:** Almacena el repositorio completo de archivos PDF y EPUB (más de 35 GB) de la biblioteca.
     *   **Redis Cloud:** Base de datos en memoria para la validación ultrarrápida de códigos y dispositivos.
@@ -74,8 +74,8 @@ Libractiva está estructurada bajo una filosofía de **simplicidad técnica máx
 ## 🌟 5. Características Clave y Diferenciadores
 
 1.  **Recomendador Mágico por IA:** Encuesta dinámica sobre gustos y estados de ánimo del lector que consulta a la IA para entregar sugerencias personalizadas, presentadas en un modal de diseño envolvente.
-2.  **Lector Embebido e Instantáneo y Descarga de EPUB:** Permite la lectura directa de PDFs sin salir de la plataforma y ofrece la descarga directa de libros optimizados para e-readers (como Kindle) en formato EPUB y PDF de alta calidad para usuarios donadores.
+2.  **Lector Embebido e Instantáneo y Descarga de EPUB:** Permite la lectura directa de PDFs sin salir de la plataforma y ofrece la descarga directa de libros optimizados para e-readers (como Kindle) en formato EPUB y PDF de alta calidad para usuarios con acceso activo.
 3.  **Rutas Compartibles (SPA con Hashes):** Navegación fluida a través de rutas `#` (ej. `#/libro/123`), permitiendo enlaces directos para SEO e indexación dinámica sin pérdida de rendimiento.
 4.  **PWA de Alto Rendimiento:** Registro de Manifiesto PWA para permitir la instalación de Libractiva como aplicación nativa standalone en dispositivos móviles y ordenadores con soporte offline básico.
 5.  **Accesibilidad Triple A:** Contraste tipográfico optimizado para modo claro y oscuro, cumpliendo estrictamente con la norma **WCAG AA** de legibilidad en interfaces y **WCAG AAA** en textos de contenido.
-6.  **Acceso Donador Exclusivo:** Un modelo basado en la reciprocidad de donaciones voluntarias que premia a los colaboradores con descargas completas de archivos, impresión directa y lectura ilimitada web de todo el catálogo.
+6.  **Acceso Lifetime Exclusivo (LTD):** Un modelo de pago único de $100 MXN que desbloquea descargas completas de archivos, impresión directa y lectura ilimitada web de todo el catálogo, eliminando la fricción de lectura.

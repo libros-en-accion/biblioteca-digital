@@ -79,7 +79,7 @@ module.exports = async function handler(req, res) {
   const quiereDescargar = descargar === 'true';
   if (quiereDescargar && !esDonador(req)) {
     return res.status(403).json({
-      error: 'Acceso denegado. Se requiere un código de donador válido para descargar este archivo.'
+      error: 'Acceso denegado. Se requiere un código de acceso activo para descargar este archivo.'
     });
   }
 
