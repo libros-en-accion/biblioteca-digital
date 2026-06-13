@@ -34665,5 +34665,89 @@
     "descripcion": "",
     "portada": "portadas/3020.webp",
     "archivo_pdf": "T/Twain, Mark/El_forastero_misterioso-Twain_Mark.pdf"
+  },
+  {
+    "titulo": "El arte de amar",
+    "autor": "Erich Fromm",
+    "anio": 1956,
+    "genero": "Psicología / Filosofía",
+    "descripcion": "Un análisis teórico y filosófico que plantea el amor no como un sentimiento espontáneo en el que se cae, sino como un arte y un aprendizaje consciente que requiere esfuerzo, conocimiento y práctica.",
+    "pdf": "",
+    "portada": "portadas/3021.webp",
+    "archivo_pdf": "F/Fromm, Erich/El arte de amar - Erich Fromm.pdf",
+    "archivo_epub": "001_EPUB/F/Fromm, Erich/El arte de amar - Erich Fromm.epub",
+    "id": 3021
+  },
+  {
+    "titulo": "Influencia",
+    "autor": "Robert Cialdini",
+    "anio": 1984,
+    "genero": "Psicología social / Negocios",
+    "descripcion": "Una investigación sobre la psicología de la persuasión que detalla los seis principios fundamentales que guían el comportamiento humano y explican por qué las personas dicen \"sí\" ante distintas estrategias de comunicación.",
+    "pdf": "",
+    "portada": "portadas/3022.webp",
+    "archivo_pdf": "C/Cialdini, Robert/Influencia, La psicología de la persuasión - Robert Cialdini.pdf",
+    "archivo_epub": "001_EPUB/C/Cialdini, Robert/Influencia, La psicología de la persuasión - Robert Cialdini.epub",
+    "id": 3022
+  },
+  {
+    "titulo": "El error de Descartes",
+    "autor": "António Damásio",
+    "anio": 1994,
+    "genero": "Neurociencia / Divulgación científica",
+    "descripcion": "Un ensayo neurocientífico que desafía el dualismo cartesiano al demostrar, a través de casos clínicos, cómo las emociones y los sentimientos son indispensables para los procesos de razonamiento y toma de decisiones.",
+    "pdf": "",
+    "portada": "portadas/3023.webp",
+    "archivo_pdf": "D/Damasio, Antonio /El error de Descartes - Antonio Damasio.pdf",
+    "archivo_epub": "001_EPUB/D/Damasio, Antonio /El error de Descartes - Antonio Damasio.epub",
+    "id": 3023
+  },
+  {
+    "titulo": "El señor presidente",
+    "autor": "Miguel Ángel Asturias",
+    "anio": 1946,
+    "genero": "Novela / Ficción política",
+    "descripcion": "Una obra cumbre de la literatura hispanoamericana que retrata con crudeza y técnicas vanguardistas el clima de terror, paranoia y degradación social bajo la dictadura implacable de un país latinoamericano.",
+    "pdf": "",
+    "portada": "portadas/3024.webp",
+    "archivo_pdf": "A/Asturias, Miguel Angel/El Senor Presidente - Miguel Angel Asturias.pdf",
+    "archivo_epub": "001_EPUB/A/Asturias, Miguel Angel/El Senor Presidente - Miguel Angel Asturias.epub",
+    "id": 3024
+  },
+  {
+    "titulo": "El viaje de Baldassare",
+    "autor": "Amin Maalouf",
+    "anio": 2000,
+    "genero": "Novela histórica / Aventuras",
+    "descripcion": "Ambientada en el siglo XVII, narra la travesía de un librero genovés a lo largo del Imperio Otomano y Europa en busca de un libro sagrado que supuestamente contiene las respuestas para salvar al mundo del Apocalipsis inminente.",
+    "pdf": "",
+    "portada": "portadas/3025.webp",
+    "archivo_pdf": "M/Maalouf, Amin/El viaje de Baldassare - Amin Maalouf.pdf",
+    "archivo_epub": "001_EPUB/M/Maalouf, Amin/El viaje de Baldassare - Amin Maalouf.epub",
+    "id": 3025
+  },
+  {
+    "titulo": "El club de la buena estrella",
+    "autor": "Amy Tan",
+    "anio": 1989,
+    "genero": "Novela / Drama familiar",
+    "descripcion": "Una emotiva novela que entrelaza las historias de cuatro mujeres inmigrantes chinas en San Francisco y sus hijas nacidas en Estados Unidos, explorando las profundas brechas culturales y los complejos lazos generacionales entre ellas.",
+    "pdf": "",
+    "portada": "portadas/3026.webp",
+    "archivo_pdf": "T/Tan, Amy/El club de la buena estrella - Amy Tan.pdf",
+    "archivo_epub": "001_EPUB/T/Tan, Amy/El club de la buena estrella - Amy Tan.epub",
+    "id": 3026
+  },
+  {
+    "titulo": "La ridícula idea de no volver a verte",
+    "autor": "Rosa Montero",
+    "anio": 2013,
+    "genero": "Narrativa / Ensayo biográfico",
+    "descripcion": "A partir del diario que Marie Curie escribió tras la muerte de su esposo, la autora teje una reflexión íntima sobre el duelo, la superación del dolor, las relaciones de pareja y la fuerza de las mujeres.",
+    "pdf": "",
+    "portada": "portadas/3027.webp",
+    "archivo_pdf": "M/Montero, Rosa/La ridicula idea de no volver a verte - Rosa Montero.pdf",
+    "archivo_epub": "001_EPUB/M/Montero, Rosa/La ridicula idea de no volver a verte - Rosa Montero.epub",
+    "id": 3027
   }
 ]

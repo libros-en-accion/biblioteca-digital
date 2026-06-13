@@ -4,20 +4,52 @@
     "titulo": "La biblioteca mínima para entender la psicología humana",
     "descripcion": "Una selección enfocada en el autoanálisis, el comportamiento social, el inconsciente y los sesgos cognitivos.",
     "portada_pack": "portadas/pack-psicologia.webp",
-    "libros": [2962, 2898, 2842, 1121, 1125, 1126]
+    "libros": [
+      2962,
+      2898,
+      2842,
+      1121,
+      1125,
+      1126,
+      3021,
+      3022,
+      3023
+    ]
   },
   {
     "id": "clasicos-latinoamericanos",
     "titulo": "10 clásicos que todo latinoamericano debe leer",
     "descripcion": "Una inmersión profunda en el realismo mágico, la identidad, la soledad y la historia de nuestra región.",
     "portada_pack": "portadas/pack-latino.webp",
-    "libros": [1139, 2309, 321, 670, 2937, 2905, 2979, 2606, 2875]
+    "libros": [
+      1139,
+      2309,
+      321,
+      670,
+      2937,
+      2905,
+      2979,
+      2606,
+      2875,
+      3024
+    ]
   },
   {
     "id": "evitar-burnout",
     "titulo": "Ficción para escapar del burnout: Novelas terapéuticas",
     "descripcion": "Lecturas absorbentes, cálidas o reflexivas ideales para bajar las revoluciones y reconectar con la tranquilidad.",
     "portada_pack": "portadas/pack-burnout.webp",
-    "libros": [2896, 2346, 1988, 2882, 2947, 1968]
+    "libros": [
+      2896,
+      2346,
+      1988,
+      2882,
+      2947,
+      1968,
+      3025,
+      3026,
+      3027,
+      2707
+    ]
   }
 ]
