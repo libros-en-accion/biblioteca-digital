@@ -46,5 +46,6 @@ Los recursos gráficos oficiales de la marca están disponibles en la raíz del 
 
 **Notas Relacionadas:**
 *   [[00 - Inicio|Mapa de navegación de la bóveda]]
+*   [[Copywriting y Estrategia de Anuncios|Copywriting y Estrategia de Anuncios]]: Estrategia y ganchos de venta para anuncios.
+*   [[Modelo de Negocio|Modelo de Negocio (LTD $100 MXN)]]: Estrategia comercial y pasarela de pago.
 *   [[Arquitectura - Vista General|Stack técnico y diseño conceptual]]
-*   [[Arquitectura - Estructura del Proyecto|Estructura de archivos del repositorio]]

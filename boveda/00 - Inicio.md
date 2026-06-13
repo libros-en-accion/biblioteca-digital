@@ -68,6 +68,7 @@ Documentación técnica sobre el diseño conceptual y desarrollo de Libractiva.
 Definición y estrategia de la evolución de marca.
 *   [[Marca - Libractiva|Estrategia de Marca Libractiva]]: Justificación fonética, SEO, dominios y recursos gráficos.
 *   [[Modelo de Negocio|Modelo de Negocio (LTD $100 MXN)]]: Estrategia de monetización, pasarela de pago y flujo de venta.
+*   [[Copywriting y Estrategia de Anuncios|Copywriting y Estrategia de Anuncios]]: Argumentos de venta, ganchos de copy y ganchos psicológicos.
 
 ---
 
