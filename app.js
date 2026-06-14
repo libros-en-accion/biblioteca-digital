@@ -341,7 +341,15 @@ function generarTagsFiltro() {
 
   contenedor.innerHTML = '';
 
-  // 1. Renderizar primero los Mood Tags (Descubrimiento Inteligente)
+  // 1. Renderizar Tag "Todos" al principio
+  const btnTodos = document.createElement('button');
+  btnTodos.className = 'tag-genero activo';
+  btnTodos.dataset.genero = 'Todos';
+  btnTodos.innerHTML = `<i data-lucide="library" class="icono-sm"></i> Todos`;
+  btnTodos.addEventListener('click', () => filtrarGenero('Todos', btnTodos));
+  contenedor.appendChild(btnTodos);
+
+  // 2. Renderizar los Mood Tags (Descubrimiento Inteligente)
   moodTagsData.forEach(m => {
     const btn = document.createElement('button');
     btn.className = 'tag-genero tag-mood-btn';
@@ -360,14 +368,6 @@ function generarTagsFiltro() {
   separador.className = 'tag-separador';
   separador.setAttribute('aria-hidden', 'true');
   contenedor.appendChild(separador);
-
-  // 2. Renderizar Tag "Todos"
-  const btnTodos = document.createElement('button');
-  btnTodos.className = 'tag-genero activo';
-  btnTodos.dataset.genero = 'Todos';
-  btnTodos.innerHTML = `<i data-lucide="library" class="icono-sm"></i> Todos`;
-  btnTodos.addEventListener('click', () => filtrarGenero('Todos', btnTodos));
-  contenedor.appendChild(btnTodos);
 
   // 3. Renderizar Tags por género
   generosOrdenados.forEach(([genero, cantidad]) => {
