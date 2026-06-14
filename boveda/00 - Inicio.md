@@ -27,6 +27,7 @@ graph TD
     Guias --> G6[Uso con Agentes de IA]
     Guias --> G7[Gestión de Accesos]
     Guias --> G8[Gestión de Destacados]
+    Guias --> G9[Gestión de Colecciones]
 
     Arq --> A1[Vista General]
     Arq --> A2[API de Recomendación]
@@ -55,6 +56,7 @@ Procedimientos operativos estándar (SOP) para el mantenimiento y actualización
 *   [[Guía - Uso con Agentes de IA|Guía: Uso con Agentes de IA]]: Cómo guiar a otras IAs de forma eficiente y económica.
 *   [[Guía - Gestión de Accesos|Guía: Gestión de Accesos y Códigos]]: Administración de accesos, límites de dispositivos y comandos CLI.
 *   [[Guía - Gestión de Libros Destacados|Guía: Gestión de Libros Destacados]]: Administración de la sección de recomendados en la Home.
+*   [[Guía - Gestión de Colecciones|Guía: Gestión de Colecciones (Packs)]]: Estructura de packs y cómo asociar IDs de libros en colecciones.json.
 
 ### ⚙️ [02 - Arquitectura Técnica]([[02 - Arquitectura Técnica]])
 Documentación técnica sobre el diseño conceptual y desarrollo de Libractiva.
