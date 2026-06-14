@@ -1578,6 +1578,12 @@ function registrarEventos() {
     filtrar();
   });
 
+  // Ocultar CTA de compra si el usuario ya es donador
+  if (esDonadorLocal()) {
+    const btnComprar = el('btnComprarHero');
+    if (btnComprar) btnComprar.style.display = 'none';
+  }
+
   // Botón volver arriba
   const btnScrollTop = el('btnScrollTop');
   if (btnScrollTop) {

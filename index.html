@@ -52,10 +52,10 @@
     <div class="hero-contenido">
       <div class="hero-marca">
         <a href="/" class="header-home-link" aria-label="Ir al inicio de Libractiva">
-          <img src="logo_display.png" srcset="logo_display.png 1x, logo_clean_white.png 2x" alt="Logo Libractiva" class="hero-logo" width="44" height="44" />
+          <img src="logo_display.png" srcset="logo_display.png 1x, logo_clean_white.png 2x" alt="Logo Libractiva" class="hero-logo" width="80" height="80" />
           <h1>Libractiva</h1>
         </a>
-        <p class="hero-subtitulo">Tu bibliotecario personal + IA</p>
+        <p class="hero-subtitulo">Recomendaciones con IA · Lectura gratuita · 2,800 títulos</p>
         <p class="hero-propuesta-valor">
           Más de <strong>2,800 libros</strong> con recomendador IA personalizado.
           Acceso completo por un <strong>pago único de $100 MXN</strong>.
@@ -66,7 +66,7 @@
       <div class="hero-buscador-caja">
         <div class="buscador-contenedor">
           <span class="buscador-icono"><i data-lucide="search" class="icono-sm"></i></span>
-          <input type="text" id="inputBusqueda" placeholder="Buscar por título, autor, género o año..." autocomplete="off" />
+          <input type="text" id="inputBusqueda" placeholder="Busca entre 2,800 libros por título, autor o género…" autocomplete="off" />
           <div class="buscador-botones-derecha">
             <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda"><i data-lucide="x" class="icono-sm"></i></button>
             <button id="btnBuscarClick" class="btn-buscar-click" aria-label="Ejecutar búsqueda"><i data-lucide="search" class="icono-sm"></i></button>
@@ -81,9 +81,12 @@
           <i data-lucide="key-round"></i>
           <span id="etiquetaCodigo">Activar Acceso</span>
         </button>
+        <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-hero" id="btnComprarHero">
+          🛒 Acceso Lifetime — $100 MXN
+        </a>
       </div>
 
-      <!-- CTAs de Descubrimiento Rápido (IA, Azar y Compra) -->
+      <!-- CTAs de Descubrimiento (IA primario, Azar secundario) -->
       <div class="hero-acciones">
         <button id="btnAbrirIA" class="btn-ia-trigger">
           <span class="btn-ia-icono"><i data-lucide="sparkles"></i></span>
@@ -93,9 +96,6 @@
           <span class="btn-azar-icono"><i data-lucide="dices"></i></span>
           Sorpréndeme
         </button>
-        <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-hero">
-          🛒 Acceso Lifetime — $100 MXN
-        </a>
       </div>
     </div>
     <div class="hero-linea-inferior"></div>
