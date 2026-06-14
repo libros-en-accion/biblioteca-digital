@@ -4145,8 +4145,8 @@ input,
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  min-height: 260px;
-  height: 260px;
+  min-height: 280px;
+  height: 280px;
   overflow: hidden;
   box-shadow: 0 6px 18px var(--sombra);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -4202,17 +4202,18 @@ input,
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
-  height: 85px;
+  height: 115px;
   margin-top: 0;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   position: relative;
   width: 100%;
   z-index: 2;
+  order: 1;
 }
 
 .pack-libro-stack-item {
-  width: 55px;
-  height: 80px;
+  width: 73px;
+  height: 110px;
   position: relative;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
               box-shadow 0.25s ease;
@@ -4236,8 +4237,9 @@ input,
 /* Insignia */
 .pack-insignia {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.25rem;
+  right: 1.25rem;
+  order: 2;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -4258,6 +4260,7 @@ input,
   margin-top: auto;
   z-index: 2;
   color: #fff8f0;
+  order: 3;
 }
 
 .pack-titulo {
@@ -4368,11 +4371,33 @@ input,
     display: none;
   }
   .pack-tarjeta {
-    flex: 0 0 240px;
+    flex: 0 0 260px;
     scroll-snap-align: start;
-    min-height: 220px;
-    height: 220px;
+    min-height: 240px;
+    height: 240px;
     padding: 1rem;
+  }
+
+  .pack-insignia {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    display: inline-flex;
+    align-self: flex-start;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .pack-libros-stack {
+    height: 105px;
+    margin-bottom: 0.2rem;
+  }
+
+  .pack-libro-stack-item {
+    width: 67px;
+    height: 100px;
   }
   .catalogo-barra-info {
     flex-wrap: wrap;
