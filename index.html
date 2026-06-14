@@ -114,9 +114,15 @@
   <div class="controles-barra">
     <div class="controles-izq">
       <p id="contador" class="contador"></p>
+      <!-- Botón de filtros para móviles -->
+      <button id="btnToggleFiltrosMovil" class="btn-toggle-filtros-movil" aria-expanded="false" aria-label="Mostrar u ocultar filtros">
+        <i data-lucide="sliders-horizontal" class="icono-sm"></i>
+        <span>Filtros</span>
+        <i data-lucide="chevron-down" class="icono-sm flecha-toggle"></i>
+      </button>
     </div>
     
-    <div class="controles-derecha">
+    <div class="controles-derecha" id="controlesDerecha">
       <!-- Buscador de Autor Custom (Searchable Dropdown) -->
       <div class="custom-dropdown searchable" id="dropdownAutor">
         <div class="dropdown-trigger">
@@ -173,9 +179,9 @@
   <!-- ═══ BREADCRUMBS / FILTROS ACTIVOS ═══ -->
   <div id="breadcrumbs" class="breadcrumbs-container" style="display:none"></div>
 
-  <!-- ═══ SECCIÓN DESTACADOS ═══ -->
-  <section id="destacados-seccion" class="destacados-seccion" style="display:none">
-    <h2 class="seccion-titulo-destacados">Los 10 libros más destacados</h2>
+  <!-- ═══ SECCIÓN DE DESTACADOS (CARRUSEL) ═══ -->
+  <section id="destacados-seccion" class="destacados-seccion">
+    <h2 class="seccion-titulo-destacados">Los más destacados</h2>
     <div class="destacados-carrusel-contenedor">
       <button class="carrusel-btn carrusel-btn-izq" id="btnCarruselIzq" aria-label="Anterior" title="Anterior">
         <i data-lucide="chevron-left"></i>
@@ -194,6 +200,7 @@
   <section id="colecciones-seccion" class="colecciones-seccion" style="display:none">
     <h2 class="seccion-titulo-colecciones">Colecciones Populares</h2>
     <div class="colecciones-grid" id="coleccionesGrid"></div>
+    <div class="colecciones-fin-banner"></div>
   </section>
 
   <!-- ═══ CABECERA DEL CATÁLOGO ═══ -->

@@ -1568,6 +1568,17 @@ function registrarEventos() {
   el('btnLimpiarTodo')?.addEventListener('click', limpiarTodo);
   el('btnTema')?.addEventListener('click', alternarTema);
 
+  // Toggle Filtros en Móvil
+  el('btnToggleFiltrosMovil')?.addEventListener('click', () => {
+    const btn = el('btnToggleFiltrosMovil');
+    const controlesDerecha = el('controlesDerecha');
+    if (btn && controlesDerecha) {
+      const estaAbierto = controlesDerecha.classList.toggle('abierto');
+      btn.setAttribute('aria-expanded', estaAbierto ? 'true' : 'false');
+      btn.classList.toggle('activo', estaAbierto);
+    }
+  });
+
   // Toggle Favoritos
   el('btnFavoritos')?.addEventListener('click', () => {
     soloFavoritos = !soloFavoritos;
