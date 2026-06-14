@@ -4251,7 +4251,7 @@ input,
   padding: 0.28rem 0.65rem;
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-  z-index: 2;
+  z-index: 3;
   letter-spacing: 0.02em;
 }
 
@@ -4373,8 +4373,8 @@ input,
   .pack-tarjeta {
     flex: 0 0 260px;
     scroll-snap-align: start;
-    min-height: 270px;
-    height: 270px;
+    min-height: 310px;
+    height: 310px;
     padding: 1rem;
   }
 
@@ -4392,6 +4392,9 @@ input,
   }
 
   .pack-libros-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 105px;
     margin-bottom: 0.2rem;
   }

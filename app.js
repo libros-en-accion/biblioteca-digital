@@ -571,7 +571,7 @@ function renderizarColecciones() {
       <div class="pack-info">
         <h4 class="pack-titulo">${pack.titulo}</h4>
         ${pack.descripcion ? `<p class="pack-descripcion">${pack.descripcion}</p>` : ''}
-        <button class="btn-explorar-pack">Explorar Colección <i data-lucide="arrow-right" class="icono-sm"></i></button>
+        <button class="btn-explorar-pack">Explorar <i data-lucide="arrow-right" class="icono-sm"></i></button>
       </div>
     `;
 
