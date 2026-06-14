@@ -3788,4 +3788,214 @@ input,
   transform: scale(0.95);
 }
 
+/* ── SECCIÓN DE COLECCIONES CURADAS ── */
+.colecciones-seccion {
+  padding: 1.5rem 0 0.5rem;
+  max-width: var(--max-ancho);
+  margin: 0 auto;
+  width: 100%;
+}
+.seccion-titulo-colecciones {
+  font-family: var(--fuente-titulo);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--teal-profundo);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 2.5rem;
+}
+.seccion-titulo-colecciones::before {
+  content: '✦';
+  font-size: 1.1rem;
+  color: var(--dorado);
+}
+
+/* Rejilla de packs */
+.colecciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Tarjeta de Pack */
+.pack-tarjeta {
+  position: relative;
+  background: var(--color-tarjeta);
+  border: 1px solid var(--borde-tarjeta);
+  border-radius: var(--radio);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--sombra);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.25s, 
+              box-shadow 0.25s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.pack-tarjeta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(15, 26, 23, 0.95) 90%);
+  opacity: 0.85;
+  transition: opacity 0.25s;
+  z-index: 0;
+}
+
+.pack-tarjeta-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transition: transform 0.4s ease;
+}
+
+.pack-tarjeta:hover {
+  transform: translateY(-5px);
+  border-color: var(--dorado);
+  box-shadow: 0 8px 24px rgba(184, 137, 42, 0.25);
+}
+
+.pack-tarjeta:hover .pack-tarjeta-imagen {
+  transform: scale(1.06);
+}
+
+.pack-tarjeta:hover::before {
+  opacity: 0.95;
+}
+
+/* Insignia */
+.pack-insignia {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(184, 137, 42, 0.9);
+  color: #1a0f08;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+/* Info del pack */
+.pack-info {
+  margin-top: auto;
+  z-index: 2;
+  color: #fff8f0;
+}
+
+.pack-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.pack-descripcion {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(255, 248, 240, 0.85);
+  margin-bottom: 0.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.btn-explorar-pack {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid rgba(212, 169, 74, 0.5);
+  color: var(--dorado-claro);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.pack-tarjeta:hover .btn-explorar-pack {
+  background: var(--dorado);
+  border-color: var(--dorado);
+  color: #1a0f08;
+  transform: scale(1.02);
+}
+
+/* Botón cerrar pack */
+.catalogo-barra-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.btn-cerrar-pack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(184, 137, 42, 0.15);
+  border: 1px solid rgba(184, 137, 42, 0.4);
+  color: var(--dorado-claro);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cerrar-pack:hover {
+  background: rgba(220, 53, 69, 0.2);
+  border-color: rgba(220, 53, 69, 0.5);
+  color: #ff8585;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .seccion-titulo-colecciones {
+    font-size: 1.3rem;
+    padding: 0 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .colecciones-grid {
+    padding: 0 1.2rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .pack-tarjeta {
+    min-height: 200px;
+  }
+  .catalogo-barra-info {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
 

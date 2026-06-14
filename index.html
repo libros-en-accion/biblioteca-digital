@@ -177,9 +177,20 @@
     <div class="destacados-fin-banner"></div>
   </section>
 
+  <!-- ═══ SECCIÓN COLECCIONES CURADAS ═══ -->
+  <section id="colecciones-seccion" class="colecciones-seccion" style="display:none">
+    <h2 class="seccion-titulo-colecciones">Colecciones Exclusivas</h2>
+    <div class="colecciones-grid" id="coleccionesGrid"></div>
+  </section>
+
   <!-- ═══ CABECERA DEL CATÁLOGO ═══ -->
   <div class="catalogo-header-barra">
-    <h3 class="catalogo-barra-titulo">Catálogo Completo</h3>
+    <div class="catalogo-barra-info">
+      <h3 class="catalogo-barra-titulo" id="catalogoTitulo">Catálogo Completo</h3>
+      <button id="btnCerrarPack" class="btn-cerrar-pack" style="display: none" title="Quitar filtro de colección">
+        <i data-lucide="x"></i> Quitar Colección
+      </button>
+    </div>
     <div class="vista-controles">
       <button id="btnVistaGrid" class="btn-vista activo" title="Vista cuadrícula" aria-label="Vista cuadrícula">
         <i data-lucide="layout-grid"></i>

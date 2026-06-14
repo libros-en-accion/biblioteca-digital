@@ -16,6 +16,8 @@ const LIBROS_DESTACADOS_IDS = [
 
 // ── VARIABLES GLOBALES ──
 let libros = [];
+let colecciones = [];
+let coleccionActiva = null;
 let generoActivo = 'Todos';
 let paginaActual = 1;
 const LIBROS_POR_PAGINA = 24;
@@ -160,16 +162,23 @@ function mostrarSkeletons() {
 
 // ── CARGAR LIBROS AL INICIAR ──
 mostrarSkeletons();
-fetch('libros.json?v=9')
-  .then(respuesta => {
-    if (!respuesta.ok) throw new Error(`Error HTTP: ${respuesta.status}`);
-    return respuesta.json();
+Promise.all([
+  fetch('libros.json?v=9').then(r => {
+    if (!r.ok) throw new Error(`Error HTTP al cargar libros: ${r.status}`);
+    return r.json();
+  }),
+  fetch('colecciones.json').then(r => {
+    if (!r.ok) throw new Error(`Error HTTP al cargar colecciones: ${r.status}`);
+    return r.json();
   })
-  .then(datos => {
-    libros = datos;
+])
+  .then(([datosLibros, datosColecciones]) => {
+    libros = datosLibros;
+    colecciones = datosColecciones;
     listaFiltrada = libros;
     mostrarPagina(1);
     inicializarPagina();
+    renderizarColecciones();
   })
   .catch(error => {
     console.error('Error al cargar el catálogo:', error);
@@ -380,7 +389,8 @@ function renderizarDestacados() {
     epocaActiva !== 'Todas' || 
     moodActivo !== 'Todos' || 
     busquedaText !== '' ||
-    paginaActual > 1;
+    paginaActual > 1 ||
+    coleccionActiva !== null;
 
   if (tieneFiltros) {
     seccion.style.display = 'none';
@@ -443,6 +453,98 @@ function renderizarDestacados() {
   });
 
   if (window.lucide) lucide.createIcons({ root: galeriaDestacados });
+}
+
+// ── RENDERIZAR COLECCIONES CURADAS ──
+function renderizarColecciones() {
+  const seccion = document.getElementById('colecciones-seccion');
+  const grid = document.getElementById('coleccionesGrid');
+  if (!seccion || !grid) return;
+
+  const inputBusqueda = document.getElementById('inputBusqueda');
+  const busquedaText = inputBusqueda ? inputBusqueda.value.trim() : '';
+
+  const tieneFiltros = 
+    generoActivo !== 'Todos' || 
+    autorActivo !== 'Todos' || 
+    epocaActiva !== 'Todas' || 
+    moodActivo !== 'Todos' || 
+    busquedaText !== '' ||
+    paginaActual > 1 ||
+    coleccionActiva !== null;
+
+  if (tieneFiltros) {
+    seccion.style.display = 'none';
+    return;
+  }
+
+  if (colecciones.length === 0) {
+    seccion.style.display = 'none';
+    return;
+  }
+
+  seccion.style.display = 'block';
+  grid.innerHTML = '';
+
+  colecciones.forEach(pack => {
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'pack-tarjeta';
+    tarjeta.innerHTML = `
+      <img src="${pack.portada_pack || 'portadas/pack-generico.webp'}" alt="${pack.titulo}" class="pack-tarjeta-imagen" loading="lazy" />
+      <span class="pack-insignia">✦ ${pack.libros.length} Libros</span>
+      <div class="pack-info">
+        <h4 class="pack-titulo">${pack.titulo}</h4>
+        <p class="pack-descripcion">${pack.descripcion}</p>
+        <button class="btn-explorar-pack">Explorar Pack <i data-lucide="arrow-right" class="icono-sm"></i></button>
+      </div>
+    `;
+
+    tarjeta.addEventListener('click', () => seleccionarColeccion(pack));
+    grid.appendChild(tarjeta);
+  });
+
+  if (window.lucide) lucide.createIcons({ root: grid });
+}
+
+function seleccionarColeccion(pack) {
+  coleccionActiva = pack;
+  
+  // Actualizar UI
+  const titulo = document.getElementById('catalogoTitulo');
+  const btnCerrar = document.getElementById('btnCerrarPack');
+  
+  if (titulo) titulo.textContent = `Colección: ${pack.titulo}`;
+  if (btnCerrar) btnCerrar.style.display = 'inline-flex';
+
+  // Ocultar destacados y colecciones
+  const descSeccion = document.getElementById('destacados-seccion');
+  const colSeccion = document.getElementById('colecciones-seccion');
+  if (descSeccion) descSeccion.style.display = 'none';
+  if (colSeccion) colSeccion.style.display = 'none';
+
+  // Filtrar y hacer scroll suave al catálogo
+  filtrar();
+  
+  const catalogoHeader = document.querySelector('.catalogo-header-barra');
+  if (catalogoHeader) {
+    catalogoHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function quitarColeccion() {
+  coleccionActiva = null;
+
+  // Restaurar UI
+  const titulo = document.getElementById('catalogoTitulo');
+  const btnCerrar = document.getElementById('btnCerrarPack');
+  
+  if (titulo) titulo.textContent = 'Catálogo Completo';
+  if (btnCerrar) btnCerrar.style.display = 'none';
+
+  // Volver a filtrar y refrescar vistas
+  filtrar();
+  renderizarColecciones();
+  renderizarDestacados();
 }
 
 // ── MOSTRAR PÁGINA ──
@@ -633,7 +735,11 @@ function filtrar() {
   const raw = document.getElementById('inputBusqueda').value;
   const terminos = normalizar(raw).split(' ').filter(t => t.length > 0);
 
-  listaFiltrada = libros.filter(libro => {
+  const librosDePartida = coleccionActiva 
+    ? libros.filter(libro => coleccionActiva.libros.includes(libro.id))
+    : libros;
+
+  listaFiltrada = librosDePartida.filter(libro => {
     const campos = [
       normalizar(libro.titulo || ''),
       normalizar(libro.autor || ''),
@@ -711,6 +817,10 @@ function filtrar() {
 
   mostrarPagina(1, true);
   actualizarBreadcrumbs();
+
+  // Refrescar visibilidad de secciones principales
+  renderizarColecciones();
+  renderizarDestacados();
 }
 
 // ── LIMPIAR BÚSQUEDA ──
@@ -1306,6 +1416,7 @@ function registrarEventos() {
   el('btnAbrirIA')?.addEventListener('click', abrirModalIA);
   el('btnAzar')?.addEventListener('click', libroAlAzar);
   el('btnLimpiarBusqueda')?.addEventListener('click', limpiarBusqueda);
+  el('btnCerrarPack')?.addEventListener('click', quitarColeccion);
   el('btnBuscarClick')?.addEventListener('click', () => {
     const btn = document.getElementById('btnBuscarClick');
     btn?.classList.add('busqueda-ejecutada');
@@ -1551,6 +1662,13 @@ function limpiarTodo() {
   // Limpiar Mood Tags
   moodActivo = 'Todos';
   document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+
+  // Limpiar colección
+  coleccionActiva = null;
+  const titulo = document.getElementById('catalogoTitulo');
+  const btnCerrar = document.getElementById('btnCerrarPack');
+  if (titulo) titulo.textContent = 'Catálogo Completo';
+  if (btnCerrar) btnCerrar.style.display = 'none';
 
   filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
 }
