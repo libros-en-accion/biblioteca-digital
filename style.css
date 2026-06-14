@@ -182,17 +182,17 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 2.5fr 1fr;
-  gap: 1.2rem 2.5rem;
+  grid-template-columns: auto 1.8fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.6rem 2.5rem;
   align-items: center;
 }
 
 .hero-marca {
   grid-column: 1;
+  grid-row: 1;
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .header-home-link {
@@ -259,12 +259,15 @@ body {
 }
 
 .hero-propuesta-valor {
+  grid-column: 1;
+  grid-row: 2;
   font-family: var(--fuente-cuerpo);
   font-size: 0.76rem;
   color: rgba(236, 217, 198, 0.85);
-  line-height: 1.45;
-  margin-top: 0;
+  line-height: 1.2;
+  margin-top: -0.2rem;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
 }
 
 .hero-propuesta-valor strong {
@@ -275,6 +278,7 @@ body {
 /* Buscador Caja y Autocompletado */
 .hero-buscador-caja {
   grid-column: 2;
+  grid-row: 1;
   position: relative;
   width: 100%;
   z-index: 10;
@@ -283,6 +287,7 @@ body {
 /* Grupo utilidades y botones derechos */
 .hero-derecha-grupo {
   grid-column: 3;
+  grid-row: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -444,13 +449,14 @@ body {
 }
 
 .hero-acciones {
-  grid-column: 1 / -1;
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0.6rem;
-  margin-top: 0.8rem;
+  gap: 0.8rem;
+  margin-top: 0;
   width: 100%;
 }
 
@@ -2032,7 +2038,6 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.6rem;
-  margin-left: auto;
 }
 
 .btn-favoritos-toggle {
@@ -2455,8 +2460,8 @@ footer {
 
   .hero-contenido {
     grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto;
-    gap: 0.6rem 0.8rem;
+    grid-template-rows: auto auto auto auto;
+    gap: 0.5rem 0.8rem;
   }
 
   .hero-marca {
@@ -2474,15 +2479,23 @@ footer {
     justify-self: end;
   }
 
-  .hero-buscador-caja {
+  .hero-propuesta-valor {
     grid-column: 1 / -1;
     grid-row: 2;
+    text-align: center;
+    justify-self: center;
+    white-space: normal;
+  }
+
+  .hero-buscador-caja {
+    grid-column: 1 / -1;
+    grid-row: 3;
   }
 
   .hero-acciones {
     grid-column: 1 / -1;
-    grid-row: 3;
-    margin-top: 0.5rem;
+    grid-row: 4;
+    margin-top: 0.3rem;
   }
 
   .hero-seccion h1 {
@@ -2582,8 +2595,8 @@ footer {
 
   .hero-contenido {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
-    gap: 0.6rem;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 0.5rem;
   }
 
   .hero-marca {
@@ -2599,13 +2612,17 @@ footer {
     justify-content: center;
   }
 
-  .hero-marca .hero-propuesta-valor {
+  .hero-propuesta-valor {
+    grid-column: 1;
+    grid-row: 2;
     text-align: center;
+    justify-self: center;
+    white-space: normal;
   }
 
   .hero-derecha-grupo {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -2616,14 +2633,14 @@ footer {
 
   .hero-buscador-caja {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
   }
 
   .hero-acciones {
     grid-column: 1;
-    grid-row: 4;
+    grid-row: 5;
     width: 100%;
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
   }
 }
 
@@ -2660,7 +2677,6 @@ footer {
     font-size: 0.8rem;
     max-width: 100%;
   }
-}
 
   /* Grid de 2 columnas fijas en móvil para mejor legibilidad */
   .galeria {
