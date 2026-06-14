@@ -3712,13 +3712,13 @@ footer {
 
 @media (max-width: 768px) {
   .destacados-galeria {
-    padding: 0.5rem calc((100vw - clamp(150px, 42vw, 190px)) / 2) 1.5rem !important;
-    gap: 1.5rem;
+    padding: 0.5rem 0.5rem 1.5rem !important;
+    gap: 0.6rem !important;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 clamp(150px, 42vw, 190px) !important;
+    flex: 0 0 calc((100vw - 1.6rem) / 2) !important;
     flex-direction: column !important;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
   }
   .destacados-galeria .tarjeta-portada {
     width: 100% !important;
@@ -3754,13 +3754,13 @@ footer {
 }
 @media (max-width: 480px) {
   .destacados-galeria {
-    padding: 0.5rem calc((100vw - clamp(130px, 44vw, 160px)) / 2) 1.5rem !important;
-    gap: 1rem;
+    padding: 0.5rem 0.5rem 1.5rem !important;
+    gap: 0.6rem !important;
   }
   .destacados-galeria .tarjeta {
-    flex: 0 0 clamp(130px, 44vw, 160px) !important;
+    flex: 0 0 calc((100vw - 1.6rem) / 2) !important;
     flex-direction: column !important;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
   }
   .destacados-galeria .tarjeta-portada {
     width: 100% !important;
@@ -4139,7 +4139,7 @@ input,
 /* Tarjeta de Pack */
 .pack-tarjeta {
   position: relative;
-  background: #101c18;
+  background: #1a2e2a;
   border: 1px solid var(--borde-tarjeta);
   border-radius: var(--radio);
   padding: 1.25rem;
