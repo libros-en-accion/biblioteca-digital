@@ -2777,67 +2777,6 @@ footer {
     font-size: 0.82rem;
   }
 
-  .controles-barra {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0 1.2rem;
-  }
-
-  .controles-izq {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-
-  .btn-toggle-filtros-movil {
-    display: inline-flex !important;
-    align-items: center;
-    gap: 0.4rem;
-    background: rgba(184, 137, 42, 0.1);
-    border: 1px solid rgba(184, 137, 42, 0.35);
-    color: var(--dorado-claro);
-    font-family: var(--fuente-cuerpo);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 0.35rem 0.75rem;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .btn-toggle-filtros-movil:hover {
-    background: rgba(184, 137, 42, 0.18);
-    border-color: var(--dorado);
-    color: #fff;
-  }
-  .btn-toggle-filtros-movil .flecha-toggle {
-    transition: transform 0.25s ease;
-  }
-  .btn-toggle-filtros-movil[aria-expanded="true"] .flecha-toggle {
-    transform: rotate(180deg);
-  }
-
-  .controles-derecha {
-    display: none !important;
-  }
-
-  .controles-derecha.abierto {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.6rem !important;
-    margin-top: 0.8rem;
-    width: 100%;
-  }
-
-  .controles-derecha.abierto > * {
-    flex: none !important;
-  }
-  
-  .vista-controles {
-    flex: none !important;
-    justify-content: flex-end;
-  }
 }
 
 /* Ultra peque\u00f1o: iPhone SE y similares */
@@ -2985,7 +2924,9 @@ footer {
 }
 
 .controles-izq {
-  display: none !important;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .chip-count {
@@ -3202,25 +3143,62 @@ footer {
   .controles-barra {
     flex-direction: column;
     align-items: stretch;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 0.5rem 1.2rem;
   }
-  
+
   .controles-izq {
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn-toggle-filtros-movil {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(184, 137, 42, 0.1);
+    border: 1px solid rgba(184, 137, 42, 0.35);
+    color: var(--dorado-claro);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-toggle-filtros-movil:hover {
+    background: rgba(184, 137, 42, 0.18);
+    border-color: var(--dorado);
+    color: #fff;
+  }
+  .btn-toggle-filtros-movil .flecha-toggle {
+    transition: transform 0.25s ease;
+  }
+  .btn-toggle-filtros-movil[aria-expanded="true"] .flecha-toggle {
+    transform: rotate(180deg);
   }
 
   .controles-derecha {
-    justify-content: center;
+    display: none !important;
+  }
+
+  .controles-derecha.abierto {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+    margin-top: 0.8rem;
     width: 100%;
-    flex-wrap: wrap;
-    gap: 0.6rem;
+  }
+
+  .controles-derecha.abierto > * {
+    flex: none !important;
   }
 
   .custom-dropdown {
-    flex: 1 1 auto;
-    min-width: 130px;
+    width: 100%;
   }
 
   .custom-dropdown .dropdown-btn,
