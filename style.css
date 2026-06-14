@@ -4069,12 +4069,21 @@ input,
     margin-bottom: 1rem;
   }
   .colecciones-grid {
-    padding: 0 1.2rem;
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 0 1.2rem 1.2rem 1.2rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .colecciones-grid::-webkit-scrollbar {
+    display: none;
   }
   .pack-tarjeta {
-    min-height: 310px;
+    flex: 0 0 285px;
+    scroll-snap-align: start;
+    min-height: 350px;
   }
   .catalogo-barra-info {
     flex-wrap: wrap;
