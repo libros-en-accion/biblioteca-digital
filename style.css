@@ -155,7 +155,7 @@ body {
   background: linear-gradient(170deg, #1a5c50 0%, #0e2a24 50%, #060f0d 100%);
   position: relative;
   overflow: hidden;
-  padding: 0.8rem 1.5rem;
+  padding: 1.5rem 2.5rem;
 }
 
 .hero-background-deco {
@@ -179,21 +179,20 @@ body {
 .hero-contenido {
   position: relative;
   z-index: 5;
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto auto;
-  gap: 0.3rem 1.2rem;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  gap: 1.2rem 2.5rem;
   align-items: center;
 }
 
 .hero-marca {
   grid-column: 1;
-  grid-row: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.25rem;
+  align-items: flex-start;
 }
 
 .header-home-link {
@@ -276,15 +275,22 @@ body {
 /* Buscador Caja y Autocompletado */
 .hero-buscador-caja {
   grid-column: 2;
-  grid-row: 1;
   position: relative;
   width: 100%;
   z-index: 10;
 }
 
-.hero-utilidades {
+/* Grupo utilidades y botones derechos */
+.hero-derecha-grupo {
   grid-column: 3;
-  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  justify-self: end;
+}
+
+.hero-utilidades {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -445,18 +451,21 @@ body {
 
 /* CTAs en Hero */
 .hero-acciones {
-  grid-column: 2;
-  grid-row: 2;
+  grid-column: 1 / -1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.6rem;
-  justify-content: center;
+  margin-top: 1.5rem;
+  width: 100%;
 }
 
 .btn-ia-trigger {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem 1.2rem;
+  padding: 0.6rem 1.5rem;
   font-family: var(--fuente-cuerpo);
   font-size: 0.92rem;
   font-weight: 600;
@@ -469,6 +478,8 @@ body {
   transition: all 0.3s;
   letter-spacing: 0.01em;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 320px;
 }
 
 .btn-ia-trigger:hover {
@@ -482,17 +493,20 @@ body {
 .btn-azar {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1.2rem;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 400;
   color: rgba(236, 217, 198, 0.75);
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radio);
   cursor: pointer;
   transition: all 0.3s;
+  width: 100%;
+  max-width: 320px;
 }
 
 .btn-azar:hover {
@@ -2450,7 +2464,7 @@ footer {
   .hero-contenido {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto auto;
-    gap: 0.4rem 0.8rem;
+    gap: 0.6rem 0.8rem;
   }
 
   .hero-marca {
@@ -2458,9 +2472,18 @@ footer {
     grid-row: 1;
   }
 
-  .hero-utilidades {
+  .hero-derecha-grupo {
     grid-column: 2;
     grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+    justify-self: end;
+  }
+
+  .hero-utilidades {
+    display: flex;
     gap: 0.3rem;
   }
 
@@ -2472,6 +2495,7 @@ footer {
   .hero-acciones {
     grid-column: 1 / -1;
     grid-row: 3;
+    margin-top: 0.5rem;
   }
 
   .hero-seccion h1 {
@@ -2572,33 +2596,38 @@ footer {
   .hero-contenido {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
-    gap: 0.4rem;
+    gap: 0.6rem;
   }
 
   .hero-marca {
     grid-column: 1;
     grid-row: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero-marca .header-home-link {
-    flex-shrink: 0;
-  }
-
-  .hero-marca .hero-subtitulo,
-  .hero-marca .hero-propuesta-valor {
-    flex-basis: 100%;
     text-align: center;
   }
 
-  .hero-utilidades {
+  .hero-marca .header-home-link {
+    justify-content: center;
+  }
+
+  .hero-marca .hero-propuesta-valor {
+    text-align: center;
+  }
+
+  .hero-derecha-grupo {
     grid-column: 1;
     grid-row: 2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-utilidades {
     display: flex;
     justify-content: center;
     gap: 0.4rem;
@@ -2613,16 +2642,13 @@ footer {
     grid-column: 1;
     grid-row: 4;
     width: 100%;
+    margin-top: 0.4rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero-seccion h1 {
     font-size: 1.2rem;
-  }
-
-  .hero-subtitulo {
-    font-size: 0.65rem;
   }
 
   .hero-propuesta-valor {
@@ -2651,7 +2677,9 @@ footer {
     justify-content: center;
     padding: 0.45rem 0.8rem;
     font-size: 0.8rem;
+    max-width: 100%;
   }
+}
 
   /* Grid de 2 columnas fijas en móvil para mejor legibilidad */
   .galeria {
