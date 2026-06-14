@@ -4,41 +4,148 @@
     "titulo": "La biblioteca mínima para entender la psicología humana",
     "descripcion": "Una selección enfocada en el autoanálisis, el comportamiento social, el inconsciente y los sesgos cognitivos.",
     "portada_pack": "portadas/pack-psicologia.webp",
-    "libros": [2962, 2898, 2842, 1121, 1125, 1126, 3021, 3022, 3023]
+    "libros": [
+      2962,
+      2898,
+      2842,
+      1121,
+      1125,
+      1126,
+      3021,
+      3022,
+      3023
+    ]
   },
   {
     "id": "clasicos-latinoamericanos",
     "titulo": "10 clásicos que todo latinoamericano debe leer",
     "descripcion": "Una inmersión profunda en el realismo mágico, la identidad, la soledad y la historia de nuestra región.",
     "portada_pack": "portadas/pack-latino.webp",
-    "libros": [1139, 2309, 321, 670, 2937, 2905, 2979, 2606, 2875, 3024]
+    "libros": [
+      1139,
+      2309,
+      321,
+      670,
+      2937,
+      2905,
+      2979,
+      2606,
+      2875,
+      3024
+    ]
   },
   {
     "id": "evitar-burnout",
     "titulo": "Ficción para escapar del burnout: Novelas terapéuticas",
     "descripcion": "Lecturas absorbentes, cálidas o reflexivas ideales para bajar las revoluciones y reconectar con la tranquilidad.",
     "portada_pack": "portadas/pack-burnout.webp",
-    "libros": [2896, 2346, 1988, 2882, 2947, 1968, 3025, 3026, 3027, 2707]
+    "libros": [
+      2896,
+      2346,
+      1988,
+      2882,
+      2947,
+      1968,
+      3025,
+      3026,
+      3027,
+      2707
+    ]
   },
   {
     "id": "predicciones-cumplidas",
     "titulo": "Ficción científica que se hizo realidad: 8 predicciones cumplidas",
     "descripcion": "Obras visionarias cuyos autores imaginaron tecnologías, redes de información y dilemas éticos que hoy forman parte de nuestra vida cotidiana.",
     "portada_pack": "portadas/pack-predicciones.webp",
-    "libros": [2079, 1356, 325, 163, 3012, 2917, 2001, 2628]
+    "libros": [
+      2079,
+      1356,
+      325,
+      163,
+      3012,
+      2917,
+      2001,
+      2628
+    ]
   },
   {
     "id": "filosofia-perspectiva",
     "titulo": "7 Ensayos sobre filosofía para cambiar tu perspectiva",
     "descripcion": "Meditaciones, tratados y discursos fundamentales que aplican la razón y el estoicismo para entender la vida cotidiana y las decisiones.",
     "portada_pack": "portadas/pack-filosofia.webp",
-    "libros": [2, 3007, 2952, 2059, 453, 2124, 2109]
+    "libros": [
+      2,
+      3007,
+      2952,
+      2059,
+      453,
+      2124,
+      2109
+    ]
   },
   {
     "id": "psicologia-novelas",
     "titulo": "Psicología en novelas: 8 historias que revelan cómo pensamos",
     "descripcion": "Obras de ficción profunda con personajes complejos y monólogos internos que actúan como un espejo de la psique humana.",
     "portada_pack": "portadas/pack-psicologia-novelas.webp",
-    "libros": [2895, 3002, 785, 2875, 1554, 3004, 3005, 3006]
+    "libros": [
+      2895,
+      3002,
+      785,
+      2875,
+      1554,
+      3004,
+      3005,
+      3006
+    ]
+  },
+  {
+    "id": "aprender-ingles",
+    "titulo": "Aprende inglés leyendo: Ficción accesible",
+    "descripcion": "Una selección curada de libros en inglés perfectos para enriquecer tu vocabulario de forma natural, desde lecturas sencillas hasta grandes clásicos de la literatura.",
+    "portada_pack": "portadas/pack-ingles.webp",
+    "libros": [
+      3028,
+      3032,
+      3029,
+      3030,
+      3035,
+      3033,
+      3034,
+      3036,
+      3031
+    ]
+  },
+  {
+    "id": "economia-comportamiento",
+    "titulo": "Economía y comportamiento humano",
+    "descripcion": "Fascinantes ensayos que combinan finanzas, psicología y economía conductual para explicar cómo tomamos decisiones racionales (e irracionales) en nuestro día a día.",
+    "portada_pack": "portadas/pack-economia.webp",
+    "libros": [
+      3040,
+      2790,
+      34467,
+      29572,
+      3022,
+      3041,
+      3042,
+      3043
+    ]
+  },
+  {
+    "id": "ciencia-divulgacion",
+    "titulo": "Divulgación científica: Entender nuestro mundo",
+    "descripcion": "Un recorrido fascinante por la astronomía, la biología molecular, el cuerpo humano y la historia de nuestra relación con el planeta.",
+    "portada_pack": "portadas/pack-ciencia.webp",
+    "libros": [
+      24620,
+      3037,
+      717,
+      27775,
+      3038,
+      1958,
+      3039,
+      2341
+    ]
   }
 ]
