@@ -2594,6 +2594,7 @@ footer {
   }
 
   .hero-contenido {
+    position: relative; /* Posicionamiento de la luna y la llave absolute */
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto auto;
     gap: 0.5rem;
@@ -2606,10 +2607,23 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-top: 1.5rem; /* Margen para no chocar con los botones absolutos */
   }
 
   .hero-marca .header-home-link {
     justify-content: center;
+    flex-direction: column; /* Apilar logo y texto para simetría */
+    gap: 0.5rem;
+  }
+
+  .hero-logo {
+    width: 72px !important;
+    height: 72px !important;
+  }
+
+  .hero-seccion h1 {
+    font-size: 1.6rem !important;
+    letter-spacing: 1px;
   }
 
   .hero-propuesta-valor {
@@ -2621,14 +2635,50 @@ footer {
   }
 
   .hero-derecha-grupo {
+    position: static; /* Para que los absolutos se posicionen sobre .hero-contenido */
     grid-column: 1;
     grid-row: 3;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 0.6rem;
+    width: 100%;
+  }
+
+  .btn-tema {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    z-index: 10;
+  }
+
+  .btn-codigo-donador {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    z-index: 10;
+  }
+
+  .btn-codigo-donador span {
+    display: none !important;
+  }
+
+  .btn-comprar-hero {
+    margin: 0 auto;
+    font-size: 0.78rem !important;
+    padding: 0.45rem 1.0rem !important;
+    text-align: center;
+    display: inline-block;
   }
 
   .hero-buscador-caja {
@@ -2645,23 +2695,8 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .hero-seccion h1 {
-    font-size: 1.2rem;
-  }
-
   .hero-propuesta-valor {
     font-size: 0.68rem;
-  }
-
-  .hero-logo {
-    width: 48px;
-    height: 48px;
-  }
-
-  .btn-tema {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
   }
 
   .hero-acciones {
