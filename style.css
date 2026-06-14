@@ -4436,10 +4436,20 @@ input,
 }
 
 @media (max-width: 768px) {
-  .seccion-titulo-colecciones {
-    font-size: 1.3rem;
-    padding: 0 1.2rem;
-    margin-bottom: 1rem;
+  .seccion-titulo-colecciones,
+  .seccion-titulo-destacados {
+    font-size: 1.3rem !important;
+    padding: 0 1.2rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .catalogo-header-barra {
+    padding: 0 1.2rem 0.4rem !important;
+    margin: 1.2rem auto 1rem !important;
+  }
+
+  .catalogo-barra-titulo {
+    font-size: 1.3rem !important;
   }
   .colecciones-grid {
     display: flex;

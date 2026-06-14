@@ -2417,7 +2417,9 @@ let lectorEstado = {
   renderTask: null,  // Tarea de render en curso
   libroId: null,
   esDonador: false,
+  historyPushed: false, // Flag para saber si se empujó estado al historial
 };
+
 
 let _pdfjsLibCache = null;
 
@@ -2469,6 +2471,12 @@ async function abrirLector(libroId, libro) {
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   lucide.createIcons();
+
+  // Push state to history to handle back button closing the reader
+  if (window.history && window.history.pushState && !lectorEstado.historyPushed) {
+    window.history.pushState({ lector: true }, '');
+    lectorEstado.historyPushed = true;
+  }
 
   try {
     // 1. Obtener URL firmada del servidor
@@ -2625,7 +2633,7 @@ async function ajustarAlAncho() {
   await renderizarPagina(lectorEstado.pagina);
 }
 
-function cerrarLector() {
+function cerrarLector(volverAtras = true) {
   const modal = document.getElementById('modalLector');
   if (modal) {
     modal.style.display = 'none';
@@ -2636,6 +2644,11 @@ function cerrarLector() {
   }
   lectorEstado.pdf = null;
   lectorEstado.pagina = 1;
+
+  if (volverAtras && lectorEstado.historyPushed) {
+    lectorEstado.historyPushed = false;
+    window.history.back();
+  }
 }
 
 function inicializarLector() {
@@ -2777,6 +2790,14 @@ function inicializarLector() {
   }
 
   inicializarGestosTactiles();
+
+  // Handle mobile back button to close modal reader
+  window.addEventListener('popstate', (e) => {
+    const modal = document.getElementById('modalLector');
+    if (modal && modal.style.display === 'flex') {
+      cerrarLector(false);
+    }
+  });
 }
 
 // ════════════════════════════════════════════════════════
