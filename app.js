@@ -28,6 +28,37 @@ let epocaActiva = 'Todas';
 let ultimoElementoEnfocado = null;
 let vistaActiva = localStorage.getItem('biblioteca-vista') || 'grid';
 let moodActivo = 'Todos';
+let soloFavoritos = false;
+
+const FAVORITOS_KEY = 'libractiva_favoritos';
+
+function obtenerFavoritos() {
+  try {
+    return JSON.parse(localStorage.getItem(FAVORITOS_KEY)) || [];
+  } catch { return []; }
+}
+
+function guardarFavoritos(ids) {
+  localStorage.setItem(FAVORITOS_KEY, JSON.stringify(ids));
+}
+
+function esFavorito(libroId) {
+  return obtenerFavoritos().includes(libroId);
+}
+
+function toggleFavorito(libroId) {
+  const favs = obtenerFavoritos();
+  const idx = favs.indexOf(libroId);
+  if (idx >= 0) {
+    favs.splice(idx, 1);
+    guardarFavoritos(favs);
+    return false;
+  } else {
+    favs.push(libroId);
+    guardarFavoritos(favs);
+    return true;
+  }
+}
 
 const moodTagsData = [
   { id: 'rapido', label: 'Lectura Rápida', icon: 'clock', valor: 'rapido' },
@@ -315,6 +346,11 @@ function generarTagsFiltro() {
     const btn = document.createElement('button');
     btn.className = 'tag-genero tag-mood-btn';
     btn.dataset.mood = m.valor;
+    btn.setAttribute('aria-pressed', 'false');
+    if (moodActivo === m.valor) {
+      btn.classList.add('activo');
+      btn.setAttribute('aria-pressed', 'true');
+    }
     btn.innerHTML = `<i data-lucide="${m.icon}" class="icono-sm"></i> ${m.label}`;
     btn.addEventListener('click', () => filtrarMood(m.valor, btn));
     contenedor.appendChild(btn);
@@ -413,6 +449,8 @@ function renderizarDestacados() {
   seccion.style.display = 'block';
   galeriaDestacados.innerHTML = '';
 
+  const esDonador = esDonadorLocal();
+
   librosDestacados.forEach((libro, i) => {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta';
@@ -420,6 +458,7 @@ function renderizarDestacados() {
     const claseGenero = obtenerClaseGenero(libro.genero);
     const tituloLimpio = limpiarTitulo(libro.titulo);
     const hasPdf = !!libro.archivo_pdf;
+    const esFav = esFavorito(libro.id);
 
     tarjeta.innerHTML = `
       ${libro.portada 
@@ -428,8 +467,12 @@ function renderizarDestacados() {
              <i data-lucide="book" class="icono-lg"></i>
            </div>`
       }
+      <button class="tarjeta-fav-btn ${esFav ? 'favorito' : ''}" data-fav-id="${libro.id}" aria-label="${esFav ? 'Quitar de favoritos' : 'Añadir a favoritos'}">
+        <i data-lucide="heart"></i>
+      </button>
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
+        ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
         <div class="tarjeta-titulo">${tituloLimpio}</div>
         <div class="tarjeta-autor">${libro.autor || ''}</div>
         <div class="tarjeta-anio">${libro.anio || ''}</div>
@@ -448,6 +491,14 @@ function renderizarDestacados() {
         abrirLector(libro.id, libro);
       });
     }
+    tarjeta.querySelector('.tarjeta-fav-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const nuevoEstado = toggleFavorito(libro.id);
+      const btnFav = e.currentTarget;
+      btnFav.classList.toggle('favorito', nuevoEstado);
+      btnFav.setAttribute('aria-label', nuevoEstado ? 'Quitar de favoritos' : 'Añadir a favoritos');
+      if (soloFavoritos) filtrar();
+    });
 
     galeriaDestacados.appendChild(tarjeta);
   });
@@ -615,6 +666,8 @@ function mostrarLibros(lista) {
   const fin = Math.min(paginaActual * LIBROS_POR_PAGINA, total);
   contador.textContent = `Mostrando ${inicio}–${fin} de ${total} libro${total !== 1 ? 's' : ''}`;
 
+  const esDonador = esDonadorLocal();
+
   lista.forEach((libro, i) => {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta';
@@ -624,6 +677,7 @@ function mostrarLibros(lista) {
     const tituloLimpio = limpiarTitulo(libro.titulo);
 
     const hasPdf = !!libro.archivo_pdf;
+    const esFav = esFavorito(libro.id);
     tarjeta.innerHTML = `
       ${libro.portada 
         ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" width="230" height="307" decoding="async" />` 
@@ -631,8 +685,12 @@ function mostrarLibros(lista) {
              <i data-lucide="book" class="icono-lg"></i>
            </div>`
       }
+      <button class="tarjeta-fav-btn ${esFav ? 'favorito' : ''}" data-fav-id="${libro.id}" aria-label="${esFav ? 'Quitar de favoritos' : 'Añadir a favoritos'}">
+        <i data-lucide="heart"></i>
+      </button>
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
+        ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
         <div class="tarjeta-titulo">${tituloLimpio}</div>
         <div class="tarjeta-autor">${libro.autor || ''}</div>
         <div class="tarjeta-anio">${libro.anio || ''}</div>
@@ -650,6 +708,14 @@ function mostrarLibros(lista) {
         abrirLector(libro.id, libro);
       });
     }
+    tarjeta.querySelector('.tarjeta-fav-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const nuevoEstado = toggleFavorito(libro.id);
+      const btnFav = e.currentTarget;
+      btnFav.classList.toggle('favorito', nuevoEstado);
+      btnFav.setAttribute('aria-label', nuevoEstado ? 'Quitar de favoritos' : 'Añadir a favoritos');
+      if (soloFavoritos) filtrar();
+    });
     galeria.appendChild(tarjeta);
   });
 
@@ -670,6 +736,7 @@ function renderPaginacion() {
   const btnAnterior = document.createElement('button');
   btnAnterior.className = 'btn-pagina' + (paginaActual === 1 ? ' desactivado' : '');
   btnAnterior.textContent = '←';
+  btnAnterior.setAttribute('aria-label', 'Página anterior');
   btnAnterior.addEventListener('click', () => { if (paginaActual > 1) mostrarPagina(paginaActual - 1); });
   contenedor.appendChild(btnAnterior);
 
@@ -680,11 +747,13 @@ function renderPaginacion() {
       const elipsis = document.createElement('span');
       elipsis.className = 'pagina-elipsis';
       elipsis.textContent = '…';
+      elipsis.setAttribute('aria-hidden', 'true');
       contenedor.appendChild(elipsis);
     } else {
       const btn = document.createElement('button');
       btn.className = 'btn-pagina' + (p === paginaActual ? ' activo' : '');
       btn.textContent = p;
+      btn.setAttribute('aria-label', `Página ${p}`);
       btn.addEventListener('click', () => mostrarPagina(p));
       contenedor.appendChild(btn);
     }
@@ -694,6 +763,7 @@ function renderPaginacion() {
   const btnSiguiente = document.createElement('button');
   btnSiguiente.className = 'btn-pagina' + (paginaActual === totalPaginas ? ' desactivado' : '');
   btnSiguiente.textContent = '→';
+  btnSiguiente.setAttribute('aria-label', 'Página siguiente');
   btnSiguiente.addEventListener('click', () => { if (paginaActual < totalPaginas) mostrarPagina(paginaActual + 1); });
   contenedor.appendChild(btnSiguiente);
 }
@@ -834,7 +904,12 @@ function filtrar() {
       }
     }
 
-    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca && coincideMood;
+    let coincideFavorito = true;
+    if (soloFavoritos) {
+      coincideFavorito = esFavorito(libro.id);
+    }
+
+    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca && coincideMood && coincideFavorito;
   });
 
   // Aplicar ordenamiento
@@ -868,7 +943,10 @@ function filtrarGenero(genero, boton) {
   
   // Desactivar mood tags al usar género tradicional
   moodActivo = 'Todos';
-  document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+  document.querySelectorAll('.tag-mood-btn').forEach(b => {
+    b.classList.remove('activo');
+    b.setAttribute('aria-pressed', 'false');
+  });
 
   // Actualizar clase activa en los tags normales
   document.querySelectorAll('.tag-genero:not(.tag-mood-btn)').forEach(b => b.classList.remove('activo'));
@@ -972,6 +1050,20 @@ function abrirDetalleLibro(id, omitirPush = false) {
     };
   } else {
     linkPdf.style.display = 'none';
+  }
+
+  // Botón de Favoritos en detalle
+  const detalleFavBtn = document.getElementById('detalle-fav-btn');
+  if (detalleFavBtn) {
+    const esFav = esFavorito(libro.id);
+    detalleFavBtn.classList.toggle('favorito', esFav);
+    detalleFavBtn.setAttribute('aria-label', esFav ? 'Quitar de favoritos' : 'Añadir a favoritos');
+    detalleFavBtn.onclick = (e) => {
+      e.stopPropagation();
+      const nuevoEstado = toggleFavorito(libro.id);
+      detalleFavBtn.classList.toggle('favorito', nuevoEstado);
+      detalleFavBtn.setAttribute('aria-label', nuevoEstado ? 'Quitar de favoritos' : 'Añadir a favoritos');
+    };
   }
 
   // Mostrar botones de descarga solo si es donador
@@ -1231,6 +1323,8 @@ async function pedirRecomendacion() {
 
     renderizarResultados(datos.recomendaciones);
 
+    if (!esDonadorLocal()) mostrarCTAEnResultadosIA();
+
   } catch (err) {
     console.error('Error al pedir recomendación:', err);
     document.getElementById('ia-error-msg').textContent =
@@ -1245,6 +1339,7 @@ function renderizarResultados(recomendaciones) {
   lista.innerHTML = '';
 
   const nums = ['I', 'II', 'III'];
+  const esDonador = esDonadorLocal();
 
   recomendaciones.forEach((rec, i) => {
     const libro = libros.find(l => l.id === rec.id);
@@ -1260,6 +1355,7 @@ function renderizarResultados(recomendaciones) {
       <div class="resultado-titulo">${tituloLimpio}</div>
       <div class="resultado-autor">${libro.autor}${libro.anio ? ` · ${libro.anio}` : ''}</div>
       <div class="resultado-razon">${rec.razon}</div>
+      ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
       ${hasPdf ? `
         <button class="resultado-btn btn-leer-recomendado" style="cursor:pointer">
           <i data-lucide="book-open" class="icono-sm"></i> Leer
@@ -1285,6 +1381,20 @@ function renderizarResultados(recomendaciones) {
   
   mostrarPaso('ia-resultados');
   document.querySelector('#modalIA .modal-panel').scrollTop = 0;
+}
+
+function mostrarCTAEnResultadosIA() {
+  const contenedor = document.getElementById('resultados-lista');
+  if (!contenedor) return;
+  const ctaEl = document.createElement('div');
+  ctaEl.className = 'ia-resultado-cta';
+  ctaEl.innerHTML = `
+    <p>¿Te gustaron las recomendaciones? Lee estos libros completos y descárgalos en PDF y EPUB.</p>
+    <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-ia">
+      🛒 Desbloquear acceso completo — $100 MXN
+    </a>
+  `;
+  contenedor.appendChild(ctaEl);
 }
 
 // ── BREADCRUMBS / FILTROS ACTIVOS ──
@@ -1345,7 +1455,10 @@ function actualizarBreadcrumbs() {
       if (item.type === 'genero') filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
       if (item.type === 'mood') {
         moodActivo = 'Todos';
-        document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+        document.querySelectorAll('.tag-mood-btn').forEach(b => {
+          b.classList.remove('activo');
+          b.setAttribute('aria-pressed', 'false');
+        });
         filtrar();
       }
       if (item.type === 'autor') {
@@ -1454,6 +1567,16 @@ function registrarEventos() {
   });
   el('btnLimpiarTodo')?.addEventListener('click', limpiarTodo);
   el('btnTema')?.addEventListener('click', alternarTema);
+
+  // Toggle Favoritos
+  el('btnFavoritos')?.addEventListener('click', () => {
+    soloFavoritos = !soloFavoritos;
+    const btn = el('btnFavoritos');
+    btn.classList.toggle('activo', soloFavoritos);
+    btn.setAttribute('aria-pressed', soloFavoritos ? 'true' : 'false');
+    paginaActual = 1;
+    filtrar();
+  });
 
   // Botón volver arriba
   const btnScrollTop = el('btnScrollTop');
@@ -1686,7 +1809,18 @@ function limpiarTodo() {
 
   // Limpiar Mood Tags
   moodActivo = 'Todos';
-  document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+  document.querySelectorAll('.tag-mood-btn').forEach(b => {
+    b.classList.remove('activo');
+    b.setAttribute('aria-pressed', 'false');
+  });
+
+  // Desactivar filtro de favoritos
+  soloFavoritos = false;
+  const btnFav = document.getElementById('btnFavoritos');
+  if (btnFav) {
+    btnFav.classList.remove('activo');
+    btnFav.setAttribute('aria-pressed', 'false');
+  }
 
   // Limpiar colección
   coleccionActiva = null;
@@ -1704,10 +1838,15 @@ function filtrarMood(mood, boton) {
   if (moodActivo === mood) {
     moodActivo = 'Todos';
     boton.classList.remove('activo');
+    boton.setAttribute('aria-pressed', 'false');
   } else {
     moodActivo = mood;
-    document.querySelectorAll('.tag-mood-btn').forEach(b => b.classList.remove('activo'));
+    document.querySelectorAll('.tag-mood-btn').forEach(b => {
+      b.classList.remove('activo');
+      b.setAttribute('aria-pressed', 'false');
+    });
     boton.classList.add('activo');
+    boton.setAttribute('aria-pressed', 'true');
     
     // Resetear género convencional al usar mood
     generoActivo = 'Todos';
@@ -2213,6 +2352,20 @@ let lectorEstado = {
   esDonador: false,
 };
 
+let _pdfjsLibCache = null;
+
+/**
+ * Carga PDF.js dinámicamente con caché de módulo ESM.
+ * Solo se importa la primera vez que un usuario abre un libro.
+ */
+async function cargarPDFJS() {
+  if (_pdfjsLibCache) return _pdfjsLibCache;
+  _pdfjsLibCache = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs');
+  _pdfjsLibCache.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.worker.min.mjs';
+  return _pdfjsLibCache;
+}
+
 /**
  * Abre el lector embebido para el libro dado.
  * Solicita la URL firmada a /api/leer y renderiza con PDF.js.
@@ -2261,10 +2414,8 @@ async function abrirLector(libroId, libro) {
     }
     const { url } = await resp.json();
 
-    // 2. Cargar PDF con PDF.js (módulo ESM ya cargado en el head)
-    const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs');
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.worker.min.mjs';
+    // 2. Cargar PDF con PDF.js (lazy, solo la primera vez)
+    const pdfjsLib = await cargarPDFJS();
 
     const pdfDoc = await pdfjsLib.getDocument({ url, withCredentials: false }).promise;
     lectorEstado.pdf = pdfDoc;
@@ -2569,3 +2720,7 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarModalCodigo();
   inicializarLector();
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {});
+}
