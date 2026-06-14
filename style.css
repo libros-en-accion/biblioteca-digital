@@ -3009,7 +3009,8 @@ footer {
 .custom-dropdown .dropdown-menu {
   position: absolute;
   top: 115%;
-  right: 0;
+  left: 0;
+  right: auto;
   width: 220px;
   background: var(--fondo-tarjeta);
   border: 1px solid var(--borde);
@@ -3024,6 +3025,11 @@ footer {
   transform: translateY(-8px);
   transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
   z-index: 1000;
+}
+
+#dropdownOrden .dropdown-menu {
+  left: auto;
+  right: 0;
 }
 
 .custom-dropdown.searchable .dropdown-menu {
@@ -3143,6 +3149,14 @@ footer {
   .custom-dropdown .dropdown-input {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .custom-dropdown .dropdown-menu,
+  #dropdownOrden .dropdown-menu {
+    width: 100%;
+    min-width: 100%;
+    left: 0;
+    right: 0;
   }
 }
 
