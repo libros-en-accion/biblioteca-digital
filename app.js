@@ -487,15 +487,40 @@ function renderizarColecciones() {
   grid.innerHTML = '';
 
   colecciones.forEach(pack => {
+    // Obtener los objetos completos de libros pertenecientes a este pack
+    const librosDelPack = pack.libros.map(id => libros.find(l => l.id === id)).filter(Boolean);
+    
+    // Obtener la portada del primer libro para el fondo borroso (o una genérica si no hay)
+    const primerLibro = librosDelPack[0];
+    const bgPortada = (primerLibro && primerLibro.portada) ? primerLibro.portada : 'portadas/pack-generico.webp';
+    
+    // Obtener portadas de los primeros 3 libros para el stack visual
+    const portadasAMostrar = librosDelPack.slice(0, 3).map(l => l.portada).filter(Boolean);
+    
+    // Construir el HTML para el stack tridimensional
+    let stackHtml = '';
+    if (portadasAMostrar.length > 0) {
+      stackHtml = `
+        <div class="pack-libros-stack">
+          ${portadasAMostrar.map((portada, idx) => `
+            <div class="pack-libro-stack-item portada-idx-${idx}">
+              <img src="${portada}" alt="Portada de libro" loading="lazy" />
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
     const tarjeta = document.createElement('div');
     tarjeta.className = 'pack-tarjeta';
     tarjeta.innerHTML = `
-      <img src="${pack.portada_pack || 'portadas/pack-generico.webp'}" alt="${pack.titulo}" class="pack-tarjeta-imagen" loading="lazy" />
+      <img src="${bgPortada}" alt="${pack.titulo}" class="pack-tarjeta-bg" loading="lazy" />
       <span class="pack-insignia">✦ ${pack.libros.length} Libros</span>
+      ${stackHtml}
       <div class="pack-info">
         <h4 class="pack-titulo">${pack.titulo}</h4>
         <p class="pack-descripcion">${pack.descripcion}</p>
-        <button class="btn-explorar-pack">Explorar Pack <i data-lucide="arrow-right" class="icono-sm"></i></button>
+        <button class="btn-explorar-pack">Explorar Colección <i data-lucide="arrow-right" class="icono-sm"></i></button>
       </div>
     `;
 
