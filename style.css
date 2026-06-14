@@ -4130,8 +4130,8 @@ input,
 /* Rejilla de packs */
 .colecciones-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   padding: 0 2.5rem;
   margin-bottom: 2rem;
 }
@@ -4142,10 +4142,11 @@ input,
   background: #101c18;
   border: 1px solid var(--borde-tarjeta);
   border-radius: var(--radio);
-  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  min-height: 350px;
+  min-height: 260px;
+  height: 260px;
   overflow: hidden;
   box-shadow: 0 6px 18px var(--sombra);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
@@ -4195,26 +4196,26 @@ input,
   opacity: 0.95;
 }
 
-/* Stack de portadas en la tarjeta de colección */
+/* Fila de portadas en la tarjeta de colección */
 .pack-libros-stack {
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 100px;
-  margin-top: 0.4rem;
-  margin-bottom: 1.4rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  height: 85px;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
   position: relative;
   width: 100%;
   z-index: 2;
 }
 
 .pack-libro-stack-item {
-  width: 62px;
-  height: 90px;
-  position: absolute;
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
-              box-shadow 0.35s ease, 
-              opacity 0.35s ease;
+  width: 55px;
+  height: 80px;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.25s ease;
 }
 
 .pack-libro-stack-item img {
@@ -4223,42 +4224,13 @@ input,
   object-fit: cover;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Transformaciones por índice del libro en el stack */
-.portada-idx-0 {
-  transform: rotate(-12deg) translateX(-20px) translateY(1px) scale(0.9);
-  z-index: 1;
-  opacity: 0.72;
-}
-
-.portada-idx-2 {
-  transform: rotate(12deg) translateX(20px) translateY(1px) scale(0.9);
-  z-index: 1;
-  opacity: 0.72;
-}
-
-.portada-idx-1 {
-  transform: rotate(0deg) scale(1.05);
-  z-index: 3;
-  opacity: 1;
-}
-
-/* Efecto hover expandido (fan-out) */
-.pack-tarjeta:hover .portada-idx-0 {
-  transform: rotate(-18deg) translateX(-28px) translateY(-3px) scale(0.95);
-  opacity: 0.88;
-}
-
-.pack-tarjeta:hover .portada-idx-2 {
-  transform: rotate(18deg) translateX(28px) translateY(-3px) scale(0.95);
-  opacity: 0.88;
-}
-
-.pack-tarjeta:hover .portada-idx-1 {
-  transform: rotate(0deg) scale(1.12) translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.8);
+/* Efecto hover en las portadas */
+.pack-tarjeta:hover .pack-libro-stack-item {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
 
 /* Insignia */
@@ -4290,9 +4262,9 @@ input,
 
 .pack-titulo {
   font-family: var(--fuente-titulo);
-  font-size: 1.25rem;
-  font-weight: 800;
-  line-height: 1.25;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
   margin-bottom: 0.4rem;
   color: #fff;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.85);
@@ -4317,9 +4289,9 @@ input,
   border: none;
   color: #fff8f0;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 600;
-  padding: 0.45rem 1rem;
+  padding: 0.35rem 0.8rem;
   border-radius: var(--radio);
   cursor: pointer;
   transition: all 0.22s;
@@ -4327,7 +4299,7 @@ input,
   align-items: center;
   gap: 0.3rem;
   box-shadow: 0 3px 10px rgba(26, 92, 80, 0.25);
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
 }
 
 .btn-explorar-pack:hover {
@@ -4372,8 +4344,8 @@ input,
 /* Responsive */
 @media (max-width: 1024px) {
   .colecciones-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
   }
 }
 
@@ -4396,9 +4368,11 @@ input,
     display: none;
   }
   .pack-tarjeta {
-    flex: 0 0 285px;
+    flex: 0 0 240px;
     scroll-snap-align: start;
-    min-height: 350px;
+    min-height: 220px;
+    height: 220px;
+    padding: 1rem;
   }
   .catalogo-barra-info {
     flex-wrap: wrap;
