@@ -369,8 +369,12 @@ function generarTagsFiltro() {
   separador.setAttribute('aria-hidden', 'true');
   contenedor.appendChild(separador);
 
-  // 3. Renderizar Tags por género
-  generosOrdenados.forEach(([genero, cantidad]) => {
+  // 3. Renderizar Tags por género (top 8 visibles + Ver todos)
+  const MAX_GENEROS_VISIBLES = 8;
+  const generosPrincipales = generosOrdenados.slice(0, MAX_GENEROS_VISIBLES);
+  const generosRestantes = generosOrdenados.slice(MAX_GENEROS_VISIBLES);
+
+  generosPrincipales.forEach(([genero, cantidad]) => {
     const iconName = generoIconMap[genero] || 'library';
     const btn = document.createElement('button');
     btn.className = 'tag-genero';
@@ -380,6 +384,52 @@ function generarTagsFiltro() {
     btn.addEventListener('click', () => filtrarGenero(genero, btn));
     contenedor.appendChild(btn);
   });
+
+  // Botón "Ver todos" + géneros ocultos
+  if (generosRestantes.length > 0) {
+    const wrapperOculto = document.createElement('div');
+    wrapperOculto.className = 'tags-generos-ocultos';
+    wrapperOculto.style.display = 'contents';
+
+    const grupoOculto = document.createElement('span');
+    grupoOculto.className = 'tags-generos-extra';
+    grupoOculto.style.display = 'none';
+    grupoOculto.style.contents = 'none';
+
+    generosRestantes.forEach(([genero, cantidad]) => {
+      const iconName = generoIconMap[genero] || 'library';
+      const btn = document.createElement('button');
+      btn.className = 'tag-genero tag-genero-extra';
+      btn.dataset.genero = genero;
+      btn.innerHTML = `<i data-lucide="${iconName}" class="icono-sm"></i> ${genero}`;
+      btn.title = `${cantidad} libros`;
+      btn.addEventListener('click', () => filtrarGenero(genero, btn));
+      grupoOculto.appendChild(btn);
+    });
+
+    const btnVerTodos = document.createElement('button');
+    btnVerTodos.className = 'tag-genero tag-ver-todos';
+    btnVerTodos.dataset.expandido = 'false';
+    btnVerTodos.innerHTML = `<i data-lucide="plus" class="icono-sm"></i> +${generosRestantes.length} géneros`;
+    btnVerTodos.addEventListener('click', () => {
+      const expandido = btnVerTodos.dataset.expandido === 'true';
+      if (expandido) {
+        grupoOculto.style.display = 'none';
+        btnVerTodos.innerHTML = `<i data-lucide="plus" class="icono-sm"></i> +${generosRestantes.length} géneros`;
+        btnVerTodos.dataset.expandido = 'false';
+      } else {
+        grupoOculto.style.display = 'inline-flex';
+        grupoOculto.style.flexWrap = 'wrap';
+        grupoOculto.style.gap = 'inherit';
+        btnVerTodos.innerHTML = `<i data-lucide="minus" class="icono-sm"></i> Ocultar`;
+        btnVerTodos.dataset.expandido = 'true';
+      }
+      if (window.lucide) lucide.createIcons({ root: grupoOculto });
+    });
+
+    contenedor.appendChild(btnVerTodos);
+    contenedor.appendChild(grupoOculto);
+  }
   
   if (window.lucide) lucide.createIcons({ root: contenedor });
 }

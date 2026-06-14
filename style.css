@@ -2792,7 +2792,7 @@ footer {
   }
 
   .btn-toggle-filtros-movil {
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     gap: 0.4rem;
     background: rgba(184, 137, 42, 0.1);
@@ -4423,8 +4423,30 @@ input,
 }
 
 /* Botón de alternancia de filtros en móvil (oculto en desktop) */
-.btn-toggle-filtros-movil {
-  display: none;
+@media (min-width: 769px) {
+  .btn-toggle-filtros-movil {
+    display: none !important;
+  }
+}
+
+/* Botón "Ver todos los géneros" en chips */
+.tag-ver-todos {
+  border-style: dashed !important;
+  border-color: var(--dorado) !important;
+  color: var(--dorado-claro) !important;
+  background: transparent !important;
+  opacity: 0.85;
+  transition: all 0.2s;
+}
+.tag-ver-todos:hover {
+  opacity: 1;
+  background: var(--dorado-glow) !important;
+}
+
+/* Contenedor de géneros extra al expandir */
+.tags-generos-extra {
+  display: contents;
+  gap: inherit;
 }
 
 /* Responsive */
