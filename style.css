@@ -242,10 +242,10 @@ body {
 
 .hero-seccion h1 {
   font-family: var(--fuente-marca);
-  font-size: 1.85rem;
+  font-size: 2.3rem;
   font-weight: 800;
   color: #f5eedf;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   line-height: 1.1;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.6);
   white-space: nowrap;
@@ -2503,7 +2503,7 @@ footer {
   }
 
   .hero-seccion h1 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     letter-spacing: 1px;
   }
 
@@ -2626,7 +2626,7 @@ footer {
   }
 
   .hero-seccion h1 {
-    font-size: 1.6rem !important;
+    font-size: 2.0rem !important;
     letter-spacing: 1px;
   }
 
