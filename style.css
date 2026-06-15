@@ -21,6 +21,7 @@
   --fuente-titulo: 'Playfair Display', Georgia, serif;
   --fuente-cuerpo: 'DM Sans', system-ui, -apple-system, sans-serif;
   --fuente-literaria: 'EB Garamond', Georgia, serif;
+  --fuente-marca: 'Cormorant Garamond', Georgia, serif;
   --dorado: #b8892a;
   --dorado-claro: #d4a94a;
   --dorado-suave: #e8d5a3;
@@ -60,6 +61,7 @@
   --fuente-titulo: 'Playfair Display', Georgia, serif;
   --fuente-cuerpo: 'DM Sans', system-ui, -apple-system, sans-serif;
   --fuente-literaria: 'EB Garamond', Georgia, serif;
+  --fuente-marca: 'Cormorant Garamond', Georgia, serif;
   --dorado: #d4a94a;
   --dorado-claro: #e8c56a;
   --dorado-suave: #2b3d39; /* Adaptado a teal oscuro */
@@ -239,7 +241,7 @@ body {
 }
 
 .hero-seccion h1 {
-  font-family: var(--fuente-titulo);
+  font-family: var(--fuente-marca);
   font-size: 1.85rem;
   font-weight: 800;
   color: #f5eedf;
