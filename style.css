@@ -240,8 +240,8 @@ body {
 
 .hero-seccion h1 {
   font-family: var(--fuente-titulo);
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 1.85rem;
+  font-weight: 800;
   color: #f5eedf;
   letter-spacing: 1.5px;
   line-height: 1.1;
@@ -487,29 +487,31 @@ body {
   background: linear-gradient(135deg, #289177 0%, #1e6d59 100%);
 }
 
-/* CTA secundario: ghost / menor peso visual */
+/* CTA secundario: premium outline / menor peso visual */
 .btn-azar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   padding: 0.5rem 1.2rem;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.82rem;
-  font-weight: 400;
-  color: rgba(236, 217, 198, 0.65);
-  background: transparent;
-  border: 1px solid transparent;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #ecd9c6;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(236, 217, 198, 0.25);
   border-radius: var(--radio);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .btn-azar:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  border-color: rgba(212, 169, 74, 0.35);
-  transform: translateY(-1px);
+  border-color: rgba(212, 169, 74, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .btn-azar:active {
