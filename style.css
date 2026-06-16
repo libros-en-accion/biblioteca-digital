@@ -3391,7 +3391,7 @@ footer {
 .lector-controles {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 .lector-paginas {
@@ -3660,6 +3660,7 @@ footer {
 @media (max-width: 600px) {
   .lector-titulo-texto { display: none; }
   .lector-barra-controles { padding: 0.4rem 0.5rem; }
+  .lector-controles { gap: 0.35rem; }
   .lector-btn { width: 32px; height: 32px; }
   .lector-btn-lbl { display: none !important; }
   .lector-btn-descarga-formato {

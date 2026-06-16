@@ -3006,7 +3006,6 @@ function inicializarLector() {
   const btnNext = document.getElementById('lectorBtnNext');
   const btnZoomIn = document.getElementById('lectorBtnZoomIn');
   const btnZoomOut = document.getElementById('lectorBtnZoomOut');
-  const btnFit = document.getElementById('lectorBtnFit');
   const btnCerrar = document.getElementById('lectorBtnCerrar');
   const btnDescarga = document.getElementById('lectorBtnDescarga');
   const btnDescargaEpub = document.getElementById('lectorBtnDescargaEpub');
@@ -3041,7 +3040,6 @@ function inicializarLector() {
   }
   if (btnZoomIn) btnZoomIn.addEventListener('click', () => aplicarZoom(1.25));
   if (btnZoomOut) btnZoomOut.addEventListener('click', () => aplicarZoom(0.8));
-  if (btnFit) btnFit.addEventListener('click', ajustarAlAncho);
   if (btnCerrar) btnCerrar.addEventListener('click', cerrarLector);
   if (btnCerrarBloqueo) {
     btnCerrarBloqueo.addEventListener('click', () => {
