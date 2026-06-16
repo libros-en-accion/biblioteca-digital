@@ -4572,16 +4572,19 @@ input,
   display: flex;
   justify-content: center;
   margin-bottom: 1.8rem;
+  width: 100%;
 }
 
 .btn-mercadopago-checkout {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 1.5rem;
   background: #ffffff; /* Fondo blanco para que destaque la imagen del logo */
   border: 1.5px solid #009ee3; /* Borde con el color azul característico de Mercado Pago */
-  border-radius: 30px;
+  border-radius: var(--radio);
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -4590,13 +4593,14 @@ input,
 
 .btn-mercadopago-checkout:hover {
   background: #f7f9fc;
-  transform: scale(1.04);
+  transform: scale(1.01);
   box-shadow: 0 6px 20px rgba(0, 158, 227, 0.30);
 }
 
 .img-mercadopago-logo {
-  height: 38px; /* Tamaño del logo ampliado para legibilidad */
-  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 52px; /* Limitar altura máxima para mantener proporción estética */
   display: block;
 }
 
