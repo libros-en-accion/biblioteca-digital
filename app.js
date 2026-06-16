@@ -1281,6 +1281,27 @@ function cerrarModalContacto() {
   }
 }
 
+// ── Abrir / Cerrar modal Compra ──
+function abrirModalCompra() {
+  const modal = document.getElementById('modalCompra');
+  if (!modal) return;
+  modal.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+  
+  ultimoElementoEnfocado = document.activeElement;
+  const btnCerrar = modal.querySelector('.modal-cerrar');
+  if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
+}
+
+function cerrarModalCompra() {
+  const modal = document.getElementById('modalCompra');
+  if (modal) {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+    if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
+  }
+}
+
 function activarPestañaInfo(tabName) {
   const btnAcerca = document.getElementById('tabAcerca');
   const btnFAQ = document.getElementById('tabFAQ');
@@ -1759,6 +1780,21 @@ function registrarEventos() {
     if (e.target === el('modalContacto')) cerrarModalContacto();
   });
 
+  // Modal Compra
+  el('btnCerrarCompra')?.addEventListener('click', cerrarModalCompra);
+  el('modalCompra')?.addEventListener('click', (e) => {
+    if (e.target === el('modalCompra')) cerrarModalCompra();
+  });
+
+  // Interceptar todos los clics a Mercado Pago para abrir el modal explicativo
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*="mpago.la/"]');
+    if (link && link.id !== 'btnMercadoPagoCheckout') {
+      e.preventDefault();
+      abrirModalCompra();
+    }
+  });
+
   // Modal IA — acciones
   el('btnRecomendar')?.addEventListener('click', pedirRecomendacion);
   el('btnVolverIntentar')?.addEventListener('click', volverAPreguntas);
@@ -1799,6 +1835,7 @@ function registrarEventos() {
       cerrarDetalle();
       cerrarModalCodigo();
       cerrarModalInfo();
+      cerrarModalCompra();
       return;
     }
 
