@@ -18,6 +18,7 @@ Para monetizar la plataforma mediante el modelo de **Pago Único (Lifetime Deal 
 1. **Lector con Límite de Vista Previa:** Los usuarios normales pueden abrir el visor embebido (PDF.js) y leer gratuitamente hasta la **página 15** de cualquier libro. Al intentar pasar a la página 16, se les bloquea la lectura y se muestra un panel con un CTA directo para adquirir el Acceso Lifetime por $100 MXN o ingresar su código existente.
 2. **Descargas Restringidas:** El botón para descargar el archivo PDF y EPUB completo en su computadora solo es visible y funcional para los usuarios que hayan validado su código de acceso. Las peticiones de descarga directa a la API son bloqueadas si no tienen la firma de la cookie del usuario activo.
 3. **Límite de Dispositivos (Fingerprint):** Cada código de acceso está limitado por defecto a usarse en un máximo de **3 dispositivos** únicos de forma simultánea.
+4. **Auto-guardado de Progreso de Lectura:** El lector embebido registra automáticamente la última página leída de cada libro en el almacenamiento local del navegador (`localStorage`). Al reabrir un libro que ya se estaba leyendo, se presenta un panel con un diseño consistente para decidir si continuar la lectura en esa página o empezar de nuevo. Esta comodidad está disponible únicamente para usuarios con acceso activo.
 
 ### 🛡️ Seguridad y Cookies
 Cuando un usuario ingresa su código:

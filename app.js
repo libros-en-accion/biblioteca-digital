@@ -42,6 +42,28 @@ function guardarFavoritos(ids) {
   localStorage.setItem(FAVORITOS_KEY, JSON.stringify(ids));
 }
 
+const PROGRESO_KEY = 'libractiva_progreso';
+
+function guardarProgresoLectura(libroId, pagina) {
+  try {
+    const progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY)) || {};
+    progreso[libroId] = pagina;
+    localStorage.setItem(PROGRESO_KEY, JSON.stringify(progreso));
+  } catch (e) {
+    console.error('Error al guardar progreso de lectura:', e);
+  }
+}
+
+function obtenerProgresoLectura(libroId) {
+  try {
+    const progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY)) || {};
+    return progreso[libroId] || null;
+  } catch (e) {
+    console.error('Error al obtener progreso de lectura:', e);
+    return null;
+  }
+}
+
 function esFavorito(libroId) {
   return obtenerFavoritos().includes(libroId);
 }
@@ -2538,12 +2560,43 @@ async function abrirLector(libroId, libro) {
 
     actualizarInfoPagina();
 
-    if (cargando) cargando.style.display = 'none';
-    if (canvas) canvas.style.display = 'block';
-
     // Calcular escala inicial para ajustar al ancho del contenedor
     await calcularEscalaFit();
-    await renderizarPagina(lectorEstado.pagina);
+
+    const savedPage = obtenerProgresoLectura(libroId);
+    if (lectorEstado.esDonador && savedPage && savedPage > 1 && savedPage <= lectorEstado.totalPaginas) {
+      if (cargando) cargando.style.display = 'none';
+      if (canvas) canvas.style.display = 'none';
+
+      const panelContinuar = document.getElementById('lectorContinuar');
+      const labelPagina = document.getElementById('lectorContinuarPagina');
+      const btnSi = document.getElementById('btnLectorContinuarSi');
+      const btnNo = document.getElementById('btnLectorContinuarNo');
+
+      if (panelContinuar && labelPagina) {
+        labelPagina.textContent = savedPage;
+        panelContinuar.style.display = 'flex';
+
+        btnSi.onclick = async () => {
+          panelContinuar.style.display = 'none';
+          if (canvas) canvas.style.display = 'block';
+          await renderizarPagina(savedPage);
+        };
+
+        btnNo.onclick = async () => {
+          panelContinuar.style.display = 'none';
+          if (canvas) canvas.style.display = 'block';
+          await renderizarPagina(1);
+        };
+      } else {
+        if (canvas) canvas.style.display = 'block';
+        await renderizarPagina(1);
+      }
+    } else {
+      if (cargando) cargando.style.display = 'none';
+      if (canvas) canvas.style.display = 'block';
+      await renderizarPagina(lectorEstado.pagina);
+    }
 
   } catch (error) {
     console.error('[abrirLector]', error);
@@ -2571,6 +2624,9 @@ async function calcularEscalaFit() {
  */
 async function renderizarPagina(numeroPagina) {
   if (!lectorEstado.pdf) return;
+
+  // Sincronizar estado de página
+  lectorEstado.pagina = numeroPagina;
 
   const bloqueo = document.getElementById('lectorBloqueo');
 
@@ -2605,6 +2661,10 @@ async function renderizarPagina(numeroPagina) {
 
   try {
     await lectorEstado.renderTask.promise;
+    // Guardar progreso de lectura si es donador
+    if (lectorEstado.esDonador && lectorEstado.libroId) {
+      guardarProgresoLectura(lectorEstado.libroId, numeroPagina);
+    }
   } catch (err) {
     if (err?.name !== 'RenderingCancelledException') {
       console.error('[renderizarPagina]', err);
@@ -2679,6 +2739,10 @@ function cerrarLector(volverAtras = true) {
     modal.style.display = 'none';
     document.body.style.overflow = '';
   }
+  
+  const panelContinuar = document.getElementById('lectorContinuar');
+  if (panelContinuar) panelContinuar.style.display = 'none';
+
   if (lectorEstado.renderTask) {
     try { lectorEstado.renderTask.cancel(); } catch (_) {}
   }
@@ -2783,6 +2847,14 @@ function inicializarLector() {
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('modalLector');
     if (!modal || modal.style.display === 'none') return;
+
+    // Ignorar flechas de navegación si el diálogo de continuar lectura está activo
+    const panelContinuar = document.getElementById('lectorContinuar');
+    if (panelContinuar && panelContinuar.style.display !== 'none') {
+      if (e.key === 'Escape') cerrarLector();
+      return;
+    }
+
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') irPaginaSiguiente();
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') irPaginaAnterior();
     if (e.key === 'Escape') cerrarLector();

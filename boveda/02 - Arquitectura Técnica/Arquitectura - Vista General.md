@@ -2,7 +2,7 @@
 tipo: arquitectura
 area: tecnica
 tags: [arquitectura, vanilla-js, css, frontend, html, libractiva]
-fecha: 2026-06-05
+fecha: 2026-06-15
 ---
 
 # ⚙️ Arquitectura: Vista General
@@ -19,7 +19,7 @@ El proyecto está diseñado bajo una filosofía de **simplicidad técnica máxim
 graph TD
     User([Lector]) <--> HTML[index.html & style.css]
     HTML <--> JS[app.js]
-    JS <--> Cache[LocalStorage - Tema/Vistas]
+    JS <--> Cache[LocalStorage - Tema/Vistas/Progreso]
     JS <--> Data[libros.json - Catálogo Local]
     JS <--> PDFJS[PDF.js Lector Embebido]
     
@@ -46,7 +46,7 @@ graph TD
 
 ### 1. Frontend (Cliente)
 *   **HTML5 Semántico:** Estructura modular e interfaces accesibles (modales, buscador, filtros, paginación, visor PDF).
-*   **Vanilla CSS3 (Variables Custom):** Estilos basados en un sistema de diseño estricto (vino, dorado, crema). Soporta transiciones suaves de color y un modo oscuro con la propiedad `data-theme`.
+*   **Vanilla CSS3 (Variables Custom):** Estilos basados en un sistema de diseño estricto (vino, dorado, crema). Soporta transiciones suaves de color y un modo oscuro con la propiedad `data-theme`. La tipografía incluye **Cormorant Garamond** (marca/logotipo), **Playfair Display** (títulos), **DM Sans** (cuerpo) y **EB Garamond** (citas literarias).
 *   **Vanilla JavaScript (ES6+):** Lógica del lado del cliente sin frameworks (React/Vue). Se encarga de:
 51:     *   Cargar y procesar el archivo `libros.json` de 1.36 MB mediante `fetch`.
 52:     *   Filtrar los libros en tiempo real mediante búsqueda por palabras clave normalizadas.
@@ -82,6 +82,9 @@ graph TD
 
 ### 3. Rutas Hash (`#/libro/{id}`)
 *   Para evitar redireccionamientos y no perder la velocidad de una Single Page Application (SPA), la apertura de los detalles del libro se realiza con un modal que actualiza el hash de la URL. Esto permite a los usuarios compartir enlaces directos a obras específicas de la colección.
+
+### 4. Persistencia de Progreso de Lectura
+*   Para usuarios con acceso activo (donadores), el lector embebido guarda en `localStorage` la última página leída bajo la clave `libractiva_progreso`. Al abrir de nuevo un libro en curso, la SPA presenta un diálogo confirmatorio para decidir si reanudar en dicha página o iniciar desde el principio.
 
 ---
 
