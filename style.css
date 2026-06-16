@@ -4636,3 +4636,295 @@ input,
 }
 
 
+
+/* ════════════════════════════════════════════════════════
+   LÍMITE DE USOS DEL RECOMENDADOR IA
+   ════════════════════════════════════════════════════════ */
+
+.ia-usos-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--fuente-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dorado-claro);
+  background: rgba(var(--dorado-rgb, 212, 175, 55), 0.12);
+  border: 1px solid rgba(var(--dorado-rgb, 212, 175, 55), 0.3);
+  border-radius: 20px;
+  padding: 0.25rem 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.ia-badge-agotado {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.12);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+.ia-usos-restantes {
+  font-family: var(--fuente-ui);
+  font-size: 0.82rem;
+  color: var(--dorado-claro);
+  text-align: center;
+  margin: 0.5rem 0 0;
+  padding: 0.4rem 0.8rem;
+  background: rgba(var(--dorado-rgb, 212, 175, 55), 0.08);
+  border-radius: 8px;
+}
+
+.ia-usos-agotados {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.08);
+}
+
+/* Modal de límite de IA */
+.modal-panel-limite {
+  max-width: 480px;
+}
+
+.limite-ia-body {
+  text-align: center;
+  gap: 1rem;
+}
+
+.limite-ia-icono {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.limite-ia-texto {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.limite-ia-texto strong {
+  color: var(--texto);
+}
+
+.limite-ia-beneficios {
+  background: rgba(var(--dorado-rgb, 212, 175, 55), 0.06);
+  border: 1px solid rgba(var(--dorado-rgb, 212, 175, 55), 0.15);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  width: 100%;
+}
+
+.limite-ia-subtitulo {
+  font-family: var(--fuente-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dorado-claro);
+  margin: 0 0 0.75rem;
+}
+
+.limite-ia-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.limite-ia-lista li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--fuente-ui);
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.limite-ia-lista li [data-lucide] {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: #4ade80;
+}
+
+.limite-ia-lista strong {
+  color: var(--texto);
+}
+
+.limite-ia-comprar {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+/* ════════════════════════════════════════════════════════
+   SISTEMA DE MARCADORES EN EL LECTOR
+   ════════════════════════════════════════════════════════ */
+
+/* Botón de marcar página en la barra del lector */
+.lector-btn-marcador {
+  color: var(--dorado-claro) !important;
+  position: relative;
+}
+
+.lector-btn-marcador.marcador-activo {
+  background: rgba(var(--dorado-rgb, 212, 175, 55), 0.2) !important;
+  color: #f5d000 !important;
+}
+
+.lector-btn-marcador.marcador-activo [data-lucide] {
+  fill: currentColor;
+}
+
+/* Panel flotante de marcadores */
+.lector-marcadores-panel {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: clamp(240px, 30vw, 320px);
+  max-height: min(75vh, 480px);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 20;
+  animation: marcadoresFadeIn 0.2s ease;
+}
+
+@keyframes marcadoresFadeIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.marcadores-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--borde);
+  font-family: var(--fuente-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dorado-claro);
+  flex-shrink: 0;
+}
+
+.marcadores-cerrar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--texto-suave);
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+
+.marcadores-cerrar-btn:hover {
+  color: var(--texto);
+}
+
+.marcadores-cerrar-btn [data-lucide] {
+  width: 15px;
+  height: 15px;
+}
+
+.marcadores-vacio {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.marcadores-lista {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0.4rem 0;
+}
+
+.marcador-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  transition: background 0.15s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.marcador-item:hover {
+  background: var(--hover);
+}
+
+.marcador-item-actual {
+  background: rgba(var(--dorado-rgb, 212, 175, 55), 0.08) !important;
+}
+
+.marcador-icono {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.marcador-pag {
+  font-family: var(--fuente-ui);
+  font-size: 0.82rem;
+  color: var(--texto);
+  flex: 1;
+}
+
+.marcador-ir-btn {
+  background: none;
+  border: 1px solid var(--dorado-claro);
+  color: var(--dorado-claro);
+  font-family: var(--fuente-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.marcador-ir-btn:hover {
+  background: var(--dorado-claro);
+  color: var(--fondo);
+}
+
+.marcador-del-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--texto-suave);
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  border-radius: 4px;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.marcador-del-btn:hover {
+  color: #ff6b6b;
+}
+
+.marcador-del-btn [data-lucide] {
+  width: 14px;
+  height: 14px;
+}
+
+/* Responsive: en móvil, el panel ocupa más ancho */
+@media (max-width: 600px) {
+  .lector-marcadores-panel {
+    width: calc(100vw - 1.5rem);
+    right: 0.75rem;
+    top: 0.5rem;
+  }
+}

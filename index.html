@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" />
 
-  <link rel="stylesheet" href="style.css?v=13" />
+  <link rel="stylesheet" href="style.css?v=14" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -298,6 +298,7 @@
         <div class="modal-ornamento">✦ Recomendador Inteligente ✦</div>
         <h2 class="modal-titulo">¿Qué debería leer hoy?</h2>
         <p class="modal-subtitulo">Responde cuatro preguntas y la IA elegirá tres libros perfectos para ti.</p>
+        <span id="ia-usos-badge" class="ia-usos-badge" style="display:none"></span>
         <button id="btnCerrarIA" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
 
@@ -382,6 +383,42 @@
     </div>
   </div>
 
+  <!-- ═══ MODAL: LÍMITE RECOMENDADOR IA ═══ -->
+  <div id="modalLimiteIA" class="modal-overlay">
+    <div class="modal-panel modal-panel-ia modal-panel-limite" role="dialog" aria-modal="true" aria-labelledby="limite-ia-titulo">
+      <div class="modal-header">
+        <div class="modal-ornamento">⚠️ Consultas agotadas</div>
+        <h2 id="limite-ia-titulo" class="modal-titulo">Has usado tus 3 consultas gratuitas</h2>
+        <button id="btnCerrarLimiteIA" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
+      </div>
+      <div class="modal-body limite-ia-body">
+        <div class="limite-ia-icono">🤖</div>
+        <p class="limite-ia-texto">
+          El Recomendador Inteligente utiliza inteligencia artificial para analizar tu estado de ánimo y el catálogo completo. 
+          <strong>Las consultas gratuitas están limitadas a 3 por dispositivo.</strong>
+        </p>
+        <div class="limite-ia-beneficios">
+          <p class="limite-ia-subtitulo">🔓 Con tu código de acceso obtienes:</p>
+          <ul class="limite-ia-lista">
+            <li><i data-lucide="check-circle" class="icono-sm"></i> Consultas <strong>ilimitadas</strong> al Recomendador IA</li>
+            <li><i data-lucide="check-circle" class="icono-sm"></i> Lectura completa sin límite de páginas</li>
+            <li><i data-lucide="check-circle" class="icono-sm"></i> Descarga en PDF y EPUB</li>
+            <li><i data-lucide="check-circle" class="icono-sm"></i> Marcadores de página en cualquier libro</li>
+            <li><i data-lucide="check-circle" class="icono-sm"></i> Guardado de progreso de lectura</li>
+            <li><i data-lucide="check-circle" class="icono-sm"></i> Impresión directa del libro</li>
+          </ul>
+        </div>
+        <div class="modal-acciones">
+          <button id="btnCerrarLimiteIACancel" class="btn-cancelar">Cerrar</button>
+          <button id="btnActivarCodigoDesdeIA" class="btn-recomendar">🔑 Ya tengo un código</button>
+        </div>
+        <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-ia limite-ia-comprar">
+          🛒 Obtener acceso completo — $100 MXN
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══ MODAL: LECTOR DE PDF ═══ -->
   <div id="modalLector" class="lector-overlay" role="dialog" aria-modal="true" aria-label="Lector de libro" style="display:none">
     <div class="lector-barra-controles">
@@ -399,6 +436,8 @@
         <button id="lectorBtnFit" class="lector-btn" title="Ajustar al ancho"><i data-lucide="maximize-2"></i></button>
         <button id="lectorBtnDescarga" class="lector-btn lector-btn-donar lector-btn-descarga-formato" style="display:none" title="Descargar PDF (Acceso Activo)"><i data-lucide="download"></i><span class="lector-btn-lbl">PDF</span></button>
         <button id="lectorBtnDescargaEpub" class="lector-btn lector-btn-donar-epub lector-btn-descarga-formato" style="display:none" title="Descargar EPUB (Acceso Activo)"><i data-lucide="download"></i><span class="lector-btn-lbl">EPUB</span></button>
+        <button id="lectorBtnMarcadores" class="lector-btn lector-btn-marcador" style="display:none" title="Marcar página"><i data-lucide="bookmark"></i><span class="lector-btn-lbl">Marcar</span></button>
+        <button id="lectorBtnVerMarcadores" class="lector-btn lector-btn-ver-marcadores" style="display:none" title="Ver mis marcadores"><i data-lucide="list"></i></button>
         <button id="lectorBtnCerrar" class="lector-btn lector-btn-cerrar" title="Cerrar lector"><i data-lucide="x"></i></button>
       </div>
     </div>
@@ -436,6 +475,10 @@
             <button id="btnLectorContinuarNo" class="btn-codigo-preview" style="cursor:pointer">Empezar desde el inicio</button>
           </div>
         </div>
+      <!-- Panel flotante de marcadores (solo donadores) -->
+      <div id="lectorMarcadoresPanel" class="lector-marcadores-panel" style="display:none" role="dialog" aria-label="Mis marcadores">
+        <!-- Se rellena dinámicamente desde JS -->
+      </div>
       </div>
     </div>
   </div>

@@ -57,7 +57,7 @@ Libractiva está estructurada bajo una filosofía de **simplicidad técnica máx
 
 ### Stack de Software
 *   **Frontend (Cliente):** 
-    *   **Vanilla Stack (HTML5, CSS3, ES6+ JS):** Sin frameworks pesados (como React o Vue). Todo el filtrado, búsqueda y navegación se realiza de manera instantánea del lado del cliente en memoria.
+    *   **Vanilla Stack (HTML5, CSS3, ES6+ JS):** Sin frameworks pesados (como React o Vue). Todo el filtrado, búsqueda y navegación se realiza de manera instantánea del lado del cliente en memoria. Tipografía: **Cormorant Garamond** (marca), **Playfair Display** (títulos), **DM Sans** (cuerpo), **EB Garamond** (citas literarias).
     *   **PDF.js (Mozilla):** Lector nativo integrado para renderizar los libros directamente en la página web mediante `<canvas>` HTML5 con controles responsivos adaptados a móviles.
     *   **Lucide Icons:** Iconografía vectorial interactiva.
 *   **Backend (Serverless en Vercel):**
@@ -74,8 +74,11 @@ Libractiva está estructurada bajo una filosofía de **simplicidad técnica máx
 ## 🌟 5. Características Clave y Diferenciadores
 
 1.  **Recomendador Mágico por IA:** Encuesta dinámica sobre gustos y estados de ánimo del lector que consulta a la IA para entregar sugerencias personalizadas, presentadas en un modal de diseño envolvente.
-2.  **Lector Embebido e Instantáneo y Descarga de EPUB:** Permite la lectura directa de PDFs sin salir de la plataforma y ofrece la descarga directa de libros optimizados para e-readers (como Kindle) en formato EPUB y PDF de alta calidad para usuarios con acceso activo.
-3.  **Rutas Compartibles (SPA con Hashes):** Navegación fluida a través de rutas `#` (ej. `#/libro/123`), permitiendo enlaces directos para SEO e indexación dinámica sin pérdida de rendimiento.
-4.  **PWA de Alto Rendimiento:** Registro de Manifiesto PWA para permitir la instalación de Libractiva como aplicación nativa standalone en dispositivos móviles y ordenadores con soporte offline básico.
-5.  **Accesibilidad Triple A:** Contraste tipográfico optimizado para modo claro y oscuro, cumpliendo estrictamente con la norma **WCAG AA** de legibilidad en interfaces y **WCAG AAA** en textos de contenido.
-6.  **Acceso Lifetime Exclusivo (LTD):** Un modelo de pago único de $100 MXN que desbloquea descargas completas de archivos, impresión directa y lectura ilimitada web de todo el catálogo, eliminando la fricción de lectura.
+2.  **Botón "Sorpréndeme":** Selección aleatoria instantánea de un libro del catálogo con diseño outline premium, para lectores que prefieren dejarse llevar por la serendipia.
+3.  **Lector Embebido e Instantáneo y Descarga de EPUB:** Permite la lectura directa de PDFs sin salir de la plataforma y ofrece la descarga directa de libros optimizados para e-readers (como Kindle) en formato EPUB y PDF de alta calidad para usuarios con acceso activo.
+4.  **Rutas Compartibles (SPA con Hashes):** Navegación fluida a través de rutas `#` (ej. `#/libro/123`), permitiendo enlaces directos para SEO e indexación dinámica sin pérdida de rendimiento.
+5.  **PWA de Alto Rendimiento:** Registro de Manifiesto PWA para permitir la instalación de Libractiva como aplicación nativa standalone en dispositivos móviles y ordenadores con soporte offline básico.
+6.  **Accesibilidad Triple A:** Contraste tipográfico optimizado para modo claro y oscuro, cumpliendo estrictamente con la norma **WCAG AA** de legibilidad en interfaces y **WCAG AAA** en textos de contenido.
+7.  **Acceso Lifetime Exclusivo (LTD):** Un modelo de pago único de $100 MXN que desbloquea descargas completas de archivos, impresión directa y lectura ilimitada web de todo el catálogo, eliminando la fricción de lectura.
+8.  **Recomendador IA con Límite de Uso (Free vs. Lifetime):** Los usuarios sin código pueden realizar hasta **3 consultas gratuitas** al Recomendador Inteligente. Al agotar su cupo, se les muestra un modal informativo detallando los beneficios del acceso lifetime. Los usuarios con código activo tienen **consultas ilimitadas**. El conteo se guarda en `localStorage` con la clave `libractiva_ia_usos`.
+9.  **Marcadores de Página (Kindle-Style, exclusivo Lifetime):** Los usuarios con código pueden marcar páginas de interés en cualquier libro usando el botón 🔖 de la barra del lector. Los marcadores se persisten en `localStorage` con la clave `libractiva_marcadores`, separados por `libroId`. Al hacer clic en el botón se registra/desmarca la página actual y se abre un panel flotante que lista todos los marcadores del libro con botones para navegar directamente a esa página o eliminarla.

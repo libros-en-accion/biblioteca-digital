@@ -32,6 +32,62 @@ let soloFavoritos = false;
 
 const FAVORITOS_KEY = 'libractiva_favoritos';
 
+// ── LÍMITE DE USOS DEL RECOMENDADOR IA (usuarios sin código) ──
+const IA_USOS_KEY = 'libractiva_ia_usos';
+const IA_USOS_LIMITE = 3;
+
+function obtenerUsosIA() {
+  try { return parseInt(localStorage.getItem(IA_USOS_KEY) || '0', 10); } catch { return 0; }
+}
+
+function incrementarUsoIA() {
+  try { localStorage.setItem(IA_USOS_KEY, String(obtenerUsosIA() + 1)); } catch {}
+}
+
+function agotoUsosIA() {
+  return !esDonadorLocal() && obtenerUsosIA() >= IA_USOS_LIMITE;
+}
+
+// ── MARCADORES DE PÁGINA ──
+const MARCADORES_KEY = 'libractiva_marcadores';
+
+function obtenerMarcadores(libroId) {
+  try {
+    const todos = JSON.parse(localStorage.getItem(MARCADORES_KEY)) || {};
+    return todos[libroId] ? [...todos[libroId]].sort((a, b) => a - b) : [];
+  } catch { return []; }
+}
+
+function guardarMarcadores(libroId, paginas) {
+  try {
+    const todos = JSON.parse(localStorage.getItem(MARCADORES_KEY)) || {};
+    if (paginas.length === 0) {
+      delete todos[libroId];
+    } else {
+      todos[libroId] = paginas;
+    }
+    localStorage.setItem(MARCADORES_KEY, JSON.stringify(todos));
+  } catch {}
+}
+
+function esPaginaMarcada(libroId, pagina) {
+  return obtenerMarcadores(libroId).includes(pagina);
+}
+
+function toggleMarcador(libroId, pagina) {
+  const marcadores = obtenerMarcadores(libroId);
+  const idx = marcadores.indexOf(pagina);
+  if (idx >= 0) {
+    marcadores.splice(idx, 1);
+    guardarMarcadores(libroId, marcadores);
+    return false; // desmarcado
+  } else {
+    marcadores.push(pagina);
+    guardarMarcadores(libroId, marcadores);
+    return true; // marcado
+  }
+}
+
 function obtenerFavoritos() {
   try {
     return JSON.parse(localStorage.getItem(FAVORITOS_KEY)) || [];
@@ -1330,6 +1386,11 @@ const iaSeleccion = { estado: null, tiempo: null, objetivo: null };
 
 // ── Abrir / Cerrar modal ──
 function abrirModalIA() {
+  // Verificar límite de usos para usuarios sin código
+  if (agotoUsosIA()) {
+    mostrarModalLimiteIA();
+    return;
+  }
   const modal = document.getElementById('modalIA');
   modal.classList.add('abierto');
   document.body.style.overflow = 'hidden';
@@ -1337,6 +1398,24 @@ function abrirModalIA() {
   volverAPreguntas();
   const btnCerrar = modal.querySelector('.modal-cerrar');
   if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
+}
+
+function mostrarModalLimiteIA() {
+  const modal = document.getElementById('modalLimiteIA');
+  if (modal) {
+    modal.classList.add('abierto');
+    document.body.style.overflow = 'hidden';
+    ultimoElementoEnfocado = document.activeElement;
+  }
+}
+
+function cerrarModalLimiteIA() {
+  const modal = document.getElementById('modalLimiteIA');
+  if (modal) {
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+    if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
+  }
 }
 
 function cerrarModalIA() {
@@ -1436,7 +1515,13 @@ async function pedirRecomendacion() {
 
     renderizarResultados(datos.recomendaciones);
 
-    if (!esDonadorLocal()) mostrarCTAEnResultadosIA();
+    // Incrementar contador de usos solo en usuarios sin código
+    if (!esDonadorLocal()) {
+      incrementarUsoIA();
+      mostrarCTAEnResultadosIA();
+      // Actualizar contador en el header del modal si existe
+      actualizarContadorUsosIA();
+    }
 
   } catch (err) {
     console.error('Error al pedir recomendación:', err);
@@ -1494,20 +1579,37 @@ function renderizarResultados(recomendaciones) {
   
   mostrarPaso('ia-resultados');
   document.querySelector('#modalIA .modal-panel').scrollTop = 0;
+  // Mostrar cuántos usos quedan en resultados
+  if (!esDonadorLocal()) actualizarContadorUsosIA();
 }
 
 function mostrarCTAEnResultadosIA() {
   const contenedor = document.getElementById('resultados-lista');
   if (!contenedor) return;
+  const usosRestantes = Math.max(0, IA_USOS_LIMITE - obtenerUsosIA());
   const ctaEl = document.createElement('div');
   ctaEl.className = 'ia-resultado-cta';
   ctaEl.innerHTML = `
     <p>¿Te gustaron las recomendaciones? Lee estos libros completos y descárgalos en PDF y EPUB.</p>
+    ${usosRestantes > 0 ? `<p class="ia-usos-restantes">⚡ Te ${usosRestantes === 1 ? 'queda' : 'quedan'} <strong>${usosRestantes}</strong> consulta${usosRestantes === 1 ? '' : 's'} gratuita${usosRestantes === 1 ? '' : 's'}</p>` : '<p class="ia-usos-restantes ia-usos-agotados">⚠️ Has agotado tus consultas gratuitas</p>'}
     <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-ia">
       🛒 Desbloquear acceso completo — $100 MXN
     </a>
   `;
   contenedor.appendChild(ctaEl);
+}
+
+function actualizarContadorUsosIA() {
+  const badge = document.getElementById('ia-usos-badge');
+  if (!badge) return;
+  if (esDonadorLocal()) {
+    badge.style.display = 'none';
+    return;
+  }
+  const usosRestantes = Math.max(0, IA_USOS_LIMITE - obtenerUsosIA());
+  badge.textContent = `⚡ ${usosRestantes} / ${IA_USOS_LIMITE} consultas gratuitas`;
+  badge.className = usosRestantes === 0 ? 'ia-usos-badge ia-badge-agotado' : 'ia-usos-badge';
+  badge.style.display = 'inline-flex';
 }
 
 // ── BREADCRUMBS / FILTROS ACTIVOS ──
@@ -1762,6 +1864,22 @@ function registrarEventos() {
   el('modalIA')?.addEventListener('click', (e) => {
     if (e.target === el('modalIA')) cerrarModalIA();
   });
+
+  // Modal IA — Límite de usos
+  el('btnCerrarLimiteIA')?.addEventListener('click', cerrarModalLimiteIA);
+  el('btnCerrarLimiteIACancel')?.addEventListener('click', cerrarModalLimiteIA);
+  el('modalLimiteIA')?.addEventListener('click', (e) => {
+    if (e.target === el('modalLimiteIA')) cerrarModalLimiteIA();
+  });
+  el('btnActivarCodigoDesdeIA')?.addEventListener('click', () => {
+    cerrarModalLimiteIA();
+    abrirModalCodigo(() => {
+      // Tras activar código, resetear contador de usos IA (ya es donador)
+      localStorage.removeItem(IA_USOS_KEY);
+    });
+  });
+  // Inicializar badge de usos al cargar
+  if (!esDonadorLocal()) actualizarContadorUsosIA();
 
   // Modal Información (Acerca de / FAQ)
   el('btnAcercaDe')?.addEventListener('click', () => abrirModalInfo('acerca'));
@@ -2517,6 +2635,7 @@ let lectorEstado = {
   libroId: null,
   esDonador: false,
   historyPushed: false, // Flag para saber si se empujó estado al historial
+  marcadoresPanelAbierto: false, // Panel de marcadores
 };
 
 
@@ -2566,6 +2685,17 @@ async function abrirLector(libroId, libro) {
   if (btnDescargaEpub) {
     btnDescargaEpub.style.display = (lectorEstado.esDonador && libro.archivo_epub) ? 'flex' : 'none';
   }
+  // Mostrar botones de marcadores solo a donadores
+  const btnMarcadores = document.getElementById('lectorBtnMarcadores');
+  const btnVerMarcadores = document.getElementById('lectorBtnVerMarcadores');
+  if (btnMarcadores) {
+    btnMarcadores.style.display = lectorEstado.esDonador ? 'flex' : 'none';
+  }
+  if (btnVerMarcadores) {
+    btnVerMarcadores.style.display = lectorEstado.esDonador ? 'flex' : 'none';
+  }
+  // Cerrar panel de marcadores al abrir nuevo libro
+  cerrarPanelMarcadores();
 
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
@@ -2702,6 +2832,8 @@ async function renderizarPagina(numeroPagina) {
     if (lectorEstado.esDonador && lectorEstado.libroId) {
       guardarProgresoLectura(lectorEstado.libroId, numeroPagina);
     }
+    // Actualizar estado visual del botón de marcar página
+    if (lectorEstado.esDonador) actualizarBtnMarcador();
   } catch (err) {
     if (err?.name !== 'RenderingCancelledException') {
       console.error('[renderizarPagina]', err);
@@ -2779,6 +2911,7 @@ function cerrarLector(volverAtras = true) {
   
   const panelContinuar = document.getElementById('lectorContinuar');
   if (panelContinuar) panelContinuar.style.display = 'none';
+  cerrarPanelMarcadores();
 
   if (lectorEstado.renderTask) {
     try { lectorEstado.renderTask.cancel(); } catch (_) {}
@@ -2790,6 +2923,82 @@ function cerrarLector(volverAtras = true) {
     lectorEstado.historyPushed = false;
     window.history.back();
   }
+}
+
+// ── SISTEMA DE MARCADORES EN EL LECTOR ──
+
+function actualizarBtnMarcador() {
+  const btn = document.getElementById('lectorBtnMarcadores');
+  if (!btn || !lectorEstado.libroId) return;
+  const marcado = esPaginaMarcada(lectorEstado.libroId, lectorEstado.pagina);
+  btn.classList.toggle('marcador-activo', marcado);
+  btn.title = marcado ? `Quitar marcador (pág. ${lectorEstado.pagina})` : `Marcar página ${lectorEstado.pagina}`;
+}
+
+function renderizarPanelMarcadores() {
+  const panel = document.getElementById('lectorMarcadoresPanel');
+  if (!panel || !lectorEstado.libroId) return;
+  const marcadores = obtenerMarcadores(lectorEstado.libroId);
+  if (marcadores.length === 0) {
+    panel.innerHTML = `
+      <div class="marcadores-panel-header">
+        <span>🔖 Mis marcadores</span>
+        <button class="marcadores-cerrar-btn" onclick="cerrarPanelMarcadores()" aria-label="Cerrar"><i data-lucide="x"></i></button>
+      </div>
+      <p class="marcadores-vacio">Aún no has marcado ninguna página.<br>Pulsa 🔖 para guardar la página actual.</p>
+    `;
+  } else {
+    const items = marcadores.map(pag => `
+      <div class="marcador-item ${pag === lectorEstado.pagina ? 'marcador-item-actual' : ''}" data-pag="${pag}">
+        <span class="marcador-icono">🔖</span>
+        <span class="marcador-pag">Página ${pag}</span>
+        <button class="marcador-ir-btn" data-pag="${pag}" title="Ir a pág. ${pag}">Ir</button>
+        <button class="marcador-del-btn" data-pag="${pag}" title="Eliminar marcador" aria-label="Eliminar marcador pág. ${pag}"><i data-lucide="trash-2"></i></button>
+      </div>
+    `).join('');
+    panel.innerHTML = `
+      <div class="marcadores-panel-header">
+        <span>🔖 Mis marcadores (${marcadores.length})</span>
+        <button class="marcadores-cerrar-btn" onclick="cerrarPanelMarcadores()" aria-label="Cerrar"><i data-lucide="x"></i></button>
+      </div>
+      <div class="marcadores-lista">${items}</div>
+    `;
+    // Ir a página al hacer clic en "Ir"
+    panel.querySelectorAll('.marcador-ir-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const pag = parseInt(btn.dataset.pag, 10);
+        await renderizarPagina(pag);
+        cerrarPanelMarcadores();
+      });
+    });
+    // Eliminar marcador
+    panel.querySelectorAll('.marcador-del-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pag = parseInt(btn.dataset.pag, 10);
+        toggleMarcador(lectorEstado.libroId, pag);
+        actualizarBtnMarcador();
+        renderizarPanelMarcadores();
+      });
+    });
+  }
+  if (window.lucide) lucide.createIcons({ root: panel });
+}
+
+function abrirPanelMarcadores() {
+  const panel = document.getElementById('lectorMarcadoresPanel');
+  if (!panel) return;
+  lectorEstado.marcadoresPanelAbierto = true;
+  renderizarPanelMarcadores();
+  panel.style.display = 'flex';
+  panel.classList.add('abierto');
+}
+
+function cerrarPanelMarcadores() {
+  const panel = document.getElementById('lectorMarcadoresPanel');
+  if (!panel) return;
+  lectorEstado.marcadoresPanelAbierto = false;
+  panel.style.display = 'none';
+  panel.classList.remove('abierto');
 }
 
 function inicializarLector() {
@@ -2853,6 +3062,34 @@ function inicializarLector() {
     });
   }
 
+  // Botón de marcadores
+  const btnMarcadores = document.getElementById('lectorBtnMarcadores');
+  if (btnMarcadores) {
+    btnMarcadores.addEventListener('click', () => {
+      if (!lectorEstado.libroId) return;
+      if (lectorEstado.marcadoresPanelAbierto) {
+        cerrarPanelMarcadores();
+      } else {
+        // Toggle: marcar/desmarcar + abrir panel
+        const fueToggle = toggleMarcador(lectorEstado.libroId, lectorEstado.pagina);
+        actualizarBtnMarcador();
+        abrirPanelMarcadores();
+      }
+    });
+  }
+
+  // Botón para ver lista de marcadores (si se define por separado)
+  const btnVerMarcadores = document.getElementById('lectorBtnVerMarcadores');
+  if (btnVerMarcadores) {
+    btnVerMarcadores.addEventListener('click', () => {
+      if (lectorEstado.marcadoresPanelAbierto) {
+        cerrarPanelMarcadores();
+      } else {
+        abrirPanelMarcadores();
+      }
+    });
+  }
+
   if (btnIngresarCodigo) {
     btnIngresarCodigo.addEventListener('click', () => {
       abrirModalCodigo(async () => {
@@ -2871,10 +3108,14 @@ function inicializarLector() {
         if (btnDescEp) {
           btnDescEp.style.display = (libroActual && libroActual.archivo_epub) ? 'flex' : 'none';
         }
+        // Mostrar botón de marcadores al activar código
+        const btnMarc = document.getElementById('lectorBtnMarcadores');
+        if (btnMarc) btnMarc.style.display = 'flex';
 
         const bloqueo = document.getElementById('lectorBloqueo');
         if (bloqueo) bloqueo.style.display = 'none';
         await renderizarPagina(lectorEstado.pagina);
+        actualizarBtnMarcador();
         lucide.createIcons();
       });
     });
