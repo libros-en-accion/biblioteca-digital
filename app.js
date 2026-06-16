@@ -476,7 +476,8 @@ function renderizarDestacados() {
     moodActivo !== 'Todos' || 
     busquedaText !== '' ||
     paginaActual > 1 ||
-    coleccionActiva !== null;
+    coleccionActiva !== null ||
+    soloFavoritos;
 
   if (tieneFiltros) {
     seccion.style.display = 'none';
@@ -572,7 +573,8 @@ function renderizarColecciones() {
     moodActivo !== 'Todos' || 
     busquedaText !== '' ||
     paginaActual > 1 ||
-    coleccionActiva !== null;
+    coleccionActiva !== null ||
+    soloFavoritos;
 
   if (tieneFiltros) {
     seccion.style.display = 'none';
@@ -964,6 +966,24 @@ function filtrar() {
 
   // Aplicar ordenamiento
   listaFiltrada = ordenarLista(listaFiltrada);
+
+  // Actualizar título del catálogo dinámicamente
+  const titulo = document.getElementById('catalogoTitulo');
+  if (titulo) {
+    if (soloFavoritos) {
+      if (coleccionActiva) {
+        titulo.textContent = `Favoritos en: ${coleccionActiva.titulo}`;
+      } else {
+        titulo.textContent = 'Mis Favoritos';
+      }
+    } else {
+      if (coleccionActiva) {
+        titulo.textContent = `Colección: ${coleccionActiva.titulo}`;
+      } else {
+        titulo.textContent = 'Catálogo Completo';
+      }
+    }
+  }
 
   mostrarPagina(1, true);
   actualizarBreadcrumbs();
@@ -1481,6 +1501,10 @@ function actualizarBreadcrumbs() {
     if (epocaActiva === '2000+') epocaLabel = '2000 en adelante';
     items.push({ label: 'Época', value: epocaLabel, type: 'epoca' });
   }
+
+  if (soloFavoritos) {
+    items.push({ label: 'Filtro', value: 'Favoritos', type: 'favoritos' });
+  }
   
   if (items.length === 0) {
     container.style.display = 'none';
@@ -1524,6 +1548,15 @@ function actualizarBreadcrumbs() {
       if (item.type === 'epoca') {
         epocaActiva = 'Todas';
         actualizarDropdownEpocaUI();
+        filtrar();
+      }
+      if (item.type === 'favoritos') {
+        soloFavoritos = false;
+        const btnFav = document.getElementById('btnFavoritos');
+        if (btnFav) {
+          btnFav.classList.remove('activo');
+          btnFav.setAttribute('aria-pressed', 'false');
+        }
         filtrar();
       }
     };
@@ -1637,6 +1670,13 @@ function registrarEventos() {
     btn.setAttribute('aria-pressed', soloFavoritos ? 'true' : 'false');
     paginaActual = 1;
     filtrar();
+
+    if (soloFavoritos) {
+      const catalogoHeader = document.querySelector('.catalogo-header-barra');
+      if (catalogoHeader) {
+        catalogoHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   });
 
   // Ocultar CTA de compra si el usuario ya es donador
