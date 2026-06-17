@@ -1,0 +1,44 @@
+name: Actualizar Libros Destacados Automáticamente
+
+on:
+  schedule:
+    # Corre cada lunes a las 03:00 UTC (Equivale a domingo 21:00 de la CDMX, UTC-6)
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+    # Permite ejecutar el proceso manualmente desde el panel de GitHub Actions
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-level: '3.10'
+
+      - name: Instalar Dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Ejecutar Script de Actualización
+        run: |
+          python scripts/actualizar_destacados.py
+
+      - name: Auto-Commit y Push si hay cambios
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Verificar si app.js fue modificado
+          if git diff --quiet app.js; then
+            echo "No se encontraron cambios en app.js. Omitiendo commit."
+          else
+            git add app.js
+            git commit -m "chore: actualizar libros destacados automatizado (Amazon)"
+            git push origin main
+          fi
