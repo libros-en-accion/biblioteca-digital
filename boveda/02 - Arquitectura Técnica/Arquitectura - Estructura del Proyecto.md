@@ -45,7 +45,7 @@ biblioteca/
 ├── api/                    # Código ejecutado en el servidor (Vercel Serverless)
 │   ├── recomendar.js       # Integración con la API de DeepSeek v4 Flash
 │   ├── leer.js             # Generador de URLs firmadas de Cloudflare R2
-│   └── validar-codigo.js   # Validador de códigos de acceso con Redis Cloud
+│   └── validar-codigo.js   # Validador de códigos de acceso con Upstash Redis / Vercel KV
 ├── scripts/                # Scripts auxiliares y de mantenimiento
 │   ├── normalizar.js       # Node.js: normalización de catálogo (géneros, títulos, autores)
 │   ├── agregar_nuevos_libros.py  # Python: carga masiva interactiva de PDFs
@@ -56,9 +56,11 @@ biblioteca/
 │   ├── fusionar_residuales.py    # Python: fusiona pares duplicados específicos
 │   ├── actualizar_anios.py       # Python: actualiza años de publicación
 │   ├── extraer_portadas_faltantes.py # Python: genera portadas para libros sin ellas
-│   ├── agregar_donador.py  # [Local/Ignorado] Crea códigos en Redis Cloud
-│   ├── listar_donadores.py # [Local/Ignorado] Lista códigos activos en Redis
-│   └── eliminar_donador.py # [Local/Ignorado] Elimina códigos de Redis
+│   ├── entregar_codigo.py  # [Local/Ignorado] Asignador local en CSV y registro en Upstash
+│   ├── estado_codigos.py   # [Local/Ignorado] Resumen de estadísticas de códigos y últimas entregas
+│   ├── agregar_donador.py  # [Local/Ignorado] Crea códigos en Upstash Redis
+│   ├── listar_donadores.py # [Local/Ignorado] Lista códigos activos en Upstash Redis
+│   └── eliminar_donador.py # [Local/Ignorado] Elimina códigos de Upstash Redis
 ├── boveda/                 # Este Cerebro Digital (Bóveda de Obsidian)
 │   ├── 00 - Inicio.md      # Nota de bienvenida y MOC principal
 │   ├── resumen_ejecutivo.md # Visión ejecutiva consolidada del proyecto
@@ -103,7 +105,7 @@ biblioteca/
 *   **`scripts/actualizar_anios.py`**: Actualiza años de publicación para libros específicos usando un mapa hardcodeado.
 *   **`scripts/extraer_portadas_faltantes.py`**: Genera portadas WebP para todos los libros con campo `portada` vacío.
 *   **`scripts/normalizar.js`**: Node.js — unifica ~278 géneros en ~25 canónicos, limpia títulos y autores.
-*   **`scripts/agregar_donador.py` / `listar_donadores.py` / `eliminar_donador.py`**: Administración de códigos de acceso en Redis Cloud. Ignorados en Git por seguridad.
+*   **`scripts/entregar_codigo.py` / `scripts/estado_codigos.py` / `agregar_donador.py` / `listar_donadores.py` / `eliminar_donador.py`**: Scripts para la administración y consulta de códigos de acceso en local y en Upstash Redis. Ignorados en Git por seguridad.
 
 ### 5. Documentación y Estrategia (Bóveda)
 *   **`boveda/`**: Bóveda de Obsidian estructurada con MOC (`00 - Inicio.md`), Resumen Ejecutivo, Guías de Operación (`01/`), notas de Arquitectura Técnica (`02/`) y Estrategia de Naming e Identidad (`03/`).

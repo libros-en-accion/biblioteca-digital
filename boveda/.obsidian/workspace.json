@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Identidad y Marca/Copywriting y Estrategia de Anuncios.md",
-                "mode": "source",
+                "file": "01 - Guías de Operación/Guía - Gestión de Accesos.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Copywriting y Estrategia de Anuncios"
+              "title": "Guía - Gestión de Accesos"
             }
           }
         ]
@@ -186,16 +186,19 @@
   "active": "d1b7a133f708be30",
   "lastOpenFiles": [
     "00 - Inicio.md",
-    "01 - Guías de Operación/Guía - Gestión de Colecciones.md",
-    "03 - Identidad y Marca/Copywriting y Estrategia de Anuncios.md",
+    "resumen_ejecutivo.md",
+    "01 - Guías de Operación.md",
+    "[[01.md",
+    "01 - Guías de Operación/Guía - Agregar Libro.md",
+    "02 - Arquitectura Técnica/Arquitectura - Vista General.md",
     "01 - Guías de Operación/Guía - Gestión de Accesos.md",
+    "03 - Identidad y Marca/Copywriting y Estrategia de Anuncios.md",
+    "02 - Arquitectura Técnica/Arquitectura - Estructura del Proyecto.md",
+    "02 - Arquitectura Técnica/Arquitectura - Estructura de Datos.md",
+    "01 - Guías de Operación/Guía - Gestión de Colecciones.md",
     "03 - Identidad y Marca/Modelo de Negocio.md",
     "01 - Guías de Operación/Guía - Gestión de Donadores.md",
-    "02 - Arquitectura Técnica/Arquitectura - Estructura de Datos.md",
     "01 - Guías de Operación/Guía - Generar Portadas.md",
-    "01 - Guías de Operación/Guía - Agregar Libro.md",
-    "resumen_ejecutivo.md",
-    "02 - Arquitectura Técnica/Arquitectura - Estructura del Proyecto.md",
     "01 - Guías de Operación/Guía - Uso con Agentes de IA.md",
     "03 - Gestión del Proyecto/Roadmap y Tareas.md",
     "03 - Gestión del Proyecto/Auditoría UX y Plan de Mejoras.md",
@@ -203,7 +206,6 @@
     "03 - Gestión del Proyecto/Historial de Cambios.md",
     "01 - Guías de Operación/Guía - Git y Flujo de Trabajo.md",
     "01 - Guías de Operación/Guía - Despliegue en Vercel.md",
-    "01 - Guías de Operación/Guía - Normalización de Catálogo.md",
-    "02 - Arquitectura Técnica/Arquitectura - Vista General.md"
+    "01 - Guías de Operación/Guía - Normalización de Catálogo.md"
   ]
 }

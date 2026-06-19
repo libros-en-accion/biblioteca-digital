@@ -2,7 +2,7 @@
 tipo: guia
 area: operacion
 tags: [guia, destacados, frontend, configuracion, app.js, libractiva]
-fecha: 2026-06-05
+fecha: 2026-06-15
 ---
 
 # 🌟 Guía: Gestión de Libros Destacados en la Home
@@ -15,7 +15,7 @@ Esta guía describe el funcionamiento, estructura e instrucciones para actualiza
 
 Para mejorar la experiencia del usuario y evitar que se sienta abrumado por el catálogo de más de 2800 libros, la página web cuenta con una sección superior dedicada a **Libros Destacados**. 
 
-Esta sección muestra un conjunto de portadas seleccionadas manualmente (por ejemplo, los más leídos de la semana o los recomendados de la temporada) antes de presentar la lista completa de libros.
+Esta sección muestra un carrusel horizontal con 10 portadas seleccionadas manualmente (por ejemplo, los más leídos de la semana o los recomendados de la temporada) antes de presentar la lista completa de libros.
 
 ---
 
@@ -32,18 +32,22 @@ Busca en el archivo `libros.json` el ID numérico de los libros que deseas desta
 1. Abre el archivo `/home/daniel/biblioteca/app.js` en tu editor de código.
 2. Al principio del archivo, localiza la constante `LIBROS_DESTACADOS_IDS`:
    ```javascript
-   // ── CONFIGURACIÓN DE LIBROS DESTACADOS ──
+   // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
+   // según los libros más populares de Amazon u otra fuente de tu preferencia.
    const LIBROS_DESTACADOS_IDS = [
+     1233, // Las 48 leyes del poder
+     2845, // Alas de sangre
+     2763, // No tengo boca y debo gritar
+     814,  // Noches blancas (Ilustrado)
+     2857, // Proyecto Hail Mary
+     783,  // El placebo eres tu
+     1250, // La sociedad del cansancio
+     2079, // 1984
      2875, // El túnel
-     2876, // Sobre héroes y tumbas
-     2870, // Sentir es el secreto
-     2860, // El cerebro se cambia a sí mismo
-     2863, // El poder de tu mente subconsciente
-     2868, // Las siete leyes espirituales del éxito
-     2874  // Tu fe es tu fortuna
+     2820  // Los siete maridos de Evelyn Hugo
    ];
    ```
-3. Reemplaza o añade los IDs de los libros que quieras destacar. Los comentarios a la derecha te ayudarán a recordar qué libro corresponde a cada ID.
+3. Reemplaza o añade los IDs de los libros que quieras destacar (máximo 10). Los comentarios a la derecha te ayudarán a recordar qué libro corresponde a cada ID.
 4. Guarda el archivo.
 
 ### Paso 3: Desplegar los cambios
@@ -69,6 +73,8 @@ Para asegurar que los destacados no estorben al usuario cuando está buscando ac
    - En cuanto el usuario escribe una letra en el buscador.
    - Si se hace clic en cualquier filtro o tag de la barra lateral/superior.
    - Al navegar a la página 2 del catálogo.
+
+3. **Orden aleatorio:** Los libros se muestran en orden aleatorio (algoritmo Fisher-Yates shuffle) cada vez que se renderiza la sección, para dar variedad visual.
 
 Esta lógica es controlada por la función `renderizarDestacados()` en `app.js` y llamada automáticamente por la función `mostrarPagina()`.
 

@@ -2,7 +2,7 @@
 tipo: guia
 area: operacion
 tags: [guia, colecciones, packs, json, frontend, configuracion, libractiva]
-fecha: 2026-06-13
+fecha: 2026-06-15
 ---
 
 # 📚 Guía: Gestión de Colecciones Temáticas (Packs)
@@ -27,7 +27,6 @@ Las colecciones se configuran de manera estática y muy ligera en el archivo `/h
   {
     "id": "psicologia-humana",
     "titulo": "La biblioteca mínima para entender la psicología humana",
-    "descripcion": "Una selección enfocada en el autoanálisis, el comportamiento social, el inconsciente y los sesgos cognitivos.",
     "portada_pack": "portadas/pack-psicologia.webp",
     "libros": [2962, 2898, 2842, 1121, 1125, 1126, 3021, 3022, 3023]
   }
@@ -39,7 +38,6 @@ Las colecciones se configuran de manera estática y muy ligera en el archivo `/h
 |---|---|---|---|
 | **`id`** | Cadena (String) | Sí | Identificador único del pack en minúsculas y separado por guiones. Se utiliza internamente por JavaScript para los eventos de filtrado. |
 | **`titulo`** | Cadena (String) | Sí | Nombre comercial e inspirador de la colección que se muestra en la cabecera del catálogo y en la tarjeta. |
-| **`descripcion`** | Cadena (String) | Sí | Sinopsis del enfoque y beneficio de leer esta curaduría (máximo 2 líneas de texto en la tarjeta). |
 | **`portada_pack`** | Cadena (String) | Sí | Ruta relativa a la imagen de portada premium del pack en formato WebP optimizado (`portadas/pack-*.webp`). |
 | **`libros`** | Array de Enteros | Sí | Lista con los IDs numéricos (de `libros.json`) de los libros que pertenecen al pack. |
 

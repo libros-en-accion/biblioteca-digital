@@ -2,7 +2,7 @@
 tipo: guia
 area: operacion
 tags: [guia, despliegue, vercel, serverless, node, libractiva]
-fecha: 2026-06-05
+fecha: 2026-06-15
 ---
 
 # 🚀 Guía: Despliegue en Vercel
@@ -64,7 +64,7 @@ Esto iniciará un servidor local (usualmente en [http://localhost:3000](http://l
 
 ## 🔑 Variables de Entorno
 
-El proyecto requiere varias variables de entorno en producción (Vercel Dashboard) y locales (archivo `.env.local` o `.env` para desarrollo) para poder operar la IA, Cloudflare R2 y Redis Cloud:
+El proyecto requiere varias variables de entorno en producción (Vercel Dashboard) y locales (archivo `.env.local` o `.env` para desarrollo) para poder operar la IA, Cloudflare R2 y Upstash Redis:
 
 ### Listado de Variables de Entorno
 
@@ -75,7 +75,7 @@ El proyecto requiere varias variables de entorno en producción (Vercel Dashboar
 | **`R2_ACCESS_KEY_ID`** | Token de acceso S3 para Cloudflare R2 con permisos de lectura/escritura. | Cloudflare Dashboard > R2 > Manage API Tokens |
 | **`R2_SECRET_ACCESS_KEY`** | Clave secreta del token de acceso S3 de Cloudflare R2. | Cloudflare Dashboard > R2 > Manage API Tokens |
 | **`R2_BUCKET_NAME`** | Nombre del bucket donde están alojados tus PDFs. Ej: `biblioteca-digital`. | Cloudflare Dashboard > R2 |
-| **`REDIS_URL`** (o `KV_URL`) | URL de conexión TCP para la base de datos de donadores. Formato: `redis://default:password@host:port` | Redis Cloud Dashboard > Database settings |
+| **`REDIS_URL`** | URL de conexión SSL para la base de datos Upstash Redis de códigos de acceso. Formato: `rediss://default:password@host:port` | Upstash Console > Redis Database details |
 | **`DONOR_COOKIE_SECRET`** | Cadena de texto larga y aleatoria usada para firmar las cookies de sesión del donador. | Inventada por el administrador (mín. 32 caracteres) |
 
 ### En Producción (Panel de Vercel)
@@ -102,13 +102,24 @@ El archivo `vercel.json` en la raíz contiene las directivas esenciales para ind
   "public": true,
   "github": {
     "silent": true
-  }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+      ]
+    }
+  ]
 }
 ```
 
 *   **`version: 2`**: Especifica el uso de la plataforma de despliegue Vercel 2.0 (basada en microservicios y serverless).
 *   **`public: true`**: Permite ver el código fuente desplegado en el inspector de Vercel (opcional).
 *   **`github.silent: true`**: Evita comentarios excesivos del bot de Vercel en los commits de GitHub.
+*   **`headers`**: Configura cabeceras CORS para las rutas `/api/*`, permitiendo peticiones desde cualquier origen con métodos GET, POST y OPTIONS.
 
 ---
 **Notas Relacionadas:**

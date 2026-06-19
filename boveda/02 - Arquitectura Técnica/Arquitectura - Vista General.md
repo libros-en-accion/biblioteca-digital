@@ -27,7 +27,7 @@ graph TD
     API_Rec <--> DS[DeepSeek v4 API]
     
     JS <--> API_Val[api/validar-codigo.js]
-    API_Val <--> Redis[(Redis Cloud Database)]
+    API_Val <--> Redis[(Upstash Redis Database)]
     
     JS <--> API_Read[api/leer.js]
     API_Read <--> R2[(Cloudflare R2 Storage)]
@@ -58,12 +58,12 @@ graph TD
 ### 2. Backend (Servicios Serverless en Vercel)
 *   **`api/recomendar.js`**: Procesa la encuesta del lector y consulta a la API del recomendador IA.
 *   **`api/leer.js`**: Genera URLs firmadas seguras de Cloudflare R2 con expiración corta (3 a 10 min) para lectura online y descargas.
-*   **`api/validar-codigo.js`**: Valida códigos de donador y administra los límites de dispositivos contra la base de datos de Redis.
+*   **`api/validar-codigo.js`**: Valida códigos de donador y administra los límites de dispositivos contra la base de datos de Upstash Redis / Vercel KV.
 *   **Node.js 20.x:** Entorno de ejecución en la nube para las APIs serverless de Vercel.
 
 ### 3. Almacenamiento y Bases de Datos
 *   **Cloudflare R2 Object Storage:** Almacenamiento de archivos PDF de libros (más de 30 GB en total). Permite descargas directas y lectura fluida por rangos mediante URLs firmadas.
-*   **Redis Cloud (Redis Labs):** Base de datos en memoria para gestionar y validar en milisegundos los códigos de acceso de donadores y los IDs de dispositivos registrados.
+*   **Upstash Redis / Vercel KV:** Base de datos serverless en memoria para gestionar y validar en milisegundos los códigos de acceso de donadores y los IDs de dispositivos registrados.
 
 ### 4. Inteligencia Artificial
 *   **DeepSeek v4 Flash:** API remota consultada mediante peticiones POST seguras para procesar perfiles de lectura y emitir recomendaciones.

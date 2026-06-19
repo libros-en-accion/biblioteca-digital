@@ -66,7 +66,7 @@ Libractiva está estructurada bajo una filosofía de **simplicidad técnica máx
     *   `api/validar-codigo.js`: Controla las sesiones y límites de dispositivos asociados a códigos de acceso lifetime.
 *   **Almacenamiento y Datos:**
     *   **Cloudflare R2 Object Storage:** Almacena el repositorio completo de archivos PDF y EPUB (más de 35 GB) de la biblioteca.
-    *   **Redis Cloud:** Base de datos en memoria para la validación ultrarrápida de códigos y dispositivos.
+    *   **Upstash Redis / Vercel KV:** Base de datos serverless en memoria para la validación ultrarrápida de códigos y dispositivos.
     *   **Catálogo Estático (`libros.json`):** Catálogo completo (~2,800 registros, 1.36 MB) descargado en la primera visita del cliente para garantizar búsquedas inmediatas en local.
 
 ---

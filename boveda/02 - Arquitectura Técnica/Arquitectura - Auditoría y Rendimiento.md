@@ -51,7 +51,7 @@ Para evitar que se compartan de forma descontrolada los códigos de donadores, l
 $$\text{Fingerprint} = \text{SHA256}(\text{User-Agent} + \text{Accept-Language} + \text{IP Client})$$
 Este identificador no almacena información personal sensible (GDPR compliant) pero permite identificar de forma estable el dispositivo del lector.
 
-### 2. Base de Datos en Memoria (Redis Cloud)
+### 2. Base de Datos en Memoria (Upstash Redis / Vercel KV)
 *   **Tiempo de Respuesta:** Redis procesa la validación del código y el registro del dispositivo en **< 5 ms**.
 *   **Control de Límite:** Se valida si el dispositivo ya existe o si aún hay cupo (máximo 3 dispositivos por código) antes de firmar el token de acceso.
 

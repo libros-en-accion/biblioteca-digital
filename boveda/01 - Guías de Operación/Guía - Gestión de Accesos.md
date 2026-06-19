@@ -30,10 +30,10 @@ Cuando un usuario ingresa su código:
 
 ## 🛠️ Administración de Códigos desde la Terminal
 
-Los scripts de administración residen dentro de la carpeta `scripts/` de tu proyecto y se pueden ejecutar localmente para administrar los accesos en Redis Cloud.
+Los scripts de administración residen dentro de la carpeta `scripts/` de tu proyecto y se pueden ejecutar localmente para administrar los accesos en Upstash Redis.
 
-> [!WARNING]
-> Estos scripts contienen las credenciales de tu base de datos de Redis Cloud en sus variables de código. Por seguridad, están registrados en el archivo `.gitignore` para evitar que se suban accidentalmente a GitHub. **Nunca los compartas públicamente.**
+> [!NOTE]
+> Estos scripts leen de manera automática la variable `REDIS_URL` desde tu archivo `.env` o `.env.local` en la raíz del proyecto. Por seguridad, tanto el archivo `.env` como los scripts están registrados en el archivo `.gitignore` para evitar que se suban accidentalmente a GitHub.
 
 ### 1. Crear / Modificar un Código
 Para registrar un nuevo acceso o actualizar el límite de un código existente:
@@ -92,46 +92,43 @@ python3 scripts/eliminar_donador.py <CODIGO>
 
 ---
 
-## 🗃️ Generación y Control de Códigos en Local
+## 🗃️ Generación y Control de Códigos y Automatización
 
-Para generar nuevos códigos de forma segura sin repetirlos y mantener un control estricto de a quién se le entrega cada clave, se utiliza el sistema de administración local ubicado en:
-`/home/daniel/002_CODIGOS/`
-
-Este directorio contiene dos archivos clave:
-1. `generar_codigo.py`: Script en Python encargado de generar códigos de acceso aleatorios **únicos (no repetidos)**.
-2. `lista_codigos.csv`: Archivo que funge como base de datos local y registro histórico de los códigos.
+Para gestionar la entrega de códigos de acceso a los usuarios de manera automatizada en un solo paso, se utiliza el archivo `lista_codigos.csv` (ubicado en la raíz de tu proyecto) y un conjunto de scripts en la carpeta `scripts/`.
 
 ### Estructura de lista_codigos.csv
-El archivo CSV tiene las siguientes 4 columnas:
-- **CODIGO:** El código de acceso único generado (ej. `LTD-XXXXXX` o `DONOR-XXXXXX`).
+El archivo CSV tiene las siguientes 5 columnas:
+- **CODIGO:** El código de acceso único generado (ej. `LTD-XXXXX`).
 - **NOMBRE:** Nombre del usuario a quien se le asignó tras pagar.
-- **CORREO:** Dirección de correo electrónico del usuario.
-- **ESTATUS:** Estatus de disponibilidad del código (`disponible` o `usado`).
+- **CORREO:** Correo electrónico o WhatsApp del usuario.
+- **ESTATUS:** Estatus de disponibilidad del código (`DISPONIBLE` o `USADO`).
+- **FECHA:** Fecha en formato `AAAA-MM-DD` en la que se entregó el código.
 
-### Flujo de Trabajo para Entregar un Código:
-1. **El usuario realiza el pago:** El usuario paga $100 MXN a través del enlace de Mercado Pago (`https://mpago.la/1Ek1HPz`).
-2. **Generar el Código:** Ejecuta el generador local para obtener un nuevo código único disponible (esto lo registrará automáticamente en el CSV como `disponible`):
+### Flujo de Trabajo Automatizado:
+1. **El usuario realiza el pago:** El usuario paga y te envía el comprobante por WhatsApp o correo.
+2. **Tú verificas el pago** en Mercado Pago.
+3. **Solicitas sus datos:** Pídele su nombre y correo/WhatsApp.
+4. **Ejecutas el script de entrega:** Corre el siguiente comando en tu terminal para buscar un código disponible, asignárselo localmente en el CSV y subirlo a la nube:
    ```bash
-   python3 /home/daniel/002_CODIGOS/generar_codigo.py
+   python3 scripts/entregar_codigo.py "Nombre del Cliente" "correo_o_whatsapp"
    ```
-3. **Asignar Información:** Abre `/home/daniel/002_CODIGOS/lista_codigos.csv`, localiza el código generado y asocia el **Nombre** y **Correo** del usuario comprador, cambiando su **Estatus** a `usado`.
-4. **Activar el Código en la Nube (Redis):** Registra y activa el código en la base de datos de producción Redis de Libractiva usando el script del repositorio:
+   *(Si no pasas parámetros, el script es interactivo y te pedirá los datos por consola de manera guiada).*
+5. **Copia y envía:** El script imprimirá en la consola un cuadro con el código asignado listo para copiar. Solo debes pegarlo y enviárselo a tu cliente.
+6. **Consultar estadísticas:** En cualquier momento puedes comprobar cuántos códigos quedan disponibles y ver las últimas asignaciones corriendo:
    ```bash
-   # Posicionado en la carpeta ~/biblioteca
-   python3 scripts/agregar_donador.py <CODIGO_GENERADO>
+   python3 scripts/estado_codigos.py
    ```
-5. **Entrega:** Envía el código generado al usuario para que pueda ingresarlo en la interfaz web de Libractiva y desbloquear el acceso completo.
 
 ---
 
-## 🖥️ Administración Visual (Redis Insight)
+## 🖥️ Administración Visual (Consola de Upstash)
 
 Si prefieres realizar estas tareas mediante una interfaz gráfica de usuario (GUI) en el navegador:
 
-1. Entra a tu dashboard de **[Redis Cloud](https://cloud.redis.io)**.
-2. Selecciona tu base de datos `biblioteca-kv`.
-3. En el apartado **View and manage data with Redis Insight**, haz clic en el botón **Launch**.
-4. Se abrirá una interfaz gráfica interactiva en otra pestaña donde podrás examinar todas las llaves (en formato `donor:code:*`), modificar el JSON interno de los dispositivos a mano o eliminar llaves usando el icono de bote de basura.
+1. Entra a tu consola de **[Upstash](https://upstash.com/)** e inicia sesión con tu cuenta de GitHub o Google.
+2. Selecciona tu base de datos de Redis (ej. `biblioteca-digital`).
+3. Ve a la pestaña **Data Browser**.
+4. Desde esta pantalla interactiva podrás buscar, editar y eliminar las claves (en formato `donor:code:*`), además de ver cuántos dispositivos y qué límite tiene configurado cada código.
 
 ---
 **Notas Relacionadas:**

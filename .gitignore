@@ -13,3 +13,23 @@ node_modules/
 scripts/agregar_donador.py
 scripts/listar_donadores.py
 scripts/eliminar_donador.py
+lista_codigos.csv
+scripts/entregar_codigo.py
+scripts/estado_codigos.py
+
+# Vercel
+.vercel/
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+
+# Logs
+*.log
+
+# IDEs / Editors
+.vscode/
+.idea/
+.commandcode/
+

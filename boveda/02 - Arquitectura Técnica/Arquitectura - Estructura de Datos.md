@@ -2,7 +2,7 @@
 tipo: arquitectura
 area: tecnica
 tags: [arquitectura, datos, json, base-de-datos, libractiva]
-fecha: 2026-06-05
+fecha: 2026-06-15
 ---
 
 # 📊 Arquitectura: Estructura de Datos
@@ -54,8 +54,7 @@ El archivo `/home/daniel/biblioteca/colecciones.json` contiene la estructura y d
 ```json
 {
   "id": "evitar-burnout",
-  "titulo": "Ficción para escapar del burnout",
-  "descripcion": "Lecturas relajantes para desconectar.",
+  "titulo": "Ficción para escapar del burnout: Novelas terapéuticas",
   "portada_pack": "portadas/pack-burnout.webp",
   "libros": [2896, 2346, 1988]
 }
@@ -65,13 +64,12 @@ El archivo `/home/daniel/biblioteca/colecciones.json` contiene la estructura y d
 |---|---|---|---|
 | **`id`** | String | Sí | Identificador único y amigable del pack, utilizado por el filtrado en frontend. |
 | **`titulo`** | String | Sí | Nombre de la colección desplegado al usuario. |
-| **`descripcion`** | String | Sí | Sinopsis del pack. |
 | **`portada_pack`** | String | Sí | Ruta relativa a la imagen WebP de portada del pack. |
 | **`libros`** | Array (int) | Sí | Listado de IDs numéricos que componen la colección. |
 
 ---
 
-## 🗄️ Base de Datos de Donadores (Redis Cloud)
+## 🗄️ Base de Datos de Donadores (Upstash Redis / Vercel KV)
 
 El sistema utiliza una base de datos Redis en la nube para gestionar los códigos de donador y los límites de dispositivos.
 
