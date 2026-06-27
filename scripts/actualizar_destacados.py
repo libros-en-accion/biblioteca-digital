@@ -10,8 +10,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(BASE_DIR, "libros_reducido.csv")
 APP_JS_PATH = os.path.join(BASE_DIR, "app.js")
 
-# URL de Amazon Best Sellers en Libros (se puede alternar a amazon.com.mx si se prefiere)
-AMAZON_URL = "https://www.amazon.com/gp/bestsellers/books"
+# URL de Amazon Best Sellers en Libros en México (amazon.com.mx)
+AMAZON_URL = "https://www.amazon.com.mx/gp/bestsellers/books"
 
 def normalizar(texto):
     """
@@ -29,14 +29,14 @@ def normalizar(texto):
 
 def obtener_mas_vendidos():
     """
-    Realiza la petición a Amazon y extrae el top 10 de libros (título y autor).
+    Realiza la petición a Amazon México y extrae el top de libros (título y autor).
     """
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept-Language": "es-MX,es;q=0.9,en;q=0.8,en-US;q=0.7"
+        "Accept-Language": "es-MX,es;q=0.9,en;q=0.8"
     }
     
-    print(f"Obteniendo datos de Amazon Best Sellers...")
+    print(f"Obteniendo datos de Amazon México Best Sellers ({AMAZON_URL})...")
     response = requests.get(AMAZON_URL, headers=headers, timeout=15)
     
     if response.status_code != 200:
@@ -66,7 +66,7 @@ def obtener_mas_vendidos():
         
         if title and author:
             libros_amazon.append((title, author))
-            if len(libros_amazon) == 10:
+            if len(libros_amazon) == 30:
                 break
                 
     return libros_amazon
