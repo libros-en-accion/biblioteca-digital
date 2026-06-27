@@ -33,3 +33,5 @@ env/
 .idea/
 .commandcode/
 
+# Graphify
+graphify-out/
