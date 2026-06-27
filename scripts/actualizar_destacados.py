@@ -10,8 +10,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(BASE_DIR, "libros_reducido.csv")
 APP_JS_PATH = os.path.join(BASE_DIR, "app.js")
 
-# URL de Amazon Best Sellers en Libros en México (amazon.com.mx)
-AMAZON_URL = "https://www.amazon.com.mx/gp/bestsellers/books"
+# URL de Amazon Best Sellers en Libros en Español México (Categoría 13214803011)
+AMAZON_URL = "https://www.amazon.com.mx/gp/bestsellers/books/13214803011"
 
 def normalizar(texto):
     """
@@ -29,14 +29,14 @@ def normalizar(texto):
 
 def obtener_mas_vendidos():
     """
-    Realiza la petición a Amazon México y extrae el top de libros (título y autor).
+    Realiza la petición a Amazon México (Libros en español) y extrae el top de libros.
     """
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept-Language": "es-MX,es;q=0.9,en;q=0.8"
     }
     
-    print(f"Obteniendo datos de Amazon México Best Sellers ({AMAZON_URL})...")
+    print(f"Obteniendo datos de Amazon México (Libros en Español Best Sellers)...")
     response = requests.get(AMAZON_URL, headers=headers, timeout=15)
     
     if response.status_code != 200:
@@ -64,9 +64,9 @@ def obtener_mas_vendidos():
             author_el = card.select_one('.a-size-small.a-color-base')
         author = author_el.get_text(strip=True) if author_el else None
         
-        if title and author:
-            libros_amazon.append((title, author))
-            if len(libros_amazon) == 30:
+        if title:
+            libros_amazon.append((title, author or ""))
+            if len(libros_amazon) == 50:
                 break
                 
     return libros_amazon
@@ -91,30 +91,35 @@ def cargar_base_datos():
 
 def buscar_libro_en_db(titulo_amazon, autor_amazon, base_datos):
     """
-    Busca de manera flexible (por subcadena y normalización) un libro en la DB local.
+    Busca de manera precisa (por autor y título normalizados) un libro en la DB local.
     """
     title_norm = normalizar(titulo_amazon)
     author_norm = normalizar(autor_amazon)
+    title_clean = re.sub(r'\(.*?\)', '', title_norm).strip()
     
-    # Coincidencia por autor y título
-    for libro in base_datos:
-        db_title_norm = normalizar(libro["titulo"])
-        db_author_norm = normalizar(libro["autor"])
-        
-        # 1. Verificar si el autor es coincidente o subcadena
-        if author_norm in db_author_norm or db_author_norm in author_norm:
-            # 2. Verificar si el título coincide o uno es subcadena del otro
-            if title_norm in db_title_norm or db_title_norm in title_norm:
-                return libro["id"], libro["titulo"]
-                
-    # Fallback más agresivo: Buscar coincidencias directas en títulos muy específicos (ej. 1984)
-    # sólo si el título buscado tiene suficiente longitud para evitar falsos positivos
-    if len(title_norm) > 3:
+    # 1. Matching por autor y título
+    if author_norm and len(author_norm) > 3:
+        author_tokens = set(author_norm.split())
         for libro in base_datos:
-            db_title_norm = normalizar(libro["titulo"])
-            if title_norm == db_title_norm:
-                return libro["id"], libro["titulo"]
-                
+            db_title = normalizar(libro['titulo'])
+            db_author = normalizar(libro['autor'])
+            db_author_tokens = set(db_author.split())
+            
+            # Si hay coincidencia significativa en el autor
+            if len(author_tokens.intersection(db_author_tokens)) >= 1 or author_norm in db_author or db_author in author_norm:
+                if title_clean == db_title or db_title in title_clean or title_clean in db_title:
+                    return libro['id'], libro['titulo']
+
+    # 2. Coincidencia exacta o casi exacta de título (títulos de más de 4 caracteres)
+    if len(title_clean) > 4:
+        for libro in base_datos:
+            db_title = normalizar(libro['titulo'])
+            if title_clean == db_title:
+                return libro['id'], libro['titulo']
+            # Para títulos largos, verificar subcadena con longitud comparable
+            if len(db_title) > 5 and abs(len(title_clean) - len(db_title)) < 15:
+                if title_clean in db_title or db_title in title_clean:
+                    return libro['id'], libro['titulo']
     return None
 
 def actualizar_app_js(libros_encontrados):
@@ -154,7 +159,7 @@ def main():
     try:
         # 1. Obtener libros populares
         libros_amazon = obtener_mas_vendidos()
-        print(f"Libros obtenidos de Amazon:")
+        print(f"Libros obtenidos de Amazon México (Español):")
         for idx, (t, a) in enumerate(libros_amazon):
             print(f"  {idx+1}. {t} - {a}")
             
@@ -169,21 +174,26 @@ def main():
             resultado = buscar_libro_en_db(titulo, autor, db_libros)
             if resultado:
                 book_id, db_title = resultado
-                encontrados.append((book_id, db_title))
+                if (book_id, db_title) not in encontrados:
+                    encontrados.append((book_id, db_title))
+                    if len(encontrados) == 10:
+                        break
             else:
                 no_encontrados.append(f"{titulo} - {autor}")
                 
         # 4. Actualizar si hay al menos un libro coincidente
         if encontrados:
             actualizar_app_js(encontrados)
-            print(f"\nSe actualizaron {len(encontrados)} libros destacados en app.js.")
+            print(f"\nSe actualizaron {len(encontrados)} libros destacados en app.js:")
+            for b_id, b_title in encontrados:
+                print(f"  - ID {b_id}: {b_title}")
         else:
             print("\nNo se encontró ningún libro coincidente en la base de datos local.")
             
         # 5. Avisar de los no encontrados
         if no_encontrados:
             print("\n" + "="*40)
-            print("⚠️ AVISO: Libros no encontrados en el CSV:")
+            print("⚠️ AVISO: Libros no coincidentes en el catálogo:")
             for libro in no_encontrados:
                 print(f"  - {libro}")
             print("="*40)
