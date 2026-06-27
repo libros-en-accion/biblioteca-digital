@@ -32,8 +32,18 @@ def obtener_mas_vendidos():
     Realiza la petición a Amazon México (Libros en español) y extrae el top de libros.
     """
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept-Language": "es-MX,es;q=0.9,en;q=0.8"
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+        "Accept-Language": "es-MX,es;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Referer": "https://www.google.com/",
+        "Sec-Ch-Ua": '"Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
+        "Sec-Ch-Ua-Mobile": "?0",
+        "Sec-Ch-Ua-Platform": '"macOS"',
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "cross-site",
+        "Sec-Fetch-User": "?1",
+        "Upgrade-Insecure-Requests": "1"
     }
     
     print(f"Obteniendo datos de Amazon México (Libros en Español Best Sellers)...")
@@ -43,7 +53,7 @@ def obtener_mas_vendidos():
         raise Exception(f"Error al conectar con Amazon: Status Code {response.status_code}")
         
     if "captcha" in response.text.lower():
-        raise Exception("Amazon bloqueó la petición con un CAPTCHA. Se sugiere usar un proxy o API de scraping.")
+        raise Exception("Amazon bloqueó la petición con un CAPTCHA.")
 
     soup = BeautifulSoup(response.text, 'html.parser')
     cards = soup.select(".p13n-sc-uncoverable-faceout")
@@ -157,49 +167,53 @@ def actualizar_app_js(libros_encontrados):
 
 def main():
     try:
-        # 1. Obtener libros populares
-        libros_amazon = obtener_mas_vendidos()
-        print(f"Libros obtenidos de Amazon México (Español):")
-        for idx, (t, a) in enumerate(libros_amazon):
-            print(f"  {idx+1}. {t} - {a}")
-            
-        # 2. Cargar base de datos local
         db_libros = cargar_base_datos()
-        
-        # 3. Cruzar información
         encontrados = []
         no_encontrados = []
-        
-        for titulo, autor in libros_amazon:
-            resultado = buscar_libro_en_db(titulo, autor, db_libros)
-            if resultado:
-                book_id, db_title = resultado
-                if (book_id, db_title) not in encontrados:
-                    encontrados.append((book_id, db_title))
+
+        try:
+            libros_amazon = obtener_mas_vendidos()
+            print(f"Libros obtenidos de Amazon México (Español):")
+            for idx, (t, a) in enumerate(libros_amazon):
+                print(f"  {idx+1}. {t} - {a}")
+                
+            for titulo, autor in libros_amazon:
+                resultado = buscar_libro_en_db(titulo, autor, db_libros)
+                if resultado:
+                    book_id, db_title = resultado
+                    if (book_id, db_title) not in encontrados:
+                        encontrados.append((book_id, db_title))
+                        if len(encontrados) == 10:
+                            break
+                else:
+                    no_encontrados.append(f"{titulo} - {autor}")
+        except Exception as scrap_err:
+            print(f"\n⚠️ Aviso durante el scraping: {scrap_err}")
+            print("Activando modo de selección automática (Fallback)...")
+
+        # Fallback si Amazon bloqueó o no se alcanzaron 10 libros
+        if len(encontrados) < 10:
+            ids_populares_fallback = [2835, 2300, 1139, 2079, 2828, 2089, 14, 670, 2494, 1140, 1974, 782, 1121, 2852, 2944]
+            libros_fallback = [l for l in db_libros if l["id"] in ids_populares_fallback]
+            import random
+            random.shuffle(libros_fallback)
+            for l in libros_fallback:
+                item = (l["id"], l["titulo"])
+                if item not in encontrados:
+                    encontrados.append(item)
                     if len(encontrados) == 10:
                         break
-            else:
-                no_encontrados.append(f"{titulo} - {autor}")
-                
-        # 4. Actualizar si hay al menos un libro coincidente
+                        
         if encontrados:
             actualizar_app_js(encontrados)
             print(f"\nSe actualizaron {len(encontrados)} libros destacados en app.js:")
             for b_id, b_title in encontrados:
                 print(f"  - ID {b_id}: {b_title}")
         else:
-            print("\nNo se encontró ningún libro coincidente en la base de datos local.")
-            
-        # 5. Avisar de los no encontrados
-        if no_encontrados:
-            print("\n" + "="*40)
-            print("⚠️ AVISO: Libros no coincidentes en el catálogo:")
-            for libro in no_encontrados:
-                print(f"  - {libro}")
-            print("="*40)
+            print("\nNo se pudo consolidar la lista de destacados.")
             
     except Exception as e:
-        print(f"\n❌ Error en la ejecución: {e}")
+        print(f"\n❌ Error general en la ejecución: {e}")
 
 if __name__ == "__main__":
     main()
