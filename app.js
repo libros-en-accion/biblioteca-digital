@@ -2,16 +2,16 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
-  1233, // Las 48 leyes del poder
-  2845, // Alas de sangre
-  2763, // No tengo boca y debo gritar
-  814, // Noches blancas (Ilustrado)
-  2857, // Proyecto Hail Mary
-  783, // El placebo eres tu
-  1250, // La sociedad del cansancio
+  2300, // La Sombra del Viento
+  2835, // El poder del ahora
+  1139, // Cien anos de soledad
+  2828, // El monje que vendio su Ferrari
   2079, // 1984
-  2875, // El túnel
-  2820  // Los siete maridos de Evelyn Hugo 
+  14, // La divina comedia
+  2089, // Rebelion en la granja
+  324, // Cronicas marcianas completas
+  2494, // El Silmarillion
+  1974 // Hombres sin mujeres
 ];
 
 // ── VARIABLES GLOBALES ──
