@@ -4,14 +4,14 @@
 const LIBROS_DESTACADOS_IDS = [
   2300, // La Sombra del Viento
   2835, // El poder del ahora
-  1139, // Cien anos de soledad
-  2828, // El monje que vendio su Ferrari
   2079, // 1984
-  14, // La divina comedia
+  2828, // El monje que vendio su Ferrari
+  1139, // Cien anos de soledad
+  2944, // La naranja mecanica
   2089, // Rebelion en la granja
+  14, // La divina comedia
   324, // Cronicas marcianas completas
-  2494, // El Silmarillion
-  1974 // Hombres sin mujeres
+  1621 // It
 ];
 
 // ── VARIABLES GLOBALES ──
