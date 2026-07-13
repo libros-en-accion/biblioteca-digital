@@ -5,13 +5,13 @@ const LIBROS_DESTACADOS_IDS = [
   2300, // La Sombra del Viento
   2835, // El poder del ahora
   2079, // 1984
-  2828, // El monje que vendio su Ferrari
   1139, // Cien anos de soledad
-  2944, // La naranja mecanica
+  2828, // El monje que vendio su Ferrari
+  1974, // Hombres sin mujeres
   2089, // Rebelion en la granja
-  14, // La divina comedia
-  324, // Cronicas marcianas completas
-  1621 // It
+  670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
+  1140, // El amor en los tiempos del colera
+  324 // Cronicas marcianas completas
 ];
 
 // ── VARIABLES GLOBALES ──
