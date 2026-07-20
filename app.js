@@ -3,15 +3,15 @@
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
   2300, // La Sombra del Viento
-  2835, // El poder del ahora
   2079, // 1984
-  1139, // Cien anos de soledad
+  2835, // El poder del ahora
   2828, // El monje que vendio su Ferrari
-  1974, // Hombres sin mujeres
-  2089, // Rebelion en la granja
+  1139, // Cien anos de soledad
+  324, // Cronicas marcianas completas
+  14, // La divina comedia
+  2241, // Tormenta de espadas ed ilustrada
   670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
-  1140, // El amor en los tiempos del colera
-  324 // Cronicas marcianas completas
+  2494 // El Silmarillion
 ];
 
 // ── VARIABLES GLOBALES ──
