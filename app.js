@@ -5,13 +5,13 @@ const LIBROS_DESTACADOS_IDS = [
   2079, // 1984
   2300, // La Sombra del Viento
   2835, // El poder del ahora
-  1139, // Cien anos de soledad
   2828, // El monje que vendio su Ferrari
-  2089, // Rebelion en la granja
-  324, // Cronicas marcianas completas
-  2241, // Tormenta de espadas ed ilustrada
+  1139, // Cien anos de soledad
   2853, // La guerra no tiene rostro de mujer
-  2494 // El Silmarillion
+  2241, // Tormenta de espadas ed ilustrada
+  14, // La divina comedia
+  2944, // La naranja mecanica
+  2089 // Rebelion en la granja
 ];
 
 // ── VARIABLES GLOBALES ──
