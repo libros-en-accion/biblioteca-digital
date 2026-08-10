@@ -2,16 +2,16 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
-  2079, // 1984
   2300, // La Sombra del Viento
+  2079, // 1984
   2835, // El poder del ahora
-  2828, // El monje que vendio su Ferrari
   1139, // Cien anos de soledad
+  2828, // El monje que vendio su Ferrari
+  2852, // Voces de Chernóbil
+  324, // Cronicas marcianas completas
   2853, // La guerra no tiene rostro de mujer
-  2241, // Tormenta de espadas ed ilustrada
-  14, // La divina comedia
-  2944, // La naranja mecanica
-  2089 // Rebelion en la granja
+  1963, // After Dark
+  2494 // El Silmarillion
 ];
 
 // ── VARIABLES GLOBALES ──
