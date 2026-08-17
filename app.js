@@ -2,16 +2,16 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
-  2300, // La Sombra del Viento
   2079, // 1984
+  2300, // La Sombra del Viento
   2835, // El poder del ahora
   1139, // Cien anos de soledad
-  2828, // El monje que vendio su Ferrari
-  2852, // Voces de Chernóbil
-  324, // Cronicas marcianas completas
-  2853, // La guerra no tiene rostro de mujer
   1963, // After Dark
-  2494 // El Silmarillion
+  2828, // El monje que vendio su Ferrari
+  2498, // Las dos torres
+  2494, // El Silmarillion
+  670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
+  1974 // Hombres sin mujeres
 ];
 
 // ── VARIABLES GLOBALES ──
