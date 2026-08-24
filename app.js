@@ -3,15 +3,15 @@
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
   2079, // 1984
+  1139, // Cien anos de soledad
   2300, // La Sombra del Viento
   2835, // El poder del ahora
-  1139, // Cien anos de soledad
-  1963, // After Dark
   2828, // El monje que vendio su Ferrari
-  2498, // Las dos torres
+  1963, // After Dark
+  2241, // Tormenta de espadas ed ilustrada
   2494, // El Silmarillion
-  670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
-  1974 // Hombres sin mujeres
+  1974, // Hombres sin mujeres
+  670 // Rayuela Edicion conmemorativa de la RAE y la ASALE
 ];
 
 // ── VARIABLES GLOBALES ──
