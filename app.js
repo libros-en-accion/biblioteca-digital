@@ -2,16 +2,16 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
-  2079, // 1984
-  1139, // Cien anos de soledad
-  2300, // La Sombra del Viento
+  14, // La divina comedia
+  2944, // La naranja mecanica
   2835, // El poder del ahora
-  2828, // El monje que vendio su Ferrari
-  1963, // After Dark
-  2241, // Tormenta de espadas ed ilustrada
+  2300, // La Sombra del Viento
+  2852, // Voces de Chernóbil
   2494, // El Silmarillion
-  1974, // Hombres sin mujeres
-  670 // Rayuela Edicion conmemorativa de la RAE y la ASALE
+  670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
+  2828, // El monje que vendio su Ferrari
+  1121, // El hombre en busca de sentido
+  2079 // 1984
 ];
 
 // ── VARIABLES GLOBALES ──
