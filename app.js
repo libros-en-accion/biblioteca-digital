@@ -3,15 +3,15 @@
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
   2300, // La Sombra del Viento
-  2079, // 1984
   2835, // El poder del ahora
   1139, // Cien anos de soledad
-  1140, // El amor en los tiempos del colera
+  2079, // 1984
   2828, // El monje que vendio su Ferrari
-  2944, // La naranja mecanica
-  1963, // After Dark
+  1140, // El amor en los tiempos del colera
+  2853, // La guerra no tiene rostro de mujer
   1974, // Hombres sin mujeres
-  2853 // La guerra no tiene rostro de mujer
+  2803, // Pequeno cerdo capitalista
+  2089 // Rebelion en la granja
 ];
 
 // ── VARIABLES GLOBALES ──
