@@ -2,16 +2,16 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
-  2300, // La Sombra del Viento
   2835, // El poder del ahora
-  1139, // Cien anos de soledad
+  2300, // La Sombra del Viento
   2079, // 1984
-  2828, // El monje que vendio su Ferrari
+  1139, // Cien anos de soledad
   1140, // El amor en los tiempos del colera
+  2828, // El monje que vendio su Ferrari
   2853, // La guerra no tiene rostro de mujer
   1974, // Hombres sin mujeres
-  2803, // Pequeno cerdo capitalista
-  2089 // Rebelion en la granja
+  324, // Cronicas marcianas completas
+  2852 // Voces de Chernóbil
 ];
 
 // ── VARIABLES GLOBALES ──
