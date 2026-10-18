@@ -935,16 +935,21 @@
   },
   {
     "id": 69,
-    "titulo": "Las mil y una noches",
+    "titulo": "Las mil y una noches - Tomo I",
     "autor": "Anonimo",
     "anio": 800,
     "genero": "Cuento",
-    "descripcion": "Famosa recopilación de cuentos folclóricos del Oriente Medio unidos por el relato marco de Sherezade.",
-    "pdf": "https://drive.google.com/file/d/1hWyiUuXPGrMcToAy8URxBYCmTTtjfihI/preview",
-    "portada": "portadas/69.webp",
-    "archivo_pdf": "A/Anonimo/Las_mil_y_una_noches-Anonimo.pdf",
+    "descripcion": "Edición completa del clásico universal de la literatura oriental en dos tomos. A través del célebre relato marco de Sherezade, quien arriesga su vida contando historias noche tras noche ante el sultán Sahriar, se despliega un fascinante tapiz de leyendas, magia, pasiones, visires y alfombras mágicas del Oriente Medio.",
+    "pdf": "",
+    "portada": "portadas/69.webp?v=2",
+    "archivo_pdf": "A/Anonimo/Las mil y una noches I - Anonimo.pdf",
+    "archivo_epub": "001_EPUB/A/Anonimo/Las mil y una noches I - Anonimo.epub",
     "idioma": "es",
-    "paginas": 234
+    "paginas": 1778,
+    "serie": {
+      "nombre": "Las mil y una noches",
+      "orden": 1
+    }
   },
   {
     "id": 70,
@@ -18367,7 +18372,11 @@
     "archivo_pdf": "H/Hoover, Colleen/Romper el circulo - Colleen Hoover.pdf",
     "archivo_epub": "001_EPUB/H/Hoover, Colleen/Romper el circulo - Colleen Hoover.epub",
     "idioma": "es",
-    "paginas": 277
+    "paginas": 277,
+    "serie": {
+      "nombre": "Serie Romper el Círculo",
+      "orden": 1
+    }
   },
   {
     "id": 1313,
@@ -42323,5 +42332,417 @@
     "archivo_epub": "001_EPUB/S/Stoker, Bram/El_huesped_de_Dracula-Stoker_Bram.epub",
     "idioma": "es",
     "paginas": 16
+  },
+  {
+    "id": 3098,
+    "titulo": "Las mil y una noches - Tomo II",
+    "autor": "Anonimo",
+    "anio": 800,
+    "genero": "Cuento",
+    "descripcion": "Segundo volumen de la magna recopilación de cuentos tradicionales de Oriente Medio, India y Persia. Continúa las apasionantes narraciones de Sherezade, que combinan sabiduría popular, fábulas morales, romances, aventuras marinas y prodigios sobrenaturales que cautivan la imaginación universal.",
+    "pdf": "",
+    "portada": "portadas/3098.webp",
+    "archivo_pdf": "A/Anonimo/Las mil y una noches II - Anonimo.pdf",
+    "archivo_epub": "001_EPUB/A/Anonimo/Las mil y una noches II - Anonimo.epub",
+    "idioma": "es",
+    "paginas": 1895,
+    "serie": {
+      "nombre": "Las mil y una noches",
+      "orden": 2
+    }
+  },
+  {
+    "id": 3099,
+    "titulo": "Almendra",
+    "autor": "Sohn Won-pyung",
+    "anio": 2017,
+    "genero": "Ficción Contemporánea",
+    "descripcion": "Yunjae nació con alexitimia, una condición neurológica que le impide sentir emociones como el miedo o la ira debido a que sus amígdalas cerebrales son pequeñas como almendras. Tras una tragedia familiar, su mundo solitario cambia radicalmente cuando conoce a Gon, un joven rebelde y herido con quien forja una inesperada amistad sobre la empatía y la condición humana.",
+    "pdf": "",
+    "portada": "portadas/3099.webp",
+    "archivo_pdf": "S/Sohn, Won-pyung/Almendra - Sohn Won-pyung.pdf",
+    "archivo_epub": "001_EPUB/S/Sohn, Won-pyung/Almendra - Sohn Won-pyung.epub",
+    "idioma": "es",
+    "paginas": 202
+  },
+  {
+    "id": 3100,
+    "titulo": "Contraataque a los 30",
+    "autor": "Sohn Won-pyung",
+    "anio": 2021,
+    "genero": "Ficción Contemporánea",
+    "descripcion": "Novela generacional de Sohn Won-pyung que retrata la precariedad laboral, las presiones sociales y el desencanto de los jóvenes de treinta años en la competitiva Seúl moderna. Un grupo de pasantes y trabajadores temporales decide emprender pequeñas rebeliones cotidianas para recuperar la dignidad y el sentido de sus vidas.",
+    "pdf": "",
+    "portada": "portadas/3100.webp",
+    "archivo_pdf": "S/Sohn, Won-pyung/Contraataque a los 30 - Sohn Won-pyung.pdf",
+    "archivo_epub": "001_EPUB/S/Sohn, Won-pyung/Contraataque a los 30 - Sohn Won-pyung.epub",
+    "idioma": "es",
+    "paginas": 215
+  },
+  {
+    "id": 3101,
+    "titulo": "Amanecer en la cosecha",
+    "autor": "Suzanne Collins",
+    "anio": 2025,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Quinta entrega de Los Juegos del Hambre. Ambientada en la mañana de la cosecha de los Quincuagésimos Juegos del Hambre (el Segundo Vasallaje de los Veinticinco), la novela relata la brutal competición en la que un joven Haymitch Abernathy del Distrito 12 fue seleccionado para luchar a muerte y cómo desafió la tiranía del Capitolio.",
+    "pdf": "",
+    "portada": "portadas/3101.webp",
+    "archivo_pdf": "C/Collins, Suzanne/Amanecer en la cosecha - Suzanne Collins.pdf",
+    "archivo_epub": "001_EPUB/C/Collins, Suzanne/Amanecer en la cosecha - Suzanne Collins.epub",
+    "idioma": "es",
+    "paginas": 403,
+    "serie": {
+      "nombre": "Los Juegos del Hambre",
+      "orden": 5
+    }
+  },
+  {
+    "id": 3102,
+    "titulo": "Antes de que se enfríe el café",
+    "autor": "Toshikazu Kawaguchi",
+    "anio": 2015,
+    "genero": "Ficción Contemporánea",
+    "descripcion": "En un pequeño callejón de Tokio hay una misteriosa cafetería que ofrece a sus clientes la posibilidad de viajar en el tiempo sentándose en una silla particular, siempre que regresen antes de que su taza de café se enfríe por completo. Una novela conmovedora y llena de calidez sobre las segundas oportunidades, el perdón y el amor.",
+    "pdf": "",
+    "portada": "portadas/3102.webp",
+    "archivo_pdf": "K/Kawaguchi, Toshikazu/Antes de que se enfrie el cafe - Toshikazu Kawaguchi.pdf",
+    "archivo_epub": "001_EPUB/K/Kawaguchi, Toshikazu/Antes de que se enfrie el cafe - Toshikazu Kawaguchi.epub",
+    "idioma": "es",
+    "paginas": 233
+  },
+  {
+    "id": 3103,
+    "titulo": "Asesinato para principiantes",
+    "autor": "Holly Jackson",
+    "anio": 2019,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Cinco años atrás, la estudiante Andie Bell fue asesinada y su novio Sal Singh fue culpado antes de suicidarse, cerrando el caso en el pueblo de Little Kilton. Pippa Fitz-Amobi, convencida de la inocencia de Sal, decide investigar el misterio como su proyecto de último año escolar, desenterrando secretos oscuros que alguien está dispuesto a matar por mantener ocultos.",
+    "pdf": "",
+    "portada": "portadas/3103.webp",
+    "archivo_pdf": "J/Jackson, Holly/Asesinato para principiantes - Holly Jackson.pdf",
+    "archivo_epub": "001_EPUB/J/Jackson, Holly/Asesinato para principiantes - Holly Jackson.epub",
+    "idioma": "es",
+    "paginas": 459,
+    "serie": {
+      "nombre": "Trilogía Pip Fitz-Amobi",
+      "orden": 1
+    }
+  },
+  {
+    "id": 3104,
+    "titulo": "Desaparición para expertos",
+    "autor": "Holly Jackson",
+    "anio": 2020,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Segunda entrega de la serie Pip Fitz-Amobi. Tras el éxito de su pódcast de crímenes reales, Pip jura no volver a involucrarse como detective aficionada, pero cuando su amigo Jamie Reynolds desaparece la noche del memorial del pueblo y la policía se niega a buscarlo, Pip inicia una carrera contrarreloj para hallarlo con vida.",
+    "pdf": "",
+    "portada": "portadas/3104.webp",
+    "archivo_pdf": "J/Jackson, Holly/Desaparicion para expertos - Holly Jackson.pdf",
+    "archivo_epub": "001_EPUB/J/Jackson, Holly/Desaparicion para expertos - Holly Jackson.epub",
+    "idioma": "es",
+    "paginas": 372,
+    "serie": {
+      "nombre": "Trilogía Pip Fitz-Amobi",
+      "orden": 2
+    }
+  },
+  {
+    "id": 3105,
+    "titulo": "Venganza para víctimas",
+    "autor": "Holly Jackson",
+    "anio": 2021,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Conclusión de la trilogía de Pippa Fitz-Amobi. Pip enfrenta estrés postraumático por sus investigaciones anteriores cuando descubre que un acosador en serie la vigila de cerca y amenaza su vida. Para salvarse, Pip debe poner a prueba todos sus límites morales y aplicar sus conocimientos detectivescos en una lucha desesperada por sobrevivir.",
+    "pdf": "",
+    "portada": "portadas/3105.webp",
+    "archivo_pdf": "J/Jackson, Holly/Venganza para victimas - Holly Jackson.pdf",
+    "archivo_epub": "001_EPUB/J/Jackson, Holly/Venganza para victimas - Holly Jackson.epub",
+    "idioma": "es",
+    "paginas": 468,
+    "serie": {
+      "nombre": "Trilogía Pip Fitz-Amobi",
+      "orden": 3
+    }
+  },
+  {
+    "id": 3106,
+    "titulo": "Aún no estoy muerta",
+    "autor": "Holly Jackson",
+    "anio": 2024,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Bel ha vivido toda su infancia bajo la sombra de la desaparición de su madre Rachel Price, ocurrida dieciséis años atrás. Cuando un equipo de documentalistas rueda una serie sobre el caso no resuelto, lo impensable ocurre: Rachel regresa con vida con una historia imposible de verificar. Bel sospecha que su madre oculta una verdad aterradora.",
+    "pdf": "",
+    "portada": "portadas/3106.webp",
+    "archivo_pdf": "J/Jackson, Holly/Aun no estoy muerta - Holly Jackson.pdf",
+    "archivo_epub": "001_EPUB/J/Jackson, Holly/Aun no estoy muerta - Holly Jackson.epub",
+    "idioma": "es",
+    "paginas": 432
+  },
+  {
+    "id": 3107,
+    "titulo": "Five survive",
+    "autor": "Holly Jackson",
+    "anio": 2022,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Seis amigos viajan en una caravana durante las vacaciones de primavera hacia la costa. En una carretera desierta y sin señal de telefonía móvil, los neumáticos son reventados por disparos y quedan atrapados bajo la mira de un francotirador oculto en la oscuridad, quien exige que uno de ellos confiese un secreto inconfesable para dejarlos salir con vida.",
+    "pdf": "",
+    "portada": "portadas/3107.webp",
+    "archivo_pdf": "J/Jackson, Holly/Five survive - Holly Jackson.pdf",
+    "archivo_epub": "001_EPUB/J/Jackson, Holly/Five survive - Holly Jackson.epub",
+    "idioma": "es",
+    "paginas": 361
+  },
+  {
+    "id": 3108,
+    "titulo": "Circe",
+    "autor": "Madeline Miller",
+    "anio": 2018,
+    "genero": "Fantasía",
+    "descripcion": "Reinvención literaria del mito clásico de la hechicera Circe, hija de Helios, dios del sol. Despreciada por su propia estirpe divina, Circe descubre su poder sobre la magia y las hierbas antes de ser desterrada a la isla desierta de Eea, donde se convertirá en una mujer independiente capaz de desafiar a monstruos, héroes como Odiseo y a los mismos dioses olímpicos.",
+    "pdf": "",
+    "portada": "portadas/3108.webp",
+    "archivo_pdf": "M/Miller, Madeline/Circe - Madeline Miller.pdf",
+    "archivo_epub": "001_EPUB/M/Miller, Madeline/Circe - Madeline Miller.epub",
+    "idioma": "es",
+    "paginas": 434
+  },
+  {
+    "id": 3109,
+    "titulo": "El caballero de la armadura oxidada",
+    "autor": "Robert Fisher",
+    "anio": 1987,
+    "genero": "Autoayuda y Espiritualidad",
+    "descripcion": "Célebre fábula alegórica sobre un valeroso caballero que, obsesionado con su gloria y armadura, olvida cómo quitársela y queda aprisionado en ella. Con la ayuda del mago Merlín y diversos guías, emprende el Sendero de la Verdad para desprenderse de sus barreras defensivas y reencontrarse con su auténtico ser.",
+    "pdf": "",
+    "portada": "portadas/3109.webp",
+    "archivo_pdf": "F/Fisher, Robert/El caballero de la armadura oxidada - Robert Fisher.pdf",
+    "archivo_epub": "001_EPUB/F/Fisher, Robert/El caballero de la armadura oxidada - Robert Fisher.epub",
+    "idioma": "es",
+    "paginas": 62
+  },
+  {
+    "id": 3110,
+    "titulo": "El caballero de los Siete Reinos",
+    "autor": "George R. R. Martin",
+    "anio": 2013,
+    "genero": "Fantasía",
+    "descripcion": "Recopilación de los tres relatos sobre Duncan el Alto (Dunk) y su fiel escudero Egg (el futuro rey Aegon V Targaryen), ambientados casi un siglo antes de los acontecimientos de Juego de Tronos. Una joya de caballería, lealtad y aventura en el apogeo de la dinastía Targaryen sobre Poniente.",
+    "pdf": "",
+    "portada": "portadas/3110.webp",
+    "archivo_pdf": "R/R. R. Martin, George/El caballero de los Siete Reinos - George R. R. Martin.pdf",
+    "archivo_epub": "001_EPUB/R/R. R. Martin, George/El caballero de los Siete Reinos - George R. R. Martin.epub",
+    "idioma": "es",
+    "paginas": 336
+  },
+  {
+    "id": 3111,
+    "titulo": "Fuego y Sangre",
+    "autor": "George R. R. Martin",
+    "anio": 2018,
+    "genero": "Fantasía",
+    "descripcion": "Historia definitiva de la casa Targaryen en Poniente contada a través de la crónica del archimaestre Gyldayn. Narra desde la conquista de los Siete Reinos por Aegon I y sus hermanas a lomos de dragones hasta la devastadora guerra civil conocida como la Danza de los Dragones, base de la serie La Casa del Dragón.",
+    "pdf": "",
+    "portada": "portadas/3111.webp",
+    "archivo_pdf": "R/R. R. Martin, George/Fuego y Sangre - George R. R. Martin.pdf",
+    "archivo_epub": "001_EPUB/R/R. R. Martin, George/Fuego y Sangre - George R. R. Martin.epub",
+    "idioma": "es",
+    "paginas": 801
+  },
+  {
+    "id": 3112,
+    "titulo": "Física de lo imposible",
+    "autor": "Michio Kaku",
+    "anio": 2008,
+    "genero": "Divulgación Científica",
+    "descripcion": "El renombrado físico teórico Michio Kaku explora hasta qué punto conceptos de la ciencia ficción como los campos de fuerza, el teletransporte, los viajes en el tiempo, la invisibilidad y las naves interestelares podrían convertirse en realidades tecnológicas en el futuro según las leyes de la física moderna.",
+    "pdf": "",
+    "portada": "portadas/3112.webp",
+    "archivo_pdf": "K/KAKU, MICHIO/Fisica de lo imposible - Michio Kaku.pdf",
+    "archivo_epub": "001_EPUB/K/KAKU, MICHIO/Fisica de lo imposible - Michio Kaku.epub",
+    "idioma": "es",
+    "paginas": 362
+  },
+  {
+    "id": 3113,
+    "titulo": "Invicto: Logra más, sufre menos",
+    "autor": "Marcos Vázquez",
+    "anio": 2020,
+    "genero": "Filosofía",
+    "descripcion": "Manual práctico de mentalidad y filosofía estoica aplicado a los retos del siglo XXI. Inspirado en las enseñanzas de Marco Aurelio, Séneca y Epicteto, Marcos Vázquez ofrece estrategias concretas para fortalecer la resiliencia mental, dominar las emociones, vencer la procrastinación y actuar con claridad y serenidad ante la incertidumbre.",
+    "pdf": "",
+    "portada": "portadas/3113.webp",
+    "archivo_pdf": "V/Vázquez, Marcos/Invicto - Marcos Vazquez.pdf",
+    "archivo_epub": "001_EPUB/V/Vázquez, Marcos/Invicto - Marcos Vazquez.epub",
+    "idioma": "es",
+    "paginas": 290
+  },
+  {
+    "id": 3114,
+    "titulo": "La armadura de la luz",
+    "autor": "Ken Follett",
+    "anio": 2023,
+    "genero": "Novela Histórica",
+    "descripcion": "Quinta entrega de la aclamada saga de Kingsbridge. Ambientada a finales del siglo XVIII durante el estallido de la Revolución Industrial y las guerras napoleónicas, la novela sigue las vidas cruzadas de familias obreras, tejedores y comerciantes de Kingsbridge que luchan por la libertad, la justicia y la dignidad humana en una era de profunda transformación.",
+    "pdf": "",
+    "portada": "portadas/3114.webp",
+    "archivo_pdf": "F/Follett, Ken/La armadura de la luz - Ken Follett.pdf",
+    "archivo_epub": "001_EPUB/F/Follett, Ken/La armadura de la luz - Ken Follett.epub",
+    "idioma": "es",
+    "paginas": 817,
+    "serie": {
+      "nombre": "Saga de Kingsbridge",
+      "orden": 5
+    }
+  },
+  {
+    "id": 3115,
+    "titulo": "La furia",
+    "autor": "Alex Michaelides",
+    "anio": 2024,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Una antigua estrella de cine de Hollywood invita a un círculo íntimo de amigos a pasar un fin de semana en su idílica isla privada griega. Sin embargo, un viento feroz los deja incomunicados y un asesinato sacude la calma. Narrada por un dramaturgo de intenciones dudosas, la historia es un laberinto de secretos, venganzas y giros sorprendentes.",
+    "pdf": "",
+    "portada": "portadas/3115.webp",
+    "archivo_pdf": "M/Michaelides, Alex/La furia - Alex Michaelides.pdf",
+    "archivo_epub": "001_EPUB/M/Michaelides, Alex/La furia - Alex Michaelides.epub",
+    "idioma": "es",
+    "paginas": 298
+  },
+  {
+    "id": 3116,
+    "titulo": "Las doncellas",
+    "autor": "Alex Michaelides",
+    "anio": 2021,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Mariana Andros, una brillante terapeuta de grupo en Londres, viaja a la Universidad de Cambridge tras el asesinato de la mejor amiga de su sobrina. Sus sospechas recaen sobre Edward Fosca, un carismático profesor de tragedia griega venerado por una selecta hermandad de alumnas conocida como Las Doncellas, sumergiéndose en un peligroso juego psicológico.",
+    "pdf": "",
+    "portada": "portadas/3116.webp",
+    "archivo_pdf": "M/Michaelides, Alex/Las doncellas - Alex Michaelides.pdf",
+    "archivo_epub": "001_EPUB/M/Michaelides, Alex/Las doncellas - Alex Michaelides.epub",
+    "idioma": "es",
+    "paginas": 345
+  },
+  {
+    "id": 3117,
+    "titulo": "Mañana, y mañana, y mañana",
+    "autor": "Gabrielle Zevin",
+    "anio": 2022,
+    "genero": "Ficción Contemporánea",
+    "descripcion": "Sam Masur y Sadie Green se reencuentran casualmente en una gélida estación de metro en Boston y deciden crear juntos un videojuego revolucionario. Su éxito repentino los catapultará a la fama y la riqueza, desatando una profunda y compleja relación de amor, celos, tragedia y devoción artística a lo largo de tres décadas.",
+    "pdf": "",
+    "portada": "portadas/3117.webp",
+    "archivo_pdf": "Z/Zevin, Gabrielle/Manana y manana y manana - Gabrielle Zevin.pdf",
+    "archivo_epub": "001_EPUB/Z/Zevin, Gabrielle/Manana y manana y manana - Gabrielle Zevin.epub",
+    "idioma": "es",
+    "paginas": 469
+  },
+  {
+    "id": 3118,
+    "titulo": "Todo arde",
+    "autor": "Juan Gómez-Jurado",
+    "anio": 2022,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Aura Reyes, Mari Paz Celeiro y Sere Quintero son tres mujeres que lo han perdido absolutamente todo en la vida a manos de los poderosos. Decididas a no resignarse, unen sus ingenios y rencores para planear una venganza imposible que sacudirá los cimientos del poder. Primera parte de la exitosa trilogía conectada al universo de Reina Roja.",
+    "pdf": "",
+    "portada": "portadas/3118.webp",
+    "archivo_pdf": "G/Gómez-Jurado, Juan/Todo arde - Juan Gomez-Jurado.pdf",
+    "archivo_epub": "001_EPUB/G/Gómez-Jurado, Juan/Todo arde - Juan Gomez-Jurado.epub",
+    "idioma": "es",
+    "paginas": 476,
+    "serie": {
+      "nombre": "Trilogía Todo Arde",
+      "orden": 1
+    }
+  },
+  {
+    "id": 3119,
+    "titulo": "Todo vuelve",
+    "autor": "Juan Gómez-Jurado",
+    "anio": 2023,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Segunda entrega de la trilogía Todo Arde. Aura Reyes se encuentra recluida en una prisión de máxima seguridad mientras Mari Paz y Sere intentan desesperadamente mantener a salvo a sus hijas. Para sobrevivir a sus implacables enemigos, deberán ejecutar un plan maestro aún más arriesgado y audaz en una carrera contra el tiempo.",
+    "pdf": "",
+    "portada": "portadas/3119.webp",
+    "archivo_pdf": "G/Gómez-Jurado, Juan/Todo vuelve - Juan Gomez-Jurado.pdf",
+    "archivo_epub": "001_EPUB/G/Gómez-Jurado, Juan/Todo vuelve - Juan Gomez-Jurado.epub",
+    "idioma": "es",
+    "paginas": 428,
+    "serie": {
+      "nombre": "Trilogía Todo Arde",
+      "orden": 2
+    }
+  },
+  {
+    "id": 3120,
+    "titulo": "Todo muere",
+    "autor": "Juan Gómez-Jurado",
+    "anio": 2024,
+    "genero": "Misterio y Thriller",
+    "descripcion": "El épico y esperado desenlace de la trilogía Todo Arde y una pieza clave en el universo de Reina Roja. Aura Reyes, Mari Paz Celeiro y Sere Quintero se enfrentan a su hora más oscura contra el verdadero cerebro detrás de las sombras, en una batalla final donde no habrá tregua ni segundas oportunidades.",
+    "pdf": "",
+    "portada": "portadas/3120.webp",
+    "archivo_pdf": "G/Gómez-Jurado, Juan/Todo muere - Juan Gomez-Jurado.pdf",
+    "archivo_epub": "001_EPUB/G/Gómez-Jurado, Juan/Todo muere - Juan Gomez-Jurado.epub",
+    "idioma": "es",
+    "paginas": 540,
+    "serie": {
+      "nombre": "Trilogía Todo Arde",
+      "orden": 3
+    }
+  },
+  {
+    "id": 3121,
+    "titulo": "Trenza del mar Esmeralda",
+    "autor": "Brandon Sanderson",
+    "anio": 2023,
+    "genero": "Fantasía",
+    "descripcion": "Primera novela secreta del Cosmere, narrada por el carismático Hoid. En un mundo donde los océanos están compuestos por esporas alienígenas letales que reaccionan violentamente al agua, Trenza, una sencilla lavandera, zarpa en un barco pirata para rescatar a su amado Charlie cruzando el temible Mar de Medianoche.",
+    "pdf": "",
+    "portada": "portadas/3121.webp",
+    "archivo_pdf": "S/SANDERSON, BRANDON/Trenza del mar Esmeralda - Brandon Sanderson.pdf",
+    "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Trenza del mar Esmeralda - Brandon Sanderson.epub",
+    "idioma": "es",
+    "paginas": 482,
+    "serie": {
+      "nombre": "Novelas Secretas del Cosmere",
+      "orden": 1
+    }
+  },
+  {
+    "id": 3122,
+    "titulo": "Yumi y el pintor de pesadillas",
+    "autor": "Brandon Sanderson",
+    "anio": 2023,
+    "genero": "Fantasía",
+    "descripcion": "Tercera novela secreta del Cosmere, inspirada en Your Name y el folclore asiático. En dos mundos interconectados por la energía espiritual, Yumi, una sacerdotisa dotada del poder de invocar espíritus celestiales, y Pintor, un artista que somete pesadillas corpóreas en una ciudad de neón perpetuo, intercambian cuerpos misteriosamente y deben cooperar para salvar sus civilizaciones.",
+    "pdf": "",
+    "portada": "portadas/3122.webp",
+    "archivo_pdf": "S/SANDERSON, BRANDON/Yumi y el pintor de pesadillas - Brandon Sanderson.pdf",
+    "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Yumi y el pintor de pesadillas - Brandon Sanderson.epub",
+    "idioma": "es",
+    "paginas": 419,
+    "serie": {
+      "nombre": "Novelas Secretas del Cosmere",
+      "orden": 2
+    }
+  },
+  {
+    "id": 3123,
+    "titulo": "Volver a empezar",
+    "autor": "Colleen Hoover",
+    "anio": 2022,
+    "genero": "Romance",
+    "descripcion": "Secuela directa del aclamado fenómeno Romper el círculo. Narrada alternadamente desde las perspectivas de Lily y Atlas, la historia explora cómo reconstruir un amor sano y sincero mientras lidian con las complejidades de la coparentalidad, el pasado traumático y los celos de su exmarido Ryle.",
+    "pdf": "",
+    "portada": "portadas/3123.webp",
+    "archivo_pdf": "H/Hoover, Colleen/Volver a empezar - Colleen Hoover.pdf",
+    "archivo_epub": "001_EPUB/H/Hoover, Colleen/Volver a empezar - Colleen Hoover.epub",
+    "idioma": "es",
+    "paginas": 304,
+    "serie": {
+      "nombre": "Serie Romper el Círculo",
+      "orden": 2
+    }
   }
 ]
