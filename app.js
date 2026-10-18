@@ -2,6 +2,7 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
+  3044, // Espejismo (Hugh Howey - Trilogía del Silo)
   1233, // Las 48 leyes del poder
   2845, // Alas de sangre
   2763, // No tengo boca y debo gritar
@@ -323,7 +324,7 @@ function mostrarSkeletons() {
 // ── CARGAR LIBROS AL INICIAR ──
 mostrarSkeletons();
 Promise.all([
-  fetch('libros.json?v=12').then(r => {
+  fetch('libros.json?v=13').then(r => {
     if (!r.ok) throw new Error(`Error HTTP al cargar libros: ${r.status}`);
     return r.json();
   }),

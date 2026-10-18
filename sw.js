@@ -1,10 +1,10 @@
-const CACHE_NAME = 'libractiva-v10';
+const CACHE_NAME = 'libractiva-v11';
 const CACHE_ASSETS = [
   '/',
   '/libros.json',
   '/colecciones.json',
-  '/style.css?v=25',
-  '/app.js?v=23',
+  '/style.css?v=26',
+  '/app.js?v=24',
   '/lucide.min.js',
   '/manifest.json',
   '/favicon.ico',
@@ -75,8 +75,27 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Interceptar activos estáticos y catálogos con Stale-While-Revalidate
-  const esActivo = /^\/(libros\.json|colecciones\.json|style\.css|app\.js|lucide\.min\.js|manifest\.json|favicon|icon-|portada-)/.test(path) || path === '/' || path === '/index.html';
+  // Interceptar catálogos (libros.json, colecciones.json) con estrategia Network-First
+  // para que siempre se reciban libros nuevos inmediatamente sin depender de recargas
+  if (path === '/libros.json' || path === '/colecciones.json') {
+    event.respondWith(
+      fetch(event.request)
+        .then(networkRes => {
+          if (networkRes.ok) {
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then(cache =>
+              cache.put(normalizarUrl(event.request.url), clone)
+            );
+          }
+          return networkRes;
+        })
+        .catch(() => caches.match(normalizarUrl(event.request.url)))
+    );
+    return;
+  }
+
+  // Interceptar activos estáticos con Stale-While-Revalidate
+  const esActivo = /^\/(style\.css|app\.js|lucide\.min\.js|manifest\.json|favicon|icon-|portada-)/.test(path) || path === '/' || path === '/index.html';
 
   if (!esActivo) return;
 
