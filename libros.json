@@ -168,16 +168,17 @@
   },
   {
     "id": 14,
-    "titulo": "La divina comedia",
+    "titulo": "La Divina Comedia",
     "autor": "Dante Alighieri",
     "anio": 1320,
     "genero": "Poesía",
-    "descripcion": "Poema épico que narra el viaje del alma a través del Infierno, el Purgatorio y el Paraíso.",
-    "pdf": "https://drive.google.com/file/d/1Lp2vBFWRCcIjABZT7XLG4dww27Wf9o2n/preview",
-    "portada": "portadas/14.webp",
-    "archivo_pdf": "A/Alighieri, Dante/La_divina_comedia-Dante_Alighieri.pdf",
+    "descripcion": "La obra cumbre de la literatura universal y monumento de la poesía épica y teológica medieval. Acompañado por el poeta Virgilio a través de los nueve círculos del Infierno y las terrazas del Purgatorio, y posteriormente guiado por su amada Beatriz hacia las esferas del Paraíso, Dante emprende una alegoría sublime de la redención del alma humana ante la justicia divina, el pecado y el amor supremo que mueve el sol y las demás estrellas. Esta edición clásica contiene las célebres ilustraciones de Gustavo Doré.",
+    "pdf": "",
+    "portada": "portadas/14.webp?v=2",
+    "archivo_pdf": "A/Alighieri, Dante/La Divina Comedia - Dante Alighieri.pdf",
     "idioma": "es",
-    "paginas": 444
+    "paginas": 622,
+    "archivo_epub": "001_EPUB/A/Alighieri, Dante/La Divina Comedia - Dante Alighieri.epub"
   },
   {
     "id": 15,
