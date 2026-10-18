@@ -2458,10 +2458,15 @@ async function pedirRecomendacion() {
 
     clearTimeout(timeoutId);
 
-    const datos = await respuesta.json();
+    let datos = null;
+    try {
+      datos = await respuesta.json();
+    } catch (parseErr) {
+      throw new Error('El servicio tardó demasiado en responder (Tiempo de espera agotado). Por favor reintenta.');
+    }
 
-    if (!respuesta.ok || !datos.recomendaciones) {
-      throw new Error(datos.error || 'Respuesta inesperada del servidor');
+    if (!respuesta.ok || !datos || !datos.recomendaciones) {
+      throw new Error(datos?.error || 'No se pudo obtener la recomendación. Intenta de nuevo.');
     }
 
     renderizarResultados(datos.recomendaciones);
