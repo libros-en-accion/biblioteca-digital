@@ -16,7 +16,13 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ origen: 'fallback', ranking: [] });
   }
 
-  const client = createClient({ url: redisUrl });
+  const client = createClient({
+    url: redisUrl,
+    socket: {
+      connectTimeout: 800,
+      reconnectStrategy: () => false
+    }
+  });
   client.on('error', () => {});
 
   try {

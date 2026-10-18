@@ -44,8 +44,13 @@ module.exports = async function handler(req, res) {
   const kvKey = `donor:code:${codigoNormalizado}`;
 
   const client = createClient({
-    url: process.env.REDIS_URL || process.env.KV_URL
+    url: process.env.REDIS_URL || process.env.KV_URL,
+    socket: {
+      connectTimeout: 800,
+      reconnectStrategy: () => false
+    }
   });
+  client.on('error', () => {});
 
   try {
     await client.connect();

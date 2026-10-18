@@ -14,7 +14,13 @@ async function registrarLecturaRedis(libroId) {
   const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
   if (!redisUrl) return;
 
-  const client = createClient({ url: redisUrl });
+  const client = createClient({
+    url: redisUrl,
+    socket: {
+      connectTimeout: 800,
+      reconnectStrategy: () => false
+    }
+  });
   client.on('error', () => {});
 
   try {

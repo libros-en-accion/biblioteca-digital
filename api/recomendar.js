@@ -151,33 +151,52 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Método no permitido' });
   }
 
-  // ── RATE LIMITING EN REDIS ──
+  // ── RATE LIMITING EN REDIS (NO BLOQUEANTE, MÁX 1 SEGUNDO) ──
   const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
   const usuarioEsDonador = esDonador(req);
 
   if (redisUrl && !usuarioEsDonador) {
-    const client = createClient({ url: redisUrl });
     try {
-      await client.connect();
-      const clientIp = req.headers['cf-connecting-ip'] || 
-                       req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 
-                       req.socket?.remoteAddress || 
-                       'unknown';
-      const rateLimitKey = `ratelimit:recomendar:${clientIp}`;
-      const usos = await client.incr(rateLimitKey);
-      if (usos === 1) {
-        await client.expire(rateLimitKey, 3600);
-      }
+      const rateLimitCheck = async () => {
+        const client = createClient({
+          url: redisUrl,
+          socket: {
+            connectTimeout: 800,
+            reconnectStrategy: () => false
+          }
+        });
+        client.on('error', () => {});
+        try {
+          await client.connect();
+          const clientIp = req.headers['cf-connecting-ip'] || 
+                           req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 
+                           req.socket?.remoteAddress || 
+                           'unknown';
+          const rateLimitKey = `ratelimit:recomendar:${clientIp}`;
+          const usos = await client.incr(rateLimitKey);
+          if (usos === 1) {
+            await client.expire(rateLimitKey, 3600);
+          }
+          await client.quit();
+          return usos;
+        } catch (err) {
+          try { await client.disconnect(); } catch (_) {}
+          return 0;
+        }
+      };
+
+      const usos = await Promise.race([
+        rateLimitCheck(),
+        new Promise(resolve => setTimeout(() => resolve(0), 1000))
+      ]);
+
       if (usos > 5) {
-        await client.quit();
         return res.status(429).json({
           error: 'Has alcanzado el límite de recomendaciones gratuitas por ahora. Adquiere tu Acceso Lifetime para recomendaciones ilimitadas.'
         });
       }
-      await client.quit();
     } catch (e) {
       console.warn('[recomendar] Aviso Redis rate limit:', e.message);
-      try { await client.quit(); } catch (_) {}
     }
   }
 
