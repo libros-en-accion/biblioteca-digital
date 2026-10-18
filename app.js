@@ -10,8 +10,13 @@ const LIBROS_DESTACADOS_IDS = [
   783, // El placebo eres tu
   2777, // La sociedad del cansancio
   2079, // 1984
-  2875, // El túnel
-  2820  // Los siete maridos de Evelyn Hugo 
+  1139, // Cien anos de soledad
+  1140, // El amor en los tiempos del colera
+  14, // La divina comedia
+  2828, // El monje que vendio su Ferrari
+  2241, // Tormenta de espadas ed ilustrada
+  1974, // Hombres sin mujeres
+  2944 // La naranja mecanica
 ];
 
 // ── VARIABLES GLOBALES ──
