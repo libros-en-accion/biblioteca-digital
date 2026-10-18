@@ -32635,15 +32635,16 @@
   {
     "id": 2346,
     "titulo": "El principito",
-    "autor": "Antoine De Saint Exupery",
+    "autor": "Antoine de Saint-Exupéry",
     "anio": 1943,
     "genero": "Cuento",
-    "descripcion": "Un aviador perdido en el desierto encuentra a un pequeño príncipe que le enseña sobre el amor.",
-    "pdf": "https://drive.google.com/file/d/1XPpyTS3aY3X4ZPB2f88KEDtxD8gVRjlI/preview",
+    "descripcion": "Un piloto perdido en el desierto del Sahara tras una avería en su avión conoce a un pequeño príncipe venido del asteroide B-612. A través de sus relatos sobre los extraños adultos que habitan otros planetas, su amor por una rosa única y la sabiduría de un zorro que le enseña que \"lo esencial es invisible a los ojos\", esta obra maestra poética y filosófica ofrece una conmovedora lección sobre el amor, la amistad, la inocencia y el verdadero sentido de la existencia.",
+    "pdf": "",
     "portada": "portadas/2346.webp",
-    "archivo_pdf": "S/Saint Exupery, Antoine De/El_principito-Antoine_De_Saint_Exupery.pdf",
+    "archivo_pdf": "S/Saint Exupery, Antoine De/El principito - Antoine de Saint-Exupery.pdf",
     "idioma": "es",
-    "paginas": 56
+    "paginas": 87,
+    "archivo_epub": "001_EPUB/S/Saint Exupery, Antoine De/El principito - Antoine de Saint-Exupery.epub"
   },
   {
     "id": 2347,

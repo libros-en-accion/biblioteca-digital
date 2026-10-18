@@ -46,6 +46,18 @@ const BUCKET = env.R2_BUCKET_NAME;
 const BASE_LOCAL = '/home/daniel/biblioteca-digital';
 
 const ARCHIVOS_A_SUBIR = [
+  // ── Antoine de Saint-Exupéry (Reemplazo nueva edición) ──
+  {
+    local: path.join(BASE_LOCAL, "S/Saint Exupery, Antoine De/El principito - Antoine de Saint-Exupery.pdf"),
+    key: "S/Saint Exupery, Antoine De/El principito - Antoine de Saint-Exupery.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/S/Saint Exupery, Antoine De/El principito - Antoine de Saint-Exupery.epub"),
+    key: "001_EPUB/S/Saint Exupery, Antoine De/El principito - Antoine de Saint-Exupery.epub",
+    contentType: 'application/epub+zip'
+  },
+
   // ── Sarah J. Maas (Saga Una Corte de Rosas y Espinas) ──
   {
     local: path.join(BASE_LOCAL, "M/Maas, Sarah J./Una corte de rosas y espinas - Sarah J. Maas.pdf"),
