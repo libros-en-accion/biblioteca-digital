@@ -10,9 +10,101 @@
       1121,
       1125,
       1126,
+      3047,
+      3094,
+      3093,
       3021,
       3022,
       3023
+    ]
+  },
+  {
+    "id": "mentes-maestras",
+    "titulo": "Mentes Maestras: Aprendizaje acelerado, hábitos y memoria",
+    "portada_pack": "portadas/pack-mentes.webp",
+    "libros": [
+      3048,
+      3049,
+      3050,
+      3051,
+      3092,
+      2962,
+      3047,
+      3094
+    ]
+  },
+  {
+    "id": "thrillers-adictivos",
+    "titulo": "Thrillers psicológicos y suspense adictivo",
+    "portada_pack": "portadas/pack-thrillers.webp",
+    "libros": [
+      3091,
+      3084,
+      3087,
+      1238,
+      2807,
+      1679,
+      1069,
+      3085
+    ]
+  },
+  {
+    "id": "distopias-fundamentales",
+    "titulo": "Distopías fundamentales: Vigilancia, poder y control",
+    "portada_pack": "portadas/pack-distopias.webp",
+    "libros": [
+      2079,
+      2081,
+      1356,
+      325,
+      250,
+      1461,
+      3044,
+      257
+    ]
+  },
+  {
+    "id": "fortaleza-estoicismo",
+    "titulo": "Fortaleza mental y filosofía estoica",
+    "portada_pack": "portadas/pack-estoicismo.webp",
+    "libros": [
+      2,
+      2358,
+      1009,
+      1121,
+      3094,
+      2790,
+      3047,
+      3093
+    ]
+  },
+  {
+    "id": "fantasia-epica",
+    "titulo": "Fantasía épica: Grandes mundos inolvidables",
+    "portada_pack": "portadas/pack-fantasia.webp",
+    "libros": [
+      2497,
+      2495,
+      2240,
+      2315,
+      2281,
+      1531,
+      2845,
+      3052
+    ]
+  },
+  {
+    "id": "maestros-terror",
+    "titulo": "Maestros del terror y lo sobrenatural",
+    "portada_pack": "portadas/pack-terror.webp",
+    "libros": [
+      1609,
+      1621,
+      2125,
+      1775,
+      2490,
+      2382,
+      1660
     ]
   },
   {
@@ -43,6 +135,7 @@
       2882,
       2947,
       1968,
+      3093,
       3025,
       3026,
       3027,
@@ -58,6 +151,8 @@
       1356,
       325,
       163,
+      3057,
+      2997,
       3012,
       2917,
       2001,
@@ -80,9 +175,11 @@
   },
   {
     "id": "psicologia-novelas",
-    "titulo": "Psicología en novelas: 8 historias que revelan cómo pensamos",
+    "titulo": "Psicología en novelas: Historias que revelan cómo pensamos",
     "portada_pack": "portadas/pack-psicologia-novelas.webp",
     "libros": [
+      3091,
+      3090,
       2895,
       3002,
       785,
@@ -114,6 +211,8 @@
     "titulo": "Economía y comportamiento humano",
     "portada_pack": "portadas/pack-economia.webp",
     "libros": [
+      3095,
+      3092,
       3040,
       2790,
       2962,

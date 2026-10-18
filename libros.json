@@ -1613,7 +1613,11 @@
     "archivo_pdf": "A/Asimov, Isaac/Bovedas de acero - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Bovedas de acero - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 193
+    "paginas": 193,
+    "serie": {
+      "nombre": "Saga de los Robots",
+      "orden": 2
+    }
   },
   {
     "id": 118,
@@ -2153,7 +2157,11 @@
     "archivo_pdf": "A/Asimov, Isaac/El sol desnudo - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/El sol desnudo - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 250
+    "paginas": 250,
+    "serie": {
+      "nombre": "Saga de los Robots",
+      "orden": 3
+    }
   },
   {
     "id": 157,
@@ -2181,7 +2189,11 @@
     "archivo_pdf": "A/Asimov, Isaac/En la arena estelar - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/En la arena estelar - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 237
+    "paginas": 237,
+    "serie": {
+      "nombre": "Trilogía del Imperio Galáctico",
+      "orden": 1
+    }
   },
   {
     "id": 159,
@@ -2726,7 +2738,11 @@
     "archivo_pdf": "A/Asimov, Isaac/Las corrientes del espacio - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Las corrientes del espacio - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 228
+    "paginas": 228,
+    "serie": {
+      "nombre": "Trilogía del Imperio Galáctico",
+      "orden": 2
+    }
   },
   {
     "id": 197,
@@ -2947,7 +2963,11 @@
     "archivo_pdf": "A/Asimov, Isaac/Los robots del amanecer - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Los robots del amanecer - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 470
+    "paginas": 470,
+    "serie": {
+      "nombre": "Saga de los Robots",
+      "orden": 4
+    }
   },
   {
     "id": 215,
@@ -3133,7 +3153,11 @@
     "archivo_pdf": "A/Asimov, Isaac/Robots e Imperio - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Robots e Imperio - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 441
+    "paginas": 441,
+    "serie": {
+      "nombre": "Saga de los Robots",
+      "orden": 5
+    }
   },
   {
     "id": 228,
@@ -3235,7 +3259,11 @@
     "archivo_pdf": "A/Asimov, Isaac/Un guijarro en el cielo - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Un guijarro en el cielo - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 271
+    "paginas": 271,
+    "serie": {
+      "nombre": "Trilogía del Imperio Galáctico",
+      "orden": 3
+    }
   },
   {
     "id": 235,
@@ -3319,7 +3347,11 @@
     "archivo_pdf": "A/Asimov, Isaac/Yo, robot - Isaac Asimov.pdf",
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Yo, robot - Isaac Asimov.epub",
     "idioma": "es",
-    "paginas": 180
+    "paginas": 180,
+    "serie": {
+      "nombre": "Saga de los Robots",
+      "orden": 1
+    }
   },
   {
     "id": 241,
@@ -3459,7 +3491,11 @@
     "archivo_pdf": "A/Atwood, Margaret/El cuento de la criada - Margaret Atwood.pdf",
     "archivo_epub": "001_EPUB/A/Atwood, Margaret/El cuento de la criada - Margaret Atwood.epub",
     "idioma": "es",
-    "paginas": 357
+    "paginas": 357,
+    "serie": {
+      "nombre": "El Cuento de la Criada",
+      "orden": 1
+    }
   },
   {
     "id": 251,
@@ -3557,7 +3593,11 @@
     "archivo_pdf": "A/Atwood, Margaret/Los testamentos - Margaret Atwood.pdf",
     "archivo_epub": "001_EPUB/A/Atwood, Margaret/Los testamentos - Margaret Atwood.epub",
     "idioma": "es",
-    "paginas": 411
+    "paginas": 411,
+    "serie": {
+      "nombre": "El Cuento de la Criada",
+      "orden": 2
+    }
   },
   {
     "id": 258,
@@ -5016,7 +5056,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/2001_ Una odisea espacial - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/2001 Una odisea espacial - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 232
+    "paginas": 232,
+    "serie": {
+      "nombre": "Odisea Espacial",
+      "orden": 1
+    }
   },
   {
     "id": 363,
@@ -5030,7 +5074,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/2010_ Odisea dos - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/2010 Odisea dos - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 279
+    "paginas": 279,
+    "serie": {
+      "nombre": "Odisea Espacial",
+      "orden": 2
+    }
   },
   {
     "id": 364,
@@ -5044,7 +5092,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/2061_ Odisea tres - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/2061 Odisea tres - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 281
+    "paginas": 281,
+    "serie": {
+      "nombre": "Odisea Espacial",
+      "orden": 3
+    }
   },
   {
     "id": 365,
@@ -5058,7 +5110,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/3001_ Odisea final - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/3001 Odisea final - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 232
+    "paginas": 232,
+    "serie": {
+      "nombre": "Odisea Espacial",
+      "orden": 4
+    }
   },
   {
     "id": 366,
@@ -5100,7 +5156,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/Cita con Rama - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/Cita con Rama - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 260
+    "paginas": 260,
+    "serie": {
+      "nombre": "Saga de Rama",
+      "orden": 1
+    }
   },
   {
     "id": 369,
@@ -5226,7 +5286,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/El jardin de Rama - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/El jardin de Rama - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 546
+    "paginas": 546,
+    "serie": {
+      "nombre": "Saga de Rama",
+      "orden": 3
+    }
   },
   {
     "id": 378,
@@ -5559,7 +5623,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/Rama II - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/Rama II - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 524
+    "paginas": 524,
+    "serie": {
+      "nombre": "Saga de Rama",
+      "orden": 2
+    }
   },
   {
     "id": 402,
@@ -5573,7 +5641,11 @@
     "archivo_pdf": "C/C. Clarke, Arthur/Rama revelada - Arthur C. Clarke.pdf",
     "archivo_epub": "001_EPUB/C/C. Clarke, Arthur/Rama revelada - Arthur C. Clarke.epub",
     "idioma": "es",
-    "paginas": 675
+    "paginas": 675,
+    "serie": {
+      "nombre": "Saga de Rama",
+      "orden": 4
+    }
   },
   {
     "id": 403,
@@ -14398,7 +14470,11 @@
     "archivo_pdf": "F/Ferrante, Elena/La amiga estupenda - Elena Ferrante.pdf",
     "archivo_epub": "001_EPUB/F/Ferrante, Elena/La amiga estupenda - Elena Ferrante.epub",
     "idioma": "es",
-    "paginas": 303
+    "paginas": 303,
+    "serie": {
+      "nombre": "Tetralogía Dos Amigas",
+      "orden": 1
+    }
   },
   {
     "id": 1040,
@@ -14468,7 +14544,11 @@
     "archivo_pdf": "F/Ferrante, Elena/La nina perdida - Elena Ferrante.pdf",
     "archivo_epub": "001_EPUB/F/Ferrante, Elena/La nina perdida - Elena Ferrante.epub",
     "idioma": "es",
-    "paginas": 510
+    "paginas": 510,
+    "serie": {
+      "nombre": "Tetralogía Dos Amigas",
+      "orden": 4
+    }
   },
   {
     "id": 1045,
@@ -14496,7 +14576,11 @@
     "archivo_pdf": "F/Ferrante, Elena/Las deudas del cuerpo - Elena Ferrante.pdf",
     "archivo_epub": "001_EPUB/F/Ferrante, Elena/Las deudas del cuerpo - Elena Ferrante.epub",
     "idioma": "es",
-    "paginas": 445
+    "paginas": 445,
+    "serie": {
+      "nombre": "Tetralogía Dos Amigas",
+      "orden": 3
+    }
   },
   {
     "id": 1047,
@@ -14524,7 +14608,11 @@
     "archivo_pdf": "F/Ferrante, Elena/Un mal nombre - Elena Ferrante.pdf",
     "archivo_epub": "001_EPUB/F/Ferrante, Elena/Un mal nombre - Elena Ferrante.epub",
     "idioma": "es",
-    "paginas": 501
+    "paginas": 501,
+    "serie": {
+      "nombre": "Tetralogía Dos Amigas",
+      "orden": 2
+    }
   },
   {
     "id": 1049,
@@ -14888,7 +14976,11 @@
     "archivo_pdf": "F/Follett, Ken/El invierno del mundo - Ken Follett.pdf",
     "archivo_epub": "001_EPUB/F/Follett, Ken/El invierno del mundo - Ken Follett.epub",
     "idioma": "es",
-    "paginas": 1139
+    "paginas": 1139,
+    "serie": {
+      "nombre": "Trilogía The Century",
+      "orden": 2
+    }
   },
   {
     "id": 1075,
@@ -14944,7 +15036,11 @@
     "archivo_pdf": "F/Follett, Ken/El umbral de la eternidad - Ken Follett.pdf",
     "archivo_epub": "001_EPUB/F/Follett, Ken/El umbral de la eternidad - Ken Follett.epub",
     "idioma": "es",
-    "paginas": 1332
+    "paginas": 1332,
+    "serie": {
+      "nombre": "Trilogía The Century",
+      "orden": 3
+    }
   },
   {
     "id": 1079,
@@ -15000,7 +15096,11 @@
     "archivo_pdf": "F/Follett, Ken/La caida de los gigantes - Ken Follett.pdf",
     "archivo_epub": "001_EPUB/F/Follett, Ken/La caida de los gigantes - Ken Follett.epub",
     "idioma": "es",
-    "paginas": 1269
+    "paginas": 1269,
+    "serie": {
+      "nombre": "Trilogía The Century",
+      "orden": 1
+    }
   },
   {
     "id": 1083,
@@ -15056,7 +15156,11 @@
     "archivo_pdf": "F/Follett, Ken/Las tinieblas y el alba - Ken Follett.pdf",
     "archivo_epub": "001_EPUB/F/Follett, Ken/Las tinieblas y el alba - Ken Follett.epub",
     "idioma": "es",
-    "paginas": 794
+    "paginas": 794,
+    "serie": {
+      "nombre": "Saga de Kingsbridge",
+      "orden": 1
+    }
   },
   {
     "id": 1087,
@@ -15070,7 +15174,11 @@
     "archivo_pdf": "F/Follett, Ken/Los pilares de la Tierra - Ken Follett.pdf",
     "archivo_epub": "001_EPUB/F/Follett, Ken/Los pilares de la Tierra - Ken Follett.epub",
     "idioma": "es",
-    "paginas": 1267
+    "paginas": 1267,
+    "serie": {
+      "nombre": "Saga de Kingsbridge",
+      "orden": 2
+    }
   },
   {
     "id": 1088,
@@ -15154,7 +15262,11 @@
     "archivo_pdf": "F/Follett, Ken/Un mundo sin fin - Ken Follett.pdf",
     "archivo_epub": "001_EPUB/F/Follett, Ken/Un mundo sin fin - Ken Follett.epub",
     "idioma": "es",
-    "paginas": 1433
+    "paginas": 1433,
+    "serie": {
+      "nombre": "Saga de Kingsbridge",
+      "orden": 3
+    }
   },
   {
     "id": 1094,
@@ -15168,7 +15280,11 @@
     "archivo_pdf": "F/Follett, Ken/Una columna de fuego - Ken Follett.pdf",
     "archivo_epub": "001_EPUB/F/Follett, Ken/Una columna de fuego - Ken Follett.epub",
     "idioma": "es",
-    "paginas": 1014
+    "paginas": 1014,
+    "serie": {
+      "nombre": "Saga de Kingsbridge",
+      "orden": 4
+    }
   },
   {
     "id": 1095,
@@ -16827,7 +16943,11 @@
     "archivo_pdf": "G/Grandes, Almudena/El lector de Julio Verne - Almudena Grandes.pdf",
     "archivo_epub": "001_EPUB/G/Grandes, Almudena/El lector de Julio Verne - Almudena Grandes.epub",
     "idioma": "es",
-    "paginas": 345
+    "paginas": 345,
+    "serie": {
+      "nombre": "Episodios de una guerra interminable",
+      "orden": 2
+    }
   },
   {
     "id": 1215,
@@ -16855,7 +16975,11 @@
     "archivo_pdf": "G/Grandes, Almudena/Ines y la alegria - Almudena Grandes.pdf",
     "archivo_epub": "001_EPUB/G/Grandes, Almudena/Ines y la alegria - Almudena Grandes.epub",
     "idioma": "es",
-    "paginas": 687
+    "paginas": 687,
+    "serie": {
+      "nombre": "Episodios de una guerra interminable",
+      "orden": 1
+    }
   },
   {
     "id": 1217,
@@ -16883,7 +17007,11 @@
     "archivo_pdf": "G/Grandes, Almudena/La madre de Frankenstein - Almudena Grandes.pdf",
     "archivo_epub": "001_EPUB/G/Grandes, Almudena/La madre de Frankenstein - Almudena Grandes.epub",
     "idioma": "es",
-    "paginas": 491
+    "paginas": 491,
+    "serie": {
+      "nombre": "Episodios de una guerra interminable",
+      "orden": 5
+    }
   },
   {
     "id": 1219,
@@ -16911,7 +17039,11 @@
     "archivo_pdf": "G/Grandes, Almudena/Las tres bodas de Manolita - Almudena Grandes.pdf",
     "archivo_epub": "001_EPUB/G/Grandes, Almudena/Las tres bodas de Manolita - Almudena Grandes.epub",
     "idioma": "es",
-    "paginas": 712
+    "paginas": 712,
+    "serie": {
+      "nombre": "Episodios de una guerra interminable",
+      "orden": 3
+    }
   },
   {
     "id": 1221,
@@ -16953,7 +17085,11 @@
     "archivo_pdf": "G/Grandes, Almudena/Los pacientes del doctor Garcia - Almudena Grandes.pdf",
     "archivo_epub": "001_EPUB/G/Grandes, Almudena/Los pacientes del doctor Garcia - Almudena Grandes.epub",
     "idioma": "es",
-    "paginas": 744
+    "paginas": 744,
+    "serie": {
+      "nombre": "Episodios de una guerra interminable",
+      "orden": 4
+    }
   },
   {
     "id": 1224,
@@ -20943,7 +21079,11 @@
     "archivo_pdf": "K/K. Le Guin, Ursula/Cuentos de Terramar - Ursula K. Le Guin.pdf",
     "archivo_epub": "001_EPUB/K/K. Le Guin, Ursula/Cuentos de Terramar - Ursula K. Le Guin.epub",
     "idioma": "es",
-    "paginas": 318
+    "paginas": 318,
+    "serie": {
+      "nombre": "Ciclo de Terramar",
+      "orden": 5
+    }
   },
   {
     "id": 1507,
@@ -21055,7 +21195,11 @@
     "archivo_pdf": "K/K. Le Guin, Ursula/En el otro viento - Ursula K. Le Guin.pdf",
     "archivo_epub": "001_EPUB/K/K. Le Guin, Ursula/En el otro viento - Ursula K. Le Guin.epub",
     "idioma": "es",
-    "paginas": 224
+    "paginas": 224,
+    "serie": {
+      "nombre": "Ciclo de Terramar",
+      "orden": 6
+    }
   },
   {
     "id": 1515,
@@ -21069,7 +21213,11 @@
     "archivo_pdf": "K/K. Le Guin, Ursula/La costa mas lejana - Ursula K. Le Guin.pdf",
     "archivo_epub": "001_EPUB/K/K. Le Guin, Ursula/La costa mas lejana - Ursula K. Le Guin.epub",
     "idioma": "es",
-    "paginas": 209
+    "paginas": 209,
+    "serie": {
+      "nombre": "Ciclo de Terramar",
+      "orden": 3
+    }
   },
   {
     "id": 1516,
@@ -21153,7 +21301,11 @@
     "archivo_pdf": "K/K. Le Guin, Ursula/Las tumbas de Atuan - Ursula K. Le Guin.pdf",
     "archivo_epub": "001_EPUB/K/K. Le Guin, Ursula/Las tumbas de Atuan - Ursula K. Le Guin.epub",
     "idioma": "es",
-    "paginas": 152
+    "paginas": 152,
+    "serie": {
+      "nombre": "Ciclo de Terramar",
+      "orden": 2
+    }
   },
   {
     "id": 1522,
@@ -21279,7 +21431,11 @@
     "archivo_pdf": "K/K. Le Guin, Ursula/Tehanu - Ursula K. Le Guin.pdf",
     "archivo_epub": "001_EPUB/K/K. Le Guin, Ursula/Tehanu - Ursula K. Le Guin.epub",
     "idioma": "es",
-    "paginas": 224
+    "paginas": 224,
+    "serie": {
+      "nombre": "Ciclo de Terramar",
+      "orden": 4
+    }
   },
   {
     "id": 1531,
@@ -21293,7 +21449,11 @@
     "archivo_pdf": "K/K. Le Guin, Ursula/Un mago de Terramar - Ursula K. Le Guin.pdf",
     "archivo_epub": "001_EPUB/K/K. Le Guin, Ursula/Un mago de Terramar - Ursula K. Le Guin.epub",
     "idioma": "es",
-    "paginas": 189
+    "paginas": 189,
+    "serie": {
+      "nombre": "Ciclo de Terramar",
+      "orden": 1
+    }
   },
   {
     "id": 1532,
@@ -22133,7 +22293,11 @@
     "archivo_pdf": "K/King, Stephen/Doctor Sueño (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/Doctor Sueño (Stephen King).epub",
     "idioma": "es",
-    "paginas": 438
+    "paginas": 438,
+    "serie": {
+      "nombre": "Bilogía El Resplandor",
+      "orden": 2
+    }
   },
   {
     "id": 1595,
@@ -22217,7 +22381,11 @@
     "archivo_pdf": "K/King, Stephen/El Visitante (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/El Visitante (Stephen King).epub",
     "idioma": "es",
-    "paginas": 654
+    "paginas": 654,
+    "serie": {
+      "nombre": "Trilogía Bill Hodges",
+      "orden": 4
+    }
   },
   {
     "id": 1601,
@@ -22343,7 +22511,11 @@
     "archivo_pdf": "K/King, Stephen/El resplandor (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/El resplandor (Stephen King).epub",
     "idioma": "es",
-    "paginas": 424
+    "paginas": 424,
+    "serie": {
+      "nombre": "Bilogía El Resplandor",
+      "orden": 1
+    }
   },
   {
     "id": 1610,
@@ -22413,7 +22585,11 @@
     "archivo_pdf": "K/King, Stephen/Fin de guardia (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/Fin de guardia (Stephen King).epub",
     "idioma": "es",
-    "paginas": 347
+    "paginas": 347,
+    "serie": {
+      "nombre": "Trilogía Bill Hodges",
+      "orden": 3
+    }
   },
   {
     "id": 1616,
@@ -23134,7 +23310,11 @@
     "archivo_pdf": "K/King, Stephen/Mr Mercedes (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/Mr Mercedes (Stephen King).epub",
     "idioma": "es",
-    "paginas": 345
+    "paginas": 345,
+    "serie": {
+      "nombre": "Trilogía Bill Hodges",
+      "orden": 1
+    }
   },
   {
     "id": 1667,
@@ -23190,7 +23370,11 @@
     "archivo_pdf": "K/King, Stephen/Quien Pierde Paga (Stephen King).pdf",
     "archivo_epub": "001_EPUB/K/King, Stephen/Quien Pierde Paga (Stephen King).epub",
     "idioma": "es",
-    "paginas": 426
+    "paginas": 426,
+    "serie": {
+      "nombre": "Trilogía Bill Hodges",
+      "orden": 2
+    }
   },
   {
     "id": 1671,
@@ -23645,7 +23829,11 @@
     "portada": "portadas/1704.webp",
     "archivo_pdf": "L/LEWIS, S.C./El caballo y su nino - C. S. Lewis.pdf",
     "archivo_epub": "001_EPUB/L/LEWIS, S.C./El caballo y su nino - C. S. Lewis.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Las Crónicas de Narnia",
+      "orden": 3
+    }
   },
   {
     "id": 1705,
@@ -23658,7 +23846,11 @@
     "portada": "portadas/1705.webp",
     "archivo_pdf": "L/LEWIS, S.C./El leon, la bruja y el ropero - C. S. Lewis.pdf",
     "archivo_epub": "001_EPUB/L/LEWIS, S.C./El leon, la bruja y el ropero - C. S. Lewis.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Las Crónicas de Narnia",
+      "orden": 2
+    }
   },
   {
     "id": 1706,
@@ -23673,7 +23865,7 @@
     "archivo_epub": "001_EPUB/L/LEWIS, S.C./El principe Caspian - C. S. Lewis.epub",
     "serie": {
       "nombre": "Las Crónicas de Narnia",
-      "orden": 2
+      "orden": 4
     },
     "idioma": "es"
   },
@@ -23707,7 +23899,7 @@
     "archivo_epub": "001_EPUB/L/LEWIS, S.C./La silla de plata - C. S. Lewis.epub",
     "serie": {
       "nombre": "Las Crónicas de Narnia",
-      "orden": 4
+      "orden": 6
     },
     "idioma": "es"
   },
@@ -23722,7 +23914,11 @@
     "portada": "portadas/1709.webp",
     "archivo_pdf": "L/LEWIS, S.C./La travesia del Explorador del Amanecer - C. S. Lewis.pdf",
     "archivo_epub": "001_EPUB/L/LEWIS, S.C./La travesia del Explorador del Amanecer - C. S. Lewis.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Las Crónicas de Narnia",
+      "orden": 5
+    }
   },
   {
     "id": 1710,
@@ -23735,7 +23931,11 @@
     "portada": "portadas/1710.webp",
     "archivo_pdf": "L/LEWIS, S.C./La ultima batalla - C. S. Lewis.pdf",
     "archivo_epub": "001_EPUB/L/LEWIS, S.C./La ultima batalla - C. S. Lewis.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Las Crónicas de Narnia",
+      "orden": 7
+    }
   },
   {
     "id": 1711,
@@ -26352,7 +26552,11 @@
     "archivo_pdf": "M/McCarthy, Cormac/Ciudades de la llanura - Cormac McCarthy.pdf",
     "archivo_epub": "001_EPUB/M/McCarthy, Cormac/Ciudades de la llanura - Cormac McCarthy.epub",
     "idioma": "es",
-    "paginas": 301
+    "paginas": 301,
+    "serie": {
+      "nombre": "Trilogía de la Frontera",
+      "orden": 3
+    }
   },
   {
     "id": 1899,
@@ -26408,7 +26612,11 @@
     "archivo_pdf": "M/McCarthy, Cormac/En la frontera - Cormac McCarthy.pdf",
     "archivo_epub": "001_EPUB/M/McCarthy, Cormac/En la frontera - Cormac McCarthy.epub",
     "idioma": "es",
-    "paginas": 326
+    "paginas": 326,
+    "serie": {
+      "nombre": "Trilogía de la Frontera",
+      "orden": 2
+    }
   },
   {
     "id": 1903,
@@ -26506,7 +26714,11 @@
     "archivo_pdf": "M/McCarthy, Cormac/Todos los hermosos caballos - Cormac McCarthy.pdf",
     "archivo_epub": "001_EPUB/M/McCarthy, Cormac/Todos los hermosos caballos - Cormac McCarthy.epub",
     "idioma": "es",
-    "paginas": 232
+    "paginas": 232,
+    "serie": {
+      "nombre": "Trilogía de la Frontera",
+      "orden": 1
+    }
   },
   {
     "id": 1910,
@@ -26730,7 +26942,11 @@
     "archivo_pdf": "M/Meyer, Stephenie/Amanecer - Stephenie Meyer.pdf",
     "archivo_epub": "001_EPUB/M/Meyer, Stephenie/Amanecer - Stephenie Meyer.epub",
     "idioma": "es",
-    "paginas": 520
+    "paginas": 520,
+    "serie": {
+      "nombre": "Saga Crepúsculo",
+      "orden": 4
+    }
   },
   {
     "id": 1927,
@@ -26744,7 +26960,11 @@
     "archivo_pdf": "M/Meyer, Stephenie/Crepusculo - Stephenie Meyer.pdf",
     "archivo_epub": "001_EPUB/M/Meyer, Stephenie/Crepusculo - Stephenie Meyer.epub",
     "idioma": "es",
-    "paginas": 324
+    "paginas": 324,
+    "serie": {
+      "nombre": "Saga Crepúsculo",
+      "orden": 1
+    }
   },
   {
     "id": 1928,
@@ -26758,7 +26978,11 @@
     "archivo_pdf": "M/Meyer, Stephenie/Eclipse - Stephenie Meyer.pdf",
     "archivo_epub": "001_EPUB/M/Meyer, Stephenie/Eclipse - Stephenie Meyer.epub",
     "idioma": "es",
-    "paginas": 412
+    "paginas": 412,
+    "serie": {
+      "nombre": "Saga Crepúsculo",
+      "orden": 3
+    }
   },
   {
     "id": 1929,
@@ -26800,7 +27024,11 @@
     "archivo_pdf": "M/Meyer, Stephenie/La segunda vida de Bree Tanner - Stephenie Meyer.pdf",
     "archivo_epub": "001_EPUB/M/Meyer, Stephenie/La segunda vida de Bree Tanner - Stephenie Meyer.epub",
     "idioma": "es",
-    "paginas": 100
+    "paginas": 100,
+    "serie": {
+      "nombre": "Saga Crepúsculo",
+      "orden": 5
+    }
   },
   {
     "id": 1932,
@@ -26814,7 +27042,11 @@
     "archivo_pdf": "M/Meyer, Stephenie/Luna nueva - Stephenie Meyer.pdf",
     "archivo_epub": "001_EPUB/M/Meyer, Stephenie/Luna nueva - Stephenie Meyer.epub",
     "idioma": "es",
-    "paginas": 365
+    "paginas": 365,
+    "serie": {
+      "nombre": "Saga Crepúsculo",
+      "orden": 2
+    }
   },
   {
     "id": 1933,
@@ -26828,7 +27060,11 @@
     "archivo_pdf": "M/Meyer, Stephenie/Sol de medianoche - Stephenie Meyer.pdf",
     "archivo_epub": "001_EPUB/M/Meyer, Stephenie/Sol de medianoche - Stephenie Meyer.epub",
     "idioma": "es",
-    "paginas": 704
+    "paginas": 704,
+    "serie": {
+      "nombre": "Saga Crepúsculo",
+      "orden": 6
+    }
   },
   {
     "id": 1934,
@@ -27446,7 +27682,11 @@
     "archivo_pdf": "M/Murakami, Haruki/La muerte del comendador (Libro 1) - Haruki Murakami.pdf",
     "archivo_epub": "001_EPUB/M/Murakami, Haruki/La muerte del comendador (Libro 1) - Haruki Murakami.epub",
     "idioma": "es",
-    "paginas": 360
+    "paginas": 360,
+    "serie": {
+      "nombre": "La Muerte del Comendador",
+      "orden": 1
+    }
   },
   {
     "id": 1981,
@@ -27460,7 +27700,11 @@
     "archivo_pdf": "M/Murakami, Haruki/La muerte del comendador (Libro 2) - Haruki Murakami.pdf",
     "archivo_epub": "001_EPUB/M/Murakami, Haruki/La muerte del comendador (Libro 2) - Haruki Murakami.epub",
     "idioma": "es",
-    "paginas": 374
+    "paginas": 374,
+    "serie": {
+      "nombre": "La Muerte del Comendador",
+      "orden": 2
+    }
   },
   {
     "id": 1982,
@@ -30228,7 +30472,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/Corsarios de Levante - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/Corsarios de Levante - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 239
+    "paginas": 239,
+    "serie": {
+      "nombre": "Las Aventuras del Capitán Alatriste",
+      "orden": 6
+    }
   },
   {
     "id": 2181,
@@ -30270,7 +30518,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/El caballero del jubon amarillo - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/El caballero del jubon amarillo - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 235
+    "paginas": 235,
+    "serie": {
+      "nombre": "Las Aventuras del Capitán Alatriste",
+      "orden": 5
+    }
   },
   {
     "id": 2184,
@@ -30284,7 +30536,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/El capitan Alatriste - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/El capitan Alatriste - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 185
+    "paginas": 185,
+    "serie": {
+      "nombre": "Las Aventuras del Capitán Alatriste",
+      "orden": 1
+    }
   },
   {
     "id": 2185,
@@ -30368,7 +30624,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/El oro del rey - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/El oro del rey - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 192
+    "paginas": 192,
+    "serie": {
+      "nombre": "Las Aventuras del Capitán Alatriste",
+      "orden": 4
+    }
   },
   {
     "id": 2191,
@@ -30396,7 +30656,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/El puente de los Asesinos - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/El puente de los Asesinos - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 276
+    "paginas": 276,
+    "serie": {
+      "nombre": "Las Aventuras del Capitán Alatriste",
+      "orden": 7
+    }
   },
   {
     "id": 2193,
@@ -30410,7 +30674,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/El sol de Breda - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/El sol de Breda - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 177
+    "paginas": 177,
+    "serie": {
+      "nombre": "Las Aventuras del Capitán Alatriste",
+      "orden": 3
+    }
   },
   {
     "id": 2194,
@@ -30438,7 +30706,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/Eva - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/Eva - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 327
+    "paginas": 327,
+    "serie": {
+      "nombre": "Trilogía Falcó",
+      "orden": 2
+    }
   },
   {
     "id": 2196,
@@ -30452,7 +30724,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/Falco - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/Falco - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 239
+    "paginas": 239,
+    "serie": {
+      "nombre": "Trilogía Falcó",
+      "orden": 1
+    }
   },
   {
     "id": 2197,
@@ -30606,7 +30882,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/Limpieza de sangre - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/Limpieza de sangre - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 172
+    "paginas": 172,
+    "serie": {
+      "nombre": "Las Aventuras del Capitán Alatriste",
+      "orden": 2
+    }
   },
   {
     "id": 2208,
@@ -30857,7 +31137,11 @@
     "archivo_pdf": "P/Pérez-Reverte, Arturo/Sabotaje - Arturo Perez-Reverte.pdf",
     "archivo_epub": "001_EPUB/P/Pérez-Reverte, Arturo/Sabotaje - Arturo Perez-Reverte.epub",
     "idioma": "es",
-    "paginas": 307
+    "paginas": 307,
+    "serie": {
+      "nombre": "Trilogía Falcó",
+      "orden": 3
+    }
   },
   {
     "id": 2226,
@@ -32105,8 +32389,8 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/Aleacion de Ley Ed revisada - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Aleacion de Ley Ed revisada - Brandon Sanderson.epub",
     "serie": {
-      "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 4
+      "nombre": "El Archivo de las Tormentas",
+      "orden": 6
     },
     "idioma": "es",
     "paginas": 256
@@ -32124,7 +32408,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Brazales de duelo - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 6
+      "orden": 5
     },
     "idioma": "es",
     "paginas": 376
@@ -32141,7 +32425,11 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/Danzante del Filo - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Danzante del Filo - Brandon Sanderson.epub",
     "idioma": "es",
-    "paginas": 145
+    "paginas": 145,
+    "serie": {
+      "nombre": "El Archivo de las Tormentas",
+      "orden": 3
+    }
   },
   {
     "id": 2313,
@@ -32156,7 +32444,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Heroe de las Eras Ed revisada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 3
+      "orden": 7
     },
     "idioma": "es",
     "paginas": 601
@@ -32174,7 +32462,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Imperio Final Ed revisada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 1
+      "orden": 2
     },
     "idioma": "es",
     "paginas": 535
@@ -32192,7 +32480,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Pozo de la Ascension Ed revisada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 2
+      "orden": 1
     },
     "idioma": "es",
     "paginas": 628
@@ -32209,8 +32497,8 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/El Ritmo de la Guerra - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Ritmo de la Guerra - Brandon Sanderson.epub",
     "serie": {
-      "nombre": "El Archivo de las Tormentas",
-      "orden": 4
+      "nombre": "Nacidos de la Bruma (Mistborn)",
+      "orden": 3
     },
     "idioma": "es",
     "paginas": 1680
@@ -32245,7 +32533,11 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/El metal perdido - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El metal perdido - Brandon Sanderson.epub",
     "idioma": "es",
-    "paginas": 522
+    "paginas": 522,
+    "serie": {
+      "nombre": "Nacidos de la Bruma (Mistborn)",
+      "orden": 8
+    }
   },
   {
     "id": 2319,
@@ -32259,7 +32551,11 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/Esquirla del amanecer - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Esquirla del amanecer - Brandon Sanderson.epub",
     "idioma": "es",
-    "paginas": 179
+    "paginas": 179,
+    "serie": {
+      "nombre": "El Archivo de las Tormentas",
+      "orden": 5
+    }
   },
   {
     "id": 2320,
@@ -32274,7 +32570,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Juramentada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "El Archivo de las Tormentas",
-      "orden": 3
+      "orden": 2
     },
     "idioma": "es",
     "paginas": 1524
@@ -32291,7 +32587,11 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/Nacidos de la bruma Historia secreta - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Nacidos de la bruma Historia secreta - Brandon Sanderson.epub",
     "idioma": "es",
-    "paginas": 162
+    "paginas": 162,
+    "serie": {
+      "nombre": "Nacidos de la Bruma (Mistborn)",
+      "orden": 4
+    }
   },
   {
     "id": 2322,
@@ -32306,7 +32606,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Palabras radiantes - Brandon Sanderson.epub",
     "serie": {
       "nombre": "El Archivo de las Tormentas",
-      "orden": 2
+      "orden": 4
     },
     "idioma": "es",
     "paginas": 1078
@@ -32324,7 +32624,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Sombras de identidad - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 5
+      "orden": 6
     },
     "idioma": "es",
     "paginas": 321
@@ -32341,7 +32641,11 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/Viento y verdad - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Viento y verdad - Brandon Sanderson.epub",
     "idioma": "es",
-    "paginas": 1630
+    "paginas": 1630,
+    "serie": {
+      "nombre": "El Archivo de las Tormentas",
+      "orden": 7
+    }
   },
   {
     "id": 2325,
@@ -34655,7 +34959,11 @@
     "portada": "portadas/2495.webp",
     "archivo_pdf": "T/TOLKIEN, J. R. R./El hobbit - J. R. R. Tolkien.pdf",
     "archivo_epub": "001_EPUB/T/TOLKIEN, J. R. R./El hobbit - J. R. R. Tolkien.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "El Señor de los Anillos",
+      "orden": 0
+    }
   },
   {
     "id": 2496,
@@ -34685,7 +34993,11 @@
     "portada": "portadas/2497.webp",
     "archivo_pdf": "T/TOLKIEN, J. R. R./La comunidad del anillo - J. R. R. Tolkien.pdf",
     "archivo_epub": "001_EPUB/T/TOLKIEN, J. R. R./La comunidad del anillo - J. R. R. Tolkien.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "El Señor de los Anillos",
+      "orden": 1
+    }
   },
   {
     "id": 2498,
@@ -37884,7 +38196,11 @@
     "portada": "portadas/2733.webp",
     "archivo_pdf": "B/Benitez, J. J./Belen - J J Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Belen - J J Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 12
+    }
   },
   {
     "id": 2734,
@@ -37897,7 +38213,11 @@
     "portada": "portadas/2734.webp",
     "archivo_pdf": "B/Benitez, J. J./El diario de Eliseo - J J Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./El diario de Eliseo - J J Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 11
+    }
   },
   {
     "id": 2735,
@@ -37910,7 +38230,11 @@
     "portada": "portadas/2735.webp",
     "archivo_pdf": "B/Benitez, J. J./Cana - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Cana - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 9
+    }
   },
   {
     "id": 2736,
@@ -37923,7 +38247,11 @@
     "portada": "portadas/2736.webp",
     "archivo_pdf": "B/Benitez, J. J./Cesarea - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Cesarea - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 5
+    }
   },
   {
     "id": 2737,
@@ -37936,7 +38264,11 @@
     "portada": "portadas/2737.webp",
     "archivo_pdf": "B/Benitez, J. J./Hermon - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Hermon - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 6
+    }
   },
   {
     "id": 2738,
@@ -37949,7 +38281,11 @@
     "portada": "portadas/2738.webp",
     "archivo_pdf": "B/Benitez, J. J./Jerusalen - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Jerusalen - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 1
+    }
   },
   {
     "id": 2739,
@@ -37962,7 +38298,11 @@
     "portada": "portadas/2739.webp",
     "archivo_pdf": "B/Benitez, J. J./Jordan - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Jordan - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 8
+    }
   },
   {
     "id": 2740,
@@ -37975,7 +38315,11 @@
     "portada": "portadas/2740.webp",
     "archivo_pdf": "B/Benitez, J. J./Masada - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Masada - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 2
+    }
   },
   {
     "id": 2741,
@@ -37988,7 +38332,11 @@
     "portada": "portadas/2741.webp",
     "archivo_pdf": "B/Benitez, J. J./Nahum - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Nahum - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 7
+    }
   },
   {
     "id": 2742,
@@ -38001,7 +38349,11 @@
     "portada": "portadas/2742.webp",
     "archivo_pdf": "B/Benitez, J. J./Nazaret - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Nazaret - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 4
+    }
   },
   {
     "id": 2743,
@@ -38014,7 +38366,11 @@
     "portada": "portadas/2743.webp",
     "archivo_pdf": "B/Benitez, J. J./Saidan - J. J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./Saidan - J. J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 3
+    }
   },
   {
     "id": 2744,
@@ -38027,7 +38383,11 @@
     "portada": "portadas/2744.webp",
     "archivo_pdf": "B/Benitez, J. J./El dia del relampago - J.J. Benitez.pdf",
     "archivo_epub": "001_EPUB/B/Benitez, J. J./El dia del relampago - J.J. Benitez.epub",
-    "idioma": "es"
+    "idioma": "es",
+    "serie": {
+      "nombre": "Caballo de Troya",
+      "orden": 10
+    }
   },
   {
     "id": 2745,
