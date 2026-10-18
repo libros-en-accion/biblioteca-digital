@@ -40964,5 +40964,59 @@
     "id": 3043,
     "idioma": "es",
     "paginas": 341
+  },
+  {
+    "id": 3044,
+    "titulo": "Espejismo",
+    "autor": "Hugh Howey",
+    "anio": 2011,
+    "genero": "Ciencia Ficción",
+    "descripcion": "En un futuro desolado y tóxico, los supervivientes de la humanidad habitan en un gigantesco silo subterráneo de más de ciento cuarenta pisos. Para mantener el orden imperan reglas estrictas: desear salir se castiga con la expulsión a la superficie para limpiar los sensores antes de morir. Cuando el sheriff del silo decide salir voluntariamente, una intrépida mecánica llamada Juliette descubre los oscuros secretos que ocultan los gobernantes del refugio.",
+    "pdf": "",
+    "portada": "portadas/3044.webp",
+    "archivo_pdf": "H/Howey, Hugh/Espejismo - Hugh Howey.pdf",
+    "archivo_epub": "001_EPUB/H/Howey, Hugh/Espejismo - Hugh Howey.epub",
+    "serie": {
+      "nombre": "Trilogía del Silo",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 640
+  },
+  {
+    "id": 3045,
+    "titulo": "Desolacion",
+    "autor": "Hugh Howey",
+    "anio": 2013,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Precuela de la trilogía que desvela los orígenes y las siniestras conspiraciones que llevaron a la creación de los silos. En el año 2049, un ambicioso congresista es reclutado por un poderoso senador para diseñar un complejo subterráneo de supervivencia ante una catástrofe inminente. A través de diferentes épocas y despertares de criogenización en el Silo 1, se revelan los secretos del plan que condenó a miles de personas a vivir bajo tierra sin recuerdos del pasado.",
+    "pdf": "",
+    "portada": "portadas/3045.webp",
+    "archivo_pdf": "H/Howey, Hugh/Desolacion - Hugh Howey.pdf",
+    "archivo_epub": "001_EPUB/H/Howey, Hugh/Desolacion - Hugh Howey.epub",
+    "serie": {
+      "nombre": "Trilogía del Silo",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 639
+  },
+  {
+    "id": 3046,
+    "titulo": "Vestigios",
+    "autor": "Hugh Howey",
+    "anio": 2013,
+    "genero": "Ciencia Ficción",
+    "descripcion": "El desenlace de la trilogía del Silo. Juliette, ahora líder electa del Silo 18, intenta desesperadamente excavar una vía de conexión hacia el Silo 17, a pesar del descontento y el miedo de la población. Mientras tanto, en el Silo 1, Donald despierta una vez más para enfrentar a Thurman y tratar de desarticular el sistema de control absoluto antes de que la orden final de exterminio borre cualquier rastro de esperanza en la superficie.",
+    "pdf": "",
+    "portada": "portadas/3046.webp",
+    "archivo_pdf": "H/Howey, Hugh/Vestigios - Hugh Howey.pdf",
+    "archivo_epub": "001_EPUB/H/Howey, Hugh/Vestigios - Hugh Howey.epub",
+    "serie": {
+      "nombre": "Trilogía del Silo",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 451
   }
 ]
