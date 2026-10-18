@@ -46,91 +46,475 @@ const BUCKET = env.R2_BUCKET_NAME;
 const BASE_LOCAL = '/home/daniel/biblioteca-digital';
 
 const ARCHIVOS_A_SUBIR = [
-  // ── Hugh Howey (Trilogía del Silo) ──
+  // ── Sarah J. Maas (Saga Una Corte de Rosas y Espinas) ──
   {
-    local: path.join(BASE_LOCAL, 'H/Howey, Hugh/Espejismo - Hugh Howey.pdf'),
-    key: 'H/Howey, Hugh/Espejismo - Hugh Howey.pdf',
+    local: path.join(BASE_LOCAL, "M/Maas, Sarah J./Una corte de rosas y espinas - Sarah J. Maas.pdf"),
+    key: "M/Maas, Sarah J./Una corte de rosas y espinas - Sarah J. Maas.pdf",
     contentType: 'application/pdf'
   },
   {
-    local: path.join(BASE_LOCAL, 'H/Howey, Hugh/Desolacion - Hugh Howey.pdf'),
-    key: 'H/Howey, Hugh/Desolacion - Hugh Howey.pdf',
-    contentType: 'application/pdf'
-  },
-  {
-    local: path.join(BASE_LOCAL, 'H/Howey, Hugh/Vestigios - Hugh Howey.pdf'),
-    key: 'H/Howey, Hugh/Vestigios - Hugh Howey.pdf',
-    contentType: 'application/pdf'
-  },
-  {
-    local: path.join(BASE_LOCAL, '001_EPUB/H/Howey, Hugh/Espejismo - Hugh Howey.epub'),
-    key: '001_EPUB/H/Howey, Hugh/Espejismo - Hugh Howey.epub',
+    local: path.join(BASE_LOCAL, "001_EPUB/M/Maas, Sarah J./Una corte de rosas y espinas - Sarah J. Maas.epub"),
+    key: "001_EPUB/M/Maas, Sarah J./Una corte de rosas y espinas - Sarah J. Maas.epub",
     contentType: 'application/epub+zip'
   },
   {
-    local: path.join(BASE_LOCAL, '001_EPUB/H/Howey, Hugh/Desolacion - Hugh Howey.epub'),
-    key: '001_EPUB/H/Howey, Hugh/Desolacion - Hugh Howey.epub',
+    local: path.join(BASE_LOCAL, "M/Maas, Sarah J./Una corte de niebla y furia - Sarah J. Maas.pdf"),
+    key: "M/Maas, Sarah J./Una corte de niebla y furia - Sarah J. Maas.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/M/Maas, Sarah J./Una corte de niebla y furia - Sarah J. Maas.epub"),
+    key: "001_EPUB/M/Maas, Sarah J./Una corte de niebla y furia - Sarah J. Maas.epub",
     contentType: 'application/epub+zip'
   },
   {
-    local: path.join(BASE_LOCAL, '001_EPUB/H/Howey, Hugh/Vestigios - Hugh Howey.epub'),
-    key: '001_EPUB/H/Howey, Hugh/Vestigios - Hugh Howey.epub',
+    local: path.join(BASE_LOCAL, "M/Maas, Sarah J./Una corte de alas y ruina - Sarah J. Maas.pdf"),
+    key: "M/Maas, Sarah J./Una corte de alas y ruina - Sarah J. Maas.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/M/Maas, Sarah J./Una corte de alas y ruina - Sarah J. Maas.epub"),
+    key: "001_EPUB/M/Maas, Sarah J./Una corte de alas y ruina - Sarah J. Maas.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "M/Maas, Sarah J./Una corte de hielo y estrellas - Sarah J. Maas.pdf"),
+    key: "M/Maas, Sarah J./Una corte de hielo y estrellas - Sarah J. Maas.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/M/Maas, Sarah J./Una corte de hielo y estrellas - Sarah J. Maas.epub"),
+    key: "001_EPUB/M/Maas, Sarah J./Una corte de hielo y estrellas - Sarah J. Maas.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "M/Maas, Sarah J./Una corte de llamas plateadas - Sarah J. Maas.pdf"),
+    key: "M/Maas, Sarah J./Una corte de llamas plateadas - Sarah J. Maas.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/M/Maas, Sarah J./Una corte de llamas plateadas - Sarah J. Maas.epub"),
+    key: "001_EPUB/M/Maas, Sarah J./Una corte de llamas plateadas - Sarah J. Maas.epub",
     contentType: 'application/epub+zip'
   },
 
-  // ── Brianna Wiest ──
+  // ── James S. A. Corey (The Expanse) ──
   {
-    local: path.join(BASE_LOCAL, 'W/Wiest, Brianna/La montana eres tu - Brianna Wiest.pdf'),
-    key: 'W/Wiest, Brianna/La montana eres tu - Brianna Wiest.pdf',
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./El despertar del Leviatan - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./El despertar del Leviatan - James S. A. Corey.pdf",
     contentType: 'application/pdf'
   },
   {
-    local: path.join(BASE_LOCAL, '001_EPUB/W/Wiest, Brianna/La montana eres tu - Brianna Wiest.epub'),
-    key: '001_EPUB/W/Wiest, Brianna/La montana eres tu - Brianna Wiest.epub',
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./El despertar del Leviatan - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./El despertar del Leviatan - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./La guerra de Caliban - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./La guerra de Caliban - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./La guerra de Caliban - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./La guerra de Caliban - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./La puerta de Abadon - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./La puerta de Abadon - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./La puerta de Abadon - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./La puerta de Abadon - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./La quema de Cibola - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./La quema de Cibola - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./La quema de Cibola - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./La quema de Cibola - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./Los juegos de Nemesis - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./Los juegos de Nemesis - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./Los juegos de Nemesis - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./Los juegos de Nemesis - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./Las cenizas de Babilonia - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./Las cenizas de Babilonia - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./Las cenizas de Babilonia - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./Las cenizas de Babilonia - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./El alzamiento de Persepolis - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./El alzamiento de Persepolis - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./El alzamiento de Persepolis - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./El alzamiento de Persepolis - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./La colera de Tiamat - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./La colera de Tiamat - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./La colera de Tiamat - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./La colera de Tiamat - James S. A. Corey.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Corey, James S. A./La caida del Leviatan - James S. A. Corey.pdf"),
+    key: "C/Corey, James S. A./La caida del Leviatan - James S. A. Corey.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Corey, James S. A./La caida del Leviatan - James S. A. Corey.epub"),
+    key: "001_EPUB/C/Corey, James S. A./La caida del Leviatan - James S. A. Corey.epub",
     contentType: 'application/epub+zip'
   },
 
-  // ── Ramón Campayo ──
+  // ── Dan Simmons (Cantos de Hyperion) ──
   {
-    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.pdf'),
-    key: 'C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.pdf',
+    local: path.join(BASE_LOCAL, "S/Simmons, Dan/Hyperion - Dan Simmons.pdf"),
+    key: "S/Simmons, Dan/Hyperion - Dan Simmons.pdf",
     contentType: 'application/pdf'
   },
   {
-    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.epub'),
-    key: '001_EPUB/C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.epub',
+    local: path.join(BASE_LOCAL, "001_EPUB/S/Simmons, Dan/Hyperion - Dan Simmons.epub"),
+    key: "001_EPUB/S/Simmons, Dan/Hyperion - Dan Simmons.epub",
     contentType: 'application/epub+zip'
   },
   {
-    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.pdf'),
-    key: 'C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.pdf',
+    local: path.join(BASE_LOCAL, "S/Simmons, Dan/La caida de Hyperion - Dan Simmons.pdf"),
+    key: "S/Simmons, Dan/La caida de Hyperion - Dan Simmons.pdf",
     contentType: 'application/pdf'
   },
   {
-    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.epub'),
-    key: '001_EPUB/C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.epub',
+    local: path.join(BASE_LOCAL, "001_EPUB/S/Simmons, Dan/La caida de Hyperion - Dan Simmons.epub"),
+    key: "001_EPUB/S/Simmons, Dan/La caida de Hyperion - Dan Simmons.epub",
     contentType: 'application/epub+zip'
   },
   {
-    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.pdf'),
-    key: 'C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.pdf',
+    local: path.join(BASE_LOCAL, "S/Simmons, Dan/Endymion - Dan Simmons.pdf"),
+    key: "S/Simmons, Dan/Endymion - Dan Simmons.pdf",
     contentType: 'application/pdf'
   },
   {
-    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.epub'),
-    key: '001_EPUB/C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.epub',
+    local: path.join(BASE_LOCAL, "001_EPUB/S/Simmons, Dan/Endymion - Dan Simmons.epub"),
+    key: "001_EPUB/S/Simmons, Dan/Endymion - Dan Simmons.epub",
     contentType: 'application/epub+zip'
   },
   {
-    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.pdf'),
-    key: 'C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.pdf',
+    local: path.join(BASE_LOCAL, "S/Simmons, Dan/El ascenso de Endymion - Dan Simmons.pdf"),
+    key: "S/Simmons, Dan/El ascenso de Endymion - Dan Simmons.pdf",
     contentType: 'application/pdf'
   },
   {
-    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.epub'),
-    key: '001_EPUB/C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.epub',
+    local: path.join(BASE_LOCAL, "001_EPUB/S/Simmons, Dan/El ascenso de Endymion - Dan Simmons.epub"),
+    key: "001_EPUB/S/Simmons, Dan/El ascenso de Endymion - Dan Simmons.epub",
     contentType: 'application/epub+zip'
-  }
+  },
+  {
+    local: path.join(BASE_LOCAL, "S/Simmons, Dan/Huerfanos de la Helice - Dan Simmons.pdf"),
+    key: "S/Simmons, Dan/Huerfanos de la Helice - Dan Simmons.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/S/Simmons, Dan/Huerfanos de la Helice - Dan Simmons.epub"),
+    key: "001_EPUB/S/Simmons, Dan/Huerfanos de la Helice - Dan Simmons.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "S/Simmons, Dan/Los cantos de Hyperion - Dan Simmons.pdf"),
+    key: "S/Simmons, Dan/Los cantos de Hyperion - Dan Simmons.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/S/Simmons, Dan/Los cantos de Hyperion - Dan Simmons.epub"),
+    key: "001_EPUB/S/Simmons, Dan/Los cantos de Hyperion - Dan Simmons.epub",
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Leigh Bardugo (Trilogía Sombra y Hueso) ──
+  {
+    local: path.join(BASE_LOCAL, "B/Bardugo, Leigh/Sombra y hueso - Leigh Bardugo.pdf"),
+    key: "B/Bardugo, Leigh/Sombra y hueso - Leigh Bardugo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/B/Bardugo, Leigh/Sombra y hueso - Leigh Bardugo.epub"),
+    key: "001_EPUB/B/Bardugo, Leigh/Sombra y hueso - Leigh Bardugo.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "B/Bardugo, Leigh/Asedio y tormenta - Leigh Bardugo.pdf"),
+    key: "B/Bardugo, Leigh/Asedio y tormenta - Leigh Bardugo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/B/Bardugo, Leigh/Asedio y tormenta - Leigh Bardugo.epub"),
+    key: "001_EPUB/B/Bardugo, Leigh/Asedio y tormenta - Leigh Bardugo.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "B/Bardugo, Leigh/Ruina y ascenso - Leigh Bardugo.pdf"),
+    key: "B/Bardugo, Leigh/Ruina y ascenso - Leigh Bardugo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/B/Bardugo, Leigh/Ruina y ascenso - Leigh Bardugo.epub"),
+    key: "001_EPUB/B/Bardugo, Leigh/Ruina y ascenso - Leigh Bardugo.epub",
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Leigh Bardugo (Bilogía Seis de Cuervos) ──
+  {
+    local: path.join(BASE_LOCAL, "B/Bardugo, Leigh/Seis de cuervos - Leigh Bardugo.pdf"),
+    key: "B/Bardugo, Leigh/Seis de cuervos - Leigh Bardugo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/B/Bardugo, Leigh/Seis de cuervos - Leigh Bardugo.epub"),
+    key: "001_EPUB/B/Bardugo, Leigh/Seis de cuervos - Leigh Bardugo.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "B/Bardugo, Leigh/Reino de ladrones - Leigh Bardugo.pdf"),
+    key: "B/Bardugo, Leigh/Reino de ladrones - Leigh Bardugo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/B/Bardugo, Leigh/Reino de ladrones - Leigh Bardugo.epub"),
+    key: "001_EPUB/B/Bardugo, Leigh/Reino de ladrones - Leigh Bardugo.epub",
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Rick Riordan (Percy Jackson y los Dioses del Olimpo) ──
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/El ladron del rayo - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/El ladron del rayo - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/El ladron del rayo - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/El ladron del rayo - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/El mar de los monstruos - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/El mar de los monstruos - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/El mar de los monstruos - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/El mar de los monstruos - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/La maldicion del Titan - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/La maldicion del Titan - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/La maldicion del Titan - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/La maldicion del Titan - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/La batalla del laberinto - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/La batalla del laberinto - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/La batalla del laberinto - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/La batalla del laberinto - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/El ultimo heroe del Olimpo - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/El ultimo heroe del Olimpo - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/El ultimo heroe del Olimpo - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/El ultimo heroe del Olimpo - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/Percy Jackson y el caliz de los dioses - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/Percy Jackson y el caliz de los dioses - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/Percy Jackson y el caliz de los dioses - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/Percy Jackson y el caliz de los dioses - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/La furia de la diosa de tres cabezas - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/La furia de la diosa de tres cabezas - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/La furia de la diosa de tres cabezas - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/La furia de la diosa de tres cabezas - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "R/Riordan, Rick/Percy Jackson La serie completa - Rick Riordan.pdf"),
+    key: "R/Riordan, Rick/Percy Jackson La serie completa - Rick Riordan.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/R/Riordan, Rick/Percy Jackson La serie completa - Rick Riordan.epub"),
+    key: "001_EPUB/R/Riordan, Rick/Percy Jackson La serie completa - Rick Riordan.epub",
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Javier Castillo (Trilogía Miren Triggs) ──
+  {
+    local: path.join(BASE_LOCAL, "C/Castillo, Javier/La chica de nieve - Javier Castillo.pdf"),
+    key: "C/Castillo, Javier/La chica de nieve - Javier Castillo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Castillo, Javier/La chica de nieve - Javier Castillo.epub"),
+    key: "001_EPUB/C/Castillo, Javier/La chica de nieve - Javier Castillo.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Castillo, Javier/El juego del alma - Javier Castillo.pdf"),
+    key: "C/Castillo, Javier/El juego del alma - Javier Castillo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Castillo, Javier/El juego del alma - Javier Castillo.epub"),
+    key: "001_EPUB/C/Castillo, Javier/El juego del alma - Javier Castillo.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "C/Castillo, Javier/La grieta del silencio - Javier Castillo.pdf"),
+    key: "C/Castillo, Javier/La grieta del silencio - Javier Castillo.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Castillo, Javier/La grieta del silencio - Javier Castillo.epub"),
+    key: "001_EPUB/C/Castillo, Javier/La grieta del silencio - Javier Castillo.epub",
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Joël Dicker (Serie Marcus Goldman) ──
+  {
+    local: path.join(BASE_LOCAL, "D/Dicker, Joël/La verdad sobre el caso Harry Quebert - Joel Dicker.pdf"),
+    key: "D/Dicker, Joël/La verdad sobre el caso Harry Quebert - Joel Dicker.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/D/Dicker, Joël/La verdad sobre el caso Harry Quebert - Joel Dicker.epub"),
+    key: "001_EPUB/D/Dicker, Joël/La verdad sobre el caso Harry Quebert - Joel Dicker.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "D/Dicker, Joël/El libro de los Baltimore - Joel Dicker.pdf"),
+    key: "D/Dicker, Joël/El libro de los Baltimore - Joel Dicker.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/D/Dicker, Joël/El libro de los Baltimore - Joel Dicker.epub"),
+    key: "001_EPUB/D/Dicker, Joël/El libro de los Baltimore - Joel Dicker.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "D/Dicker, Joël/El caso Alaska Sanders - Joel Dicker.pdf"),
+    key: "D/Dicker, Joël/El caso Alaska Sanders - Joel Dicker.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/D/Dicker, Joël/El caso Alaska Sanders - Joel Dicker.epub"),
+    key: "001_EPUB/D/Dicker, Joël/El caso Alaska Sanders - Joel Dicker.epub",
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Blake Crouch & Alex Michaelides (Misterio y Ciencia Ficción) ──
+  {
+    local: path.join(BASE_LOCAL, "C/Crouch, Blake/Materia oscura - Blake Crouch.pdf"),
+    key: "C/Crouch, Blake/Materia oscura - Blake Crouch.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/C/Crouch, Blake/Materia oscura - Blake Crouch.epub"),
+    key: "001_EPUB/C/Crouch, Blake/Materia oscura - Blake Crouch.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "M/Michaelides, Alex/La paciente silenciosa - Alex Michaelides.pdf"),
+    key: "M/Michaelides, Alex/La paciente silenciosa - Alex Michaelides.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/M/Michaelides, Alex/La paciente silenciosa - Alex Michaelides.epub"),
+    key: "001_EPUB/M/Michaelides, Alex/La paciente silenciosa - Alex Michaelides.epub",
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Charles Duhigg, Héctor García, David Goggins, Morgan Housel (Desarrollo y Finanzas) ──
+  {
+    local: path.join(BASE_LOCAL, "D/Duhigg, Charles/Supercomunicadores - Charles Duhigg.pdf"),
+    key: "D/Duhigg, Charles/Supercomunicadores - Charles Duhigg.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/D/Duhigg, Charles/Supercomunicadores - Charles Duhigg.epub"),
+    key: "001_EPUB/D/Duhigg, Charles/Supercomunicadores - Charles Duhigg.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "G/García, Héctor/Ikigai - Hector Garcia y Francesc Miralles.pdf"),
+    key: "G/García, Héctor/Ikigai - Hector Garcia y Francesc Miralles.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/G/García, Héctor/Ikigai - Hector Garcia y Francesc Miralles.epub"),
+    key: "001_EPUB/G/García, Héctor/Ikigai - Hector Garcia y Francesc Miralles.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "G/Goggins, David/No me puedes lastimar - David Goggins.pdf"),
+    key: "G/Goggins, David/No me puedes lastimar - David Goggins.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/G/Goggins, David/No me puedes lastimar - David Goggins.epub"),
+    key: "001_EPUB/G/Goggins, David/No me puedes lastimar - David Goggins.epub",
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, "H/Housel, Morgan/La psicologia del dinero - Morgan Housel.pdf"),
+    key: "H/Housel, Morgan/La psicologia del dinero - Morgan Housel.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/H/Housel, Morgan/La psicologia del dinero - Morgan Housel.epub"),
+    key: "001_EPUB/H/Housel, Morgan/La psicologia del dinero - Morgan Housel.epub",
+    contentType: 'application/epub+zip'
+  },
 ];
 
 async function subirArchivo({ local, key, contentType }) {

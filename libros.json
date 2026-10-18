@@ -8660,20 +8660,6 @@
     "paginas": 236
   },
   {
-    "id": 625,
-    "titulo": "Gregor. La profecia de la destruccion",
-    "autor": "Suzanne Collins",
-    "anio": 2004,
-    "genero": "Novela juvenil",
-    "descripcion": "Tercera entrega de las Crónicas de las Tierras Bajas, donde Gregor enfrenta dilemas éticos durante el conflicto bélico.",
-    "pdf": "https://drive.google.com/file/d/1DB9HdkH8_FTIEo-s-AJ8u-4QEjc5205v/preview",
-    "portada": "portadas/625.webp",
-    "archivo_pdf": "C/Collins, Suzanne/Gregor. La profecia de la destruccion - Suzanne Collins.pdf",
-    "archivo_epub": "001_EPUB/C/Collins, Suzanne/Gregor. La profecia de la destruccion - Suzanne Collins.epub",
-    "idioma": "es",
-    "paginas": 212
-  },
-  {
     "id": 624,
     "titulo": "Gregor La profecia del gris",
     "autor": "Suzanne Collins",
@@ -8686,6 +8672,20 @@
     "archivo_epub": "001_EPUB/C/Collins, Suzanne/Gregor La profecia del gris - Suzanne Collins.epub",
     "idioma": "es",
     "paginas": 214
+  },
+  {
+    "id": 625,
+    "titulo": "Gregor. La profecia de la destruccion",
+    "autor": "Suzanne Collins",
+    "anio": 2004,
+    "genero": "Novela juvenil",
+    "descripcion": "Tercera entrega de las Crónicas de las Tierras Bajas, donde Gregor enfrenta dilemas éticos durante el conflicto bélico.",
+    "pdf": "https://drive.google.com/file/d/1DB9HdkH8_FTIEo-s-AJ8u-4QEjc5205v/preview",
+    "portada": "portadas/625.webp",
+    "archivo_pdf": "C/Collins, Suzanne/Gregor. La profecia de la destruccion - Suzanne Collins.pdf",
+    "archivo_epub": "001_EPUB/C/Collins, Suzanne/Gregor. La profecia de la destruccion - Suzanne Collins.epub",
+    "idioma": "es",
+    "paginas": 212
   },
   {
     "id": 627,
@@ -17332,20 +17332,6 @@
     "paginas": 151
   },
   {
-    "id": 2777,
-    "titulo": "La sociedad del cansancio",
-    "autor": "Byung-Chul Han",
-    "anio": 2010,
-    "genero": "Filosofía",
-    "descripcion": "Ensayo filosófico que diagnostica a la sociedad contemporánea como una sociedad de rendimiento que produce depresión y agotamiento.",
-    "pdf": "https://drive.google.com/file/d/1CFo5ExNiyTdxYYy66wr-NqiRZOn2JFFl/preview",
-    "portada": "portadas/2777.webp",
-    "archivo_pdf": "H/Han, Byung-Chul/La sociedad del cansancio - Byung-Chul Han.pdf",
-    "archivo_epub": "001_EPUB/H/Han, Byung-Chul/La sociedad del cansancio - Byung-Chul Han.epub",
-    "idioma": "es",
-    "paginas": 91
-  },
-  {
     "id": 1251,
     "titulo": "Psicopolitica",
     "autor": "Byung-Chul Han",
@@ -21518,6 +21504,17 @@
     "paginas": 272
   },
   {
+    "id": 1549,
+    "titulo": "El desaparecido America",
+    "autor": "Franz Kafka",
+    "anio": 1927,
+    "genero": "Novela",
+    "descripcion": "Un joven inmigrante europeo vive peripecias absurdas y desafortunadas en un Estados Unidos surrealista.",
+    "pdf": "https://drive.google.com/file/d/1EiAOZxHsTaL1PG33w1OZsBxxcCBenwSD/preview",
+    "portada": "portadas/1549.webp",
+    "idioma": "es"
+  },
+  {
     "id": 1550,
     "titulo": "El proceso",
     "autor": "Franz Kafka",
@@ -21530,17 +21527,6 @@
     "archivo_epub": "001_EPUB/K/Kafka, Franz/El proceso - Franz Kafka.epub",
     "idioma": "es",
     "paginas": 226
-  },
-  {
-    "id": 1549,
-    "titulo": "El desaparecido America",
-    "autor": "Franz Kafka",
-    "anio": 1927,
-    "genero": "Novela",
-    "descripcion": "Un joven inmigrante europeo vive peripecias absurdas y desafortunadas en un Estados Unidos surrealista.",
-    "pdf": "https://drive.google.com/file/d/1EiAOZxHsTaL1PG33w1OZsBxxcCBenwSD/preview",
-    "portada": "portadas/1549.webp",
-    "idioma": "es"
   },
   {
     "id": 1551,
@@ -22412,20 +22398,6 @@
     "archivo_epub": "001_EPUB/K/King, Stephen/Elevacion (Stephen King).epub",
     "idioma": "es",
     "paginas": 97
-  },
-  {
-    "id": 2793,
-    "titulo": "En la hierba alta",
-    "autor": "Stephen King",
-    "anio": 2012,
-    "genero": "Terror",
-    "descripcion": "Dos hermanos escuchan a un niño perdido en un campo de hierba que los atrapa en un laberinto sin salida sobrenatural.",
-    "pdf": "https://drive.google.com/file/d/19gTfrXCrw2IIRMoC1h2-hMFSa7S4Eggd/preview",
-    "portada": "portadas/2793.webp",
-    "archivo_pdf": "K/King, Stephen/En la hierba alta (Stephen King).pdf",
-    "archivo_epub": "001_EPUB/K/King, Stephen/En la hierba alta (Stephen King).epub",
-    "idioma": "es",
-    "paginas": 69
   },
   {
     "id": 1615,
@@ -23539,20 +23511,6 @@
     "archivo_epub": "001_EPUB/K/Kundera, Milan/La inmortalidad - Milan Kundera.epub",
     "idioma": "es",
     "paginas": 363
-  },
-  {
-    "id": 2798,
-    "titulo": "La insoportable levedad del ser",
-    "autor": "Milan Kundera",
-    "anio": 1984,
-    "genero": "Novela",
-    "descripcion": "Cuatro personajes en la Praga comunista exploran el amor, la política y la dualidad entre lo eterno y lo efímero.",
-    "pdf": "https://drive.google.com/file/d/11bsZp7Ei3wFtV4sltKebz3rErhPC3L68/preview",
-    "portada": "portadas/2798.webp",
-    "archivo_pdf": "K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera.pdf",
-    "archivo_epub": "001_EPUB/K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera.epub",
-    "idioma": "es",
-    "paginas": 262
   },
   {
     "id": 1695,
@@ -26912,20 +26870,6 @@
     "paginas": 332
   },
   {
-    "id": 2811,
-    "titulo": "A tres metros sobre el cielo",
-    "autor": "Federico Moccia",
-    "anio": 1992,
-    "genero": "Romance",
-    "descripcion": "Historia de amor turbulento entre un chico rebelde y una chica de buena familia en la Roma adolescente de los noventa.",
-    "pdf": "https://drive.google.com/file/d/1tRnF8wN2JxHYyU6AuUSxBaEHU0P9iRbl/preview",
-    "portada": "portadas/2811.webp",
-    "archivo_pdf": "M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia.pdf",
-    "archivo_epub": "001_EPUB/M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia.epub",
-    "idioma": "es",
-    "paginas": 327
-  },
-  {
     "id": 1939,
     "titulo": "Perdona si te llamo amor",
     "autor": "Federico Moccia",
@@ -26938,20 +26882,6 @@
     "archivo_epub": "001_EPUB/M/Moccia, Federico/Perdona si te llamo amor - Federico Moccia.epub",
     "idioma": "es",
     "paginas": 543
-  },
-  {
-    "id": 2812,
-    "titulo": "Tengo ganas de ti",
-    "autor": "Federico Moccia",
-    "anio": 2006,
-    "genero": "Romance",
-    "descripcion": "Secuela donde los protagonistas de Tres metros se reencuentran años después marcados por el dolor y una segunda oportunidad.",
-    "pdf": "https://drive.google.com/file/d/17fL2YkgkwY-QkTJJDbcJcNKzfaukqmc2/preview",
-    "portada": "portadas/2812.webp",
-    "archivo_pdf": "M/Moccia, Federico/Tengo ganas de ti - Federico Moccia.pdf",
-    "archivo_epub": "001_EPUB/M/Moccia, Federico/Tengo ganas de ti - Federico Moccia.epub",
-    "idioma": "es",
-    "paginas": 394
   },
   {
     "id": 1941,
@@ -38528,6 +38458,20 @@
     "paginas": 267
   },
   {
+    "id": 2777,
+    "titulo": "La sociedad del cansancio",
+    "autor": "Byung-Chul Han",
+    "anio": 2010,
+    "genero": "Filosofía",
+    "descripcion": "Ensayo filosófico que diagnostica a la sociedad contemporánea como una sociedad de rendimiento que produce depresión y agotamiento.",
+    "pdf": "https://drive.google.com/file/d/1CFo5ExNiyTdxYYy66wr-NqiRZOn2JFFl/preview",
+    "portada": "portadas/2777.webp",
+    "archivo_pdf": "H/Han, Byung-Chul/La sociedad del cansancio - Byung-Chul Han.pdf",
+    "archivo_epub": "001_EPUB/H/Han, Byung-Chul/La sociedad del cansancio - Byung-Chul Han.epub",
+    "idioma": "es",
+    "paginas": 91
+  },
+  {
     "id": 2778,
     "titulo": "La vegetariana",
     "autor": "Kang Han",
@@ -38738,6 +38682,20 @@
     "paginas": 88
   },
   {
+    "id": 2793,
+    "titulo": "En la hierba alta",
+    "autor": "Stephen King",
+    "anio": 2012,
+    "genero": "Terror",
+    "descripcion": "Dos hermanos escuchan a un niño perdido en un campo de hierba que los atrapa en un laberinto sin salida sobrenatural.",
+    "pdf": "https://drive.google.com/file/d/19gTfrXCrw2IIRMoC1h2-hMFSa7S4Eggd/preview",
+    "portada": "portadas/2793.webp",
+    "archivo_pdf": "K/King, Stephen/En la hierba alta (Stephen King).pdf",
+    "archivo_epub": "001_EPUB/K/King, Stephen/En la hierba alta (Stephen King).epub",
+    "idioma": "es",
+    "paginas": 69
+  },
+  {
     "id": 2794,
     "titulo": "El negocio del siglo 21",
     "autor": "Robert Toru Kiyosaki",
@@ -38792,6 +38750,20 @@
     "archivo_epub": "001_EPUB/K/Kuang, R F/La Republica del Dragon - R F Kuang.epub",
     "idioma": "es",
     "paginas": 632
+  },
+  {
+    "id": 2798,
+    "titulo": "La insoportable levedad del ser",
+    "autor": "Milan Kundera",
+    "anio": 1984,
+    "genero": "Novela",
+    "descripcion": "Cuatro personajes en la Praga comunista exploran el amor, la política y la dualidad entre lo eterno y lo efímero.",
+    "pdf": "https://drive.google.com/file/d/11bsZp7Ei3wFtV4sltKebz3rErhPC3L68/preview",
+    "portada": "portadas/2798.webp",
+    "archivo_pdf": "K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera.pdf",
+    "archivo_epub": "001_EPUB/K/Kundera, Milan/La insoportable levedad del ser - Milan Kundera.epub",
+    "idioma": "es",
+    "paginas": 262
   },
   {
     "id": 2799,
@@ -38976,6 +38948,34 @@
     "archivo_epub": "001_EPUB/M/Miller, Madeline/La cancion de Aquiles - Madeline Miller.epub",
     "idioma": "es",
     "paginas": 296
+  },
+  {
+    "id": 2811,
+    "titulo": "A tres metros sobre el cielo",
+    "autor": "Federico Moccia",
+    "anio": 1992,
+    "genero": "Romance",
+    "descripcion": "Historia de amor turbulento entre un chico rebelde y una chica de buena familia en la Roma adolescente de los noventa.",
+    "pdf": "https://drive.google.com/file/d/1tRnF8wN2JxHYyU6AuUSxBaEHU0P9iRbl/preview",
+    "portada": "portadas/2811.webp",
+    "archivo_pdf": "M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia.pdf",
+    "archivo_epub": "001_EPUB/M/Moccia, Federico/A tres metros sobre el cielo - Federico Moccia.epub",
+    "idioma": "es",
+    "paginas": 327
+  },
+  {
+    "id": 2812,
+    "titulo": "Tengo ganas de ti",
+    "autor": "Federico Moccia",
+    "anio": 2006,
+    "genero": "Romance",
+    "descripcion": "Secuela donde los protagonistas de Tres metros se reencuentran años después marcados por el dolor y una segunda oportunidad.",
+    "pdf": "https://drive.google.com/file/d/17fL2YkgkwY-QkTJJDbcJcNKzfaukqmc2/preview",
+    "portada": "portadas/2812.webp",
+    "archivo_pdf": "M/Moccia, Federico/Tengo ganas de ti - Federico Moccia.pdf",
+    "archivo_epub": "001_EPUB/M/Moccia, Federico/Tengo ganas de ti - Federico Moccia.epub",
+    "idioma": "es",
+    "paginas": 394
   },
   {
     "id": 2813,
@@ -40573,7 +40573,11 @@
     "archivo_pdf": "S/Simmons, Dan/Hyperion - Dan Simmons.pdf",
     "archivo_epub": "001_EPUB/S/Simmons, Dan/Hyperion - Dan Simmons.epub",
     "idioma": "es",
-    "paginas": 577
+    "paginas": 577,
+    "serie": {
+      "nombre": "Cantos de Hyperion",
+      "orden": 1
+    }
   },
   {
     "id": 2999,
@@ -41144,5 +41148,773 @@
     "archivo_epub": "001_EPUB/C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.epub",
     "idioma": "es",
     "paginas": 204
+  },
+  {
+    "id": 3052,
+    "titulo": "Una corte de rosas y espinas",
+    "autor": "Sarah J. Maas",
+    "anio": 2015,
+    "genero": "Fantasía",
+    "descripcion": "Cuando la cazadora Feyre mata a un lobo en el bosque, una criatura aterradora llega para exigir venganza. Arrastrada a una tierra mágica y peligrosa que solo conoce a través de leyendas, Feyre descubre que su captor no es un animal, sino Tamlin, uno de los letales e inmortales feéricos. Mientras sus sentimientos hacia él se transforman de la hostilidad a la pasión, una sombra siniestra y ancestral amenaza con destruir el mundo de los inmortales.",
+    "pdf": "",
+    "portada": "portadas/3052.webp",
+    "archivo_pdf": "M/Maas, Sarah J./Una corte de rosas y espinas - Sarah J. Maas.pdf",
+    "archivo_epub": "001_EPUB/M/Maas, Sarah J./Una corte de rosas y espinas - Sarah J. Maas.epub",
+    "serie": {
+      "nombre": "Saga Una Corte de Rosas y Espinas",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 495
+  },
+  {
+    "id": 3053,
+    "titulo": "Una corte de niebla y furia",
+    "autor": "Sarah J. Maas",
+    "anio": 2016,
+    "genero": "Fantasía",
+    "descripcion": "Feyre ha sobrevivido a las garras de Amarantha y ha regresado a la Corte Primavera, pero a un precio desgarrador. Aunque ahora posee los poderes y la inmortalidad de los Altos Fae, su corazón continúa atrapado por el trauma y las promesas rotas. El pacto ineludible con Rhysand, el temido Alto Lord de la Corte Noche, la arrastrará hacia un fascinante juego de secretos, intrigas y un destino deslumbrante que cambiará su vida para siempre.",
+    "pdf": "",
+    "portada": "portadas/3053.webp",
+    "archivo_pdf": "M/Maas, Sarah J./Una corte de niebla y furia - Sarah J. Maas.pdf",
+    "archivo_epub": "001_EPUB/M/Maas, Sarah J./Una corte de niebla y furia - Sarah J. Maas.epub",
+    "serie": {
+      "nombre": "Saga Una Corte de Rosas y Espinas",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 766
+  },
+  {
+    "id": 3054,
+    "titulo": "Una corte de alas y ruina",
+    "autor": "Sarah J. Maas",
+    "anio": 2017,
+    "genero": "Fantasía",
+    "descripcion": "La guerra es inminente y una fuerza militar invasora amenaza con someter a Prythian. Para proteger a su pueblo y a los seres que ama, Feyre debe jugar un peligroso papel de espionaje y engaño en el corazón de la Corte Primavera. Las alianzas entre las cortes feéricas son frágiles, y para asegurar la victoria, Feyre y Rhysand deberán arriesgar sus almas, sus ejércitos y el futuro de todo su mundo.",
+    "pdf": "",
+    "portada": "portadas/3054.webp",
+    "archivo_pdf": "M/Maas, Sarah J./Una corte de alas y ruina - Sarah J. Maas.pdf",
+    "archivo_epub": "001_EPUB/M/Maas, Sarah J./Una corte de alas y ruina - Sarah J. Maas.epub",
+    "serie": {
+      "nombre": "Saga Una Corte de Rosas y Espinas",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 886
+  },
+  {
+    "id": 3055,
+    "titulo": "Una corte de hielo y estrellas",
+    "autor": "Sarah J. Maas",
+    "anio": 2018,
+    "genero": "Fantasía",
+    "descripcion": "Meses después de la devastadora guerra que sacudió las tierras inmortales, Feyre, Rhysand y su círculo íntimo reconstruyen la Corte Noche mientras se aproxima el Solsticio de Invierno. Entre celebraciones, festividades y momentos íntimos, las cicatrices del conflicto aún permanecen abiertas y viejas tensiones resurgen, amenazando la frágil paz conquistada con tanta sangre.",
+    "pdf": "",
+    "portada": "portadas/3055.webp",
+    "archivo_pdf": "M/Maas, Sarah J./Una corte de hielo y estrellas - Sarah J. Maas.pdf",
+    "archivo_epub": "001_EPUB/M/Maas, Sarah J./Una corte de hielo y estrellas - Sarah J. Maas.epub",
+    "serie": {
+      "nombre": "Saga Una Corte de Rosas y Espinas",
+      "orden": 4
+    },
+    "idioma": "es",
+    "paginas": 253
+  },
+  {
+    "id": 3056,
+    "titulo": "Una corte de llamas plateadas",
+    "autor": "Sarah J. Maas",
+    "anio": 2021,
+    "genero": "Fantasía",
+    "descripcion": "Nesta Archeron, altiva, furiosa y atormentada por su transformación forzada en inmortal tras la guerra contra Hybern, lucha por encontrar su lugar en la Corte Noche. Para salvarla de su espiral autodestructiva, es enviada a entrenar bajo la severa tutela de Cassian, el veterano comandante de los ejércitos alados. Juntos deberán confrontar sus demonios personales mientras una nueva amenaza política se cierne sobre el reino.",
+    "pdf": "",
+    "portada": "portadas/3056.webp",
+    "archivo_pdf": "M/Maas, Sarah J./Una corte de llamas plateadas - Sarah J. Maas.pdf",
+    "archivo_epub": "001_EPUB/M/Maas, Sarah J./Una corte de llamas plateadas - Sarah J. Maas.epub",
+    "serie": {
+      "nombre": "Saga Una Corte de Rosas y Espinas",
+      "orden": 5
+    },
+    "idioma": "es",
+    "paginas": 849
+  },
+  {
+    "id": 3057,
+    "titulo": "El despertar del Leviatán",
+    "autor": "James S. A. Corey",
+    "anio": 2011,
+    "genero": "Ciencia Ficción",
+    "descripcion": "En un sistema solar colonizado por la humanidad, las tensiones geopolíticas entre la Tierra, Marte y el Cinturón de Asteroides están al borde del conflicto bélico. La desaparición de una joven rica y la destrucción inexplicable de un carguero de hielo unen los destinos del detective Miller y del oficial Jim Holden, desvelando una conspiración corporativa de escala interplanetaria y el hallazgo de una bioentidad alienígena letal.",
+    "pdf": "",
+    "portada": "portadas/3057.webp",
+    "archivo_pdf": "C/Corey, James S. A./El despertar del Leviatan - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./El despertar del Leviatan - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 660
+  },
+  {
+    "id": 3058,
+    "titulo": "La guerra de Calibán",
+    "autor": "James S. A. Corey",
+    "anio": 2012,
+    "genero": "Ciencia Ficción",
+    "descripcion": "En la luna joviana de Ganimedes, principal despensa agrícola del sistema exterior, una criatura genéticamente modificada de fuerza devastadora destruye a soldados terrestres y marcianos, desatando una guerra abierta. Mientras Jim Holden y la tripulación del Rocinante intentan rescatar a una niña secuestrada, la astuta diplomática Chrisjen Avasarala lucha en la Tierra para frenar una catástrofe que podría aniquilar a la especie humana.",
+    "pdf": "",
+    "portada": "portadas/3058.webp",
+    "archivo_pdf": "C/Corey, James S. A./La guerra de Caliban - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./La guerra de Caliban - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 672
+  },
+  {
+    "id": 3059,
+    "titulo": "La puerta de Abadón",
+    "autor": "James S. A. Corey",
+    "anio": 2013,
+    "genero": "Ciencia Ficción",
+    "descripcion": "La protomolécula ha construido una gigantesca estructura anular en la órbita más allá de Urano: una puerta de acceso hacia lo desconocido. Flotas de la Tierra, Marte y la Alianza de Planetas Exteriores convergen alrededor del umbral cósmico en una tensa carrera armamentística. Cuando un saboteador desata una crisis mortal, Holden y los tripulantes del Rocinante deben adentrarse en la Zona Lenta para salvar a la humanidad de la extinción.",
+    "pdf": "",
+    "portada": "portadas/3059.webp",
+    "archivo_pdf": "C/Corey, James S. A./La puerta de Abadon - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./La puerta de Abadon - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 594
+  },
+  {
+    "id": 3060,
+    "titulo": "La quema de Cíbola",
+    "autor": "James S. A. Corey",
+    "anio": 2014,
+    "genero": "Ciencia Ficción",
+    "descripcion": "La apertura de los anillos ha abierto el acceso a miles de mundos habitables más allá del sistema solar. En el planeta Ilus (llamado Nuevo Terra por la Tierra), refugiados cinturonianos y una corporación minera terrícola entran en violento litigio por los recursos. Jim Holden es enviado como mediador neutral, pero el despertar de antiguas maquinarias alienígenas subterráneas desata un cataclismo geológico que amenaza con sepultarlos a todos.",
+    "pdf": "",
+    "portada": "portadas/3060.webp",
+    "archivo_pdf": "C/Corey, James S. A./La quema de Cibola - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./La quema de Cibola - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 4
+    },
+    "idioma": "es",
+    "paginas": 643
+  },
+  {
+    "id": 3061,
+    "titulo": "Los juegos de Némesis",
+    "autor": "James S. A. Corey",
+    "anio": 2015,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Con el Rocinante en reparaciones en la estación Tycho, los cuatro tripulantes se dispersan por el sistema solar para atender asuntos personales pendientes: Amos regresa a Baltimore, Alex viaja a Marte y Naomi busca a su hijo en el Cinturón. Sin embargo, una facción terrorista liderada por Marco Inaros lanza un devastador ataque con asteroides invisibles contra la Tierra, desencadenando el mayor colapso de la civilización humana.",
+    "pdf": "",
+    "portada": "portadas/3061.webp",
+    "archivo_pdf": "C/Corey, James S. A./Los juegos de Nemesis - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./Los juegos de Nemesis - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 5
+    },
+    "idioma": "es",
+    "paginas": 598
+  },
+  {
+    "id": 3062,
+    "titulo": "Las cenizas de Babilonia",
+    "autor": "James S. A. Corey",
+    "anio": 2016,
+    "genero": "Ciencia Ficción",
+    "descripcion": "La Armada Libre de Marco Inaros mantiene el control del Cinturón y somete a los planetas interiores a un bloqueo implacable mientras la Tierra se recupera de los bombardeos de asteroides. En medio del caos, surge una frágil coalición entre la Tierra, los restos de Marte y los cinturonianos leales a Fred Johnson. James Holden y el Rocinante lideran una desesperada ofensiva espacial para recuperar el control de las rutas hacia los anillos.",
+    "pdf": "",
+    "portada": "portadas/3062.webp",
+    "archivo_pdf": "C/Corey, James S. A./Las cenizas de Babilonia - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./Las cenizas de Babilonia - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 6
+    },
+    "idioma": "es",
+    "paginas": 562
+  },
+  {
+    "id": 3063,
+    "titulo": "El alzamiento de Persépolis",
+    "autor": "James S. A. Corey",
+    "anio": 2017,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Treinta años después de la caída de la Armada Libre, la humanidad prospera en una red de mil trescientos mundos conectados por la estación Medina. Sin embargo, desde el aislado sistema de Laconia emerge un imperio autoritario gobernado por el alto cónsul Winston Duarte, armado con biotecnología alienígena protomolecular de poder inigualable. El veterano equipo del Rocinante debe liderar una resistencia encubierta contra la subyugación total.",
+    "pdf": "",
+    "portada": "portadas/3063.webp",
+    "archivo_pdf": "C/Corey, James S. A./El alzamiento de Persepolis - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./El alzamiento de Persepolis - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 7
+    },
+    "idioma": "es",
+    "paginas": 624
+  },
+  {
+    "id": 3064,
+    "titulo": "La cólera de Tiamat",
+    "autor": "James S. A. Corey",
+    "anio": 2019,
+    "genero": "Ciencia Ficción",
+    "descripcion": "El Imperio Laconiano domina con puño de hierro los mundos de la humanidad, pero la soberbia de Winston Duarte despierta la ira de las entidades interdimensionales que destruyeron a los creadores de la protomolécula. Naomi Nagata coordina una red secreta de resistencia armada a lo largo de los sistemas estelares, mientras Jim Holden, cautivo en Laconia, busca una rendija para detener la aniquilación de la realidad misma.",
+    "pdf": "",
+    "portada": "portadas/3064.webp",
+    "archivo_pdf": "C/Corey, James S. A./La colera de Tiamat - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./La colera de Tiamat - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 8
+    },
+    "idioma": "es",
+    "paginas": 605
+  },
+  {
+    "id": 3065,
+    "titulo": "La caída del Leviatán",
+    "autor": "James S. A. Corey",
+    "anio": 2021,
+    "genero": "Ciencia Ficción",
+    "descripcion": "La épica conclusión de la saga The Expanse. Con el Imperio Laconiano desmoronándose y las inteligencias cósmicas desgarrando el tejido del espacio entre las puertas anulares, la supervivencia de la especie humana pende de un hilo. James Holden, Naomi Nagata, Amos Burton y sus aliados deberán tomar la decisión más trascendental en la historia humana: sacrificar los mil trescientos mundos para asegurar el futuro de la humanidad.",
+    "pdf": "",
+    "portada": "portadas/3065.webp",
+    "archivo_pdf": "C/Corey, James S. A./La caida del Leviatan - James S. A. Corey.pdf",
+    "archivo_epub": "001_EPUB/C/Corey, James S. A./La caida del Leviatan - James S. A. Corey.epub",
+    "serie": {
+      "nombre": "The Expanse",
+      "orden": 9
+    },
+    "idioma": "es",
+    "paginas": 585
+  },
+  {
+    "id": 3066,
+    "titulo": "La caída de Hyperion",
+    "autor": "Dan Simmons",
+    "anio": 1990,
+    "genero": "Ciencia Ficción",
+    "descripcion": "La continuación magistral de Hyperion. Mientras las Tumbas del Tiempo comienzan a abrirse liberando al temido Alcaudón, la Hegemonía del Hombre entra en una guerra total contra los invasores Éxters. A través de los ojos de Joseph Severn, un cíbrido con la personalidad de John Keats, la presidenta Meina Gladstone descubre la escalofriante conspiración del TecnoNúcleo y la verdadera naturaleza del vacío cuántico.",
+    "pdf": "",
+    "portada": "portadas/3066.webp",
+    "archivo_pdf": "S/Simmons, Dan/La caida de Hyperion - Dan Simmons.pdf",
+    "archivo_epub": "001_EPUB/S/Simmons, Dan/La caida de Hyperion - Dan Simmons.epub",
+    "serie": {
+      "nombre": "Cantos de Hyperion",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 616
+  },
+  {
+    "id": 3067,
+    "titulo": "Endymion",
+    "autor": "Dan Simmons",
+    "anio": 1996,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Casi tres siglos después de la caída de la Red de Portales y el colapso de la Hegemonía, la Iglesia Católica resurgida (Pax) controla la galaxia gracias al cruciforme y la promesa de la resurrección física. Raúl Endymion, un soldado condenado a muerte, recibe la misión de rescatar a Aenea, una misteriosa niña predestinada a ser la mesías de la humanidad, perseguida implacablemente por las tropas de la Santa Inquisición.",
+    "pdf": "",
+    "portada": "portadas/3067.webp",
+    "archivo_pdf": "S/Simmons, Dan/Endymion - Dan Simmons.pdf",
+    "archivo_epub": "001_EPUB/S/Simmons, Dan/Endymion - Dan Simmons.epub",
+    "serie": {
+      "nombre": "Cantos de Hyperion",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 625
+  },
+  {
+    "id": 3068,
+    "titulo": "El ascenso de Endymion",
+    "autor": "Dan Simmons",
+    "anio": 1997,
+    "genero": "Ciencia Ficción",
+    "descripcion": "El colofón de la monumental tetralogía de ciencia ficción. Aenea ha alcanzado la madurez y difunde su mensaje espiritual por los mundos habitados, desafiando el dogma tiránico del Vaticano y el poder parasitario del TecnoNúcleo. Raúl Endymion y el androide A. Bettik acompañan a la mesías en su peregrinaje final hacia la Tierra perdida, revelando los misterios del Vacío que Vincula y el significado del amor cósmico.",
+    "pdf": "",
+    "portada": "portadas/3068.webp",
+    "archivo_pdf": "S/Simmons, Dan/El ascenso de Endymion - Dan Simmons.pdf",
+    "archivo_epub": "001_EPUB/S/Simmons, Dan/El ascenso de Endymion - Dan Simmons.epub",
+    "serie": {
+      "nombre": "Cantos de Hyperion",
+      "orden": 4
+    },
+    "idioma": "es",
+    "paginas": 782
+  },
+  {
+    "id": 3069,
+    "titulo": "Huérfanos de la Hélice",
+    "autor": "Dan Simmons",
+    "anio": 1999,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Relato galardonado con el premio Locus que expande el universo de los Cantos de Hyperion. A bordo del Spinship Hélice, una comunidad de humanos adaptados genéticamente a vivir en caída libre viaja por el espacio profundo miles de años en el futuro. Al responder a una llamada de socorro de una estrella remota, se encuentran con una especie alienígena en peligro de extinción y con los ecos eternos de la leyenda del Alcaudón.",
+    "pdf": "",
+    "portada": "portadas/3069.webp",
+    "archivo_pdf": "S/Simmons, Dan/Huerfanos de la Helice - Dan Simmons.pdf",
+    "archivo_epub": "001_EPUB/S/Simmons, Dan/Huerfanos de la Helice - Dan Simmons.epub",
+    "serie": {
+      "nombre": "Cantos de Hyperion",
+      "orden": 5
+    },
+    "idioma": "es",
+    "paginas": 74
+  },
+  {
+    "id": 3070,
+    "titulo": "Los cantos de Hyperion",
+    "autor": "Dan Simmons",
+    "anio": 1990,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Edición integral que reúne las dos primeras e insuperables novelas del ciclo de Hyperion (Hyperion y La caída de Hyperion). Una obra cumbre de la ciencia ficción moderna que entrelaza la epopeya espacial, el misticismo religioso, la poesía de John Keats y la inteligencia artificial en un fresco narrativo colosal sobre el destino final de la conciencia humana.",
+    "pdf": "",
+    "portada": "portadas/3070.webp",
+    "archivo_pdf": "S/Simmons, Dan/Los cantos de Hyperion - Dan Simmons.pdf",
+    "archivo_epub": "001_EPUB/S/Simmons, Dan/Los cantos de Hyperion - Dan Simmons.epub",
+    "serie": {
+      "nombre": "Cantos de Hyperion",
+      "orden": 6
+    },
+    "idioma": "es",
+    "paginas": 1237
+  },
+  {
+    "id": 3071,
+    "titulo": "Sombra y hueso",
+    "autor": "Leigh Bardugo",
+    "anio": 2012,
+    "genero": "Fantasía",
+    "descripcion": "Ravka, un reino asediado y dividido por la Sombra, una franja impenetrable de oscuridad poblada por monstruos carnívoros. Alina Starkov, una humilde cartógrafa huérfana, descubre un poder legendario latente cuando su mejor amigo Mal es atacado en la Sombra. Reclutada por la élite mágica de los Grisha y cortejada por el carismático y enigmático Oscuro, Alina deberá aprender a controlar la invocación de la luz para salvar su patria.",
+    "pdf": "",
+    "portada": "portadas/3071.webp",
+    "archivo_pdf": "B/Bardugo, Leigh/Sombra y hueso - Leigh Bardugo.pdf",
+    "archivo_epub": "001_EPUB/B/Bardugo, Leigh/Sombra y hueso - Leigh Bardugo.epub",
+    "serie": {
+      "nombre": "Trilogía Sombra y Hueso",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 314
+  },
+  {
+    "id": 3072,
+    "titulo": "Asedio y tormenta",
+    "autor": "Leigh Bardugo",
+    "anio": 2013,
+    "genero": "Fantasía",
+    "descripcion": "Perseguida a través del Mar Auténtico y atormentada por las vidas que cobró en la Sombra, Alina Starkov intenta forjarse una nueva vida junto a Mal en tierras lejanas. Sin embargo, el Oscuro regresa más temible y poderoso que nunca, decidido a doblegar la voluntad de Alina. Para enfrentarlo, Alina se alía con el ingenioso corsario Nikolai Lantsov y emprende la búsqueda del segundo amplificador mítico de Morozova.",
+    "pdf": "",
+    "portada": "portadas/3072.webp",
+    "archivo_pdf": "B/Bardugo, Leigh/Asedio y tormenta - Leigh Bardugo.pdf",
+    "archivo_epub": "001_EPUB/B/Bardugo, Leigh/Asedio y tormenta - Leigh Bardugo.epub",
+    "serie": {
+      "nombre": "Trilogía Sombra y Hueso",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 396
+  },
+  {
+    "id": 3073,
+    "titulo": "Ruina y ascenso",
+    "autor": "Leigh Bardugo",
+    "anio": 2014,
+    "genero": "Fantasía",
+    "descripcion": "La épica conclusión de la trilogía Sombra y Hueso. Con la capital devastada y el Oscuro gobernando Ravka desde las sombras, Alina se refugia en las profundidades subterráneas bajo la adoración fanática de sus seguidores. Para librar la batalla definitiva, deberá recuperar sus fuerzas, reunir a los Grisha dispersos y desvelar los secretos finales de Morozova antes de que el mundo quede sumido en la oscuridad eterna.",
+    "pdf": "",
+    "portada": "portadas/3073.webp",
+    "archivo_pdf": "B/Bardugo, Leigh/Ruina y ascenso - Leigh Bardugo.pdf",
+    "archivo_epub": "001_EPUB/B/Bardugo, Leigh/Ruina y ascenso - Leigh Bardugo.epub",
+    "serie": {
+      "nombre": "Trilogía Sombra y Hueso",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 373
+  },
+  {
+    "id": 3074,
+    "titulo": "Seis de cuervos",
+    "autor": "Leigh Bardugo",
+    "anio": 2015,
+    "genero": "Fantasía",
+    "descripcion": "En la bulliciosa y corrupta ciudad mercantil de Ketterdam, el prodigioso criminal Kaz Brekker recibe una propuesta irresistible: infiltrarse en la Corte de Hielo, una fortaleza militar inexpugnable, para rescatar al creador del jurda parem, una droga que multiplica letalmente el poder Grisha. Para lograrlo, recluta a una banda de marginados y delincuentes dispuestos a arriesgarlo todo por un botín legendario.",
+    "pdf": "",
+    "portada": "portadas/3074.webp",
+    "archivo_pdf": "B/Bardugo, Leigh/Seis de cuervos - Leigh Bardugo.pdf",
+    "archivo_epub": "001_EPUB/B/Bardugo, Leigh/Seis de cuervos - Leigh Bardugo.epub",
+    "serie": {
+      "nombre": "Bilogía Seis de Cuervos",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 536
+  },
+  {
+    "id": 3075,
+    "titulo": "Reino de ladrones",
+    "autor": "Leigh Bardugo",
+    "anio": 2016,
+    "genero": "Fantasía",
+    "descripcion": "Tras culminar el atraco más audaz de sus vidas en la Corte de Hielo, Kaz Brekker y los Cuervos son traicionados y despojados de su recompensa en Ketterdam. Sin recursos y con Inej secuestrada por sus enemigos, la banda deberá librar una guerra despiadada en las callejuelas del Barril, recurriendo a toda su astucia, engaños y audacia para saldar viejas deudas y asegurar su libertad.",
+    "pdf": "",
+    "portada": "portadas/3075.webp",
+    "archivo_pdf": "B/Bardugo, Leigh/Reino de ladrones - Leigh Bardugo.pdf",
+    "archivo_epub": "001_EPUB/B/Bardugo, Leigh/Reino de ladrones - Leigh Bardugo.epub",
+    "serie": {
+      "nombre": "Bilogía Seis de Cuervos",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 600
+  },
+  {
+    "id": 3076,
+    "titulo": "El ladrón del rayo",
+    "autor": "Rick Riordan",
+    "anio": 2005,
+    "genero": "Fantasía",
+    "descripcion": "Percy Jackson cree que es un adolescente común con problemas de atención y dislexia, hasta que descubre que los dioses del Olimpo siguen vivos en la Norteamérica moderna y que él es un semidiós, hijo de Poseidón. Acusado de haber robado el rayo maestro de Zeus, Percy debe emprender una odisea a través de Estados Unidos junto a un sátiro y una hija de Atenea para desenmascarar al verdadero ladrón y evitar una guerra divina.",
+    "pdf": "",
+    "portada": "portadas/3076.webp",
+    "archivo_pdf": "R/Riordan, Rick/El ladron del rayo - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/El ladron del rayo - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 305
+  },
+  {
+    "id": 3077,
+    "titulo": "El mar de los monstruos",
+    "autor": "Rick Riordan",
+    "anio": 2006,
+    "genero": "Fantasía",
+    "descripcion": "Las fronteras mágicas del Campamento Mestizo están envenenadas y un ejército de criaturas mitológicas amenaza con destruir el único refugio para los hijos de los dioses. Para restaurar el árbol de Thalía y salvar a su amigo Grover, Percy, Annabeth y su hermano cíclope Tyson deben adentrarse en las traicioneras aguas del Mar de los Monstruos (el Triángulo de las Bermudas) en busca del legendario Vellocino de Oro.",
+    "pdf": "",
+    "portada": "portadas/3077.webp",
+    "archivo_pdf": "R/Riordan, Rick/El mar de los monstruos - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/El mar de los monstruos - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 254
+  },
+  {
+    "id": 3078,
+    "titulo": "La maldición del Titán",
+    "autor": "Rick Riordan",
+    "anio": 2007,
+    "genero": "Fantasía",
+    "descripcion": "Una llamada urgente de socorro de Grover lleva a Percy y a sus amigos a descubrir a dos nuevos y poderosos semidioses. Pero durante la misión, Annabeth y la diosa Artemisa son secuestradas por un monstruo ancestral. Guiados por una antigua y trágica profecía del Oráculo, los héroes deberán cruzar el país para enfrentarse al resurgimiento del ejército de Cronos y a la maldición que pesa sobre los Titanes.",
+    "pdf": "",
+    "portada": "portadas/3078.webp",
+    "archivo_pdf": "R/Riordan, Rick/La maldicion del Titan - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/La maldicion del Titan - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 279
+  },
+  {
+    "id": 3079,
+    "titulo": "La batalla del laberinto",
+    "autor": "Rick Riordan",
+    "anio": 2008,
+    "genero": "Fantasía",
+    "descripcion": "El ejército del señor titán Cronos planea invadir directamente el Campamento Mestizo utilizando los túneles subterráneos del Laberinto de Dédalo. Percy, Annabeth, Grover y Tyson se sumergen en las profundidades del dédalo viviente, un laberinto en perpetua mutación lleno de trampas mortales y enigmas ancestrales, compitiendo contra reloj para evitar que Luke obtenga el hilo de Ariadna.",
+    "pdf": "",
+    "portada": "portadas/3079.webp",
+    "archivo_pdf": "R/Riordan, Rick/La batalla del laberinto - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/La batalla del laberinto - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 4
+    },
+    "idioma": "es",
+    "paginas": 329
+  },
+  {
+    "id": 3080,
+    "titulo": "El último héroe del Olimpo",
+    "autor": "Rick Riordan",
+    "anio": 2009,
+    "genero": "Fantasía",
+    "descripcion": "El gran desenlace de la profecía de los dieciséis años. Cronos y sus legiones de monstruos marchan sobre Manhattan para arrasar el monte Olimpo situado en la cima del Empire State. Mientras los dioses olímpicos luchan lejos contra el monstruo Tifón, Percy Jackson y un puñado de valientes semidioses montan una defensa desesperada en las calles de Nueva York para salvar la civilización occidental.",
+    "pdf": "",
+    "portada": "portadas/3080.webp",
+    "archivo_pdf": "R/Riordan, Rick/El ultimo heroe del Olimpo - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/El ultimo heroe del Olimpo - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 5
+    },
+    "idioma": "es",
+    "paginas": 341
+  },
+  {
+    "id": 3081,
+    "titulo": "Percy Jackson y el cáliz de los dioses",
+    "autor": "Rick Riordan",
+    "anio": 2023,
+    "genero": "Fantasía",
+    "descripcion": "Percy Jackson busca graduarse de la secundaria y lograr la admisión en la Universidad de Nueva Roma junto a Annabeth. Sin embargo, para obtener las cartas de recomendación divinas necesarias, debe completar tres misiones oficiales para los dioses. La primera tarea: recuperar el cáliz dorado de Ganímedes antes de que caiga en manos equivocadas y cause un escándalo olímpico cósmico.",
+    "pdf": "",
+    "portada": "portadas/3081.webp",
+    "archivo_pdf": "R/Riordan, Rick/Percy Jackson y el caliz de los dioses - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/Percy Jackson y el caliz de los dioses - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 6
+    },
+    "idioma": "es",
+    "paginas": 246
+  },
+  {
+    "id": 3082,
+    "titulo": "La furia de la diosa de tres cabezas",
+    "autor": "Rick Riordan",
+    "anio": 2024,
+    "genero": "Fantasía",
+    "descripcion": "En la continuación de las aventuras universitarias de Percy Jackson, nuestro héroe necesita su segunda carta de recomendación divina. Esta vez, Percy, Annabeth y Grover deben cuidar de las mascotas sagradas de la misteriosa diosa Hécate durante el fin de semana de Halloween. Cuando un incidente mágico libera el caos en la residencia, deberán evitar la ira implacable de la diosa de la magia.",
+    "pdf": "",
+    "portada": "portadas/3082.webp",
+    "archivo_pdf": "R/Riordan, Rick/La furia de la diosa de tres cabezas - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/La furia de la diosa de tres cabezas - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 7
+    },
+    "idioma": "es",
+    "paginas": 290
+  },
+  {
+    "id": 3083,
+    "titulo": "Percy Jackson: La serie completa",
+    "autor": "Rick Riordan",
+    "anio": 2009,
+    "genero": "Fantasía",
+    "descripcion": "Edición especial que compila la saga completa original de Percy Jackson y los Dioses del Olimpo (El ladrón del rayo, El mar de los monstruos, La maldición del Titán, La batalla del laberinto y El último héroe del Olimpo). Un viaje inolvidable lleno de mitología griega adaptada con ingenio, humor, acción trepidante y amistad inquebrantable.",
+    "pdf": "",
+    "portada": "portadas/3083.webp",
+    "archivo_pdf": "R/Riordan, Rick/Percy Jackson La serie completa - Rick Riordan.pdf",
+    "archivo_epub": "001_EPUB/R/Riordan, Rick/Percy Jackson La serie completa - Rick Riordan.epub",
+    "serie": {
+      "nombre": "Percy Jackson y los Dioses del Olimpo",
+      "orden": 8
+    },
+    "idioma": "es",
+    "paginas": 1521
+  },
+  {
+    "id": 3084,
+    "titulo": "La chica de nieve",
+    "autor": "Javier Castillo",
+    "anio": 2020,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Nueva York, 1998, desfile de Acción de Gracias. Kiera Templeton, una niña de tres años, desaparece entre la multitud sin dejar rastro, hallándose únicamente mechones de su cabello. Cinco años después, sus padres reciben una perturbadora cinta VHS que muestra a la niña jugando en una habitación desconocida. Miren Triggs, una joven estudiante de periodismo de investigación, inicia una obsesiva búsqueda de la verdad que cambiará su vida.",
+    "pdf": "",
+    "portada": "portadas/3084.webp",
+    "archivo_pdf": "C/Castillo, Javier/La chica de nieve - Javier Castillo.pdf",
+    "archivo_epub": "001_EPUB/C/Castillo, Javier/La chica de nieve - Javier Castillo.epub",
+    "serie": {
+      "nombre": "Trilogía Miren Triggs",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 362
+  },
+  {
+    "id": 3085,
+    "titulo": "El juego del alma",
+    "autor": "Javier Castillo",
+    "anio": 2021,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Nueva York, 2011. Una joven de quince años aparece crucificada en un suburbio desolado de la ciudad. Poco después, Miren Triggs recibe un sobre confidencial con una instantánea polaroid de otra adolescente amordazada junto a una pregunta escalofriante: \"¿Quieres jugar?\". Junto a su antiguo profesor de periodismo Jim Schmoer, Miren se sumerge en una oscura red de fanatismo religioso y secretos enterrados.",
+    "pdf": "",
+    "portada": "portadas/3085.webp",
+    "archivo_pdf": "C/Castillo, Javier/El juego del alma - Javier Castillo.pdf",
+    "archivo_epub": "001_EPUB/C/Castillo, Javier/El juego del alma - Javier Castillo.epub",
+    "serie": {
+      "nombre": "Trilogía Miren Triggs",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 370
+  },
+  {
+    "id": 3086,
+    "titulo": "La grieta del silencio",
+    "autor": "Javier Castillo",
+    "anio": 2024,
+    "genero": "Misterio y Thriller",
+    "descripcion": "El cierre de la aclamada trilogía de Miren Triggs. Staten Island, 1981: una bicicleta abandonada en un descampado marca la desaparición del pequeño Daniel Miller. Treinta años después, en 2011, la inspectora Ben Carson descubre un cadáver con una pista relacionada con el caso. Miren Triggs y Jim Schmoer investigan las ramificaciones de un pacto de silencio que oculta una verdad perturbadora.",
+    "pdf": "",
+    "portada": "portadas/3086.webp",
+    "archivo_pdf": "C/Castillo, Javier/La grieta del silencio - Javier Castillo.pdf",
+    "archivo_epub": "001_EPUB/C/Castillo, Javier/La grieta del silencio - Javier Castillo.epub",
+    "serie": {
+      "nombre": "Trilogía Miren Triggs",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 310
+  },
+  {
+    "id": 3087,
+    "titulo": "La verdad sobre el caso Harry Quebert",
+    "autor": "Joël Dicker",
+    "anio": 2012,
+    "genero": "Misterio y Thriller",
+    "descripcion": "El joven escritor superventas Marcus Goldman viaja a New Hampshire para visitar a su mentor Harry Quebert y superar un bloqueo creativo. Pero la apacible vida del pueblo salta por los aires cuando el cadáver de Nola Kellergan, una joven de quince años desaparecida en 1975, es hallado enterrado en el jardín de Quebert. Decidido a demostrar la inocencia de su maestro, Marcus emprende una investigación repleta de giros magistrales.",
+    "pdf": "",
+    "portada": "portadas/3087.webp",
+    "archivo_pdf": "D/Dicker, Joël/La verdad sobre el caso Harry Quebert - Joel Dicker.pdf",
+    "archivo_epub": "001_EPUB/D/Dicker, Joël/La verdad sobre el caso Harry Quebert - Joel Dicker.epub",
+    "serie": {
+      "nombre": "Serie Marcus Goldman",
+      "orden": 1
+    },
+    "idioma": "es",
+    "paginas": 717
+  },
+  {
+    "id": 3088,
+    "titulo": "El libro de los Baltimore",
+    "autor": "Joël Dicker",
+    "anio": 2015,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Hasta el día del Drama, existían dos ramas de la familia Goldman: los Goldman de Montclair, una familia modesta de clase media a la que pertenecía Marcus, y los deslumbrantes Goldman de Baltimore, prósperos, elegantes y carismáticos. Ocho años después del trágico acontecimiento que quebró sus vidas para siempre, Marcus rememora la fascinación de su juventud y desentraña los secretos que llevaron a la inevitable caída del clan.",
+    "pdf": "",
+    "portada": "portadas/3088.webp",
+    "archivo_pdf": "D/Dicker, Joël/El libro de los Baltimore - Joel Dicker.pdf",
+    "archivo_epub": "001_EPUB/D/Dicker, Joël/El libro de los Baltimore - Joel Dicker.epub",
+    "serie": {
+      "nombre": "Serie Marcus Goldman",
+      "orden": 2
+    },
+    "idioma": "es",
+    "paginas": 501
+  },
+  {
+    "id": 3089,
+    "titulo": "El caso Alaska Sanders",
+    "autor": "Joël Dicker",
+    "anio": 2022,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Nueva Inglaterra, 1999. El cadáver de Alaska Sanders, una joven reina de la belleza de veintidós años, es encontrado a orillas de un lago. El caso se cerró con rapidez tras confesar los presuntos culpables. Once años más tarde, Marcus Goldman y el sargento Perry Gahalowood reciben una inquietante carta anónima que pone en tela de juicio toda la resolución policial, reabriendo viejas heridas y misterios insospechados.",
+    "pdf": "",
+    "portada": "portadas/3089.webp",
+    "archivo_pdf": "D/Dicker, Joël/El caso Alaska Sanders - Joel Dicker.pdf",
+    "archivo_epub": "001_EPUB/D/Dicker, Joël/El caso Alaska Sanders - Joel Dicker.epub",
+    "serie": {
+      "nombre": "Serie Marcus Goldman",
+      "orden": 3
+    },
+    "idioma": "es",
+    "paginas": 579
+  },
+  {
+    "id": 3090,
+    "titulo": "Materia oscura",
+    "autor": "Blake Crouch",
+    "anio": 2016,
+    "genero": "Ciencia Ficción",
+    "descripcion": "¿Eres feliz con la vida que has elegido? Esas son las últimas palabras que el profesor de física Jason Dessen escucha antes de ser secuestrado e inyectado con una sustancia desconocida. Al despertar, su realidad ha mutado: su esposa no es su esposa, su hijo nunca nació y él es un célebre físico creador de un dispositivo capaz de viajar entre universos paralelos. Jason emprende una desesperada odisea a través del multiverso para regresar con su verdadera familia.",
+    "pdf": "",
+    "portada": "portadas/3090.webp",
+    "archivo_pdf": "C/Crouch, Blake/Materia oscura - Blake Crouch.pdf",
+    "archivo_epub": "001_EPUB/C/Crouch, Blake/Materia oscura - Blake Crouch.epub",
+    "idioma": "es",
+    "paginas": 372
+  },
+  {
+    "id": 3091,
+    "titulo": "La paciente silenciosa",
+    "autor": "Alex Michaelides",
+    "anio": 2019,
+    "genero": "Misterio y Thriller",
+    "descripcion": "Alicia Berenson, una pintora de éxito casada con un cotizado fotógrafo de moda, dispara cinco tiros a la cara de su marido a quemarropa una noche sin aparente motivo y nunca más vuelve a pronunciar una sola palabra. Internada en una unidad forense psiquiátrica de máxima seguridad, el psicoterapeuta Theo Faber se obsesiona con conseguir que hable y desentrañar el misterio detrás de su silencio mortal y su última y enigmática pintura: Alcestis.",
+    "pdf": "",
+    "portada": "portadas/3091.webp",
+    "archivo_pdf": "M/Michaelides, Alex/La paciente silenciosa - Alex Michaelides.pdf",
+    "archivo_epub": "001_EPUB/M/Michaelides, Alex/La paciente silenciosa - Alex Michaelides.epub",
+    "idioma": "es",
+    "paginas": 323
+  },
+  {
+    "id": 3092,
+    "titulo": "Supercomunicadores",
+    "autor": "Charles Duhigg",
+    "anio": 2024,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "El aclamado autor de El poder de los hábitos desvela los secretos científicos de la conexión humana. Duhigg demuestra que toda conversación se divide en tres niveles fundamentales: práctico (¿de qué se trata?), emocional (¿cómo nos sentimos?) y social (¿quiénes somos?). Aprender a identificar el tipo de conversación y sintonizar en el mismo nivel transforma nuestra capacidad de persuasión, empatía y resolución de conflictos.",
+    "pdf": "",
+    "portada": "portadas/3092.webp",
+    "archivo_pdf": "D/Duhigg, Charles/Supercomunicadores - Charles Duhigg.pdf",
+    "archivo_epub": "001_EPUB/D/Duhigg, Charles/Supercomunicadores - Charles Duhigg.epub",
+    "idioma": "es",
+    "paginas": 330
+  },
+  {
+    "id": 3093,
+    "titulo": "Ikigai: Los secretos de Japón para una vida larga y feliz",
+    "autor": "Héctor García y Francesc Miralles",
+    "anio": 2016,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "Una obra de referencia internacional inspirada en la isla de Okinawa, el lugar con la mayor longevidad del planeta. A través de entrevistas y observación directa con los ancianos centenarios, los autores revelan el concepto del ikigai: la confluencia entre lo que amas, en lo que eres bueno, lo que el mundo necesita y por lo que te pueden pagar. Una guía práctica para encontrar tu propósito y vivir con plenitud y serenidad.",
+    "pdf": "",
+    "portada": "portadas/3093.webp",
+    "archivo_pdf": "G/García, Héctor/Ikigai - Hector Garcia y Francesc Miralles.pdf",
+    "archivo_epub": "001_EPUB/G/García, Héctor/Ikigai - Hector Garcia y Francesc Miralles.epub",
+    "idioma": "es",
+    "paginas": 160
+  },
+  {
+    "id": 3094,
+    "titulo": "No me puedes lastimar: Domina tu mente y desafía las probabilidades",
+    "autor": "David Goggins",
+    "anio": 2018,
+    "genero": "Psicología y Autoayuda",
+    "descripcion": "La inspiradora autobiografía del único militar en la historia en completar el entrenamiento de los Navy SEAL, el Army Ranger y la Fuerza Aérea. Goggins relata cómo superó una infancia marcada por la pobreza extrema, los abusos y el racismo para transformarse en uno de los atletas de ultra resistencia más duros del mundo. Presenta su famosa \"Regla del 40%\", enseñando a romper los límites autoimpuestos de la mente humana.",
+    "pdf": "",
+    "portada": "portadas/3094.webp",
+    "archivo_pdf": "G/Goggins, David/No me puedes lastimar - David Goggins.pdf",
+    "archivo_epub": "001_EPUB/G/Goggins, David/No me puedes lastimar - David Goggins.epub",
+    "idioma": "es",
+    "paginas": 382
+  },
+  {
+    "id": 3095,
+    "titulo": "La psicología del dinero: Lecciones intemporales sobre la riqueza, la codicia y la felicidad",
+    "autor": "Morgan Housel",
+    "anio": 2020,
+    "genero": "Economía y Política",
+    "descripcion": "A través de diecinueve historias breves e ingeniosas, Morgan Housel demuestra que el éxito financiero no depende de cuánto sabes de matemáticas o finanzas complejas, sino de cómo te comportas con el dinero. Explora los sesgos psicológicos, el ego, la envidia, el poder del interés compuesto y la importancia de la tranquilidad mental para tomar decisiones patrimoniales inteligentes a largo plazo.",
+    "pdf": "",
+    "portada": "portadas/3095.webp",
+    "archivo_pdf": "H/Housel, Morgan/La psicologia del dinero - Morgan Housel.pdf",
+    "archivo_epub": "001_EPUB/H/Housel, Morgan/La psicologia del dinero - Morgan Housel.epub",
+    "idioma": "es",
+    "paginas": 194
   }
 ]
