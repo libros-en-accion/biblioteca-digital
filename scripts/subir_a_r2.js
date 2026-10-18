@@ -10,7 +10,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3');
 
 // 1. Cargar variables de entorno desde .env.local
 const envFile = path.join(__dirname, '..', '.env.local');
@@ -46,6 +46,18 @@ const BUCKET = env.R2_BUCKET_NAME;
 const BASE_LOCAL = '/home/daniel/biblioteca-digital';
 
 const ARCHIVOS_A_SUBIR = [
+  // ── Louisa May Alcott (Reemplazo nueva edición Mujercitas) ──
+  {
+    local: path.join(BASE_LOCAL, "A/Alcott, Louisa May/Mujercitas - Louisa May Alcott.pdf"),
+    key: "A/Alcott, Louisa May/Mujercitas - Louisa May Alcott.pdf",
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, "001_EPUB/A/Alcott, Louisa May/Mujercitas - Louisa May Alcott.epub"),
+    key: "001_EPUB/A/Alcott, Louisa May/Mujercitas - Louisa May Alcott.epub",
+    contentType: 'application/epub+zip'
+  },
+
   // ── Dante Alighieri (Reemplazo nueva edición ilustrada) ──
   {
     local: path.join(BASE_LOCAL, "A/Alighieri, Dante/La Divina Comedia - Dante Alighieri.pdf"),
@@ -549,6 +561,21 @@ async function subirArchivo({ local, key, contentType }) {
 
   const stat = fs.statSync(local);
   const mb = (stat.size / (1024 * 1024)).toFixed(2);
+
+  // Comprobar si el archivo ya existe en R2 con el mismo tamaño para omitir subida redundante
+  try {
+    const head = await r2Client.send(new HeadObjectCommand({
+      Bucket: BUCKET,
+      Key: key,
+    }));
+    if (head.ContentLength === stat.size) {
+      console.log(`  ⏩ Ya sincronizado en R2 (${mb} MB, omitido): ${key}`);
+      return true;
+    }
+  } catch (err) {
+    // Si no existe (404 / NotFound) o falla el chequeo, se procede a subir
+  }
+
   console.log(`📤 Subiendo: ${key} (${mb} MB)...`);
 
   const fileStream = fs.createReadStream(local);

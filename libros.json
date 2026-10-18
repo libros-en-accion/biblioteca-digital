@@ -131,12 +131,13 @@
     "autor": "Louisa May Alcott",
     "anio": 1868,
     "genero": "Novela",
-    "descripcion": "Historia del crecimiento y las aspiraciones de las cuatro hermanas March durante la Guerra Civil estadounidense.",
-    "pdf": "https://drive.google.com/file/d/159Vo8hx4T_Rqvr380urRhz4aR9VrUaix/preview",
-    "portada": "portadas/11.webp",
-    "archivo_pdf": "A/Alcott, Louisa May/Mujercitas-Alcott_Louisa_May.pdf",
+    "descripcion": "Un clásico atemporal de la literatura que relata las alegrías, dificultades y crecimiento de las cuatro hermanas March: la dulce Meg, la rebelde e impetuosa escritora Jo, la tímida y musical Beth, y la artística Amy. Ambientada durante la Guerra de Secesión estadounidense, mientras su padre lucha en el frente y su madre las guía con sabiduría y ternura, la novela es un conmovedor canto a la sororidad, la independencia femenina, el valor moral y los lazos inquebrantables de la familia.",
+    "pdf": "",
+    "portada": "portadas/11.webp?v=2",
+    "archivo_pdf": "A/Alcott, Louisa May/Mujercitas - Louisa May Alcott.pdf",
     "idioma": "es",
-    "paginas": 510
+    "paginas": 713,
+    "archivo_epub": "001_EPUB/A/Alcott, Louisa May/Mujercitas - Louisa May Alcott.epub"
   },
   {
     "id": 12,
