@@ -146,6 +146,8 @@ module.exports = async function handler(req, res) {
     //   - Lectura online: 5 minutos (300 s) — tiempo suficiente para renderizar PDF.js
     //   - Descarga directa: 10 minutos (600 s) — tiempo para que complete la descarga
     const expiresIn = quiereDescargar ? 600 : 300;
+    const url = await getSignedUrl(r2Client, command, { expiresIn });
+
     // Registrar métrica en Redis de forma no bloqueante y segura
     try {
       await Promise.race([
