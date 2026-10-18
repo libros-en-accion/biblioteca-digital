@@ -17132,7 +17132,11 @@
     "archivo_pdf": "G/Gómez-Jurado, Juan/El Madrid de Antonia Scott - Juan GomezJurado.pdf",
     "archivo_epub": "001_EPUB/G/Gómez-Jurado, Juan/El Madrid de Antonia Scott - Juan GomezJurado.epub",
     "idioma": "es",
-    "paginas": 26
+    "paginas": 26,
+    "serie": {
+      "nombre": "Trilogía Reina Roja",
+      "orden": 4
+    }
   },
   {
     "id": 1237,
@@ -17146,7 +17150,11 @@
     "archivo_pdf": "G/Gómez-Jurado, Juan/Loba Negra - Juan GomezJurado.pdf",
     "archivo_epub": "001_EPUB/G/Gómez-Jurado, Juan/Loba Negra - Juan GomezJurado.epub",
     "idioma": "es",
-    "paginas": 350
+    "paginas": 350,
+    "serie": {
+      "nombre": "Trilogía Reina Roja",
+      "orden": 2
+    }
   },
   {
     "id": 1238,
@@ -17160,7 +17168,11 @@
     "archivo_pdf": "G/Gómez-Jurado, Juan/Reina Roja - Juan GomezJurado.pdf",
     "archivo_epub": "001_EPUB/G/Gómez-Jurado, Juan/Reina Roja - Juan GomezJurado.epub",
     "idioma": "es",
-    "paginas": 395
+    "paginas": 395,
+    "serie": {
+      "nombre": "Trilogía Reina Roja",
+      "orden": 1
+    }
   },
   {
     "id": 1239,
@@ -17174,7 +17186,11 @@
     "archivo_pdf": "G/Gómez-Jurado, Juan/Rey Blanco - Juan GomezJurado.pdf",
     "archivo_epub": "001_EPUB/G/Gómez-Jurado, Juan/Rey Blanco - Juan GomezJurado.epub",
     "idioma": "es",
-    "paginas": 342
+    "paginas": 342,
+    "serie": {
+      "nombre": "Trilogía Reina Roja",
+      "orden": 3
+    }
   },
   {
     "id": 1240,
@@ -24485,7 +24501,11 @@
     "archivo_pdf": "L/Liu, Cixin/El bosque oscuro - Liu Cixin.pdf",
     "archivo_epub": "001_EPUB/L/Liu, Cixin/El bosque oscuro - Liu Cixin.epub",
     "idioma": "es",
-    "paginas": 441
+    "paginas": 441,
+    "serie": {
+      "nombre": "Trilogía de los Tres Cuerpos",
+      "orden": 2
+    }
   },
   {
     "id": 1763,
@@ -24499,7 +24519,11 @@
     "archivo_pdf": "L/Liu, Cixin/El fin de la muerte - Cixin Liu.pdf",
     "archivo_epub": "001_EPUB/L/Liu, Cixin/El fin de la muerte - Cixin Liu.epub",
     "idioma": "es",
-    "paginas": 666
+    "paginas": 666,
+    "serie": {
+      "nombre": "Trilogía de los Tres Cuerpos",
+      "orden": 3
+    }
   },
   {
     "id": 1764,
@@ -24513,7 +24537,11 @@
     "archivo_pdf": "L/Liu, Cixin/El problema de los Tres Cuerpos - Liu Cixin.pdf",
     "archivo_epub": "001_EPUB/L/Liu, Cixin/El problema de los Tres Cuerpos - Liu Cixin.epub",
     "idioma": "es",
-    "paginas": 308
+    "paginas": 308,
+    "serie": {
+      "nombre": "Trilogía de los Tres Cuerpos",
+      "orden": 1
+    }
   },
   {
     "id": 1765,
@@ -38875,7 +38903,11 @@
     "archivo_pdf": "M/McFadden, Freida/El secreto de la asistenta - Freida McFadden.pdf",
     "archivo_epub": "001_EPUB/M/McFadden, Freida/El secreto de la asistenta - Freida McFadden.epub",
     "idioma": "es",
-    "paginas": 260
+    "paginas": 260,
+    "serie": {
+      "nombre": "Saga La Asistenta",
+      "orden": 2
+    }
   },
   {
     "id": 2807,
@@ -38889,7 +38921,11 @@
     "archivo_pdf": "M/McFadden, Freida/La asistenta - Freida McFadden.pdf",
     "archivo_epub": "001_EPUB/M/McFadden, Freida/La asistenta - Freida McFadden.epub",
     "idioma": "es",
-    "paginas": 277
+    "paginas": 277,
+    "serie": {
+      "nombre": "Saga La Asistenta",
+      "orden": 1
+    }
   },
   {
     "id": 2808,
@@ -38903,7 +38939,11 @@
     "archivo_pdf": "M/McFadden, Freida/La asistenta te vigila - Freida McFadden.pdf",
     "archivo_epub": "001_EPUB/M/McFadden, Freida/La asistenta te vigila - Freida McFadden.epub",
     "idioma": "es",
-    "paginas": 296
+    "paginas": 296,
+    "serie": {
+      "nombre": "Saga La Asistenta",
+      "orden": 3
+    }
   },
   {
     "id": 2809,
@@ -38917,7 +38957,11 @@
     "archivo_pdf": "M/McFadden, Freida/La boda de la asistenta - Freida McFadden.pdf",
     "archivo_epub": "001_EPUB/M/McFadden, Freida/La boda de la asistenta - Freida McFadden.epub",
     "idioma": "es",
-    "paginas": 53
+    "paginas": 53,
+    "serie": {
+      "nombre": "Saga La Asistenta",
+      "orden": 4
+    }
   },
   {
     "id": 2810,
@@ -39364,7 +39408,11 @@
     "archivo_pdf": "Y/Yarros, Rebecca/Alas de hierro - Rebecca Yarros.pdf",
     "archivo_epub": "001_EPUB/Y/Yarros, Rebecca/Alas de hierro - Rebecca Yarros.epub",
     "idioma": "es",
-    "paginas": 799
+    "paginas": 799,
+    "serie": {
+      "nombre": "Saga Empíreo",
+      "orden": 2
+    }
   },
   {
     "id": 2844,
@@ -39378,7 +39426,11 @@
     "archivo_pdf": "Y/Yarros, Rebecca/Alas de Onix - Rebecca Yarros.pdf",
     "archivo_epub": "001_EPUB/Y/Yarros, Rebecca/Alas de Onix - Rebecca Yarros.epub",
     "idioma": "es",
-    "paginas": 673
+    "paginas": 673,
+    "serie": {
+      "nombre": "Saga Empíreo",
+      "orden": 3
+    }
   },
   {
     "id": 2845,
@@ -39392,7 +39444,11 @@
     "archivo_pdf": "Y/Yarros, Rebecca/Alas de sangre - Rebecca Yarros.pdf",
     "archivo_epub": "001_EPUB/Y/Yarros, Rebecca/Alas de sangre - Rebecca Yarros.epub",
     "idioma": "es",
-    "paginas": 552
+    "paginas": 552,
+    "serie": {
+      "nombre": "Saga Empíreo",
+      "orden": 1
+    }
   },
   {
     "id": 2846,
