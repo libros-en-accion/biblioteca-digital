@@ -2300,7 +2300,7 @@
     "archivo_epub": "001_EPUB/A/Asimov, Isaac/Fundacion y Tierra - Isaac Asimov.epub",
     "serie": {
       "nombre": "Serie de la Fundación",
-      "orden": 6
+      "orden": 7
     },
     "idioma": "es",
     "paginas": 361
@@ -8713,7 +8713,11 @@
     "archivo_pdf": "C/Collins, Suzanne/Balada de pajaros cantores y serpientes - Suzanne Collins.pdf",
     "archivo_epub": "001_EPUB/C/Collins, Suzanne/Balada de pajaros cantores y serpientes - Suzanne Collins.epub",
     "idioma": "es",
-    "paginas": 593
+    "paginas": 593,
+    "serie": {
+      "nombre": "Los Juegos del Hambre",
+      "orden": 4
+    }
   },
   {
     "id": 622,
@@ -31411,7 +31415,11 @@
     "archivo_pdf": "R/ROTHFUSS, PATRICK/El estrecho sendero entre deseos - Patrick Rothfuss.pdf",
     "archivo_epub": "001_EPUB/R/ROTHFUSS, PATRICK/El estrecho sendero entre deseos - Patrick Rothfuss.epub",
     "idioma": "es",
-    "paginas": 163
+    "paginas": 163,
+    "serie": {
+      "nombre": "Crónica del Asesino de Reyes",
+      "orden": 4
+    }
   },
   {
     "id": 2244,
@@ -31461,7 +31469,11 @@
     "archivo_pdf": "R/ROTHFUSS, PATRICK/La musica del silencio - Patrick Rothfuss.pdf",
     "archivo_epub": "001_EPUB/R/ROTHFUSS, PATRICK/La musica del silencio - Patrick Rothfuss.epub",
     "idioma": "es",
-    "paginas": 120
+    "paginas": 120,
+    "serie": {
+      "nombre": "Crónica del Asesino de Reyes",
+      "orden": 3
+    }
   },
   {
     "id": 2247,
@@ -32389,8 +32401,8 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/Aleacion de Ley Ed revisada - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Aleacion de Ley Ed revisada - Brandon Sanderson.epub",
     "serie": {
-      "nombre": "El Archivo de las Tormentas",
-      "orden": 6
+      "nombre": "Nacidos de la Bruma (Mistborn)",
+      "orden": 4
     },
     "idioma": "es",
     "paginas": 256
@@ -32408,7 +32420,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Brazales de duelo - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 5
+      "orden": 6
     },
     "idioma": "es",
     "paginas": 376
@@ -32444,7 +32456,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Heroe de las Eras Ed revisada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 7
+      "orden": 3
     },
     "idioma": "es",
     "paginas": 601
@@ -32462,7 +32474,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Imperio Final Ed revisada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 2
+      "orden": 1
     },
     "idioma": "es",
     "paginas": 535
@@ -32480,7 +32492,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Pozo de la Ascension Ed revisada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 1
+      "orden": 2
     },
     "idioma": "es",
     "paginas": 628
@@ -32497,8 +32509,8 @@
     "archivo_pdf": "S/SANDERSON, BRANDON/El Ritmo de la Guerra - Brandon Sanderson.pdf",
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/El Ritmo de la Guerra - Brandon Sanderson.epub",
     "serie": {
-      "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 3
+      "nombre": "El Archivo de las Tormentas",
+      "orden": 6
     },
     "idioma": "es",
     "paginas": 1680
@@ -32570,7 +32582,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Juramentada - Brandon Sanderson.epub",
     "serie": {
       "nombre": "El Archivo de las Tormentas",
-      "orden": 2
+      "orden": 4
     },
     "idioma": "es",
     "paginas": 1524
@@ -32590,7 +32602,7 @@
     "paginas": 162,
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 4
+      "orden": 7
     }
   },
   {
@@ -32606,7 +32618,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Palabras radiantes - Brandon Sanderson.epub",
     "serie": {
       "nombre": "El Archivo de las Tormentas",
-      "orden": 4
+      "orden": 2
     },
     "idioma": "es",
     "paginas": 1078
@@ -32624,7 +32636,7 @@
     "archivo_epub": "001_EPUB/S/SANDERSON, BRANDON/Sombras de identidad - Brandon Sanderson.epub",
     "serie": {
       "nombre": "Nacidos de la Bruma (Mistborn)",
-      "orden": 6
+      "orden": 5
     },
     "idioma": "es",
     "paginas": 321
@@ -42279,5 +42291,37 @@
     "archivo_epub": "001_EPUB/H/Housel, Morgan/La psicologia del dinero - Morgan Housel.epub",
     "idioma": "es",
     "paginas": 194
+  },
+  {
+    "id": 3096,
+    "titulo": "Los límites de la Fundación",
+    "autor": "Isaac Asimov",
+    "anio": 1982,
+    "genero": "Ciencia Ficción",
+    "descripcion": "Quinientos años después de la creación de la Fundación, el consejero Golan Trevize sospecha que la Segunda Fundación sigue existiendo y manipulando en secreto el Plan Seldon. Exiliado en una misión espacial junto al historiador Janov Pelorat, inicia un viaje hacia los confines de la galaxia que lo llevará al mítico planeta Gaia y a tomar una decisión trascendental sobre el destino de la humanidad.",
+    "pdf": "",
+    "portada": "portadas/3096.webp",
+    "archivo_pdf": "A/Asimov, Isaac/Los limites de la Fundacion - Isaac Asimov.pdf",
+    "archivo_epub": "001_EPUB/A/Asimov, Isaac/Los limites de la Fundacion - Isaac Asimov.epub",
+    "serie": {
+      "nombre": "Serie de la Fundación",
+      "orden": 6
+    },
+    "idioma": "es",
+    "paginas": 340
+  },
+  {
+    "id": 3097,
+    "titulo": "El huésped de Drácula",
+    "autor": "Bram Stoker",
+    "anio": 1914,
+    "genero": "Terror",
+    "descripcion": "Concebido originalmente como el primer capítulo de Drácula y eliminado antes de su publicación por su editor, este célebre relato gótico narra el inquietante viaje de un joven inglés hacia el castillo del conde en la Noche de Walpurgis. Pese a las advertencias del cochero, se adentra en un pueblo abandonado cerca de Múnich durante una tormenta de nieve, donde descubre un mausoleo maldito y una presencia vampírica acechante.",
+    "pdf": "",
+    "portada": "portadas/3097.webp",
+    "archivo_pdf": "S/Stoker, Bram/El_huesped_de_Dracula-Stoker_Bram.pdf",
+    "archivo_epub": "001_EPUB/S/Stoker, Bram/El_huesped_de_Dracula-Stoker_Bram.epub",
+    "idioma": "es",
+    "paginas": 16
   }
 ]

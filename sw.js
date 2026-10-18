@@ -1,4 +1,4 @@
-const CACHE_NAME = 'libractiva-v16';
+const CACHE_NAME = 'libractiva-v17';
 const CACHE_ASSETS = [
   '/',
   '/libros.json',
