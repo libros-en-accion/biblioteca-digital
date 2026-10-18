@@ -4,7 +4,7 @@
   "private": true,
   "description": "Catálogo visual interactivo de más de 2,800 libros con recomendador IA",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "vercel dev",
