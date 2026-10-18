@@ -1,17 +1,24 @@
-const CACHE_NAME = 'libractiva-v1';
+const CACHE_NAME = 'libractiva-v9';
 const CACHE_ASSETS = [
+  '/',
   '/libros.json',
   '/colecciones.json',
-  '/style.css',
-  '/app.js',
+  '/style.css?v=24',
+  '/app.js?v=22',
   '/lucide.min.js',
-  '/'
+  '/manifest.json',
+  '/favicon.ico',
+  '/portada-libractiva.jpeg'
 ];
 
 function normalizarUrl(url) {
-  const u = new URL(url);
-  u.searchParams.delete('v');
-  return u.href;
+  try {
+    const u = new URL(url, self.location.href);
+    u.searchParams.delete('v');
+    return u.href;
+  } catch (e) {
+    return url;
+  }
 }
 
 self.addEventListener('install', event => {
@@ -20,7 +27,12 @@ self.addEventListener('install', event => {
       Promise.allSettled(
         CACHE_ASSETS.map(url =>
           fetch(url, { cache: 'no-cache' })
-            .then(res => res.ok ? cache.put(normalizarUrl(url), res) : Promise.resolve())
+            .then(res => {
+              if (res.ok) {
+                return cache.put(normalizarUrl(url), res);
+              }
+              return Promise.resolve();
+            })
             .catch(() => Promise.resolve())
         )
       )
@@ -42,35 +54,48 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   const path = url.pathname;
 
-  if (!/^\/(libros\.json|colecciones\.json|style\.css|app\.js|lucide\.min\.js|manifest\.json|favicon|icon-)/.test(path)) return;
+  // No interceptar peticiones cruzadas ni APIs de servidor
+  if (url.origin !== self.location.origin) return;
+  if (path.startsWith('/api/')) return;
 
-  if (path === '/libros.json' || path === '/colecciones.json') {
+  // Interceptar portadas de libros con estrategia Cache-First
+  if (path.startsWith('/portadas/')) {
     event.respondWith(
-      caches.match(normalizarUrl(event.request.url)).then(cached =>
-        cached || fetch(event.request).then(networkRes => {
+      caches.match(event.request).then(cached => {
+        if (cached) return cached;
+        return fetch(event.request).then(networkRes => {
           if (networkRes.ok) {
-            caches.open(CACHE_NAME).then(cache =>
-              cache.put(normalizarUrl(event.request.url), networkRes.clone())
-            );
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
           }
           return networkRes;
-        })
-      )
+        }).catch(() => new Response('', { status: 404 }));
+      })
     );
     return;
   }
 
+  // Interceptar activos estáticos y catálogos con Stale-While-Revalidate
+  const esActivo = /^\/(libros\.json|colecciones\.json|style\.css|app\.js|lucide\.min\.js|manifest\.json|favicon|icon-|portada-)/.test(path) || path === '/' || path === '/index.html';
+
+  if (!esActivo) return;
+
   event.respondWith(
     caches.match(normalizarUrl(event.request.url)).then(cached => {
-      const fetched = fetch(event.request).then(networkRes => {
+      const fetchPromise = fetch(event.request).then(networkRes => {
         if (networkRes.ok) {
+          const clone = networkRes.clone();
           caches.open(CACHE_NAME).then(cache =>
-            cache.put(normalizarUrl(event.request.url), networkRes.clone())
+            cache.put(normalizarUrl(event.request.url), clone)
           );
         }
         return networkRes;
+      }).catch(err => {
+        if (cached) return cached;
+        throw err;
       });
-      return cached || fetched;
+
+      return cached || fetchPromise;
     })
   );
 });

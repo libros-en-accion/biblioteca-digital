@@ -4,6 +4,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const { createClient } = require('redis');
 
 // ── Cargar el catálogo una sola vez al arrancar la función ──
 // En Vercel Serverless, el módulo se cachea entre invocaciones del mismo worker,
@@ -25,16 +27,69 @@ function obtenerCatalogo() {
   return catalogoCache;
 }
 
+// ── Verificación de cookie de donador ──
+function esDonador(req) {
+  const cookieHeader = req.headers.cookie || '';
+  const match = cookieHeader.match(/donor_token=([^;]+)/);
+  if (!match) return false;
+
+  const [codigo, firma] = match[1].split('.');
+  if (!codigo || !firma) return false;
+
+  const secret = process.env.DONOR_COOKIE_SECRET;
+  if (!secret) return false;
+
+  const firmaEsperada = crypto
+    .createHmac('sha256', secret)
+    .update(codigo)
+    .digest('hex');
+
+  const bufFirma = Buffer.from(firma);
+  const bufEsperada = Buffer.from(firmaEsperada);
+  if (bufFirma.length !== bufEsperada.length) return false;
+  return crypto.timingSafeEqual(bufFirma, bufEsperada);
+}
+
 module.exports = async function handler(req, res) {
   // Solo aceptamos POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método no permitido' });
   }
 
+  // ── RATE LIMITING EN SERVIDOR (Protección contra bots y abuso de API) ──
+  const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
+  const usuarioEsDonador = esDonador(req);
+
+  if (redisUrl && !usuarioEsDonador) {
+    const client = createClient({ url: redisUrl });
+    try {
+      await client.connect();
+      const clientIp = req.headers['cf-connecting-ip'] || 
+                       req.headers['x-forwarded-for']?.split(',')[0]?.trim() || 
+                       req.socket?.remoteAddress || 
+                       'unknown';
+      const rateLimitKey = `ratelimit:recomendar:${clientIp}`;
+      const usos = await client.incr(rateLimitKey);
+      if (usos === 1) {
+        await client.expire(rateLimitKey, 3600); // Ventana de 1 hora
+      }
+      if (usos > 5) {
+        await client.quit();
+        return res.status(429).json({
+          error: 'Has alcanzado el límite de recomendaciones gratuitas por ahora. Adquiere tu Acceso Lifetime para recomendaciones ilimitadas.'
+        });
+      }
+      await client.quit();
+    } catch (e) {
+      console.warn('[recomendar] Aviso: no se pudo verificar rate limit en Redis:', e.message);
+      try { await client.quit(); } catch (_) {}
+    }
+  }
+
   // ── 1. RECIBIR DATOS DEL USUARIO ──
   // Ya no recibimos el catálogo completo del cliente.
   // Aceptamos `libros` por retrocompatibilidad pero lo ignoramos.
-  const { estado, tiempo, objetivo, tema } = req.body;
+  const { estado, tiempo, objetivo, tema } = req.body || {};
 
   if (!estado || !tiempo || !objetivo) {
     return res.status(400).json({ error: 'Faltan datos del perfil del lector (estado, tiempo, objetivo)' });

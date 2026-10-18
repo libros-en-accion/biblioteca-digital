@@ -20,8 +20,10 @@
   /* Fuentes */
   --fuente-titulo: 'Playfair Display', Georgia, serif;
   --fuente-cuerpo: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --fuente-ui: var(--fuente-cuerpo);
   --fuente-literaria: 'EB Garamond', Georgia, serif;
   --fuente-marca: 'Cormorant Garamond', Georgia, serif;
+  --hover: var(--teal-suave);
   --dorado: #b8892a;
   --dorado-claro: #d4a94a;
   --dorado-suave: #e8d5a3;
@@ -60,8 +62,10 @@
   /* Fuentes */
   --fuente-titulo: 'Playfair Display', Georgia, serif;
   --fuente-cuerpo: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --fuente-ui: var(--fuente-cuerpo);
   --fuente-literaria: 'EB Garamond', Georgia, serif;
   --fuente-marca: 'Cormorant Garamond', Georgia, serif;
+  --hover: var(--teal-suave);
   --dorado: #d4a94a;
   --dorado-claro: #e8c56a;
   --dorado-suave: #2b3d39; /* Adaptado a teal oscuro */
@@ -307,7 +311,7 @@ body {
   left: 1.2rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--texto-suave);
+  color: #7a6052;
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -328,6 +332,10 @@ body {
   backdrop-filter: blur(4px);
 }
 
+.hero-buscador-caja input::placeholder {
+  color: #8a7060;
+}
+
 .hero-buscador-caja input:focus {
   border-color: var(--dorado-claro);
   background: #ffffff;
@@ -344,7 +352,7 @@ body {
   border: 1px solid var(--borde);
   border-radius: 8px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-  max-height: 380px;
+  max-height: 420px;
   overflow-y: auto;
   z-index: 100;
   animation: deslizarAbajo 0.25s ease-out;
@@ -423,13 +431,17 @@ body {
   text-overflow: ellipsis;
 }
 
-.autocompletar-titulo strong {
+.autocompletar-titulo strong,
+.autocompletar-autor strong,
+.autocompletar-saga strong {
   color: var(--teal-profundo);
-  font-weight: bold;
+  font-weight: 700;
 }
 
-:root[data-theme="dark"] .autocompletar-titulo strong {
-  color: var(--teal-medio);
+:root[data-theme="dark"] .autocompletar-titulo strong,
+:root[data-theme="dark"] .autocompletar-autor strong,
+:root[data-theme="dark"] .autocompletar-saga strong {
+  color: var(--dorado-claro);
 }
 
 .autocompletar-autor {
@@ -448,6 +460,30 @@ body {
   color: var(--texto-medio);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.autocompletar-saga {
+  background: rgba(184, 137, 42, 0.15);
+  color: var(--dorado);
+  border: 1px solid rgba(184, 137, 42, 0.3);
+  text-transform: none;
+  font-weight: 600;
+}
+
+.autocompletar-ver-todos {
+  justify-content: center;
+  font-size: 0.84rem;
+  color: var(--teal-profundo);
+  background: rgba(26, 92, 80, 0.06);
+  font-weight: 600;
+  padding: 0.65rem 1rem;
+}
+
+:root[data-theme="dark"] .autocompletar-ver-todos {
+  color: var(--dorado-claro);
+  background: rgba(212, 169, 74, 0.08);
 }
 
 .hero-acciones {
@@ -1997,7 +2033,7 @@ footer {
 .btn-buscar-click {
   background: none;
   border: none;
-  color: var(--texto-suave);
+  color: #6b5344;
   font-size: 1rem;
   cursor: pointer;
   padding: 0.3rem 0.5rem;
@@ -2012,12 +2048,12 @@ footer {
 
 .btn-limpiar-busqueda:hover,
 .btn-buscar-click:hover {
-  background: var(--teal-suave);
-  color: var(--teal-profundo);
+  background: rgba(26, 92, 80, 0.14);
+  color: #1a5c50;
 }
 
 .btn-buscar-click.busqueda-ejecutada {
-  color: var(--teal-profundo);
+  color: #1a5c50;
   transform: scale(1.2);
   transition: transform 0.15s ease;
 }
@@ -4928,4 +4964,669 @@ input,
     right: 0.75rem;
     top: 0.5rem;
   }
+}
+
+/* ══════════════════════════════════════════════════════ */
+/* MEJORAS DE BENCHMARK (UX / FUNCIONALIDADES)           */
+/* ══════════════════════════════════════════════════════ */
+
+/* ── 1. PAGINACIÓN EXTENDIDA Y SALTO RÁPIDO ── */
+.btn-pagina-extremo {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0 0.6rem;
+  min-width: 3.2rem;
+}
+
+.paginacion-salto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.6rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--fondo-tarjeta);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+.paginacion-salto-input {
+  width: 3.2rem;
+  height: 2.1rem;
+  padding: 0 0.3rem;
+  text-align: center;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--fondo-input);
+  color: var(--texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.paginacion-salto-input:focus {
+  border-color: var(--teal-profundo);
+  box-shadow: 0 0 0 2px var(--teal-suave);
+}
+
+.paginacion-salto-total {
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+.btn-salto-pag {
+  height: 2.1rem;
+  padding: 0 0.7rem;
+  background: var(--teal-profundo);
+  color: #fff8f0;
+  border: none;
+  border-radius: var(--radio);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-salto-pag:hover {
+  background: var(--teal-medio);
+  transform: translateY(-1px);
+}
+
+/* ── 2. MÓDULO CONTINUAR LEYENDO (HOME) ── */
+.continuar-leyendo-seccion {
+  max-width: 1400px;
+  margin: 1.5rem auto 2rem;
+  padding: 0 1.5rem;
+}
+
+.continuar-leyendo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.continuar-tarjeta {
+  display: flex;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-suave);
+  border-radius: var(--radio);
+  padding: 0.9rem;
+  gap: 1rem;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 2px 8px var(--sombra);
+}
+
+.continuar-tarjeta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--sombra-media);
+  border-color: var(--teal-claro);
+}
+
+.continuar-portada {
+  width: 72px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px var(--sombra-media);
+  flex-shrink: 0;
+}
+
+.continuar-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+
+.continuar-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--texto);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 1.2rem;
+}
+
+.continuar-autor {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.15rem;
+}
+
+.continuar-progreso-barra {
+  width: 100%;
+  height: 5px;
+  background: var(--borde-suave);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0.45rem 0 0.25rem;
+}
+
+.continuar-progreso-fill {
+  height: 100%;
+  background: var(--dorado);
+  border-radius: 3px;
+  transition: width 0.3s ease-out;
+}
+
+.continuar-pag-txt {
+  font-size: 0.76rem;
+  color: var(--dorado);
+  font-weight: 600;
+}
+
+.btn-continuar-accion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  background: var(--teal-profundo);
+  color: #fff8f0;
+  border: none;
+  border-radius: var(--radio);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-continuar-accion:hover {
+  background: var(--teal-medio);
+  transform: translateY(-1px);
+}
+
+.continuar-descartar-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: none;
+  border: none;
+  color: var(--texto-suave);
+  cursor: pointer;
+  opacity: 0.5;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.continuar-descartar-btn:hover {
+  opacity: 1;
+  color: var(--vino);
+}
+
+/* ── 3. DESCARGA RÁPIDA EN TARJETA ── */
+.tarjeta-acciones-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.tarjeta-acciones-fila .btn-ver {
+  flex: 1;
+}
+
+.tarjeta-descarga-rapida {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-descarga-tarjeta {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--dorado-claro);
+  background: var(--dorado-glow);
+  color: var(--dorado);
+  border-radius: var(--radio);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-descarga-tarjeta:hover {
+  background: var(--dorado);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(184, 137, 42, 0.3);
+}
+
+/* ── 4. ÍNDICE ALFABÉTICO A–Z ── */
+.indice-az-seccion {
+  max-width: 1400px;
+  margin: 0.4rem auto 1rem;
+  padding: 0 1.5rem;
+}
+
+.indice-az-contenedor {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-suave);
+  border-radius: var(--radio);
+  padding: 0.35rem 0.8rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.indice-az-label {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.indice-az-lista {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.btn-indice-letra {
+  min-width: 1.75rem;
+  height: 1.75rem;
+  padding: 0 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--texto-medio);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-indice-letra:hover {
+  background: var(--teal-suave);
+  color: var(--teal-profundo);
+  border-color: var(--teal-claro);
+}
+
+.btn-indice-letra.activo {
+  background: var(--teal-profundo);
+  color: #fff8f0;
+  border-color: var(--teal-profundo);
+}
+
+/* ── 5. LIBROS RELACIONADOS EN MODAL DE DETALLE ── */
+.relacionado-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: var(--teal-suave);
+  color: var(--teal-profundo);
+  margin-top: 0.2rem;
+  align-self: flex-start;
+}
+
+.relacionado-badge-saga {
+  background: var(--dorado-glow);
+  color: var(--dorado);
+  border: 1px solid var(--dorado-claro);
+}
+
+/* ── 6. SAGAS Y SERIES ── */
+.tarjeta-serie-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--dorado);
+  background: var(--dorado-glow);
+  border: 1px solid var(--dorado-claro);
+  border-radius: 3px;
+  padding: 0.1rem 0.35rem;
+  margin-top: 0.2rem;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detalle-serie-wrapper {
+  margin: 0.3rem 0 0.5rem;
+}
+
+.btn-detalle-serie {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--dorado-glow);
+  border: 1px solid var(--dorado-claro);
+  color: var(--dorado);
+  border-radius: var(--radio);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-detalle-serie:hover {
+  background: var(--dorado);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(184, 137, 42, 0.25);
+}
+
+/* ── 7. TARJETA SOLICITAR LIBRO (WHATSAPP) ── */
+.sin-resultados-acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.sin-resultados-solicitar-card {
+  max-width: 540px;
+  width: 100%;
+  margin: 0.8rem auto 0;
+  padding: 1.2rem 1.4rem;
+  background: var(--fondo-tarjeta);
+  border: 1px solid var(--borde-suave);
+  border-radius: var(--radio);
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  text-align: left;
+  box-shadow: 0 4px 16px var(--sombra);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sin-resultados-solicitar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--sombra-media);
+  border-color: var(--teal-claro);
+}
+
+.solicitar-card-icono {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--teal-suave);
+  color: var(--teal-profundo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.solicitar-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.solicitar-card-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--texto);
+  margin-bottom: 0.25rem;
+  line-height: 1.25;
+}
+
+.solicitar-card-subtitulo {
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.btn-solicitar-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  background: #1b7454;
+  color: #ffffff !important;
+  border-radius: var(--radio);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(27, 116, 84, 0.25);
+}
+
+.btn-solicitar-whatsapp:hover {
+  background: #14583f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(27, 116, 84, 0.35);
+  color: #ffffff !important;
+}
+
+.footer-link-solicitar {
+  color: var(--dorado) !important;
+  font-weight: 600 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-link-solicitar:hover {
+  color: var(--vino) !important;
+}
+
+@media (max-width: 600px) {
+  .sin-resultados-solicitar-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.2rem;
+  }
+  .btn-solicitar-whatsapp {
+    width: 100%;
+  }
+}
+
+/* ── 8. METADATOS DE EXTENSIÓN Y PÁGINAS ── */
+.tarjeta-meta-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: var(--texto-suave);
+}
+
+.tarjeta-paginas {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--texto-suave);
+}
+
+.tarjeta-idioma-en {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  background: #2b4c7e;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+}
+
+.detalle-meta-fila {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.3rem 0 0.5rem;
+}
+
+.detalle-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--teal-suave);
+  color: var(--teal-profundo);
+}
+
+
+/* ── ESTADOS DE LECTURA Y ESTANTERÍA LEYENDO ── */
+
+.btn-leyendo-toggle:hover {
+  border-color: var(--teal-medio);
+  color: var(--teal-medio);
+}
+
+.btn-leyendo-toggle.activo {
+  background: var(--teal-profundo);
+  border-color: var(--teal-profundo);
+  color: #fff8f0;
+  font-weight: 600;
+}
+
+.continuar-leyendo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.continuar-leyendo-titulo-grupo {
+  display: flex;
+  flex-direction: column;
+}
+
+.continuar-ornamento {
+  font-family: var(--fuente-titulo);
+  font-size: 0.76rem;
+  color: var(--dorado);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.btn-ver-todos-leyendo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--teal-medio);
+  background: var(--teal-suave);
+  border: 1px solid var(--borde-suave);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-ver-todos-leyendo:hover {
+  background: var(--teal-profundo);
+  color: #fff8f0;
+  transform: translateX(2px);
+}
+
+.continuar-progreso-fill.leido {
+  background: #2e7d32;
+}
+
+.continuar-pag-txt.leido {
+  color: #2e7d32;
+}
+
+.btn-releer-accion {
+  background: #2e7d32;
+}
+
+.btn-releer-accion:hover {
+  background: #1b5e20;
+}
+
+/* ── Mini barra de progreso en tarjetas de catálogo y carrusel ── */
+.tarjeta-progreso-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  margin-top: 0.35rem;
+}
+
+.tarjeta-progreso-mini-barra {
+  flex: 1;
+  height: 4px;
+  background: var(--borde-suave);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tarjeta-progreso-mini-fill {
+  height: 100%;
+  background: var(--dorado);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.tarjeta-progreso-mini-fill.leido {
+  background: #2e7d32;
+}
+
+.tarjeta-progreso-mini-txt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--dorado);
+  white-space: nowrap;
+}
+
+.tarjeta-progreso-mini-txt.leido {
+  color: #2e7d32;
+}
+
+.btn-leer-continuar {
+  background: var(--dorado);
+  color: #1a0f08;
+  font-weight: 600;
+}
+
+.btn-leer-continuar:hover {
+  background: #c98b2c;
+  color: #ffffff;
+}
+
+/* ── Píldora de progreso en modal de detalle ── */
+.detalle-meta-progreso {
+  background: rgba(212, 163, 89, 0.18);
+  color: var(--dorado);
+  border: 1px solid rgba(212, 163, 89, 0.4);
 }

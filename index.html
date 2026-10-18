@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Libractiva — Tu bibliotecario inteligente · +2,800 libros</title>
-  <meta name="description" content="Explora Libractiva, tu bibliotecario inteligente. Más de 2,800 libros digitales con recomendación IA personalizada, lector PDF y más.">
+  <title>Libractiva — Tu bibliotecario inteligente · +2,900 libros</title>
+  <meta name="description" content="Explora Libractiva, tu biblioteca digital inteligente. Más de 2,900 libros digitales con recomendación IA personalizada, lector web integrado y catálogo enriquecido.">
   <meta name="theme-color" content="#0e2a24">
 
   <!-- SEO: Open Graph -->
   <meta property="og:title" content="Libractiva — Biblioteca digital inteligente">
-  <meta property="og:description" content="Explora Libractiva, tu bibliotecario inteligente. Descubre tu próxima gran lectura entre más de 2,800 libros con recomendación IA personalizada.">
+  <meta property="og:description" content="Explora Libractiva, tu bibliotecario inteligente. Descubre tu próxima gran lectura entre más de 2,900 libros con recomendación IA personalizada.">
   <meta property="og:image" content="https://biblioteca-digital-eight.vercel.app/portada-libractiva.jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Libractiva — Tu bibliotecario inteligente">
-  <meta name="twitter:description" content="Explora Libractiva, tu bibliotecario inteligente. Descubre tu próxima gran lectura entre más de 2,800 libros con recomendación IA personalizada.">
+  <meta name="twitter:description" content="Explora Libractiva, tu bibliotecario inteligente. Descubre tu próxima gran lectura entre más de 2,900 libros con recomendación IA personalizada.">
   <meta name="twitter:image" content="https://biblioteca-digital-eight.vercel.app/portada-libractiva.jpeg">
 
   <!-- SEO: Additional -->
@@ -38,9 +38,42 @@
   <!-- Fuentes: Playfair Display, EB Garamond, DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" />
 
-  <link rel="stylesheet" href="style.css?v=17" />
+  <!-- SEO: Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://biblioteca-digital-eight.vercel.app/#website",
+        "url": "https://biblioteca-digital-eight.vercel.app/",
+        "name": "Libractiva",
+        "description": "Biblioteca digital con más de 2,900 libros y recomendador inteligente por IA.",
+        "inLanguage": "es",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://biblioteca-digital-eight.vercel.app/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "DigitalDocumentLibrary",
+        "@id": "https://biblioteca-digital-eight.vercel.app/#library",
+        "name": "Libractiva — Biblioteca Digital Inteligente",
+        "url": "https://biblioteca-digital-eight.vercel.app/",
+        "description": "Colección de más de 2,900 obras literarias y ensayos con recomendación IA personalizada y lector integrado.",
+        "numberOfItems": 2925,
+        "isAccessibleForFree": true
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css?v=24" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -62,7 +95,7 @@
       <div class="hero-buscador-caja">
         <div class="buscador-contenedor">
           <span class="buscador-icono"><i data-lucide="search" class="icono-sm"></i></span>
-          <input type="text" id="inputBusqueda" placeholder="Busca entre 2,800 libros por título, autor o género…" autocomplete="off" />
+          <input type="text" id="inputBusqueda" placeholder="Buscar por título, autor, saga, género o año…" autocomplete="off" aria-label="Buscar libros por título, autor, saga, género o año" />
           <div class="buscador-botones-derecha">
             <button id="btnLimpiarBusqueda" class="btn-limpiar-busqueda" style="display:none" aria-label="Limpiar búsqueda"><i data-lucide="x" class="icono-sm"></i></button>
             <button id="btnBuscarClick" class="btn-buscar-click" aria-label="Ejecutar búsqueda"><i data-lucide="search" class="icono-sm"></i></button>
@@ -85,16 +118,16 @@
 
       <!-- Propuesta de Valor Compacta -->
       <p class="hero-propuesta-valor">
-        +2,800 libros · Recomendaciones con IA · $100 único pago
+        +2,900 libros · Recomendaciones con IA · $100 único pago
       </p>
 
       <!-- Fila Inferior: CTAs de Descubrimiento (Centrados y apilados) -->
       <div class="hero-acciones">
-        <button id="btnAbrirIA" class="btn-ia-trigger">
+        <button id="btnAbrirIA" class="btn-ia-trigger" aria-label="Pedir recomendación a la Inteligencia Artificial">
           <span class="btn-ia-icono"><i data-lucide="sparkles"></i></span>
           ¿Qué debería leer esta semana?
         </button>
-        <button id="btnAzar" class="btn-azar" title="Libro al azar">
+        <button id="btnAzar" class="btn-azar" title="Libro al azar" aria-label="Abrir un libro al azar">
           <span class="btn-azar-icono"><i data-lucide="dices"></i></span>
           Sorpréndeme
         </button>
@@ -138,7 +171,7 @@
 
       <!-- Época Custom (Custom Dropdown Menu) -->
       <div class="custom-dropdown" id="dropdownEpoca">
-        <button class="dropdown-btn" id="btnDropdownEpoca" aria-haspopup="listbox" aria-expanded="false">
+        <button class="dropdown-btn" id="btnDropdownEpoca" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por época">
           <span id="labelDropdownEpoca">Todas las épocas</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
@@ -152,14 +185,42 @@
         </ul>
       </div>
 
+      <!-- Extensión / Páginas (Custom Dropdown Menu) -->
+      <div class="custom-dropdown" id="dropdownExtension">
+        <button class="dropdown-btn" id="btnDropdownExtension" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por extensión">
+          <span id="labelDropdownExtension">Extensión</span>
+          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
+        </button>
+        <ul class="dropdown-menu" role="listbox" id="menuDropdownExtension">
+          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Cualquier extensión</li>
+          <li data-valor="corta" class="dropdown-item" role="option">Lectura rápida (&lt; 150 págs.)</li>
+          <li data-valor="media" class="dropdown-item" role="option">Mediana (150–350 págs.)</li>
+          <li data-valor="larga" class="dropdown-item" role="option">Extensa (&gt; 350 págs.)</li>
+        </ul>
+      </div>
+
+      <!-- Idioma (Custom Dropdown Menu) -->
+      <div class="custom-dropdown" id="dropdownIdioma">
+        <button class="dropdown-btn" id="btnDropdownIdioma" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por idioma">
+          <span id="labelDropdownIdioma">Idioma</span>
+          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
+        </button>
+        <ul class="dropdown-menu" role="listbox" id="menuDropdownIdioma">
+          <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Todos los idiomas</li>
+          <li data-valor="es" class="dropdown-item" role="option">🇪🇸 Español</li>
+          <li data-valor="en" class="dropdown-item" role="option">🇬🇧 English</li>
+        </ul>
+      </div>
+
       <!-- Ordenamiento Custom (Custom Dropdown Menu) -->
       <div class="custom-dropdown" id="dropdownOrden">
-        <button class="dropdown-btn" id="btnDropdownOrden" aria-haspopup="listbox" aria-expanded="false">
+        <button class="dropdown-btn" id="btnDropdownOrden" aria-haspopup="listbox" aria-expanded="false" aria-label="Ordenar catálogo">
           <span id="labelDropdownOrden">Ordenar por…</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
         <ul class="dropdown-menu" role="listbox" id="menuDropdownOrden">
           <li data-valor="default" class="dropdown-item seleccionado" role="option">Ordenar por…</li>
+          <li data-valor="mas-leidos" class="dropdown-item" role="option">🔥 Más leídos esta semana</li>
           <li data-valor="titulo-asc" class="dropdown-item" role="option">Título A → Z</li>
           <li data-valor="titulo-desc" class="dropdown-item" role="option">Título Z → A</li>
           <li data-valor="autor-asc" class="dropdown-item" role="option">Autor A → Z</li>
@@ -173,11 +234,20 @@
         <i data-lucide="heart"></i>
         <span>Favoritos</span>
       </button>
+
+      <!-- Toggle Leyendo -->
+      <button id="btnLeyendo" class="btn-favoritos-toggle btn-leyendo-toggle" aria-label="Mostrar libros que estás leyendo" aria-pressed="false">
+        <i data-lucide="book-marked"></i>
+        <span>Leyendo</span>
+      </button>
     </div>
   </div>
 
   <!-- ═══ BREADCRUMBS / FILTROS ACTIVOS ═══ -->
   <div id="breadcrumbs" class="breadcrumbs-container" style="display:none"></div>
+
+  <!-- ═══ SECCIÓN CONTINUAR LEYENDO (Historial de lectura) ═══ -->
+  <section id="continuar-leyendo-seccion" class="continuar-leyendo-seccion" style="display:none"></section>
 
   <!-- ═══ SECCIÓN DE DESTACADOS (CARRUSEL) ═══ -->
   <section id="destacados-seccion" class="destacados-seccion">
@@ -203,6 +273,14 @@
     <div class="colecciones-fin-banner"></div>
   </section>
 
+  <!-- ═══ ÍNDICE ALFABÉTICO A-Z ═══ -->
+  <section class="indice-az-seccion" id="indiceAZSeccion">
+    <div class="indice-az-contenedor">
+      <span class="indice-az-label">Índice A–Z:</span>
+      <div id="indiceAZLista" class="indice-az-lista"></div>
+    </div>
+  </section>
+
   <!-- ═══ CABECERA DEL CATÁLOGO ═══ -->
   <div class="catalogo-header-barra">
     <div class="catalogo-barra-info">
@@ -226,9 +304,25 @@
 
   <!-- ═══ SIN RESULTADOS ═══ -->
   <div id="sinResultados" class="sin-resultados" style="display:none">
-    <div class="sin-resultados-icono"><i data-lucide="library" class="icono-lg"></i></div>
-    <p class="sin-resultados-texto">No se encontraron libros con ese criterio.</p>
-    <button id="btnLimpiarTodo" class="btn-limpiar-todo">Limpiar filtros y buscar todo</button>
+    <div class="sin-resultados-icono"><i data-lucide="book-open" class="icono-lg"></i></div>
+    <p id="sinResultadosTexto" class="sin-resultados-texto">No se encontraron libros con ese criterio.</p>
+    <div class="sin-resultados-acciones">
+      <button id="btnLimpiarTodo" class="btn-limpiar-todo">
+        <i data-lucide="rotate-ccw" class="icono-sm"></i> Limpiar filtros y ver catálogo
+      </button>
+      <div class="sin-resultados-solicitar-card">
+        <div class="solicitar-card-icono"><i data-lucide="message-circle" class="icono-md"></i></div>
+        <div class="solicitar-card-info">
+          <h4 class="solicitar-card-titulo">¿El libro que buscas no está en la biblioteca?</h4>
+          <p class="solicitar-card-subtitulo" id="solicitarCardSubtitulo">
+            Pídelo directamente por WhatsApp y lo añadiremos al catálogo con prioridad para miembros.
+          </p>
+          <a id="btnSolicitarLibro" class="btn-solicitar-whatsapp" target="_blank" rel="noopener" aria-label="Solicitar libro por WhatsApp">
+            <i data-lucide="send" class="icono-sm"></i> Solicitar este libro por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ═══ PAGINACIÓN ═══ -->
@@ -246,6 +340,10 @@
       <button id="btnFAQ" class="footer-link-btn">Preguntas frecuentes</button>
       <span class="footer-sep">·</span>
       <button id="btnContacto" class="footer-link-btn">Contacto</button>
+      <span class="footer-sep">·</span>
+      <a id="btnFooterSolicitar" href="https://wa.me/524811289106?text=Hola%20Libractiva,%20quisiera%20solicitar%20un%20libro%20para%20el%20catálogo" target="_blank" rel="noopener" class="footer-link-btn footer-link-solicitar">
+        <i data-lucide="message-circle" class="icono-xs"></i> Solicitar un libro
+      </a>
     </div>
   </footer>
 
@@ -260,7 +358,7 @@
       <div class="modal-body detalle-body">
         <div class="detalle-grid">
           <div class="detalle-portada-wrapper">
-            <img id="detalle-portada" class="detalle-portada" alt="" />
+            <img id="detalle-portada" class="detalle-portada" alt="" width="230" height="307" />
           </div>
           <div class="detalle-info">
             <span id="detalle-genero" class="tarjeta-genero-badge"></span>
@@ -268,7 +366,18 @@
               <i data-lucide="heart"></i>
             </button>
             <p id="detalle-autor" class="detalle-autor"></p>
-            <p id="detalle-anio" class="detalle-anio"></p>
+            <div id="detalle-serie-wrapper" class="detalle-serie-wrapper" style="display:none">
+              <button id="detalle-serie-btn" class="btn-detalle-serie" type="button" aria-label="Ver todos los libros de esta saga">
+                <i data-lucide="layers" class="icono-xs"></i>
+                <span id="detalle-serie-texto"></span>
+              </button>
+            </div>
+            <div id="detalle-meta-fila" class="detalle-meta-fila">
+              <span id="detalle-anio" class="detalle-anio"></span>
+              <span id="detalle-paginas" class="detalle-meta-pill" style="display:none"></span>
+              <span id="detalle-idioma" class="detalle-meta-pill" style="display:none"></span>
+              <span id="detalle-progreso" class="detalle-meta-pill detalle-meta-progreso" style="display:none"></span>
+            </div>
             <p id="detalle-descripcion" class="detalle-descripcion"></p>
             <button id="detalle-pdf-link" class="btn-recomendar detalle-pdf-btn" style="display:none">
               <i data-lucide="book-open" class="icono-sm"></i> Leer libro
@@ -338,7 +447,7 @@
 
         <div class="pregunta-grupo">
           <label class="pregunta-label"><span class="pregunta-num">04</span> ¿Hay algún tema que te llame la atención? <span class="opcional">(Opcional)</span></label>
-          <input type="text" id="ia-tema" class="ia-input-tema" placeholder="Ej: historia, amor, política, filosofía..." />
+          <input type="text" id="ia-tema" class="ia-input-tema" placeholder="Ej: historia, amor, política, filosofía..." aria-label="Tema o interés para recomendación" />
         </div>
 
         <div class="modal-acciones">
@@ -405,7 +514,7 @@
             <li><i data-lucide="check-circle" class="icono-sm"></i> Descarga en PDF y EPUB</li>
             <li><i data-lucide="check-circle" class="icono-sm"></i> Marcadores de página en cualquier libro</li>
             <li><i data-lucide="check-circle" class="icono-sm"></i> Guardado de progreso de lectura</li>
-            <li><i data-lucide="check-circle" class="icono-sm"></i> Impresión directa del libro</li>
+            <li><i data-lucide="check-circle" class="icono-sm"></i> Lectura ininterrumpida y soporte multidispositivo</li>
           </ul>
         </div>
         <div class="modal-acciones">
@@ -424,20 +533,20 @@
     <div class="lector-barra-controles">
       <div class="lector-titulo-texto" id="lectorTituloTexto"></div>
       <div class="lector-controles">
-        <button id="lectorBtnPrev" class="lector-btn" title="Página anterior"><i data-lucide="chevron-left"></i></button>
+        <button id="lectorBtnPrev" class="lector-btn" title="Página anterior" aria-label="Página anterior"><i data-lucide="chevron-left"></i></button>
         <span class="lector-paginas">
           <span id="lectorPagActual">1</span>
-          <input type="number" id="inputLectorPag" class="lector-pag-input" value="1" min="1" style="display:none;" />
+          <input type="number" id="inputLectorPag" class="lector-pag-input" value="1" min="1" style="display:none;" aria-label="Número de página" />
           / <span id="lectorPagTotal">?</span>
         </span>
-        <button id="lectorBtnNext" class="lector-btn" title="Página siguiente"><i data-lucide="chevron-right"></i></button>
-        <button id="lectorBtnZoomOut" class="lector-btn" title="Alejar"><i data-lucide="zoom-out"></i></button>
-        <button id="lectorBtnZoomIn" class="lector-btn" title="Acercar"><i data-lucide="zoom-in"></i></button>
-        <button id="lectorBtnDescarga" class="lector-btn lector-btn-donar lector-btn-descarga-formato" style="display:none" title="Descargar PDF (Acceso Activo)"><i data-lucide="download"></i><span class="lector-btn-lbl">PDF</span></button>
-        <button id="lectorBtnDescargaEpub" class="lector-btn lector-btn-donar-epub lector-btn-descarga-formato" style="display:none" title="Descargar EPUB (Acceso Activo)"><i data-lucide="download"></i><span class="lector-btn-lbl">EPUB</span></button>
-        <button id="lectorBtnMarcadores" class="lector-btn lector-btn-marcador" style="display:none" title="Marcar página"><i data-lucide="bookmark"></i><span class="lector-btn-lbl">Marcar</span></button>
-        <button id="lectorBtnVerMarcadores" class="lector-btn lector-btn-ver-marcadores" style="display:none" title="Ver mis marcadores"><i data-lucide="list"></i></button>
-        <button id="lectorBtnCerrar" class="lector-btn lector-btn-cerrar" title="Cerrar lector"><i data-lucide="x"></i></button>
+        <button id="lectorBtnNext" class="lector-btn" title="Página siguiente" aria-label="Página siguiente"><i data-lucide="chevron-right"></i></button>
+        <button id="lectorBtnZoomOut" class="lector-btn" title="Alejar" aria-label="Alejar"><i data-lucide="zoom-out"></i></button>
+        <button id="lectorBtnZoomIn" class="lector-btn" title="Acercar" aria-label="Acercar"><i data-lucide="zoom-in"></i></button>
+        <button id="lectorBtnDescarga" class="lector-btn lector-btn-donar lector-btn-descarga-formato" style="display:none" title="Descargar PDF (Acceso Activo)" aria-label="Descargar PDF"><i data-lucide="download"></i><span class="lector-btn-lbl">PDF</span></button>
+        <button id="lectorBtnDescargaEpub" class="lector-btn lector-btn-donar-epub lector-btn-descarga-formato" style="display:none" title="Descargar EPUB (Acceso Activo)" aria-label="Descargar EPUB"><i data-lucide="download"></i><span class="lector-btn-lbl">EPUB</span></button>
+        <button id="lectorBtnMarcadores" class="lector-btn lector-btn-marcador" style="display:none" title="Marcar página" aria-label="Marcar página actual"><i data-lucide="bookmark"></i><span class="lector-btn-lbl">Marcar</span></button>
+        <button id="lectorBtnVerMarcadores" class="lector-btn lector-btn-ver-marcadores" style="display:none" title="Ver mis marcadores" aria-label="Ver lista de marcadores"><i data-lucide="list"></i></button>
+        <button id="lectorBtnCerrar" class="lector-btn lector-btn-cerrar" title="Cerrar lector" aria-label="Cerrar lector"><i data-lucide="x"></i></button>
       </div>
     </div>
     <div class="lector-canvas-container" id="lectorContainer">
@@ -453,7 +562,7 @@
           <div class="lector-bloqueo-icono">📚</div>
           <h2 class="lector-bloqueo-titulo">Has llegado al final de la vista previa 📖</h2>
           <p class="lector-bloqueo-texto">
-            Este libro y los más de 2,800 títulos del catálogo están disponibles completos — incluyendo descargas en <strong>PDF y EPUB</strong> (ideal para Kindle o tu app de lectura favorita) — con un pago único de <strong>$100 MXN</strong>. Sin mensualidades ni cargos ocultos.
+            Este libro y los más de 2,900 títulos del catálogo están disponibles completos — incluyendo descargas en <strong>PDF y EPUB</strong> (ideal para Kindle o tu app de lectura favorita) — con un pago único de <strong>$100 MXN</strong>. Sin mensualidades ni cargos ocultos.
           </p>
           <div class="lector-bloqueo-opciones">
             <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-preview">🛒 Obtener Acceso Lifetime — $100 MXN</a>
@@ -493,7 +602,7 @@
       <div class="modal-body">
         <p class="codigo-descripcion">Ingresa tu código de acceso para desbloquear el catálogo completo, descargas en PDF y EPUB, en hasta 3 dispositivos.</p>
         <div class="codigo-input-wrapper">
-          <input type="text" id="inputCodigoDonador" class="codigo-input" placeholder="EJEMPLO: LTD-A82F" autocomplete="off" spellcheck="false" />
+          <input type="text" id="inputCodigoDonador" class="codigo-input" placeholder="EJEMPLO: LTD-A82F" autocomplete="off" spellcheck="false" aria-label="Código de activación" />
         </div>
         <div id="codigoMensaje" class="codigo-mensaje" style="display:none"></div>
         <div class="modal-acciones">
@@ -545,7 +654,7 @@
           
           <div class="faq-item">
             <h4>¿Puedo seguir usando la biblioteca gratis?</h4>
-            <p><strong>¡Por supuesto!</strong> La exploración completa de todo nuestro catálogo de libros, el buscador instantáneo, las colecciones principales, la interacción con nuestro recomendador de Inteligencia Artificial y la lectura de las primeras 15 páginas de todos los libros son y seguirán siendo 100% gratis y libres de restricciones para todos los visitantes.</p>
+            <p><strong>¡Por supuesto!</strong> La exploración completa de todo nuestro catálogo de libros, el buscador instantáneo, las colecciones principales, las consultas de prueba con nuestro recomendador de Inteligencia Artificial y la lectura de las primeras 15 páginas de todos los libros son y seguirán siendo 100% gratis para todos los visitantes.</p>
           </div>
           
           <div class="faq-item">
@@ -610,7 +719,7 @@
           <div class="beneficio-item">
             <div class="beneficio-icono"><i data-lucide="book-open"></i></div>
             <div class="beneficio-texto">
-              <strong>Lectura sin límites:</strong> Accede a las más de 2,800 obras completas (elimina el límite de vista previa de 15 páginas).
+              <strong>Lectura sin límites:</strong> Accede a las más de 2,900 obras completas (elimina el límite de vista previa de 15 páginas).
             </div>
           </div>
           <div class="beneficio-item">
@@ -632,9 +741,9 @@
             </div>
           </div>
           <div class="beneficio-item">
-            <div class="beneficio-icono"><i data-lucide="printer"></i></div>
+            <div class="beneficio-icono"><i data-lucide="book-open"></i></div>
             <div class="beneficio-texto">
-              <strong>Impresión directa:</strong> Imprime páginas o capítulos completos directamente desde el lector.
+              <strong>Lectura sin distracciones:</strong> Experiencia inmersiva y limpia en cualquier pantalla, sin interrupciones ni publicidad.
             </div>
           </div>
           <div class="beneficio-item">
@@ -653,7 +762,7 @@
 
         <div class="compra-accion-caja">
           <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-mercadopago-checkout" id="btnMercadoPagoCheckout" aria-label="Pagar con Mercado Pago">
-            <img src="mercadopago.png" alt="Mercado Pago" class="img-mercadopago-logo" />
+            <img src="mercadopago.png" alt="Mercado Pago" class="img-mercadopago-logo" width="160" height="40" loading="lazy" />
           </a>
         </div>
 
@@ -675,6 +784,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=14"></script>
+  <script src="app.js?v=22"></script>
 </body>
 </html>

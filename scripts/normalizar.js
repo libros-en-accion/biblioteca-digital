@@ -58,6 +58,8 @@ const GENERO_MAP = {
   'alegoría': 'Novela',
   'literatura uruguaya': 'Novela',
   'drama': 'Novela',
+  'novela / ficción política': 'Novela',
+  'novela / drama familiar': 'Novela',
 
   // ── NOVELA HISTÓRICA ──
   'novela histórica': 'Novela histórica',
@@ -68,6 +70,7 @@ const GENERO_MAP = {
   'fantasía histórica': 'Novela histórica',
   'relato histórico': 'Novela histórica',
   'western / novela': 'Novela histórica',
+  'ficción histórica / drama': 'Novela histórica',
 
   // ── NOVELA JUVENIL ──
   'novela juvenil': 'Novela juvenil',
@@ -83,6 +86,11 @@ const GENERO_MAP = {
   'fantasía infantil': 'Novela juvenil',
   'educativo': 'Novela juvenil',
   'misterio juvenil': 'Novela juvenil',
+  'literatura infantil / fábula filosófica': 'Novela juvenil',
+  'literatura infantil / ficción clásica': 'Novela juvenil',
+  'literatura infantil / fantasía': 'Novela juvenil',
+  'ficción juvenil / drama': 'Novela juvenil',
+  'ficción juvenil / fantasía oscura': 'Novela juvenil',
 
   // ── NOVELA NEGRA ──
   'novela negra': 'Novela negra',
@@ -107,6 +115,7 @@ const GENERO_MAP = {
   'ciencia ficción/humor': 'Ciencia Ficción',
   'novela distópica': 'Ciencia Ficción',
   'distopía': 'Ciencia Ficción',
+  'novela / ficción climática (cli-fi)': 'Ciencia Ficción',
 
   // ── FANTASÍA ──
   'fantasía': 'Fantasía',
@@ -255,6 +264,7 @@ const GENERO_MAP = {
   'poesía / filosofía': 'Filosofía',
   'autoayuda/filosofía': 'Filosofía',
   'teoría política': 'Filosofía',
+  'psicología / filosofía': 'Filosofía',
 
   // ── POESÍA ──
   'poesía': 'Poesía',
@@ -291,6 +301,7 @@ const GENERO_MAP = {
   'viajes': 'Historia y Crónica',
   'viajes / humor': 'Historia y Crónica',
   'biografía histórica': 'Historia y Crónica',
+  'periodismo literario': 'Historia y Crónica',
 
   // ── DIVULGACIÓN CIENTÍFICA ──
   'divulgación científica': 'Divulgación Científica',
@@ -310,6 +321,10 @@ const GENERO_MAP = {
   'medicina': 'Divulgación Científica',
   'antropología': 'Divulgación Científica',
   'sociología': 'Divulgación Científica',
+  'neurociencia / divulgación científica': 'Divulgación Científica',
+  'divulgación científica / historia': 'Divulgación Científica',
+  'naturaleza / medio ambiente': 'Divulgación Científica',
+  'educación / lingüística': 'Divulgación Científica',
 
   // ── PSICOLOGÍA Y AUTOAYUDA ──
   'psicología y autoayuda': 'Psicología y Autoayuda',
@@ -318,6 +333,9 @@ const GENERO_MAP = {
   'no ficción / autoayuda': 'Psicología y Autoayuda',
   'espiritualidad': 'Psicología y Autoayuda',
   'religión y espiritualidad': 'Psicología y Autoayuda',
+  'desarrollo personal': 'Psicología y Autoayuda',
+  'psicología social / negocios': 'Psicología y Autoayuda',
+  'psicología / economía conductual': 'Psicología y Autoayuda',
 
   // ── BIOGRAFÍA Y MEMORIAS ──
   'biografía': 'Biografía y Memorias',
@@ -332,14 +350,20 @@ const GENERO_MAP = {
   'no ficción': 'Biografía y Memorias',
   'diario': 'Biografía y Memorias',
   'memoria': 'Biografía y Memorias',
+  'narrativa / ensayo biográfico': 'Biografía y Memorias',
 
   // ── ECONOMÍA Y POLÍTICA ──
   'economía': 'Economía y Política',
+  'economía y política': 'Economía y Política',
+  'economía / política': 'Economía y Política',
+  'economía / divulgación': 'Economía y Política',
+  'finanzas personales / negocios': 'Economía y Política',
   'economía / filosofía': 'Economía y Política',
   'finanzas': 'Economía y Política',
   'no ficción / didáctico': 'Economía y Política',
 
   // ── RELIGIÓN Y TEOLOGÍA ──
+  'religión y teología': 'Religión y Teología',
   'teología': 'Religión y Teología',
   'religión/gnosticismo': 'Religión y Teología',
   'mitología': 'Religión y Teología',

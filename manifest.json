@@ -1,12 +1,19 @@
 {
   "name": "Libractiva — Biblioteca Digital Inteligente",
   "short_name": "Libractiva",
-  "description": "Tu bibliotecario personal, ahora es inteligente. Explora una colección de más de 2,800 clásicos con recomendación inteligente por IA.",
+  "description": "Tu bibliotecario personal, ahora inteligente. Explora una colección curada de más de 2,900 clásicos y contemporáneos con recomendación inteligente por IA.",
   "start_url": "/",
+  "id": "/",
+  "lang": "es",
   "display": "standalone",
   "background_color": "#f4ede4",
   "theme_color": "#0e2a24",
   "orientation": "portrait-primary",
+  "categories": [
+    "books",
+    "education",
+    "lifestyle"
+  ],
   "icons": [
     {
       "src": "favicon-16x16.png",
