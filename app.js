@@ -38,6 +38,8 @@ let soloLeyendo = false;
 let letraActiva = 'Todas';
 let extensionActiva = 'Todas'; // Todas | corta | media | larga
 let idiomaActivo = 'Todos'; // Todos | es | en
+let sagaActiva = 'Todas'; // Todas | __TODAS__ | nombre de la saga
+let vistaColeccionActiva = 'colecciones'; // colecciones | sagas
 let rankingMasLeidos = [];
 
 const LETRAS_INDICE = ['Todas', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#'];
@@ -442,6 +444,7 @@ function inicializarPagina() {
 
   // Poblar e inicializar los custom dropdowns, chips y autocompletado
   poblarDropdownAutores();
+  poblarDropdownSagas();
   inicializarDropdowns();
   inicializarAutocompletado();
 
@@ -496,6 +499,24 @@ function generarTagsFiltro() {
   btnTodos.innerHTML = `<i data-lucide="library" class="icono-sm"></i> Todos`;
   btnTodos.addEventListener('click', () => filtrarGenero('Todos', btnTodos));
   contenedor.appendChild(btnTodos);
+
+  // 1.5 Botón rápido de Sagas y Series
+  const btnSagas = document.createElement('button');
+  btnSagas.className = `tag-genero tag-sagas-btn ${sagaActiva !== 'Todas' ? 'activo' : ''}`;
+  btnSagas.id = 'btnTagSagas';
+  btnSagas.setAttribute('aria-pressed', sagaActiva !== 'Todas' ? 'true' : 'false');
+  btnSagas.title = 'Explorar todas las sagas y series literarias en orden de lectura';
+  btnSagas.innerHTML = `<i data-lucide="layers" class="icono-sm"></i> Sagas y Series`;
+  btnSagas.addEventListener('click', () => {
+    if (sagaActiva !== 'Todas') {
+      sagaActiva = 'Todas';
+      sincronizarUISaga();
+      filtrarGenero('Todos', btnTodos);
+    } else {
+      seleccionarSaga('__TODAS__');
+    }
+  });
+  contenedor.appendChild(btnSagas);
 
   // 2. Renderizar los Mood Tags (Descubrimiento Inteligente)
   moodTagsData.forEach(m => {
@@ -625,6 +646,7 @@ function renderizarDestacados() {
     letraActiva !== 'Todas' ||
     extensionActiva !== 'Todas' ||
     idiomaActivo !== 'Todos' ||
+    sagaActiva !== 'Todas' ||
     busquedaText !== '' ||
     paginaActual > 1 ||
     coleccionActiva !== null ||
@@ -691,6 +713,7 @@ function renderizarDestacados() {
     const tieneProgreso = !!(infoProg && infoProg.pagina > 1);
 
     tarjeta.innerHTML = `
+      <span class="destacado-rank-badge" aria-label="Posición #${i + 1}">#${i + 1}</span>
       ${libro.portada 
         ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" width="230" height="307" decoding="async" />` 
         : `<div class="tarjeta-portada tarjeta-portada-placeholder">
@@ -702,7 +725,7 @@ function renderizarDestacados() {
       </button>
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
-        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Serie ${libro.serie.nombre} · #${libro.serie.orden}">📚 ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
+        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Ver saga: ${libro.serie.nombre} · #${libro.serie.orden}">📚 ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
         ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
         <div class="tarjeta-titulo">${tituloLimpio}</div>
         <div class="tarjeta-autor">${libro.autor || ''}</div>
@@ -737,6 +760,13 @@ function renderizarDestacados() {
       }
     `;
 
+    const badgeSerie = tarjeta.querySelector('.tarjeta-serie-badge');
+    if (badgeSerie && libro.serie && libro.serie.nombre) {
+      badgeSerie.addEventListener('click', (e) => {
+        e.stopPropagation();
+        seleccionarSaga(libro.serie.nombre);
+      });
+    }
     tarjeta.querySelector('.tarjeta-info').addEventListener('click', () => abrirDetalleLibro(libro.id));
     if (hasPdf) {
       tarjeta.querySelector('.btn-leer-lector').addEventListener('click', (e) => {
@@ -771,7 +801,33 @@ function renderizarDestacados() {
   if (window.lucide) lucide.createIcons({ root: galeriaDestacados });
 }
 
-// ── RENDERIZAR COLECCIONES CURADAS ──
+// ── OBTENER SAGAS AGRUPADAS ──
+function obtenerSagasAgrupadas() {
+  const sagasMap = new Map();
+  libros.forEach(l => {
+    if (l.serie && l.serie.nombre) {
+      const nombre = l.serie.nombre.trim();
+      if (!sagasMap.has(nombre)) {
+        sagasMap.set(nombre, {
+          nombre,
+          autor: l.autor || '',
+          genero: l.genero || 'Literatura',
+          libros: []
+        });
+      }
+      sagasMap.get(nombre).libros.push(l);
+    }
+  });
+
+  const sagasLista = Array.from(sagasMap.values());
+  sagasLista.forEach(s => {
+    s.libros.sort((a, b) => (a.serie?.orden || 999) - (b.serie?.orden || 999));
+  });
+  sagasLista.sort((a, b) => b.libros.length - a.libros.length || a.nombre.localeCompare(b.nombre, 'es'));
+  return sagasLista;
+}
+
+// ── RENDERIZAR COLECCIONES CURADAS Y SAGAS ──
 function renderizarColecciones() {
   const seccion = document.getElementById('colecciones-seccion');
   const grid = document.getElementById('coleccionesGrid');
@@ -788,6 +844,7 @@ function renderizarColecciones() {
     letraActiva !== 'Todas' ||
     extensionActiva !== 'Todas' ||
     idiomaActivo !== 'Todos' ||
+    sagaActiva !== 'Todas' ||
     busquedaText !== '' ||
     paginaActual > 1 ||
     coleccionActiva !== null ||
@@ -799,60 +856,165 @@ function renderizarColecciones() {
     return;
   }
 
-  if (colecciones.length === 0) {
+  const sagasLista = obtenerSagasAgrupadas();
+
+  if (colecciones.length === 0 && sagasLista.length === 0) {
     seccion.style.display = 'none';
     return;
+  }
+
+  // Actualizar contadores y estado activo en pestañas
+  const countCol = document.getElementById('countTabColecciones');
+  const countSag = document.getElementById('countTabSagas');
+  if (countCol) countCol.textContent = colecciones.length;
+  if (countSag) countSag.textContent = sagasLista.length;
+
+  const tabCol = document.getElementById('tabVistaColecciones');
+  const tabSag = document.getElementById('tabVistaSagas');
+  const tituloSec = document.getElementById('tituloColeccionesSeccion');
+
+  if (tabCol && tabSag) {
+    const esSagas = vistaColeccionActiva === 'sagas';
+    tabCol.classList.toggle('activo', !esSagas);
+    tabCol.setAttribute('aria-selected', !esSagas ? 'true' : 'false');
+    tabSag.classList.toggle('activo', esSagas);
+    tabSag.setAttribute('aria-selected', esSagas ? 'true' : 'false');
+  }
+  if (tituloSec) {
+    tituloSec.textContent = vistaColeccionActiva === 'sagas'
+      ? 'Sagas y Series Literarias'
+      : 'Colecciones Populares';
   }
 
   seccion.style.display = 'block';
   grid.innerHTML = '';
 
-  colecciones.forEach(pack => {
-    // Obtener los objetos completos de libros pertenecientes a este pack
-    const librosDelPack = pack.libros.map(id => libros.find(l => l.id === id)).filter(Boolean);
-    
-    // Obtener la portada del primer libro para el fondo borroso (o una genérica si no hay)
-    const primerLibro = librosDelPack[0];
-    const bgPortada = (primerLibro && primerLibro.portada) ? primerLibro.portada : 'portadas/pack-generico.webp';
-    
-    // Obtener portadas de los primeros 3 libros para el stack visual
-    const portadasAMostrar = librosDelPack.slice(0, 3).map(l => l.portada).filter(Boolean);
-    
-    // Construir el HTML para el stack tridimensional
-    let stackHtml = '';
-    if (portadasAMostrar.length > 0) {
-      stackHtml = `
-        <div class="pack-libros-stack">
-          ${portadasAMostrar.map((portada, idx) => `
-            <div class="pack-libro-stack-item portada-idx-${idx}">
-              <img src="${portada}" alt="Portada de libro" loading="lazy" />
-            </div>
-          `).join('')}
+  if (vistaColeccionActiva === 'sagas') {
+    sagasLista.forEach(saga => {
+      const primerLibro = saga.libros[0];
+      const bgPortada = (primerLibro && primerLibro.portada) ? primerLibro.portada : 'portadas/pack-generico.webp';
+      const portadasAMostrar = saga.libros.slice(0, 3).map(l => l.portada).filter(Boolean);
+
+      let stackHtml = '';
+      if (portadasAMostrar.length > 0) {
+        stackHtml = `
+          <div class="pack-libros-stack">
+            ${portadasAMostrar.map((portada, idx) => `
+              <div class="pack-libro-stack-item portada-idx-${idx}">
+                <img src="${portada}" alt="Tomo ${idx + 1} de ${saga.nombre}" loading="lazy" />
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      const tarjeta = document.createElement('div');
+      tarjeta.className = 'pack-tarjeta saga-tarjeta';
+      tarjeta.innerHTML = `
+        <img src="${bgPortada}" alt="${saga.nombre}" class="pack-tarjeta-bg" loading="lazy" />
+        <span class="pack-insignia saga-insignia">📚 ${saga.libros.length} Tomos</span>
+        ${stackHtml}
+        <div class="pack-info">
+          <span class="saga-autor-tag">${saga.autor}</span>
+          <h4 class="pack-titulo">${saga.nombre}</h4>
+          <p class="pack-descripcion">Inicia con: «${limpiarTitulo(primerLibro ? primerLibro.titulo : '')}»</p>
+          <button class="btn-explorar-pack">Ver en orden <i data-lucide="arrow-right" class="icono-sm"></i></button>
         </div>
       `;
-    }
 
-    const tarjeta = document.createElement('div');
-    tarjeta.className = 'pack-tarjeta';
-    tarjeta.innerHTML = `
-      <img src="${bgPortada}" alt="${pack.titulo}" class="pack-tarjeta-bg" loading="lazy" />
-      <span class="pack-insignia">✦ ${pack.libros.length} Libros</span>
-      ${stackHtml}
-      <div class="pack-info">
-        <h4 class="pack-titulo">${pack.titulo}</h4>
-        ${pack.descripcion ? `<p class="pack-descripcion">${pack.descripcion}</p>` : ''}
-        <button class="btn-explorar-pack">Explorar <i data-lucide="arrow-right" class="icono-sm"></i></button>
-      </div>
-    `;
+      tarjeta.addEventListener('click', () => seleccionarSaga(saga.nombre));
+      grid.appendChild(tarjeta);
+    });
+  } else {
+    colecciones.forEach(pack => {
+      const librosDelPack = pack.libros.map(id => libros.find(l => l.id === id)).filter(Boolean);
+      const primerLibro = librosDelPack[0];
+      const bgPortada = pack.portada_pack || (primerLibro && primerLibro.portada) || 'portadas/pack-generico.webp';
+      const portadasAMostrar = librosDelPack.slice(0, 3).map(l => l.portada).filter(Boolean);
 
-    tarjeta.addEventListener('click', () => seleccionarColeccion(pack));
-    grid.appendChild(tarjeta);
-  });
+      let stackHtml = '';
+      if (portadasAMostrar.length > 0) {
+        stackHtml = `
+          <div class="pack-libros-stack">
+            ${portadasAMostrar.map((portada, idx) => `
+              <div class="pack-libro-stack-item portada-idx-${idx}">
+                <img src="${portada}" alt="Portada de libro" loading="lazy" />
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      const tarjeta = document.createElement('div');
+      tarjeta.className = 'pack-tarjeta';
+      tarjeta.innerHTML = `
+        <img src="${bgPortada}" alt="${pack.titulo}" class="pack-tarjeta-bg" loading="lazy" />
+        <span class="pack-insignia">✦ ${pack.libros.length} Libros</span>
+        ${stackHtml}
+        <div class="pack-info">
+          <h4 class="pack-titulo">${pack.titulo}</h4>
+          ${pack.descripcion ? `<p class="pack-descripcion">${pack.descripcion}</p>` : ''}
+          <button class="btn-explorar-pack">Explorar <i data-lucide="arrow-right" class="icono-sm"></i></button>
+        </div>
+      `;
+
+      tarjeta.addEventListener('click', () => seleccionarColeccion(pack));
+      grid.appendChild(tarjeta);
+    });
+  }
 
   if (window.lucide) lucide.createIcons({ root: grid });
 }
 
+function sincronizarUISaga() {
+  const menuSaga = document.getElementById('menuDropdownSaga');
+  const labelSaga = document.getElementById('labelDropdownSaga');
+  const btnTagSagas = document.getElementById('btnTagSagas');
+
+  if (menuSaga) {
+    menuSaga.querySelectorAll('.dropdown-item').forEach(li => {
+      li.classList.toggle('seleccionado', li.dataset.valor === sagaActiva);
+    });
+  }
+
+  if (labelSaga) {
+    if (sagaActiva === 'Todas') {
+      labelSaga.textContent = 'Sagas';
+    } else if (sagaActiva === '__TODAS__') {
+      labelSaga.textContent = 'Todas las sagas';
+    } else {
+      labelSaga.textContent = sagaActiva;
+    }
+  }
+
+  if (btnTagSagas) {
+    const activo = sagaActiva !== 'Todas';
+    btnTagSagas.classList.toggle('activo', activo);
+    btnTagSagas.setAttribute('aria-pressed', activo ? 'true' : 'false');
+  }
+}
+
+function seleccionarSaga(nombreSaga) {
+  coleccionActiva = null;
+  sagaActiva = nombreSaga;
+  sincronizarUISaga();
+
+  const btnCerrar = document.getElementById('btnCerrarPack');
+  if (btnCerrar) {
+    btnCerrar.style.display = sagaActiva !== 'Todas' ? 'inline-flex' : 'none';
+  }
+
+  filtrar();
+
+  const catalogoHeader = document.querySelector('.catalogo-header-barra');
+  if (catalogoHeader) {
+    catalogoHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 function seleccionarColeccion(pack) {
+  sagaActiva = 'Todas';
+  sincronizarUISaga();
   coleccionActiva = pack;
   
   // Actualizar UI
@@ -879,6 +1041,8 @@ function seleccionarColeccion(pack) {
 
 function quitarColeccion() {
   coleccionActiva = null;
+  sagaActiva = 'Todas';
+  sincronizarUISaga();
 
   // Restaurar UI
   const titulo = document.getElementById('catalogoTitulo');
@@ -934,6 +1098,7 @@ function renderizarContinuarLeyendo() {
     letraActiva !== 'Todas' ||
     extensionActiva !== 'Todas' ||
     idiomaActivo !== 'Todos' ||
+    sagaActiva !== 'Todas' ||
     busquedaText !== '' ||
     paginaActual > 1 ||
     coleccionActiva !== null ||
@@ -1080,8 +1245,11 @@ function renderizarContinuarLeyendo() {
 // ── MOSTRAR PÁGINA ──
 function mostrarPagina(pagina, omitirScroll = false) {
   paginaActual = pagina;
-  renderizarDestacados();
-  renderizarContinuarLeyendo();
+  if (!omitirScroll) {
+    renderizarColecciones();
+    renderizarDestacados();
+    renderizarContinuarLeyendo();
+  }
   const inicio = (pagina - 1) * LIBROS_POR_PAGINA;
   const fin = inicio + LIBROS_POR_PAGINA;
   const paginaLibros = listaFiltrada.slice(inicio, fin);
@@ -1194,7 +1362,7 @@ function mostrarLibros(lista) {
       </button>
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
-        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Serie ${libro.serie.nombre} · #${libro.serie.orden}">📚 ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
+        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Ver saga: ${libro.serie.nombre} · #${libro.serie.orden}">📚 ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
         ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
         <div class="tarjeta-titulo">${tituloLimpio}</div>
         <div class="tarjeta-autor">${libro.autor || ''}</div>
@@ -1228,6 +1396,13 @@ function mostrarLibros(lista) {
         `<a href="${libro.pdf || '#'}" target="_blank" rel="noopener" class="btn-ver"><i data-lucide="file-text" class="icono-sm"></i> Ver documento</a>`
       }
     `;
+    const badgeSerie = tarjeta.querySelector('.tarjeta-serie-badge');
+    if (badgeSerie && libro.serie && libro.serie.nombre) {
+      badgeSerie.addEventListener('click', (e) => {
+        e.stopPropagation();
+        seleccionarSaga(libro.serie.nombre);
+      });
+    }
     tarjeta.querySelector('.tarjeta-info').addEventListener('click', () => abrirDetalleLibro(libro.id));
     if (hasPdf) {
       tarjeta.querySelector('.btn-leer-lector').addEventListener('click', (e) => {
@@ -1482,6 +1657,18 @@ function ordenarLista(lista) {
       return copia;
     }
 
+    // Si hay filtro de saga activo, ordenar por nombre de saga y número de tomo (#1, #2, #3...)
+    if (sagaActiva !== 'Todas') {
+      const copia = [...lista];
+      copia.sort((a, b) => {
+        const sagaA = a.serie?.nombre || '';
+        const sagaB = b.serie?.nombre || '';
+        if (sagaA !== sagaB) return sagaA.localeCompare(sagaB, 'es');
+        return (a.serie?.orden || 999) - (b.serie?.orden || 999);
+      });
+      return copia;
+    }
+
     if (moodActivo !== 'Todos') {
       return shuffle(lista);
     }
@@ -1645,7 +1832,17 @@ function filtrar() {
       coincideIdioma = (libro.idioma || 'es') === idiomaActivo;
     }
 
-    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca && coincideMood && coincideFavorito && coincideLeyendo && coincideLetra && coincideExtension && coincideIdioma;
+    // Filtro por saga / serie
+    let coincideSaga = true;
+    if (sagaActiva !== 'Todas') {
+      if (sagaActiva === '__TODAS__') {
+        coincideSaga = !!(libro.serie && libro.serie.nombre);
+      } else {
+        coincideSaga = !!(libro.serie && libro.serie.nombre && libro.serie.nombre.trim() === sagaActiva);
+      }
+    }
+
+    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca && coincideMood && coincideFavorito && coincideLeyendo && coincideLetra && coincideExtension && coincideIdioma && coincideSaga;
   });
 
   // Aplicar ordenamiento
@@ -1653,6 +1850,7 @@ function filtrar() {
 
   // Actualizar título del catálogo dinámicamente
   const titulo = document.getElementById('catalogoTitulo');
+  const btnCerrar = document.getElementById('btnCerrarPack');
   if (titulo) {
     if (soloFavoritos) {
       if (coleccionActiva) {
@@ -1669,10 +1867,17 @@ function filtrar() {
     } else {
       if (coleccionActiva) {
         titulo.textContent = `Colección: ${coleccionActiva.titulo}`;
+      } else if (sagaActiva !== 'Todas') {
+        titulo.textContent = sagaActiva === '__TODAS__'
+          ? 'Sagas y Series Literarias'
+          : `Saga: ${sagaActiva}`;
       } else {
         titulo.textContent = 'Catálogo Completo';
       }
     }
+  }
+  if (btnCerrar) {
+    btnCerrar.style.display = (coleccionActiva || sagaActiva !== 'Todas') ? 'inline-flex' : 'none';
   }
 
   mostrarPagina(1, true);
@@ -1706,6 +1911,10 @@ function limpiarBusqueda(enfocar = true) {
 // ── FILTRO POR TAG DE GÉNERO ──
 function filtrarGenero(genero, boton) {
   generoActivo = genero;
+  if (genero === 'Todos' && sagaActiva !== 'Todas') {
+    sagaActiva = 'Todas';
+    sincronizarUISaga();
+  }
   
   // Desactivar mood tags al usar género tradicional
   moodActivo = 'Todos';
@@ -1715,7 +1924,7 @@ function filtrarGenero(genero, boton) {
   });
 
   // Actualizar clase activa en los tags normales
-  document.querySelectorAll('.tag-genero:not(.tag-mood-btn)').forEach(b => b.classList.remove('activo'));
+  document.querySelectorAll('.tag-genero:not(.tag-mood-btn):not(.tag-sagas-btn)').forEach(b => b.classList.remove('activo'));
   if (boton) boton.classList.add('activo');
   
   // Hacer scroll al tag activo
@@ -1792,14 +2001,7 @@ function abrirDetalleLibro(id, omitirPush = false) {
         e.stopPropagation();
         cerrarDetalle();
         limpiarTodo();
-        const inputBusqueda = document.getElementById('inputBusqueda');
-        if (inputBusqueda) {
-          inputBusqueda.value = libro.serie.nombre;
-          const btnLimpiar = document.getElementById('btnLimpiarBusqueda');
-          if (btnLimpiar) btnLimpiar.style.display = 'flex';
-          filtrar();
-          document.querySelector('.catalogo-header-barra')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        seleccionarSaga(libro.serie.nombre.trim());
       };
     } else {
       serieWrapper.style.display = 'none';
@@ -2410,6 +2612,14 @@ function actualizarBreadcrumbs() {
     items.push({ label: 'Idioma', value: idiomaActivo === 'en' ? 'Inglés' : 'Español', type: 'idioma' });
   }
 
+  if (sagaActiva !== 'Todas') {
+    items.push({
+      label: 'Saga',
+      value: sagaActiva === '__TODAS__' ? 'Todas las sagas' : sagaActiva,
+      type: 'saga'
+    });
+  }
+
   if (coleccionActiva) {
     items.push({ label: 'Colección', value: coleccionActiva.titulo, type: 'coleccion' });
   }
@@ -2435,6 +2645,11 @@ function actualizarBreadcrumbs() {
     el.querySelector('.breadcrumb-btn-remove').onclick = () => {
       if (item.type === 'texto') limpiarBusqueda(false);
       if (item.type === 'coleccion') quitarColeccion();
+      if (item.type === 'saga') {
+        sagaActiva = 'Todas';
+        sincronizarUISaga();
+        filtrar();
+      }
       if (item.type === 'genero') filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
       if (item.type === 'mood') {
         moodActivo = 'Todos';
@@ -2749,12 +2964,34 @@ function registrarEventos() {
   el('btnVistaGrid')?.addEventListener('click', () => cambiarVista('grid'));
   el('btnVistaLista')?.addEventListener('click', () => cambiarVista('lista'));
 
-  // Botones de carrusel destacados
+  // Botones de carrusel destacados (desplazamiento de 3 tarjetas por clic)
   el('btnCarruselIzq')?.addEventListener('click', () => {
-    document.getElementById('destacados-galeria')?.scrollBy({ left: -320, behavior: 'smooth' });
+    document.getElementById('destacados-galeria')?.scrollBy({ left: -660, behavior: 'smooth' });
   });
   el('btnCarruselDer')?.addEventListener('click', () => {
-    document.getElementById('destacados-galeria')?.scrollBy({ left: 320, behavior: 'smooth' });
+    document.getElementById('destacados-galeria')?.scrollBy({ left: 660, behavior: 'smooth' });
+  });
+
+  // Botones de carrusel colecciones y sagas
+  el('btnColeccionesIzq')?.addEventListener('click', () => {
+    document.getElementById('coleccionesGrid')?.scrollBy({ left: -620, behavior: 'smooth' });
+  });
+  el('btnColeccionesDer')?.addEventListener('click', () => {
+    document.getElementById('coleccionesGrid')?.scrollBy({ left: 620, behavior: 'smooth' });
+  });
+
+  // Pestañas Colecciones / Sagas en la sección principal
+  el('tabVistaColecciones')?.addEventListener('click', () => {
+    if (vistaColeccionActiva === 'colecciones') return;
+    vistaColeccionActiva = 'colecciones';
+    renderizarColecciones();
+    document.getElementById('coleccionesGrid')?.scrollTo({ left: 0, behavior: 'smooth' });
+  });
+  el('tabVistaSagas')?.addEventListener('click', () => {
+    if (vistaColeccionActiva === 'sagas') return;
+    vistaColeccionActiva = 'sagas';
+    renderizarColecciones();
+    document.getElementById('coleccionesGrid')?.scrollTo({ left: 0, behavior: 'smooth' });
   });
 
   // Opciones de la IA (delegación por data-grupo)
@@ -2957,8 +3194,10 @@ function limpiarTodo() {
     btnLey.setAttribute('aria-pressed', 'false');
   }
 
-  // Limpiar colección
+  // Limpiar colección y saga
   coleccionActiva = null;
+  sagaActiva = 'Todas';
+  sincronizarUISaga();
   const titulo = document.getElementById('catalogoTitulo');
   const btnCerrar = document.getElementById('btnCerrarPack');
   if (titulo) titulo.textContent = 'Catálogo Completo';
@@ -3372,6 +3611,20 @@ function inicializarDropdowns() {
     });
   }
 
+  // Dropdown Sagas y Series
+  const dropdownSaga = document.getElementById('dropdownSaga');
+  const btnSaga = document.getElementById('btnDropdownSaga');
+  const menuSaga = document.getElementById('menuDropdownSaga');
+
+  if (btnSaga && menuSaga && dropdownSaga) {
+    btnSaga.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cerrarTodosDropdowns(dropdownSaga);
+      dropdownSaga.classList.toggle('abierto');
+      btnSaga.setAttribute('aria-expanded', dropdownSaga.classList.contains('abierto'));
+    });
+  }
+
   document.addEventListener('click', () => {
     cerrarTodosDropdowns();
   });
@@ -3447,6 +3700,54 @@ function poblarDropdownAutores() {
     if (btnLimpiarAutor) btnLimpiarAutor.style.display = 'none';
     dropdownAutor.classList.remove('abierto');
     filtrar();
+  });
+}
+
+function poblarDropdownSagas() {
+  const menuSaga = document.getElementById('menuDropdownSaga');
+  const dropdownSaga = document.getElementById('dropdownSaga');
+  const btnSaga = document.getElementById('btnDropdownSaga');
+  if (!menuSaga) return;
+
+  const sagasLista = obtenerSagasAgrupadas();
+  const totalLibrosSagas = sagasLista.reduce((acc, s) => acc + s.libros.length, 0);
+
+  menuSaga.innerHTML = '';
+
+  const crearItem = (valor, texto, count = null, seleccionado = false) => {
+    const li = document.createElement('li');
+    li.className = `dropdown-item ${seleccionado ? 'seleccionado' : ''}`;
+    li.dataset.valor = valor;
+    li.role = 'option';
+    li.textContent = texto;
+    if (count !== null) {
+      const badge = document.createElement('span');
+      badge.className = 'chip-count';
+      badge.textContent = count;
+      li.appendChild(badge);
+    }
+    li.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownSaga?.classList.remove('abierto');
+      btnSaga?.setAttribute('aria-expanded', 'false');
+      if (valor === 'Todas') {
+        sagaActiva = 'Todas';
+        sincronizarUISaga();
+        const btnCerrar = document.getElementById('btnCerrarPack');
+        if (btnCerrar && !coleccionActiva) btnCerrar.style.display = 'none';
+        filtrar();
+      } else {
+        seleccionarSaga(valor);
+      }
+    });
+    return li;
+  };
+
+  menuSaga.appendChild(crearItem('Todas', 'Todas las obras', null, true));
+  menuSaga.appendChild(crearItem('__TODAS__', '📚 Todas las sagas', totalLibrosSagas, false));
+
+  sagasLista.forEach(saga => {
+    menuSaga.appendChild(crearItem(saga.nombre, saga.nombre, saga.libros.length, false));
   });
 }
 

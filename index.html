@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=24" />
+  <link rel="stylesheet" href="style.css?v=25" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -212,6 +212,19 @@
         </ul>
       </div>
 
+      <!-- Sagas y Series (Custom Dropdown Menu) -->
+      <div class="custom-dropdown" id="dropdownSaga">
+        <button class="dropdown-btn" id="btnDropdownSaga" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por saga o serie">
+          <span id="labelDropdownSaga">📚 Sagas</span>
+          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
+        </button>
+        <ul class="dropdown-menu" role="listbox" id="menuDropdownSaga">
+          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Todas las obras</li>
+          <li data-valor="__TODAS__" class="dropdown-item" role="option">📚 Todas las sagas (86)</li>
+          <!-- Se llena dinámicamente con las 22 sagas -->
+        </ul>
+      </div>
+
       <!-- Ordenamiento Custom (Custom Dropdown Menu) -->
       <div class="custom-dropdown" id="dropdownOrden">
         <button class="dropdown-btn" id="btnDropdownOrden" aria-haspopup="listbox" aria-expanded="false" aria-label="Ordenar catálogo">
@@ -266,10 +279,30 @@
     <div class="destacados-fin-banner"></div>
   </section>
 
-  <!-- ═══ SECCIÓN COLECCIONES CURADAS ═══ -->
+  <!-- ═══ SECCIÓN COLECCIONES CURADAS Y SAGAS ═══ -->
   <section id="colecciones-seccion" class="colecciones-seccion" style="display:none">
-    <h2 class="seccion-titulo-colecciones">Colecciones Populares</h2>
-    <div class="colecciones-grid" id="coleccionesGrid"></div>
+    <div class="colecciones-header-fila">
+      <h2 class="seccion-titulo-colecciones" id="tituloColeccionesSeccion">Colecciones Populares</h2>
+      <div class="colecciones-tabs" role="tablist" aria-label="Alternar entre colecciones y sagas">
+        <button type="button" id="tabVistaColecciones" class="coleccion-tab-btn activo" role="tab" aria-selected="true">
+          <i data-lucide="sparkles" class="icono-sm"></i> Colecciones <span class="coleccion-tab-count" id="countTabColecciones">9</span>
+        </button>
+        <button type="button" id="tabVistaSagas" class="coleccion-tab-btn" role="tab" aria-selected="false">
+          <i data-lucide="library" class="icono-sm"></i> Sagas y Series <span class="coleccion-tab-count" id="countTabSagas">22</span>
+        </button>
+      </div>
+    </div>
+    <div class="colecciones-carrusel-contenedor">
+      <button class="carrusel-btn carrusel-btn-izq" id="btnColeccionesIzq" aria-label="Anterior" title="Anterior">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <div class="colecciones-grid" id="coleccionesGrid"></div>
+      <button class="carrusel-btn carrusel-btn-der" id="btnColeccionesDer" aria-label="Siguiente" title="Siguiente">
+        <i data-lucide="chevron-right"></i>
+      </button>
+      <div class="carrusel-fade carrusel-fade-izq"></div>
+      <div class="carrusel-fade carrusel-fade-der"></div>
+    </div>
     <div class="colecciones-fin-banner"></div>
   </section>
 
@@ -784,6 +817,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=22"></script>
+  <script src="app.js?v=23"></script>
 </body>
 </html>
