@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 /**
  * scripts/subir_a_r2.js
- * Sube automáticamente archivos nuevos o específicos a Cloudflare R2
+ * Sube automáticamente archivos nuevos a Cloudflare R2
  * usando las credenciales configuradas en .env.local
  * 
  * Uso:
- *   node scripts/subir_a_r2.js --howey   (sube los 3 PDFs y 3 EPUBs de Hugh Howey)
- *   node scripts/subir_a_r2.js --help
+ *   node scripts/subir_a_r2.js
  */
 
 const fs = require('fs');
@@ -46,8 +45,8 @@ const r2Client = new S3Client({
 const BUCKET = env.R2_BUCKET_NAME;
 const BASE_LOCAL = '/home/daniel/biblioteca-digital';
 
-const ARCHIVOS_HOWEY = [
-  // PDFs
+const ARCHIVOS_A_SUBIR = [
+  // ── Hugh Howey (Trilogía del Silo) ──
   {
     local: path.join(BASE_LOCAL, 'H/Howey, Hugh/Espejismo - Hugh Howey.pdf'),
     key: 'H/Howey, Hugh/Espejismo - Hugh Howey.pdf',
@@ -63,7 +62,6 @@ const ARCHIVOS_HOWEY = [
     key: 'H/Howey, Hugh/Vestigios - Hugh Howey.pdf',
     contentType: 'application/pdf'
   },
-  // EPUBs
   {
     local: path.join(BASE_LOCAL, '001_EPUB/H/Howey, Hugh/Espejismo - Hugh Howey.epub'),
     key: '001_EPUB/H/Howey, Hugh/Espejismo - Hugh Howey.epub',
@@ -77,6 +75,60 @@ const ARCHIVOS_HOWEY = [
   {
     local: path.join(BASE_LOCAL, '001_EPUB/H/Howey, Hugh/Vestigios - Hugh Howey.epub'),
     key: '001_EPUB/H/Howey, Hugh/Vestigios - Hugh Howey.epub',
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Brianna Wiest ──
+  {
+    local: path.join(BASE_LOCAL, 'W/Wiest, Brianna/La montana eres tu - Brianna Wiest.pdf'),
+    key: 'W/Wiest, Brianna/La montana eres tu - Brianna Wiest.pdf',
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, '001_EPUB/W/Wiest, Brianna/La montana eres tu - Brianna Wiest.epub'),
+    key: '001_EPUB/W/Wiest, Brianna/La montana eres tu - Brianna Wiest.epub',
+    contentType: 'application/epub+zip'
+  },
+
+  // ── Ramón Campayo ──
+  {
+    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.pdf'),
+    key: 'C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.pdf',
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.epub'),
+    key: '001_EPUB/C/Campayo, Ramón/Desarrolla una mente prodigiosa - Ramon Campayo.epub',
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.pdf'),
+    key: 'C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.pdf',
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.epub'),
+    key: '001_EPUB/C/Campayo, Ramón/Curso definitivo de lectura rapida - Ramon Campayo.epub',
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.pdf'),
+    key: 'C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.pdf',
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.epub'),
+    key: '001_EPUB/C/Campayo, Ramón/Aprende un idioma en 7 dias - Ramon Campayo.epub',
+    contentType: 'application/epub+zip'
+  },
+  {
+    local: path.join(BASE_LOCAL, 'C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.pdf'),
+    key: 'C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.pdf',
+    contentType: 'application/pdf'
+  },
+  {
+    local: path.join(BASE_LOCAL, '001_EPUB/C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.epub'),
+    key: '001_EPUB/C/Campayo, Ramón/Aprende ingles en 7 dias - Ramon Campayo.epub',
     contentType: 'application/epub+zip'
   }
 ];
@@ -108,7 +160,7 @@ async function main() {
   console.log(`🚀 Iniciando subida a Cloudflare R2 (Bucket: ${BUCKET})...\n`);
 
   let exitosos = 0;
-  for (const item of ARCHIVOS_HOWEY) {
+  for (const item of ARCHIVOS_A_SUBIR) {
     try {
       const ok = await subirArchivo(item);
       if (ok) exitosos++;
@@ -117,7 +169,7 @@ async function main() {
     }
   }
 
-  console.log(`\n🎉 Finalizado: ${exitosos}/${ARCHIVOS_HOWEY.length} archivos subidos con éxito a Cloudflare R2.`);
+  console.log(`\n🎉 Finalizado: ${exitosos}/${ARCHIVOS_A_SUBIR.length} archivos subidos con éxito a Cloudflare R2.`);
 }
 
 main();
