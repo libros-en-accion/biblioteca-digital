@@ -3,6 +3,11 @@
   "github": {
     "silent": true
   },
+  "functions": {
+    "api/recomendar.js": {
+      "maxDuration": 30
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
@@ -21,13 +26,13 @@
     {
       "source": "/libros.json",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     },
     {
       "source": "/colecciones.json",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     },
     {

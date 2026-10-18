@@ -4,7 +4,7 @@ const CACHE_ASSETS = [
   '/libros.json',
   '/colecciones.json',
   '/style.css?v=26',
-  '/app.js?v=24',
+  '/app.js?v=25',
   '/lucide.min.js',
   '/manifest.json',
   '/favicon.ico',

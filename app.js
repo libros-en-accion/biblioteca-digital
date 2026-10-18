@@ -2440,6 +2440,9 @@ async function pedirRecomendacion() {
   mostrarPaso('ia-cargando');
   document.querySelector('#modalIA .modal-panel').scrollTop = 0;
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 12000);
+
   try {
     const respuesta = await fetch('/api/recomendar', {
       method: 'POST',
@@ -2450,7 +2453,10 @@ async function pedirRecomendacion() {
         objetivo: iaSeleccion.objetivo,
         tema:     tema || null,
       }),
+      signal: controller.signal
     });
+
+    clearTimeout(timeoutId);
 
     const datos = await respuesta.json();
 
@@ -2469,9 +2475,12 @@ async function pedirRecomendacion() {
     }
 
   } catch (err) {
+    clearTimeout(timeoutId);
     console.error('Error al pedir recomendación:', err);
-    document.getElementById('ia-error-msg').textContent =
-      err.message || 'No se pudo obtener una recomendación. Intenta de nuevo.';
+    const mensaje = err.name === 'AbortError'
+      ? 'La biblioteca tardó más de lo habitual en responder. Por favor reintenta.'
+      : (err.message || 'No se pudo obtener una recomendación. Intenta de nuevo.');
+    document.getElementById('ia-error-msg').textContent = mensaje;
     mostrarPaso('ia-error');
   }
 }
