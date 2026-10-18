@@ -594,8 +594,43 @@ async function subirArchivo({ local, key, contentType }) {
 async function main() {
   console.log(`🚀 Iniciando subida a Cloudflare R2 (Bucket: ${BUCKET})...\n`);
 
-  let exitosos = 0;
+  // Auto-descubrir libros recientes o reemplazados desde libros.json
+  const librosPath = path.join(__dirname, '..', 'libros.json');
+  if (fs.existsSync(librosPath)) {
+    const libros = JSON.parse(fs.readFileSync(librosPath, 'utf8'));
+    const dynamicIds = new Set([69, 11, 14, 2346]);
+    for (const b of libros) {
+      if (b.id >= 3000 || dynamicIds.has(b.id)) {
+        if (b.archivo_pdf) {
+          ARCHIVOS_A_SUBIR.push({
+            local: path.join(BASE_LOCAL, b.archivo_pdf),
+            key: b.archivo_pdf,
+            contentType: 'application/pdf'
+          });
+        }
+        if (b.archivo_epub) {
+          ARCHIVOS_A_SUBIR.push({
+            local: path.join(BASE_LOCAL, b.archivo_epub),
+            key: b.archivo_epub,
+            contentType: 'application/epub+zip'
+          });
+        }
+      }
+    }
+  }
+
+  // Eliminar duplicados por clave
+  const uniqueItems = [];
+  const seenKeys = new Set();
   for (const item of ARCHIVOS_A_SUBIR) {
+    if (!seenKeys.has(item.key)) {
+      seenKeys.add(item.key);
+      uniqueItems.push(item);
+    }
+  }
+
+  let exitosos = 0;
+  for (const item of uniqueItems) {
     try {
       const ok = await subirArchivo(item);
       if (ok) exitosos++;
@@ -604,7 +639,7 @@ async function main() {
     }
   }
 
-  console.log(`\n🎉 Finalizado: ${exitosos}/${ARCHIVOS_A_SUBIR.length} archivos subidos con éxito a Cloudflare R2.`);
+  console.log(`\n🎉 Finalizado: ${exitosos}/${uniqueItems.length} archivos procesados con éxito en Cloudflare R2.`);
 }
 
 main();
