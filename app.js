@@ -681,15 +681,6 @@ function renderizarDestacados() {
     return;
   }
 
-  // Si usamos el ranking real de Redis, mantener el orden de popularidad (los más leídos primero)
-  // Si usamos el fallback curado estático, mezclar para dar variedad
-  if (rankingMasLeidos.length < 4) {
-    for (let i = librosDestacados.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [librosDestacados[i], librosDestacados[j]] = [librosDestacados[j], librosDestacados[i]];
-    }
-  }
-
   // Título dinámico del carrusel
   const tituloSeccion = seccion.querySelector('.seccion-titulo-destacados');
   if (tituloSeccion) {
