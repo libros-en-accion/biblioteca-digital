@@ -350,12 +350,13 @@ Promise.all([
     if (galeria) {
       galeria.innerHTML = `
         <div class="error-carga">
-          <div class="error-icono">📚</div>
+          <div class="error-icono"><i data-lucide="book-x" class="icono-xl"></i></div>
           <h2>No se pudo cargar el catálogo</h2>
           <p>${error.message}</p>
           <button id="btnReintentar" class="btn-recomendar">Reintentar</button>
         </div>
       `;
+      if (window.lucide) lucide.createIcons({ root: galeria });
       document.getElementById('btnReintentar')?.addEventListener('click', () => location.reload());
     }
   });
@@ -693,7 +694,7 @@ function renderizarDestacados() {
   const tituloSeccion = seccion.querySelector('.seccion-titulo-destacados');
   if (tituloSeccion) {
     tituloSeccion.textContent = rankingMasLeidos.length >= 4
-      ? '🔥 Los más leídos de la semana'
+      ? 'Los más leídos de la semana'
       : 'Los más destacados';
   }
 
@@ -726,8 +727,8 @@ function renderizarDestacados() {
       </button>
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
-        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Ver saga: ${libro.serie.nombre} · #${libro.serie.orden}">📚 ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
-        ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
+        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Ver saga: ${libro.serie.nombre} · #${libro.serie.orden}"><i data-lucide="layers" class="icono-xs"></i> ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
+        ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas"><i data-lucide="eye" class="icono-xs"></i> Vista previa · 15 págs.</span>` : ''}
         <div class="tarjeta-titulo">${tituloLimpio}</div>
         <div class="tarjeta-autor">${libro.autor || ''}</div>
         <div class="tarjeta-meta-fila">
@@ -913,7 +914,7 @@ function renderizarColecciones() {
       tarjeta.className = 'pack-tarjeta saga-tarjeta';
       tarjeta.innerHTML = `
         <img src="${bgPortada}" alt="${saga.nombre}" class="pack-tarjeta-bg" loading="lazy" />
-        <span class="pack-insignia saga-insignia">📚 ${saga.libros.length} Tomos</span>
+        <span class="pack-insignia saga-insignia"><i data-lucide="layers" class="icono-xs"></i> ${saga.libros.length} Tomos</span>
         ${stackHtml}
         <div class="pack-info">
           <span class="saga-autor-tag">${saga.autor}</span>
@@ -950,7 +951,7 @@ function renderizarColecciones() {
       tarjeta.className = 'pack-tarjeta';
       tarjeta.innerHTML = `
         <img src="${bgPortada}" alt="${pack.titulo}" class="pack-tarjeta-bg" loading="lazy" />
-        <span class="pack-insignia">✦ ${pack.libros.length} Libros</span>
+        <span class="pack-insignia"><i data-lucide="sparkles" class="icono-xs"></i> ${pack.libros.length} Libros</span>
         ${stackHtml}
         <div class="pack-info">
           <h4 class="pack-titulo">${pack.titulo}</h4>
@@ -1363,8 +1364,8 @@ function mostrarLibros(lista) {
       </button>
       <div class="tarjeta-info" data-libro-id="${libro.id}" style="cursor:pointer">
         <span class="tarjeta-genero-badge ${claseGenero}">${libro.genero || 'General'}</span>
-        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Ver saga: ${libro.serie.nombre} · #${libro.serie.orden}">📚 ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
-        ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
+        ${libro.serie ? `<span class="tarjeta-serie-badge" title="Ver saga: ${libro.serie.nombre} · #${libro.serie.orden}"><i data-lucide="layers" class="icono-xs"></i> ${libro.serie.nombre} #${libro.serie.orden}</span>` : ''}
+        ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas"><i data-lucide="eye" class="icono-xs"></i> Vista previa · 15 págs.</span>` : ''}
         <div class="tarjeta-titulo">${tituloLimpio}</div>
         <div class="tarjeta-autor">${libro.autor || ''}</div>
         <div class="tarjeta-meta-fila">
@@ -1618,6 +1619,59 @@ function resaltarCoincidencias(texto, terminos) {
   return escapado.replace(regex, '<strong>$1</strong>');
 }
 
+// ── BÚSQUEDA TOLERANTE A ERRORES (FUZZY SEARCH / DISTANCIA LEVENSHTEIN) ──
+function distanciaLevenshtein(a, b) {
+  if (a === b) return 0;
+  const la = a.length, lb = b.length;
+  if (la === 0) return lb;
+  if (lb === 0) return la;
+  let prev = Array.from({ length: lb + 1 }, (_, i) => i);
+  let curr = new Array(lb + 1);
+  for (let i = 1; i <= la; i++) {
+    curr[0] = i;
+    const ca = a.charCodeAt(i - 1);
+    for (let j = 1; j <= lb; j++) {
+      const costo = ca === b.charCodeAt(j - 1) ? 0 : 1;
+      curr[j] = Math.min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + costo);
+    }
+    const temp = prev;
+    prev = curr;
+    curr = temp;
+  }
+  return prev[lb];
+}
+
+function coincidenTerminosFuzzy(terminos, libro) {
+  if (!libro._palabrasFuzzy) {
+    const txt = normalizar([
+      libro.titulo || '',
+      libro.autor || '',
+      libro.genero || '',
+      libro.serie ? libro.serie.nombre : ''
+    ].join(' '));
+    libro._palabrasFuzzy = [...new Set(txt.split(' ').filter(w => w.length >= 2))];
+  }
+  const palabras = libro._palabrasFuzzy;
+
+  return terminos.every(termino => {
+    const len = termino.length;
+    if (len <= 2) {
+      return palabras.some(w => w.includes(termino));
+    }
+    const maxDist = len <= 4 ? 1 : 2;
+    return palabras.some(w => {
+      if (w.includes(termino)) return true;
+      if (Math.abs(w.length - len) <= maxDist) {
+        if (distanciaLevenshtein(termino, w) <= maxDist) return true;
+      }
+      if (w.length > len && Math.abs(w.length - len) <= maxDist + 2) {
+        if (distanciaLevenshtein(termino, w.slice(0, len)) <= 1) return true;
+      }
+      return false;
+    });
+  });
+}
+
 // ── ORDENAR LISTA ──
 function shuffle(array) {
   const copia = [...array];
@@ -1722,18 +1776,7 @@ function filtrar() {
     ? libros.filter(libro => coleccionActiva.libros.includes(libro.id))
     : libros;
 
-  listaFiltrada = librosDePartida.filter(libro => {
-    const campos = [
-      normalizar(libro.titulo || ''),
-      normalizar(libro.autor || ''),
-      normalizar(libro.genero || ''),
-      normalizar(libro.descripcion || ''),
-      normalizar(libro.serie ? libro.serie.nombre : ''),
-      String(libro.anio || ''),
-    ].join(' ');
-
-    const coincideTexto = terminos.length === 0 || terminos.every(t => campos.includes(t));
-    
+  const cumpleFiltrosSecundarios = (libro) => {
     // Filtro de género más flexible
     let coincideGenero = true;
     if (generoActivo !== 'Todos') {
@@ -1843,8 +1886,37 @@ function filtrar() {
       }
     }
 
-    return coincideTexto && coincideGenero && coincideAutor && coincideEpoca && coincideMood && coincideFavorito && coincideLeyendo && coincideLetra && coincideExtension && coincideIdioma && coincideSaga;
+    return coincideGenero && coincideAutor && coincideEpoca && coincideMood && coincideFavorito && coincideLeyendo && coincideLetra && coincideExtension && coincideIdioma && coincideSaga;
+  };
+
+  let esBusquedaFuzzy = false;
+  listaFiltrada = librosDePartida.filter(libro => {
+    const campos = [
+      normalizar(libro.titulo || ''),
+      normalizar(libro.autor || ''),
+      normalizar(libro.genero || ''),
+      normalizar(libro.descripcion || ''),
+      normalizar(libro.serie ? libro.serie.nombre : ''),
+      String(libro.anio || ''),
+    ].join(' ');
+
+    const coincideTexto = terminos.length === 0 || terminos.every(t => campos.includes(t));
+    if (!coincideTexto) return false;
+    return cumpleFiltrosSecundarios(libro);
   });
+
+  // Si no hubo resultados con búsqueda exacta y hay términos de búsqueda, activar fuzzy search
+  if (listaFiltrada.length === 0 && terminos.length > 0) {
+    const coincidenciasFuzzy = librosDePartida.filter(libro => {
+      if (!coincidenTerminosFuzzy(terminos, libro)) return false;
+      return cumpleFiltrosSecundarios(libro);
+    });
+
+    if (coincidenciasFuzzy.length > 0) {
+      listaFiltrada = coincidenciasFuzzy;
+      esBusquedaFuzzy = true;
+    }
+  }
 
   // Aplicar ordenamiento
   listaFiltrada = ordenarLista(listaFiltrada);
@@ -1865,6 +1937,8 @@ function filtrar() {
       } else {
         titulo.textContent = 'Libros que estoy leyendo';
       }
+    } else if (esBusquedaFuzzy) {
+      titulo.textContent = `Resultados aproximados para «${raw.trim()}»`;
     } else {
       if (coleccionActiva) {
         titulo.textContent = `Colección: ${coleccionActiva.titulo}`;
@@ -2512,7 +2586,7 @@ function renderizarResultados(recomendaciones) {
       <div class="resultado-titulo">${tituloLimpio}</div>
       <div class="resultado-autor">${libro.autor}${libro.anio ? ` · ${libro.anio}` : ''}</div>
       <div class="resultado-razon">${rec.razon}</div>
-      ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas">📖 Vista previa · 15 págs.</span>` : ''}
+      ${(hasPdf && !esDonador) ? `<span class="badge-preview" aria-label="Vista previa gratuita de 15 páginas"><i data-lucide="eye" class="icono-xs"></i> Vista previa · 15 págs.</span>` : ''}
       ${hasPdf ? `
         <button class="resultado-btn btn-leer-recomendado" style="cursor:pointer">
           <i data-lucide="book-open" class="icono-sm"></i> Leer
@@ -2550,11 +2624,12 @@ function mostrarCTAEnResultadosIA() {
   ctaEl.className = 'ia-resultado-cta';
   ctaEl.innerHTML = `
     <p>¿Te gustaron las recomendaciones? Lee estos libros completos y descárgalos en PDF y EPUB.</p>
-    ${usosRestantes > 0 ? `<p class="ia-usos-restantes">⚡ Te ${usosRestantes === 1 ? 'queda' : 'quedan'} <strong>${usosRestantes}</strong> consulta${usosRestantes === 1 ? '' : 's'} gratuita${usosRestantes === 1 ? '' : 's'}</p>` : '<p class="ia-usos-restantes ia-usos-agotados">⚠️ Has agotado tus consultas gratuitas</p>'}
+    ${usosRestantes > 0 ? `<p class="ia-usos-restantes"><i data-lucide="zap" class="icono-xs"></i> Te ${usosRestantes === 1 ? 'queda' : 'quedan'} <strong>${usosRestantes}</strong> consulta${usosRestantes === 1 ? '' : 's'} gratuita${usosRestantes === 1 ? '' : 's'}</p>` : '<p class="ia-usos-restantes ia-usos-agotados"><i data-lucide="alert-triangle" class="icono-xs"></i> Has agotado tus consultas gratuitas</p>'}
     <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-ia">
-      🛒 Desbloquear acceso completo — $100 MXN
+      <i data-lucide="sparkles" class="icono-sm"></i> Desbloquear acceso completo — $100 MXN
     </a>
   `;
+  if (window.lucide) lucide.createIcons({ root: ctaEl });
   contenedor.appendChild(ctaEl);
 }
 
@@ -2566,9 +2641,10 @@ function actualizarContadorUsosIA() {
     return;
   }
   const usosRestantes = Math.max(0, IA_USOS_LIMITE - obtenerUsosIA());
-  badge.textContent = `⚡ ${usosRestantes} / ${IA_USOS_LIMITE} consultas gratuitas`;
+  badge.innerHTML = `<i data-lucide="zap" class="icono-xs"></i> ${usosRestantes} / ${IA_USOS_LIMITE} consultas gratuitas`;
   badge.className = usosRestantes === 0 ? 'ia-usos-badge ia-badge-agotado' : 'ia-usos-badge';
   badge.style.display = 'inline-flex';
+  if (window.lucide) lucide.createIcons({ root: badge });
 }
 
 // ── BREADCRUMBS / FILTROS ACTIVOS ──
@@ -3306,8 +3382,16 @@ function inicializarAutocompletado() {
       });
     }
 
+    let esFuzzyAutocompletado = false;
     if (coincidenciasAll.length === 0) {
-      panel.innerHTML = '<div class="autocompletar-item vacio">No se encontraron coincidencias rápidas</div>';
+      coincidenciasAll = libros.filter(libro => coincidenTerminosFuzzy(terminos, libro));
+      if (coincidenciasAll.length > 0) {
+        esFuzzyAutocompletado = true;
+      }
+    }
+
+    if (coincidenciasAll.length === 0) {
+      panel.innerHTML = '<div class="autocompletar-item vacio">No se encontraron coincidencias</div>';
       panel.style.display = 'block';
       return;
     }
@@ -3334,6 +3418,13 @@ function inicializarAutocompletado() {
     const coincidencias = coincidenciasAll.slice(0, 5);
 
     panel.innerHTML = '';
+    if (esFuzzyAutocompletado) {
+      const cabeceraFuzzy = document.createElement('div');
+      cabeceraFuzzy.className = 'autocompletar-item-sugerencia-header';
+      cabeceraFuzzy.innerHTML = `<span><i data-lucide="sparkles" class="icono-xs"></i> Sugerencias aproximadas para «${resaltarCoincidencias(raw.trim(), [])}»</span>`;
+      panel.appendChild(cabeceraFuzzy);
+    }
+
     coincidencias.forEach(libro => {
       const item = document.createElement('div');
       item.className = 'autocompletar-item';
@@ -3341,11 +3432,11 @@ function inicializarAutocompletado() {
       const tituloResaltado = resaltarCoincidencias(limpiarTitulo(libro.titulo), terminos);
       const autorResaltado = resaltarCoincidencias(libro.autor || '', terminos);
       const badgeDerecho = libro.serie
-        ? `<span class="autocompletar-genero autocompletar-saga">📚 ${resaltarCoincidencias(libro.serie.nombre, terminos)} #${libro.serie.orden}</span>`
+        ? `<span class="autocompletar-genero autocompletar-saga"><i data-lucide="layers" class="icono-xs"></i> ${resaltarCoincidencias(libro.serie.nombre, terminos)} #${libro.serie.orden}</span>`
         : `<span class="autocompletar-genero">${libro.genero || 'General'}</span>`;
 
       item.innerHTML = `
-        ${libro.portada ? `<img src="${libro.portada}" alt="" class="autocompletar-portada" />` : '<div class="autocompletar-portada-vacia">📚</div>'}
+        ${libro.portada ? `<img src="${libro.portada}" alt="" class="autocompletar-portada" />` : '<div class="autocompletar-portada-vacia"><i data-lucide="book-open" class="icono-sm"></i></div>'}
         <div class="autocompletar-info">
           <div class="autocompletar-titulo">${tituloResaltado}</div>
           <div class="autocompletar-autor">${autorResaltado}</div>
@@ -3366,7 +3457,7 @@ function inicializarAutocompletado() {
     if (coincidenciasAll.length > 5) {
       const verTodos = document.createElement('div');
       verTodos.className = 'autocompletar-item autocompletar-ver-todos';
-      verTodos.innerHTML = `<span>🔎 Ver los <strong>${coincidenciasAll.length}</strong> resultados para «${resaltarCoincidencias(raw.trim(), [])}»</span>`;
+      verTodos.innerHTML = `<span><i data-lucide="search" class="icono-xs"></i> Ver los <strong>${coincidenciasAll.length}</strong> ${esFuzzyAutocompletado ? 'resultados aproximados' : 'resultados'} para «${resaltarCoincidencias(raw.trim(), [])}»</span>`;
       verTodos.addEventListener('click', (e) => {
         e.stopPropagation();
         panel.style.display = 'none';
@@ -3378,6 +3469,7 @@ function inicializarAutocompletado() {
       panel.appendChild(verTodos);
     }
 
+    if (window.lucide) lucide.createIcons({ root: panel });
     panel.style.display = 'block';
   });
 
@@ -3759,7 +3851,7 @@ function poblarDropdownSagas() {
   };
 
   menuSaga.appendChild(crearItem('Todas', 'Todas las obras', null, true));
-  menuSaga.appendChild(crearItem('__TODAS__', '📚 Todas las sagas', totalLibrosSagas, false));
+  menuSaga.appendChild(crearItem('__TODAS__', 'Todas las sagas', sagasLista.length, false));
 
   sagasLista.forEach(saga => {
     menuSaga.appendChild(crearItem(saga.nombre, saga.nombre, saga.libros.length, false));
@@ -3857,7 +3949,7 @@ async function validarCodigo() {
 
     if (resp.ok && data.valido) {
       localStorage.setItem('esDonador', 'true');
-      mostrarMensajeCodigo(`✅ ¡Acceso activado! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
+      mostrarMensajeCodigo(`¡Acceso activado! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
       // Actualizar botón de código en el hero y ocultar botón de compra
       actualizarBtnCodigo(true);
       mostrarPagina(paginaActual, false);
@@ -4287,15 +4379,15 @@ function renderizarPanelMarcadores() {
   if (marcadores.length === 0) {
     panel.innerHTML = `
       <div class="marcadores-panel-header">
-        <span>🔖 Mis marcadores</span>
+        <span><i data-lucide="bookmark" class="icono-sm"></i> Mis marcadores</span>
         <button class="marcadores-cerrar-btn" onclick="cerrarPanelMarcadores()" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
-      <p class="marcadores-vacio">Aún no has marcado ninguna página.<br>Pulsa 🔖 para guardar la página actual.</p>
+      <p class="marcadores-vacio">Aún no has marcado ninguna página.<br>Pulsa el botón de marcador para guardar la página actual.</p>
     `;
   } else {
     const items = marcadores.map(pag => `
       <div class="marcador-item ${pag === lectorEstado.pagina ? 'marcador-item-actual' : ''}" data-pag="${pag}">
-        <span class="marcador-icono">🔖</span>
+        <span class="marcador-icono"><i data-lucide="bookmark" class="icono-xs"></i></span>
         <span class="marcador-pag">Página ${pag}</span>
         <button class="marcador-ir-btn" data-pag="${pag}" title="Ir a pág. ${pag}">Ir</button>
         <button class="marcador-del-btn" data-pag="${pag}" title="Eliminar marcador" aria-label="Eliminar marcador pág. ${pag}"><i data-lucide="trash-2"></i></button>
@@ -4303,7 +4395,7 @@ function renderizarPanelMarcadores() {
     `).join('');
     panel.innerHTML = `
       <div class="marcadores-panel-header">
-        <span>🔖 Mis marcadores (${marcadores.length})</span>
+        <span><i data-lucide="bookmark" class="icono-sm"></i> Mis marcadores (${marcadores.length})</span>
         <button class="marcadores-cerrar-btn" onclick="cerrarPanelMarcadores()" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
       <div class="marcadores-lista">${items}</div>

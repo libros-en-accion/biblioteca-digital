@@ -5752,3 +5752,73 @@ input,
   color: var(--dorado);
   border: 1px solid rgba(212, 163, 89, 0.4);
 }
+
+/* ── ICONOS LUCIDE: UTILIDADES DE TAMAÑO Y ALINEACIÓN ── */
+.icono-xs, svg.icono-xs {
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.icono-sm, svg.icono-sm {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.icono-md, svg.icono-md {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.icono-lg, svg.icono-lg {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.icono-xl, svg.icono-xl {
+  width: 38px;
+  height: 38px;
+  vertical-align: middle;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.modal-ornamento {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.modal-ornamento svg {
+  width: 14px;
+  height: 14px;
+}
+
+.lector-bloqueo-icono svg,
+.limite-ia-icono svg {
+  color: var(--dorado);
+}
+
+.autocompletar-item-sugerencia-header {
+  padding: 0.5rem 0.9rem 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dorado);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--borde-suave);
+  background: rgba(184, 137, 42, 0.08);
+}

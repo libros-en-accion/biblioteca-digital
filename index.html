@@ -25,7 +25,7 @@
 
   <!-- SEO: Additional -->
   <meta name="robots" content="index, follow">
-  <meta name="author" content="Daniel">
+  <meta name="author" content="Libractiva">
   <link rel="canonical" href="https://biblioteca-digital-eight.vercel.app/">
 
   <!-- Favicons -->
@@ -112,7 +112,7 @@
           <span id="etiquetaCodigo">Activar Acceso</span>
         </button>
         <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-hero" id="btnComprarHero">
-          🛒 Acceso Lifetime — $100 MXN
+          <i data-lucide="sparkles" class="icono-sm"></i> Acceso Lifetime — $100 MXN
         </a>
       </div>
 
@@ -215,13 +215,13 @@
       <!-- Sagas y Series (Custom Dropdown Menu) -->
       <div class="custom-dropdown" id="dropdownSaga">
         <button class="dropdown-btn" id="btnDropdownSaga" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por saga o serie">
-          <span id="labelDropdownSaga">📚 Sagas</span>
+          <span id="labelDropdownSaga"><i data-lucide="layers" class="icono-sm"></i> Sagas</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
         <ul class="dropdown-menu" role="listbox" id="menuDropdownSaga">
           <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Todas las obras</li>
-          <li data-valor="__TODAS__" class="dropdown-item" role="option">📚 Todas las sagas (86)</li>
-          <!-- Se llena dinámicamente con las 22 sagas -->
+          <li data-valor="__TODAS__" class="dropdown-item" role="option">Todas las sagas</li>
+          <!-- Se llena dinámicamente con las sagas -->
         </ul>
       </div>
 
@@ -233,7 +233,7 @@
         </button>
         <ul class="dropdown-menu" role="listbox" id="menuDropdownOrden">
           <li data-valor="default" class="dropdown-item seleccionado" role="option">Ordenar por…</li>
-          <li data-valor="mas-leidos" class="dropdown-item" role="option">🔥 Más leídos esta semana</li>
+          <li data-valor="mas-leidos" class="dropdown-item" role="option">Más leídos esta semana</li>
           <li data-valor="titulo-asc" class="dropdown-item" role="option">Título A → Z</li>
           <li data-valor="titulo-desc" class="dropdown-item" role="option">Título Z → A</li>
           <li data-valor="autor-asc" class="dropdown-item" role="option">Autor A → Z</li>
@@ -288,7 +288,7 @@
           <i data-lucide="sparkles" class="icono-sm"></i> Colecciones <span class="coleccion-tab-count" id="countTabColecciones">15</span>
         </button>
         <button type="button" id="tabVistaSagas" class="coleccion-tab-btn" role="tab" aria-selected="false">
-          <i data-lucide="library" class="icono-sm"></i> Sagas y Series <span class="coleccion-tab-count" id="countTabSagas">53</span>
+          <i data-lucide="library" class="icono-sm"></i> Sagas y Series <span class="coleccion-tab-count" id="countTabSagas">58</span>
         </button>
       </div>
     </div>
@@ -529,18 +529,18 @@
   <div id="modalLimiteIA" class="modal-overlay">
     <div class="modal-panel modal-panel-ia modal-panel-limite" role="dialog" aria-modal="true" aria-labelledby="limite-ia-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento">⚠️ Consultas agotadas</div>
+        <div class="modal-ornamento"><i data-lucide="alert-triangle" class="icono-sm"></i> Consultas agotadas</div>
         <h2 id="limite-ia-titulo" class="modal-titulo">Has usado tus 3 consultas gratuitas</h2>
         <button id="btnCerrarLimiteIA" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
       <div class="modal-body limite-ia-body">
-        <div class="limite-ia-icono">🤖</div>
+        <div class="limite-ia-icono"><i data-lucide="bot" class="icono-xl"></i></div>
         <p class="limite-ia-texto">
           El Recomendador Inteligente utiliza inteligencia artificial para analizar tu estado de ánimo y el catálogo completo. 
           <strong>Las consultas gratuitas están limitadas a 3 por dispositivo.</strong>
         </p>
         <div class="limite-ia-beneficios">
-          <p class="limite-ia-subtitulo">🔓 Con tu código de acceso obtienes:</p>
+          <p class="limite-ia-subtitulo"><i data-lucide="unlock" class="icono-sm"></i> Con tu código de acceso obtienes:</p>
           <ul class="limite-ia-lista">
             <li><i data-lucide="check-circle" class="icono-sm"></i> Consultas <strong>ilimitadas</strong> al Recomendador IA</li>
             <li><i data-lucide="check-circle" class="icono-sm"></i> Lectura completa sin límite de páginas</li>
@@ -552,10 +552,10 @@
         </div>
         <div class="modal-acciones">
           <button id="btnCerrarLimiteIACancel" class="btn-cancelar">Cerrar</button>
-          <button id="btnActivarCodigoDesdeIA" class="btn-recomendar">🔑 Ya tengo un código</button>
+          <button id="btnActivarCodigoDesdeIA" class="btn-recomendar"><i data-lucide="key-round" class="icono-sm"></i> Ya tengo un código</button>
         </div>
         <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-ia limite-ia-comprar">
-          🛒 Obtener acceso completo — $100 MXN
+          <i data-lucide="sparkles" class="icono-sm"></i> Obtener acceso completo — $100 MXN
         </a>
       </div>
     </div>
@@ -592,21 +592,21 @@
       <div id="lectorBloqueo" class="lector-bloqueo" style="display:none">
         <div class="lector-bloqueo-caja">
           <button id="btnCerrarBloqueo" class="lector-bloqueo-cerrar" aria-label="Cerrar aviso"><i data-lucide="x"></i></button>
-          <div class="lector-bloqueo-icono">📚</div>
-          <h2 class="lector-bloqueo-titulo">Has llegado al final de la vista previa 📖</h2>
+          <div class="lector-bloqueo-icono"><i data-lucide="book-open" class="icono-xl"></i></div>
+          <h2 class="lector-bloqueo-titulo">Has llegado al final de la vista previa</h2>
           <p class="lector-bloqueo-texto">
             Este libro y los más de 3,000 títulos del catálogo están disponibles completos — incluyendo descargas en <strong>PDF y EPUB</strong> (ideal para Kindle o tu app de lectura favorita) — con un pago único de <strong>$100 MXN</strong>. Sin mensualidades ni cargos ocultos.
           </p>
           <div class="lector-bloqueo-opciones">
-            <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-preview">🛒 Obtener Acceso Lifetime — $100 MXN</a>
-            <button id="lectorBtnIngresarCodigo" class="btn-codigo-preview">🔑 Ya tengo un código</button>
+            <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-preview"><i data-lucide="sparkles" class="icono-sm"></i> Obtener Acceso Lifetime — $100 MXN</a>
+            <button id="lectorBtnIngresarCodigo" class="btn-codigo-preview"><i data-lucide="key-round" class="icono-sm"></i> Ya tengo un código</button>
           </div>
         </div>
       </div>
       <!-- Panel para continuar lectura anterior -->
       <div id="lectorContinuar" class="lector-bloqueo" style="display:none">
         <div class="lector-bloqueo-caja">
-          <div class="lector-bloqueo-icono">📖</div>
+          <div class="lector-bloqueo-icono"><i data-lucide="bookmark" class="icono-xl"></i></div>
           <h2 class="lector-bloqueo-titulo">Continuar lectura</h2>
           <p class="lector-bloqueo-texto">
             Te quedaste en la página <strong id="lectorContinuarPagina">X</strong>. ¿Quieres continuar desde allí o empezar desde el inicio?
@@ -628,7 +628,7 @@
   <div id="modalCodigo" class="modal-overlay">
     <div class="modal-panel modal-codigo-panel" role="dialog" aria-modal="true" aria-labelledby="codigo-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento">🔑 Activar Acceso</div>
+        <div class="modal-ornamento"><i data-lucide="key-round" class="icono-sm"></i> Activar Acceso</div>
         <h2 id="codigo-titulo" class="modal-titulo">Ingresar Código</h2>
         <button id="btnCerrarCodigo" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
@@ -666,7 +666,7 @@
         <!-- Contenido: Acerca de -->
         <div id="infoContentAcerca" class="info-tab-content activo">
           <h3>¿Qué es Libractiva?</h3>
-          <p>Libractiva (Biblioteca Digital) es una plataforma cultural independiente diseñada para facilitar el acceso universal a la literatura y el conocimiento.</p>
+          <p>Libractiva es una biblioteca digital inteligente y cultural independiente diseñada para facilitar el acceso universal a la literatura y el conocimiento.</p>
           
                
           <h3>Misión del Proyecto</h3>
@@ -713,13 +713,13 @@
         </p>
         
         <div class="contacto-opciones">
-          <a href="mailto:librosenaccionoficial@gmail.com" class="contacto-opcion-card opcion-email">
+          <a href="mailto:contacto.libractiva@gmail.com" class="contacto-opcion-card opcion-email">
             <div class="contacto-icono-wrapper">
               <i data-lucide="mail"></i>
             </div>
             <div class="contacto-opcion-info">
               <span class="contacto-opcion-titulo">Correo Electrónico</span>
-              <span class="contacto-opcion-valor">librosenaccionoficial@gmail.com</span>
+              <span class="contacto-opcion-valor">contacto.libractiva@gmail.com</span>
             </div>
           </a>
 
@@ -741,7 +741,7 @@
   <div id="modalCompra" class="modal-overlay">
     <div class="modal-panel modal-compra-panel" role="dialog" aria-modal="true" aria-labelledby="compra-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento">🛒 Acceso Lifetime</div>
+        <div class="modal-ornamento"><i data-lucide="sparkles" class="icono-sm"></i> Acceso Lifetime</div>
         <h2 id="compra-titulo" class="modal-titulo">Beneficios de tu Acceso</h2>
         <button id="btnCerrarCompra" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
