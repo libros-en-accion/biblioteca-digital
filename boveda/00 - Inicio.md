@@ -55,28 +55,29 @@ Procedimientos operativos estándar (SOP) para el mantenimiento y actualización
 *   [[Guía - Git y Flujo de Trabajo|Guía: Comandos de Git]]: Flujo de trabajo para actualizar la web.
 *   [[Guía - Uso con Agentes de IA|Guía: Uso con Agentes de IA]]: Cómo guiar a otras IAs de forma eficiente y económica.
 *   [[Guía - Gestión de Accesos|Guía: Gestión de Accesos y Códigos]]: Administración de accesos, límites de dispositivos y comandos CLI.
-*   [[Guía - Gestión de Libros Destacados|Guía: Gestión de Libros Destacados]]: Administración de la sección de recomendados en la Home.
-*   [[Guía - Gestión de Colecciones|Guía: Gestión de Colecciones (Packs)]]: Estructura de packs y cómo asociar IDs de libros en colecciones.json.
+*   [[Guía - Gestión de Libros Destacados|Guía: Gestión de Libros Destacados]]: Administración y orden estable de la sección de recomendados en la Home.
+*   [[Guía - Gestión de Colecciones|Guía: Gestión de Colecciones y Sagas]]: Estructura de las 15 colecciones temáticas y las 58 sagas literarias.
 
 ### ⚙️ [02 - Arquitectura Técnica]([[02 - Arquitectura Técnica]])
 Documentación técnica sobre el diseño conceptual y desarrollo de Libractiva.
-*   [[Arquitectura - Vista General|Vista General de la Arquitectura]]: Stack tecnológico y decisiones clave.
-*   [[Arquitectura - API de Recomendación|API de Recomendación]]: La integración serverless con DeepSeek v4 Flash.
-*   [[Arquitectura - Estructura de Datos|Estructura de Datos (JSON & Redis)]]: Desglose de `libros.json` y esquema KV.
+*   [[Arquitectura - Vista General|Vista General de la Arquitectura]]: Stack tecnológico, 3,005 libros y decisiones clave.
+*   [[Arquitectura - API de Recomendación|API de Recomendación]]: La integración serverless con DeepSeek V3 y control de consultas.
+*   [[Arquitectura - Estructura de Datos|Estructura de Datos (JSON & Redis)]]: Desglose de `libros.json` (PDF, EPUB, páginas, sagas) y esquema KV.
 *   [[Arquitectura - Estructura del Proyecto|Estructura del Proyecto (Archivos)]]: Mapeo de directorios del repositorio.
-*   [[Arquitectura - Auditoría y Rendimiento|Auditoría y Rendimiento]]: Optimización de tokens, cookies HMAC y Cloudflare R2.
+*   [[Arquitectura - Auditoría y Rendimiento|Auditoría y Rendimiento]]: Búsqueda fuzzy Levenshtein, cookies HMAC y Cloudflare R2.
 
 ### 🎨 [03 - Identidad y Marca]([[03 - Identidad y Marca]])
 Definición y estrategia de la evolución de marca.
-*   [[Marca - Libractiva|Estrategia de Marca Libractiva]]: Justificación fonética, SEO, dominios y recursos gráficos.
+*   [[Marca - Libractiva|Estrategia de Marca Libractiva]]: Justificación fonética, SEO, correo oficial (`contacto.libractiva@gmail.com`) y recursos gráficos.
 *   [[Modelo de Negocio|Modelo de Negocio (LTD $100 MXN)]]: Estrategia de monetización, pasarela de pago y flujo de venta.
-*   [[Copywriting y Estrategia de Anuncios|Copywriting y Estrategia de Anuncios]]: Argumentos de venta, ganchos de copy y ganchos psicológicos.
+*   [[Copywriting y Estrategia de Anuncios|Copywriting y Estrategia de Anuncios]]: Argumentos de venta (+3,000 libros, Kindle EPUB), ganchos de copy y ganchos psicológicos.
 
 ---
 
 ## ⚡ Enlaces Rápidos
 *   **Repositorio Local:** `/home/daniel/biblioteca/`
 *   **PDFs Almacenados:** `/home/daniel/biblioteca-digital/`
+*   **Correo Oficial:** `contacto.libractiva@gmail.com`
 *   **URL de Producción Vercel:** [https://biblioteca-digital-eight.vercel.app/](https://biblioteca-digital-eight.vercel.app/) *(En transición a dominio Libractiva)*
 
 > [!tip] Navegación en Obsidian

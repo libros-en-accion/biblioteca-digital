@@ -129,13 +129,23 @@ python3 scripts/extraer_portadas_faltantes.py
 
 ## ☁️ Sincronización con Cloudflare R2 (Almacenamiento)
 
-Para subir los nuevos libros agregados a la nube, ejecuta:
+Contamos con dos métodos para sincronizar los archivos físicos (PDF y EPUB) con el bucket de Cloudflare R2:
+
+### Método 1: Script Automatizado Inteligente (Recomendado)
+```bash
+# Sincroniza dinámicamente según lo registrado en libros.json
+node scripts/subir_a_r2.js
+
+# O para verificar e inspeccionar todo el catálogo:
+node scripts/subir_a_r2.js --todos
+```
+> [!tip] Ventajas de `subir_a_r2.js`
+> Este script se conecta directamente al bucket mediante la API de AWS S3 SDK, lee `libros.json`, comprueba el hash MD5 (ETag) de cada archivo y **solo sube los PDFs y EPUBs nuevos o modificados**. No requiere herramientas externas adicionales.
+
+### Método 2: Mediante `rclone` (Alternativa)
 ```bash
 rclone copy /home/daniel/biblioteca-digital/ cloudflare:biblioteca-digital/ --progress
 ```
-
-> [!tip] Comportamiento inteligente de R2 Sincronización
-> Este comando es incremental: rclone comparará lo que ya está en Cloudflare R2 con tu disco local y **solo subirá los archivos nuevos o modificados**, ahorrando ancho de banda y tiempo.
 
 ---
 

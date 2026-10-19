@@ -2,29 +2,30 @@
 
 ## Descripción del Proyecto
 
-**Libractiva** es una plataforma digital de lectura interactiva con un catálogo de más de 2,800 obras clásicas, novelas y ensayos. Combina un catálogo estático con un recomendador impulsado por IA (DeepSeek v4 Flash) y un modelo de monetización de pago único (Lifetime Deal) de $100 MXN.
+**Libractiva** es una plataforma digital de lectura interactiva con un catálogo de **3,005 obras clásicas, novelas, ensayos y sagas completas**. Combina un catálogo estático optimizado en el cliente con un recomendador impulsado por IA (DeepSeek V3), lector web integrado (PDF.js), descargas en formatos PDF y EPUB alojados en Cloudflare R2, y un modelo de monetización de pago único (Lifetime Deal - LTD) de $100 MXN.
 
+**Canal de contacto oficial:** `contacto.libractiva@gmail.com`
 **URL de producción:** `https://biblioteca-digital-eight.vercel.app/`
 
 ---
 
 ## Stack Tecnológico
 
-- **Frontend:** Vanilla HTML5, CSS3, JavaScript ES6+ (sin frameworks). Todo el filtrado, búsqueda y navegación ocurre en el cliente en memoria.
-- **Backend:** Funciones serverless en Vercel (Node.js 20.x).
-- **Almacenamiento de PDFs/EPUBs:** Cloudflare R2 Object Storage (~35 GB).
-- **Base de datos de accesos:** Redis Cloud (validación de códigos y dispositivos).
-- **IA:** DeepSeek v4 Flash (recomendador personalizado).
-- **Lector de PDF:** PDF.js (Mozilla), renderizado en `<canvas>`.
-- **Iconografía:** Lucide Icons.
-- **PWA:** Service Worker + manifest.json para instalación standalone.
+- **Frontend:** Vanilla HTML5 semántico, CSS3 modular (con modo claro/oscuro) y JavaScript ES6+ (sin frameworks pesados). Todo el filtrado, búsqueda difusa (*fuzzy*) y navegación ocurre en el cliente en memoria con latencias de 20-50 ms.
+- **Backend:** Funciones serverless en Vercel (Node.js 24.x).
+- **Almacenamiento de PDFs/EPUBs:** Cloudflare R2 Object Storage con URLs firmadas (`api/leer.js`).
+- **Base de datos de accesos y métricas:** Redis Cloud / Upstash (validación de códigos, control de hasta 3 dispositivos por código y ranking semanal de lecturas).
+- **IA:** DeepSeek V3 (`api/recomendar.js`) con Prompt Caching y límite de 3 consultas gratuitas por dispositivo (ilimitado para miembros Lifetime).
+- **Lector Web:** PDF.js (Mozilla) renderizado en `<canvas>` con navegación de páginas, vista previa gratuita de 15 páginas, marcadores y guardado de progreso en `localStorage`.
+- **Iconografía:** Lucide Icons (SVG vectoriales escalables mediante clases `.icono-xs`, `.icono-sm`, etc., sin emojis en la UI de control).
+- **PWA:** Service Worker (`sw.js`) + `manifest.json` para instalación standalone y soporte offline de interfaz.
 - **Despliegue:** Vercel (CI/CD automático desde GitHub, rama `main`).
 
 ### Tipografía
-- **Cormorant Garamond:** Marca/logotipo.
-- **Playfair Display:** Títulos.
-- **DM Sans:** Cuerpo.
-- **EB Garamond:** Citas literarias.
+- **Cormorant Garamond:** Marca / logotipo.
+- **Playfair Display:** Títulos y cabeceras editoriales.
+- **DM Sans:** Texto de cuerpo y componentes de interfaz.
+- **EB Garamond:** Citas literarias y destacados de lectura.
 
 ### Paleta de Colores
 - **Teal Profundo:** `#1a5c50` / `#0e5254`
@@ -40,84 +41,83 @@
 ```
 biblioteca/
 ├── index.html              # Interfaz principal (SPA)
-├── style.css               # Estilos globales y variables CSS
-├── app.js                  # Motor del frontend: búsqueda, paginación, lector, filtros
-├── libros.json             # Catálogo estático (~2,800 registros, ~1.36 MB) — NO LEER
-├── colecciones.json        # 9 packs temáticos curados
-├── agregar_libro.py        # Script para carga unitaria de libros
-├── generar_portadas.py     # Extracción de portadas WebP desde PDFs
-├── lucide.min.js           # Librería de iconos vectoriales
-├── sw.js                   # Service Worker (PWA, caché offline)
+├── style.css               # Estilos globales, variables CSS y modo oscuro
+├── app.js                  # Motor del frontend: fuzzy search, paginación, lector, sagas
+├── libros.json             # Catálogo estático (3,005 registros, ~1.8 MB) — NO LEER COMPLETO
+├── colecciones.json        # 15 colecciones temáticas curadas con descripciones
 ├── manifest.json           # Manifiesto PWA
-├── robots.txt / sitemap.xml # SEO
-├── vercel.json             # Configuración de despliegue Vercel + CORS
-├── package.json            # Dependencias Node y scripts npm
-├── portadas/               # Imágenes WebP optimizadas (~2,850 archivos) — NO LEER
+├── sw.js                   # Service Worker (PWA, caché offline)
+├── robots.txt / sitemap.xml # SEO y directivas de rastreo
+├── vercel.json             # Configuración de despliegue Vercel + CORS + Headers
+├── package.json            # Dependencias Node (engines: Node 24.x)
+├── portadas/               # Imágenes WebP optimizadas (~3,000 archivos) — NO LEER
 ├── api/                    # Funciones serverless (Vercel)
-│   ├── recomendar.js       # Recomendador IA (DeepSeek v4 Flash)
-│   ├── leer.js             # URLs firmadas de Cloudflare R2 (5-10 min expiración)
-│   └── validar-codigo.js   # Validación de códigos de acceso con Redis
+│   ├── recomendar.js       # Recomendador IA (DeepSeek V3 con Prompt Caching)
+│   ├── leer.js             # URLs firmadas de Cloudflare R2 (PDF y EPUB)
+│   ├── validar-codigo.js   # Validación de códigos de acceso con Redis Cloud
+│   └── ranking.js          # Ranking semanal de lecturas populares desde Redis
 ├── scripts/                # Scripts de mantenimiento y automatización
-│   ├── normalizar.js       # Node.js: normalización de géneros, títulos y autores
-│   ├── agregar_nuevos_libros.py   # Carga masiva interactiva de PDFs
-│   ├── mapear_pdfs.py             # Mapea PDFs locales a libros.json
-│   ├── mapear_epubs.py            # Mapea EPUBs locales a libros.json
-│   ├── limpiar_duplicados_y_autores.py
-│   ├── limpiar_duplicados_avanzados.py
-│   ├── fusionar_residuales.py
-│   ├── actualizar_anios.py
-│   ├── extraer_portadas_faltantes.py
-│   ├── agregar_donador.py   # [Ignorado en Git] Administra códigos en Redis
-│   ├── listar_donadores.py  # [Ignorado en Git] Lista códigos activos
-│   └── eliminar_donador.py  # [Ignorado en Git] Elimina códigos de Redis
-└── boveda/                  # Documentación (Bóveda de Obsidian)
+│   ├── subir_a_r2.js       # Sincronización dinámica de PDFs y EPUBs hacia Cloudflare R2
+│   ├── normalizar.js       # Normalización de géneros, títulos y autores
+│   ├── asignar_sagas.js    # Detección y vinculación de sagas en libros.json
+│   ├── extraer_paginas_e_idiomas.py # Conteo de páginas e idioma de cada libro
+│   ├── agregar_nuevos_libros.py     # Carga masiva interactiva de PDFs
+│   ├── mapear_epubs.py     # Mapeo de archivos EPUB hacia libros.json
+│   ├── agregar_donador.py  # Administra códigos en Redis
+│   ├── listar_donadores.py # Lista códigos y dispositivos activos en Redis
+│   └── entregar_codigo.py  # Asignación interactiva desde lista_codigos.csv
+└── boveda/                  # Documentación completa (Bóveda de Obsidian)
 ```
 
 ---
 
 ## REGLAS CRÍTICAS — LEE ANTES DE TRABAJAR
 
-### 1. NUNCA leas `libros.json` ni la carpeta `portadas/`
-- `libros.json` pesa ~1.36 MB y contiene ~2,800 registros. Leerlo completo consume ~250,000 tokens y satura el contexto.
-- `portadas/` contiene ~2,850 archivos WebP binarios. No aportan valor para entender o modificar el código.
-- Si necesitas información sobre un libro específico, pide al usuario que te proporcione el ID o los datos relevantes.
+### 1. NUNCA leas `libros.json` completo ni la carpeta `portadas/`
+- `libros.json` pesa ~1.8 MB y contiene 3,005 registros. Leerlo completo consume más de 300,000 tokens y satura el contexto.
+- `portadas/` contiene ~3,000 archivos WebP binarios.
+- Para inspeccionar libros, filtra con scripts de Node/Python o mediante grep por ID o título.
 
-### 2. No rompas los filtros del frontend
-- Los géneros en `libros.json` deben coincidir con los ~25 géneros estándar definidos en el sistema de normalización.
-- Los filtros se renderizan dinámicamente desde el catálogo en memoria.
+### 2. Iconografía sobria y coherencia de marca
+- **No uses emojis como iconos en controles de UI, botones o modales**. Utiliza exclusivamente iconos SVG de Lucide con `data-lucide` y las clases de tamaño utilitarias (`.icono-xs`, `.icono-sm`, `.icono-md`, `.icono-lg`, `.icono-xl`).
+- Tras manipular el DOM dinámicamente en JavaScript, invoca siempre `lucide.createIcons({ root: elemento })`.
+- El nombre del sitio es estrictamente **Libractiva** y el correo de soporte es `contacto.libractiva@gmail.com`.
 
-### 3. Modo oscuro
-- Se controla con el atributo `data-theme="dark"` en `<html>`.
-- Las variables CSS cambian dinámicamente. El estado persiste en `localStorage` bajo la clave `tema`.
+### 3. Búsqueda tolerante a errores (Fuzzy Search)
+- `app.js` implementa el algoritmo de distancia de Levenshtein.
+- Primero ejecuta coincidencia exacta; si devuelve 0 resultados, activa automáticamente la búsqueda difusa (*fuzzy*) para tolerar erratas (ej. *«murakamy»*, *«harry poter»*, *«fundasion»*) y muestra sugerencias en el autocompletado y catálogo. No sustituyas esta lógica sin comprobar rendimiento.
 
-### 4. Rutas SPA con hashes
-- La navegación usa rutas hash: `#/libro/{id}`.
-- Los detalles de libro se muestran en un modal que actualiza el hash.
+### 4. Estabilidad de libros destacados
+- La constante `LIBROS_DESTACADOS_IDS` en `app.js` define el orden estricto de destacados cuando el ranking en Redis no supera el umbral. **No agregues `Math.random()` ni shuffles aleatorios**, ya que desestabilizan el podio de destacados entre recargas.
 
-### 5. SEO dinámico
-- `app.js` inyecta etiquetas JSON-LD `schema.org` en `<head>` según la página activa.
+### 5. Respetar los géneros y las 58 Sagas
+- Los géneros en `libros.json` están normalizados.
+- La pestaña de sagas agrupa automáticamente los libros que contienen el objeto `"serie": { "nombre": "...", "orden": N }`. Existen 58 sagas catalogadas.
 
 ---
 
 ## Arquitectura de la API (Backend Serverless)
 
 ### `api/recomendar.js`
-- Recibe un POST con el perfil del lector (estado de ánimo, tiempo, objetivo, tema).
-- Consulta a DeepSeek v4 Flash con el catálogo compacto en el System Message (formato `id|título|autor|género`).
-- Usa **Prompt Caching** (prefix caching) para ahorrar ~90% en costos de tokens.
-- Devuelve 3 recomendaciones en JSON con IDs y razones.
-- Implementa un ciclo de reintento con temperatura reducida si la respuesta no es JSON válido.
+- Recibe un `POST` con las respuestas del usuario (ánimo, tiempo disponible, objetivo, género).
+- Construye un prompt compacto con el catálogo en formato `id|título|autor|género` dentro del System Message.
+- Utiliza **Prompt Caching** de DeepSeek V3 (~90% de ahorro en tokens de entrada).
+- Límite de 3 consultas gratuitas por fingerprint de dispositivo (ilimitado si cuenta con cookie `donor_token`).
 
 ### `api/leer.js`
-- Genera URLs firmadas (presigned) de Cloudflare R2.
-- Expiración: 5 min para lectura, 10 min para descarga.
-- Requiere cookie `donor_token` válida para descargas.
+- Genera URLs firmadas (`presigned`) para Cloudflare R2 vía AWS SDK v3.
+- Expiración: 5 minutos para lectura en streaming, 10 minutos para descargas completas.
+- Las descargas (`descargar=true`) requieren obligatoriamente la cookie `donor_token` verificada por HMAC-SHA256.
 
 ### `api/validar-codigo.js`
-- Valida códigos de acceso contra Redis Cloud.
-- Genera un fingerprint SHA-256 del dispositivo (User-Agent + Accept-Language + IP).
-- Máximo 3 dispositivos por código.
-- Emite cookie `donor_token` firmada con HMAC-SHA-256.
+- Valida códigos de acceso contra Redis Cloud (`donor:code:<CODIGO>`).
+- Genera un fingerprint estable SHA-256 del dispositivo (User-Agent + Accept-Language + IP).
+- Admite hasta 3 dispositivos simultáneos.
+- Emite la cookie segura HttpOnly `donor_token` firmada con `DONOR_COOKIE_SECRET`.
+
+### `api/ranking.js`
+- Lee de Redis el ranking de libros más leídos en la semana (`ranking:semanal:<anio>-W<semana>`) o el acumulado histórico (`ranking:historico`).
+- Cuenta con cabeceras de caché CDN (`s-maxage=300, stale-while-revalidate=600`).
 
 ---
 
@@ -125,131 +125,21 @@ biblioteca/
 
 | Variable | Descripción |
 |---|---|
-| `DEEPSEEK_API_KEY` | Clave de API de DeepSeek |
-| `R2_ENDPOINT` | Endpoint S3 de Cloudflare R2 |
-| `R2_ACCESS_KEY_ID` | Token de acceso S3 para R2 |
-| `R2_SECRET_ACCESS_KEY` | Clave secreta S3 para R2 |
+| `DEEPSEEK_API_KEY` | Clave de API de DeepSeek V3 |
+| `R2_ENDPOINT` | Endpoint S3 de Cloudflare R2 (`https://<id>.r2.cloudflarestorage.com`) |
+| `R2_ACCESS_KEY_ID` | Clave de acceso S3 de Cloudflare R2 |
+| `R2_SECRET_ACCESS_KEY` | Clave secreta S3 de Cloudflare R2 |
 | `R2_BUCKET_NAME` | Nombre del bucket (ej: `biblioteca-digital`) |
-| `REDIS_URL` | URL de conexión a Redis Cloud |
-| `DONOR_COOKIE_SECRET` | Cadena secreta para firmar cookies (mín. 32 chars) |
-
-En local, usar `.env.local` o `.env`. Vercel dev las carga automáticamente.
+| `REDIS_URL` | URL de conexión a Redis Cloud (`rediss://default:...`) |
+| `DONOR_COOKIE_SECRET` | Secreto criptográfico para firma HMAC-SHA256 de cookies |
 
 ---
 
-## Desarrollo Local
-
-```bash
-# Instalar Vercel CLI globalmente
-sudo npm install -g vercel
-
-# Iniciar servidor de desarrollo (emula serverless + estáticos)
-vercel dev
-# o
-npm run dev
-```
-
-Esto levanta un servidor local (usualmente `http://localhost:3000`) que sirve archivos estáticos y expone `/api/*`.
-
----
-
-## Despliegue
-
-El flujo es automático: `git push origin main` → Vercel detecta el cambio → redespliega en ~1 minuto.
+## Flujo de Despliegue
 
 ```bash
 git add <archivos>
-git commit -m "tipo: descripción del cambio"
+git commit -m "tipo: descripción clara del cambio"
 git push origin main
 ```
-
-### Tipos de commit recomendados
-- `feat:` para nuevas funcionalidades.
-- `fix:` para correcciones de bugs.
-- `style:` para cambios de CSS/visual.
-- `docs:` para documentación.
-- `refactor:` para refactorizaciones.
-
----
-
-## Gestión del Catálogo
-
-### Estructura de un libro en `libros.json`
-```json
-{
-  "id": 2848,
-  "titulo": "Nombre del Libro",
-  "autor": "Apellido, Nombre",
-  "anio": 2024,
-  "genero": "Novela",
-  "descripcion": "Sinopsis breve.",
-  "pdf": "https://drive.google.com/file/d/XXXX/preview",
-  "portada": "portadas/2848.webp",
-  "archivo_pdf": "A/Autor, Nombre/Libro - Autor.pdf"
-}
-```
-
-### Estructura de una colección en `colecciones.json`
-```json
-{
-  "id": "evitar-burnout",
-  "titulo": "Ficción para escapar del burnout: Novelas terapéuticas",
-  "portada_pack": "portadas/pack-burnout.webp",
-  "libros": [2896, 2346, 1988]
-}
-```
-
-### Libros Destacados
-La lista de destacados se configura en `app.js` con la constante `LIBROS_DESTACADOS_IDS` (máximo 10 IDs). Se muestra en la home como carrusel aleatorio (Fisher-Yates) y se oculta automáticamente al buscar o filtrar.
-
----
-
-## Scripts de Mantenimiento
-
-| Comando | Propósito |
-|---|---|
-| `python3 scripts/agregar_nuevos_libros.py` | Carga masiva interactiva de PDFs |
-| `python3 scripts/mapear_epubs.py` | Asocia EPUBs al catálogo |
-| `python3 scripts/limpiar_duplicados_y_autores.py` | Limpieza básica de autores y duplicados |
-| `python3 scripts/limpiar_duplicados_avanzados.py` | Fusión avanzada de duplicados |
-| `node scripts/normalizar.js` | Vista previa de normalización (sin cambios) |
-| `node scripts/normalizar.js --apply` | Aplica normalización (crea backup automático) |
-| `python3 scripts/extraer_portadas_faltantes.py` | Genera portadas WebP faltantes |
-| `python3 generar_portadas.py` | Genera portadas desde PDFs (requiere poppler-utils + imagemagick) |
-| `rclone copy /home/daniel/biblioteca-digital/ cloudflare:biblioteca-digital/ --progress` | Sincroniza archivos con Cloudflare R2 (incremental) |
-
----
-
-## Reglas de Estilo y Arquitectura
-
-1. **Sin frameworks:** Todo el frontend es Vanilla JS. No introduzcas React, Vue u otros frameworks.
-2. **SPA con hashes:** La navegación usa `#/ruta`. No uses History API ni rutas tradicionales.
-3. **CSS con variables:** Los colores y estilos se definen con CSS Custom Properties. Respeta la paleta existente.
-4. **Modo oscuro:** Usa `data-theme="dark"` en `<html>` y define variables alternativas en CSS.
-5. **Accesibilidad WCAG AA/AAA:** Mantén contraste óptimo en modo claro y oscuro.
-6. **Responsivo:** Todos los componentes deben adaptarse a móvil.
-7. **Serverless:** Las APIs en `api/` son funciones independientes de Vercel. No compartas estado entre invocaciones.
-8. **UTF-8 sin BOM:** Todos los archivos JSON y de código deben ser UTF-8.
-9. **Separadores UNIX:** Las rutas en `archivo_pdf` usan `/` (no `\`).
-
----
-
-## Modelo de Negocio (Contexto)
-
-- **Precio:** $100 MXN, pago único (Lifetime Deal).
-- **Procesador de pagos:** Mercado Pago (`https://mpago.la/1Ek1HPz`).
-- **Flujo:** Usuario paga → admin genera código → se registra en Redis → se entrega al usuario.
-- **Restricciones para no-donadores:** Lectura limitada a 15 páginas, sin descargas.
-- **Límite:** 3 dispositivos simultáneos por código.
-
----
-
-## Documentación Completa
-
-Toda la documentación detallada del proyecto está en la carpeta `boveda/`:
-
-- `boveda/00 - Inicio.md` — Mapa de contenido principal.
-- `boveda/resumen_ejecutivo.md` — Visión ejecutiva consolidada.
-- `boveda/01 - Guías de Operación/` — Procedimientos operativos (agregar libros, portadas, normalización, despliegue, Git, accesos, colecciones, destacados, uso con IA).
-- `boveda/02 - Arquitectura Técnica/` — Stack, estructura de datos, APIs, rendimiento.
-- `boveda/03 - Identidad y Marca/` — Marca, modelo de negocio, copywriting.
+Vercel detecta el push en `main` y realiza el despliegue automático a producción.

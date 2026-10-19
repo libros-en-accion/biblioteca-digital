@@ -15,8 +15,8 @@ Esta guía está diseñada para que tú (u otros desarrolladores) sepáis cómo 
 
 Este repositorio contiene dos elementos muy pesados que **no aportan valor lógico** al código de programación, pero que consumen una gran cantidad de memoria (tokens) si la IA intenta leerlos:
 
-1.  **`libros.json` (~1.36 MB):** Contiene el catálogo completo de más de 2,800 libros. Si un agente de IA lee este archivo por completo, consumirá más de **250,000 tokens de entrada** en cada consulta. Esto ralentiza las respuestas, aumenta el coste drásticamente y puede hacer que la IA "olvide" instrucciones debido a la saturación de contexto.
-2.  **`portadas/` (Carpeta con ~2,850 WebPs):** Es una carpeta con miles de imágenes binarias. Las IAs no necesitan analizar estas imágenes para corregir o mejorar el código del sitio.
+1.  **`libros.json` (~2.1 MB):** Contiene el catálogo completo de 3,005 libros. Si un agente de IA lee este archivo por completo, consumirá cientos de miles de tokens de entrada innecesarios. Esto ralentiza las respuestas, aumenta el coste y puede saturar el contexto.
+2.  **`portadas/` (Carpeta con más de 3,000 WebPs):** Es una carpeta con miles de imágenes binarias. Las IAs no necesitan analizar estas imágenes para corregir o mejorar el código del sitio.
 
 ---
 

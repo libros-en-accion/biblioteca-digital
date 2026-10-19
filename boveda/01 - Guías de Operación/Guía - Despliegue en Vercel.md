@@ -70,12 +70,12 @@ El proyecto requiere varias variables de entorno en producción (Vercel Dashboar
 
 | Variable | Descripción | Ubicación / Origen |
 |---|---|---|
-| **`DEEPSEEK_API_KEY`** | Clave de API para el modelo de recomendación de IA (`deepseek-v4-flash`). | Proveedor de la IA (DeepSeek Console) |
+| **`DEEPSEEK_API_KEY`** | Clave de API para el modelo de recomendación de IA (`deepseek-chat` / DeepSeek V3). | Proveedor de la IA (DeepSeek Console) |
 | **`R2_ENDPOINT`** | Endpoint de conexión S3 a tu Cloudflare R2. Formato: `https://<ACCOUNT_ID>.r2.cloudflarestorage.com` | Cloudflare Dashboard > R2 |
 | **`R2_ACCESS_KEY_ID`** | Token de acceso S3 para Cloudflare R2 con permisos de lectura/escritura. | Cloudflare Dashboard > R2 > Manage API Tokens |
 | **`R2_SECRET_ACCESS_KEY`** | Clave secreta del token de acceso S3 de Cloudflare R2. | Cloudflare Dashboard > R2 > Manage API Tokens |
-| **`R2_BUCKET_NAME`** | Nombre del bucket donde están alojados tus PDFs. Ej: `biblioteca-digital`. | Cloudflare Dashboard > R2 |
-| **`REDIS_URL`** | URL de conexión SSL para la base de datos Upstash Redis de códigos de acceso. Formato: `rediss://default:password@host:port` | Upstash Console > Redis Database details |
+| **`R2_BUCKET_NAME`** | Nombre del bucket donde están alojados tus PDFs y EPUBs. Ej: `biblioteca-digital`. | Cloudflare Dashboard > R2 |
+| **`REDIS_URL`** | URL de conexión SSL para la base de datos Redis (Redis Cloud / Upstash) de códigos de acceso y ranking de lecturas. Formato: `rediss://...` o `redis://...` | Redis Console > Database details |
 | **`DONOR_COOKIE_SECRET`** | Cadena de texto larga y aleatoria usada para firmar las cookies de sesión del donador. | Inventada por el administrador (mín. 32 caracteres) |
 
 ### En Producción (Panel de Vercel)

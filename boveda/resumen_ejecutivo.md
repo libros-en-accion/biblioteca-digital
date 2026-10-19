@@ -6,7 +6,7 @@ Este documento proporciona una visión general ejecutiva de **Libractiva**, cons
 
 ## 💡 1. Descripción del Proyecto
 
-**Libractiva** (anteriormente conocido durante la fase de transición como *Libros en Acción*) es una plataforma digital de lectura interactiva que redefine la relación tradicional entre el lector y el libro digital. El proyecto combina un catálogo de más de 2,800 obras clásicas, novelas y ensayos con capacidades de inteligencia artificial de última generación.
+**Libractiva** (anteriormente conocido durante la fase de transición como *Libros en Acción*) es una plataforma digital de lectura interactiva que redefine la relación tradicional entre el lector y el libro digital. El proyecto combina un catálogo de más de 3,000 obras (3,005 títulos únicos) con capacidades de inteligencia artificial de última generación.
 
 ### Propósito y Misión
 La misión de Libractiva es transformar una biblioteca digital estática en una **experiencia literaria dinámica y viva**. A través de un recomendador personalizado impulsado por IA y una interfaz de usuario optimizada para la lectura, los textos dejan de ser planos para interactuar activamente con el perfil, intereses y estado de ánimo del lector.
@@ -57,17 +57,18 @@ Libractiva está estructurada bajo una filosofía de **simplicidad técnica máx
 
 ### Stack de Software
 *   **Frontend (Cliente):** 
-    *   **Vanilla Stack (HTML5, CSS3, ES6+ JS):** Sin frameworks pesados (como React o Vue). Todo el filtrado, búsqueda y navegación se realiza de manera instantánea del lado del cliente en memoria. Tipografía: **Cormorant Garamond** (marca), **Playfair Display** (títulos), **DM Sans** (cuerpo), **EB Garamond** (citas literarias).
+    *   **Vanilla Stack (HTML5, CSS3, ES6+ JS):** Sin frameworks pesados (como React o Vue). Todo el filtrado, búsqueda difusa (*fuzzy* con distancia Levenshtein) y navegación se realiza de manera instantánea del lado del cliente en memoria. Tipografía: **Cormorant Garamond** (marca), **Playfair Display** (títulos), **DM Sans** (cuerpo), **EB Garamond** (citas literarias).
     *   **PDF.js (Mozilla):** Lector nativo integrado para renderizar los libros directamente en la página web mediante `<canvas>` HTML5 con controles responsivos adaptados a móviles.
-    *   **Lucide Icons:** Iconografía vectorial interactiva.
-*   **Backend (Serverless en Vercel):**
-    *   `api/recomendar.js`: Integra consultas seguras a la API de **DeepSeek v4 Flash** para procesar los perfiles e intereses del lector y retornar recomendaciones.
-    *   `api/leer.js`: Genera enlaces firmados y seguros de corta expiración para proteger y distribuir los archivos del catálogo en formato PDF y EPUB.
-    *   `api/validar-codigo.js`: Controla las sesiones y límites de dispositivos asociados a códigos de acceso lifetime.
+    *   **Lucide Icons:** Iconografía vectorial interactiva profesional (SVG escalable mediante clases utilitarias, eliminando emojis de la interfaz de control).
+*   **Backend (Serverless en Vercel, Node.js 24.x):**
+    *   `api/recomendar.js`: Integra consultas seguras a la API de **DeepSeek V3** con Prompt Caching para procesar los perfiles e intereses del lector y retornar recomendaciones.
+    *   `api/leer.js`: Genera enlaces firmados y seguros de corta expiración para proteger y distribuir los archivos del catálogo en formato PDF y EPUB alojados en Cloudflare R2.
+    *   `api/validar-codigo.js`: Controla las sesiones y límites de dispositivos asociados a códigos de acceso lifetime con cookies firmadas HMAC-SHA256.
+    *   `api/ranking.js`: Expone el ranking semanal de lecturas populares y descargas acumuladas.
 *   **Almacenamiento y Datos:**
     *   **Cloudflare R2 Object Storage:** Almacena el repositorio completo de archivos PDF y EPUB (más de 35 GB) de la biblioteca.
-    *   **Upstash Redis / Vercel KV:** Base de datos serverless en memoria para la validación ultrarrápida de códigos y dispositivos.
-    *   **Catálogo Estático (`libros.json`):** Catálogo completo (~2,800 registros, 1.36 MB) descargado en la primera visita del cliente para garantizar búsquedas inmediatas en local.
+    *   **Upstash Redis / Vercel KV:** Base de datos serverless en memoria para la validación ultrarrápida de códigos, dispositivos y ranking.
+    *   **Catálogo Estático (`libros.json`):** Catálogo completo (3,005 registros, 1.8 MB) descargado en la primera visita del cliente para garantizar búsquedas inmediatas en local.
 
 ---
 
@@ -76,9 +77,13 @@ Libractiva está estructurada bajo una filosofía de **simplicidad técnica máx
 1.  **Recomendador Mágico por IA:** Encuesta dinámica sobre gustos y estados de ánimo del lector que consulta a la IA para entregar sugerencias personalizadas, presentadas en un modal de diseño envolvente.
 2.  **Botón "Sorpréndeme":** Selección aleatoria instantánea de un libro del catálogo con diseño outline premium, para lectores que prefieren dejarse llevar por la serendipia.
 3.  **Lector Embebido e Instantáneo y Descarga de EPUB:** Permite la lectura directa de PDFs sin salir de la plataforma y ofrece la descarga directa de libros optimizados para e-readers (como Kindle) en formato EPUB y PDF de alta calidad para usuarios con acceso activo.
-4.  **Rutas Compartibles (SPA con Hashes):** Navegación fluida a través de rutas `#` (ej. `#/libro/123`), permitiendo enlaces directos para SEO e indexación dinámica sin pérdida de rendimiento.
-5.  **PWA de Alto Rendimiento:** Registro de Manifiesto PWA para permitir la instalación de Libractiva como aplicación nativa standalone en dispositivos móviles y ordenadores con soporte offline básico.
-6.  **Accesibilidad Triple A:** Contraste tipográfico optimizado para modo claro y oscuro, cumpliendo estrictamente con la norma **WCAG AA** de legibilidad en interfaces y **WCAG AAA** en textos de contenido.
-7.  **Acceso Lifetime Exclusivo (LTD):** Un modelo de pago único de $100 MXN que desbloquea descargas completas de archivos, impresión directa y lectura ilimitada web de todo el catálogo, eliminando la fricción de lectura.
-8.  **Recomendador IA con Límite de Uso (Free vs. Lifetime):** Los usuarios sin código pueden realizar hasta **3 consultas gratuitas** al Recomendador Inteligente. Al agotar su cupo, se les muestra un modal informativo detallando los beneficios del acceso lifetime. Los usuarios con código activo tienen **consultas ilimitadas**. El conteo se guarda en `localStorage` con la clave `libractiva_ia_usos`.
-9.  **Marcadores de Página (Kindle-Style, exclusivo Lifetime):** Los usuarios con código pueden marcar páginas de interés en cualquier libro usando el botón 🔖 de la barra del lector. Los marcadores se persisten en `localStorage` con la clave `libractiva_marcadores`, separados por `libroId`. Al hacer clic en el botón se registra/desmarca la página actual y se abre un panel flotante que lista todos los marcadores del libro con botones para navegar directamente a esa página o eliminarla.
+4.  **Búsqueda Tolerante a Errores (Fuzzy Search):** Motor inteligente en el cliente basado en distancia de Levenshtein que tolera erratas tipográficas comunes (*«murakamy»*, *«harry poter»*, *«fundasion»*) y despliega sugerencias aproximadas de forma inmediata.
+5.  **15 Colecciones Curadas y 58 Sagas Literarias:** Dos vistas organizadas para explorar el catálogo: packs temáticos seleccionados para evitar parálisis de elección y sagas completas ordenadas por tomo.
+6.  **Carrusel de Destacados Estable:** Orden predecible y consistente basado en la lista maestra curada `LIBROS_DESTACADOS_IDS` y en el ranking de lecturas reales en Redis.
+7.  **Rutas Compartibles (SPA con Hashes):** Navegación fluida a través de rutas `#` (ej. `#/libro/123`), permitiendo enlaces directos para SEO e indexación dinámica sin pérdida de rendimiento.
+8.  **PWA de Alto Rendimiento:** Registro de Manifiesto PWA para permitir la instalación de Libractiva como aplicación nativa standalone en dispositivos móviles y ordenadores con soporte offline básico.
+9.  **Accesibilidad Triple A:** Contraste tipográfico optimizado para modo claro y oscuro, cumpliendo estrictamente con la norma **WCAG AA** de legibilidad en interfaces y **WCAG AAA** en textos de contenido.
+10. **Acceso Lifetime Exclusivo (LTD):** Un modelo de pago único de $100 MXN que desbloquea descargas completas de archivos, impresión directa y lectura ilimitada web de todo el catálogo, eliminando la fricción de lectura.
+11. **Recomendador IA con Límite de Uso (Free vs. Lifetime):** Los usuarios sin código pueden realizar hasta **3 consultas gratuitas** al Recomendador Inteligente. Al agotar su cupo, se les muestra un modal informativo detallando los beneficios del acceso lifetime. Los usuarios con código activo tienen **consultas ilimitadas**. El conteo se guarda en `localStorage` con la clave `libractiva_ia_usos`.
+12. **Marcadores de Página (Kindle-Style, exclusivo Lifetime):** Los usuarios con código pueden marcar páginas de interés en cualquier libro usando el botón de marcador de la barra del lector. Los marcadores se persisten en `localStorage` con la clave `libractiva_marcadores`, separados por `libroId`.
+13. **Canal de Contacto Oficial Unificado:** Comunicación centralizada a través de `contacto.libractiva@gmail.com` y WhatsApp oficial.

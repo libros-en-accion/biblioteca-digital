@@ -20,17 +20,20 @@ graph TD
     User([Lector]) <--> HTML[index.html & style.css]
     HTML <--> JS[app.js]
     JS <--> Cache[LocalStorage - Tema/Vistas/Progreso]
-    JS <--> Data[libros.json - Catálogo Local]
+    JS <--> Data[libros.json & colecciones.json]
     JS <--> PDFJS[PDF.js Lector Embebido]
     
     JS <--> API_Rec[api/recomendar.js]
-    API_Rec <--> DS[DeepSeek v4 API]
+    API_Rec <--> DS[DeepSeek V3 API]
     
     JS <--> API_Val[api/validar-codigo.js]
-    API_Val <--> Redis[(Upstash Redis Database)]
+    API_Val <--> Redis[(Redis Cloud / Upstash)]
     
     JS <--> API_Read[api/leer.js]
-    API_Read <--> R2[(Cloudflare R2 Storage)]
+    API_Read <--> R2[(Cloudflare R2 - PDF & EPUB)]
+
+    JS <--> API_Rank[api/ranking.js]
+    API_Rank <--> Redis
 
     style User fill:#7a1a2e,stroke:#b8892a,stroke-width:2px,color:#fff
     style HTML fill:#2c1810,stroke:#8a7060,color:#fff
@@ -38,6 +41,7 @@ graph TD
     style PDFJS fill:#8a7060,stroke:#2c1810,color:#fff
     style Redis fill:#7a1a2e,stroke:#b8892a,color:#fff
     style R2 fill:#b8892a,stroke:#2c1810,color:#000
+    style API_Rank fill:#2c1810,stroke:#8a7060,color:#fff
 ```
 
 ---
@@ -46,36 +50,38 @@ graph TD
 
 ### 1. Frontend (Cliente)
 *   **HTML5 Semántico:** Estructura modular e interfaces accesibles (modales, buscador, filtros, paginación, visor PDF).
-*   **Vanilla CSS3 (Variables Custom):** Estilos basados en un sistema de diseño estricto (vino, dorado, crema). Soporta transiciones suaves de color y un modo oscuro con la propiedad `data-theme`. La tipografía incluye **Cormorant Garamond** (marca/logotipo), **Playfair Display** (títulos), **DM Sans** (cuerpo) y **EB Garamond** (citas literarias).
-*   **Vanilla JavaScript (ES6+):** Lógica del lado del cliente sin frameworks (React/Vue). Se encarga de:
-51:     *   Cargar y procesar el archivo `libros.json` de 1.36 MB mediante `fetch`.
-52:     *   Filtrar los libros en tiempo real mediante búsqueda por palabras clave normalizadas.
-53:     *   Navegar mediante rutas de hash (`#/libro/{id}`).
-54:     *   Controlar la paginación y renderizar las tarjetas.
-*   **PDF.js (de Mozilla):** Lector de PDF embebido cargado desde CDN que renderiza los libros directamente sobre un `<canvas>`. Permite controles personalizados de zoom, paginación y ajuste de ancho con adaptabilidad a móviles.
-*   **Lucide Icons:** Iconografía moderna inyectada dinámicamente usando la biblioteca externa de Lucide.
+*   **Vanilla CSS3 (Variables Custom):** Estilos basados en un sistema de diseño estricto (vino `#7a1a2e`, dorado `#b8892a`, crema `#fcfbf7`). Soporta transiciones suaves de color y un modo oscuro completo mediante `data-theme="dark"`. Tipografías: **Cormorant Garamond** (marca), **Playfair Display** (títulos), **DM Sans** (interfaz/lectura) y **EB Garamond** (citas).
+*   **Vanilla JavaScript (ES6+):** Lógica del lado del cliente sin dependencias pesadas:
+    *   Carga y procesa `libros.json` (3,005 libros) y `colecciones.json` (15 packs temáticos y 58 sagas agrupadas dinámicamente).
+    *   Motor de búsqueda híbrido en memoria: coincidencia exacta por título, autor y género + búsqueda difusa tolerante a errores tipográficos (*fuzzy search* vía distancia de Levenshtein con umbral calibrado).
+    *   Navegación mediante rutas de hash (`#/libro/{id}`).
+    *   Sección "Los más destacados" estable con orden fijo predeterminado (`LIBROS_DESTACADOS_IDS`), asignación de podio (oro, plata, bronce) y enriquecimiento asíncrono con métricas de lecturas desde Redis.
+*   **PDF.js (Mozilla):** Lector de PDF embebido renderizado sobre `<canvas>`, con soporte para vista previa de 15 páginas, zoom, paginación táctil y guardado de progreso.
+*   **Lucide Icons:** Iconografía SVG vectorial sobria y estandarizada en toda la interfaz (filtros, botones, controles, pestañas y modales) eliminando el uso de emojis informales.
+*   **PWA (Progressive Web App):** Service Worker (`sw.js`) y `manifest.json` para instalación en escritorio y móviles.
 
 ### 2. Backend (Servicios Serverless en Vercel)
-*   **`api/recomendar.js`**: Procesa la encuesta del lector y consulta a la API del recomendador IA.
-*   **`api/leer.js`**: Genera URLs firmadas seguras de Cloudflare R2 con expiración corta (3 a 10 min) para lectura online y descargas.
-*   **`api/validar-codigo.js`**: Valida códigos de donador y administra los límites de dispositivos contra la base de datos de Upstash Redis / Vercel KV.
-*   **Node.js 20.x:** Entorno de ejecución en la nube para las APIs serverless de Vercel.
+*   **`api/recomendar.js`**: Procesa la encuesta interactiva del lector y consulta la API de DeepSeek V3 (`deepseek-chat`).
+*   **`api/leer.js`**: Genera URLs firmadas seguras de Cloudflare R2 con expiración corta (3 a 10 min) para lectura online y descargas de PDF o EPUB. Incrementa el contador global de lecturas en Redis.
+*   **`api/validar-codigo.js`**: Valida códigos de acceso (LTD), calcula fingerprint de dispositivo y administra los cupos en Redis.
+*   **`api/ranking.js`**: Endpoint serverless que expone los libros más leídos consultando el Sorted Set `ranking:lecturas` en Redis.
+*   **Node.js 24.x:** Entorno de ejecución serverless en Vercel.
 
 ### 3. Almacenamiento y Bases de Datos
-*   **Cloudflare R2 Object Storage:** Almacenamiento de archivos PDF de libros (más de 30 GB en total). Permite descargas directas y lectura fluida por rangos mediante URLs firmadas.
-*   **Upstash Redis / Vercel KV:** Base de datos serverless en memoria para gestionar y validar en milisegundos los códigos de acceso de donadores y los IDs de dispositivos registrados.
+*   **Cloudflare R2 Object Storage:** Bucket `biblioteca-digital` con más de 30 GB que almacena el catálogo completo en formato dual (PDF y EPUB), sin costes de ancho de banda por salida (*zero egress fees*).
+*   **Redis Cloud / Upstash:** Base de datos en memoria para validación instantánea de códigos LTD y control del ranking de lecturas.
 
 ### 4. Inteligencia Artificial
-*   **DeepSeek v4 Flash:** API remota consultada mediante peticiones POST seguras para procesar perfiles de lectura y emitir recomendaciones.
+*   **DeepSeek V3:** Modelo de lenguaje utilizado por el recomendador inteligente para análisis literario y sugerencias contextualizadas en tiempo real.
 
 ---
 
 ## 💡 Decisiones de Diseño Clave
 
 ### 1. Carga Completa del Catálogo en el Cliente
-*   **Decisión:** El catálogo de ~2,800 libros está almacenado en un solo JSON estático (`libros.json`). La aplicación lo descarga por completo al iniciar la web y realiza las búsquedas directamente en memoria en la computadora del usuario.
-*   **Pros:** Búsquedas instantáneas, nulo costo de base de datos, arquitectura ultra simple.
-*   **Contras:** La carga inicial requiere descargar ~1.36 MB (que se reduce a ~300 KB con compresión gzip en Vercel), lo cual puede tardar algunos segundos en conexiones móviles lentas.
+*   **Decisión:** El catálogo de 3,005 libros está almacenado en un solo JSON estático (`libros.json`). La aplicación lo descarga por completo al iniciar la web y realiza las búsquedas directamente en memoria en la computadora del usuario.
+*   **Pros:** Búsquedas instantáneas en <50ms (incluso con fuzzy search Levenshtein), nulo costo de base de datos para lectura de catálogo, arquitectura ultra simple.
+*   **Contras:** La carga inicial requiere descargar ~2.1 MB (~450 KB con compresión gzip en Vercel y cache HTTP `max-age=86400`), optimizado para navegación veloz tras la primera visita.
 
 ### 2. Modo Oscuro Nativo
 *   El tema se controla agregando el atributo `data-theme="dark"` al elemento raíz `<html>`. Las variables CSS cambian dinámicamente y el estado se almacena en el `localStorage` del cliente bajo la clave `tema` para persistir la preferencia en siguientes visitas.

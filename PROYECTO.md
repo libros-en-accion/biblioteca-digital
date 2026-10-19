@@ -1,218 +1,119 @@
-# 📚 Biblioteca Digital — PROYECTO
+# 📚 Libractiva — PROYECTO
 
-> Archivo vivo de seguimiento del proyecto.
-> Actualizado por Axón según se realicen cambios.
+> Archivo vivo de seguimiento y especificación técnica del proyecto.
+> Plataforma digital de lectura interactiva, catálogo visual y recomendador con IA.
 
 ---
 
 ## 📋 Ficha técnica
 
-| | |
+| Concepto | Detalle |
 |---|---|
-| **Descripción** | Aplicación web de catálogo visual de libros + recomendador IA |
-| **Stack** | HTML, CSS, JavaScript plano (sin frameworks) + Vercel Serverless Function (Node.js) |
-| **IA** | DeepSeek v4 Flash via API serverless |
-| **Libros** | 2,848 títulos en `libros.json` (~1 MB) |
-| **PDFs** | 2,848 enlaces a Google Drive |
-| **Estado** | 🟢 Funcional (sin deploy activo conocido) |
-| **Git** | 26 commits (desde 2026-03-21) — rama principal |
+| **Nombre oficial** | **Libractiva** |
+| **Descripción** | Biblioteca digital inteligente y cultural con catálogo interactivo, lector web integrado y recomendador por IA. |
+| **Catálogo** | **3,005 títulos únicos** en `libros.json` (~1.8 MB), normalizados y con metadatos enriquecidos (páginas, año, idioma, sinopsis, sagas). |
+| **Formatos de lectura** | **PDF y EPUB** completos alojados en Cloudflare R2 con URLs prefirmadas (`/api/leer`). |
+| **Colecciones y Sagas** | **15 Colecciones temáticas curadas** (`colecciones.json`) y **58 Sagas literarias** agrupadas dinámicamente. |
+| **Frontend** | Vanilla HTML5, CSS3 moderno (modo claro/oscuro) y JavaScript ES6+ modular, sin frameworks pesados. |
+| **Iconografía** | **Lucide Icons** vectoriales (SVG en escala proporcional, sustituyendo emojis). |
+| **Buscador** | Motor de búsqueda tolerante a errores tipográficos (*fuzzy search* con distancia de Levenshtein) y autocompletado en cliente. |
+| **Lector Web** | PDF.js integrado con vista previa de 15 páginas, marcadores y guardado de progreso de lectura. |
+| **Backend** | Vercel Serverless Functions (Node.js 24.x): `/api/leer`, `/api/recomendar`, `/api/validar-codigo`, `/api/ranking`. |
+| **Almacenamiento Cloud** | **Cloudflare R2 Object Storage** (PDFs y EPUBs completos). |
+| **Base de Datos** | **Redis Cloud (Upstash)** para control de accesos, límite de 3 dispositivos por código y ranking semanal de lecturas. |
+| **IA** | DeepSeek V3 (`api/recomendar.js`) con Prompt Caching y límite de 3 consultas gratuitas por dispositivo (ilimitado para miembros Lifetime). |
+| **PWA & SEO** | Service Worker (`sw.js`), `manifest.json`, metadatos JSON-LD `schema.org`, `robots.txt` y `sitemap.xml`. |
+| **Monetización** | Acceso Lifetime ($100 MXN) de pago único vía Mercado Pago. |
+| **Canal de contacto** | `contacto.libractiva@gmail.com` y WhatsApp. |
 
 ---
 
-## 🗺️ Roadmap / Pendientes
+## 🗺️ Roadmap de Implementación
 
-### 🔴 Prioridad alta
-- [x] **Normalizar géneros** — 3 grupos duplicados unificados. ✅
-- [x] **Crear `vercel.json`** — config básica (versión 2). ✅
-- [x] **Crear `package.json`** — name, node 20.x, scripts dev/deploy. ✅
-- [x] **Crear `.gitignore`** — *.bak, node_modules/, .env, .DS_Store. ✅
-- [ ] **Configurar deploy en Vercel** — ver guía abajo.
-- [ ] **Documentar variables de entorno** — `DEEPSEEK_API_KEY` necesaria para el recomendador.
+### ✅ Completado (Hitos Consolidados)
+- [x] **Expansión del catálogo a 3,005 libros** — 100% con archivos PDF y EPUB sincronizados en Cloudflare R2.
+- [x] **Script de subida a R2 (`scripts/subir_a_r2.js`)** — Inspección dinámica de `libros.json`, cálculo de MD5 y subida vía AWS SDK.
+- [x] **Unificación de Sagas Literarias** — 58 sagas agrupadas dinámicamente en catálogo y filtros, eliminando discrepancias de conteo.
+- [x] **Depuración de Colecciones Temáticas** — 15 colecciones curadas en `colecciones.json` sin incongruencias temáticas.
+- [x] **UI Sobria y Vectorial (Lucide Icons)** — Sustitución completa de emojis en botones, modales, badges y alertas por iconos SVG escalables.
+- [x] **Búsqueda tolerante a errores (Fuzzy Search)** — Tolerancia a fallos tipográficos (*«murakamy»*, *«harry poter»*, *«fundasion»*) con algoritmo Levenshtein y sugerencias automáticas.
+- [x] **Consistencia de Marca** — Nombre unificado a Libractiva, autor unificado y nuevo correo oficial `contacto.libractiva@gmail.com`.
+- [x] **Estabilidad en Destacados** — Eliminación del shuffle aleatorio en recarga; orden fijo basado en `LIBROS_DESTACADOS_IDS` y ranking en Redis.
+- [x] **Lector PDF.js y Marcadores** — Lector embebido con límite de 15 páginas para no miembros, marcadores de página tipo Kindle y guardado de progreso.
+- [x] **PWA & Modo Oscuro** — Soporte PWA instalable (`sw.js`), almacenamiento offline de assets y selector de tema claro/oscuro persistente.
 
-### 🟡 Prioridad media
-- [ ] **Migrar `onclick` inline a event listeners** — el HTML mezcla onclick inline con JS moderno; limpiar para consistencia.
-- [ ] **Refinar la paginación** — los IDs de libros no son secuenciales (saltan de 2488 a 2727), hay 3 IDs duplicados.
-- [ ] **Agregar más géneros como filtros rápidos** — hay géneros con +30 libros que no están en los tags (ej: "Novela histórica", "Romance / Drama", "Thriller").
-- [ ] **Indexación SEO** — agregar meta tags, sitemap.xml y `robots.txt`.
-
-### 🟢 Prioridad baja / nice to have
-- [ ] **Modo oscuro** toggle
-- [ ] **Vista de detalles del libro al hacer clic** (modal con info extendida)
-- [ ] **Estadísticas del catálogo** (gráfica de géneros, autores más frecuentes, etc.)
-- [ ] **PWA** (service worker para offline)
-- [ ] **Caché de recomendaciones** — si el usuario repite el mismo perfil, mostrar resultados cacheados.
+### 🟡 En progreso / Siguiente Hito
+- [ ] **Fase 2: Pasarela automática con entrega inmediata de código**
+  - Webhook de Mercado Pago (`api/webhook-mp.js`) para confirmación de pagos de $100 MXN en segundo plano.
+  - Retorno automático desde Mercado Pago con activación instantánea en navegador (`api/verificar-pago.js`).
+  - Envío transaccional automático del código `LTD-XXXXX` por correo desde `contacto.libractiva@gmail.com` (Gmail SMTP / Nodemailer).
+  - Autovalidación por número de operación/comprobante de Mercado Pago en modal de código.
 
 ---
 
-## 📂 Estructura del proyecto
+## 📂 Estructura del Proyecto
 
 ```
 biblioteca/
-├── index.html          # Página principal
-├── style.css           # Estilos completos (modo claro, responsive, modal IA)
-├── app.js              # Lógica: galería, búsqueda, filtros, modal IA, paginación
-├── libros.json         # Catálogo completo (2,845 libros)
-├── catalogo.csv        # Export CSV del catálogo
-├── api/
-│   └── recomendar.js   # Función serverless Vercel → DeepSeek API
-├── PROYECTO.md         # ← Este archivo (seguimiento vivo)
-├── libros.json.bak     # Backup anterior (~174 KB)
-├── libros.json.bak2    # Backup anterior (~1 MB)
-└── .git/
+├── index.html                  # Interfaz principal SPA (HTML5 semántico)
+├── style.css                   # Sistema de diseño, variables CSS y modo oscuro
+├── app.js                      # Motor frontend: catálogo, fuzzy search, paginación, lector, sagas
+├── libros.json                 # Catálogo completo (3,005 títulos con metadatos)
+├── colecciones.json            # 15 colecciones temáticas curadas
+├── manifest.json               # Manifiesto PWA para instalación web
+├── sw.js                       # Service Worker (PWA y caché de assets estáticos)
+├── robots.txt / sitemap.xml     # Indexación y directivas SEO
+├── package.json                # Dependencias Node (engines: Node 24.x)
+├── vercel.json                 # Configuración de despliegue Vercel, headers de caché y tiempos de función
+├── portadas/                   # Miniaturas WebP optimizadas de cada libro (~3,000 archivos)
+├── api/                        # Funciones Serverless en Vercel
+│   ├── recomendar.js           # Recomendador IA vía DeepSeek V3 con Prompt Caching
+│   ├── leer.js                 # URLs firmadas temporales de Cloudflare R2 (PDF y EPUB)
+│   ├── validar-codigo.js       # Validación de códigos LTD y fingerprint de dispositivos en Redis
+│   └── ranking.js              # Ranking semanal de lecturas reales en Redis
+├── scripts/                    # Herramientas de automatización y administración
+│   ├── subir_a_r2.js           # Sincronización masiva y dinámica hacia Cloudflare R2
+│   ├── normalizar.js           # Normalización de géneros, títulos y autores
+│   ├── agregar_nuevos_libros.py # Carga masiva e interactiva de libros
+│   ├── asignar_sagas.js        # Detección y asignación automática de sagas en libros.json
+│   ├── extraer_paginas_e_idiomas.py # Enriquecimiento de metadatos de lectura
+│   ├── agregar_donador.py      # Alta manual de códigos en Redis
+│   ├── listar_donadores.py     # Auditoría de códigos y dispositivos en Redis
+│   └── entregar_codigo.py      # Asignación interactiva de códigos desde lista_codigos.csv
+└── boveda/                      # Bóveda de documentación en formato Obsidian
 ```
 
 ---
 
-## ⚙️ Configuración necesaria para deploy
+## ⚙️ Variables de Entorno Requeridas
 
-### Variables de entorno (Vercel)
+Configuradas en `.env.local` (local) y en el Dashboard de Vercel (*Settings → Environment Variables*):
 
-Necesitas agregar esto en el dashboard de Vercel (Project → Settings → Environment Variables):
+```env
+# Cloudflare R2 (Almacenamiento de archivos PDF y EPUB)
+R2_ENDPOINT=https://<ACCOUNT_ID>.r2.cloudflarestorage.com
+R2_ACCESS_KEY_ID=<tu_access_key_id>
+R2_SECRET_ACCESS_KEY=<tu_secret_access_key>
+R2_BUCKET_NAME=biblioteca-digital
 
-```
-DEEPSEEK_API_KEY=sk-...
+# Redis Cloud / Upstash (Códigos, sesiones y ranking)
+REDIS_URL=redis://default:<password>@<host>:<port>
+
+# Seguridad: Firma de cookies de donadores (HMAC-SHA256)
+DONOR_COOKIE_SECRET=<cadena_secreta_minimo_32_caracteres>
+
+# Inteligencia Artificial
+DEEPSEEK_API_KEY=<tu_api_key_de_deepseek>
 ```
 
 ---
 
-## 🚀 Guía de deploy
+## 🚀 Flujo de Despliegue en Producción
 
-### Opción A: Vía CLI de Vercel (recomendada para pruebas rápidas)
+Cualquier cambio confirmado en la rama `main` despliega automáticamente a producción mediante la integración continua de Vercel:
 
 ```bash
-# 1. Iniciar sesión (abre el navegador para autenticarte)
-vercel login
-
-# 2. Vincular el proyecto (desde /home/daniel/biblioteca/)
-vercel link
-# Responde: ¿Existing project? → No (crear nuevo)
-#           ¿Project name? → biblioteca-digital
-#           ¿Directory? → ./
-
-# 3. Agregar variable de entorno
-vercel env add DEEPSEEK_API_KEY
-# Pega tu API key y presiona Enter
-
-# 4. Desplegar a producción
-vercel --prod
+git add .
+git commit -m "feat/fix: descripción del cambio"
+git push origin main
 ```
-
-**Después del primer deploy**, para actualizar solo basta con:
-
-```bash
-cd /home/daniel/biblioteca/
-git add -A
-git commit -m "descripción del cambio"
-vercel --prod
-```
-
-### Opción B: Vía GitHub + Vercel (auto-deploy)_
-
-Si prefieres que cada push a GitHub despliegue automáticamente:
-
-```bash
-# 1. Crear repo en GitHub (desde CLI)
-gh repo create biblioteca-digital --public --source=. --push
-
-# 2. Ir a https://vercel.com/new
-#    Importar el repo de GitHub
-#    Agregar variable DEEPSEEK_API_KEY
-#    Deploy
-```
-
-A partir de ahí, cada `git push` a main hace deploy automático. 🔄
-
-### ¿Cómo sé si mi deploy funcionó?
-
-```bash
-# Ver los últimos deploys
-vercel list
-
-# Ver logs del serverless function (API)
-vercel logs api/recomendar.js
-```
-
-### Pro tips
-
-- `vercel dev` inicia un servidor local que emula Vercel (incluye la API funcionando).
-- Si solo cambias `libros.json`, el deploy tarda segundos (solo sube el archivo).
-- La primera vez que alguien use el recomendador, DeepSeek tardará ~3-5s (cache miss). Las siguientes serán ~1-2s.
-
----
-
-### Archivos faltantes
-
-| Archivo | Propósito | Estado |
-|---|---|---|
-| `vercel.json` | Configuración de rutas y runtime para Vercel | ✅ Creado |
-| `package.json` | Metadatos, engine node, scripts | ✅ Creado |
-| `.gitignore` | Ignorar `*.bak`, `node_modules/`, `.env` | ✅ Creado |
-| `DEEPSEEK_API_KEY` | Variable de entorno en Vercel | ❌ Pendiente |
-
----
-
-## 🔍 Issues conocidos
-
-1. ~~**Géneros duplicados por mayúsculas/minúsculas (3 grupos):**~~ ✅ **Resuelto**
-   - "Ciencia Ficción" (159) + "Ciencia ficción" (92) → 251 unificados
-   - "Divulgación Científica" (47) + "Divulgación científica" (20) → 67 unificados
-   - "Filosofía Política" (10) + "Filosofía política" (2) → 12 unificados
-
-2. ~~**IDs duplicados en `libros.json`** — 2,845 libros con 3 IDs duplicados (2486, 2487, 2488).~~ ✅ **Resuelto**
-   - Los 3 libros Ghostgirl reasignados a IDs 2846, 2847, 2848.
-   - Ahora: 2,848 libros, todos con ID único.
-
-3. **HTML mezcla `onclick` inline con `addEventListener`** — el modal IA usa addEventListener para Escape, pero los botones usan onclick en el HTML. Funciona, pero es inconsistente.
-
-4. ~~**No hay `vercel.json`** — se eliminó en un commit previo por error de validación y nunca se restauró.~~ ✅ **Resuelto** — creado con sintaxis correcta (versión 2).
-
-5. **Los tags de filtro no cubren todos los géneros** — hay 17 tags pero géneros como "Novela histórica" (49 libros), "Romance / Drama" (88) o "Thriller" (27) no tienen botón propio.
-
----
-
-## 📜 Historial de Git (resumido)
-
-```
-2026-05-01  chore: aprovechar el cache hit de deepseek
-2026-05-01  chore: migrar a deepseek-v4-flash (mitad de precio)
-2026-05-01  Corregir: reemplazar OpenRouter por DeepSeek correctamente
-2026-03-31  Agrega 3 libros Ghostgirl (IDs 2486-2488)
-2026-03-26  fix(ux): scroll horizontal de tags en desktop
-2026-03-26  fix(ui): aclarar fondo del header y mejorar contraste
-2026-03-26  feat(ui): rediseño visual completo
-2026-03-26  Agregar libros 2727-2845 (119 nuevos)
-2026-03-25  Varios fixes: migración OpenRouter → Gemini → DeepSeek
-2026-03-25  feat: recomendador de libros con IA
-2026-03-24  ampliación a 2700+ documentos
-2026-03-22  paginación, buscador mejorado, 461 libros
-2026-03-21  461 libros, catálogo completo con todos los géneros
-2026-03-21  12 libros, nuevos géneros ciencia y filosofía natural
-2026-03-21  primer commit: biblioteca digital funcional
-```
-
----
-
-## 🧠 Decisiones técnicas
-
-- **DeepSeek v4 Flash** como modelo IA por ser económico (~$0.35/M tokens input) con cache.
-- **Estrategia de cache**: el system message incluye el catálogo completo. DeepSeek cachea el prefijo tras la primera llamada, reduciendo costo ~80% en consultas subsecuentes.
-- **Sin frameworks**: vanilla JS para mantener ligero y sin dependencias.
-- **PDFs en Google Drive**: todos los enlaces usan `drive.google.com/.../preview` para visualización embebida.
-
----
-
-*Última actualización: 2026-05-04*
-
----
-
-## 📝 Historial de cambios
-
-| Fecha | Cambio |
-|---|---|
-| 2026-05-04 | Normalización de 3 grupos de géneros duplicados (Ciencia Ficción, Divulgación Científica, Filosofía Política) |
-| 2026-05-04 | Corregidos 3 IDs duplicados en los libros Ghostgirl (IDs 2846-2848) |
-| 2026-05-04 | Corregido género `null` en los 3 libros Ghostgirl → "Novela" |
-| 2026-05-04 | Agregado mapeo CSS para "Filosofía Política" en `app.js` |
-| 2026-05-04 | Creado PROYECTO.md para seguimiento del proyecto |
-| 2026-05-04 | Creados vercel.json y package.json para deploy |
-| 2026-05-04 | Instalada CLI de Vercel (npm i -g vercel) |

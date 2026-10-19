@@ -28,7 +28,7 @@ Por lo tanto, la estrategia comercial de Libractiva no vende contenido masivo; v
 ## 🎯 Ganchos Psicológicos y Copywriting
 
 ### 1. El Gancho Principal (Copy de Impacto)
-> *"No te vendemos 2,800 libros. Te vendemos el próximo libro que vas a terminar."*
+> *"No te vendemos más de 3,000 libros. Te vendemos el próximo libro que vas a terminar."*
 
 Este gancho activa simultáneamente dos palancas psicológicas del comprador:
 - **Selección:** Elimina la parálisis por análisis provocada por catálogos inmensos.
@@ -48,14 +48,15 @@ Para mantener una tasa de conversión alta y evitar la fricción post-compra, el
 
 ### El Proceso Post-Compra:
 1. El usuario realiza el pago de $100 MXN en el link oficial: `https://mpago.la/1Ek1HPz`.
-2. El usuario envía su comprobante de pago por correo o WhatsApp.
-3. El administrador valida el pago y entrega el código de acceso de inmediato.
+2. El usuario envía su comprobante de pago por WhatsApp o al correo oficial: `contacto.libractiva@gmail.com`.
+3. El administrador valida el pago y entrega el código de acceso de inmediato (generado con `python3 scripts/entregar_codigo.py`).
 4. El usuario introduce el código en la web y desbloquea la biblioteca permanentemente en hasta 3 dispositivos.
 
+---
 
 ## 📦 Directorio de Colecciones Temáticas para Anuncios
 
-Este listado contiene los títulos exactos y autores de cada una de las 9 colecciones de **Libractiva**, listos para ser utilizados como copy de soporte, carruseles de imágenes o bullet points en campañas publicitarias.
+Este listado contiene colecciones destacadas de **Libractiva** (de los 15 packs curados y 58 sagas disponibles en plataforma), listos para ser utilizados como copy de soporte, carruseles de imágenes o bullet points en campañas publicitarias.
 
 ### 1. La biblioteca mínima para entender la psicología humana
 *Una selección enfocada en el autoanálisis, el comportamiento social, el inconsciente y los sesgos cognitivos.*

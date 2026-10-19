@@ -17,10 +17,9 @@ Este documento detalla el mapa de archivos y directorios del repositorio de **Li
 biblioteca/
 ├── index.html              # Interfaz de usuario principal (HTML5)
 ├── style.css               # Estilos globales y variables de diseño (CSS3)
-├── app.js                  # Lógica del cliente, lector PDF.js y eventos
-├── style.css               # Estilos globales y variables de diseño (CSS3)
-├── libros.json             # Catálogo completo en formato JSON (Base de datos estática)
-├── colecciones.json        # Definición de packs temáticos curados
+├── app.js                  # Lógica del cliente, lector PDF.js, fuzzy search y eventos
+├── libros.json             # Catálogo completo en formato JSON (3,005 libros)
+├── colecciones.json        # Definición de 15 packs temáticos curados
 ├── agregar_libro.py        # Script Python para catalogar libros (unitario, con rclone)
 ├── generar_portadas.py     # Script Python para extraer portadas desde PDFs
 ├── lucide.min.js           # Librería de iconos vectoriales Lucide
@@ -43,11 +42,15 @@ biblioteca/
 │   ├── 1.webp
 │   └── ...
 ├── api/                    # Código ejecutado en el servidor (Vercel Serverless)
-│   ├── recomendar.js       # Integración con la API de DeepSeek v4 Flash
-│   ├── leer.js             # Generador de URLs firmadas de Cloudflare R2
-│   └── validar-codigo.js   # Validador de códigos de acceso con Upstash Redis / Vercel KV
+│   ├── recomendar.js       # Integración con la API de DeepSeek V3
+│   ├── leer.js             # Generador de URLs firmadas de Cloudflare R2 e incremento de ranking
+│   ├── validar-codigo.js   # Validador de códigos de acceso con Redis Cloud / Upstash
+│   └── ranking.js          # Endpoint de ranking de lecturas globales desde Redis
 ├── scripts/                # Scripts auxiliares y de mantenimiento
+│   ├── subir_a_r2.js       # Node.js: sincronización y subida a Cloudflare R2 con AWS SDK
 │   ├── normalizar.js       # Node.js: normalización de catálogo (géneros, títulos, autores)
+│   ├── asignar_sagas.js    # Node.js: categorización y orden cronológico de sagas en libros.json
+│   ├── extraer_paginas_e_idiomas.py # Python: extracción de número de páginas e idiomas
 │   ├── agregar_nuevos_libros.py  # Python: carga masiva interactiva de PDFs
 │   ├── mapear_pdfs.py      # Python: mapea PDFs locales a libros.json
 │   ├── mapear_epubs.py     # Python: mapea EPUBs locales a libros.json
@@ -77,23 +80,27 @@ biblioteca/
 ## 📝 Responsabilidad de Componentes
 
 ### 1. Núcleo de la Aplicación Web (Frontend)
-*   **`index.html`**: Define la estructura semántica de la SPA. Contiene el buscador, el menú de tags, el catálogo, el carrusel de destacados, las colecciones, el visor de PDF.js (`#modalLector`), y el modal para ingresar el código de acceso.
+*   **`index.html`**: Define la estructura semántica de la SPA. Contiene el buscador, el menú de tags, el catálogo, el carrusel de destacados con podio, las colecciones y sagas, el visor de PDF.js (`#modalLector`), y el modal para ingresar el código de acceso.
 *   **`style.css`**: CSS modular con variables de diseño. Implementa tipografía Cormorant Garamond (marca), Playfair Display (títulos), DM Sans (cuerpo) y EB Garamond (literaria). Incluye el visor de PDF.js con adaptabilidad a móviles, modo oscuro, y la ventana de bloqueo de lectura (con efecto esmerilado blur).
-*   **`app.js`**: El motor del frontend. Realiza búsquedas e indexación local, controla la paginación (24 libros por página), gestiona el estado del lector (limitador de 15 páginas para no-donadores), renderiza el carrusel de destacados (Fisher-Yates shuffle de 10 libros), las colecciones curadas, el recomendador IA multi-paso (con límite de **3 consultas gratuitas** para usuarios sin código), el botón "Sorpréndeme" (libro aleatorio), el sistema de **marcadores de página** (Kindle-style, solo para usuarios con código, `localStorage`:`libractiva_marcadores`) y el guardado de **progreso de lectura** (`localStorage`:`libractiva_progreso`).
-*   **`lucide.min.js`**: Librería de iconos vectoriales usada en toda la interfaz.
+*   **`app.js`**: El motor del frontend. Realiza búsquedas híbridas (exacta + fuzzy search con Levenshtein en memoria), controla la paginación (24 libros por página), gestiona el estado del lector (limitador de 15 páginas para usuarios gratuitos), renderiza el carrusel de destacados con orden fijo predeterminado (`LIBROS_DESTACADOS_IDS`), asignación de podio (oro, plata, bronce) y actualización con ranking de lecturas desde Redis, gestiona las 15 colecciones curadas y 58 sagas agrupadas dinámicamente, el recomendador IA multi-paso (con límite de **3 consultas gratuitas** para usuarios sin código), el botón "Sorpréndeme" (libro aleatorio), el sistema de **marcadores de página** (Kindle-style, solo para usuarios con código, `localStorage`:`libractiva_marcadores`) y el guardado de **progreso de lectura** (`localStorage`:`libractiva_progreso`).
+*   **`lucide.min.js`**: Librería de iconos vectoriales usada en toda la interfaz para reemplazar emojis y mantener sobriedad editorial.
 *   **`sw.js`**: Service Worker que cachea recursos estáticos y datos (libros.json, colecciones.json) para soporte offline. Estrategia network-first para datos, cache-first para assets.
 
 ### 2. Base de Datos e Imágenes
-*   **`libros.json`**: Catálogo completo (~2,800 registros) con metadatos y rutas a archivos en R2.
-*   **`colecciones.json`**: Definición de los 9 packs temáticos curados con sus IDs de libros asociados.
+*   **`libros.json`**: Catálogo completo (3,005 libros) con metadatos, formato dual PDF/EPUB, conteo de páginas, idioma, sagas y rutas a archivos en R2.
+*   **`colecciones.json`**: Definición de los 15 packs temáticos curados con sus IDs de libros asociados.
 *   **`portadas/`**: Imágenes WebP optimizadas (~15-25 KB c/u, 300px ancho) de las portadas de los libros y packs.
 
 ### 3. Procesamiento en el Servidor (Backend APIs)
-*   **`api/recomendar.js`**: Consulta al modelo de recomendación de IA.
-*   **`api/leer.js`**: Autentica si el usuario pide descargar y genera una URL firmada de Cloudflare R2 (expiración de 5 a 10 min).
+*   **`api/recomendar.js`**: Consulta al modelo de recomendación de IA DeepSeek V3.
+*   **`api/leer.js`**: Autentica peticiones de descarga/lectura, incrementa el ranking de lecturas en Redis y genera una URL firmada de Cloudflare R2 (expiración de 5 a 10 min).
 *   **`api/validar-codigo.js`**: Verifica códigos de donadores contra la base de datos de Redis y asocia hasta 3 fingerprints de navegadores.
+*   **`api/ranking.js`**: Consulta el ranking global de lecturas en Redis para enriquecer la sección de destacados.
 
 ### 4. Automatización y Mantenimiento (Herramientas)
+*   **`scripts/subir_a_r2.js`**: Herramienta principal en Node.js para subir libros PDF y EPUB a Cloudflare R2 vía AWS SDK S3, con verificación MD5 para omitir archivos idénticos.
+*   **`scripts/asignar_sagas.js`**: Script en Node.js que agrupa y numera libros en sagas literarias en `libros.json`.
+*   **`scripts/extraer_paginas_e_idiomas.py`**: Script en Python para extraer metadatos de páginas e idiomas desde los archivos.
 *   **`agregar_libro.py`**: Interfaz Python para carga unitaria de libros con integración rclone (descarga desde Google Drive), generación automática de portada y git push opcional.
 *   **`generar_portadas.py`**: Extrae portadas desde PDFs locales mediante pdftoppm + ImageMagick (WebP, 300px, calidad 65%).
 *   **`scripts/agregar_nuevos_libros.py`**: Carga masiva interactiva — escanea PDFs huérfanos en `~/biblioteca-digital/` y pregunta metadatos por consola.

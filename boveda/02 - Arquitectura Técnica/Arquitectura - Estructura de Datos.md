@@ -17,15 +17,22 @@ El catálogo consiste en una única matriz (Array) de objetos JSON. Cada objeto 
 
 ```json
 {
-  "id": 2848,
-  "titulo": "Nombre del Libro",
-  "autor": "Apellido, Nombre",
-  "anio": 2024,
-  "genero": "Novela",
-  "descripcion": "Sinopsis breve del libro.",
-  "pdf": "https://drive.google.com/file/d/XXXX_FILE_ID_XXXX/preview",
-  "portada": "portadas/2848.webp",
-  "archivo_pdf": "N/Nombre de Autor/Nombre del Libro - Nombre de Autor.pdf"
+  "id": 69,
+  "titulo": "Las mil y una noches - Tomo I",
+  "autor": "Anonimo",
+  "anio": 800,
+  "genero": "Cuento",
+  "descripcion": "Edición completa del clásico universal de la literatura oriental en dos tomos...",
+  "pdf": "",
+  "portada": "portadas/69.webp?v=2",
+  "archivo_pdf": "A/Anonimo/Las mil y una noches I - Anonimo.pdf",
+  "archivo_epub": "001_EPUB/A/Anonimo/Las mil y una noches I - Anonimo.epub",
+  "idioma": "es",
+  "paginas": 1778,
+  "serie": {
+    "nombre": "Las mil y una noches",
+    "orden": 1
+  }
 }
 ```
 
@@ -41,15 +48,19 @@ El catálogo consiste en una única matriz (Array) de objetos JSON. Cada objeto 
 | **`anio`** | Entero / Nulo | No | Año original de publicación. Si se desconoce por completo, se deja como `null` en el JSON. |
 | **`genero`** | Cadena (String) | Sí | Categoría literaria. Debe coincidir con uno de los ~25 géneros estándar consolidados para no romper los filtros visuales. |
 | **`descripcion`** | Cadena (String) | Sí | Breve sinopsis de 1 o 2 oraciones para mostrar en las tarjetas y detalles. Si no hay descripción, debe ir como cadena vacía `""`. |
-| **`pdf`** | Cadena (String) | Sí | URL completa del visor de Google Drive en formato preview. Actúa como método alternativo o fallback si el libro no tiene PDF en Cloudflare R2. |
-| **`portada`** | Cadena (String) | Sí | Ruta relativa a la imagen de portada local. Ej: `portadas/12.webp`. Si el libro no tiene portada, se deja como cadena vacía `""`. |
-| **`archivo_pdf`** | Cadena / Nulo | No | Ruta relativa del archivo PDF en el bucket de Cloudflare R2. Sirve de llave del objeto para generar los enlaces seguros y cargar el lector embebido. Ej: `A/Allende, Isabel/La casa de los espiritus - Isabel Allende.pdf`. |
+| **`pdf`** | Cadena (String) | No | URL del visor de Google Drive (legado/fallback). Para nuevos libros se deja vacío. |
+| **`portada`** | Cadena (String) | Sí | Ruta relativa a la imagen de portada local WebP. Ej: `portadas/69.webp?v=2`. |
+| **`archivo_pdf`** | Cadena / Nulo | No | Ruta relativa del archivo PDF en el bucket de Cloudflare R2 (`biblioteca-digital`). Ej: `A/Anonimo/Las mil y una noches I - Anonimo.pdf`. |
+| **`archivo_epub`** | Cadena / Nulo | No | Ruta relativa del archivo EPUB en Cloudflare R2 (ej. `001_EPUB/...`) para lectura en Kindle, e-readers o apps móviles. |
+| **`idioma`** | Cadena (String) | No | Código ISO del idioma principal del texto (ej. `es`, `en`). |
+| **`paginas`** | Entero / Nulo | No | Conteo real de páginas extraído de los metadatos del PDF. |
+| **`serie`** | Objeto / Nulo | No | Objeto `{ nombre: string, orden: number }` que agrupa el libro dentro de una saga literaria y fija su orden cronológico de lectura. |
 
 ---
 
 ## 📂 Colecciones Temáticas (`colecciones.json`)
 
-El archivo `/home/daniel/biblioteca/colecciones.json` contiene la estructura y definición de los packs temáticos exclusivos de Libractiva. Consiste en un Array de objetos con el siguiente esquema:
+El archivo `/home/daniel/biblioteca/colecciones.json` contiene la estructura y definición de los 15 packs temáticos exclusivos de Libractiva. Consiste en un Array de objetos con el siguiente esquema:
 
 ```json
 {
@@ -69,16 +80,16 @@ El archivo `/home/daniel/biblioteca/colecciones.json` contiene la estructura y d
 
 ---
 
-## 🗄️ Base de Datos de Donadores (Upstash Redis / Vercel KV)
+## 🗄️ Base de Datos de Códigos y Métricas (Redis Cloud / Upstash)
 
-El sistema utiliza una base de datos Redis en la nube para gestionar los códigos de donador y los límites de dispositivos.
+El sistema utiliza una base de datos Redis en la nube para gestionar los códigos de donador/LTD, los límites de dispositivos y el ranking global de lecturas.
 
 ### Estructura de Claves
 
-#### Código de Donador
+#### 1. Código de Acceso (LTD)
 *   **Formato de Clave:** `donor:code:{CODIGO_EN_MAYUSCULAS}`
 *   **Tipo de Dato:** String (que almacena un JSON serializado)
-*   **Ejemplo de Clave:** `donor:code:DONOR-DAN1907`
+*   **Ejemplo de Clave:** `donor:code:LTD-DAN1907`
 *   **Ejemplo de Valor (JSON):**
     ```json
     {
@@ -90,6 +101,11 @@ El sistema utiliza una base de datos Redis en la nube para gestionar los código
 ##### Campos del JSON:
 *   `dispositivos` (Array de Strings): Lista de hashes SHA-256 de 16 caracteres, que representan los fingerprints de los navegadores que han activado el código.
 *   `limite` (Entero): Cantidad máxima de dispositivos únicos que pueden activar el mismo código (por defecto, `3`).
+
+#### 2. Métrica de Lecturas Globales
+*   **Formato de Clave:** `ranking:lecturas`
+*   **Tipo de Dato:** Sorted Set (`ZSET`)
+*   **Descripción:** Almacena el número total de lecturas por libro (`ZINCRBY ranking:lecturas 1 {libroId}`). Consumido por el endpoint serverless `api/ranking.js` y `app.js` para enriquecer la sección de "Los más destacados".
 
 ---
 

@@ -44,6 +44,13 @@ Los recursos gráficos oficiales de la marca están disponibles en la raíz del 
 
 ---
 
+## 📬 Canales Oficiales de la Marca
+
+*   **Correo oficial de soporte y contacto:** `contacto.libractiva@gmail.com`
+*   **Identidad en plataforma:** "Libractiva — Biblioteca Digital Inteligente" (unificación estricta de meta tags, acerca de, y footer).
+
+---
+
 **Notas Relacionadas:**
 *   [[00 - Inicio|Mapa de navegación de la bóveda]]
 *   [[Copywriting y Estrategia de Anuncios|Copywriting y Estrategia de Anuncios]]: Estrategia y ganchos de venta para anuncios.

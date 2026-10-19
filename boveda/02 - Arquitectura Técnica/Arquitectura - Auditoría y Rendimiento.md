@@ -13,11 +13,13 @@ Este documento detalla el análisis de rendimiento del sistema **Libractiva**, i
 
 ## 🏎️ Análisis del Lado del Cliente (Frontend)
 
-### Carga del Catálogo en Memoria
-*   **Mecanismo:** El catálogo completo de más de 2,800 obras se almacena en el archivo estático `libros.json` (aproximadamente 1.36 MB). Al cargar el sitio, el navegador realiza un único `fetch` para descargar este JSON e inyectarlo en memoria.
-*   **Rendimiento de Búsqueda:** Al estar en memoria, las búsquedas e indexaciones realizadas por el usuario en la barra de búsqueda son **instantáneas (0 ms de latencia de red)**.
-*   **Compresión de Tránsito:** Aunque el archivo pesa 1.36 MB en crudo, Vercel aplica compresión **Brotli/Gzip** de manera automática, reduciendo la descarga efectiva a solo **~300 KB** en red.
-*   **Optimización Futura:** A medida que el catálogo supere los 5,000 libros, se sugiere migrar a un índice local pre-compilado en el cliente (como MiniSearch) o implementar búsquedas del lado del servidor con paginación parcial si los tiempos de arranque en redes 3G/4G móviles se degradan.
+### Carga del Catálogo en Memoria y Búsqueda Híbrida
+*   **Mecanismo:** El catálogo completo de 3,005 obras se almacena en el archivo estático `libros.json` (~2.1 MB). Al cargar el sitio, el navegador realiza un único `fetch` para descargarlo e inyectarlo en memoria con directivas de caché HTTP (`max-age=86400`).
+*   **Compresión de Tránsito:** Aunque el archivo pesa ~2.1 MB en crudo, Vercel aplica compresión **Brotli/Gzip** de manera automática, reduciendo la descarga inicial en red a solo **~450 KB**.
+*   **Búsqueda Exacta y Fuzzy Search (Levenshtein):**
+    *   *Fase 1 (Coincidencia Exacta y Substring):* Búsqueda instantánea (<5 ms) por palabras clave normalizadas (sin tildes ni mayúsculas) en título, autor y género.
+    *   *Fase 2 (Fuzzy Search tolerante a typos):* Si la búsqueda exacta arroja pocos resultados o el usuario comete un error tipográfico, entra en acción el algoritmo de distancia de Levenshtein en memoria. Evalúa los tokens sobre las 3,005 entradas en **20 a 50 ms**, asegurando una experiencia interactiva fluida a 60 fps sin necesidad de servidores de búsqueda dedicados como Elasticsearch o Algolia.
+*   **Iconografía Vectorial Sobria (Lucide):** Se eliminó el uso de emojis en los controles de navegación y botones de acción, sustituyéndolos por iconos SVG optimizados de Lucide (`lucide.min.js`). Esto evita la fragmentación visual entre sistemas operativos (Apple, Android, Windows) y aporta una estética editorial sobria y profesional.
 
 ---
 
@@ -30,11 +32,11 @@ En lugar de enviar el objeto JSON con descripciones y metadatos extensos, la API
 ```text
 id|título|autor|género
 ```
-Esto reduce la huella del catálogo de **1.36 MB a aproximadamente 150 KB de texto plano**, disminuyendo el consumo de tokens en un **89%**.
+Esto reduce la huella del catálogo drásticamente a texto plano, disminuyendo el consumo de tokens en más de un **85%**.
 
 ### 2. Prompt Caching (Prefix Caching)
 *   **Estrategia:** La lista de libros compactada y las instrucciones fijas del sistema se inyectan en el **System Message**. La consulta personalizada del lector se coloca en el **User Message**.
-*   **Mecanismo de DeepSeek:** Al recibir la solicitud, el modelo de DeepSeek v4 Flash detecta que el prefijo del System Message coincide con el de las solicitudes previas. En lugar de procesar los miles de libros nuevamente, lee los tokens directamente de la caché de contexto.
+*   **Mecanismo de DeepSeek V3:** Al recibir la solicitud, el modelo de DeepSeek V3 (`deepseek-chat`) detecta que el prefijo del System Message coincide con el de las solicitudes previas. En lugar de reprocesar el catálogo completo, lee los tokens directamente de la caché de contexto.
 *   **Impacto Económico:** 
     *   Costo de tokens de entrada normales: **$0.14** por millón.
     *   Costo de tokens en caché (Cache Hit): **$0.014** por millón.
@@ -42,7 +44,7 @@ Esto reduce la huella del catálogo de **1.36 MB a aproximadamente 150 KB de tex
 
 ---
 
-## 🔒 Base de Datos y Seguridad (Redis KV & Cookies)
+## 🔒 Base de Datos y Seguridad (Redis Cloud & Cookies)
 
 La validación del acceso premium de descargas y el visor completo de PDFs utiliza un sistema híbrido ultra-rápido:
 
@@ -51,9 +53,10 @@ Para evitar que se compartan de forma descontrolada los códigos de donadores, l
 $$\text{Fingerprint} = \text{SHA256}(\text{User-Agent} + \text{Accept-Language} + \text{IP Client})$$
 Este identificador no almacena información personal sensible (GDPR compliant) pero permite identificar de forma estable el dispositivo del lector.
 
-### 2. Base de Datos en Memoria (Upstash Redis / Vercel KV)
+### 2. Base de Datos en Memoria (Redis Cloud / Upstash)
 *   **Tiempo de Respuesta:** Redis procesa la validación del código y el registro del dispositivo en **< 5 ms**.
 *   **Control de Límite:** Se valida si el dispositivo ya existe o si aún hay cupo (máximo 3 dispositivos por código) antes de firmar el token de acceso.
+*   **Métrica de Lecturas:** Permite registrar atómicamente (`ZINCRBY ranking:lecturas 1 {id}`) las lecturas globales sin penalizar el rendimiento.
 
 ### 3. Criptografía de Sesión (HMAC-SHA-256)
 *   Una vez que el backend valida el acceso, emite una cookie segura `donor_token` en formato `codigo.firma`.
@@ -61,18 +64,18 @@ Este identificador no almacena información personal sensible (GDPR compliant) p
 
 ---
 
-## 📦 Almacenamiento de PDFs (Cloudflare R2)
+## 📦 Almacenamiento Dual (Cloudflare R2)
 
-Para la lectura en tiempo real y descarga de PDFs de más de 30 GB de tamaño, el sistema utiliza Cloudflare R2:
+Para la lectura en tiempo real y descarga de más de 30 GB de libros en formatos PDF y EPUB, el sistema utiliza Cloudflare R2:
 
-*   **Enlaces Efímeros (Presigned URLs):** La API `api/leer.js` nunca expone la ruta real o pública del archivo PDF. En su lugar, genera URLs firmadas dinámicamente con una validez de:
+*   **Enlaces Efímeros (Presigned URLs):** La API `api/leer.js` nunca expone la ruta real o pública del archivo. En su lugar, genera URLs firmadas dinámicamente con una validez de:
     *   **5 minutos (300 s):** Para visualización fluida mediante el canvas de PDF.js.
-    *   **10 minutos (600 s):** Para descargas de archivos de gran tamaño.
-*   **Ancho de Banda Gratuito:** Al utilizar Cloudflare R2, el proyecto tiene **$0 costos de salida de datos (egress fees)**, lo cual es vital para la sostenibilidad financiera frente a alternativas como AWS S3 convencional.
+    *   **10 minutos (600 s):** Para descargas de archivos PDF y EPUB en e-readers o dispositivos móviles.
+*   **Ancho de Banda Gratuito:** Al utilizar Cloudflare R2, el proyecto tiene **$0 costos de salida de datos (egress fees)**, lo cual es vital para la sostenibilidad financiera frente a alternativas con altos costes por transferencia.
 
 ---
 
 **Notas Relacionadas:**
 *   [[Arquitectura - Vista General|Stack de tecnologías y componentes]]
 *   [[Arquitectura - API de Recomendación|Flujos y fallbacks de DeepSeek]]
-*   [[Guía - Gestión de Donadores|Administración local de accesos y terminal CLI]]
+*   [[Guía - Gestión de Accesos|Administración local de accesos y terminal CLI]]
