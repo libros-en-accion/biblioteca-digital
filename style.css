@@ -3770,17 +3770,44 @@ footer {
   top: 0.65rem;
   left: 0.65rem;
   z-index: 6;
-  background: linear-gradient(135deg, #d4a359 0%, #9e6f21 100%);
-  color: #121c19;
   font-family: var(--fuente-titulo);
   font-size: 0.78rem;
   font-weight: 700;
-  padding: 0.16rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 6px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(255, 248, 240, 0.38);
   letter-spacing: 0.02em;
   pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  transition: transform 0.2s ease;
+}
+.destacado-rank-badge.podio-oro {
+  background: linear-gradient(135deg, #ffd700 0%, #d4a017 50%, #9e6f21 100%);
+  color: #1a1202;
+  border-color: #fff2a8;
+  box-shadow: 0 4px 14px rgba(212, 160, 23, 0.55);
+}
+.destacado-rank-badge.podio-plata {
+  background: linear-gradient(135deg, #ffffff 0%, #dcdce2 50%, #9a9aa4 100%);
+  color: #1a1a24;
+  border-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(160, 160, 175, 0.45);
+}
+.destacado-rank-badge.podio-bronce {
+  background: linear-gradient(135deg, #f3a878 0%, #c46d3b 50%, #873f15 100%);
+  color: #ffffff;
+  border-color: #ffd8bf;
+  box-shadow: 0 4px 14px rgba(196, 109, 59, 0.5);
+}
+.destacado-rank-badge.podio-resto {
+  background: rgba(25, 18, 22, 0.82);
+  color: #f0e9df;
+  border-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 .carrusel-btn {
   position: absolute;

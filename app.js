@@ -704,9 +704,11 @@ function renderizarDestacados() {
     const esFav = esFavorito(libro.id);
     const infoProg = obtenerInfoProgreso(libro.id);
     const tieneProgreso = !!(infoProg && infoProg.pagina > 1);
+    const podioClase = i === 0 ? 'podio-oro' : i === 1 ? 'podio-plata' : i === 2 ? 'podio-bronce' : 'podio-resto';
+    const podioIcono = i === 0 ? '<i data-lucide="crown" class="icono-xs"></i> ' : i === 1 ? '<i data-lucide="medal" class="icono-xs"></i> ' : i === 2 ? '<i data-lucide="award" class="icono-xs"></i> ' : '';
 
     tarjeta.innerHTML = `
-      <span class="destacado-rank-badge" aria-label="Posición #${i + 1}">#${i + 1}</span>
+      <span class="destacado-rank-badge ${podioClase}" aria-label="Posición #${i + 1}">${podioIcono}#${i + 1}</span>
       ${libro.portada 
         ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" width="230" height="307" decoding="async" />` 
         : `<div class="tarjeta-portada tarjeta-portada-placeholder">
@@ -1538,7 +1540,8 @@ function paginasVisibles(actual, total) {
 }
 
 // ── NORMALIZAR TEXTO PARA BÚSQUEDA ──
-const normalizar = texto => texto
+const normalizar = texto => (texto || '')
+  .toString()
   .toLowerCase()
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '')
@@ -1632,35 +1635,82 @@ function distanciaLevenshtein(a, b) {
   return prev[lb];
 }
 
-function coincidenTerminosFuzzy(terminos, libro) {
-  if (!libro._palabrasFuzzy) {
-    const txt = normalizar([
+function calcularScoreFuzzyLibro(terminos, libro) {
+  if (!libro._tokensFuzzy) {
+    const rawCompleto = normalizar([
       libro.titulo || '',
       libro.autor || '',
       libro.genero || '',
       libro.serie ? libro.serie.nombre : ''
     ].join(' '));
-    libro._palabrasFuzzy = [...new Set(txt.split(' ').filter(w => w.length >= 2))];
+    const tokensTitulo = normalizar(libro.titulo || '').split(' ').filter(w => w.length > 0);
+    const tokensAutor = normalizar(libro.autor || '').split(' ').filter(w => w.length > 0);
+    const tokensSaga = normalizar(libro.serie ? libro.serie.nombre : '').split(' ').filter(w => w.length > 0);
+    const tokensGenero = normalizar(libro.genero || '').split(' ').filter(w => w.length > 0);
+    libro._tokensFuzzy = {
+      raw: rawCompleto,
+      titulo: tokensTitulo,
+      autor: tokensAutor,
+      saga: tokensSaga,
+      genero: tokensGenero,
+      todos: [...tokensTitulo, ...tokensAutor, ...tokensSaga, ...tokensGenero]
+    };
   }
-  const palabras = libro._palabrasFuzzy;
 
-  return terminos.every(termino => {
-    const len = termino.length;
-    if (len <= 2) {
-      return palabras.some(w => w.includes(termino));
+  const { raw, titulo, autor, saga, todos } = libro._tokensFuzzy;
+  let scoreTotal = 0;
+
+  for (const t of terminos) {
+    const len = t.length;
+    // Para conectores breves (ej: "y"), verificar presencia en texto normalizado
+    if (len <= 1) {
+      if (raw.includes(t)) {
+        scoreTotal += 10;
+        continue;
+      } else {
+        return 0;
+      }
     }
-    const maxDist = len <= 4 ? 1 : 2;
-    return palabras.some(w => {
-      if (w.includes(termino)) return true;
+
+    let mejorMatchTermino = 0;
+    for (const w of todos) {
+      if (w === t) {
+        mejorMatchTermino = Math.max(mejorMatchTermino, 100);
+        break;
+      }
+      if (w.startsWith(t) || t.startsWith(w)) {
+        if (Math.abs(w.length - len) <= 3) {
+          mejorMatchTermino = Math.max(mejorMatchTermino, 80);
+        }
+      }
+      const maxDist = len <= 3 ? 1 : (len <= 5 ? 1 : 2);
       if (Math.abs(w.length - len) <= maxDist) {
-        if (distanciaLevenshtein(termino, w) <= maxDist) return true;
+        const dist = distanciaLevenshtein(t, w);
+        if (dist <= maxDist) {
+          const s = dist === 1 ? 75 : 45;
+          mejorMatchTermino = Math.max(mejorMatchTermino, s);
+        }
       }
-      if (w.length > len && Math.abs(w.length - len) <= maxDist + 2) {
-        if (distanciaLevenshtein(termino, w.slice(0, len)) <= 1) return true;
-      }
-      return false;
-    });
-  });
+    }
+
+    if (mejorMatchTermino < 40) return 0;
+
+    if (titulo.some(w => w === t || distanciaLevenshtein(t, w) <= (len <= 5 ? 1 : 2))) {
+      mejorMatchTermino *= 1.5;
+    } else if (saga.some(w => w === t || distanciaLevenshtein(t, w) <= (len <= 5 ? 1 : 2))) {
+      mejorMatchTermino *= 1.4;
+    } else if (autor.some(w => w === t || distanciaLevenshtein(t, w) <= (len <= 5 ? 1 : 2))) {
+      mejorMatchTermino *= 1.2;
+    }
+
+    scoreTotal += mejorMatchTermino;
+  }
+
+  return scoreTotal;
+}
+
+function coincidenTerminosFuzzy(terminos, libro) {
+  return calcularScoreFuzzyLibro(terminos, libro) > 0;
 }
 
 // ── ORDENAR LISTA ──
@@ -1898,19 +1948,26 @@ function filtrar() {
 
   // Si no hubo resultados con búsqueda exacta y hay términos de búsqueda, activar fuzzy search
   if (listaFiltrada.length === 0 && terminos.length > 0) {
-    const coincidenciasFuzzy = librosDePartida.filter(libro => {
-      if (!coincidenTerminosFuzzy(terminos, libro)) return false;
-      return cumpleFiltrosSecundarios(libro);
-    });
+    const candidatosFuzzy = [];
+    for (const libro of librosDePartida) {
+      if (!cumpleFiltrosSecundarios(libro)) continue;
+      const score = calcularScoreFuzzyLibro(terminos, libro);
+      if (score > 0) {
+        candidatosFuzzy.push({ libro, score });
+      }
+    }
 
-    if (coincidenciasFuzzy.length > 0) {
-      listaFiltrada = coincidenciasFuzzy;
+    if (candidatosFuzzy.length > 0) {
+      candidatosFuzzy.sort((a, b) => b.score - a.score);
+      listaFiltrada = candidatosFuzzy.map(c => c.libro);
       esBusquedaFuzzy = true;
     }
   }
 
-  // Aplicar ordenamiento
-  listaFiltrada = ordenarLista(listaFiltrada);
+  // Aplicar ordenamiento (si no es búsqueda difusa, para preservar la relevancia de mayor puntaje)
+  if (!esBusquedaFuzzy) {
+    listaFiltrada = ordenarLista(listaFiltrada);
+  }
 
   // Actualizar título del catálogo dinámicamente
   const titulo = document.getElementById('catalogoTitulo');
@@ -3375,8 +3432,14 @@ function inicializarAutocompletado() {
 
     let esFuzzyAutocompletado = false;
     if (coincidenciasAll.length === 0) {
-      coincidenciasAll = libros.filter(libro => coincidenTerminosFuzzy(terminos, libro));
-      if (coincidenciasAll.length > 0) {
+      const candidatosFuzzy = [];
+      for (const libro of libros) {
+        const score = calcularScoreFuzzyLibro(terminos, libro);
+        if (score > 0) candidatosFuzzy.push({ libro, score });
+      }
+      if (candidatosFuzzy.length > 0) {
+        candidatosFuzzy.sort((a, b) => b.score - a.score);
+        coincidenciasAll = candidatosFuzzy.map(c => c.libro);
         esFuzzyAutocompletado = true;
       }
     }
@@ -3387,24 +3450,26 @@ function inicializarAutocompletado() {
       return;
     }
 
-    // Ordenar sugerencias por relevancia y orden de saga
-    const cacheScores = new Map();
-    coincidenciasAll.forEach(l => cacheScores.set(l.id, puntuarRelevanciaBusqueda(l, queryNorm, terminos)));
-    coincidenciasAll.sort((a, b) => {
-      if (a.serie && b.serie && a.serie.nombre === b.serie.nombre) {
-        const serieNorm = normalizar(a.serie.nombre);
-        if (terminos.every(t => serieNorm.includes(t))) {
+    // Ordenar sugerencias por relevancia y orden de saga si no es fuzzy
+    if (!esFuzzyAutocompletado) {
+      const cacheScores = new Map();
+      coincidenciasAll.forEach(l => cacheScores.set(l.id, puntuarRelevanciaBusqueda(l, queryNorm, terminos)));
+      coincidenciasAll.sort((a, b) => {
+        if (a.serie && b.serie && a.serie.nombre === b.serie.nombre) {
+          const serieNorm = normalizar(a.serie.nombre);
+          if (terminos.every(t => serieNorm.includes(t))) {
+            return (a.serie.orden || 999) - (b.serie.orden || 999);
+          }
+        }
+        const scoreA = cacheScores.get(a.id) || 0;
+        const scoreB = cacheScores.get(b.id) || 0;
+        if (scoreB !== scoreA) return scoreB - scoreA;
+        if (a.serie && b.serie && a.serie.nombre === b.serie.nombre) {
           return (a.serie.orden || 999) - (b.serie.orden || 999);
         }
-      }
-      const scoreA = cacheScores.get(a.id) || 0;
-      const scoreB = cacheScores.get(b.id) || 0;
-      if (scoreB !== scoreA) return scoreB - scoreA;
-      if (a.serie && b.serie && a.serie.nombre === b.serie.nombre) {
-        return (a.serie.orden || 999) - (b.serie.orden || 999);
-      }
-      return 0;
-    });
+        return 0;
+      });
+    }
 
     const coincidencias = coincidenciasAll.slice(0, 5);
 
