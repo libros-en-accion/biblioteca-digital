@@ -2,22 +2,16 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
-  3044, // Espejismo (Hugh Howey - Trilogía del Silo)
-  1233, // Las 48 leyes del poder
-  2845, // Alas de sangre
-  2763, // No tengo boca y debo gritar
-  814, // Noches blancas (Ilustrado)
-  2857, // Proyecto Hail Mary
-  783, // El placebo eres tu
-  2777, // La sociedad del cansancio
+  2835, // El poder del ahora
+  2300, // La Sombra del Viento
   2079, // 1984
   1139, // Cien anos de soledad
-  1140, // El amor en los tiempos del colera
-  14, // La divina comedia
   2828, // El monje que vendio su Ferrari
+  1140, // El amor en los tiempos del colera
   2241, // Tormenta de espadas ed ilustrada
-  1974, // Hombres sin mujeres
-  2944 // La naranja mecanica
+  2852, // Voces de Chernóbil
+  1963, // After Dark
+  14 // La divina comedia
 ];
 
 // ── VARIABLES GLOBALES ──
