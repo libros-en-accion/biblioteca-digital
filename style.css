@@ -4754,6 +4754,130 @@ input,
   font-weight: 600;
 }
 
+.compra-email-grupo {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.compra-email-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--fuente-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--texto);
+  margin-bottom: 0.45rem;
+}
+
+.compra-email-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.72rem 0.95rem;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  color: var(--texto);
+  background: var(--fondo-input);
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.compra-email-input:focus {
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(212, 163, 89, 0.18);
+}
+
+.texto-mp-estado {
+  font-family: var(--fuente-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #007eb5;
+  margin-left: 0.6rem;
+}
+
+.codigo-entregado-caja {
+  text-align: center;
+  padding: 0.5rem 0.2rem;
+}
+
+.codigo-entregado-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(212, 163, 89, 0.16);
+  color: var(--dorado-claro);
+  margin-bottom: 0.75rem;
+}
+
+.codigo-entregado-subtitulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.25rem;
+  color: var(--texto);
+  margin: 0 0 0.5rem 0;
+}
+
+.codigo-entregado-texto {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.codigo-entregado-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--fondo-input);
+  border: 2px dashed var(--dorado);
+  border-radius: var(--radio);
+  padding: 0.9rem 1rem;
+  margin: 0.8rem 0;
+}
+
+.codigo-entregado-valor {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--dorado-claro);
+  user-select: all;
+}
+
+.btn-copiar-codigo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--dorado);
+  color: #121c19;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.8rem;
+  font-family: var(--fuente-ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-copiar-codigo:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.codigo-entregado-nota {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.83rem;
+  color: var(--texto-suave);
+  margin: 0.5rem 0 0 0;
+}
+
 .compra-accion-caja {
   display: flex;
   justify-content: center;

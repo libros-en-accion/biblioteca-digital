@@ -6,6 +6,18 @@
   "functions": {
     "api/recomendar.js": {
       "maxDuration": 30
+    },
+    "api/crear-pago.js": {
+      "maxDuration": 15
+    },
+    "api/webhook-mp.js": {
+      "maxDuration": 20
+    },
+    "api/verificar-pago.js": {
+      "maxDuration": 20
+    },
+    "api/validar-codigo.js": {
+      "maxDuration": 15
     }
   },
   "headers": [

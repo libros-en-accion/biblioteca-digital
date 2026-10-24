@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=32" />
+  <link rel="stylesheet" href="style.css?v=33" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -633,16 +633,34 @@
         <button id="btnCerrarCodigo" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
       <div class="modal-body">
-        <p class="codigo-descripcion">Ingresa tu código de acceso para desbloquear el catálogo completo, descargas en PDF y EPUB, en hasta 3 dispositivos.</p>
-        <div class="codigo-input-wrapper">
-          <input type="text" id="inputCodigoDonador" class="codigo-input" placeholder="EJEMPLO: LTD-A82F" autocomplete="off" spellcheck="false" aria-label="Código de activación" />
+        <div id="vistaFormularioCodigo">
+          <p class="codigo-descripcion">Ingresa tu código de acceso (ej. <strong>LTD-XXXXX</strong>) o tu <strong>número de operación de Mercado Pago</strong> para desbloquear el catálogo completo y descargas en PDF y EPUB en hasta 3 dispositivos.</p>
+          <div class="codigo-input-wrapper">
+            <input type="text" id="inputCodigoDonador" class="codigo-input" placeholder="EJEMPLO: LTD-A82F O FOLIO DE PAGO" autocomplete="off" spellcheck="false" aria-label="Código de activación o folio de pago" />
+          </div>
+          <div id="codigoMensaje" class="codigo-mensaje" style="display:none"></div>
+          <div class="modal-acciones">
+            <button id="btnCancelarCodigo" class="btn-cancelar">Cancelar</button>
+            <button id="btnValidarCodigo" class="btn-recomendar"><i data-lucide="check"></i> Verificar código</button>
+          </div>
+          <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener">Adquiere tu acceso lifetime por $100 MXN</a> para obtener el tuyo al instante.</p>
         </div>
-        <div id="codigoMensaje" class="codigo-mensaje" style="display:none"></div>
-        <div class="modal-acciones">
-          <button id="btnCancelarCodigo" class="btn-cancelar">Cancelar</button>
-          <button id="btnValidarCodigo" class="btn-recomendar"><i data-lucide="check"></i> Verificar código</button>
+
+        <div id="cajaCodigoEntregado" class="codigo-entregado-caja" style="display:none">
+          <div class="codigo-entregado-icono"><i data-lucide="sparkles"></i></div>
+          <h3 class="codigo-entregado-subtitulo">¡Tu Acceso Lifetime está activo!</h3>
+          <p class="codigo-entregado-texto">Este navegador ya quedó desbloqueado. Guarda tu código personal para activar hasta <strong>3 dispositivos</strong> (PC, tablet o móvil):</p>
+          <div class="codigo-entregado-display">
+            <span id="valorCodigoEntregado" class="codigo-entregado-valor">LTD-XXXXX</span>
+            <button type="button" id="btnCopiarCodigoEntregado" class="btn-copiar-codigo" aria-label="Copiar mi código">
+              <i data-lucide="copy" class="icono-xs"></i> Copiar
+            </button>
+          </div>
+          <p id="notaCorreoCodigoEntregado" class="codigo-entregado-nota"></p>
+          <div class="modal-acciones" style="justify-content:center;margin-top:1.2rem;">
+            <button type="button" id="btnComenzarALeerCodigo" class="btn-recomendar"><i data-lucide="book-open"></i> Comenzar a leer</button>
+          </div>
         </div>
-        <p class="codigo-donacion-link">¿Aún no tienes un código? <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener">Adquiere tu acceso lifetime por $100 MXN</a> para obtener el tuyo.</p>
       </div>
     </div>
   </div>
@@ -682,7 +700,7 @@
           
           <div class="faq-item">
             <h4>¿Cómo puedo obtener mi Código de Acceso?</h4>
-            <p>Puedes adquirir tu código de acceso lifetime mediante un pago único de <strong>$100 MXN</strong> a través de nuestro enlace oficial de <strong>Mercado Pago</strong>: <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener">https://mpago.la/1Ek1HPz</a>. Una vez realizado el pago, envía tu comprobante por WhatsApp al <strong>+52 481 128 9106</strong> y te enviaremos tu código de activación al instante (válido para usar en hasta 3 dispositivos simultáneos).</p>
+            <p>Puedes adquirir tu código de acceso lifetime mediante un pago único de <strong>$100 MXN</strong> con <strong>Mercado Pago</strong> haciendo clic en cualquier botón de compra del sitio. Al completar tu pago, <strong>tu acceso se activa automáticamente al instante</strong>, recibes tu código personal <code>LTD-XXXXX</code> por correo electrónico y también puedes recuperarlo en cualquier momento ingresando tu número de operación de Mercado Pago en <em>«Activar Acceso»</em>. Si requieres asistencia adicional, contáctanos en <strong>contacto.libractiva@gmail.com</strong> o por WhatsApp al <strong>+52 481 128 9106</strong>.</p>
           </div>
           
           <div class="faq-item">
@@ -793,18 +811,27 @@
           </div>
         </div>
 
+        <div class="compra-email-grupo">
+          <label for="inputEmailCompra" class="compra-email-label">
+            <i data-lucide="mail" class="icono-xs"></i> Tu correo electrónico (para enviarte tu código de respaldo):
+          </label>
+          <input type="email" id="inputEmailCompra" class="compra-email-input" placeholder="ejemplo@correo.com" autocomplete="email" spellcheck="false" />
+          <div id="compraEmailMensaje" class="codigo-mensaje" style="display:none"></div>
+        </div>
+
         <div class="compra-accion-caja">
           <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-mercadopago-checkout" id="btnMercadoPagoCheckout" aria-label="Pagar con Mercado Pago">
             <img src="mercadopago.png" alt="Mercado Pago" class="img-mercadopago-logo" width="160" height="40" loading="lazy" />
+            <span id="textoMercadoPagoCheckout" class="texto-mp-estado" style="display:none">Conectando con Mercado Pago…</span>
           </a>
         </div>
 
         <div class="compra-pasos-donador">
-          <p class="pasos-titulo">✦ ¿Cómo activar tu acceso después de pagar? ✦</p>
+          <p class="pasos-titulo"><i data-lucide="zap" class="icono-xs"></i> ¿Cómo se activa tu acceso?</p>
           <ol class="pasos-lista">
-            <li>Haz clic en el botón superior para realizar tu pago seguro por <strong>$100 MXN</strong> en Mercado Pago.</li>
-            <li>Envía una foto de tu comprobante de pago por WhatsApp o al correo electrónico.</li>
-            <li>Te enviaremos tu código de activación único inmediatamente.</li>
+            <li>Ingresa tu correo arriba y haz clic en el botón de <strong>Mercado Pago</strong> para realizar tu pago único de <strong>$100 MXN</strong>.</li>
+            <li>Al finalizar el pago, volverás automáticamente a <strong>Libractiva</strong> con tu <strong>acceso activado al instante</strong> y tu código <code>LTD-XXXXX</code> en pantalla.</li>
+            <li>Además, recibirás tu código por correo electrónico para usarlo en hasta <strong>3 dispositivos</strong> (o puedes ingresar tu número de operación de Mercado Pago directamente en <em>«Activar Acceso»</em>).</li>
           </ol>
         </div>
       </div>
@@ -817,6 +844,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=32"></script>
+  <script src="app.js?v=33"></script>
 </body>
 </html>

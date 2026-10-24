@@ -4,25 +4,13 @@
 // Límite: 3 dispositivos por código. Los códigos son permanentes (sin expiración de fecha).
 
 const { createClient } = require('redis');
-const crypto = require('crypto');
-
-// Genera un ID de dispositivo único a partir de cabeceras de la petición.
-// No contiene datos personales sensibles — solo crea un fingerprint estable del navegador.
-function generarIdDispositivo(req) {
-  const userAgent = req.headers['user-agent'] || '';
-  const acceptLang = req.headers['accept-language'] || '';
-  const cfIp = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || '';
-  const raw = `${userAgent}|${acceptLang}|${cfIp}`;
-  return crypto.createHash('sha256').update(raw).digest('hex').substring(0, 16);
-}
-
-// Firma simple para la cookie donor_token usando HMAC-SHA256.
-function firmarCookie(codigoHash, secret) {
-  return crypto
-    .createHmac('sha256', secret)
-    .update(codigoHash)
-    .digest('hex');
-}
+const {
+  generarIdDispositivo,
+  firmarCookie,
+  crearCookieHeader,
+  consultarPagoMercadoPago,
+  procesarPagoAprobado
+} = require('./_lib/pagos');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -40,7 +28,7 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Error de configuración de seguridad en el servidor.' });
   }
 
-  const codigoNormalizado = codigo.trim().toUpperCase();
+  const codigoNormalizado = codigo.trim().toUpperCase().replace(/^#/, '');
   const kvKey = `donor:code:${codigoNormalizado}`;
 
   const client = createClient({
@@ -73,13 +61,54 @@ module.exports = async function handler(req, res) {
     }
 
     // 1. Verificar si el código existe en Redis
-    const registroRaw = await client.get(kvKey);
+    let codigoFinal = codigoNormalizado;
+    let kvKeyFinal = kvKey;
+    let registroRaw = await client.get(kvKeyFinal);
+    let recuperadoPorFolio = false;
+
+    // Vía 3 de Respaldo: Si el usuario ingresó su número de operación/folio de Mercado Pago (solo dígitos)
+    if (!registroRaw && /^\d{7,18}$/.test(codigoNormalizado)) {
+      const paymentKey = `donor:payment:${codigoNormalizado}`;
+      const pagoPrevioRaw = await client.get(paymentKey);
+
+      if (pagoPrevioRaw) {
+        const pagoPrevio = JSON.parse(pagoPrevioRaw);
+        if (pagoPrevio && pagoPrevio.codigo) {
+          codigoFinal = pagoPrevio.codigo;
+          kvKeyFinal = `donor:code:${codigoFinal}`;
+          registroRaw = await client.get(kvKeyFinal);
+          recuperadoPorFolio = true;
+        }
+      } else if (process.env.MP_ACCESS_TOKEN) {
+        const infoPago = await consultarPagoMercadoPago(codigoNormalizado);
+        if (infoPago.ok && infoPago.esValido) {
+          const idDisp = generarIdDispositivo(req);
+          const resultado = await procesarPagoAprobado(client, infoPago.pago, { idDispositivo: idDisp });
+          const cookieHeaderAuto = crearCookieHeader(resultado.codigo, secret);
+          res.setHeader('Set-Cookie', [cookieHeaderAuto]);
+          return res.status(200).json({
+            valido: true,
+            nuevo: true,
+            recuperadoPorFolio: true,
+            codigo: resultado.codigo,
+            dispositivos: resultado.dispositivos,
+            limite: resultado.limite
+          });
+        } else if (infoPago.ok && (infoPago.status === 'pending' || infoPago.status === 'in_process')) {
+          return res.status(400).json({
+            valido: false,
+            error: 'Tu pago en Mercado Pago aún está en proceso de acreditación. Inténtalo de nuevo en unos minutos.'
+          });
+        }
+      }
+    }
+
     const registro = registroRaw ? JSON.parse(registroRaw) : null;
 
     if (!registro) {
       return res.status(404).json({
         valido: false,
-        error: 'Código de acceso no reconocido. Verifica que sea correcto o adquiere tu acceso en https://mpago.la/1Ek1HPz'
+        error: 'Código o folio no reconocido. Verifica que esté bien escrito o adquiere tu Acceso Lifetime por $100 MXN.'
       });
     }
 
@@ -89,9 +118,7 @@ module.exports = async function handler(req, res) {
     const limite = registro.limite || 3;
 
     // Helper para emitir la cookie donor_token segura
-    const firma = firmarCookie(codigoNormalizado, secret);
-    const cookieValor = `${codigoNormalizado}.${firma}`;
-    const cookieHeader = `donor_token=${cookieValor}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=315360000`;
+    const cookieHeader = crearCookieHeader(codigoFinal, secret);
 
     // 3. Verificar si el dispositivo ya está registrado (reingreso o recuperación de sesión)
     if (dispositivos.includes(idDispositivo)) {
@@ -100,6 +127,8 @@ module.exports = async function handler(req, res) {
       return res.status(200).json({
         valido: true,
         revalidado: true,
+        recuperadoPorFolio,
+        codigo: codigoFinal,
         dispositivos: dispositivos.length,
         limite
       });
@@ -109,13 +138,13 @@ module.exports = async function handler(req, res) {
     if (dispositivos.length >= limite) {
       return res.status(403).json({
         valido: false,
-        error: `Este código de acceso ya está activo en el límite de ${limite} dispositivos. Si tienes problemas, contacta al soporte.`
+        error: `Este código de acceso ya está activo en el límite de ${limite} dispositivos. Si tienes problemas, contacta a contacto.libractiva@gmail.com.`
       });
     }
 
     // 5. Registrar el nuevo dispositivo
     const nuevosDispositivos = [...dispositivos, idDispositivo];
-    await client.set(kvKey, JSON.stringify({ ...registro, dispositivos: nuevosDispositivos }));
+    await client.set(kvKeyFinal, JSON.stringify({ ...registro, dispositivos: nuevosDispositivos }));
 
     // 6. Emitir cookie segura firmada (donor_token) al navegador
     res.setHeader('Set-Cookie', [cookieHeader]);
@@ -123,6 +152,8 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({
       valido: true,
       nuevo: true,
+      recuperadoPorFolio,
+      codigo: codigoFinal,
       dispositivos: nuevosDispositivos.length,
       limite
     });

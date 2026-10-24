@@ -467,6 +467,9 @@ function inicializarPagina() {
   cambiarVista(vistaActiva);
 
   if (window.lucide) lucide.createIcons();
+
+  // Verificar si el usuario regresa desde el checkout de Mercado Pago
+  verificarRetornoPagoMercadoPago();
 }
 
 // ── GENERAR TAGS DE FILTRO DINÁMICAMENTE ──
@@ -2404,7 +2407,23 @@ function abrirModalCompra() {
   if (!modal) return;
   modal.classList.add('abierto');
   document.body.style.overflow = 'hidden';
-  
+
+  const inputEmail = document.getElementById('inputEmailCompra');
+  const msgEmail = document.getElementById('compraEmailMensaje');
+  const estadoMp = document.getElementById('textoMercadoPagoCheckout');
+  if (inputEmail) {
+    const emailGuardado = localStorage.getItem('libractiva_email_compra') || '';
+    if (!inputEmail.value && emailGuardado) inputEmail.value = emailGuardado;
+  }
+  if (msgEmail) {
+    msgEmail.style.display = 'none';
+    msgEmail.textContent = '';
+  }
+  if (estadoMp) {
+    estadoMp.style.display = 'none';
+  }
+  if (window.lucide) lucide.createIcons({ root: modal });
+
   ultimoElementoEnfocado = document.activeElement;
   const btnCerrar = modal.querySelector('.modal-cerrar');
   if (btnCerrar) setTimeout(() => btnCerrar.focus(), 50);
@@ -2416,6 +2435,58 @@ function cerrarModalCompra() {
     modal.classList.remove('abierto');
     document.body.style.overflow = '';
     if (ultimoElementoEnfocado) ultimoElementoEnfocado.focus();
+  }
+}
+
+async function iniciarCheckoutMercadoPago(e) {
+  if (e) e.preventDefault();
+  const btn = document.getElementById('btnMercadoPagoCheckout');
+  const inputEmail = document.getElementById('inputEmailCompra');
+  const msgEmail = document.getElementById('compraEmailMensaje');
+  const estadoMp = document.getElementById('textoMercadoPagoCheckout');
+
+  const email = inputEmail ? inputEmail.value.trim().toLowerCase() : '';
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  if (email && !regexEmail.test(email)) {
+    if (msgEmail) {
+      msgEmail.textContent = 'Ingresa un correo electrónico válido o déjalo vacío.';
+      msgEmail.className = 'codigo-mensaje error';
+      msgEmail.style.display = 'block';
+    }
+    if (inputEmail) inputEmail.focus();
+    return;
+  }
+
+  if (msgEmail) {
+    msgEmail.style.display = 'none';
+    msgEmail.textContent = '';
+  }
+
+  if (email) {
+    localStorage.setItem('libractiva_email_compra', email);
+  }
+
+  if (btn) btn.style.pointerEvents = 'none';
+  if (estadoMp) {
+    estadoMp.textContent = 'Conectando con Mercado Pago…';
+    estadoMp.style.display = 'block';
+  }
+
+  try {
+    const resp = await fetch('/api/crear-pago', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    const data = await resp.json();
+    const urlDestino = (resp.ok && data && data.url) ? data.url : 'https://mpago.la/1Ek1HPz';
+    window.location.href = urlDestino;
+  } catch (err) {
+    console.warn('[iniciarCheckoutMercadoPago] Fallback a link directo:', err);
+    window.location.href = 'https://mpago.la/1Ek1HPz';
+  } finally {
+    if (btn) btn.style.pointerEvents = '';
   }
 }
 
@@ -3078,12 +3149,14 @@ function registrarEventos() {
   el('modalCompra')?.addEventListener('click', (e) => {
     if (e.target === el('modalCompra')) cerrarModalCompra();
   });
+  el('btnMercadoPagoCheckout')?.addEventListener('click', iniciarCheckoutMercadoPago);
 
   // Interceptar todos los clics a Mercado Pago para abrir el modal explicativo
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a[href*="mpago.la/"]');
     if (link && link.id !== 'btnMercadoPagoCheckout') {
       e.preventDefault();
+      cerrarModalCodigo();
       abrirModalCompra();
     }
   });
@@ -3958,9 +4031,13 @@ function abrirModalCodigo(callbackAlValidar) {
   const modal = document.getElementById('modalCodigo');
   const input = document.getElementById('inputCodigoDonador');
   const msg = document.getElementById('codigoMensaje');
+  const vistaForm = document.getElementById('vistaFormularioCodigo');
+  const cajaEntregado = document.getElementById('cajaCodigoEntregado');
   if (modal) {
     modal.classList.add('abierto');
     document.body.style.overflow = 'hidden';
+    if (vistaForm) vistaForm.style.display = 'block';
+    if (cajaEntregado) cajaEntregado.style.display = 'none';
     if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
     if (input) { input.value = ''; setTimeout(() => input.focus(), 80); }
     lucide.createIcons();
@@ -3975,6 +4052,132 @@ function cerrarModalCodigo() {
   }
 }
 
+function mostrarCodigoEntregado({ codigo, email, emailEnviado }) {
+  const modal = document.getElementById('modalCodigo');
+  const vistaForm = document.getElementById('vistaFormularioCodigo');
+  const cajaEntregado = document.getElementById('cajaCodigoEntregado');
+  const valorEl = document.getElementById('valorCodigoEntregado');
+  const notaCorreoEl = document.getElementById('notaCorreoCodigoEntregado');
+  const btnCopiar = document.getElementById('btnCopiarCodigoEntregado');
+  const btnComenzar = document.getElementById('btnComenzarALeerCodigo');
+
+  if (!modal || !cajaEntregado || !valorEl) return;
+
+  localStorage.setItem('libractiva_mi_codigo', codigo);
+
+  cerrarModalCompra();
+  modal.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+
+  if (vistaForm) vistaForm.style.display = 'none';
+  cajaEntregado.style.display = 'block';
+  valorEl.textContent = codigo;
+
+  if (notaCorreoEl) {
+    if (email && emailEnviado) {
+      notaCorreoEl.textContent = `También enviamos una copia de respaldo a ${email}.`;
+    } else if (email) {
+      notaCorreoEl.textContent = `Guarda este código en un lugar seguro para usarlo en tus otros dispositivos.`;
+    } else {
+      notaCorreoEl.textContent = `Guarda una captura o copia este código para activar tus otros dispositivos.`;
+    }
+  }
+
+  if (btnCopiar) {
+    btnCopiar.onclick = async () => {
+      try {
+        await navigator.clipboard.writeText(codigo);
+        btnCopiar.innerHTML = '<i data-lucide="check"></i> ¡Copiado!';
+        if (window.lucide) lucide.createIcons({ root: btnCopiar });
+        setTimeout(() => {
+          btnCopiar.innerHTML = '<i data-lucide="copy"></i> Copiar';
+          if (window.lucide) lucide.createIcons({ root: btnCopiar });
+        }, 2200);
+      } catch (_) {
+        // Fallback selección manual
+        const range = document.createRange();
+        range.selectNodeContents(valorEl);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    };
+  }
+
+  if (btnComenzar) {
+    btnComenzar.onclick = () => {
+      cerrarModalCodigo();
+      if (typeof _callbackCodigoValidado === 'function') {
+        _callbackCodigoValidado();
+      }
+    };
+  }
+
+  if (window.lucide) lucide.createIcons({ root: modal });
+}
+
+async function verificarRetornoPagoMercadoPago() {
+  const params = new URLSearchParams(window.location.search);
+  const paymentId = params.get('payment_id') || params.get('collection_id');
+  const status = params.get('status') || params.get('collection_status');
+  const pagoFlag = params.get('pago');
+
+  if (!paymentId && !pagoFlag) return;
+
+  // Limpiar los query params de Mercado Pago de la barra de direcciones sin recargar
+  const urlLimpia = window.location.pathname + window.location.hash;
+  window.history.replaceState({}, document.title, urlLimpia);
+
+  if (pagoFlag === 'pendiente' || status === 'pending' || status === 'in_process') {
+    abrirModalCodigo();
+    mostrarMensajeCodigo(
+      'Tu pago está en proceso de acreditación por Mercado Pago. En cuanto se acredite recibirás tu código por correo o podrás escribir aquí tu número de operación.',
+      'exito'
+    );
+    return;
+  }
+
+  if (!paymentId) return;
+
+  abrirModalCodigo();
+  mostrarMensajeCodigo('Verificando tu aportación con Mercado Pago y generando tu código…', 'exito');
+
+  try {
+    const emailGuardado = localStorage.getItem('libractiva_email_compra') || '';
+    const resp = await fetch('/api/verificar-pago', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ paymentId, email: emailGuardado }),
+    });
+    const data = await resp.json();
+
+    if (resp.ok && data.valido && data.codigo) {
+      localStorage.setItem('esDonador', 'true');
+      localStorage.removeItem(IA_USOS_KEY);
+      actualizarBtnCodigo(true);
+      mostrarPagina(paginaActual, false);
+      renderizarDestacados();
+      mostrarCodigoEntregado(data);
+    } else if (data && data.pendiente) {
+      mostrarMensajeCodigo(
+        data.error || 'Tu pago sigue procesándose. Cuando se acredite, ingresa tu número de operación aquí.',
+        'exito'
+      );
+    } else {
+      mostrarMensajeCodigo(
+        (data && data.error) || 'No pudimos verificar el pago automáticamente. Ingresa tu número de operación de Mercado Pago aquí.',
+        'error'
+      );
+    }
+  } catch (err) {
+    console.error('[verificarRetornoPagoMercadoPago]', err);
+    mostrarMensajeCodigo(
+      'Error de conexión al verificar el pago. Puedes ingresar tu número de operación de Mercado Pago directamente en este campo.',
+      'error'
+    );
+  }
+}
+
 async function validarCodigo() {
   const input = document.getElementById('inputCodigoDonador');
   const btn = document.getElementById('btnValidarCodigo');
@@ -3982,7 +4185,7 @@ async function validarCodigo() {
   const codigo = input ? input.value.trim() : '';
 
   if (!codigo) {
-    mostrarMensajeCodigo('Escribe tu código de acceso.', 'error');
+    mostrarMensajeCodigo('Escribe tu código de acceso o número de operación de Mercado Pago.', 'error');
     return;
   }
 
@@ -3999,11 +4202,18 @@ async function validarCodigo() {
 
     if (resp.ok && data.valido) {
       localStorage.setItem('esDonador', 'true');
-      mostrarMensajeCodigo(`¡Acceso activado! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
+      localStorage.removeItem(IA_USOS_KEY);
       // Actualizar botón de código en el hero y ocultar botón de compra
       actualizarBtnCodigo(true);
       mostrarPagina(paginaActual, false);
       renderizarDestacados();
+
+      if (data.recuperadoPorFolio && data.codigo) {
+        mostrarCodigoEntregado(data);
+        return;
+      }
+
+      mostrarMensajeCodigo(`¡Acceso activado! Tienes acceso completo en ${data.dispositivos}/${data.limite} dispositivos.`, 'exito');
       setTimeout(() => {
         cerrarModalCodigo();
         if (typeof _callbackCodigoValidado === 'function') {
