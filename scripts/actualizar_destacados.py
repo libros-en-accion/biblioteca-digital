@@ -193,18 +193,22 @@ def main():
 
         # Fallback si Amazon bloqueó o no se alcanzaron 10 libros
         if len(encontrados) < 10:
-            ids_populares_fallback = [2835, 2300, 1139, 2079, 2828, 2089, 14, 670, 2494, 1140, 1974, 782, 1121, 2852, 2944]
-            libros_fallback = [l for l in db_libros if l["id"] in ids_populares_fallback]
-            import random
-            random.shuffle(libros_fallback)
+            ids_populares_fallback = [1581, 2835, 2300, 1139, 2079, 2828, 2089, 14, 670, 2494, 1140, 1974, 782, 1121, 2852, 2944]
+            libros_fallback = [l for l in db_libros if l["id"] in ids_populares_fallback and l["id"] != 1581]
             for l in libros_fallback:
                 item = (l["id"], l["titulo"])
                 if item not in encontrados:
                     encontrados.append(item)
-                    if len(encontrados) == 10:
-                        break
-                        
+                if len(encontrados) >= 10:
+                    break
+
         if encontrados:
+            # Garantizar que Carrie (ID 1581) esté siempre en el puesto #1
+            carrie_item = next((item for item in encontrados if item[0] == 1581), (1581, "Carrie"))
+            encontrados = [item for item in encontrados if item[0] != 1581]
+            encontrados.insert(0, carrie_item)
+            encontrados = encontrados[:10]
+
             actualizar_app_js(encontrados)
             print(f"\nSe actualizaron {len(encontrados)} libros destacados en app.js:")
             for b_id, b_title in encontrados:

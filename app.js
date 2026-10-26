@@ -2,6 +2,7 @@
 // Puedes actualizar manualmente los IDs de esta lista (por ejemplo, cada semana)
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
+  1581, // Carrie - Stephen King (#1)
   2835, // El poder del ahora
   2300, // La Sombra del Viento
   2079, // 1984
@@ -637,17 +638,8 @@ function renderizarDestacados() {
     return;
   }
 
-  // Priorizar IDs del ranking real de Redis si hay al menos 4
-  let idsDestacados = rankingMasLeidos.length >= 4 
-    ? rankingMasLeidos.map(r => r.id) 
-    : [...LIBROS_DESTACADOS_IDS];
-
-  // Si el ranking tiene pocos elementos, complementar con los destacados curados
-  if (idsDestacados.length < 8) {
-    LIBROS_DESTACADOS_IDS.forEach(id => {
-      if (!idsDestacados.includes(id)) idsDestacados.push(id);
-    });
-  }
+  // Orden fijo y estable según la lista curada LIBROS_DESTACADOS_IDS (#1 Carrie)
+  const idsDestacados = [...LIBROS_DESTACADOS_IDS];
 
   const librosDestacados = idsDestacados
     .map(id => libros.find(l => l.id === id))
@@ -658,12 +650,10 @@ function renderizarDestacados() {
     return;
   }
 
-  // Título dinámico del carrusel
+  // Título de la sección
   const tituloSeccion = seccion.querySelector('.seccion-titulo-destacados');
   if (tituloSeccion) {
-    tituloSeccion.textContent = rankingMasLeidos.length >= 4
-      ? 'Los más leídos de la semana'
-      : 'Los más destacados';
+    tituloSeccion.textContent = 'Los más destacados';
   }
 
   seccion.style.display = 'block';
