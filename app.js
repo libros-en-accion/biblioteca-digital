@@ -491,33 +491,15 @@ function generarTagsFiltro() {
 
   contenedor.innerHTML = '';
 
-  // 1. Renderizar Tag "Todos" al principio
+  // 1. Renderizar Tag "Todos" al principio (sobrio, estilo editorial)
   const btnTodos = document.createElement('button');
   btnTodos.className = 'tag-genero activo';
   btnTodos.dataset.genero = 'Todos';
-  btnTodos.innerHTML = `<i data-lucide="library" class="icono-sm"></i> Todos`;
+  btnTodos.textContent = 'Todos';
   btnTodos.addEventListener('click', () => filtrarGenero('Todos', btnTodos));
   contenedor.appendChild(btnTodos);
 
-  // 1.5 Botón rápido de Sagas y Series
-  const btnSagas = document.createElement('button');
-  btnSagas.className = `tag-genero tag-sagas-btn ${sagaActiva !== 'Todas' ? 'activo' : ''}`;
-  btnSagas.id = 'btnTagSagas';
-  btnSagas.setAttribute('aria-pressed', sagaActiva !== 'Todas' ? 'true' : 'false');
-  btnSagas.title = 'Explorar todas las sagas y series literarias en orden de lectura';
-  btnSagas.innerHTML = `<i data-lucide="layers" class="icono-sm"></i> Sagas y Series`;
-  btnSagas.addEventListener('click', () => {
-    if (sagaActiva !== 'Todas') {
-      sagaActiva = 'Todas';
-      sincronizarUISaga();
-      filtrarGenero('Todos', btnTodos);
-    } else {
-      seleccionarSaga('__TODAS__');
-    }
-  });
-  contenedor.appendChild(btnSagas);
-
-  // 2. Renderizar los Mood Tags (Descubrimiento Inteligente)
+  // 2. Renderizar los Mood Tags (Descubrimiento Inteligente con iconos temáticos)
   moodTagsData.forEach(m => {
     const btn = document.createElement('button');
     btn.className = 'tag-genero tag-mood-btn';
@@ -537,17 +519,16 @@ function generarTagsFiltro() {
   separador.setAttribute('aria-hidden', 'true');
   contenedor.appendChild(separador);
 
-  // 3. Renderizar Tags por género (top 8 visibles + Ver todos)
+  // 3. Renderizar Tags por género (texto sobrio y legible sin micro-iconos repetitivos)
   const MAX_GENEROS_VISIBLES = 8;
   const generosPrincipales = generosOrdenados.slice(0, MAX_GENEROS_VISIBLES);
   const generosRestantes = generosOrdenados.slice(MAX_GENEROS_VISIBLES);
 
   generosPrincipales.forEach(([genero, cantidad]) => {
-    const iconName = generoIconMap[genero] || 'library';
     const btn = document.createElement('button');
     btn.className = 'tag-genero';
     btn.dataset.genero = genero;
-    btn.innerHTML = `<i data-lucide="${iconName}" class="icono-sm"></i> ${genero}`;
+    btn.textContent = genero;
     btn.title = `${cantidad} libros`;
     btn.addEventListener('click', () => filtrarGenero(genero, btn));
     contenedor.appendChild(btn);
@@ -565,11 +546,10 @@ function generarTagsFiltro() {
     grupoOculto.style.contents = 'none';
 
     generosRestantes.forEach(([genero, cantidad]) => {
-      const iconName = generoIconMap[genero] || 'library';
       const btn = document.createElement('button');
       btn.className = 'tag-genero tag-genero-extra';
       btn.dataset.genero = genero;
-      btn.innerHTML = `<i data-lucide="${iconName}" class="icono-sm"></i> ${genero}`;
+      btn.textContent = genero;
       btn.title = `${cantidad} libros`;
       btn.addEventListener('click', () => filtrarGenero(genero, btn));
       grupoOculto.appendChild(btn);
@@ -592,13 +572,13 @@ function generarTagsFiltro() {
         btnVerTodos.innerHTML = `<i data-lucide="minus" class="icono-sm"></i> Ocultar`;
         btnVerTodos.dataset.expandido = 'true';
       }
-      if (window.lucide) lucide.createIcons({ root: grupoOculto });
+      if (window.lucide) lucide.createIcons({ root: contenedor });
     });
 
     contenedor.appendChild(btnVerTodos);
     contenedor.appendChild(grupoOculto);
   }
-  
+
   if (window.lucide) lucide.createIcons({ root: contenedor });
 }
 
@@ -1325,7 +1305,7 @@ function mostrarLibros(lista) {
   const total = listaFiltrada.length;
   const inicio = (paginaActual - 1) * LIBROS_POR_PAGINA + 1;
   const fin = Math.min(paginaActual * LIBROS_POR_PAGINA, total);
-  contador.textContent = `Mostrando ${inicio}–${fin} de ${total} libro${total !== 1 ? 's' : ''}`;
+  contador.textContent = `Mostrando ${inicio}–${fin} de ${total.toLocaleString('es-MX')} libro${total !== 1 ? 's' : ''}`;
 
   const esDonador = esDonadorLocal();
 
@@ -2880,20 +2860,12 @@ function actualizarBreadcrumbs() {
       }
       if (item.type === 'favoritos') {
         soloFavoritos = false;
-        const btnFav = document.getElementById('btnFavoritos');
-        if (btnFav) {
-          btnFav.classList.remove('activo');
-          btnFav.setAttribute('aria-pressed', 'false');
-        }
+        actualizarSegmentoBiblioteca();
         filtrar();
       }
       if (item.type === 'leyendo') {
         soloLeyendo = false;
-        const btnLey = document.getElementById('btnLeyendo');
-        if (btnLey) {
-          btnLey.classList.remove('activo');
-          btnLey.setAttribute('aria-pressed', 'false');
-        }
+        actualizarSegmentoBiblioteca();
         filtrar();
       }
       if (item.type === 'letra') {
@@ -3020,20 +2992,21 @@ function registrarEventos() {
     }
   });
 
-  // Toggle Favoritos
+  // Control Segmentado: Vistas de Biblioteca (Todos / Favoritos / Leyendo)
+  el('btnSegmentoTodos')?.addEventListener('click', () => {
+    if (!soloFavoritos && !soloLeyendo) return;
+    soloFavoritos = false;
+    soloLeyendo = false;
+    actualizarSegmentoBiblioteca();
+    paginaActual = 1;
+    filtrar();
+  });
+
+  // Toggle Favoritos en segmento
   el('btnFavoritos')?.addEventListener('click', () => {
     soloFavoritos = !soloFavoritos;
-    if (soloFavoritos) {
-      soloLeyendo = false;
-      const btnLey = el('btnLeyendo');
-      if (btnLey) {
-        btnLey.classList.remove('activo');
-        btnLey.setAttribute('aria-pressed', 'false');
-      }
-    }
-    const btn = el('btnFavoritos');
-    btn.classList.toggle('activo', soloFavoritos);
-    btn.setAttribute('aria-pressed', soloFavoritos ? 'true' : 'false');
+    if (soloFavoritos) soloLeyendo = false;
+    actualizarSegmentoBiblioteca();
     paginaActual = 1;
     filtrar();
 
@@ -3045,20 +3018,11 @@ function registrarEventos() {
     }
   });
 
-  // Toggle Leyendo
+  // Toggle Leyendo en segmento
   el('btnLeyendo')?.addEventListener('click', () => {
     soloLeyendo = !soloLeyendo;
-    if (soloLeyendo) {
-      soloFavoritos = false;
-      const btnFav = el('btnFavoritos');
-      if (btnFav) {
-        btnFav.classList.remove('activo');
-        btnFav.setAttribute('aria-pressed', 'false');
-      }
-    }
-    const btn = el('btnLeyendo');
-    btn.classList.toggle('activo', soloLeyendo);
-    btn.setAttribute('aria-pressed', soloLeyendo ? 'true' : 'false');
+    if (soloLeyendo) soloFavoritos = false;
+    actualizarSegmentoBiblioteca();
     paginaActual = 1;
     filtrar();
 
@@ -3361,20 +3325,20 @@ function limpiarTodo() {
   document.querySelectorAll('#menuDropdownExtension .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
   document.querySelector('#menuDropdownExtension .dropdown-item[data-valor="Todas"]')?.classList.add('seleccionado');
   const labelExt = document.getElementById('labelDropdownExtension');
-  if (labelExt) labelExt.textContent = 'Extensión';
+  if (labelExt) labelExt.textContent = 'Extensión: Todas';
 
   // Limpiar Idioma dropdown
   idiomaActivo = 'Todos';
   document.querySelectorAll('#menuDropdownIdioma .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
   document.querySelector('#menuDropdownIdioma .dropdown-item[data-valor="Todos"]')?.classList.add('seleccionado');
   const labelIdi = document.getElementById('labelDropdownIdioma');
-  if (labelIdi) labelIdi.textContent = 'Idioma';
+  if (labelIdi) labelIdi.textContent = 'Idioma: Todos';
 
   // Limpiar Orden custom
   document.querySelectorAll('#menuDropdownOrden .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
   document.querySelector('#menuDropdownOrden .dropdown-item[data-valor="default"]')?.classList.add('seleccionado');
   const labelOrden = document.getElementById('labelDropdownOrden');
-  if (labelOrden) labelOrden.textContent = 'Ordenar por…';
+  if (labelOrden) labelOrden.textContent = 'Ordenar: Por defecto';
   ordenActivo = 'default';
 
   // Limpiar Mood Tags
@@ -3384,21 +3348,10 @@ function limpiarTodo() {
     b.setAttribute('aria-pressed', 'false');
   });
 
-  // Desactivar filtro de favoritos
+  // Desactivar filtros de vistas personales (Segmentado)
   soloFavoritos = false;
-  const btnFav = document.getElementById('btnFavoritos');
-  if (btnFav) {
-    btnFav.classList.remove('activo');
-    btnFav.setAttribute('aria-pressed', 'false');
-  }
-
-  // Desactivar filtro de leyendo
   soloLeyendo = false;
-  const btnLey = document.getElementById('btnLeyendo');
-  if (btnLey) {
-    btnLey.classList.remove('activo');
-    btnLey.setAttribute('aria-pressed', 'false');
-  }
+  actualizarSegmentoBiblioteca();
 
   // Limpiar colección y saga
   coleccionActiva = null;
@@ -3414,6 +3367,26 @@ function limpiarTodo() {
   document.querySelectorAll('.btn-indice-letra').forEach(b => b.classList.toggle('activo', b.dataset.letra === 'Todas'));
 
   filtrarGenero('Todos', document.querySelector('.tag-genero[data-genero="Todos"]'));
+}
+
+function actualizarSegmentoBiblioteca() {
+  const btnTodos = document.getElementById('btnSegmentoTodos');
+  const btnFav = document.getElementById('btnFavoritos');
+  const btnLey = document.getElementById('btnLeyendo');
+
+  const esTodos = !soloFavoritos && !soloLeyendo;
+  if (btnTodos) {
+    btnTodos.classList.toggle('activo', esTodos);
+    btnTodos.setAttribute('aria-selected', esTodos ? 'true' : 'false');
+  }
+  if (btnFav) {
+    btnFav.classList.toggle('activo', soloFavoritos);
+    btnFav.setAttribute('aria-selected', soloFavoritos ? 'true' : 'false');
+  }
+  if (btnLey) {
+    btnLey.classList.toggle('activo', soloLeyendo);
+    btnLey.setAttribute('aria-selected', soloLeyendo ? 'true' : 'false');
+  }
 }
 
 // ── CUSTOM LOGIC FOR REDESIGNED CONTROLS ──
@@ -3662,7 +3635,10 @@ function inicializarDropdowns() {
         menuOrden.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
         item.classList.add('seleccionado');
         ordenActivo = item.dataset.valor;
-        if (labelOrden) labelOrden.textContent = item.textContent;
+        if (labelOrden) {
+          const txt = item.textContent.trim();
+          labelOrden.textContent = txt.startsWith('Ordenar:') ? txt : `Ordenar: ${txt}`;
+        }
         dropdownOrden.classList.remove('abierto');
         btnOrden.setAttribute('aria-expanded', 'false');
         filtrar();
@@ -3776,7 +3752,7 @@ function inicializarDropdowns() {
         epocaActiva = item.dataset.valor;
         if (labelEpoca) {
           const labelText = item.childNodes[0].textContent.trim();
-          labelEpoca.textContent = labelText;
+          labelEpoca.textContent = labelText.startsWith('Época:') ? labelText : `Época: ${labelText}`;
         }
         dropdownEpoca.classList.remove('abierto');
         btnEpoca.setAttribute('aria-expanded', 'false');
@@ -3805,7 +3781,10 @@ function inicializarDropdowns() {
         menuExt.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
         item.classList.add('seleccionado');
         extensionActiva = item.dataset.valor;
-        if (labelExt) labelExt.textContent = item.textContent.trim();
+        if (labelExt) {
+          const labelText = item.textContent.trim();
+          labelExt.textContent = labelText.startsWith('Extensión:') ? labelText : `Extensión: ${labelText}`;
+        }
         dropdownExt.classList.remove('abierto');
         btnExt.setAttribute('aria-expanded', 'false');
         filtrar();
@@ -3833,7 +3812,10 @@ function inicializarDropdowns() {
         menuIdioma.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
         item.classList.add('seleccionado');
         idiomaActivo = item.dataset.valor;
-        if (labelIdioma) labelIdioma.textContent = item.textContent.trim();
+        if (labelIdioma) {
+          const labelText = item.textContent.trim();
+          labelIdioma.textContent = labelText.startsWith('Idioma:') ? labelText : `Idioma: ${labelText}`;
+        }
         dropdownIdioma.classList.remove('abierto');
         btnIdioma.setAttribute('aria-expanded', 'false');
         filtrar();
@@ -3879,7 +3861,7 @@ function actualizarDropdownEpocaUI() {
     if (targetItem) {
       targetItem.classList.add('seleccionado');
       const labelText = targetItem.childNodes[0].textContent.trim();
-      labelEpoca.textContent = labelText;
+      labelEpoca.textContent = labelText.startsWith('Época:') ? labelText : `Época: ${labelText}`;
     }
   }
 }
@@ -3898,7 +3880,7 @@ function poblarDropdownAutores() {
 
   const autoresOrdenados = Array.from(autoresSet).sort((a, b) => a.localeCompare(b, 'es'));
 
-  menuAutor.innerHTML = '<li data-valor="Todos" class="dropdown-item seleccionado" role="option">Todos los autores</li>';
+  menuAutor.innerHTML = '<li data-valor="Todos" class="dropdown-item seleccionado" role="option">Autor: Todos</li>';
 
   autoresOrdenados.forEach(autor => {
     const li = document.createElement('li');
@@ -3927,6 +3909,7 @@ function poblarDropdownAutores() {
     menuAutor.querySelector('.dropdown-item[data-valor="Todos"]').classList.add('seleccionado');
     autorActivo = 'Todos';
     inputAutor.value = '';
+    inputAutor.placeholder = 'Autor: Todos';
     if (btnLimpiarAutor) btnLimpiarAutor.style.display = 'none';
     dropdownAutor.classList.remove('abierto');
     filtrar();

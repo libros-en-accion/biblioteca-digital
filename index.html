@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=33" />
+  <link rel="stylesheet" href="style.css?v=34" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -146,7 +146,21 @@
   <!-- ═══ BARRA DE CONTROLES ═══ -->
   <div class="controles-barra">
     <div class="controles-izq">
-      <p id="contador" class="contador"></p>
+      <!-- Vistas Personales Segmentadas (Modo de Biblioteca) -->
+      <div class="segmento-biblioteca" role="tablist" aria-label="Vistas de biblioteca">
+        <button id="btnSegmentoTodos" class="btn-segmento activo" role="tab" aria-selected="true" aria-label="Ver catálogo completo">
+          Catálogo
+        </button>
+        <button id="btnFavoritos" class="btn-segmento" role="tab" aria-selected="false" aria-label="Ver mis libros favoritos">
+          <i data-lucide="heart" class="icono-sm"></i>
+          <span>Favoritos</span>
+        </button>
+        <button id="btnLeyendo" class="btn-segmento" role="tab" aria-selected="false" aria-label="Ver libros que estoy leyendo">
+          <i data-lucide="book-marked" class="icono-sm"></i>
+          <span>Leyendo</span>
+        </button>
+      </div>
+
       <!-- Botón de filtros para móviles -->
       <button id="btnToggleFiltrosMovil" class="btn-toggle-filtros-movil" aria-expanded="false" aria-label="Mostrar u ocultar filtros">
         <i data-lucide="sliders-horizontal" class="icono-sm"></i>
@@ -159,12 +173,12 @@
       <!-- Buscador de Autor Custom (Searchable Dropdown) -->
       <div class="custom-dropdown searchable" id="dropdownAutor">
         <div class="dropdown-trigger">
-          <input type="text" class="dropdown-input" id="inputDropdownAutor" placeholder="Todos los autores" autocomplete="off" aria-label="Filtrar por autor" />
+          <input type="text" class="dropdown-input" id="inputDropdownAutor" placeholder="Autor: Todos" autocomplete="off" aria-label="Filtrar por autor" />
           <button class="dropdown-clear-btn" id="btnLimpiarAutor" style="display:none" aria-label="Limpiar autor"><i data-lucide="x" class="icono-sm"></i></button>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </div>
         <ul class="dropdown-menu" role="listbox" id="menuDropdownAutor">
-          <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Todos los autores</li>
+          <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Autor: Todos</li>
           <!-- Se llena dinámicamente con JS -->
         </ul>
       </div>
@@ -172,11 +186,11 @@
       <!-- Época Custom (Custom Dropdown Menu) -->
       <div class="custom-dropdown" id="dropdownEpoca">
         <button class="dropdown-btn" id="btnDropdownEpoca" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por época">
-          <span id="labelDropdownEpoca">Todas las épocas</span>
+          <span id="labelDropdownEpoca">Época: Todas</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
         <ul class="dropdown-menu" role="listbox" id="menuDropdownEpoca">
-          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Todas las épocas</li>
+          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Época: Todas</li>
           <li data-valor="pre-1800" class="dropdown-item" role="option">Antes de 1800</li>
           <li data-valor="1800-1899" class="dropdown-item" role="option">S. XIX (1800s)</li>
           <li data-valor="1900-1949" class="dropdown-item" role="option">S. XX (1900-1949)</li>
@@ -188,12 +202,12 @@
       <!-- Extensión / Páginas (Custom Dropdown Menu) -->
       <div class="custom-dropdown" id="dropdownExtension">
         <button class="dropdown-btn" id="btnDropdownExtension" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por extensión">
-          <span id="labelDropdownExtension">Extensión</span>
+          <span id="labelDropdownExtension">Extensión: Todas</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
         <ul class="dropdown-menu" role="listbox" id="menuDropdownExtension">
-          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Cualquier extensión</li>
-          <li data-valor="corta" class="dropdown-item" role="option">Lectura rápida (&lt; 150 págs.)</li>
+          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Extensión: Todas</li>
+          <li data-valor="corta" class="dropdown-item" role="option">Corta (&lt; 150 págs.)</li>
           <li data-valor="media" class="dropdown-item" role="option">Mediana (150–350 págs.)</li>
           <li data-valor="larga" class="dropdown-item" role="option">Extensa (&gt; 350 págs.)</li>
         </ul>
@@ -202,57 +216,15 @@
       <!-- Idioma (Custom Dropdown Menu) -->
       <div class="custom-dropdown" id="dropdownIdioma">
         <button class="dropdown-btn" id="btnDropdownIdioma" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por idioma">
-          <span id="labelDropdownIdioma">Idioma</span>
+          <span id="labelDropdownIdioma">Idioma: Todos</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
         <ul class="dropdown-menu" role="listbox" id="menuDropdownIdioma">
-          <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Todos los idiomas</li>
+          <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Idioma: Todos</li>
           <li data-valor="es" class="dropdown-item" role="option">🇪🇸 Español</li>
           <li data-valor="en" class="dropdown-item" role="option">🇬🇧 English</li>
         </ul>
       </div>
-
-      <!-- Sagas y Series (Custom Dropdown Menu) -->
-      <div class="custom-dropdown" id="dropdownSaga">
-        <button class="dropdown-btn" id="btnDropdownSaga" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por saga o serie">
-          <span id="labelDropdownSaga"><i data-lucide="layers" class="icono-sm"></i> Sagas</span>
-          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
-        </button>
-        <ul class="dropdown-menu" role="listbox" id="menuDropdownSaga">
-          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Todas las obras</li>
-          <li data-valor="__TODAS__" class="dropdown-item" role="option">Todas las sagas</li>
-          <!-- Se llena dinámicamente con las sagas -->
-        </ul>
-      </div>
-
-      <!-- Ordenamiento Custom (Custom Dropdown Menu) -->
-      <div class="custom-dropdown" id="dropdownOrden">
-        <button class="dropdown-btn" id="btnDropdownOrden" aria-haspopup="listbox" aria-expanded="false" aria-label="Ordenar catálogo">
-          <span id="labelDropdownOrden">Ordenar por…</span>
-          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
-        </button>
-        <ul class="dropdown-menu" role="listbox" id="menuDropdownOrden">
-          <li data-valor="default" class="dropdown-item seleccionado" role="option">Ordenar por…</li>
-          <li data-valor="mas-leidos" class="dropdown-item" role="option">Más leídos esta semana</li>
-          <li data-valor="titulo-asc" class="dropdown-item" role="option">Título A → Z</li>
-          <li data-valor="titulo-desc" class="dropdown-item" role="option">Título Z → A</li>
-          <li data-valor="autor-asc" class="dropdown-item" role="option">Autor A → Z</li>
-          <li data-valor="anio-desc" class="dropdown-item" role="option">Más recientes</li>
-          <li data-valor="anio-asc" class="dropdown-item" role="option">Más antiguos</li>
-        </ul>
-      </div>
-
-      <!-- Toggle Favoritos -->
-      <button id="btnFavoritos" class="btn-favoritos-toggle" aria-label="Mostrar solo favoritos" aria-pressed="false">
-        <i data-lucide="heart"></i>
-        <span>Favoritos</span>
-      </button>
-
-      <!-- Toggle Leyendo -->
-      <button id="btnLeyendo" class="btn-favoritos-toggle btn-leyendo-toggle" aria-label="Mostrar libros que estás leyendo" aria-pressed="false">
-        <i data-lucide="book-marked"></i>
-        <span>Leyendo</span>
-      </button>
     </div>
   </div>
 
@@ -317,18 +289,42 @@
   <!-- ═══ CABECERA DEL CATÁLOGO ═══ -->
   <div class="catalogo-header-barra">
     <div class="catalogo-barra-info">
-      <h3 class="catalogo-barra-titulo" id="catalogoTitulo">Catálogo Completo</h3>
+      <div class="catalogo-titular-fila">
+        <h3 class="catalogo-barra-titulo" id="catalogoTitulo">Catálogo Completo</h3>
+        <span class="catalogo-separador-punto" aria-hidden="true">·</span>
+        <p id="contador" class="contador"></p>
+      </div>
       <button id="btnCerrarPack" class="btn-cerrar-pack" style="display: none" title="Quitar filtro de colección">
         <i data-lucide="x"></i> Quitar Colección
       </button>
     </div>
-    <div class="vista-controles">
-      <button id="btnVistaGrid" class="btn-vista activo" title="Vista cuadrícula" aria-label="Vista cuadrícula">
-        <i data-lucide="layout-grid"></i>
-      </button>
-      <button id="btnVistaLista" class="btn-vista" title="Vista lista" aria-label="Vista lista">
-        <i data-lucide="list"></i>
-      </button>
+    
+    <div class="catalogo-barra-acciones">
+      <!-- Ordenamiento Custom -->
+      <div class="custom-dropdown" id="dropdownOrden">
+        <button class="dropdown-btn" id="btnDropdownOrden" aria-haspopup="listbox" aria-expanded="false" aria-label="Ordenar catálogo">
+          <span id="labelDropdownOrden">Ordenar: Por defecto</span>
+          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-derecha" role="listbox" id="menuDropdownOrden">
+          <li data-valor="default" class="dropdown-item seleccionado" role="option">Ordenar: Por defecto</li>
+          <li data-valor="mas-leidos" class="dropdown-item" role="option">Más leídos esta semana</li>
+          <li data-valor="titulo-asc" class="dropdown-item" role="option">Título A → Z</li>
+          <li data-valor="titulo-desc" class="dropdown-item" role="option">Título Z → A</li>
+          <li data-valor="autor-asc" class="dropdown-item" role="option">Autor A → Z</li>
+          <li data-valor="anio-desc" class="dropdown-item" role="option">Más recientes</li>
+          <li data-valor="anio-asc" class="dropdown-item" role="option">Más antiguos</li>
+        </ul>
+      </div>
+
+      <div class="vista-controles">
+        <button id="btnVistaGrid" class="btn-vista activo" title="Vista cuadrícula" aria-label="Vista cuadrícula">
+          <i data-lucide="layout-grid"></i>
+        </button>
+        <button id="btnVistaLista" class="btn-vista" title="Vista lista" aria-label="Vista lista">
+          <i data-lucide="list"></i>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -844,6 +840,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=33"></script>
+  <script src="app.js?v=34"></script>
 </body>
 </html>

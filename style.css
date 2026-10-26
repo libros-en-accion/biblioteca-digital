@@ -28,9 +28,10 @@
   --dorado-claro: #d4a94a;
   --dorado-suave: #e8d5a3;
   --dorado-glow: rgba(184, 137, 42, 0.15);
+  --dorado-texto: #7d5912; /* WCAG AA > 5:1 sobre beige claro */
   --texto: #2c1810;
-  --texto-suave: #6a5a48;
-  --texto-medio: #5a4030;
+  --texto-suave: #574837; /* WCAG AA 5.5:1 sobre fondo claro */
+  --texto-medio: #443023; /* WCAG AA 8.2:1 sobre fondo claro */
   --borde: #d4c4a8;
   --borde-suave: #e8dcc8;
   --sombra: rgba(44, 24, 16, 0.08);
@@ -70,6 +71,7 @@
   --dorado-claro: #e8c56a;
   --dorado-suave: #2b3d39; /* Adaptado a teal oscuro */
   --dorado-glow: rgba(212, 169, 74, 0.12);
+  --dorado-texto: #e8c56a; /* WCAG AA > 9:1 sobre fondo oscuro */
   --texto: #e8dcc8;
   --texto-suave: #b8a890;
   --texto-medio: #c8b8a0;
@@ -161,7 +163,7 @@ body {
   background: linear-gradient(170deg, #1a5c50 0%, #0e2a24 50%, #060f0d 100%);
   position: relative;
   overflow: hidden;
-  padding: 0.9rem 2.5rem;
+  padding: 0.65rem 2.5rem;
 }
 
 .hero-background-deco {
@@ -190,7 +192,7 @@ body {
   display: grid;
   grid-template-columns: auto 1.8fr auto;
   grid-template-rows: auto auto;
-  gap: 0.6rem 2.5rem;
+  gap: 0.4rem 2rem;
   align-items: center;
 }
 
@@ -603,13 +605,13 @@ body {
   position: relative;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0.5rem 0 1rem;
+  padding: 0.35rem 0 0.6rem;
 }
 
 .filtros-tags {
   display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 2rem;
+  gap: 0.45rem;
+  padding: 0.35rem 2rem;
   overflow-x: auto;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
@@ -641,21 +643,22 @@ body {
 
 .tag-genero {
   flex-shrink: 0;
-  padding: 0.45rem 1rem;
+  padding: 0.35rem 0.85rem;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
+  min-height: 36px;
   color: var(--texto-medio);
   background: var(--fondo-tarjeta);
   border: 1.5px solid var(--borde);
   border-radius: 100px;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.22s;
   white-space: nowrap;
   letter-spacing: 0.2px;
-  box-shadow: 0 1px 4px var(--sombra);
+  box-shadow: 0 1px 3px var(--sombra);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .tag-genero:hover {
@@ -663,7 +666,7 @@ body {
   color: var(--teal-profundo);
   background: var(--teal-suave);
   transform: translateY(-1px);
-  box-shadow: 0 3px 10px var(--sombra-media);
+  box-shadow: 0 3px 8px var(--sombra-media);
 }
 
 .tag-genero.activo {
@@ -671,12 +674,12 @@ body {
   border-color: var(--teal-profundo);
   color: #fff8f0;
   font-weight: 500;
-  box-shadow: 0 3px 14px rgba(26, 92, 80, 0.3);
+  box-shadow: 0 3px 12px rgba(26, 92, 80, 0.28);
 }
 
 .tag-separador {
   width: 1px;
-  height: 28px;
+  height: 24px;
   background: linear-gradient(
     180deg,
     transparent 0%,
@@ -690,16 +693,17 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════ */
-/* CONTADOR                                               */
+/* CONTADOR (Legible y sobrio en cabecera de catálogo)    */
 /* ══════════════════════════════════════════════════════ */
 .contador {
-  text-align: center;
   font-family: var(--fuente-cuerpo);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   color: var(--texto-suave);
-  padding: 0.3rem 0 1rem;
-  font-style: italic;
-  letter-spacing: 0.5px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin: 0;
+  padding: 0;
 }
 
 /* ── BREADCRUMBS ── */
@@ -2956,17 +2960,81 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2.5rem;
+  padding: 0.65rem 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
-  gap: 1.5rem;
+  gap: 1.2rem;
   flex-wrap: wrap;
 }
 
 .controles-izq {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
+}
+
+/* ── Control Segmentado: Vistas de Biblioteca (Catálogo / Favoritos / Leyendo) ── */
+.segmento-biblioteca {
+  display: inline-flex;
+  align-items: center;
+  background: var(--fondo-tarjeta);
+  border: 1.5px solid var(--borde);
+  border-radius: 28px;
+  padding: 3px;
+  gap: 3px;
+  box-shadow: 0 1px 4px var(--sombra);
+}
+
+.btn-segmento {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.95rem;
+  min-height: 38px;
+  border: none;
+  background: transparent;
+  color: var(--texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.btn-segmento:hover {
+  color: var(--teal-profundo);
+  background: var(--teal-suave);
+}
+
+.btn-segmento.activo {
+  background: var(--teal-profundo);
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(26, 92, 80, 0.28);
+}
+
+.btn-segmento.activo i,
+.btn-segmento.activo [data-lucide] {
+  color: #ffffff !important;
+}
+
+:root[data-theme="dark"] .btn-segmento.activo {
+  background: var(--teal-medio);
+  color: #0b1a16 !important;
+}
+
+:root[data-theme="dark"] .btn-segmento.activo i,
+:root[data-theme="dark"] .btn-segmento.activo [data-lucide] {
+  color: #0b1a16 !important;
+}
+
+.controles-derecha {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .chip-count {
@@ -2994,8 +3062,8 @@ footer {
 .custom-dropdown .dropdown-btn,
 .custom-dropdown .dropdown-input {
   font-family: var(--fuente-cuerpo);
-  font-size: 0.92rem;
-  padding: 0.45rem 1.2rem;
+  font-size: 0.88rem;
+  padding: 0.4rem 1.1rem;
   background: var(--fondo-tarjeta);
   border: 1.5px solid var(--borde);
   border-radius: 30px;
@@ -3004,12 +3072,12 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.6rem;
+  gap: 0.5rem;
   outline: none;
-  transition: all 0.25s;
+  transition: all 0.22s;
   box-shadow: 0 1px 4px var(--sombra);
-  min-width: 170px;
-  min-height: 44px;
+  min-width: 155px;
+  min-height: 42px;
 }
 
 .custom-dropdown.searchable .dropdown-input {
@@ -3258,6 +3326,40 @@ footer {
     min-width: 100%;
     left: 0;
     right: 0;
+  }
+
+  .catalogo-header-barra {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .catalogo-barra-info {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .catalogo-barra-acciones {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .catalogo-barra-acciones #dropdownOrden {
+    flex: 1;
+  }
+
+  .catalogo-barra-acciones #dropdownOrden .dropdown-btn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-segmento {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+    min-height: 34px;
+    gap: 0.3rem;
   }
 }
 
@@ -3954,16 +4056,35 @@ footer {
 /* ── Cabecera del Catálogo Completo ── */
 .catalogo-header-barra {
   max-width: 1400px;
-  margin: 2.5rem auto 1rem;
+  margin: 1.8rem auto 0.8rem;
   padding: 0 2.5rem 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   border-bottom: 1px solid var(--borde-suave);
+}
+.catalogo-barra-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.catalogo-titular-fila {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.catalogo-separador-punto {
+  color: var(--texto-suave);
+  font-weight: 300;
+  font-size: 1.1rem;
 }
 .catalogo-barra-titulo {
   font-family: var(--fuente-titulo);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--teal-profundo);
   display: flex;
@@ -3975,6 +4096,15 @@ footer {
   content: '✦';
   font-size: 1.1rem;
   color: var(--dorado);
+}
+.catalogo-barra-acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.dropdown-menu-derecha {
+  right: 0 !important;
+  left: auto !important;
 }
 /* ── Estilos de Tipografía Literaria (Fase 2) ── */
 .tarjeta-descripcion,
