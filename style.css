@@ -506,6 +506,9 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem 1.2rem;
+  min-height: 42px;
+  white-space: nowrap;
+  box-sizing: border-box;
   font-family: var(--fuente-cuerpo);
   font-size: 0.92rem;
   font-weight: 600;
@@ -534,6 +537,9 @@ body {
   justify-content: center;
   gap: 0.45rem;
   padding: 0.5rem 1.2rem;
+  min-height: 42px;
+  white-space: nowrap;
+  box-sizing: border-box;
   font-family: var(--fuente-cuerpo);
   font-size: 0.88rem;
   font-weight: 500;
@@ -603,7 +609,7 @@ body {
 /* ══════════════════════════════════════════════════════ */
 .filtros-wrapper {
   position: relative;
-  max-width: 900px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0.35rem 0 0.6rem;
 }
@@ -611,7 +617,7 @@ body {
 .filtros-tags {
   display: flex;
   gap: 0.45rem;
-  padding: 0.35rem 2rem;
+  padding: 0.35rem 2.5rem;
   overflow-x: auto;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
@@ -626,7 +632,7 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 40px;
+  width: 50px;
   z-index: 2;
   pointer-events: none;
 }
@@ -985,6 +991,20 @@ body {
   color: var(--dorado-claro);
   background: rgba(184, 137, 42, 0.12);
   border: 1px solid rgba(184, 137, 42, 0.25);
+}
+
+/* ── Minimalismo Editorial: Tarjetas de cuadrícula limpias, uniformes y enfocadas en la portada ── */
+.galeria:not(.vista-lista) .badge-preview,
+.galeria:not(.vista-lista) .tarjeta-descripcion {
+  display: none !important;
+}
+
+.galeria:not(.vista-lista) .tarjeta-info {
+  padding: 1rem 1.15rem 0.6rem;
+}
+
+.galeria:not(.vista-lista) .btn-ver {
+  margin: 0.5rem 1.15rem 1.15rem;
 }
 
 .tarjeta-fav-btn {
@@ -3059,7 +3079,31 @@ footer {
   font-family: var(--fuente-cuerpo);
 }
 
-.custom-dropdown .dropdown-btn,
+.custom-dropdown .dropdown-btn {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.88rem;
+  padding: 0.4rem 2.3rem 0.4rem 1.1rem;
+  background: var(--fondo-tarjeta);
+  border: 1.5px solid var(--borde);
+  border-radius: 30px;
+  color: var(--texto);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  outline: none;
+  transition: all 0.22s;
+  box-shadow: 0 1px 4px var(--sombra);
+  min-width: 165px;
+  min-height: 42px;
+  box-sizing: border-box;
+}
+
+#dropdownOrden .dropdown-btn {
+  min-width: 195px;
+}
+
 .custom-dropdown .dropdown-input {
   font-family: var(--fuente-cuerpo);
   font-size: 0.88rem;
@@ -3078,6 +3122,7 @@ footer {
   box-shadow: 0 1px 4px var(--sombra);
   min-width: 155px;
   min-height: 42px;
+  box-sizing: border-box;
 }
 
 .custom-dropdown.searchable .dropdown-input {

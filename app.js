@@ -273,6 +273,17 @@ function limpiarTitulo(titulo) {
   // Reemplaza guiones bajos y guiones largos por espacios
   let limpio = titulo.replace(/[_]+/g, ' ').replace(/\s+/g, ' ').trim();
 
+  // Limpiar sufijos truncados de catálogos y notas editoriales
+  limpio = limpio.replace(/\s*\(Ilus(?:tra)?$/i, ' (Ilustrado)');
+  limpio = limpio.replace(/\s+esp$/i, '');
+  limpio = limpio.replace(/\s*-\s*BAC-[IVXLCDM]+.*$/i, '');
+
+  if (/\s*\((trad\.|edicion|edición|ilustra)[^\)]*$/i.test(limpio)) {
+    limpio = limpio.replace(/\s*\([^\)]*$/, '').trim();
+  } else if (limpio.includes('(') && !limpio.includes(')')) {
+    limpio = limpio + ')';
+  }
+
   // Si está todo en mayúsculas o todo mal formateado, capitalizar
   if (limpio === limpio.toUpperCase() && limpio.length > 3) {
     limpio = limpio.toLowerCase().replace(/(?:^|\s)\S/g, l => l.toUpperCase());
@@ -382,7 +393,7 @@ function adaptarPlaceholder() {
   const actualizar = () => {
     input.placeholder = window.innerWidth < 480
       ? 'Buscar libro, autor, saga…'
-      : 'Buscar por título, autor, saga, género o año…';
+      : 'Buscar por título, autor, saga o género…';
   };
   actualizar();
   window.addEventListener('resize', actualizar, { passive: true });
