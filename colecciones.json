@@ -261,5 +261,78 @@
       2341,
       1958
     ]
+  },
+  {
+    "id": "historias-amor",
+    "titulo": "Historias de Amor",
+    "portada_pack": "portadas/pack-romance.webp",
+    "libros": [
+      282,
+      333,
+      1140,
+      339,
+      1312,
+      3123,
+      2811,
+      1227,
+      2374,
+      285,
+      1698,
+      284
+    ]
+  },
+  {
+    "id": "estrategia-poder",
+    "titulo": "Estrategia y Poder",
+    "portada_pack": "portadas/pack-estrategia.webp",
+    "libros": [
+      1233,
+      1831,
+      3007,
+      1230,
+      1232,
+      1234,
+      1231,
+      3022,
+      2499,
+      3095
+    ]
+  },
+  {
+    "id": "novela-historica",
+    "titulo": "Novela Histórica",
+    "portada_pack": "portadas/pack-historia.webp",
+    "libros": [
+      1087,
+      2184,
+      751,
+      51,
+      1082,
+      2226,
+      57,
+      1186,
+      1093,
+      2208,
+      3025,
+      50
+    ]
+  },
+  {
+    "id": "cuentos-magistrales",
+    "titulo": "Cuentos Magistrales",
+    "portada_pack": "portadas/pack-cuentos.webp",
+    "libros": [
+      321,
+      19,
+      635,
+      320,
+      2308,
+      1185,
+      39,
+      2235,
+      470,
+      650,
+      322
+    ]
   }
 ]
