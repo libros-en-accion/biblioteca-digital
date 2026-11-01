@@ -2875,16 +2875,12 @@ function actualizarBreadcrumbs() {
       }
       if (item.type === 'extension') {
         extensionActiva = 'Todas';
-        const labelExt = document.getElementById('labelDropdownExtension');
-        if (labelExt) labelExt.textContent = 'Extensión';
-        document.querySelectorAll('#menuDropdownExtension .dropdown-item').forEach(li => li.classList.toggle('seleccionado', li.dataset.valor === 'Todas'));
+        actualizarMasFiltrosUI();
         filtrar();
       }
       if (item.type === 'idioma') {
         idiomaActivo = 'Todos';
-        const labelIdi = document.getElementById('labelDropdownIdioma');
-        if (labelIdi) labelIdi.textContent = 'Idioma';
-        document.querySelectorAll('#menuDropdownIdioma .dropdown-item').forEach(li => li.classList.toggle('seleccionado', li.dataset.valor === 'Todos'));
+        actualizarMasFiltrosUI();
         filtrar();
       }
     };
@@ -3320,19 +3316,10 @@ function limpiarTodo() {
   epocaActiva = 'Todas';
   actualizarDropdownEpocaUI();
 
-  // Limpiar Extensión dropdown
+  // Limpiar Más Filtros (Extensión e Idioma)
   extensionActiva = 'Todas';
-  document.querySelectorAll('#menuDropdownExtension .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
-  document.querySelector('#menuDropdownExtension .dropdown-item[data-valor="Todas"]')?.classList.add('seleccionado');
-  const labelExt = document.getElementById('labelDropdownExtension');
-  if (labelExt) labelExt.textContent = 'Extensión: Todas';
-
-  // Limpiar Idioma dropdown
   idiomaActivo = 'Todos';
-  document.querySelectorAll('#menuDropdownIdioma .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
-  document.querySelector('#menuDropdownIdioma .dropdown-item[data-valor="Todos"]')?.classList.add('seleccionado');
-  const labelIdi = document.getElementById('labelDropdownIdioma');
-  if (labelIdi) labelIdi.textContent = 'Idioma: Todos';
+  actualizarMasFiltrosUI();
 
   // Limpiar Orden custom
   document.querySelectorAll('#menuDropdownOrden .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
@@ -3761,65 +3748,35 @@ function inicializarDropdowns() {
     });
   }
 
-  // Dropdown Extensión (Páginas)
-  const dropdownExt = document.getElementById('dropdownExtension');
-  const btnExt = document.getElementById('btnDropdownExtension');
-  const menuExt = document.getElementById('menuDropdownExtension');
-  const labelExt = document.getElementById('labelDropdownExtension');
+  // Dropdown Más Filtros Técnicos Consolidados (Extensión e Idioma)
+  const dropdownMas = document.getElementById('dropdownMasFiltros');
+  const btnMas = document.getElementById('btnDropdownMasFiltros');
+  const menuMas = document.getElementById('menuDropdownMasFiltros');
 
-  if (btnExt && menuExt) {
-    btnExt.addEventListener('click', (e) => {
+  if (btnMas && menuMas && dropdownMas) {
+    btnMas.addEventListener('click', (e) => {
       e.stopPropagation();
-      cerrarTodosDropdowns(dropdownExt);
-      dropdownExt.classList.toggle('abierto');
-      btnExt.setAttribute('aria-expanded', dropdownExt.classList.contains('abierto'));
+      cerrarTodosDropdowns(dropdownMas);
+      dropdownMas.classList.toggle('abierto');
+      btnMas.setAttribute('aria-expanded', dropdownMas.classList.contains('abierto'));
     });
 
-    menuExt.querySelectorAll('.dropdown-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menuExt.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
-        item.classList.add('seleccionado');
-        extensionActiva = item.dataset.valor;
-        if (labelExt) {
-          const labelText = item.textContent.trim();
-          labelExt.textContent = labelText.startsWith('Extensión:') ? labelText : `Extensión: ${labelText}`;
-        }
-        dropdownExt.classList.remove('abierto');
-        btnExt.setAttribute('aria-expanded', 'false');
-        filtrar();
-      });
-    });
-  }
-
-  // Dropdown Idioma
-  const dropdownIdioma = document.getElementById('dropdownIdioma');
-  const btnIdioma = document.getElementById('btnDropdownIdioma');
-  const menuIdioma = document.getElementById('menuDropdownIdioma');
-  const labelIdioma = document.getElementById('labelDropdownIdioma');
-
-  if (btnIdioma && menuIdioma) {
-    btnIdioma.addEventListener('click', (e) => {
+    menuMas.addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip-filtro');
+      if (!chip) return;
       e.stopPropagation();
-      cerrarTodosDropdowns(dropdownIdioma);
-      dropdownIdioma.classList.toggle('abierto');
-      btnIdioma.setAttribute('aria-expanded', dropdownIdioma.classList.contains('abierto'));
-    });
 
-    menuIdioma.querySelectorAll('.dropdown-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menuIdioma.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('seleccionado'));
-        item.classList.add('seleccionado');
-        idiomaActivo = item.dataset.valor;
-        if (labelIdioma) {
-          const labelText = item.textContent.trim();
-          labelIdioma.textContent = labelText.startsWith('Idioma:') ? labelText : `Idioma: ${labelText}`;
-        }
-        dropdownIdioma.classList.remove('abierto');
-        btnIdioma.setAttribute('aria-expanded', 'false');
-        filtrar();
-      });
+      const tipo = chip.dataset.tipo;
+      const valor = chip.dataset.valor;
+
+      if (tipo === 'extension') {
+        extensionActiva = valor;
+      } else if (tipo === 'idioma') {
+        idiomaActivo = valor;
+      }
+
+      actualizarMasFiltrosUI();
+      filtrar();
     });
   }
 
@@ -3840,6 +3797,8 @@ function inicializarDropdowns() {
   document.addEventListener('click', () => {
     cerrarTodosDropdowns();
   });
+
+  actualizarMasFiltrosUI();
 }
 
 function cerrarTodosDropdowns(excepto = null) {
@@ -3863,6 +3822,36 @@ function actualizarDropdownEpocaUI() {
       const labelText = targetItem.childNodes[0].textContent.trim();
       labelEpoca.textContent = labelText.startsWith('Época:') ? labelText : `Época: ${labelText}`;
     }
+  }
+}
+
+function actualizarMasFiltrosUI() {
+  const btn = document.getElementById('btnDropdownMasFiltros');
+  const badge = document.getElementById('badgeMasFiltros');
+
+  document.querySelectorAll('#chipsExtension .chip-filtro').forEach(chip => {
+    chip.classList.toggle('seleccionado', chip.dataset.valor === extensionActiva);
+  });
+
+  document.querySelectorAll('#chipsIdioma .chip-filtro').forEach(chip => {
+    chip.classList.toggle('seleccionado', chip.dataset.valor === idiomaActivo);
+  });
+
+  let activos = 0;
+  if (extensionActiva !== 'Todas') activos++;
+  if (idiomaActivo !== 'Todos') activos++;
+
+  if (badge) {
+    if (activos > 0) {
+      badge.textContent = activos;
+      badge.style.display = 'inline-flex';
+    } else {
+      badge.style.display = 'none';
+    }
+  }
+
+  if (btn) {
+    btn.classList.toggle('filtro-activo', activos > 0);
   }
 }
 
@@ -4234,10 +4223,10 @@ function actualizarBtnCodigo(esDonador) {
   if (!btn) return;
   if (esDonador) {
     btn.classList.add('activo');
-    if (etiqueta) etiqueta.textContent = '✓ Activo';
+    if (etiqueta) etiqueta.textContent = '✓ Acceso Activo';
   } else {
     btn.classList.remove('activo');
-    if (etiqueta) etiqueta.textContent = 'Activar Acceso';
+    if (etiqueta) etiqueta.textContent = '¿Tienes código?';
   }
 }
 

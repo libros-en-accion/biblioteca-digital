@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=39" />
+  <link rel="stylesheet" href="style.css?v=40" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -107,9 +107,9 @@
       <!-- Columna Derecha: Utilidades Agrupadas -->
       <div class="hero-derecha-grupo">
         <button id="btnTema" class="btn-tema" aria-label="Cambiar tema" title="Modo claro / oscuro"><i data-lucide="moon"></i></button>
-        <button id="btnCodigo" class="btn-codigo-donador" aria-label="Activar mi acceso" title="Mi Acceso">
+        <button id="btnCodigo" class="btn-codigo-donador" aria-label="Activar mi acceso" title="Tengo un código de acceso">
           <i data-lucide="key-round"></i>
-          <span id="etiquetaCodigo">Activar Acceso</span>
+          <span id="etiquetaCodigo">¿Tienes código?</span>
         </button>
         <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-hero" id="btnComprarHero">
           <i data-lucide="sparkles" class="icono-sm"></i> Acceso Lifetime — $100 MXN
@@ -199,31 +199,35 @@
         </ul>
       </div>
 
-      <!-- Extensión / Páginas (Custom Dropdown Menu) -->
-      <div class="custom-dropdown" id="dropdownExtension">
-        <button class="dropdown-btn" id="btnDropdownExtension" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por extensión">
-          <span id="labelDropdownExtension">Extensión: Todas</span>
+      <!-- Más Filtros Técnicos Consolidados (Extensión e Idioma) -->
+      <div class="custom-dropdown" id="dropdownMasFiltros">
+        <button class="dropdown-btn" id="btnDropdownMasFiltros" aria-haspopup="true" aria-expanded="false" aria-label="Más filtros técnicos">
+          <i data-lucide="sliders-horizontal" class="icono-xs"></i>
+          <span id="labelDropdownMasFiltros">Más filtros</span>
+          <span id="badgeMasFiltros" class="badge-mas-filtros" style="display:none">0</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
-        <ul class="dropdown-menu" role="listbox" id="menuDropdownExtension">
-          <li data-valor="Todas" class="dropdown-item seleccionado" role="option">Extensión: Todas</li>
-          <li data-valor="corta" class="dropdown-item" role="option">Corta (&lt; 150 págs.)</li>
-          <li data-valor="media" class="dropdown-item" role="option">Mediana (150–350 págs.)</li>
-          <li data-valor="larga" class="dropdown-item" role="option">Extensa (&gt; 350 págs.)</li>
-        </ul>
-      </div>
-
-      <!-- Idioma (Custom Dropdown Menu) -->
-      <div class="custom-dropdown" id="dropdownIdioma">
-        <button class="dropdown-btn" id="btnDropdownIdioma" aria-haspopup="listbox" aria-expanded="false" aria-label="Filtrar por idioma">
-          <span id="labelDropdownIdioma">Idioma: Todos</span>
-          <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
-        </button>
-        <ul class="dropdown-menu" role="listbox" id="menuDropdownIdioma">
-          <li data-valor="Todos" class="dropdown-item seleccionado" role="option">Idioma: Todos</li>
-          <li data-valor="es" class="dropdown-item" role="option">🇪🇸 Español</li>
-          <li data-valor="en" class="dropdown-item" role="option">🇬🇧 English</li>
-        </ul>
+        <div class="dropdown-menu dropdown-mas-filtros-panel" id="menuDropdownMasFiltros">
+          <!-- Subsección Extensión -->
+          <div class="mas-filtros-seccion">
+            <span class="mas-filtros-titulo"><i data-lucide="book-open" class="icono-xs"></i> Extensión</span>
+            <div class="mas-filtros-chips" id="chipsExtension">
+              <button type="button" class="chip-filtro seleccionado" data-tipo="extension" data-valor="Todas">Todas</button>
+              <button type="button" class="chip-filtro" data-tipo="extension" data-valor="corta">Corta (&lt; 150 p.)</button>
+              <button type="button" class="chip-filtro" data-tipo="extension" data-valor="media">Mediana (150–350 p.)</button>
+              <button type="button" class="chip-filtro" data-tipo="extension" data-valor="larga">Extensa (&gt; 350 p.)</button>
+            </div>
+          </div>
+          <!-- Subsección Idioma -->
+          <div class="mas-filtros-seccion">
+            <span class="mas-filtros-titulo"><i data-lucide="globe" class="icono-xs"></i> Idioma</span>
+            <div class="mas-filtros-chips" id="chipsIdioma">
+              <button type="button" class="chip-filtro seleccionado" data-tipo="idioma" data-valor="Todos">Todos</button>
+              <button type="button" class="chip-filtro" data-tipo="idioma" data-valor="es">🇪🇸 Español</button>
+              <button type="button" class="chip-filtro" data-tipo="idioma" data-valor="en">🇬🇧 English</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -236,7 +240,10 @@
 
   <!-- ═══ SECCIÓN DE DESTACADOS (CARRUSEL) ═══ -->
   <section id="destacados-seccion" class="destacados-seccion">
-    <h2 class="seccion-titulo-destacados">Los más destacados</h2>
+    <div class="destacados-header-fila">
+      <h2 class="seccion-titulo-destacados">Los más destacados</h2>
+      <span class="destacados-guia-scroll">Desliza para explorar <i data-lucide="arrow-right" class="icono-xs"></i></span>
+    </div>
     <div class="destacados-carrusel-contenedor">
       <button class="carrusel-btn carrusel-btn-izq" id="btnCarruselIzq" aria-label="Anterior" title="Anterior">
         <i data-lucide="chevron-left"></i>
@@ -840,6 +847,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=39"></script>
+  <script src="app.js?v=40"></script>
 </body>
 </html>
