@@ -333,7 +333,7 @@ Promise.all([
     if (!r.ok) throw new Error(`Error HTTP al cargar libros: ${r.status}`);
     return r.json();
   }),
-  fetch('colecciones.json').then(r => {
+  fetch('colecciones.json?v=2').then(r => {
     if (!r.ok) throw new Error(`Error HTTP al cargar colecciones: ${r.status}`);
     return r.json();
   })

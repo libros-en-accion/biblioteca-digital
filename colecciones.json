@@ -1,7 +1,7 @@
 [
   {
     "id": "psicologia-humana",
-    "titulo": "La biblioteca mínima para entender la psicología humana",
+    "titulo": "Psicología Esencial",
     "portada_pack": "portadas/pack-psicologia.webp",
     "libros": [
       2962,
@@ -20,7 +20,7 @@
   },
   {
     "id": "mentes-maestras",
-    "titulo": "Mentes Maestras: Aprendizaje acelerado, hábitos y memoria",
+    "titulo": "Mentes Maestras",
     "portada_pack": "portadas/pack-mentes.webp",
     "libros": [
       412,
@@ -36,7 +36,7 @@
   },
   {
     "id": "thrillers-adictivos",
-    "titulo": "Thrillers psicológicos y suspense adictivo",
+    "titulo": "Thrillers y Suspense",
     "portada_pack": "portadas/pack-thrillers.webp",
     "libros": [
       3091,
@@ -55,7 +55,7 @@
   },
   {
     "id": "distopias-fundamentales",
-    "titulo": "Distopías fundamentales: Vigilancia, poder y control",
+    "titulo": "Distopías Fundamentales",
     "portada_pack": "portadas/pack-distopias.webp",
     "libros": [
       2079,
@@ -71,7 +71,7 @@
   },
   {
     "id": "fortaleza-estoicismo",
-    "titulo": "Fortaleza mental y filosofía estoica",
+    "titulo": "Filosofía Estoica",
     "portada_pack": "portadas/pack-estoicismo.webp",
     "libros": [
       2,
@@ -87,7 +87,7 @@
   },
   {
     "id": "fantasia-epica",
-    "titulo": "Fantasía épica: Grandes mundos inolvidables",
+    "titulo": "Fantasía Épica",
     "portada_pack": "portadas/pack-fantasia.webp",
     "libros": [
       2497,
@@ -99,13 +99,13 @@
       2845,
       3052,
       3108,
-      3111,
+      3118,
       3121
     ]
   },
   {
     "id": "maestros-terror",
-    "titulo": "Maestros del terror y lo sobrenatural",
+    "titulo": "Maestros del Terror",
     "portada_pack": "portadas/pack-terror.webp",
     "libros": [
       1609,
@@ -121,7 +121,7 @@
   },
   {
     "id": "clasicos-latinoamericanos",
-    "titulo": "10 clásicos que todo latinoamericano debe leer",
+    "titulo": "Clásicos Latinoamericanos",
     "portada_pack": "portadas/pack-latino.webp",
     "libros": [
       1139,
@@ -138,7 +138,7 @@
   },
   {
     "id": "evitar-burnout",
-    "titulo": "Ficción para escapar del burnout: Novelas terapéuticas",
+    "titulo": "Lecturas Terapéuticas",
     "portada_pack": "portadas/pack-burnout.webp",
     "libros": [
       2776,
@@ -156,7 +156,7 @@
   },
   {
     "id": "predicciones-cumplidas",
-    "titulo": "Ciencia ficción que se hizo realidad",
+    "titulo": "Ciencia Ficción Visionaria",
     "portada_pack": "portadas/pack-predicciones.webp",
     "libros": [
       2079,
@@ -172,7 +172,7 @@
   },
   {
     "id": "filosofia-perspectiva",
-    "titulo": "7 Ensayos sobre filosofía para cambiar tu perspectiva",
+    "titulo": "Ensayos Filosóficos",
     "portada_pack": "portadas/pack-filosofia.webp",
     "libros": [
       2,
@@ -186,7 +186,7 @@
   },
   {
     "id": "psicologia-novelas",
-    "titulo": "Psicología en novelas: Historias que revelan cómo pensamos",
+    "titulo": "Psicología en la Novela",
     "portada_pack": "portadas/pack-psicologia-novelas.webp",
     "libros": [
       3091,
@@ -203,7 +203,7 @@
   },
   {
     "id": "aprender-ingles",
-    "titulo": "Aprende inglés leyendo",
+    "titulo": "Aprende Inglés Leyendo",
     "portada_pack": "portadas/pack-ingles.webp",
     "libros": [
       3028,
@@ -219,7 +219,7 @@
   },
   {
     "id": "economia-comportamiento",
-    "titulo": "Economía y comportamiento humano",
+    "titulo": "Economía y Comportamiento",
     "portada_pack": "portadas/pack-economia.webp",
     "libros": [
       3095,
@@ -236,7 +236,7 @@
   },
   {
     "id": "ciencia-divulgacion",
-    "titulo": "Divulgación científica: Entender nuestro mundo",
+    "titulo": "Divulgación Científica",
     "portada_pack": "portadas/pack-ciencia.webp",
     "libros": [
       2344,
