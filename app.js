@@ -127,6 +127,9 @@ function guardarProgresoLectura(libroId, pagina) {
     if (typeof renderizarContinuarLeyendo === 'function') {
       renderizarContinuarLeyendo();
     }
+    if (typeof actualizarBottomNavUI === 'function') {
+      actualizarBottomNavUI();
+    }
   } catch (e) {
     console.error('Error al guardar progreso de lectura:', e);
   }
@@ -173,15 +176,20 @@ function esFavorito(libroId) {
 function toggleFavorito(libroId) {
   const favs = obtenerFavoritos();
   const idx = favs.indexOf(libroId);
+  let nuevoEstado = false;
   if (idx >= 0) {
     favs.splice(idx, 1);
     guardarFavoritos(favs);
-    return false;
+    nuevoEstado = false;
   } else {
     favs.push(libroId);
     guardarFavoritos(favs);
-    return true;
+    nuevoEstado = true;
   }
+  if (typeof actualizarBottomNavUI === 'function') {
+    actualizarBottomNavUI();
+  }
+  return nuevoEstado;
 }
 
 const moodTagsData = [
@@ -453,6 +461,8 @@ function inicializarPagina() {
   poblarDropdownAutores();
   poblarDropdownSagas();
   inicializarDropdowns();
+  inicializarBottomSheetFiltros();
+  inicializarBottomNavMovil();
   inicializarAutocompletado();
 
   // Registrar TODOS los event listeners (zero onclick inline)
@@ -2962,6 +2972,30 @@ function registrarEventos() {
   el('btnAzar')?.addEventListener('click', libroAlAzar);
   el('btnLimpiarBusqueda')?.addEventListener('click', () => limpiarBusqueda(true));
   el('btnCerrarPack')?.addEventListener('click', quitarColeccion);
+
+  // Atajos de descubrimiento rápido dentro del Modal IA
+  el('btnAtajoAzar')?.addEventListener('click', () => {
+    cerrarModalIA();
+    libroAlAzar();
+  });
+
+  el('btnAtajoRapido')?.addEventListener('click', () => {
+    cerrarModalIA();
+    extensionActiva = 'corta';
+    actualizarMasFiltrosUI();
+    actualizarBottomSheetUI();
+    filtrar();
+    const dest = document.querySelector('.catalogo-header-barra') || document.getElementById('galeria');
+    if (dest) dest.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  el('btnAtajoReflexionar')?.addEventListener('click', () => {
+    cerrarModalIA();
+    filtrarMood('Reflexionar', document.querySelector('.tag-mood-btn[data-mood="Reflexionar"]'));
+    const dest = document.querySelector('.catalogo-header-barra') || document.getElementById('galeria');
+    if (dest) dest.scrollIntoView({ behavior: 'smooth' });
+  });
+
   el('btnBuscarClick')?.addEventListener('click', () => {
     const btn = document.getElementById('btnBuscarClick');
     const panel = document.getElementById('autocompletarPanel');
@@ -2977,15 +3011,9 @@ function registrarEventos() {
   el('btnLimpiarTodo')?.addEventListener('click', limpiarTodo);
   el('btnTema')?.addEventListener('click', alternarTema);
 
-  // Toggle Filtros en Móvil
+  // Abrir Bottom Sheet de Filtros en Móvil
   el('btnToggleFiltrosMovil')?.addEventListener('click', () => {
-    const btn = el('btnToggleFiltrosMovil');
-    const controlesDerecha = el('controlesDerecha');
-    if (btn && controlesDerecha) {
-      const estaAbierto = controlesDerecha.classList.toggle('abierto');
-      btn.setAttribute('aria-expanded', estaAbierto ? 'true' : 'false');
-      btn.classList.toggle('activo', estaAbierto);
-    }
+    abrirBottomSheetFiltros();
   });
 
   // Control Segmentado: Vistas de Biblioteca (Todos / Favoritos / Leyendo)
@@ -3373,6 +3401,10 @@ function actualizarSegmentoBiblioteca() {
   if (btnLey) {
     btnLey.classList.toggle('activo', soloLeyendo);
     btnLey.setAttribute('aria-selected', soloLeyendo ? 'true' : 'false');
+  }
+
+  if (typeof actualizarBottomNavUI === 'function') {
+    actualizarBottomNavUI();
   }
 }
 
@@ -3853,6 +3885,345 @@ function actualizarMasFiltrosUI() {
   if (btn) {
     btn.classList.toggle('filtro-activo', activos > 0);
   }
+
+  if (typeof actualizarBottomSheetUI === 'function') {
+    actualizarBottomSheetUI();
+  }
+}
+
+function actualizarDropdownAutorUI() {
+  const inputAutor = document.getElementById('inputDropdownAutor');
+  const btnLimpiarAutor = document.getElementById('btnLimpiarAutor');
+  if (inputAutor) {
+    inputAutor.value = autorActivo === 'Todos' ? '' : autorActivo;
+  }
+  document.querySelectorAll('#menuDropdownAutor .dropdown-item').forEach(li => {
+    li.classList.toggle('seleccionado', li.dataset.valor === autorActivo);
+  });
+  if (btnLimpiarAutor) {
+    btnLimpiarAutor.style.display = autorActivo === 'Todos' ? 'none' : 'block';
+  }
+}
+
+function actualizarBottomSheetUI() {
+  // Chips de orden
+  document.querySelectorAll('#sheetChipsOrden .chip-filtro').forEach(chip => {
+    chip.classList.toggle('seleccionado', chip.dataset.valor === ordenActivo);
+  });
+
+  // Chips de época
+  document.querySelectorAll('#sheetChipsEpoca .chip-filtro').forEach(chip => {
+    chip.classList.toggle('seleccionado', chip.dataset.valor === epocaActiva);
+  });
+
+  // Chips de extensión
+  document.querySelectorAll('#sheetChipsExtension .chip-filtro').forEach(chip => {
+    chip.classList.toggle('seleccionado', chip.dataset.valor === extensionActiva);
+  });
+
+  // Chips de idioma
+  document.querySelectorAll('#sheetChipsIdioma .chip-filtro').forEach(chip => {
+    chip.classList.toggle('seleccionado', chip.dataset.valor === idiomaActivo);
+  });
+
+  // Input autor
+  const inputSheetAutor = document.getElementById('sheetInputAutor');
+  if (inputSheetAutor) {
+    inputSheetAutor.value = autorActivo === 'Todos' ? '' : autorActivo;
+  }
+
+  // Contador total de filtros activos para móvil
+  let totalActivos = 0;
+  if (ordenActivo !== 'default') totalActivos++;
+  if (epocaActiva !== 'Todas') totalActivos++;
+  if (extensionActiva !== 'Todas') totalActivos++;
+  if (idiomaActivo !== 'Todos') totalActivos++;
+  if (autorActivo !== 'Todos') totalActivos++;
+
+  const badgeSheet = document.getElementById('badgeSheetFiltros');
+  if (badgeSheet) {
+    if (totalActivos > 0) {
+      badgeSheet.textContent = totalActivos;
+      badgeSheet.style.display = 'inline-flex';
+    } else {
+      badgeSheet.style.display = 'none';
+    }
+  }
+
+  const badgeBnav = document.getElementById('badgeBnavFiltros');
+  if (badgeBnav) {
+    if (totalActivos > 0) {
+      badgeBnav.textContent = totalActivos;
+      badgeBnav.style.display = 'inline-flex';
+    } else {
+      badgeBnav.style.display = 'none';
+    }
+  }
+
+  const btnToggle = document.getElementById('btnToggleFiltrosMovil');
+  if (btnToggle) {
+    btnToggle.classList.toggle('filtro-activo', totalActivos > 0);
+  }
+}
+
+function poblarSugerenciasAutoresSheet() {
+  const contenedor = document.getElementById('sheetAutorSugerencias');
+  const input = document.getElementById('sheetInputAutor');
+  if (!contenedor || !input) return;
+
+  const autoresSet = new Set();
+  libros.forEach(l => {
+    if (l.autor && l.autor.trim() !== '') autoresSet.add(l.autor.trim());
+  });
+  const autores = Array.from(autoresSet).sort((a, b) => a.localeCompare(b, 'es'));
+
+  function renderizar(query = '') {
+    contenedor.innerHTML = '';
+    const q = query.toLowerCase().trim();
+    const filtrados = q 
+      ? autores.filter(a => a.toLowerCase().includes(q)).slice(0, 10)
+      : autores.slice(0, 6);
+
+    const chipTodos = document.createElement('button');
+    chipTodos.type = 'button';
+    chipTodos.className = 'chip-filtro' + (autorActivo === 'Todos' ? ' seleccionado' : '');
+    chipTodos.textContent = 'Todos los autores';
+    chipTodos.addEventListener('click', () => {
+      autorActivo = 'Todos';
+      input.value = '';
+      actualizarDropdownAutorUI();
+      actualizarBottomSheetUI();
+      renderizar();
+      filtrar();
+    });
+    contenedor.appendChild(chipTodos);
+
+    filtrados.forEach(autor => {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'chip-filtro' + (autorActivo === autor ? ' seleccionado' : '');
+      chip.textContent = autor;
+      chip.addEventListener('click', () => {
+        autorActivo = autor;
+        input.value = autor;
+        actualizarDropdownAutorUI();
+        actualizarBottomSheetUI();
+        renderizar(autor);
+        filtrar();
+      });
+      contenedor.appendChild(chip);
+    });
+  }
+
+  input.oninput = () => renderizar(input.value);
+  renderizar(input.value);
+}
+
+function abrirBottomSheetFiltros() {
+  const sheet = document.getElementById('bottomSheetFiltros');
+  if (!sheet) return;
+  actualizarBottomSheetUI();
+  poblarSugerenciasAutoresSheet();
+  sheet.style.display = 'flex';
+  void sheet.offsetHeight;
+  sheet.classList.add('abierto');
+  sheet.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  if (window.lucide) lucide.createIcons({ root: sheet });
+}
+
+function cerrarBottomSheetFiltros() {
+  const sheet = document.getElementById('bottomSheetFiltros');
+  if (!sheet) return;
+  sheet.classList.remove('abierto');
+  sheet.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    if (!sheet.classList.contains('abierto')) {
+      sheet.style.display = 'none';
+    }
+  }, 280);
+}
+
+function inicializarBottomSheetFiltros() {
+  const sheet = document.getElementById('bottomSheetFiltros');
+  const backdrop = document.getElementById('bottomSheetBackdrop');
+  const btnCerrar = document.getElementById('btnCerrarBottomSheet');
+  const btnAplicar = document.getElementById('btnSheetAplicar');
+  const btnLimpiar = document.getElementById('btnSheetLimpiar');
+
+  if (!sheet) return;
+
+  if (backdrop) backdrop.addEventListener('click', cerrarBottomSheetFiltros);
+  if (btnCerrar) btnCerrar.addEventListener('click', cerrarBottomSheetFiltros);
+
+  if (btnAplicar) {
+    btnAplicar.addEventListener('click', () => {
+      cerrarBottomSheetFiltros();
+      const dest = document.querySelector('.catalogo-header-barra') || document.getElementById('galeria');
+      if (dest) dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (btnLimpiar) {
+    btnLimpiar.addEventListener('click', () => {
+      ordenActivo = 'default';
+      epocaActiva = 'Todas';
+      extensionActiva = 'Todas';
+      idiomaActivo = 'Todos';
+      autorActivo = 'Todos';
+
+      const labelOrden = document.getElementById('labelDropdownOrden');
+      if (labelOrden) labelOrden.textContent = 'Ordenar: Por defecto';
+      document.querySelectorAll('#menuDropdownOrden .dropdown-item').forEach(li => li.classList.remove('seleccionado'));
+      document.querySelector('#menuDropdownOrden .dropdown-item[data-valor="default"]')?.classList.add('seleccionado');
+
+      actualizarDropdownEpocaUI();
+      actualizarMasFiltrosUI();
+      actualizarDropdownAutorUI();
+      actualizarBottomSheetUI();
+      poblarSugerenciasAutoresSheet();
+      filtrar();
+    });
+  }
+
+  sheet.addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip-filtro');
+    if (!chip) return;
+    const tipo = chip.dataset.tipo;
+    const valor = chip.dataset.valor;
+    if (!tipo || !valor) return;
+
+    if (tipo === 'orden') {
+      ordenActivo = valor;
+      const labelOrden = document.getElementById('labelDropdownOrden');
+      if (labelOrden) {
+        labelOrden.textContent = valor === 'default' ? 'Ordenar: Por defecto' : `Ordenar: ${chip.textContent.trim()}`;
+      }
+      document.querySelectorAll('#menuDropdownOrden .dropdown-item').forEach(li => {
+        li.classList.toggle('seleccionado', li.dataset.valor === valor);
+      });
+    } else if (tipo === 'epoca') {
+      epocaActiva = valor;
+      actualizarDropdownEpocaUI();
+    } else if (tipo === 'extension') {
+      extensionActiva = valor;
+      actualizarMasFiltrosUI();
+    } else if (tipo === 'idioma') {
+      idiomaActivo = valor;
+      actualizarMasFiltrosUI();
+    }
+
+    actualizarBottomSheetUI();
+    filtrar();
+  });
+}
+
+function actualizarBottomNavUI() {
+  const esTodos = !soloFavoritos && !soloLeyendo;
+  const bnavCat = document.getElementById('bnavCatalogo');
+  const bnavFav = document.getElementById('bnavFavoritos');
+  const bnavLey = document.getElementById('bnavLeyendo');
+
+  if (bnavCat) bnavCat.classList.toggle('activo', esTodos);
+  if (bnavFav) bnavFav.classList.toggle('activo', soloFavoritos);
+  if (bnavLey) bnavLey.classList.toggle('activo', soloLeyendo);
+
+  const favs = obtenerFavoritos();
+  const badgeFav = document.getElementById('badgeBnavFav');
+  if (badgeFav) {
+    if (favs.length > 0) {
+      badgeFav.textContent = favs.length > 99 ? '99+' : favs.length;
+      badgeFav.style.display = 'inline-flex';
+    } else {
+      badgeFav.style.display = 'none';
+    }
+  }
+
+  try {
+    const progreso = JSON.parse(localStorage.getItem(PROGRESO_KEY) || '{}');
+    const cantLeyendo = Object.keys(progreso).length;
+    const badgeLey = document.getElementById('badgeBnavLey');
+    if (badgeLey) {
+      if (cantLeyendo > 0) {
+        badgeLey.textContent = cantLeyendo > 99 ? '99+' : cantLeyendo;
+        badgeLey.style.display = 'inline-flex';
+      } else {
+        badgeLey.style.display = 'none';
+      }
+    }
+  } catch {}
+
+  let totalActivos = 0;
+  if (ordenActivo !== 'default') totalActivos++;
+  if (epocaActiva !== 'Todas') totalActivos++;
+  if (extensionActiva !== 'Todas') totalActivos++;
+  if (idiomaActivo !== 'Todos') totalActivos++;
+  if (autorActivo !== 'Todos') totalActivos++;
+
+  const badgeBnavFil = document.getElementById('badgeBnavFiltros');
+  if (badgeBnavFil) {
+    if (totalActivos > 0) {
+      badgeBnavFil.textContent = totalActivos;
+      badgeBnavFil.style.display = 'inline-flex';
+    } else {
+      badgeBnavFil.style.display = 'none';
+    }
+  }
+}
+
+function inicializarBottomNavMovil() {
+  const bnavCat = document.getElementById('bnavCatalogo');
+  const bnavFav = document.getElementById('bnavFavoritos');
+  const bnavLey = document.getElementById('bnavLeyendo');
+  const bnavFil = document.getElementById('bnavFiltros');
+
+  if (bnavCat) {
+    bnavCat.addEventListener('click', () => {
+      soloFavoritos = false;
+      soloLeyendo = false;
+      actualizarSegmentoBiblioteca();
+      actualizarBottomNavUI();
+      paginaActual = 1;
+      filtrar();
+      const dest = document.querySelector('.catalogo-header-barra') || document.getElementById('galeria');
+      if (dest) dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (bnavFav) {
+    bnavFav.addEventListener('click', () => {
+      soloFavoritos = !soloFavoritos;
+      if (soloFavoritos) soloLeyendo = false;
+      actualizarSegmentoBiblioteca();
+      actualizarBottomNavUI();
+      paginaActual = 1;
+      filtrar();
+      const dest = document.querySelector('.catalogo-header-barra') || document.getElementById('galeria');
+      if (dest) dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (bnavLey) {
+    bnavLey.addEventListener('click', () => {
+      soloLeyendo = !soloLeyendo;
+      if (soloLeyendo) soloFavoritos = false;
+      actualizarSegmentoBiblioteca();
+      actualizarBottomNavUI();
+      paginaActual = 1;
+      filtrar();
+      const dest = document.querySelector('.catalogo-header-barra') || document.getElementById('galeria');
+      if (dest) dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (bnavFil) {
+    bnavFil.addEventListener('click', () => {
+      abrirBottomSheetFiltros();
+    });
+  }
+
+  actualizarBottomNavUI();
 }
 
 function poblarDropdownAutores() {

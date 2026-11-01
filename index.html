@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=41" />
+  <link rel="stylesheet" href="style.css?v=42" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -121,15 +121,11 @@
         +3,000 libros · Recomendaciones con IA · $100 único pago
       </p>
 
-      <!-- Fila Inferior: CTAs de Descubrimiento (Centrados y apilados) -->
+      <!-- Fila Inferior: CTA Principal de Descubrimiento (Centrado y Protagonista) -->
       <div class="hero-acciones">
         <button id="btnAbrirIA" class="btn-ia-trigger" aria-label="Pedir recomendación a la Inteligencia Artificial">
           <span class="btn-ia-icono"><i data-lucide="sparkles"></i></span>
           ¿Qué debería leer hoy?
-        </button>
-        <button id="btnAzar" class="btn-azar" title="Libro al azar" aria-label="Abrir un libro al azar">
-          <span class="btn-azar-icono"><i data-lucide="dices"></i></span>
-          Sorpréndeme
         </button>
       </div>
     </div>
@@ -449,6 +445,28 @@
 
       <!-- Paso 1: Preguntas -->
       <div id="ia-preguntas" class="modal-body">
+        <!-- Atajos de Descubrimiento Inmediato -->
+        <div class="ia-atajos-contenedor">
+          <span class="ia-atajos-titulo"><i data-lucide="zap" class="icono-xs"></i> ¿Prefieres un atajo directo?</span>
+          <div class="ia-atajos-grid">
+            <button type="button" id="btnAtajoAzar" class="ia-atajo-btn" title="Elegir un libro al azar">
+              <i data-lucide="dices" class="icono-sm"></i>
+              <span>🎲 Sorpréndeme</span>
+            </button>
+            <button type="button" id="btnAtajoRapido" class="ia-atajo-btn" title="Lecturas de menos de 150 páginas">
+              <i data-lucide="clock" class="icono-sm"></i>
+              <span>⚡ Lectura corta (&lt; 150 p.)</span>
+            </button>
+            <button type="button" id="btnAtajoReflexionar" class="ia-atajo-btn" title="Libros para reflexionar">
+              <i data-lucide="brain" class="icono-sm"></i>
+              <span>🧠 Para reflexionar</span>
+            </button>
+          </div>
+          <div class="ia-atajos-divisor">
+            <span>O responde estas preguntas guiadas</span>
+          </div>
+        </div>
+
         <div class="pregunta-grupo">
           <label class="pregunta-label"><span class="pregunta-num">01</span> ¿Cuál es tu estado de ánimo hoy?</label>
           <div class="opciones-grid" id="opciones-estado">
@@ -841,12 +859,116 @@
     </div>
   </div>
 
+  <!-- ═══ BOTTOM SHEET: FILTROS MÓVILES AVANZADOS ═══ -->
+  <div id="bottomSheetFiltros" class="bottom-sheet-overlay" style="display:none" aria-hidden="true">
+    <div class="bottom-sheet-backdrop" id="bottomSheetBackdrop"></div>
+    <div class="bottom-sheet-panel" role="dialog" aria-modal="true" aria-label="Filtros avanzados">
+      <div class="bottom-sheet-drag-handle"></div>
+      <div class="bottom-sheet-header">
+        <div class="bottom-sheet-titulo-grupo">
+          <i data-lucide="sliders-horizontal" class="icono-sm"></i>
+          <h3 class="bottom-sheet-titulo">Filtros de catálogo</h3>
+          <span id="badgeSheetFiltros" class="badge-mas-filtros" style="display:none">0</span>
+        </div>
+        <button id="btnCerrarBottomSheet" class="bottom-sheet-cerrar" aria-label="Cerrar filtros">
+          <i data-lucide="x" class="icono-sm"></i>
+        </button>
+      </div>
+
+      <div class="bottom-sheet-body">
+        <!-- Sección Ordenar -->
+        <div class="sheet-seccion">
+          <span class="sheet-seccion-titulo"><i data-lucide="arrow-down-up" class="icono-xs"></i> Ordenar por</span>
+          <div class="sheet-chips" id="sheetChipsOrden">
+            <button type="button" class="chip-filtro seleccionado" data-tipo="orden" data-valor="default">Por defecto</button>
+            <button type="button" class="chip-filtro" data-tipo="orden" data-valor="popular">Más populares</button>
+            <button type="button" class="chip-filtro" data-tipo="orden" data-valor="reciente">Nuevos</button>
+            <button type="button" class="chip-filtro" data-tipo="orden" data-valor="titulo_asc">Título (A-Z)</button>
+            <button type="button" class="chip-filtro" data-tipo="orden" data-valor="paginas_asc">Corta primero</button>
+            <button type="button" class="chip-filtro" data-tipo="orden" data-valor="paginas_desc">Extensa primero</button>
+          </div>
+        </div>
+
+        <!-- Sección Época -->
+        <div class="sheet-seccion">
+          <span class="sheet-seccion-titulo"><i data-lucide="calendar" class="icono-xs"></i> Época histórica</span>
+          <div class="sheet-chips" id="sheetChipsEpoca">
+            <button type="button" class="chip-filtro seleccionado" data-tipo="epoca" data-valor="Todas">Todas</button>
+            <button type="button" class="chip-filtro" data-tipo="epoca" data-valor="antigua">Clásica (&lt; 1800)</button>
+            <button type="button" class="chip-filtro" data-tipo="epoca" data-valor="1800-1899">S. XIX (1800-1899)</button>
+            <button type="button" class="chip-filtro" data-tipo="epoca" data-valor="1900-1949">Inicios S. XX</button>
+            <button type="button" class="chip-filtro" data-tipo="epoca" data-valor="1950-1999">Posguerra</button>
+            <button type="button" class="chip-filtro" data-tipo="epoca" data-valor="2000+">S. XXI (2000+)</button>
+          </div>
+        </div>
+
+        <!-- Sección Extensión -->
+        <div class="sheet-seccion">
+          <span class="sheet-seccion-titulo"><i data-lucide="book-open" class="icono-xs"></i> Extensión</span>
+          <div class="sheet-chips" id="sheetChipsExtension">
+            <button type="button" class="chip-filtro seleccionado" data-tipo="extension" data-valor="Todas">Todas</button>
+            <button type="button" class="chip-filtro" data-tipo="extension" data-valor="corta">Corta (&lt; 150 p.)</button>
+            <button type="button" class="chip-filtro" data-tipo="extension" data-valor="media">Mediana (150–350 p.)</button>
+            <button type="button" class="chip-filtro" data-tipo="extension" data-valor="larga">Extensa (&gt; 350 p.)</button>
+          </div>
+        </div>
+
+        <!-- Sección Idioma -->
+        <div class="sheet-seccion">
+          <span class="sheet-seccion-titulo"><i data-lucide="globe" class="icono-xs"></i> Idioma</span>
+          <div class="sheet-chips" id="sheetChipsIdioma">
+            <button type="button" class="chip-filtro seleccionado" data-tipo="idioma" data-valor="Todos">Todos</button>
+            <button type="button" class="chip-filtro" data-tipo="idioma" data-valor="es">🇪🇸 Español</button>
+            <button type="button" class="chip-filtro" data-tipo="idioma" data-valor="en">🇬🇧 English</button>
+          </div>
+        </div>
+
+        <!-- Sección Autor -->
+        <div class="sheet-seccion">
+          <span class="sheet-seccion-titulo"><i data-lucide="user" class="icono-xs"></i> Filtrar por Autor</span>
+          <div class="sheet-autor-caja">
+            <input type="text" id="sheetInputAutor" class="sheet-input-autor" placeholder="Escribe el nombre de un autor..." autocomplete="off" />
+            <div id="sheetAutorSugerencias" class="sheet-autor-sugerencias"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-sheet-footer">
+        <button type="button" id="btnSheetLimpiar" class="btn-sheet-secundario">Limpiar filtros</button>
+        <button type="button" id="btnSheetAplicar" class="btn-sheet-primario">Ver resultados</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BARRA DE NAVEGACIÓN INFERIOR MÓVIL ═══ -->
+  <nav id="bottomNavMovil" class="bottom-nav-movil" aria-label="Navegación principal móvil">
+    <button type="button" class="bottom-nav-item activo" id="bnavCatalogo" aria-label="Ver catálogo completo">
+      <i data-lucide="compass" class="bnav-icono"></i>
+      <span class="bnav-label">Explorar</span>
+    </button>
+    <button type="button" class="bottom-nav-item" id="bnavFavoritos" aria-label="Ver mis favoritos">
+      <i data-lucide="heart" class="bnav-icono"></i>
+      <span class="bnav-label">Favoritos</span>
+      <span id="badgeBnavFav" class="bnav-badge" style="display:none">0</span>
+    </button>
+    <button type="button" class="bottom-nav-item" id="bnavLeyendo" aria-label="Ver libros que estoy leyendo">
+      <i data-lucide="book-marked" class="bnav-icono"></i>
+      <span class="bnav-label">Leyendo</span>
+      <span id="badgeBnavLey" class="bnav-badge" style="display:none">0</span>
+    </button>
+    <button type="button" class="bottom-nav-item" id="bnavFiltros" aria-label="Abrir filtros de búsqueda">
+      <i data-lucide="sliders-horizontal" class="bnav-icono"></i>
+      <span class="bnav-label">Filtros</span>
+      <span id="badgeBnavFiltros" class="bnav-badge" style="display:none">0</span>
+    </button>
+  </nav>
+
   <!-- Botón flotante para volver arriba -->
   <button id="btnScrollTop" class="btn-scroll-top" aria-label="Volver arriba" style="display:none">
     <i data-lucide="chevron-up"></i>
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=40"></script>
+  <script src="app.js?v=42"></script>
 </body>
 </html>
