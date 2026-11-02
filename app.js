@@ -8,10 +8,10 @@ const LIBROS_DESTACADOS_IDS = [
   2079, // 1984
   1139, // Cien anos de soledad
   2828, // El monje que vendio su Ferrari
-  14, // La divina comedia
   1140, // El amor en los tiempos del colera
-  2853, // La guerra no tiene rostro de mujer
-  670 // Rayuela Edicion conmemorativa de la RAE y la ASALE
+  2241, // Tormenta de espadas ed ilustrada
+  670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
+  14 // La divina comedia
 ];
 
 // ── VARIABLES GLOBALES ──
