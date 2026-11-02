@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=44" />
+  <link rel="stylesheet" href="style.css?v=45" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -390,13 +390,15 @@
       <div class="modal-body detalle-body">
         <div class="detalle-grid">
           <div class="detalle-portada-wrapper">
-            <img id="detalle-portada" class="detalle-portada" alt="" width="230" height="307" />
+            <img id="detalle-portada" class="detalle-portada" alt="" />
           </div>
           <div class="detalle-info">
-            <span id="detalle-genero" class="tarjeta-genero-badge"></span>
-            <button id="detalle-fav-btn" class="detalle-fav-btn" aria-label="Añadir a favoritos">
-              <i data-lucide="heart"></i>
-            </button>
+            <div class="detalle-genero-fav-fila">
+              <span id="detalle-genero" class="tarjeta-genero-badge"></span>
+              <button id="detalle-fav-btn" class="detalle-fav-btn" aria-label="Añadir a favoritos">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
             <p id="detalle-autor" class="detalle-autor"></p>
             <div id="detalle-serie-wrapper" class="detalle-serie-wrapper" style="display:none">
               <button id="detalle-serie-btn" class="btn-detalle-serie" type="button" aria-label="Ver todos los libros de esta saga">
@@ -969,6 +971,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=44"></script>
+  <script src="app.js?v=45"></script>
 </body>
 </html>

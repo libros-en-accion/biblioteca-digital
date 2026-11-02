@@ -2301,13 +2301,16 @@ footer {
 
 .detalle-portada-wrapper {
   flex-shrink: 0;
-  width: 180px;
+  width: 190px;
 }
 
 .detalle-portada {
   width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px var(--sombra);
+  height: auto;
+  max-height: 290px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px var(--sombra);
   display: block;
 }
 
@@ -2319,14 +2322,32 @@ footer {
   gap: 0.5rem;
 }
 
+.detalle-genero-fav-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+
 @media (max-width: 600px) {
   .detalle-grid {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
   }
 
   .detalle-portada-wrapper {
-    width: 140px;
+    width: 165px;
+    margin: 0 auto;
+  }
+
+  .detalle-portada {
+    max-height: 245px;
+  }
+
+  .detalle-info {
+    width: 100%;
   }
 }
 
@@ -3999,26 +4020,53 @@ footer {
   }
 }
 
-/* ── Adaptación móvil del lector ── */
+/* ── Adaptación móvil del lector (Alternativa A) ── */
 @media (max-width: 600px) {
   .lector-titulo-texto { display: none; }
-  .lector-barra-controles { padding: 0.4rem 0.5rem; }
-  .lector-controles { gap: 0.35rem; }
-  .lector-btn { width: 32px; height: 32px; }
+  .lector-barra-controles {
+    padding: 0.35rem 0.5rem;
+    overflow-x: hidden;
+  }
+  .lector-controles {
+    width: 100%;
+    gap: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  /* Alternativa A: Ocultar zoom en móvil (se usa zoom táctil de pellizco) */
+  #lectorBtnZoomOut,
+  #lectorBtnZoomIn {
+    display: none !important;
+  }
+  .lector-btn {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
   .lector-btn-lbl { display: none; }
   .lector-btn-descarga-formato {
     width: auto !important;
-    min-width: 38px !important;
+    min-width: 35px !important;
     height: 30px !important;
-    padding: 0 0.45rem !important;
+    padding: 0 0.35rem !important;
     justify-content: center !important;
+    flex-shrink: 0;
   }
   .lector-btn-descarga-formato .lector-btn-lbl {
     display: inline-block !important;
-    font-size: 0.68rem !important;
+    font-size: 0.65rem !important;
     font-weight: 800 !important;
   }
-  .lector-paginas { font-size: 0.8rem; padding: 0 0.2rem; }
+  .lector-paginas {
+    font-size: 0.78rem;
+    padding: 0 0.15rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .lector-btn-cerrar {
+    margin-left: auto;
+  }
   .lector-canvas-container { padding: 0.5rem 0; }
   .lector-bloqueo-caja { padding: 1.5rem 1.2rem; }
   .lector-bloqueo-titulo { font-size: 1.1rem; }
