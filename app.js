@@ -733,8 +733,8 @@ function renderizarDestacados() {
           </button>
           ${(esDonador && (libro.archivo_pdf || libro.archivo_epub)) ? `
             <div class="tarjeta-descarga-rapida">
-              ${libro.archivo_pdf ? `<button class="btn-descarga-tarjeta btn-dl-pdf" data-libro-id="${libro.id}" title="Descargar PDF" aria-label="Descargar PDF"><i data-lucide="file-down" class="icono-sm"></i></button>` : ''}
-              ${libro.archivo_epub ? `<button class="btn-descarga-tarjeta btn-dl-epub" data-libro-id="${libro.id}" title="Descargar EPUB" aria-label="Descargar EPUB"><i data-lucide="download" class="icono-sm"></i></button>` : ''}
+              ${libro.archivo_pdf ? `<button class="btn-descarga-tarjeta btn-dl-pdf" data-libro-id="${libro.id}" title="Descargar archivo PDF" aria-label="Descargar PDF">PDF</button>` : ''}
+              ${libro.archivo_epub ? `<button class="btn-descarga-tarjeta btn-dl-epub" data-libro-id="${libro.id}" title="Descargar archivo EPUB" aria-label="Descargar EPUB">EPUB</button>` : ''}
             </div>
           ` : ''}
         </div>` :
@@ -1370,8 +1370,8 @@ function mostrarLibros(lista) {
           </button>
           ${(esDonador && (libro.archivo_pdf || libro.archivo_epub)) ? `
             <div class="tarjeta-descarga-rapida">
-              ${libro.archivo_pdf ? `<button class="btn-descarga-tarjeta btn-dl-pdf" data-libro-id="${libro.id}" title="Descargar PDF" aria-label="Descargar PDF"><i data-lucide="file-down" class="icono-sm"></i></button>` : ''}
-              ${libro.archivo_epub ? `<button class="btn-descarga-tarjeta btn-dl-epub" data-libro-id="${libro.id}" title="Descargar EPUB" aria-label="Descargar EPUB"><i data-lucide="download" class="icono-sm"></i></button>` : ''}
+              ${libro.archivo_pdf ? `<button class="btn-descarga-tarjeta btn-dl-pdf" data-libro-id="${libro.id}" title="Descargar archivo PDF" aria-label="Descargar PDF">PDF</button>` : ''}
+              ${libro.archivo_epub ? `<button class="btn-descarga-tarjeta btn-dl-epub" data-libro-id="${libro.id}" title="Descargar archivo EPUB" aria-label="Descargar EPUB">EPUB</button>` : ''}
             </div>
           ` : ''}
         </div>` :
