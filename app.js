@@ -931,7 +931,7 @@ function renderizarColecciones() {
       tarjeta.className = 'pack-tarjeta';
       tarjeta.innerHTML = `
         <img src="${bgPortada}" alt="${pack.titulo}" class="pack-tarjeta-bg" loading="lazy" />
-        <span class="pack-insignia"><i data-lucide="sparkles" class="icono-xs"></i> ${pack.libros.length} Libros</span>
+        <span class="pack-insignia"><i data-lucide="library" class="icono-xs"></i> ${pack.libros.length} Libros</span>
         ${stackHtml}
         <div class="pack-info">
           <h4 class="pack-titulo">${pack.titulo}</h4>
@@ -1128,7 +1128,7 @@ function renderizarContinuarLeyendo() {
   seccion.innerHTML = `
     <div class="continuar-leyendo-header">
       <div class="continuar-leyendo-titulo-grupo">
-        <span class="continuar-ornamento">✦ Retoma tu lectura ✦</span>
+        <span class="continuar-ornamento"><i data-lucide="bookmark" class="icono-xs"></i> Retoma tu lectura</span>
         <h2 class="seccion-titulo-destacados" style="margin-bottom: 0.2rem;">Continuar leyendo</h2>
       </div>
       ${librosEnProgreso.length > 3 ? `
@@ -2729,7 +2729,7 @@ function mostrarCTAEnResultadosIA() {
     <p>¿Te gustaron las recomendaciones? Lee estos libros completos y descárgalos en PDF y EPUB.</p>
     ${usosRestantes > 0 ? `<p class="ia-usos-restantes"><i data-lucide="zap" class="icono-xs"></i> Te ${usosRestantes === 1 ? 'queda' : 'quedan'} <strong>${usosRestantes}</strong> consulta${usosRestantes === 1 ? '' : 's'} gratuita${usosRestantes === 1 ? '' : 's'}</p>` : '<p class="ia-usos-restantes ia-usos-agotados"><i data-lucide="alert-triangle" class="icono-xs"></i> Has agotado tus consultas gratuitas</p>'}
     <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-ia">
-      <i data-lucide="sparkles" class="icono-sm"></i> Desbloquear acceso completo — $100 MXN
+      <i data-lucide="key-round" class="icono-sm"></i> Desbloquear acceso completo — $100 MXN
     </a>
   `;
   if (window.lucide) lucide.createIcons({ root: ctaEl });
@@ -3536,7 +3536,7 @@ function inicializarAutocompletado() {
     if (esFuzzyAutocompletado) {
       const cabeceraFuzzy = document.createElement('div');
       cabeceraFuzzy.className = 'autocompletar-item-sugerencia-header';
-      cabeceraFuzzy.innerHTML = `<span><i data-lucide="sparkles" class="icono-xs"></i> Sugerencias aproximadas para «${resaltarCoincidencias(raw.trim(), [])}»</span>`;
+      cabeceraFuzzy.innerHTML = `<span><i data-lucide="compass" class="icono-xs"></i> Sugerencias aproximadas para «${resaltarCoincidencias(raw.trim(), [])}»</span>`;
       panel.appendChild(cabeceraFuzzy);
     }
 

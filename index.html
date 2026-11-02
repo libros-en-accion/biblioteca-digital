@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=43" />
+  <link rel="stylesheet" href="style.css?v=44" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -112,7 +112,7 @@
           <span id="etiquetaCodigo">¿Tienes código?</span>
         </button>
         <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-hero" id="btnComprarHero">
-          <i data-lucide="sparkles" class="icono-sm"></i> Acceso Lifetime — $100 MXN
+          <i data-lucide="key-round" class="icono-sm"></i> Acceso Lifetime — $100 MXN
         </a>
       </div>
 
@@ -260,7 +260,7 @@
       <h2 class="seccion-titulo-colecciones" id="tituloColeccionesSeccion">Colecciones Populares</h2>
       <div class="colecciones-tabs" role="tablist" aria-label="Alternar entre colecciones y sagas">
         <button type="button" id="tabVistaColecciones" class="coleccion-tab-btn activo" role="tab" aria-selected="true">
-          <i data-lucide="sparkles" class="icono-sm"></i> Colecciones <span class="coleccion-tab-count" id="countTabColecciones">19</span>
+          <i data-lucide="layers" class="icono-sm"></i> Colecciones <span class="coleccion-tab-count" id="countTabColecciones">19</span>
         </button>
         <button type="button" id="tabVistaSagas" class="coleccion-tab-btn" role="tab" aria-selected="false">
           <i data-lucide="library" class="icono-sm"></i> Sagas y Series <span class="coleccion-tab-count" id="countTabSagas">58</span>
@@ -362,7 +362,7 @@
 
   <!-- ═══ FOOTER ═══ -->
   <footer>
-    <div class="footer-ornamento">✦ ✦ ✦</div>
+    <div class="footer-ornamento" aria-hidden="true"></div>
     <p id="fraseLiteraria" class="frase-literaria"></p>
     <p class="footer-stats" id="footerStats"></p>
     <p class="footer-creditos">Libractiva · <span id="footerAnio"></span></p>
@@ -383,7 +383,7 @@
   <div id="modalDetalle" class="modal-overlay">
     <div class="modal-panel modal-panel-detalle" role="dialog" aria-modal="true" aria-labelledby="detalle-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento">✦ Detalle del libro ✦</div>
+        <div class="modal-ornamento"><i data-lucide="book-open" class="icono-xs"></i> Ficha de la obra</div>
         <h2 id="detalle-titulo" class="modal-titulo"></h2>
         <button id="btnCerrarDetalle" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
@@ -436,7 +436,7 @@
   <div id="modalIA" class="modal-overlay">
     <div class="modal-panel modal-panel-ia" role="dialog" aria-modal="true" aria-label="Recomendador Inteligente">
       <div class="modal-header">
-        <div class="modal-ornamento">✦ Recomendador Inteligente ✦</div>
+        <div class="modal-ornamento"><i data-lucide="compass" class="icono-xs"></i> Asistente de lectura</div>
         <h2 class="modal-titulo">¿Qué debería leer hoy?</h2>
         <p class="modal-subtitulo">Responde cuatro preguntas y la IA elegirá tres libros perfectos para ti.</p>
         <span id="ia-usos-badge" class="ia-usos-badge" style="display:none"></span>
@@ -576,7 +576,7 @@
           <button id="btnActivarCodigoDesdeIA" class="btn-recomendar"><i data-lucide="key-round" class="icono-sm"></i> Ya tengo un código</button>
         </div>
         <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-ia limite-ia-comprar">
-          <i data-lucide="sparkles" class="icono-sm"></i> Obtener acceso completo — $100 MXN
+          <i data-lucide="key-round" class="icono-sm"></i> Obtener acceso completo — $100 MXN
         </a>
       </div>
     </div>
@@ -596,8 +596,8 @@
         <button id="lectorBtnNext" class="lector-btn" title="Página siguiente" aria-label="Página siguiente"><i data-lucide="chevron-right"></i></button>
         <button id="lectorBtnZoomOut" class="lector-btn" title="Alejar" aria-label="Alejar"><i data-lucide="zoom-out"></i></button>
         <button id="lectorBtnZoomIn" class="lector-btn" title="Acercar" aria-label="Acercar"><i data-lucide="zoom-in"></i></button>
-        <button id="lectorBtnDescarga" class="lector-btn lector-btn-donar lector-btn-descarga-formato" style="display:none" title="Descargar PDF (Acceso Activo)" aria-label="Descargar PDF"><i data-lucide="download"></i><span class="lector-btn-lbl">PDF</span></button>
-        <button id="lectorBtnDescargaEpub" class="lector-btn lector-btn-donar-epub lector-btn-descarga-formato" style="display:none" title="Descargar EPUB (Acceso Activo)" aria-label="Descargar EPUB"><i data-lucide="download"></i><span class="lector-btn-lbl">EPUB</span></button>
+        <button id="lectorBtnDescarga" class="lector-btn lector-btn-donar lector-btn-descarga-formato" style="display:none" title="Descargar PDF (Acceso Activo)" aria-label="Descargar PDF"><span class="lector-btn-lbl">PDF</span></button>
+        <button id="lectorBtnDescargaEpub" class="lector-btn lector-btn-donar-epub lector-btn-descarga-formato" style="display:none" title="Descargar EPUB (Acceso Activo)" aria-label="Descargar EPUB"><span class="lector-btn-lbl">EPUB</span></button>
         <button id="lectorBtnMarcadores" class="lector-btn lector-btn-marcador" style="display:none" title="Marcar página" aria-label="Marcar página actual"><i data-lucide="bookmark"></i><span class="lector-btn-lbl">Marcar</span></button>
         <button id="lectorBtnVerMarcadores" class="lector-btn lector-btn-ver-marcadores" style="display:none" title="Ver mis marcadores" aria-label="Ver lista de marcadores"><i data-lucide="list"></i></button>
         <button id="lectorBtnCerrar" class="lector-btn lector-btn-cerrar" title="Cerrar lector" aria-label="Cerrar lector"><i data-lucide="x"></i></button>
@@ -619,7 +619,7 @@
             Este libro y los más de 3,000 títulos del catálogo están disponibles completos — incluyendo descargas en <strong>PDF y EPUB</strong> (ideal para Kindle o tu app de lectura favorita) — con un pago único de <strong>$100 MXN</strong>. Sin mensualidades ni cargos ocultos.
           </p>
           <div class="lector-bloqueo-opciones">
-            <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-preview"><i data-lucide="sparkles" class="icono-sm"></i> Obtener Acceso Lifetime — $100 MXN</a>
+            <a href="https://mpago.la/1Ek1HPz" target="_blank" rel="noopener" class="btn-comprar-preview"><i data-lucide="key-round" class="icono-sm"></i> Obtener Acceso Lifetime — $100 MXN</a>
             <button id="lectorBtnIngresarCodigo" class="btn-codigo-preview"><i data-lucide="key-round" class="icono-sm"></i> Ya tengo un código</button>
           </div>
         </div>
@@ -668,7 +668,7 @@
         </div>
 
         <div id="cajaCodigoEntregado" class="codigo-entregado-caja" style="display:none">
-          <div class="codigo-entregado-icono"><i data-lucide="sparkles"></i></div>
+          <div class="codigo-entregado-icono"><i data-lucide="check-circle-2"></i></div>
           <h3 class="codigo-entregado-subtitulo">¡Tu Acceso Lifetime está activo!</h3>
           <p class="codigo-entregado-texto">Este navegador ya quedó desbloqueado. Guarda tu código personal para activar hasta <strong>3 dispositivos</strong> (PC, tablet o móvil):</p>
           <div class="codigo-entregado-display">
@@ -690,7 +690,7 @@
   <div id="modalInfo" class="modal-overlay">
     <div class="modal-panel modal-info-panel" role="dialog" aria-modal="true" aria-labelledby="info-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento">✦ Información ✦</div>
+        <div class="modal-ornamento"><i data-lucide="info" class="icono-xs"></i> Acerca de Libractiva</div>
         <h2 id="info-titulo" class="modal-titulo">Sobre Libractiva</h2>
         <button id="btnCerrarInfo" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
@@ -742,7 +742,7 @@
   <div id="modalContacto" class="modal-overlay">
     <div class="modal-panel modal-contacto-panel" role="dialog" aria-modal="true" aria-labelledby="contacto-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento">✦ Contacto ✦</div>
+        <div class="modal-ornamento"><i data-lucide="mail" class="icono-xs"></i> Contacto y soporte</div>
         <h2 id="contacto-titulo" class="modal-titulo">Ponte en contacto</h2>
         <button id="btnCerrarContacto" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
@@ -780,7 +780,7 @@
   <div id="modalCompra" class="modal-overlay">
     <div class="modal-panel modal-compra-panel" role="dialog" aria-modal="true" aria-labelledby="compra-titulo">
       <div class="modal-header">
-        <div class="modal-ornamento"><i data-lucide="sparkles" class="icono-sm"></i> Acceso Lifetime</div>
+        <div class="modal-ornamento"><i data-lucide="key-round" class="icono-sm"></i> Acceso Completo</div>
         <h2 id="compra-titulo" class="modal-titulo">Beneficios de tu Acceso</h2>
         <button id="btnCerrarCompra" class="modal-cerrar" aria-label="Cerrar"><i data-lucide="x"></i></button>
       </div>
@@ -825,7 +825,7 @@
             </div>
           </div>
           <div class="beneficio-item">
-            <div class="beneficio-icono"><i data-lucide="sparkles"></i></div>
+            <div class="beneficio-icono"><i data-lucide="zap"></i></div>
             <div class="beneficio-texto">
               <strong>Pago Único (Sin mensualidades):</strong> Disfruta de la biblioteca de por vida sin cuotas recurrentes ni cargos ocultos.
             </div>
@@ -969,6 +969,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=43"></script>
+  <script src="app.js?v=44"></script>
 </body>
 </html>

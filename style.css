@@ -1198,11 +1198,13 @@ footer {
 }
 
 .footer-ornamento {
-  font-size: 0.55rem;
-  letter-spacing: 6px;
-  color: #d4a94a;
-  opacity: 0.6;
+  display: inline-block;
+  width: 36px;
+  height: 2px;
+  background: var(--dorado);
+  opacity: 0.45;
   margin-bottom: 1rem;
+  border-radius: 2px;
 }
 
 .footer-stats {
@@ -1586,13 +1588,17 @@ footer {
 
 .modal-ornamento {
   font-family: var(--fuente-cuerpo);
-  font-size: 0.62rem;
-  font-weight: 300;
-  letter-spacing: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   color: #d4a94a;
   text-transform: uppercase;
-  margin-bottom: 0.8rem;
-  opacity: 0.85;
+  margin-bottom: 0.6rem;
+  opacity: 0.9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
 }
 
 .modal-titulo {
@@ -3796,8 +3802,21 @@ footer {
 }
 .lector-btn-descarga-formato {
   width: auto !important;
-  padding: 0 0.55rem;
-  gap: 0.25rem;
+  min-width: 44px !important;
+  height: 32px !important;
+  padding: 0 0.55rem !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.lector-btn-descarga-formato .lector-btn-lbl {
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1 !important;
+  font-family: var(--fuente-cuerpo) !important;
+  display: inline-block !important;
 }
 .lector-btn-lbl {
   font-size: 0.62rem;
@@ -3986,11 +4005,18 @@ footer {
   .lector-barra-controles { padding: 0.4rem 0.5rem; }
   .lector-controles { gap: 0.35rem; }
   .lector-btn { width: 32px; height: 32px; }
-  .lector-btn-lbl { display: none !important; }
+  .lector-btn-lbl { display: none; }
   .lector-btn-descarga-formato {
-    width: 32px !important;
-    padding: 0 !important;
+    width: auto !important;
+    min-width: 38px !important;
+    height: 30px !important;
+    padding: 0 0.45rem !important;
     justify-content: center !important;
+  }
+  .lector-btn-descarga-formato .lector-btn-lbl {
+    display: inline-block !important;
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
   }
   .lector-paginas { font-size: 0.8rem; padding: 0 0.2rem; }
   .lector-canvas-container { padding: 0.5rem 0; }
@@ -4035,11 +4061,6 @@ footer {
   align-items: center;
   gap: 0.6rem;
   padding: 0 2.5rem;
-}
-.seccion-titulo-destacados::before {
-  content: '✦';
-  font-size: 1.1rem;
-  color: var(--dorado);
 }
 .destacados-carrusel-contenedor {
   position: relative;
@@ -4309,11 +4330,6 @@ footer {
   align-items: center;
   gap: 0.6rem;
   margin: 0;
-}
-.catalogo-barra-titulo::before {
-  content: '✦';
-  font-size: 1.1rem;
-  color: var(--dorado);
 }
 .catalogo-barra-acciones {
   display: flex;
@@ -4618,11 +4634,6 @@ input,
   align-items: center;
   gap: 0.6rem;
   padding: 0;
-}
-.seccion-titulo-colecciones::before {
-  content: '✦';
-  font-size: 1.1rem;
-  color: var(--dorado);
 }
 
 /* Pestañas Colecciones / Sagas */
@@ -6188,12 +6199,15 @@ input,
 }
 
 .continuar-ornamento {
-  font-family: var(--fuente-titulo);
-  font-size: 0.76rem;
-  color: var(--dorado);
-  letter-spacing: 0.08em;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--dorado-texto);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .btn-ver-todos-leyendo {
