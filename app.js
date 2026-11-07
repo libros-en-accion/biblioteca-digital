@@ -14,6 +14,117 @@ const LIBROS_DESTACADOS_IDS = [
   14 // La divina comedia
 ];
 
+// ── CURADURÍA EDITORIAL: ORDEN POR DEFECTO Y BESTSELLERS ──
+const LIBROS_DESTACADOS_CURADOS = [
+  // Página 1 (24 títulos de máximo impacto y variedad):
+  412,  // Hábitos atómicos — James Clear
+  1139, // Cien años de soledad — Gabriel García Márquez
+  2346, // El principito — Antoine de Saint-Exupéry
+  2835, // El poder del ahora — Eckhart Tolle
+  2079, // 1984 — George Orwell
+  2300, // La Sombra del Viento — Carlos Ruiz Zafón
+  1233, // Las 48 leyes del poder — Robert Greene
+  606,  // El alquimista — Paulo Coelho
+  1609, // El resplandor — Stephen King
+  2078, // Sapiens — Yuval Noah Harari
+  1121, // El hombre en busca de sentido — Viktor Frankl
+  785,  // Crimen y castigo — Fiódor Dostoyevski
+  2795, // Padre rico padre pobre — Robert Kiyosaki
+  2683, // El retrato de Dorian Gray — Oscar Wilde
+  325,  // Fahrenheit 451 — Ray Bradbury
+  2825, // Los cuatro acuerdos — Miguel Ángel Ruiz
+  1561, // El psicoanalista — John Katzenbach
+  344,  // El código Da Vinci — Dan Brown
+  2879, // El gran Gatsby — F. Scott Fitzgerald
+  280,  // Orgullo y prejuicio — Jane Austen
+  2490, // Drácula — Bram Stoker
+  3007, // El arte de la guerra — Sun Tzu
+  1552, // La metamorfosis — Franz Kafka
+  2828, // El monje que vendió su Ferrari — Robin Sharma
+
+  // Página 2 (24 títulos de gran prestigio y diversidad):
+  1581, // Carrie — Stephen King
+  2495, // El hobbit — J.R.R. Tolkien
+  2240, // Juego de tronos — George R. R. Martin
+  2378, // Frankenstein — Mary Shelley
+  450,  // El extranjero — Albert Camus
+  2349, // Ensayo sobre la ceguera — José Saramago
+  1140, // El amor en los tiempos del cólera — Gabriel García Márquez
+  2916, // Las aventuras de Sherlock Holmes — Arthur Conan Doyle
+  1663, // Misery — Stephen King
+  502,  // Asesinato en el Orient Express — Agatha Christie
+  321,  // Ficciones — Jorge Luis Borges
+  320,  // El Aleph — Jorge Luis Borges
+  1271, // El viejo y el mar — Ernest Hemingway
+  2089, // Rebelión en la granja — George Orwell
+  2891, // Cometas en el cielo — Khaled Hosseini
+  2946, // La ladrona de libros — Markus Zusak
+  679,  // Don Quijote de la Mancha — Miguel de Cervantes
+  163,  // Fundación — Isaac Asimov
+  1777, // La llamada de Cthulhu — H.P. Lovecraft
+  1209, // La inteligencia emocional — Daniel Goleman
+  2309, // Pedro Páramo — Juan Rulfo
+  670,  // Rayuela — Julio Cortázar
+  1179, // Crónica de una muerte anunciada — Gabriel García Márquez
+  2059  // Así habló Zaratustra — Friedrich Nietzsche
+];
+
+const INSIGNIAS_EDITORIALES = {
+  // Bestsellers
+  412: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2835: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2828: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  1233: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2795: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2825: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2078: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2300: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  606: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  1609: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  1581: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  1663: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  344: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  1561: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2240: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  502: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2891: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  2946: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+  1209: { tipo: 'bestseller', texto: 'Bestseller', icono: 'award' },
+
+  // Clásicos
+  1139: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2346: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2079: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  785: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2683: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  325: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2879: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  280: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2490: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  1552: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2495: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2378: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  450: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  1140: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2916: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  321: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  320: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  1271: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2089: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  679: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  163: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  1777: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  2309: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  670: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+  1179: { tipo: 'clasico', texto: 'Clásico', icono: 'bookmark' },
+
+  // Imprescindibles
+  1121: { tipo: 'imprescindible', texto: 'Imprescindible', icono: 'flame' },
+  3007: { tipo: 'imprescindible', texto: 'Imprescindible', icono: 'flame' },
+  2349: { tipo: 'imprescindible', texto: 'Imprescindible', icono: 'flame' },
+  2059: { tipo: 'imprescindible', texto: 'Imprescindible', icono: 'flame' }
+};
+
 // ── VARIABLES GLOBALES ──
 let libros = [];
 let colecciones = [];
@@ -1332,7 +1443,13 @@ function mostrarLibros(lista) {
     const infoProg = obtenerInfoProgreso(libro.id);
     const tieneProgreso = !!(infoProg && infoProg.pagina > 1);
 
+    const insignia = INSIGNIAS_EDITORIALES[libro.id];
+    const insigniaHtml = insignia
+      ? `<span class="tarjeta-insignia-editorial insignia-${insignia.tipo}"><i data-lucide="${insignia.icono}" class="icono-xs"></i> ${insignia.texto}</span>`
+      : '';
+
     tarjeta.innerHTML = `
+      ${insigniaHtml}
       ${libro.portada 
         ? `<img src="${libro.portada}" alt="${tituloLimpio}" class="tarjeta-portada" loading="lazy" width="230" height="307" decoding="async" />` 
         : `<div class="tarjeta-portada tarjeta-portada-placeholder">
@@ -1755,7 +1872,28 @@ function ordenarLista(lista) {
     if (moodActivo !== 'Todos') {
       return shuffle(lista);
     }
-    return lista;
+
+    // Orden Editorial Recomendado por defecto:
+    // Prioriza los bestsellers y clásicos más reconocidos en las primeras posiciones
+    const scoreMap = new Map();
+    LIBROS_DESTACADOS_CURADOS.forEach((id, idx) => {
+      scoreMap.set(id, 10000 - idx);
+    });
+    if (Array.isArray(rankingMasLeidos) && rankingMasLeidos.length > 0) {
+      rankingMasLeidos.forEach((r, idx) => {
+        const actual = scoreMap.get(r.id) || 0;
+        scoreMap.set(r.id, Math.max(actual, 5000 - idx));
+      });
+    }
+
+    const copia = [...lista];
+    copia.sort((a, b) => {
+      const scoreA = scoreMap.get(a.id) || 0;
+      const scoreB = scoreMap.get(b.id) || 0;
+      if (scoreA !== scoreB) return scoreB - scoreA;
+      return 0; // mantener orden relativo original
+    });
+    return copia;
   }
 
   const copia = [...lista];
@@ -2178,6 +2316,21 @@ function abrirDetalleLibro(id, omitirPush = false) {
     document.querySelector('.catalogo-header-barra')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   badge.appendChild(generoLink);
+
+  // Insignia editorial destacada en modal
+  const detalleInsignia = document.getElementById('detalle-insignia-editorial');
+  if (detalleInsignia) {
+    const ins = INSIGNIAS_EDITORIALES[libro.id];
+    if (ins) {
+      detalleInsignia.className = `tarjeta-insignia-editorial insignia-${ins.tipo}`;
+      detalleInsignia.innerHTML = `<i data-lucide="${ins.icono}" class="icono-xs"></i> ${ins.texto}`;
+      detalleInsignia.style.display = 'inline-flex';
+      if (window.lucide) lucide.createIcons({ root: detalleInsignia });
+    } else {
+      detalleInsignia.style.display = 'none';
+      detalleInsignia.innerHTML = '';
+    }
+  }
 
   const detallePortada = document.getElementById('detalle-portada');
   if (libro.portada && detallePortada) {

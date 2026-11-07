@@ -1044,6 +1044,67 @@ body {
   background: var(--dorado-claro);
 }
 
+/* Insignias Editoriales en Tarjetas (Bestseller / Clásico / Imprescindible) */
+.tarjeta-insignia-editorial {
+  position: absolute;
+  top: 0.45rem;
+  left: 0.45rem;
+  z-index: 6;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  line-height: 1;
+}
+
+.tarjeta-insignia-editorial svg,
+.tarjeta-insignia-editorial i {
+  width: 12px;
+  height: 12px;
+}
+
+/* Bestseller: Dorado cálido de prestigio */
+.insignia-bestseller {
+  background: rgba(26, 20, 10, 0.9);
+  color: #f7d070;
+  border: 1px solid rgba(247, 208, 112, 0.5);
+}
+
+/* Clásico: Verde agua / Sage editorial */
+.insignia-clasico {
+  background: rgba(14, 28, 24, 0.9);
+  color: #a3e6cb;
+  border: 1px solid rgba(163, 230, 203, 0.4);
+}
+
+/* Imprescindible: Terracota fuego */
+.insignia-imprescindible {
+  background: rgba(35, 16, 20, 0.9);
+  color: #fca5a5;
+  border: 1px solid rgba(252, 165, 165, 0.4);
+}
+
+/* En vista de detalle (modal): posición estática */
+.detalle-badges-grupo .tarjeta-insignia-editorial {
+  position: static;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* En vista lista: oculta para mantener limpieza */
+.galeria.vista-lista .tarjeta-insignia-editorial {
+  display: none !important;
+}
+
 /* Colores por género */
 .tarjeta-genero-badge.genero-ciencia-ficcion {
   color: #1a5f7a;
@@ -2328,6 +2389,13 @@ footer {
   justify-content: space-between;
   width: 100%;
   gap: 0.5rem;
+}
+
+.detalle-badges-grupo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 600px) {
@@ -4378,6 +4446,14 @@ footer {
   align-items: center;
   gap: 0.6rem;
   margin: 0;
+}
+.catalogo-bestsellers-subtitulo {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  margin: 0.15rem 0 0;
+  font-style: italic;
+  width: 100%;
 }
 .catalogo-barra-acciones {
   display: flex;

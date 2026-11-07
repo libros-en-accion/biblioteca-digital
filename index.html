@@ -73,7 +73,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css?v=45" />
+  <link rel="stylesheet" href="style.css?v=46" />
 </head>
 <body>
   <a href="#galeria" class="skip-link">Saltar al contenido principal</a>
@@ -297,6 +297,7 @@
         <span class="catalogo-separador-punto" aria-hidden="true">·</span>
         <p id="contador" class="contador"></p>
       </div>
+      <p class="catalogo-bestsellers-subtitulo">Bestsellers mundiales y clásicos universales completos para leer o descargar</p>
       <button id="btnCerrarPack" class="btn-cerrar-pack" style="display: none" title="Quitar filtro de colección">
         <i data-lucide="x"></i> Quitar Colección
       </button>
@@ -306,11 +307,11 @@
       <!-- Ordenamiento Custom -->
       <div class="custom-dropdown" id="dropdownOrden">
         <button class="dropdown-btn" id="btnDropdownOrden" aria-haspopup="listbox" aria-expanded="false" aria-label="Ordenar catálogo">
-          <span id="labelDropdownOrden">Ordenar: Por defecto</span>
+          <span id="labelDropdownOrden">Ordenar: Recomendados</span>
           <span class="dropdown-arrow"><i data-lucide="chevron-down" class="icono-sm"></i></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-derecha" role="listbox" id="menuDropdownOrden">
-          <li data-valor="default" class="dropdown-item seleccionado" role="option">Ordenar: Por defecto</li>
+          <li data-valor="default" class="dropdown-item seleccionado" role="option">Ordenar: Recomendados</li>
           <li data-valor="mas-leidos" class="dropdown-item" role="option">Más leídos esta semana</li>
           <li data-valor="titulo-asc" class="dropdown-item" role="option">Título A → Z</li>
           <li data-valor="titulo-desc" class="dropdown-item" role="option">Título Z → A</li>
@@ -394,7 +395,10 @@
           </div>
           <div class="detalle-info">
             <div class="detalle-genero-fav-fila">
-              <span id="detalle-genero" class="tarjeta-genero-badge"></span>
+              <div class="detalle-badges-grupo">
+                <span id="detalle-genero" class="tarjeta-genero-badge"></span>
+                <span id="detalle-insignia-editorial" class="tarjeta-insignia-editorial" style="display:none"></span>
+              </div>
               <button id="detalle-fav-btn" class="detalle-fav-btn" aria-label="Añadir a favoritos">
                 <i data-lucide="heart"></i>
               </button>
@@ -882,7 +886,7 @@
         <div class="sheet-seccion">
           <span class="sheet-seccion-titulo"><i data-lucide="arrow-down-up" class="icono-xs"></i> Ordenar por</span>
           <div class="sheet-chips" id="sheetChipsOrden">
-            <button type="button" class="chip-filtro seleccionado" data-tipo="orden" data-valor="default">Por defecto</button>
+            <button type="button" class="chip-filtro seleccionado" data-tipo="orden" data-valor="default">Recomendados</button>
             <button type="button" class="chip-filtro" data-tipo="orden" data-valor="popular">Más populares</button>
             <button type="button" class="chip-filtro" data-tipo="orden" data-valor="reciente">Nuevos</button>
             <button type="button" class="chip-filtro" data-tipo="orden" data-valor="titulo_asc">Título (A-Z)</button>
@@ -971,6 +975,6 @@
   </button>
 
   <script src="lucide.min.js"></script>
-  <script src="app.js?v=45"></script>
+  <script src="app.js?v=46"></script>
 </body>
 </html>
