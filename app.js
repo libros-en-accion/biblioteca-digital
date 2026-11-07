@@ -460,7 +460,7 @@ Promise.all([
   .then(([datosLibros, datosColecciones]) => {
     libros = datosLibros;
     colecciones = datosColecciones;
-    listaFiltrada = libros;
+    listaFiltrada = ordenarLista(libros);
     mostrarPagina(1);
     inicializarPagina();
     renderizarColecciones();
