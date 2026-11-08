@@ -4,7 +4,7 @@
 // de forma idempotente en Redis y lo envía por correo electrónico al comprador.
 
 const { createClient } = require('redis');
-const { consultarPagoMercadoPago, procesarPagoAprobado } = require('./_lib/pagos');
+const { obtenerRedisUrl, consultarPagoMercadoPago, procesarPagoAprobado } = require('./_lib/pagos');
 
 function extraerDatosNotificacion(req) {
   const body = req.body || {};
@@ -41,10 +41,10 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ received: true, ignored: true });
   }
 
-  const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
+  const redisUrl = obtenerRedisUrl();
   if (!redisUrl) {
-    console.error('[webhook-mp] REDIS_URL no configurada.');
-    return res.status(500).json({ error: 'REDIS_URL no configurada' });
+    console.error('[webhook-mp] URL de Redis no configurada.');
+    return res.status(500).json({ error: 'URL de Redis no configurada' });
   }
 
   try {

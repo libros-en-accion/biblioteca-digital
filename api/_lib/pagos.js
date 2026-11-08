@@ -9,6 +9,34 @@ const PRECIO_MINIMO_MXN = 95; // Precio oficial $100 MXN (margen por redondeos)
 const LIMITE_DISPOSITIVOS_DEFAULT = 3;
 const ALFABETO_CODIGO = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Sin 0, O, 1, I para evitar confusión
 
+// Detecta la URL de Redis con prioridad para la nueva base de datos activa (STORAGE_URL)
+function obtenerRedisUrl() {
+  if (process.env.STORAGE_REDIS_URL) return process.env.STORAGE_REDIS_URL;
+  if (process.env.STORAGE_URL) return process.env.STORAGE_URL;
+  if (process.env.REDIS_CLOUD_URL) return process.env.REDIS_CLOUD_URL;
+  // Priorizar cualquier nueva variable con prefijo personalizado antes de la antigua REDIS_URL
+  for (const [key, val] of Object.entries(process.env)) {
+    if (
+      key !== 'REDIS_URL' &&
+      key !== 'KV_URL' &&
+      typeof val === 'string' &&
+      (val.startsWith('redis://') || val.startsWith('rediss://'))
+    ) {
+      return val;
+    }
+  }
+  if (process.env.REDIS_URL) return process.env.REDIS_URL;
+  if (process.env.KV_URL) return process.env.KV_URL;
+  if (process.env.UPSTASH_REDIS_URL) return process.env.UPSTASH_REDIS_URL;
+  if (process.env.REDIS_URI) return process.env.REDIS_URI;
+  if (process.env.REDIS_CONNECTION_STRING) return process.env.REDIS_CONNECTION_STRING;
+  if (process.env.REDIS_HOST && process.env.REDIS_PORT) {
+    const auth = process.env.REDIS_PASSWORD ? `default:${encodeURIComponent(process.env.REDIS_PASSWORD)}@` : '';
+    return `redis://${auth}${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`;
+  }
+  return null;
+}
+
 // Genera un ID de dispositivo único a partir de cabeceras de la petición.
 function generarIdDispositivo(req) {
   if (!req || !req.headers) return '';
@@ -461,6 +489,7 @@ async function procesarPagoAprobado(redisClient, paymentData, opciones = {}) {
 module.exports = {
   PRECIO_MINIMO_MXN,
   LIMITE_DISPOSITIVOS_DEFAULT,
+  obtenerRedisUrl,
   generarIdDispositivo,
   firmarCookie,
   crearCookieHeader,

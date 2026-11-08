@@ -4,6 +4,7 @@
 const { createClient } = require('redis');
 
 function obtenerRedisUrl() {
+  if (process.env.STORAGE_REDIS_URL) return process.env.STORAGE_REDIS_URL;
   if (process.env.STORAGE_URL) return process.env.STORAGE_URL;
   if (process.env.REDIS_CLOUD_URL) return process.env.REDIS_CLOUD_URL;
   // Priorizar cualquier nueva variable con prefijo personalizado antes de la antigua REDIS_URL

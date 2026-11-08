@@ -5,6 +5,7 @@
 
 const { createClient } = require('redis');
 const {
+  obtenerRedisUrl,
   generarIdDispositivo,
   firmarCookie,
   crearCookieHeader,
@@ -23,8 +24,9 @@ module.exports = async function handler(req, res) {
   }
 
   const secret = process.env.DONOR_COOKIE_SECRET;
-  if (!secret) {
-    console.error('[validar-codigo] Error: DONOR_COOKIE_SECRET no configurada en el servidor.');
+  const redisUrl = obtenerRedisUrl();
+  if (!secret || !redisUrl) {
+    console.error('[validar-codigo] Error: DONOR_COOKIE_SECRET o Redis URL no configurada en el servidor.');
     return res.status(500).json({ error: 'Error de configuración de seguridad en el servidor.' });
   }
 
@@ -32,9 +34,9 @@ module.exports = async function handler(req, res) {
   const kvKey = `donor:code:${codigoNormalizado}`;
 
   const client = createClient({
-    url: process.env.REDIS_URL || process.env.KV_URL,
+    url: redisUrl,
     socket: {
-      connectTimeout: 800,
+      connectTimeout: 2500,
       reconnectStrategy: () => false
     }
   });

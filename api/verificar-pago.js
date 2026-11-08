@@ -6,6 +6,7 @@
 
 const { createClient } = require('redis');
 const {
+  obtenerRedisUrl,
   generarIdDispositivo,
   crearCookieHeader,
   consultarPagoMercadoPago,
@@ -28,7 +29,7 @@ module.exports = async function handler(req, res) {
   }
 
   const secret = process.env.DONOR_COOKIE_SECRET;
-  const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
+  const redisUrl = obtenerRedisUrl();
   if (!secret || !redisUrl) {
     return res.status(500).json({
       valido: false,
