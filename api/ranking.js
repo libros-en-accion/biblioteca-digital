@@ -6,9 +6,16 @@ const { createClient } = require('redis');
 function obtenerRedisUrl() {
   if (process.env.REDIS_URL) return process.env.REDIS_URL;
   if (process.env.KV_URL) return process.env.KV_URL;
+  if (process.env.STORAGE_URL) return process.env.STORAGE_URL;
   if (process.env.UPSTASH_REDIS_URL) return process.env.UPSTASH_REDIS_URL;
   if (process.env.REDIS_URI) return process.env.REDIS_URI;
   if (process.env.REDIS_CONNECTION_STRING) return process.env.REDIS_CONNECTION_STRING;
+  // Detección automática de cualquier variable inyectada por Vercel con protocolo redis
+  for (const [key, val] of Object.entries(process.env)) {
+    if (typeof val === 'string' && (val.startsWith('redis://') || val.startsWith('rediss://'))) {
+      return val;
+    }
+  }
   if (process.env.REDIS_HOST && process.env.REDIS_PORT) {
     const auth = process.env.REDIS_PASSWORD ? `default:${encodeURIComponent(process.env.REDIS_PASSWORD)}@` : '';
     return `redis://${auth}${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`;
