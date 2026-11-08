@@ -9,9 +9,22 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+function obtenerRedisUrl() {
+  if (process.env.REDIS_URL) return process.env.REDIS_URL;
+  if (process.env.KV_URL) return process.env.KV_URL;
+  if (process.env.UPSTASH_REDIS_URL) return process.env.UPSTASH_REDIS_URL;
+  if (process.env.REDIS_URI) return process.env.REDIS_URI;
+  if (process.env.REDIS_CONNECTION_STRING) return process.env.REDIS_CONNECTION_STRING;
+  if (process.env.REDIS_HOST && process.env.REDIS_PORT) {
+    const auth = process.env.REDIS_PASSWORD ? `default:${encodeURIComponent(process.env.REDIS_PASSWORD)}@` : '';
+    return `redis://${auth}${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`;
+  }
+  return null;
+}
+
 // ── Registro de lecturas / descargas en Redis para ranking en tiempo real ──
 async function registrarLecturaRedis(libroId) {
-  const redisUrl = process.env.REDIS_URL || process.env.KV_URL || process.env.UPSTASH_REDIS_URL;
+  const redisUrl = obtenerRedisUrl();
   if (!redisUrl) return;
 
   const client = createClient({

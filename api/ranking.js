@@ -3,6 +3,19 @@
 
 const { createClient } = require('redis');
 
+function obtenerRedisUrl() {
+  if (process.env.REDIS_URL) return process.env.REDIS_URL;
+  if (process.env.KV_URL) return process.env.KV_URL;
+  if (process.env.UPSTASH_REDIS_URL) return process.env.UPSTASH_REDIS_URL;
+  if (process.env.REDIS_URI) return process.env.REDIS_URI;
+  if (process.env.REDIS_CONNECTION_STRING) return process.env.REDIS_CONNECTION_STRING;
+  if (process.env.REDIS_HOST && process.env.REDIS_PORT) {
+    const auth = process.env.REDIS_PASSWORD ? `default:${encodeURIComponent(process.env.REDIS_PASSWORD)}@` : '';
+    return `redis://${auth}${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`;
+  }
+  return null;
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Método no permitido' });
@@ -11,7 +24,7 @@ module.exports = async function handler(req, res) {
   // Cache en CDN de Vercel por 5 minutos (300 s) con stale-while-revalidate
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
-  const redisUrl = process.env.REDIS_URL || process.env.KV_URL || process.env.UPSTASH_REDIS_URL;
+  const redisUrl = obtenerRedisUrl();
   if (!redisUrl) {
     return res.status(200).json({ origen: 'fallback', ranking: [] });
   }
