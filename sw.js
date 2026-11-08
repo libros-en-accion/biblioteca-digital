@@ -1,10 +1,10 @@
-const CACHE_NAME = 'libractiva-v37';
+const CACHE_NAME = 'libractiva-v38';
 const CACHE_ASSETS = [
   '/',
   '/libros.json',
   '/colecciones.json',
-  '/style.css?v=50',
-  '/app.js?v=50',
+  '/style.css?v=51',
+  '/app.js?v=51',
   '/lucide.min.js',
   '/manifest.json',
   '/favicon.ico',
