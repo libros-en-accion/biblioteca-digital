@@ -1016,7 +1016,6 @@ function renderizarColecciones() {
         <div class="pack-info">
           <span class="saga-autor-tag">${saga.autor}</span>
           <h4 class="pack-titulo">${saga.nombre}</h4>
-          <p class="pack-descripcion">Inicia con: «${limpiarTitulo(primerLibro ? primerLibro.titulo : '')}»</p>
           <button class="btn-explorar-pack">Ver en orden <i data-lucide="arrow-right" class="icono-sm"></i></button>
         </div>
       `;
