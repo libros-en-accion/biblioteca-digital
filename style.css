@@ -4447,14 +4447,6 @@ footer {
   gap: 0.6rem;
   margin: 0;
 }
-.catalogo-bestsellers-subtitulo {
-  font-family: var(--fuente-cuerpo);
-  font-size: 0.82rem;
-  color: var(--texto-suave);
-  margin: 0.15rem 0 0;
-  font-style: italic;
-  width: 100%;
-}
 .catalogo-barra-acciones {
   display: flex;
   align-items: center;
