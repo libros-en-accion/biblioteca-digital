@@ -769,8 +769,14 @@ function renderizarDestacados() {
     return;
   }
 
-  // Orden fijo y estable según la lista curada LIBROS_DESTACADOS_IDS (#1 Carrie)
-  const idsDestacados = [...LIBROS_DESTACADOS_IDS];
+  // Híbrido inteligente en tiempo real:
+  // 1. Libros con lecturas/descargas reales registradas en Redis esta semana (ocupan los primeros puestos del podio).
+  // 2. Si la semana apenas inicia o hay pocos registros, se completan los 10 lugares con el respaldo editorial curado.
+  const idsReales = (Array.isArray(rankingMasLeidos) ? rankingMasLeidos : [])
+    .map(r => r.id)
+    .filter(id => libros.some(l => l.id === id));
+
+  const idsDestacados = Array.from(new Set([...idsReales, ...LIBROS_DESTACADOS_IDS])).slice(0, 10);
 
   const librosDestacados = idsDestacados
     .map(id => libros.find(l => l.id === id))

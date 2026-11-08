@@ -11,7 +11,7 @@ const crypto = require('crypto');
 
 // ── Registro de lecturas / descargas en Redis para ranking en tiempo real ──
 async function registrarLecturaRedis(libroId) {
-  const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
+  const redisUrl = process.env.REDIS_URL || process.env.KV_URL || process.env.UPSTASH_REDIS_URL;
   if (!redisUrl) return;
 
   const client = createClient({

@@ -11,7 +11,7 @@ module.exports = async function handler(req, res) {
   // Cache en CDN de Vercel por 5 minutos (300 s) con stale-while-revalidate
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
-  const redisUrl = process.env.REDIS_URL || process.env.KV_URL;
+  const redisUrl = process.env.REDIS_URL || process.env.KV_URL || process.env.UPSTASH_REDIS_URL;
   if (!redisUrl) {
     return res.status(200).json({ origen: 'fallback', ranking: [] });
   }
