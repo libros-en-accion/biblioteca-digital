@@ -4,14 +4,14 @@
 const LIBROS_DESTACADOS_IDS = [
   1581, // Carrie
   2835, // El poder del ahora
-  2300, // La Sombra del Viento
   2079, // 1984
+  2300, // La Sombra del Viento
+  1140, // El amor en los tiempos del colera
   1139, // Cien anos de soledad
   2828, // El monje que vendio su Ferrari
-  1140, // El amor en los tiempos del colera
-  2241, // Tormenta de espadas ed ilustrada
   670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
-  14 // La divina comedia
+  1974, // Hombres sin mujeres
+  2241 // Tormenta de espadas ed ilustrada
 ];
 
 // ── CURADURÍA EDITORIAL: ORDEN POR DEFECTO Y BESTSELLERS ──
