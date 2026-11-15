@@ -2549,12 +2549,32 @@ function cerrarModalContacto() {
   }
 }
 
+/** Dispara un evento estándar del Meta Pixel de forma segura si fbq está disponible. */
+function trackMetaEvent(eventName, params = {}, options = undefined) {
+  if (typeof window.fbq !== 'function') return;
+  try {
+    if (options) {
+      window.fbq('track', eventName, params, options);
+    } else {
+      window.fbq('track', eventName, params);
+    }
+  } catch (err) {
+    console.warn('[trackMetaEvent]', eventName, err);
+  }
+}
+
 // ── Abrir / Cerrar modal Compra ──
 function abrirModalCompra() {
   const modal = document.getElementById('modalCompra');
   if (!modal) return;
   modal.classList.add('abierto');
   document.body.style.overflow = 'hidden';
+  trackMetaEvent('AddToCart', {
+    value: 100.0,
+    currency: 'MXN',
+    content_ids: ['LTD-LIBRACTIVA-100'],
+    content_type: 'product'
+  });
 
   const inputEmail = document.getElementById('inputEmailCompra');
   const msgEmail = document.getElementById('compraEmailMensaje');
@@ -2620,6 +2640,12 @@ async function iniciarCheckoutMercadoPago(e) {
     estadoMp.textContent = 'Conectando con Mercado Pago…';
     estadoMp.style.display = 'block';
   }
+  trackMetaEvent('InitiateCheckout', {
+    value: 100.0,
+    currency: 'MXN',
+    content_ids: ['LTD-LIBRACTIVA-100'],
+    content_type: 'product'
+  });
 
   try {
     const resp = await fetch('/api/crear-pago', {
@@ -2805,6 +2831,9 @@ async function pedirRecomendacion() {
     }
 
     renderizarResultados(datos.recomendaciones);
+    trackMetaEvent('Search', {
+      search_string: `${iaSeleccion.estado || ''} | ${iaSeleccion.objetivo || ''}${tema ? ' | ' + tema : ''}`.trim()
+    });
 
     // Incrementar contador de usos solo en usuarios sin código
     if (!esDonadorLocal()) {
@@ -4659,6 +4688,15 @@ async function verificarRetornoPagoMercadoPago() {
       mostrarPagina(paginaActual, false);
       renderizarDestacados();
       mostrarCodigoEntregado(data);
+      const fbPurchaseKey = `libractiva_fb_purchase_${paymentId}`;
+      if (!localStorage.getItem(fbPurchaseKey)) {
+        trackMetaEvent(
+          'Purchase',
+          { value: 100.0, currency: 'MXN', content_ids: ['LTD-LIBRACTIVA-100'], content_type: 'product' },
+          { eventID: `mp_${paymentId}` }
+        );
+        localStorage.setItem(fbPurchaseKey, '1');
+      }
     } else if (data && data.pendiente) {
       mostrarMensajeCodigo(
         data.error || 'Tu pago sigue procesándose. Cuando se acredite, ingresa tu número de operación aquí.',
@@ -4844,6 +4882,12 @@ async function abrirLector(libroId, libro) {
   lectorEstado.pagina = 1;
   lectorEstado.pdf = null;
   lectorEstado.esDonador = esDonadorLocal();
+  trackMetaEvent('ViewContent', {
+    content_ids: [String(libroId)],
+    content_name: libro.titulo || '',
+    content_category: libro.genero || '',
+    content_type: 'product'
+  });
 
   if (titulo) titulo.textContent = `${libro.titulo}${libro.autor ? ' — ' + libro.autor : ''}`;
   if (bloqueo) bloqueo.style.display = 'none';
