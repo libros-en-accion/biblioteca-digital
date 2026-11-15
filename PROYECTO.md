@@ -11,9 +11,9 @@
 |---|---|
 | **Nombre oficial** | **Libractiva** |
 | **Descripción** | Biblioteca digital inteligente y cultural con catálogo interactivo, lector web integrado y recomendador por IA. |
-| **Catálogo** | **3,005 títulos únicos** en `libros.json` (~1.8 MB), normalizados y con metadatos enriquecidos (páginas, año, idioma, sinopsis, sagas). |
+| **Catálogo** | **3,039 títulos únicos** en `libros.json` (~1.8 MB), normalizados y con metadatos enriquecidos (páginas, año, idioma, sinopsis, sagas). |
 | **Formatos de lectura** | **PDF y EPUB** completos alojados en Cloudflare R2 con URLs prefirmadas (`/api/leer`). |
-| **Colecciones y Sagas** | **15 Colecciones temáticas curadas** (`colecciones.json`) y **58 Sagas literarias** agrupadas dinámicamente. |
+| **Colecciones y Sagas** | **19 Colecciones temáticas curadas** (`colecciones.json`) y **59 Sagas literarias** agrupadas dinámicamente. |
 | **Frontend** | Vanilla HTML5, CSS3 moderno (modo claro/oscuro) y JavaScript ES6+ modular, sin frameworks pesados. |
 | **Iconografía** | **Lucide Icons** vectoriales (SVG en escala proporcional, sustituyendo emojis). |
 | **Buscador** | Motor de búsqueda tolerante a errores tipográficos (*fuzzy search* con distancia de Levenshtein) y autocompletado en cliente. |
@@ -31,10 +31,10 @@
 ## 🗺️ Roadmap de Implementación
 
 ### ✅ Completado (Hitos Consolidados)
-- [x] **Expansión del catálogo a 3,005 libros** — 100% con archivos PDF y EPUB sincronizados en Cloudflare R2.
+- [x] **Expansión del catálogo a 3,039 libros** — 34 nuevas obras de psicología, desarrollo personal y estoicismo integradas con PDF y EPUB sincronizados en Cloudflare R2.
 - [x] **Script de subida a R2 (`scripts/subir_a_r2.js`)** — Inspección dinámica de `libros.json`, cálculo de MD5 y subida vía AWS SDK.
-- [x] **Unificación de Sagas Literarias** — 58 sagas agrupadas dinámicamente en catálogo y filtros, eliminando discrepancias de conteo.
-- [x] **Depuración de Colecciones Temáticas** — 15 colecciones curadas en `colecciones.json` sin incongruencias temáticas.
+- [x] **Unificación de Sagas Literarias** — 59 sagas agrupadas dinámicamente en catálogo y filtros, eliminando discrepancias de conteo.
+- [x] **Depuración de Colecciones Temáticas** — 19 colecciones curadas en `colecciones.json` sin incongruencias temáticas.
 - [x] **UI Sobria y Vectorial (Lucide Icons)** — Sustitución completa de emojis en botones, modales, badges y alertas por iconos SVG escalables.
 - [x] **Búsqueda tolerante a errores (Fuzzy Search)** — Tolerancia a fallos tipográficos (*«murakamy»*, *«harry poter»*, *«fundasion»*) con algoritmo Levenshtein y sugerencias automáticas.
 - [x] **Consistencia de Marca** — Nombre unificado a Libractiva, autor unificado y nuevo correo oficial `contacto.libractiva@gmail.com`.
@@ -58,8 +58,8 @@ biblioteca/
 ├── index.html                  # Interfaz principal SPA (HTML5 semántico)
 ├── style.css                   # Sistema de diseño, variables CSS y modo oscuro
 ├── app.js                      # Motor frontend: catálogo, fuzzy search, paginación, lector, sagas
-├── libros.json                 # Catálogo completo (3,005 títulos con metadatos)
-├── colecciones.json            # 15 colecciones temáticas curadas
+├── libros.json                 # Catálogo completo (3,039 títulos con metadatos)
+├── colecciones.json            # 19 colecciones temáticas curadas
 ├── manifest.json               # Manifiesto PWA para instalación web
 ├── sw.js                       # Service Worker (PWA y caché de assets estáticos)
 ├── robots.txt / sitemap.xml     # Indexación y directivas SEO

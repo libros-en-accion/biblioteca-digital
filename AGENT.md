@@ -2,7 +2,7 @@
 
 ## Descripción del Proyecto
 
-**Libractiva** es una plataforma digital de lectura interactiva con un catálogo de **3,005 obras clásicas, novelas, ensayos y sagas completas**. Combina un catálogo estático optimizado en el cliente con un recomendador impulsado por IA (DeepSeek V3), lector web integrado (PDF.js), descargas en formatos PDF y EPUB alojados en Cloudflare R2, y un modelo de monetización de pago único (Lifetime Deal - LTD) de $100 MXN.
+**Libractiva** es una plataforma digital de lectura interactiva con un catálogo de **3,039 obras clásicas, novelas, ensayos y sagas completas**. Combina un catálogo estático optimizado en el cliente con un recomendador impulsado por IA (DeepSeek V3), lector web integrado (PDF.js), descargas en formatos PDF y EPUB alojados en Cloudflare R2, y un modelo de monetización de pago único (Lifetime Deal - LTD) de $100 MXN.
 
 **Canal de contacto oficial:** `contacto.libractiva@gmail.com`
 **URL de producción:** `https://biblioteca-digital-eight.vercel.app/`
@@ -43,8 +43,8 @@ biblioteca/
 ├── index.html              # Interfaz principal (SPA)
 ├── style.css               # Estilos globales, variables CSS y modo oscuro
 ├── app.js                  # Motor del frontend: fuzzy search, paginación, lector, sagas
-├── libros.json             # Catálogo estático (3,005 registros, ~1.8 MB) — NO LEER COMPLETO
-├── colecciones.json        # 15 colecciones temáticas curadas con descripciones
+├── libros.json             # Catálogo estático (3,039 registros, ~1.8 MB) — NO LEER COMPLETO
+├── colecciones.json        # 19 colecciones temáticas curadas con descripciones
 ├── manifest.json           # Manifiesto PWA
 ├── sw.js                   # Service Worker (PWA, caché offline)
 ├── robots.txt / sitemap.xml # SEO y directivas de rastreo
@@ -74,7 +74,7 @@ biblioteca/
 ## REGLAS CRÍTICAS — LEE ANTES DE TRABAJAR
 
 ### 1. NUNCA leas `libros.json` completo ni la carpeta `portadas/`
-- `libros.json` pesa ~1.8 MB y contiene 3,005 registros. Leerlo completo consume más de 300,000 tokens y satura el contexto.
+- `libros.json` pesa ~1.8 MB y contiene 3,039 registros. Leerlo completo consume más de 300,000 tokens y satura el contexto.
 - `portadas/` contiene ~3,000 archivos WebP binarios.
 - Para inspeccionar libros, filtra con scripts de Node/Python o mediante grep por ID o título.
 
@@ -92,7 +92,7 @@ biblioteca/
 
 ### 5. Respetar los géneros y las 58 Sagas
 - Los géneros en `libros.json` están normalizados.
-- La pestaña de sagas agrupa automáticamente los libros que contienen el objeto `"serie": { "nombre": "...", "orden": N }`. Existen 58 sagas catalogadas.
+- La pestaña de sagas agrupa automáticamente los libros que contienen el objeto `"serie": { "nombre": "...", "orden": N }`. Existen 59 sagas catalogadas.
 
 ---
 

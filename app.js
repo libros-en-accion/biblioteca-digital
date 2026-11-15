@@ -448,11 +448,11 @@ function mostrarSkeletons() {
 // ── CARGAR LIBROS AL INICIAR ──
 mostrarSkeletons();
 Promise.all([
-  fetch('libros.json?v=14').then(r => {
+  fetch('libros.json?v=15').then(r => {
     if (!r.ok) throw new Error(`Error HTTP al cargar libros: ${r.status}`);
     return r.json();
   }),
-  fetch('colecciones.json?v=4').then(r => {
+  fetch('colecciones.json?v=5').then(r => {
     if (!r.ok) throw new Error(`Error HTTP al cargar colecciones: ${r.status}`);
     return r.json();
   })
