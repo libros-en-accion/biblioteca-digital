@@ -3,15 +3,15 @@
 // según los libros más populares de Amazon u otra fuente de tu preferencia.
 const LIBROS_DESTACADOS_IDS = [
   1581, // Carrie
-  2300, // La Sombra del Viento
   2079, // 1984
-  1140, // El amor en los tiempos del colera
   2835, // El poder del ahora
+  2300, // La Sombra del Viento
+  2828, // El monje que vendio su Ferrari
+  1140, // El amor en los tiempos del colera
   1139, // Cien anos de soledad
   2241, // Tormenta de espadas ed ilustrada
-  2828, // El monje que vendio su Ferrari
   670, // Rayuela Edicion conmemorativa de la RAE y la ASALE
-  324 // Cronicas marcianas completas
+  1974 // Hombres sin mujeres
 ];
 
 // ── CURADURÍA EDITORIAL: ORDEN POR DEFECTO Y BESTSELLERS ──
